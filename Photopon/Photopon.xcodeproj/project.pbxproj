@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
+		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
+		62D148CC1B79732100E8D4A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CB1B79732100E8D4A1 /* main.m */; };
+		62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CE1B79732100E8D4A1 /* AppDelegate.m */; };
+		62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */; };
+		62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148D41B79732100E8D4A1 /* MasterViewController.m */; };
+		62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148D71B79732100E8D4A1 /* DetailViewController.m */; };
+		62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D148D91B79732100E8D4A1 /* Main.storyboard */; };
+		62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DC1B79732100E8D4A1 /* Images.xcassets */; };
+		62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */; };
+		62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148EB1B79732100E8D4A1 /* PhotoponTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62D148E61B79732100E8D4A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62D148BE1B79732100E8D4A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62D148C51B79732100E8D4A1;
+			remoteInfo = Photopon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		62D148C61B79732100E8D4A1 /* Photopon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photopon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62D148CA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62D148CB1B79732100E8D4A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		62D148CD1B79732100E8D4A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		62D148CE1B79732100E8D4A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		62D148D11B79732100E8D4A1 /* Photopon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photopon.xcdatamodel; sourceTree = "<group>"; };
+		62D148D31B79732100E8D4A1 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		62D148D41B79732100E8D4A1 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		62D148D61B79732100E8D4A1 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		62D148D71B79732100E8D4A1 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		62D148DA1B79732100E8D4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62D148DC1B79732100E8D4A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		62D148DF1B79732100E8D4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoponTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62D148EA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62D148EB1B79732100E8D4A1 /* PhotoponTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoponTests.m; sourceTree = "<group>"; };
+		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
+		DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.release.xcconfig"; sourceTree = "<group>"; };
+		DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62D148C31B79732100E8D4A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62D148E21B79732100E8D4A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62D148BD1B79732100E8D4A1 = {
+			isa = PBXGroup;
+			children = (
+				62D148C81B79732100E8D4A1 /* Photopon */,
+				62D148E81B79732100E8D4A1 /* PhotoponTests */,
+				62D148C71B79732100E8D4A1 /* Products */,
+				F9C7B90319FF7ACA494E5A39 /* Pods */,
+				9750ECB74249AEF1072E7FDE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		62D148C71B79732100E8D4A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62D148C61B79732100E8D4A1 /* Photopon.app */,
+				62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62D148C81B79732100E8D4A1 /* Photopon */ = {
+			isa = PBXGroup;
+			children = (
+				62D148CD1B79732100E8D4A1 /* AppDelegate.h */,
+				62D148CE1B79732100E8D4A1 /* AppDelegate.m */,
+				62D148D31B79732100E8D4A1 /* MasterViewController.h */,
+				62D148D41B79732100E8D4A1 /* MasterViewController.m */,
+				62D148D61B79732100E8D4A1 /* DetailViewController.h */,
+				62D148D71B79732100E8D4A1 /* DetailViewController.m */,
+				62D148D91B79732100E8D4A1 /* Main.storyboard */,
+				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
+				62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */,
+				62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */,
+				62D148C91B79732100E8D4A1 /* Supporting Files */,
+				621AE3341B797CBB00A9C18C /* LoginViewController.h */,
+				621AE3351B797CBB00A9C18C /* LoginViewController.m */,
+				621AE3371B79868400A9C18C /* LogHelper.h */,
+			);
+			path = Photopon;
+			sourceTree = "<group>";
+		};
+		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				62D148CA1B79732100E8D4A1 /* Info.plist */,
+				62D148CB1B79732100E8D4A1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		62D148E81B79732100E8D4A1 /* PhotoponTests */ = {
+			isa = PBXGroup;
+			children = (
+				62D148EB1B79732100E8D4A1 /* PhotoponTests.m */,
+				62D148E91B79732100E8D4A1 /* Supporting Files */,
+			);
+			path = PhotoponTests;
+			sourceTree = "<group>";
+		};
+		62D148E91B79732100E8D4A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				62D148EA1B79732100E8D4A1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9750ECB74249AEF1072E7FDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F9C7B90319FF7ACA494E5A39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */,
+				DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62D148C51B79732100E8D4A1 /* Photopon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62D148EF1B79732100E8D4A1 /* Build configuration list for PBXNativeTarget "Photopon" */;
+			buildPhases = (
+				9E8BCF6F7E382D62444730BD /* Check Pods Manifest.lock */,
+				62D148C21B79732100E8D4A1 /* Sources */,
+				62D148C31B79732100E8D4A1 /* Frameworks */,
+				62D148C41B79732100E8D4A1 /* Resources */,
+				3E8CE73B4011A27C5225B4FC /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Photopon;
+			productName = Photopon;
+			productReference = 62D148C61B79732100E8D4A1 /* Photopon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		62D148E41B79732100E8D4A1 /* PhotoponTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62D148F21B79732100E8D4A1 /* Build configuration list for PBXNativeTarget "PhotoponTests" */;
+			buildPhases = (
+				62D148E11B79732100E8D4A1 /* Sources */,
+				62D148E21B79732100E8D4A1 /* Frameworks */,
+				62D148E31B79732100E8D4A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62D148E71B79732100E8D4A1 /* PBXTargetDependency */,
+			);
+			name = PhotoponTests;
+			productName = PhotoponTests;
+			productReference = 62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62D148BE1B79732100E8D4A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Photopon;
+				TargetAttributes = {
+					62D148C51B79732100E8D4A1 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					62D148E41B79732100E8D4A1 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 62D148C51B79732100E8D4A1;
+					};
+				};
+			};
+			buildConfigurationList = 62D148C11B79732100E8D4A1 /* Build configuration list for PBXProject "Photopon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62D148BD1B79732100E8D4A1;
+			productRefGroup = 62D148C71B79732100E8D4A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62D148C51B79732100E8D4A1 /* Photopon */,
+				62D148E41B79732100E8D4A1 /* PhotoponTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62D148C41B79732100E8D4A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
+				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
+				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62D148E31B79732100E8D4A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E8CE73B4011A27C5225B4FC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photopon/Pods-Photopon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E8BCF6F7E382D62444730BD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62D148C21B79732100E8D4A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
+				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
+				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
+				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
+				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62D148E11B79732100E8D4A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62D148E71B79732100E8D4A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62D148C51B79732100E8D4A1 /* Photopon */;
+			targetProxy = 62D148E61B79732100E8D4A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		62D148D91B79732100E8D4A1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62D148DA1B79732100E8D4A1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62D148DF1B79732100E8D4A1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62D148ED1B79732100E8D4A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62D148EE1B79732100E8D4A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62D148F01B79732100E8D4A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Photopon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		62D148F11B79732100E8D4A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Photopon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		62D148F31B79732100E8D4A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotoponTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photopon.app/Photopon";
+			};
+			name = Debug;
+		};
+		62D148F41B79732100E8D4A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotoponTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photopon.app/Photopon";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62D148C11B79732100E8D4A1 /* Build configuration list for PBXProject "Photopon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62D148ED1B79732100E8D4A1 /* Debug */,
+				62D148EE1B79732100E8D4A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62D148EF1B79732100E8D4A1 /* Build configuration list for PBXNativeTarget "Photopon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62D148F01B79732100E8D4A1 /* Debug */,
+				62D148F11B79732100E8D4A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62D148F21B79732100E8D4A1 /* Build configuration list for PBXNativeTarget "PhotoponTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62D148F31B79732100E8D4A1 /* Debug */,
+				62D148F41B79732100E8D4A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62D148D11B79732100E8D4A1 /* Photopon.xcdatamodel */,
+			);
+			currentVersion = 62D148D11B79732100E8D4A1 /* Photopon.xcdatamodel */;
+			path = Photopon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 62D148BE1B79732100E8D4A1 /* Project object */;
+}

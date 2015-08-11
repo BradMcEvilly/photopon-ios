@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F697D0B0-1FC3-4954-A793-0D4EC7BA2ED7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CE0A0873C479838EB4C39925A6B7A585EE3FA7C2</key>
+		<string>https://github.com/BradMcEvilly/photopon-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Photopon/Photopon.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CE0A0873C479838EB4C39925A6B7A585EE3FA7C2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/BradMcEvilly/photopon-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CE0A0873C479838EB4C39925A6B7A585EE3FA7C2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CE0A0873C479838EB4C39925A6B7A585EE3FA7C2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>photopon-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
