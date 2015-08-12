@@ -3,6 +3,8 @@
 
 target 'Photopon' do
 pod 'Parse', '~> 1.7'
+pod 'ParseUI'
+pod 'FontAwesome'
 end
 
 target 'PhotoponTests' do

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
+		62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A7DDA11B7ABBFD000B74B8 /* MainController.m */; };
 		62D148CC1B79732100E8D4A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CB1B79732100E8D4A1 /* main.m */; };
 		62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CE1B79732100E8D4A1 /* AppDelegate.m */; };
 		62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */; };
@@ -34,6 +35,8 @@
 		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		62A7DDA01B7ABBFD000B74B8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
+		62A7DDA11B7ABBFD000B74B8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		62D148C61B79732100E8D4A1 /* Photopon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photopon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D148CA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D148CB1B79732100E8D4A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				621AE3341B797CBB00A9C18C /* LoginViewController.h */,
 				621AE3351B797CBB00A9C18C /* LoginViewController.m */,
 				621AE3371B79868400A9C18C /* LogHelper.h */,
+				62A7DDA01B7ABBFD000B74B8 /* MainController.h */,
+				62A7DDA11B7ABBFD000B74B8 /* MainController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

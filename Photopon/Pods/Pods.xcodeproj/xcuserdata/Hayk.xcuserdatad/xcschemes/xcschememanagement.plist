@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FontAwesome.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Parse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6CA490C51962DA9F294C7886DE09D94F</key>
+		<key>0044D7EE6E47E067159414E2ED2A238B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E428B0351657C8DB4ABD0D133F24BFE</key>
+		<key>17E6D141DBA8A084B2747722F72221E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA3575D2CF5A95260A9FB82B5A93B7B5</key>
+		<key>24878F207EB41D2856B367125DA408E4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E01400D97B914542E3E18D0018680E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A652AB326182027890C8AA56035BFD57</key>
 		<dict>
 			<key>primary</key>
 			<true/>

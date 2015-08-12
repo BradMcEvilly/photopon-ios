@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LogHelper.h"
+#import "Parse/Parse.h"
+#import "ParseUI/ParseUI.h"
 
-@interface LoginViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@interface LoginViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
-- (IBAction)loginButton:(id)sender;
 
 @end

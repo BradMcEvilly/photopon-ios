@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "MasterViewController.h"
+#import "Parse/Parse.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -29,6 +30,15 @@
     controller.managedObjectContext = self.managedObjectContext;
  
  */
+    
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"qyY21OT36AiP5hIEdrzrBvbOS1HgXzIK52oyzrAN"
+                  clientKey:@"CwOKephJcNOFokOWx6X2wgDO2eOKDGL2lXfYgPCC"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
 
