@@ -61,10 +61,25 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
-    
+
+    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    [self presentViewController:mainCtrl animated:true completion:nil];
+  
     LogDebug(@"User is logged in");
     
 }
+
+
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    [self presentViewController:mainCtrl animated:true completion:nil];
+    
+    LogDebug(@"User is signed up");
+}
+
+
 
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     LogError(@"Failed to log in...");

@@ -8,7 +8,7 @@
         <!--Login View-->
         <scene sceneID="0aQ-db-zqz">
             <objects>
-                <viewController title="Login View" id="8Bs-8b-Lsl" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginCtrl" title="Login View" id="8Bs-8b-Lsl" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U3Y-nm-pVs"/>
                         <viewControllerLayoutGuide type="bottom" id="SDM-et-K9q"/>
@@ -20,7 +20,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6M-u1-uox">
                                 <rect key="frame" x="16" y="40" width="568" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -39,7 +39,7 @@
         <!--Friends-->
         <scene sceneID="7Mp-4q-Mb4">
             <objects>
-                <viewController storyboardIdentifier="SBFriends" title="Friends" id="QEn-sW-VzP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBFriends" title="Friends" id="QEn-sW-VzP" customClass="FriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sDq-oJ-Rgj"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ki-uP-o5A"/>
@@ -48,19 +48,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a65-bz-vOv">
-                                <rect key="frame" x="272" y="290" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RmU-lf-SyD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="a65-bz-vOv" secondAttribute="centerY" id="XQ0-Cz-sL4"/>
-                            <constraint firstAttribute="centerX" secondItem="a65-bz-vOv" secondAttribute="centerX" id="jis-rt-toZ"/>
+                            <constraint firstAttribute="centerX" secondItem="RmU-lf-SyD" secondAttribute="centerX" id="0Rz-tG-1dS"/>
+                            <constraint firstItem="RmU-lf-SyD" firstAttribute="leading" secondItem="io3-wy-LFe" secondAttribute="leading" id="CFc-mE-neG"/>
+                            <constraint firstAttribute="centerY" secondItem="RmU-lf-SyD" secondAttribute="centerY" id="GXO-sM-i6A"/>
+                            <constraint firstItem="RmU-lf-SyD" firstAttribute="bottom" secondItem="9Ki-uP-o5A" secondAttribute="top" id="Xue-o1-MK3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="friendsTable" destination="RmU-lf-SyD" id="bFU-uu-9Ja"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2mA-WW-lUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,7 +84,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy8-N6-Zyb">
                                 <rect key="frame" x="265" y="290" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -111,7 +114,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-A1-Byh">
                                 <rect key="frame" x="277" y="290" width="47" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -141,7 +144,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="je0-Uq-gR9">
                                 <rect key="frame" x="262" y="290" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -159,7 +162,6 @@
         <!--Main Controller-->
         <scene sceneID="g0I-QI-kdN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nri-lM-Bn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MainCtrl" title="Main Controller" id="7fO-PT-t8o" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YLg-pL-a2w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -169,6 +171,7 @@
                         <segue destination="FU3-B7-of0" kind="relationship" relationship="rootViewController" id="kHW-A2-73J"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nri-lM-Bn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-499" y="-1649"/>
         </scene>
@@ -176,6 +179,7 @@
         <scene sceneID="Dh3-pc-FTq">
             <objects>
                 <pageViewController storyboardIdentifier="MainCtrlInside" autoresizesArchivedViewToFullSize="NO" title="Main Controller Inside" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="FU3-B7-of0" customClass="MainController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="GSo-DH-Aj6"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mi-cT-2V0" userLabel="First Responder" sceneMemberID="firstResponder"/>

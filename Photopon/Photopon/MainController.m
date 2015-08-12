@@ -7,6 +7,9 @@
 //
 
 #import "MainController.h"
+#import "LogHelper.h"
+#import <FontAwesome/NSString+FontAwesome.h>
+#import "Parse/Parse.h"
 
 @implementation MainController
 {
@@ -20,6 +23,24 @@
     UIViewController *currentView = [self.viewControllers objectAtIndex:0];
     self.title = currentView.title;
 }
+
+
+-(IBAction)onRightMenuClick:(id)sender
+{
+    [PFUser logOut];
+    
+    UIViewController* loginCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
+    [self presentViewController:loginCtrl animated:true completion:nil];
+    
+}
+
+-(IBAction)onLeftMenuClick:(id)sender
+{
+    LogDebug(@"On left menu click");
+}
+
+
+
 
 -(void)viewDidLoad
 {
@@ -46,8 +67,28 @@
                     animated:NO completion:nil];
     
     [self updatePageTitle];
+    
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FAEllipsisV] style:UIBarButtonItemStylePlain target:self action:@selector(onRightMenuClick:)];
+    
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FABars] style:UIBarButtonItemStylePlain target:self action:@selector(onLeftMenuClick:)];
+    
+    
+    UIFont* font = [UIFont fontWithName:kFontAwesomeFamilyName size:22.0];
+    
+    [rightButton setTitleTextAttributes:@{
+         NSFontAttributeName: font
+    } forState:UIControlStateNormal];
+    
+    
+    [leftButton setTitleTextAttributes:@{
+         NSFontAttributeName: font
+    } forState:UIControlStateNormal];
+    
+    self.navigationItem.rightBarButtonItem = rightButton;
+    self.navigationItem.leftBarButtonItem = leftButton;
 
-    NSLog(@"loaded!");
 }
 
 -(UIViewController *)viewControllerAtIndex:(NSUInteger)index

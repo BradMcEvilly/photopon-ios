@@ -23,7 +23,13 @@ static void AddStderrOnce()
 
 
 
-#define __MW_MAKE_LOG_FUNCTION(LEVEL, NAME) \
+#define __DECLARE_MAKE_LOG_FUNCTION(LEVEL, NAME) \
+void NAME (NSString *format, ...);
+
+
+
+
+#define __DEFINE_MAKE_LOG_FUNCTION(LEVEL, NAME) \
 void NAME (NSString *format, ...) \
 { \
 AddStderrOnce(); \
@@ -32,19 +38,22 @@ va_start(args, format); \
 NSString *message = [[NSString alloc] initWithFormat:format arguments:args]; \
 asl_log(NULL, NULL, (LEVEL), "%s", [message UTF8String]); \
 va_end(args); \
-}
-
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_EMERG, LogEmergency)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_ALERT, LogAlert)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_CRIT, LogCritical)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_ERR, LogError)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_WARNING, LogWarning)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_NOTICE, LogNotice)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_INFO, LogInfo)
-__MW_MAKE_LOG_FUNCTION(ASL_LEVEL_DEBUG, LogDebug)
+}\
 
 
-#undef __MW_MAKE_LOG_FUNCTION
+
+
+
+
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_EMERG, LogEmergency)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_ALERT, LogAlert)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_CRIT, LogCritical)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_ERR, LogError)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_WARNING, LogWarning)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_NOTICE, LogNotice)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_INFO, LogInfo)
+__DECLARE_MAKE_LOG_FUNCTION(ASL_LEVEL_DEBUG, LogDebug)
+
 
 
 
