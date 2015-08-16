@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
+		62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B11B7D5EDA00D61F34 /* NotificationController.m */; };
+		62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B41B7E78C100D61F34 /* FriendRequestControl.m */; };
+		62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BA1B7E9AB300D61F34 /* AddFriendController.m */; };
+		62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BD1B80A38B00D61F34 /* DBAccess.m */; };
+		62A302C21B80C4A800D61F34 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302C11B80C4A800D61F34 /* Helper.m */; };
+		62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 62A302C51B80F6CC00D61F34 /* empty20x20.png */; };
+		62A302C81B80F70800D61F34 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 62A302C71B80F70800D61F34 /* empty.png */; };
 		62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A7DDA11B7ABBFD000B74B8 /* MainController.m */; };
 		62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CA90E81B7B3C1E009C3B4C /* LogHelper.m */; };
 		62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 62CA90EB1B7B41F1009C3B4C /* FontAwesome.otf */; };
@@ -38,6 +45,18 @@
 		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		62A302B01B7D5EDA00D61F34 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		62A302B11B7D5EDA00D61F34 /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		62A302B31B7E78C100D61F34 /* FriendRequestControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestControl.h; sourceTree = "<group>"; };
+		62A302B41B7E78C100D61F34 /* FriendRequestControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestControl.m; sourceTree = "<group>"; };
+		62A302B91B7E9AB300D61F34 /* AddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendController.h; sourceTree = "<group>"; };
+		62A302BA1B7E9AB300D61F34 /* AddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendController.m; sourceTree = "<group>"; };
+		62A302BC1B809C2400D61F34 /* DBAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBAccess.h; sourceTree = "<group>"; };
+		62A302BD1B80A38B00D61F34 /* DBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAccess.m; sourceTree = "<group>"; };
+		62A302C01B80C49500D61F34 /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		62A302C11B80C4A800D61F34 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		62A302C51B80F6CC00D61F34 /* empty20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty20x20.png; path = Resources/empty20x20.png; sourceTree = "<group>"; };
+		62A302C71B80F70800D61F34 /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty.png; path = Resources/empty.png; sourceTree = "<group>"; };
 		62A7DDA01B7ABBFD000B74B8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		62A7DDA11B7ABBFD000B74B8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		62CA90E81B7B3C1E009C3B4C /* LogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHelper.m; sourceTree = "<group>"; };
@@ -114,11 +133,17 @@
 				62D148D61B79732100E8D4A1 /* DetailViewController.h */,
 				62D148D71B79732100E8D4A1 /* DetailViewController.m */,
 				62D148D91B79732100E8D4A1 /* Main.storyboard */,
+				62A302B01B7D5EDA00D61F34 /* NotificationController.h */,
+				62A302B11B7D5EDA00D61F34 /* NotificationController.m */,
 				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
 				62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */,
 				62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */,
-				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
+				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
+				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
 				62CA90F41B7BC718009C3B4C /* FriendsViewController.m */,
+				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
+				62A302B31B7E78C100D61F34 /* FriendRequestControl.h */,
+				62A302B41B7E78C100D61F34 /* FriendRequestControl.m */,
 				62D148C91B79732100E8D4A1 /* Supporting Files */,
 				621AE3341B797CBB00A9C18C /* LoginViewController.h */,
 				621AE3351B797CBB00A9C18C /* LoginViewController.m */,
@@ -126,6 +151,10 @@
 				62CA90E81B7B3C1E009C3B4C /* LogHelper.m */,
 				62A7DDA01B7ABBFD000B74B8 /* MainController.h */,
 				62A7DDA11B7ABBFD000B74B8 /* MainController.m */,
+				62A302BD1B80A38B00D61F34 /* DBAccess.m */,
+				62A302BC1B809C2400D61F34 /* DBAccess.h */,
+				62A302C01B80C49500D61F34 /* Helper.h */,
+				62A302C11B80C4A800D61F34 /* Helper.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -133,6 +162,8 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62A302C71B80F70800D61F34 /* empty.png */,
+				62A302C51B80F6CC00D61F34 /* empty20x20.png */,
 				62CA90EB1B7B41F1009C3B4C /* FontAwesome.otf */,
 				62D148CA1B79732100E8D4A1 /* Info.plist */,
 				62D148CB1B79732100E8D4A1 /* main.m */,
@@ -258,8 +289,10 @@
 			files = (
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
+				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
+				62A302C81B80F70800D61F34 /* empty.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,13 +343,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
+				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
+				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
 				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
+				62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 			);

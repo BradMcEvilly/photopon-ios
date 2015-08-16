@@ -50,9 +50,9 @@
     self.dataSource = self;
     
     UIViewController *p1 = [self.storyboard
-                            instantiateViewControllerWithIdentifier:@"SBPhotopon"];
+                            instantiateViewControllerWithIdentifier:@"SBNotifications"];
     UIViewController *p2 = [self.storyboard
-                            instantiateViewControllerWithIdentifier:@"SBFriends"];
+                            instantiateViewControllerWithIdentifier:@"SBFriendsMan"];
     UIViewController *p3 = [self.storyboard
                             instantiateViewControllerWithIdentifier:@"SBCoupons"];
     UIViewController *p4 = [self.storyboard

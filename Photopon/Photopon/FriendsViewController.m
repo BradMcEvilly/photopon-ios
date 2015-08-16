@@ -9,6 +9,7 @@
 #import "FriendsViewController.h"
 #import "Parse/Parse.h"
 #import "LogHelper.h"
+#import "DBAccess.h"
 
 @implementation FriendsViewController
 {
@@ -24,25 +25,11 @@
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
     
-    PFUser* userId = [PFUser currentUser];
-    
-    PFQuery *query1 = [PFQuery queryWithClassName:@"Friends"];
-    [query1 whereKey:@"user1" equalTo:userId];
-    
-    PFQuery *query2 = [PFQuery queryWithClassName:@"Friends"];
-    [query2 whereKey:@"user2" equalTo:userId];
-    
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        for (PFObject* object in results) {
-            PFUser* user1 = [object valueForKey:@"user1"];
-            PFUser* user2 = [object valueForKey:@"user2"];
+    GetMyFriends(^(NSArray *results, NSError *error) {
+        for (PFUser* object in results) {
             
-            PFUser* otherUser = [PFUser currentUser] == user1 ? user2 : user1;
-            PFUser* otherUserFull = [PFQuery getUserObjectWithId:[otherUser objectId]];
-            
-            NSString* username = [otherUserFull username];
-            NSString* email = [otherUserFull email];
+            NSString* username = [object username];
+            NSString* email = [object email];
 
             [myFriends addObject:@{
                                    @"name": username,
@@ -50,7 +37,7 @@
                                    }];
         }
         [self.friendsTable reloadData];
-    }];
+    });
 
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
