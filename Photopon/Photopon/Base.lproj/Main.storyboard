@@ -316,6 +316,64 @@
             </objects>
             <point key="canvasLocation" x="1079" y="137"/>
         </scene>
+        <!--Chat-->
+        <scene sceneID="d5m-kn-TCy">
+            <objects>
+                <viewController storyboardIdentifier="SBMessages" title="Chat" modalPresentationStyle="currentContext" id="Lx5-fU-ASc" customClass="ChatMessagesController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hqT-rH-L9h"/>
+                        <viewControllerLayoutGuide type="bottom" id="dru-D7-fWa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gLb-8C-Pqx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Ia-Bfl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pt5-bK-xnr">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="aPN-Nh-SFj">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter message" minimumFontSize="17" id="Csr-2t-PkK">
+                                            <rect key="frame" x="16" y="7" width="281" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="1YJ-F8-rBT">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gtX-bD-xbf">
+                                            <rect key="frame" x="495" y="7" width="36" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Send">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qyh-Ia-Bfl" firstAttribute="top" secondItem="gLb-8C-Pqx" secondAttribute="topMargin" id="Bpf-GZ-f0H"/>
+                            <constraint firstItem="Pt5-bK-xnr" firstAttribute="trailing" secondItem="Qyh-Ia-Bfl" secondAttribute="trailing" id="DrS-wI-zhu"/>
+                            <constraint firstItem="Pt5-bK-xnr" firstAttribute="leading" secondItem="Qyh-Ia-Bfl" secondAttribute="leading" id="ov9-oz-GN5"/>
+                            <constraint firstItem="Qyh-Ia-Bfl" firstAttribute="leading" secondItem="gLb-8C-Pqx" secondAttribute="leadingMargin" constant="-16" id="p14-57-ckW"/>
+                            <constraint firstItem="Pt5-bK-xnr" firstAttribute="top" secondItem="Qyh-Ia-Bfl" secondAttribute="bottom" id="qfn-Xq-0jA"/>
+                            <constraint firstItem="Pt5-bK-xnr" firstAttribute="bottom" secondItem="dru-D7-fWa" secondAttribute="top" id="wCk-b3-Q0k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qyh-Ia-Bfl" secondAttribute="trailing" constant="-16" id="wRS-Ej-OlP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sendButton" destination="gtX-bD-xbf" id="5mN-ze-myN"/>
+                        <outlet property="textField" destination="Csr-2t-PkK" id="lvm-RI-yhA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r07-0G-ROK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="1119"/>
+        </scene>
         <!--Photopon-->
         <scene sceneID="opY-10-3cU">
             <objects>

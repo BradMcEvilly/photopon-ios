@@ -1,20 +1,34 @@
 PODS:
   - Bolts/Tasks (1.2.0)
+  - CocoaLumberjack (2.0.0):
+    - CocoaLumberjack/Default (= 2.0.0)
+    - CocoaLumberjack/Extensions (= 2.0.0)
+  - CocoaLumberjack/Core (2.0.0)
+  - CocoaLumberjack/Default (2.0.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.0):
+    - CocoaLumberjack/Default
   - FontAwesome (4.3.0)
-  - Parse (1.7.5.3):
+  - Parse (1.8.0):
     - Bolts/Tasks (>= 1.2.0)
-  - ParseUI (1.1.4):
-    - Parse (~> 1.7)
+  - ParseUI (1.1.5):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
+  - PubNub (4.0.3):
+    - CocoaLumberjack (= 2.0.0)
 
 DEPENDENCIES:
   - FontAwesome
   - Parse (~> 1.7)
   - ParseUI
+  - PubNub
 
 SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
   FontAwesome: 341b52261cad8254017da3ddfc01d67c87c0ca88
-  Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
-  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  Parse: 6ea05adb378fbfd6f8726ab67ef74330d96fc903
+  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
+  PubNub: bdcc6eae1e419fe88ea6ed9013b1f6357914c25b
 
 COCOAPODS: 0.38.2

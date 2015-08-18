@@ -161,6 +161,12 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         [assocUser fetchIfNeeded];
         
+        UIViewController* notificationCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
+//        [self presentViewController:notificationCtrl animated:true completion:nil];
+        
+        [self.navigationController pushViewController:notificationCtrl animated:true];
+
+        
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         
     }
