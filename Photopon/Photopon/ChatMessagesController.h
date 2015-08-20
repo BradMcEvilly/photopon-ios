@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <PubNub/PNObjectEventListener.h>
 
-@interface ChatMessagesController : UIViewController
+@interface ChatMessagesController : UIViewController<PNObjectEventListener>
+
+-(void) setUser:(PFUser*)user;
+
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) UIView *contentView;
 
 @end

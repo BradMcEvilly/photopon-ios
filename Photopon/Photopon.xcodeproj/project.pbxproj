@@ -10,6 +10,7 @@
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
 		6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */; };
+		6296ADD11B854F5200DC3CF5 /* ChatMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296ADD01B854F5200DC3CF5 /* ChatMessageView.m */; };
 		62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B11B7D5EDA00D61F34 /* NotificationController.m */; };
 		62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B41B7E78C100D61F34 /* FriendRequestControl.m */; };
 		62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BA1B7E9AB300D61F34 /* AddFriendController.m */; };
@@ -49,6 +50,8 @@
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
 		6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNubWrapper.h; sourceTree = "<group>"; };
 		6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubNubWrapper.m; sourceTree = "<group>"; };
+		6296ADCF1B854F5200DC3CF5 /* ChatMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageView.h; sourceTree = "<group>"; };
+		6296ADD01B854F5200DC3CF5 /* ChatMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageView.m; sourceTree = "<group>"; };
 		62A302B01B7D5EDA00D61F34 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		62A302B11B7D5EDA00D61F34 /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		62A302B31B7E78C100D61F34 /* FriendRequestControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestControl.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				62A302CA1B829B0800D61F34 /* ChatMessagesController.m */,
 				6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */,
 				6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */,
+				6296ADCF1B854F5200DC3CF5 /* ChatMessageView.h */,
+				6296ADD01B854F5200DC3CF5 /* ChatMessageView.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6296ADD11B854F5200DC3CF5 /* ChatMessageView.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,

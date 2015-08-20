@@ -7,6 +7,7 @@
 //
 
 #import "NotificationController.h"
+#import "ChatMessagesController.h"
 #import "Parse/Parse.h"
 #import "DBAccess.h"
 #import "Helper.h"
@@ -23,10 +24,10 @@
     [super viewDidLoad];
     [self.notificationsTable setDelegate:self];
     [self.notificationsTable setDataSource:self];
-    allNotifications = [NSArray array];
+    allNotifications = [NSMutableArray array];
     
     GetNotifications(^(NSArray *results, NSError *error) {
-        allNotifications = results;
+        allNotifications = [NSMutableArray arrayWithArray:results];
         [self.notificationsTable reloadData];
     });
     
@@ -161,10 +162,11 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         [assocUser fetchIfNeeded];
         
-        UIViewController* notificationCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
+        ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
 //        [self presentViewController:notificationCtrl animated:true completion:nil];
-        
-        [self.navigationController pushViewController:notificationCtrl animated:true];
+        [messageCtrl setUser:assocUser];
+         
+        [self.navigationController pushViewController:messageCtrl animated:true];
 
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {

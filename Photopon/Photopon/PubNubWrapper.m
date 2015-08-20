@@ -22,18 +22,45 @@ PubNub* GetPubNub() {
     return pubnub;
 }
 
-void SendMessage(NSString* userId, NSString* message) {
+
+
+
+
+NSString* PubNubChannelName(NSString* user1Id, NSString* user2Id) {
+    NSString* channel = [NSString stringWithFormat:@"%@_%@", user1Id, user2Id];
+    
+    if ([user1Id compare:user2Id] == NSOrderedAscending) {
+        channel = [NSString stringWithFormat:@"%@_%@", user2Id, user1Id];
+    }
+    return channel;
+}
+
+void PubNubGrantAccess(NSString* channel) {
+   // PubNub* pubnub = GetPubNub();
+   // [pubnub ]
+/*    pubnub.grant({
+           auth_key : "authenticateduser"
+           channel  : "public_chat"
+           read     : true,
+           write    : true,
+           ttl      : 0 // TTL of 0 is "forever, never expiring"
+         });
+ 
+ */
+}
+
+
+void PubNubSendMessage(NSString* userId, NSString* message) {
     PubNub* pubnub = GetPubNub();
     NSString* myId = [[PFUser currentUser] objectId];
     
-    NSString* channel = [NSString stringWithFormat:@"%@_%@", userId, myId];
+    NSString* channel = PubNubChannelName(userId, myId);
     
-    if ([userId compare:myId] == NSOrderedAscending) {
-        channel = [NSString stringWithFormat:@"%@_%@", myId, userId];
-    }
-    
-    
-    [pubnub publish:message toChannel:channel withCompletion:^(PNPublishStatus *status) {
+    [pubnub publish:@{
+            @"message": message,
+            @"from": myId,
+            @"to": userId
+    } toChannel:channel withCompletion:^(PNPublishStatus *status) {
 
         
     }];

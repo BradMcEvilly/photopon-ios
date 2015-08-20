@@ -366,6 +366,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="scrollView" destination="Qyh-Ia-Bfl" id="dvs-yC-ygA"/>
                         <outlet property="sendButton" destination="gtX-bD-xbf" id="5mN-ze-myN"/>
                         <outlet property="textField" destination="Csr-2t-PkK" id="lvm-RI-yhA"/>
                     </connections>

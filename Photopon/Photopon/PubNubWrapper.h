@@ -10,9 +10,14 @@
 #define Photopon_PubNubWrapper_h
 
 #import <Foundation/Foundation.h>
+#import <PubNub/PubNub+Core.h>
 
 
-void SendMessage(NSString* userId, NSString* message);
+PubNub* GetPubNub();
+
+void PubNubSendMessage(NSString* userId, NSString* message);
+
+NSString* PubNubChannelName(NSString* user1Id, NSString* user2Id);
 
 
 #endif
