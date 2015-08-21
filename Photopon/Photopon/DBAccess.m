@@ -124,6 +124,18 @@ void GetSearchSuggestions(NSString* searchText, ResultBlock block) {
 
 
 
+void GetCoupons(ResultBlock block) {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Coupon"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+        block(results, error);
+    }];
+
+}
+
+
+
 void GetNotifications(ResultBlock block) {
     PFUser* user = [PFUser currentUser];
     

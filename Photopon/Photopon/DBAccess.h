@@ -24,5 +24,5 @@ void GetSearchSuggestions(NSString* searchText, ResultBlock block);
 void GetNotifications(ResultBlock block);
 void CreateFriendRequestNotification(PFUser* toUser);
 
-
+void GetCoupons(ResultBlock block);
 #endif

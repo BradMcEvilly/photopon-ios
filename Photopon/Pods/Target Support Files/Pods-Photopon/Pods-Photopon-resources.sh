@@ -59,12 +59,12 @@ install_resource()
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "FontAwesome/Resources/FontAwesome.ttf"
-  install_resource "Parse/Parse/Resources/Localizable.strings"
+  install_resource "Parse/Parse/Resources/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "FontAwesome/Resources/FontAwesome.ttf"
-  install_resource "Parse/Parse/Resources/Localizable.strings"
+  install_resource "Parse/Parse/Resources/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
 fi
 
