@@ -376,37 +376,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r07-0G-ROK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="1119"/>
+            <point key="canvasLocation" x="729" y="1025"/>
         </scene>
         <!--Photopon-->
-        <scene sceneID="opY-10-3cU">
+        <scene sceneID="xpr-mf-O0h">
             <objects>
-                <viewController storyboardIdentifier="SBPhotopon" title="Photopon" id="wud-My-ypv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBPhotopon" title="Photopon" id="8lO-Wi-55z" customClass="PhotoponViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nyc-fm-BPZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Qhd-IH-yVK"/>
+                        <viewControllerLayoutGuide type="top" id="vyh-Oc-PM7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ffq-bH-jc6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ll5-aW-yvQ">
+                    <view key="view" contentMode="scaleToFill" id="NRo-cp-HZz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="je0-Uq-gR9">
-                                <rect key="frame" x="262" y="290" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oq2-3H-R7S">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FAu-Lb-PXV">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="je0-Uq-gR9" secondAttribute="centerX" id="4YU-8q-NOE"/>
-                            <constraint firstAttribute="centerY" secondItem="je0-Uq-gR9" secondAttribute="centerY" id="sxh-3m-kIX"/>
+                            <constraint firstItem="Oq2-3H-R7S" firstAttribute="leading" secondItem="NRo-cp-HZz" secondAttribute="leading" id="0vo-on-Avb"/>
+                            <constraint firstAttribute="trailing" secondItem="FAu-Lb-PXV" secondAttribute="trailing" id="3MV-CX-Bf4"/>
+                            <constraint firstAttribute="trailing" secondItem="Oq2-3H-R7S" secondAttribute="trailing" id="3qU-AL-mWs"/>
+                            <constraint firstItem="FAu-Lb-PXV" firstAttribute="leading" secondItem="NRo-cp-HZz" secondAttribute="leading" id="9T9-d3-9y8"/>
+                            <constraint firstItem="Ffq-bH-jc6" firstAttribute="top" secondItem="FAu-Lb-PXV" secondAttribute="bottom" id="EEG-W1-i5W"/>
+                            <constraint firstItem="Oq2-3H-R7S" firstAttribute="top" secondItem="NRo-cp-HZz" secondAttribute="top" id="Kyr-MH-edm"/>
+                            <constraint firstItem="FAu-Lb-PXV" firstAttribute="top" secondItem="vyh-Oc-PM7" secondAttribute="bottom" id="OEL-yd-B9W"/>
+                            <constraint firstItem="Ffq-bH-jc6" firstAttribute="top" secondItem="Oq2-3H-R7S" secondAttribute="bottom" id="eBm-rb-gYM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainView" destination="Oq2-3H-R7S" id="Yvh-K9-0Td"/>
+                        <outlet property="tempView" destination="FAu-Lb-PXV" id="Scu-2g-LiY"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e5O-Hw-O8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h6h-2z-rtS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="-561"/>
+            <point key="canvasLocation" x="1393" y="1011"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="g0I-QI-kdN">

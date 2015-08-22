@@ -7,6 +7,7 @@
 //
 
 #import "CouponViewController.h"
+#import "PhotoponViewController.h"
 #import "Parse/Parse.h"
 #import "LogHelper.h"
 #import "DBAccess.h"
@@ -75,5 +76,18 @@
 
     return cell;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%ld", indexPath.row);
+    
+    PhotoponViewController* photoponCtrl = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
+    [photoponCtrl setCoupon:[allCoupons objectAtIndex:indexPath.row]];
+    
+    [self.navigationController pushViewController:photoponCtrl animated:true];
+
+}
+
 
 @end

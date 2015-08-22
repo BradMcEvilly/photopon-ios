@@ -25,6 +25,7 @@
 		62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CA90F41B7BC718009C3B4C /* FriendsViewController.m */; };
 		62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D086041B86A27D0063C8B8 /* CouponViewController.m */; };
 		62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D086061B86B3B50063C8B8 /* couponplaceholder.png */; };
+		62D0860A1B87E7E20063C8B8 /* PhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D086091B87E7E20063C8B8 /* PhotoponViewController.m */; };
 		62D148CC1B79732100E8D4A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CB1B79732100E8D4A1 /* main.m */; };
 		62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CE1B79732100E8D4A1 /* AppDelegate.m */; };
 		62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */; };
@@ -77,6 +78,8 @@
 		62D086031B86A27D0063C8B8 /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
 		62D086041B86A27D0063C8B8 /* CouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewController.m; sourceTree = "<group>"; };
 		62D086061B86B3B50063C8B8 /* couponplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponplaceholder.png; sourceTree = "<group>"; };
+		62D086081B87E7E20063C8B8 /* PhotoponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponViewController.h; sourceTree = "<group>"; };
+		62D086091B87E7E20063C8B8 /* PhotoponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponViewController.m; sourceTree = "<group>"; };
 		62D148C61B79732100E8D4A1 /* Photopon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photopon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D148CA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D148CB1B79732100E8D4A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				6296ADD01B854F5200DC3CF5 /* ChatMessageView.m */,
 				62D086031B86A27D0063C8B8 /* CouponViewController.h */,
 				62D086041B86A27D0063C8B8 /* CouponViewController.m */,
+				62D086081B87E7E20063C8B8 /* PhotoponViewController.h */,
+				62D086091B87E7E20063C8B8 /* PhotoponViewController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D0860A1B87E7E20063C8B8 /* PhotoponViewController.m in Sources */,
 				6296ADD11B854F5200DC3CF5 /* ChatMessageView.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
