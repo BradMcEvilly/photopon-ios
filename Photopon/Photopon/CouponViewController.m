@@ -7,11 +7,12 @@
 //
 
 #import "CouponViewController.h"
-#import "PhotoponViewController.h"
+#import "PhotoponDrawController.h"
 #import "Parse/Parse.h"
 #import "LogHelper.h"
 #import "DBAccess.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PhotoponCameraView.h"
 
 
 @implementation CouponViewController
@@ -80,13 +81,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld", indexPath.row);
+    NSLog(@"%ld", (long)indexPath.row);
     
-    PhotoponViewController* photoponCtrl = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
-    [photoponCtrl setCoupon:[allCoupons objectAtIndex:indexPath.row]];
+//    PhotoponViewController* photoponCtrl = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
+//    [photoponCtrl setCoupon:[allCoupons objectAtIndex:indexPath.row]];
     
-    [self.navigationController pushViewController:photoponCtrl animated:true];
-
+//    [self.navigationController pushViewController:photoponCtrl animated:true];
+    
+    
+    PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
+    [camView setCoupons:allCoupons];
+    [camView setCurrentCouponIndex:indexPath.row];
+    [self showViewController:camView sender:nil];
 }
 
 

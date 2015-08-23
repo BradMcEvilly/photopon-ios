@@ -6,17 +6,30 @@
 //  Copyright (c) 2015 Photopon. All rights reserved.
 //
 
-#import "PhotoponViewController.h"
+#import "PhotoponDrawController.h"
+#import "PhotoponCameraView.h"
+#import "DBAccess.h"
 
-@implementation PhotoponViewController
+
+@implementation PhotoponDrawController
 {
     NSObject* currentCoupon;
     CGPoint lastPoint;
     bool swiped;
+    UIImage* photo;
+    int numSuccess;
+    
+    PFFile* photoFile;
+    PFFile* drawingFile;
 }
 
 -(void) setCoupon:(NSObject*)coupon {
     currentCoupon = coupon;
+}
+
+
+-(void) setPhoto:(UIImage*)image {
+    photo = image;
 }
 
 
@@ -48,7 +61,7 @@
     }
     
     
-    UIGraphicsBeginImageContext(self.mainView.frame.size);
+    UIGraphicsBeginImageContext(self.view.frame.size);
     [self.mainView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode: kCGBlendModeNormal alpha: 1.0];
     [self.tempView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode: kCGBlendModeNormal alpha: 1.0];
     
@@ -78,7 +91,7 @@
     CGContextAddLineToPoint(context, to.x, to.y);
     
     CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineWidth(context, 10);
+    CGContextSetLineWidth(context, 3);
     CGContextSetRGBStrokeColor(context, 1, 0.5, 0.2, 1.0);
     CGContextSetBlendMode(context, kCGBlendModeNormal);
     
@@ -88,10 +101,71 @@
     UIGraphicsEndImageContext();
 }
 
+-(void)savePhotopon {
+    PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
+    [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
+    [newPhotoponObject setObject:photoFile forKey:@"photo"];
+    
+    [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            drawingFile = nil;
+            photoFile = nil;
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
+                                                            message:@"Photopon was saved successfully."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)onSaveTouch {
+    numSuccess = 0;
+    
+    SaveImage(@"photo.jpg", self.photoView.image, ^(PFFile* file, NSError *error) {
+        numSuccess++;
+        photoFile = file;
+        
+        if (numSuccess == 2) {
+            [self savePhotopon];
+        }
+    });
+    SaveImage(@"drawing.png", self.mainView.image, ^(PFFile* file, NSError *error) {
+        numSuccess++;
+        drawingFile = file;
+        
+        if (numSuccess == 2) {
+            [self savePhotopon];
+        }
+    });
+    
+    
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self drawLineFrom:CGPointMake(0, 0) to:CGPointMake(100, 100) ];
+    
+    [self.photoView setImage:photo];
+    
+    
+    
+    
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSaveTouch)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.saveButton setUserInteractionEnabled:YES];
+    [self.saveButton addGestureRecognizer:singleTap];
+
+    
+    
+    //PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
+    //[self showViewController:camView sender:nil];
     
     
     

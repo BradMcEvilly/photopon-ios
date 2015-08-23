@@ -131,7 +131,31 @@ void GetCoupons(ResultBlock block) {
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         block(results, error);
     }];
+}
 
+
+
+void SaveImage(NSString* fileName, UIImage* image, FileResultBlock block) {
+    
+    NSData* data = nil;
+    
+    NSString *extension = [fileName substringFromIndex:MAX((int)[fileName length] - 4, 0)];
+    
+    if ([extension isEqualToString:@".jpg"]) {
+        data = UIImageJPEGRepresentation(image, 0.9f);
+    } else {
+        data = UIImagePNGRepresentation(image);
+    }
+    
+    PFFile *imageFile = [PFFile fileWithName:fileName data:data];
+    [imageFile saveInBackgroundWithBlock:^(BOOL success, NSError* err) {
+        if (err) {
+            block(nil, err);
+            return;
+        }
+        block(imageFile, nil);
+    }];
+    
 }
 
 

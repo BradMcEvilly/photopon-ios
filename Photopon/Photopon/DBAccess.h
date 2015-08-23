@@ -14,6 +14,7 @@
 #import "Parse/Parse.h"
 
 typedef void (^ResultBlock)(NSArray *results, NSError *error);
+typedef void (^FileResultBlock)(PFFile* file, NSError *error);
 
 
 void GetMyFriends(ResultBlock block);
@@ -25,4 +26,8 @@ void GetNotifications(ResultBlock block);
 void CreateFriendRequestNotification(PFUser* toUser);
 
 void GetCoupons(ResultBlock block);
+
+void SaveImage(NSString* fileName, UIImage* image, FileResultBlock block);
+
+
 #endif
