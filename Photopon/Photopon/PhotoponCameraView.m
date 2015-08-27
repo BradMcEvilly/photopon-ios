@@ -9,18 +9,21 @@
 #import "PhotoponCameraView.h"
 #import "PhotoponDrawController.h"
 #import <ImageIO/CGImageProperties.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @implementation PhotoponCameraView
 {
     NSMutableArray* allCoupons;
+    NSMutableArray* allPFCoupons;
     NSInteger currentCouponIndex;
 }
 
 
 
--(void) setCoupons:(NSMutableArray*)coupons {
+-(void) setCoupons:(NSMutableArray*)coupons withObjects:(NSMutableArray*)objects {
     allCoupons = coupons;
+    allPFCoupons = objects;
 }
 
 
@@ -36,6 +39,19 @@
 }
 
 
+-(void)onSwipeLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
+    NSLog(@"Swiped left");
+    currentCouponIndex = (currentCouponIndex + 1) % [allCoupons count];
+    [self createMiniCoupon];
+}
+
+
+-(void)onSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer {
+    NSLog(@"Swiped right");
+    currentCouponIndex = (currentCouponIndex - 1 + [allCoupons count]) % [allCoupons count];
+    [self createMiniCoupon];
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,6 +61,17 @@
     singleTap.numberOfTapsRequired = 1;
     [self.shutterButton setUserInteractionEnabled:YES];
     [self.shutterButton addGestureRecognizer:singleTap];
+    
+    
+    [self.miniCouponView setUserInteractionEnabled:YES];
+    
+    UISwipeGestureRecognizer *swipeRecLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)];
+    swipeRecLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.miniCouponView addGestureRecognizer:swipeRecLeft];
+    
+    UISwipeGestureRecognizer *swipeRecRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)];
+    swipeRecRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.miniCouponView addGestureRecognizer:swipeRecRight];
     
     
 }
@@ -85,7 +112,7 @@
          
          
          PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
-         [photoponDrawCtrl setCoupon:[allCoupons objectAtIndex:currentCouponIndex]];
+         [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex:currentCouponIndex]];
          [photoponDrawCtrl setPhoto:image];
          
          [self.navigationController pushViewController:photoponDrawCtrl animated:true];
@@ -93,6 +120,51 @@
          //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
      }];
 }
+
+-(void)createMiniCoupon {
+    NSArray *viewsToRemove = [self.miniCouponView subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
+    
+    
+    NSDictionary* coupon = [allCoupons objectAtIndex:currentCouponIndex];
+        
+    NSString* title = [coupon objectForKey:@"title"];
+    NSString* desc = [coupon objectForKey:@"desc"];
+    NSString* pic = [coupon objectForKey:@"pic"];
+    
+    int width = self.view.bounds.size.width;
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 10, width - 120, 80)];
+    titleLabel.text = title;
+    titleLabel.numberOfLines = 1;
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+
+    
+    UILabel *descLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 100, width - 120, 80)];
+    descLabel.text = desc;
+    descLabel.numberOfLines = 1;
+    descLabel.adjustsFontSizeToFitWidth = YES;
+    descLabel.backgroundColor = [UIColor clearColor];
+    descLabel.textColor = [UIColor whiteColor];
+    descLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    
+    
+    UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 100)];
+    [image sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    
+    
+
+    [self.miniCouponView addSubview:titleLabel];
+    [self.miniCouponView addSubview:image];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -123,6 +195,10 @@
     [session addOutput:_stillImageOutput];
     
     [session startRunning];
+    
+    [self createMiniCoupon];
+    
+    
 }
 
 

@@ -103,6 +103,43 @@
         
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
+        [assocUser fetchIfNeeded];
+        
+        
+        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
+        [assocPhotopon fetchIfNeeded];
+        
+        cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
+        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+        
+        
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+        [coupon fetchIfNeeded];
+        
+        
+        
+        PFObject* company = [coupon objectForKey:@"company"];
+        [company fetchIfNeeded];
+        
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+        
+        NSDate *updated = [item updatedAt];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"EEE, MMM d, h:mm a"];
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
+        
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
+        button.frame = frame;
+        
+        [button addTarget:self action:@selector(checkButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor = [UIColor clearColor];
+        cell.accessoryView = button;
+        
         
     }
 

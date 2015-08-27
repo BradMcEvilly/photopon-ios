@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) UIView *contentView;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
 
 @end

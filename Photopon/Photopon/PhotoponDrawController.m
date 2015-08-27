@@ -8,12 +8,14 @@
 
 #import "PhotoponDrawController.h"
 #import "PhotoponCameraView.h"
+#import "FriendsViewController.h"
 #import "DBAccess.h"
+@import Foundation;
 
 
 @implementation PhotoponDrawController
 {
-    NSObject* currentCoupon;
+    PFObject* currentCoupon;
     CGPoint lastPoint;
     bool swiped;
     UIImage* photo;
@@ -23,7 +25,7 @@
     PFFile* drawingFile;
 }
 
--(void) setCoupon:(NSObject*)coupon {
+-(void) setCoupon:(PFObject*)coupon {
     currentCoupon = coupon;
 }
 
@@ -101,27 +103,58 @@
     UIGraphicsEndImageContext();
 }
 
--(void)savePhotopon {
+
+-(void)sendPhotopons:(NSArray*)users {
+    
+    
+    if (drawingFile == NULL) {
+        drawingFile = [NSNull null];
+    }
+    
+    
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
+    [newPhotoponObject setObject:currentCoupon forKey:@"coupon"];
+    [newPhotoponObject setObject:users forKey:@"users"];
+
+
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            drawingFile = nil;
-            photoFile = nil;
+            photoFile = NULL;
+            drawingFile = NULL;
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
-                                                            message:@"Photopon was saved successfully."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+                message:@"Photopon was saved successfully."
+                delegate:nil
+                cancelButtonTitle:@"OK"
+                otherButtonTitles:nil];
+            
             [alert show];
+            
+            for (int i = 0; i < [users count]; ++i) {
+                PFUser* user = [PFQuery getUserObjectWithId:users[i] ];
+                CreatePhotoponNotification(user, newPhotoponObject);
+            }
 
+            
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+}
+
+
+-(void)savePhotopon {
+
+    FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
+    [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
+    [self.navigationController pushViewController:friendsViewController animated:true];
+
 }
 
 -(void)onSaveTouch {
@@ -154,7 +187,8 @@
     [self.photoView setImage:photo];
     
     
-    
+    photoFile = [NSNull null];
+    drawingFile = [NSNull null];
     
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSaveTouch)];

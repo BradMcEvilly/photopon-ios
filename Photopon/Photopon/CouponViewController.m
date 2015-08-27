@@ -18,6 +18,7 @@
 @implementation CouponViewController
 {
     NSMutableArray* allCoupons;
+    NSMutableArray* allPFCoupons;
 }
 
 
@@ -28,6 +29,7 @@
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
     allCoupons = [NSMutableArray array];
+    allPFCoupons = [NSMutableArray array];
     
     
     GetCoupons(^(NSArray *results, NSError *error) {
@@ -44,6 +46,9 @@
                @"desc": desc,
                @"pic": pic.url
             }];
+            
+            
+            [allPFCoupons addObject:object];
         }
         [self.couponTable reloadData];
     });
@@ -90,7 +95,8 @@
     
     
     PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-    [camView setCoupons:allCoupons];
+
+    [camView setCoupons:allCoupons withObjects:allPFCoupons];
     [camView setCurrentCouponIndex:indexPath.row];
     [self showViewController:camView sender:nil];
 }

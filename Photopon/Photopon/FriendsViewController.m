@@ -14,6 +14,9 @@
 @implementation FriendsViewController
 {
     NSMutableArray *myFriends;
+    BOOL isSelectMode;
+    SEL onFriendSelected;
+    id onFriendSelectedTarget;
 }
 
 
@@ -33,13 +36,49 @@
 
             [myFriends addObject:@{
                                    @"name": username,
-                                   @"email": email
+                                   @"email": email,
+                                   @"id": [object objectId],
+                                   @"isSelected": @false
                                    }];
         }
         [self.friendsTable reloadData];
     });
+    
+    if (isSelectMode) {
+        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
+        self.navigationItem.rightBarButtonItem = anotherButton;
+    }
 
 }
+
+-(void)friendsSelected {
+    NSMutableArray *selectedUsers = [NSMutableArray array];
+    
+    for (int i = 0; i < [myFriends count]; i++) {
+        NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:i];
+        
+        NSString* userId = [item objectForKey:@"id"];
+        bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
+        
+        if (isSelected) {
+            [selectedUsers addObject:userId];
+        }
+        
+    }
+    
+    if ([selectedUsers count] != 0) {
+    
+        [onFriendSelectedTarget performSelector:onFriendSelected withObject:selectedUsers];
+    }
+}
+
+-(void)friendSelectedCallBack:(SEL)action target:(id)target {
+    onFriendSelected = action;
+    onFriendSelectedTarget = target;
+    isSelectMode = true;
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -61,11 +100,40 @@
     NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
     cell.textLabel.text = [item objectForKey:@"name"];
     cell.detailTextLabel.text = [item objectForKey:@"email"];
+    
+    bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
+    
+    if (isSelected && isSelectMode) {
+        [cell.imageView setImage:[UIImage imageNamed:@"check.png"]];
+    } else {
+        [cell.imageView setImage:nil];
+    }
    // NSString *path = [[NSBundle mainBundle] pathForResource:[item objectForKey:@"imageKey"] ofType:@"png"];
    // UIImage *theImage = [UIImage imageWithContentsOfFile:path];
    // cell.imageView.image = theImage;
     
     return cell;
 }
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%ld", (long)indexPath.row);
+    NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
+    
+    
+    bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+
+    
+    NSMutableDictionary* mutableDict = [item mutableCopy];
+    [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];
+    [myFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
+    
+    [self.friendsTable reloadData];
+}
+
+
+
 
 @end

@@ -24,6 +24,8 @@ void GetSearchSuggestions(NSString* searchText, ResultBlock block);
 
 void GetNotifications(ResultBlock block);
 void CreateFriendRequestNotification(PFUser* toUser);
+void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon);
+
 
 void GetCoupons(ResultBlock block);
 

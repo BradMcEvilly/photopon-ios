@@ -16,10 +16,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *shutterButton;
 
+@property (weak, nonatomic) IBOutlet UIView *miniCouponView;
 
 
 
--(void) setCoupons:(NSMutableArray*)coupons;
+-(void) setCoupons:(NSMutableArray*)coupons withObjects:(NSMutableArray*)objects;
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex;
 
 @end

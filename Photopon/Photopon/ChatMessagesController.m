@@ -87,9 +87,6 @@
                  @"contentView": self.contentView
                  };
     
-    // setup scrollview constraints
-    //[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:views]];
-    //[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics:nil views:views]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:views]];
@@ -100,11 +97,54 @@
     [self setTitle:[currentUser username]];
     
     [self.sendButton addTarget:self action:@selector(onSendClick) forControlEvents:UIControlEventTouchUpInside];
-    //self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self registerForKeyboardNotifications];
+    
+    
     
 }
 
 
+
+
+
+
+
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    
+    
+    CGRect b = self.mainView.bounds;
+    
+    [self.mainView setBounds:CGRectMake(b.origin.x, b.origin.y + kbSize.height / 2, b.size.width, b.size.height - kbSize.height)];
+    
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    //UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    //self.view.contentInset = contentInsets;
+    //self.scrollView.scrollIndicatorInsets = contentInsets;
+}
 
 
 @end

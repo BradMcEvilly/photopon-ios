@@ -180,3 +180,22 @@ void CreateFriendRequestNotification(PFUser* toUser) {
     
     [notification saveInBackground];
 }
+
+
+void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+    
+    notification[@"to"] = toUser;
+    notification[@"assocPhotopon"] = photopon;
+    notification[@"assocUser"] = [PFUser currentUser];
+
+    notification[@"type"] = @"PHOTOPON";
+    
+    [notification saveInBackground];
+    
+    
+}
+
+
+
+

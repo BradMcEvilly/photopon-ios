@@ -15,6 +15,7 @@
 {
     NSArray *myViewControllers;
     UINavigationController* navController;
+    UIView* popupMenu;
 }
 
 
@@ -25,12 +26,70 @@
 }
 
 
--(IBAction)onRightMenuClick:(id)sender
-{
-    [PFUser logOut];
+-(void)hideMenu {
+    if (popupMenu != NULL) {
+        [popupMenu removeFromSuperview];
+        popupMenu = NULL;
+    }
+}
+
+-(void)showSettings {
+    [self hideMenu];
+    UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
+    [self.navigationController pushViewController:settings animated:true];
+}
+
+
+-(void)logoutUser {
+    [self hideMenu];
     
+    [PFUser logOut];
     UIViewController* loginCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
     [self presentViewController:loginCtrl animated:true completion:nil];
+}
+
+
+-(IBAction)onRightMenuClick:(id)sender
+{
+    [self hideMenu];
+
+    int width = self.view.bounds.size.width;
+    int height = self.view.bounds.size.height;
+    
+    int menuWidth = 160;
+    int menuHeight = 80;
+    
+    popupMenu = [[UIView alloc] initWithFrame:CGRectMake(width - menuWidth - 3, 0, menuWidth, menuHeight)];
+    popupMenu.backgroundColor = [UIColor whiteColor];
+
+    popupMenu.layer.masksToBounds = NO;
+    popupMenu.layer.shadowOffset = CGSizeMake(0, 0);
+    popupMenu.layer.shadowRadius = 3;
+    popupMenu.layer.shadowOpacity = 0.5;
+    
+    [self.view addSubview:popupMenu];
+    
+    // create Image View with image back (your blue cloud)
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+//    UIImage *image =  [UIImage imageNamed:[NSString stringWithFormat:@"myImage.png"]];
+//    [imageView setImage:image];
+//    [viewPopup addSubview:imageView];
+    
+    UIButton *buttonSettings = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, menuWidth, menuHeight / 2)];
+    [buttonSettings setTitle:@"Settings" forState:UIControlStateNormal];
+    [buttonSettings setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [buttonSettings addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchDown];
+    [popupMenu addSubview:buttonSettings];
+    
+    
+    
+    UIButton *buttonLogout = [[UIButton alloc] initWithFrame:CGRectMake(0, menuHeight / 2, menuWidth, menuHeight / 2)];
+    [buttonLogout setTitle:@"Logout" forState:UIControlStateNormal];
+    [buttonLogout setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [buttonLogout addTarget:self action:@selector(logoutUser) forControlEvents:UIControlEventTouchDown];
+    [popupMenu addSubview:buttonLogout];
+    
+    
     
 }
 
@@ -45,6 +104,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    popupMenu = NULL;
     
     self.delegate = self;
     self.dataSource = self;

@@ -337,9 +337,9 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pt5-bK-xnr">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem style="plain" id="aPN-Nh-SFj">
-                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter message" minimumFontSize="17" id="Csr-2t-PkK">
-                                            <rect key="frame" x="16" y="7" width="281" height="30"/>
+                                    <barButtonItem style="plain" id="NFo-BK-MLr">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="WiS-cb-Bg5">
+                                            <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -369,9 +369,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mainView" destination="gLb-8C-Pqx" id="d9U-BJ-dES"/>
                         <outlet property="scrollView" destination="Qyh-Ia-Bfl" id="dvs-yC-ygA"/>
                         <outlet property="sendButton" destination="gtX-bD-xbf" id="5mN-ze-myN"/>
-                        <outlet property="textField" destination="Csr-2t-PkK" id="lvm-RI-yhA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r07-0G-ROK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,19 +462,31 @@
                                     <constraint firstAttribute="height" constant="64" id="d06-NN-eCI"/>
                                 </constraints>
                             </imageView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-yA-Goo">
+                                <rect key="frame" x="0.0" y="200" width="600" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="3md-6u-HdF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QCu-Vi-Rm8" firstAttribute="top" secondItem="EeI-ku-oCg" secondAttribute="bottom" id="5KW-i0-erO"/>
                             <constraint firstAttribute="centerX" secondItem="hQ6-gG-ear" secondAttribute="centerX" id="MFy-J5-ceu"/>
+                            <constraint firstItem="sRx-yA-Goo" firstAttribute="leading" secondItem="EeI-ku-oCg" secondAttribute="leading" id="OqZ-yB-x65"/>
+                            <constraint firstItem="sRx-yA-Goo" firstAttribute="trailing" secondItem="EeI-ku-oCg" secondAttribute="trailing" id="PVt-Uk-P3i"/>
                             <constraint firstItem="EeI-ku-oCg" firstAttribute="top" secondItem="V4w-s1-M7m" secondAttribute="top" id="SVA-rO-QmD"/>
                             <constraint firstItem="EeI-ku-oCg" firstAttribute="leading" secondItem="V4w-s1-M7m" secondAttribute="leading" id="bK5-xz-77r"/>
                             <constraint firstAttribute="trailing" secondItem="EeI-ku-oCg" secondAttribute="trailing" id="eIt-Aa-9NB"/>
+                            <constraint firstItem="sRx-yA-Goo" firstAttribute="centerY" secondItem="EeI-ku-oCg" secondAttribute="centerY" id="faR-Kv-UfH"/>
                             <constraint firstItem="QCu-Vi-Rm8" firstAttribute="top" secondItem="hQ6-gG-ear" secondAttribute="bottom" constant="40" id="han-eJ-hpc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="EeI-ku-oCg" id="zdF-ih-3lZ"/>
+                        <outlet property="miniCouponView" destination="sRx-yA-Goo" id="hc1-BO-ghW"/>
                         <outlet property="shutterButton" destination="hQ6-gG-ear" id="yBL-f3-Ihn"/>
                     </connections>
                 </viewController>
@@ -509,9 +521,63 @@
             </objects>
             <point key="canvasLocation" x="27" y="-863"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="7Jb-F9-FOE">
+            <objects>
+                <viewController storyboardIdentifier="SBSettings" title="Settings" automaticallyAdjustsScrollViewInsets="NO" id="zl0-bN-E4k" customClass="SettingsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PbT-JG-rQF"/>
+                        <viewControllerLayoutGuide type="bottom" id="JuA-5p-VQb"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ff4-bS-zYm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="5c8-Gw-IR0">
+                                <rect key="frame" x="236" y="80" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="93r-T6-qoa"/>
+                                    <constraint firstAttribute="width" constant="128" id="xuW-Iu-KhW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZb-lA-swg">
+                                <rect key="frame" x="255" y="228" width="90" height="30"/>
+                                <state key="normal" title="Chage Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-pz-zHs">
+                                <rect key="frame" x="206.5" y="278" width="187" height="30"/>
+                                <state key="normal" title="Request Merchant Account">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5c8-Gw-IR0" firstAttribute="top" secondItem="PbT-JG-rQF" secondAttribute="bottom" constant="60" id="22N-Jj-oMm"/>
+                            <constraint firstAttribute="centerX" secondItem="nZb-lA-swg" secondAttribute="centerX" id="Duw-9C-UYb"/>
+                            <constraint firstAttribute="centerX" secondItem="5c8-Gw-IR0" secondAttribute="centerX" id="QMM-yc-BHk"/>
+                            <constraint firstItem="nZb-lA-swg" firstAttribute="top" secondItem="5c8-Gw-IR0" secondAttribute="bottom" constant="20" id="X3b-6x-HBw"/>
+                            <constraint firstItem="ejp-pz-zHs" firstAttribute="top" secondItem="nZb-lA-swg" secondAttribute="bottom" constant="20" id="tSm-LE-dhY"/>
+                            <constraint firstAttribute="centerX" secondItem="ejp-pz-zHs" secondAttribute="centerX" id="yOU-5Y-u23"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="changePhoto" destination="nZb-lA-swg" id="4ji-oD-4lt"/>
+                        <outlet property="photoView" destination="5c8-Gw-IR0" id="RwV-V2-wvW"/>
+                        <outlet property="requestMerchant" destination="ejp-pz-zHs" id="Evl-TE-uSK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxl-se-7PL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="720" y="-863"/>
+        </scene>
     </scenes>
     <resources>
         <image name="check.png" width="512" height="512"/>
+        <image name="profileplaceholder.png" width="360" height="360"/>
         <image name="takephoto.png" width="200" height="200"/>
     </resources>
 </document>

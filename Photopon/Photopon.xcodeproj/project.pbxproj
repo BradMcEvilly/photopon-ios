@@ -39,6 +39,8 @@
 		62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DC1B79732100E8D4A1 /* Images.xcassets */; };
 		62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */; };
 		62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148EB1B79732100E8D4A1 /* PhotoponTests.m */; };
+		62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DD661B1B8E87B100B1A972 /* SettingsController.m */; };
+		62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,9 @@
 		62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoponTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D148EA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D148EB1B79732100E8D4A1 /* PhotoponTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoponTests.m; sourceTree = "<group>"; };
+		62DD661A1B8E87B100B1A972 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		62DD661B1B8E87B100B1A972 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileplaceholder.png; sourceTree = "<group>"; };
 		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
 		DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.release.xcconfig"; sourceTree = "<group>"; };
 		DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +199,8 @@
 				62D086091B87E7E20063C8B8 /* PhotoponDrawController.m */,
 				6262661C1B8A5BA1006D730E /* PhotoponCameraView.h */,
 				6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */,
+				62DD661A1B8E87B100B1A972 /* SettingsController.h */,
+				62DD661B1B8E87B100B1A972 /* SettingsController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -201,6 +208,7 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */,
 				626266231B8A7710006D730E /* check.png */,
 				626266211B8A6CA1006D730E /* takephoto.png */,
 				62D086061B86B3B50063C8B8 /* couponplaceholder.png */,
@@ -331,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				626266241B8A7710006D730E /* check.png in Resources */,
+				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
@@ -398,6 +407,7 @@
 				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
+				62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */,
 				6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */,
 				62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
