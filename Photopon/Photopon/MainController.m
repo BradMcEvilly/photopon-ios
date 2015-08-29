@@ -10,12 +10,21 @@
 #import "LogHelper.h"
 #import <FontAwesome/NSString+FontAwesome.h>
 #import "Parse/Parse.h"
+#import "Helper.h"
 
 @implementation MainController
 {
     NSArray *myViewControllers;
     UINavigationController* navController;
+    
     UIView* popupMenu;
+    UIView* leftPopupMenu;
+    
+    
+    UIViewController *notificationsView;
+    UIViewController *friendsView;
+    UIViewController *couponsView;
+    UIViewController *walletView;
 }
 
 
@@ -26,22 +35,35 @@
 }
 
 
--(void)hideMenu {
+-(void)hideRightMenu {
     if (popupMenu != NULL) {
         [popupMenu removeFromSuperview];
         popupMenu = NULL;
     }
 }
 
+
+
+-(void)hideLeftMenu {
+    if (leftPopupMenu != NULL) {
+        [leftPopupMenu removeFromSuperview];
+        leftPopupMenu = NULL;
+    }
+}
+
+
+
+
+
 -(void)showSettings {
-    [self hideMenu];
+    [self hideRightMenu];
     UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
     [self.navigationController pushViewController:settings animated:true];
 }
 
 
 -(void)logoutUser {
-    [self hideMenu];
+    [self hideRightMenu];
     
     [PFUser logOut];
     UIViewController* loginCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
@@ -51,7 +73,10 @@
 
 -(IBAction)onRightMenuClick:(id)sender
 {
-    [self hideMenu];
+    if (popupMenu) {
+        [self hideRightMenu];
+        return;
+    }
 
     int width = self.view.bounds.size.width;
     int height = self.view.bounds.size.height;
@@ -93,9 +118,86 @@
     
 }
 
+
+
+
+
+
+
+-(void) showScrollPage:(id)sender {
+    [self hideLeftMenu];
+    NSInteger viewId = ((UIButton*)sender).tag;
+    
+    if (viewId < 4) {
+        [self setViewControllers:@[myViewControllers[viewId]]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:NO completion:nil];
+    } else if (viewId == 4){ // Settings page
+        UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
+        [self.navigationController pushViewController:settings animated:true];
+    }
+    
+    [self updatePageTitle];
+}
+
+-(UIButton*)createLeftMenuButton:(NSString*)pageName withId:(NSInteger)viewId withFrame:(CGRect)rect withIcon:(NSString*)icon{
+    
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:rect];
+    [button setTitle:pageName forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(showScrollPage:) forControlEvents:UIControlEventTouchDown];
+    [leftPopupMenu addSubview:button];
+    
+    
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, rect.size.height, 0, 0);
+    [button setTag:viewId];
+    
+    
+    int shrinkFactor = 20;
+    
+    
+    UIImageView* iconView = CreateFAImage(icon, rect.size.height - shrinkFactor);
+    UIView* iconHolder = [[UIView alloc] initWithFrame:CGRectMake(rect.origin.x + shrinkFactor/2, rect.origin.y + shrinkFactor/2, rect.size.height - shrinkFactor, rect.size.height - shrinkFactor)];
+    [iconHolder addSubview:iconView];
+    [leftPopupMenu addSubview:iconHolder];
+    return button;
+}
+
 -(IBAction)onLeftMenuClick:(id)sender
 {
-    LogDebug(@"On left menu click");
+    if (leftPopupMenu) {
+        [self hideLeftMenu];
+        return;
+    }
+    
+    int width = self.view.bounds.size.width;
+    int height = self.view.bounds.size.height;
+    
+    int menuWidth = width * 0.8;
+    int menuHeight = height;
+    int menuItemHeight = 40;
+    
+    leftPopupMenu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, menuWidth, menuHeight)];
+    leftPopupMenu.backgroundColor = [UIColor whiteColor];
+    
+    leftPopupMenu.layer.masksToBounds = NO;
+    leftPopupMenu.layer.shadowOffset = CGSizeMake(0, 0);
+    leftPopupMenu.layer.shadowRadius = 3;
+    leftPopupMenu.layer.shadowOpacity = 0.5;
+    
+    [self.view addSubview:leftPopupMenu];
+    
+    
+    
+    [self createLeftMenuButton:@"Notifications" withId:0 withFrame:CGRectMake(0, 0, menuWidth, menuItemHeight) withIcon:@"fa-info"];
+    [self createLeftMenuButton:@"Friends" withId:1 withFrame:CGRectMake(0, menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-users"];
+    [self createLeftMenuButton:@"Coupons" withId:2 withFrame:CGRectMake(0, 2 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-gift"];
+    [self createLeftMenuButton:@"Wallet" withId:3 withFrame:CGRectMake(0, 3 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-money"];
+
+    [self createLeftMenuButton:@"Settings" withId:4 withFrame:CGRectMake(0, 4 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-cog"];
+
 }
 
 
@@ -105,25 +207,24 @@
 {
     [super viewDidLoad];
     
-    popupMenu = NULL;
+    leftPopupMenu = NULL;
     
     self.delegate = self;
     self.dataSource = self;
     
-    UIViewController *p1 = [self.storyboard
-                            instantiateViewControllerWithIdentifier:@"SBNotifications"];
-    UIViewController *p2 = [self.storyboard
-                            instantiateViewControllerWithIdentifier:@"SBFriendsMan"];
-    UIViewController *p3 = [self.storyboard
-                            instantiateViewControllerWithIdentifier:@"SBCoupons"];
-    UIViewController *p4 = [self.storyboard
-                            instantiateViewControllerWithIdentifier:@"SBWallet"];
     
-    myViewControllers = @[p1,p2,p3,p4];
+    
+    
+    notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
+    friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendsMan"];
+    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+    walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
+    
+    myViewControllers = @[notificationsView,friendsView,couponsView,walletView];
     
     navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
     
-    [self setViewControllers:@[p1]
+    [self setViewControllers:@[notificationsView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
     

@@ -39,9 +39,25 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
+
+
 -(void)requestMerchantCallback {
+    PFObject *merchantRequest = [PFObject objectWithClassName:@"MerchantRequests"];
+    merchantRequest[@"user"] = [PFUser currentUser];
+    [merchantRequest saveInBackground];
     
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Merchant Request"
+                                                    message:@"Your request has been sent."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+
 }
+
+
+
 
 -(void)viewDidLoad
 {
