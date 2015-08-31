@@ -91,9 +91,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCellIdentifier"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendsCellIdentifier"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
