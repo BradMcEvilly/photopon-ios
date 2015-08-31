@@ -21,6 +21,10 @@ void GetMyFriends(ResultBlock block) {
     [query2 whereKey:@"user2" equalTo:userId];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
+    [query includeKey:@"user1"];
+    [query includeKey:@"user2"];
+    
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         NSMutableArray* resolved = [NSMutableArray array];
         for (PFObject* object in results) {
@@ -29,7 +33,7 @@ void GetMyFriends(ResultBlock block) {
             PFUser* user2 = [object valueForKey:@"user2"];
             
             PFUser* otherUser = [PFUser currentUser] == user1 ? user2 : user1;
-            [otherUser fetchIfNeeded];
+            //[otherUser fetchIfNeeded];
             [resolved addObject:otherUser];
         };
         
@@ -44,6 +48,7 @@ void GetMyFriendRequests(ResultBlock block) {
     PFUser* userId = [PFUser currentUser];
     
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequests"];
+    [query includeKey:@"to"];
     [query whereKey:@"from" equalTo:userId];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
@@ -51,7 +56,6 @@ void GetMyFriendRequests(ResultBlock block) {
         for (PFObject* object in results) {
             
             PFUser* to = [object valueForKey:@"to"];
-            [to fetchIfNeeded];
             [resolved addObject:to];
         };
         
@@ -127,6 +131,7 @@ void GetSearchSuggestions(NSString* searchText, ResultBlock block) {
 void GetCoupons(ResultBlock block) {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Coupon"];
+    [query includeKey:@"company"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         block(results, error);
@@ -164,6 +169,12 @@ void GetNotifications(ResultBlock block) {
     PFUser* user = [PFUser currentUser];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
+    [query includeKey:@"to"];
+    [query includeKey:@"assocUser"];
+    [query includeKey:@"assocPhotopon"];
+    [query includeKey:@"assocPhotopon.coupon"];
+    [query includeKey:@"assocPhotopon.coupon.company"];
+    
     [query whereKey:@"to" equalTo:user];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {

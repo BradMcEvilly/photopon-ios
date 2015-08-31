@@ -38,7 +38,7 @@
             NSString* title = [object objectForKey:@"title"];
             NSString* desc = [object objectForKey:@"description"];
             PFObject* company = [object objectForKey:@"company"];
-            [company fetchIfNeeded];
+            //[company fetchIfNeeded];
             PFFile* pic = [company objectForKey:@"image"];
             
             [allCoupons addObject:@{

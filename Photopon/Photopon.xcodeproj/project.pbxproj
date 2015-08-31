@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
+		623F95581B939AC200506B16 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F95571B939AC200506B16 /* WalletController.m */; };
+		623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F955A1B93AC0B00506B16 /* PhotoponViewController.m */; };
 		6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */; };
 		626266201B8A5E89006D730E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6262661F1B8A5E89006D730E /* AVFoundation.framework */; };
 		626266221B8A6CA1006D730E /* takephoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266211B8A6CA1006D730E /* takephoto.png */; };
@@ -57,6 +59,10 @@
 		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		623F95561B939AC200506B16 /* WalletController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
+		623F95571B939AC200506B16 /* WalletController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
+		623F95591B93AC0B00506B16 /* PhotoponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponViewController.h; sourceTree = "<group>"; };
+		623F955A1B93AC0B00506B16 /* PhotoponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponViewController.m; sourceTree = "<group>"; };
 		6262661C1B8A5BA1006D730E /* PhotoponCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponCameraView.h; sourceTree = "<group>"; };
 		6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponCameraView.m; sourceTree = "<group>"; };
 		6262661F1B8A5E89006D730E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -135,6 +141,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		623F95551B93970500506B16 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				62A302BC1B809C2400D61F34 /* DBAccess.h */,
+				62A302BD1B80A38B00D61F34 /* DBAccess.m */,
+				62A302C01B80C49500D61F34 /* Helper.h */,
+				62A302C11B80C4A800D61F34 /* Helper.m */,
+				621AE3371B79868400A9C18C /* LogHelper.h */,
+				62CA90E81B7B3C1E009C3B4C /* LogHelper.m */,
+				6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */,
+				6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		62D148BD1B79732100E8D4A1 = {
 			isa = PBXGroup;
 			children = (
@@ -158,49 +179,46 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
-				62D148CD1B79732100E8D4A1 /* AppDelegate.h */,
-				62D148CE1B79732100E8D4A1 /* AppDelegate.m */,
-				62D148D31B79732100E8D4A1 /* MasterViewController.h */,
-				62D148D41B79732100E8D4A1 /* MasterViewController.m */,
-				62D148D61B79732100E8D4A1 /* DetailViewController.h */,
-				62D148D71B79732100E8D4A1 /* DetailViewController.m */,
-				62D148D91B79732100E8D4A1 /* Main.storyboard */,
-				62A302B01B7D5EDA00D61F34 /* NotificationController.h */,
-				62A302B11B7D5EDA00D61F34 /* NotificationController.m */,
-				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
-				62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */,
-				62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */,
 				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
 				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
-				62CA90F41B7BC718009C3B4C /* FriendsViewController.m */,
-				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
-				62A302B31B7E78C100D61F34 /* FriendRequestControl.h */,
-				62A302B41B7E78C100D61F34 /* FriendRequestControl.m */,
-				62D148C91B79732100E8D4A1 /* Supporting Files */,
-				621AE3341B797CBB00A9C18C /* LoginViewController.h */,
-				621AE3351B797CBB00A9C18C /* LoginViewController.m */,
-				621AE3371B79868400A9C18C /* LogHelper.h */,
-				62CA90E81B7B3C1E009C3B4C /* LogHelper.m */,
-				62A7DDA01B7ABBFD000B74B8 /* MainController.h */,
-				62A7DDA11B7ABBFD000B74B8 /* MainController.m */,
-				62A302BD1B80A38B00D61F34 /* DBAccess.m */,
-				62A302BC1B809C2400D61F34 /* DBAccess.h */,
-				62A302C01B80C49500D61F34 /* Helper.h */,
-				62A302C11B80C4A800D61F34 /* Helper.m */,
+				62D148CD1B79732100E8D4A1 /* AppDelegate.h */,
+				62D148CE1B79732100E8D4A1 /* AppDelegate.m */,
 				62A302C91B829B0800D61F34 /* ChatMessagesController.h */,
 				62A302CA1B829B0800D61F34 /* ChatMessagesController.m */,
-				6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */,
-				6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */,
 				6296ADCF1B854F5200DC3CF5 /* ChatMessageView.h */,
 				6296ADD01B854F5200DC3CF5 /* ChatMessageView.m */,
 				62D086031B86A27D0063C8B8 /* CouponViewController.h */,
 				62D086041B86A27D0063C8B8 /* CouponViewController.m */,
-				62D086081B87E7E20063C8B8 /* PhotoponDrawController.h */,
-				62D086091B87E7E20063C8B8 /* PhotoponDrawController.m */,
+				62D148D61B79732100E8D4A1 /* DetailViewController.h */,
+				62D148D71B79732100E8D4A1 /* DetailViewController.m */,
+				62A302B31B7E78C100D61F34 /* FriendRequestControl.h */,
+				62A302B41B7E78C100D61F34 /* FriendRequestControl.m */,
+				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
+				62CA90F41B7BC718009C3B4C /* FriendsViewController.m */,
+				623F95551B93970500506B16 /* Helpers */,
+				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
+				62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */,
+				621AE3341B797CBB00A9C18C /* LoginViewController.h */,
+				621AE3351B797CBB00A9C18C /* LoginViewController.m */,
+				62D148D91B79732100E8D4A1 /* Main.storyboard */,
+				62A7DDA01B7ABBFD000B74B8 /* MainController.h */,
+				62A7DDA11B7ABBFD000B74B8 /* MainController.m */,
+				62D148D31B79732100E8D4A1 /* MasterViewController.h */,
+				62D148D41B79732100E8D4A1 /* MasterViewController.m */,
+				62A302B01B7D5EDA00D61F34 /* NotificationController.h */,
+				62A302B11B7D5EDA00D61F34 /* NotificationController.m */,
+				62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */,
 				6262661C1B8A5BA1006D730E /* PhotoponCameraView.h */,
 				6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */,
+				62D086081B87E7E20063C8B8 /* PhotoponDrawController.h */,
+				62D086091B87E7E20063C8B8 /* PhotoponDrawController.m */,
 				62DD661A1B8E87B100B1A972 /* SettingsController.h */,
 				62DD661B1B8E87B100B1A972 /* SettingsController.m */,
+				62D148C91B79732100E8D4A1 /* Supporting Files */,
+				623F95561B939AC200506B16 /* WalletController.h */,
+				623F95571B939AC200506B16 /* WalletController.m */,
+				623F95591B93AC0B00506B16 /* PhotoponViewController.h */,
+				623F955A1B93AC0B00506B16 /* PhotoponViewController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -398,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */,
 				62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */,
 				6296ADD11B854F5200DC3CF5 /* ChatMessageView.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
@@ -412,6 +431,7 @@
 				62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
+				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,

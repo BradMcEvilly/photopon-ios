@@ -21,13 +21,14 @@
     PFUser* userId = [PFUser currentUser];
     
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequests"];
+    [query includeKey:@"from"];
     [query whereKey:@"to" equalTo:userId];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         for (PFObject* object in results) {
             PFUser* userObj = [object valueForKey:@"from"];
             
-            PFObject* fromUser = [userObj fetchIfNeeded];
+            PFObject* fromUser = userObj;
             
             NSString* username = [fromUser valueForKey:@"username"];
             NSString* email = [fromUser valueForKey:@"email"];

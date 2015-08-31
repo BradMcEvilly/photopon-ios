@@ -195,7 +195,6 @@
     [self createLeftMenuButton:@"Friends" withId:1 withFrame:CGRectMake(0, menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-users"];
     [self createLeftMenuButton:@"Coupons" withId:2 withFrame:CGRectMake(0, 2 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-gift"];
     [self createLeftMenuButton:@"Wallet" withId:3 withFrame:CGRectMake(0, 3 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-money"];
-
     [self createLeftMenuButton:@"Settings" withId:4 withFrame:CGRectMake(0, 4 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-cog"];
 
 }
@@ -263,8 +262,8 @@
 {
     NSUInteger currentIndex = [myViewControllers indexOfObject:viewController];
     
-    
     --currentIndex;
+    
     currentIndex = currentIndex % (myViewControllers.count);
     
     return [myViewControllers objectAtIndex:currentIndex];

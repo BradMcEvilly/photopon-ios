@@ -8,6 +8,7 @@
 
 #import "NotificationController.h"
 #import "ChatMessagesController.h"
+#import "PhotoponViewController.h"
 #import "Parse/Parse.h"
 #import "DBAccess.h"
 #import "Helper.h"
@@ -55,7 +56,6 @@
     
     if ([type isEqualToString:@"FRIEND"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        [assocUser fetchIfNeeded];
         
         
         cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
@@ -76,7 +76,6 @@
 
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        [assocUser fetchIfNeeded];
         
         NSString* message = [item objectForKey:@"content"];
         
@@ -104,24 +103,15 @@
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        [assocUser fetchIfNeeded];
-        
         
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
-        [assocPhotopon fetchIfNeeded];
         
         cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
         [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
         
         
         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
-        [coupon fetchIfNeeded];
-        
-        
-        
         PFObject* company = [coupon objectForKey:@"company"];
-        [company fetchIfNeeded];
-        
         
         cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
@@ -174,7 +164,7 @@
     
     if ([type isEqualToString:@"FRIEND"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        [assocUser fetchIfNeeded];
+        //[assocUser fetchIfNeeded];
         
         PFObject *friendship = [PFObject objectWithClassName:@"Friends"];
         
@@ -197,7 +187,7 @@
         
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        [assocUser fetchIfNeeded];
+        //[assocUser fetchIfNeeded];
         
         ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
 //        [self presentViewController:notificationCtrl animated:true completion:nil];
@@ -207,7 +197,15 @@
 
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
+        PFUser* assocPhotopon = [item objectForKey:@"assocPhotopon"];
         
+        
+        
+        PhotoponViewController* photoponView = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponView"];
+        [photoponView setPhotopon:assocPhotopon];
+        
+        [self.navigationController pushViewController:photoponView animated:true];
     }
     
 
