@@ -11,6 +11,8 @@
 #import "DBAccess.h"
 #import "Helper.h"
 #import "LogHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
 
 
 
@@ -27,7 +29,7 @@
     [self.walletTable setDataSource:self];
     allWalletItems = [NSMutableArray array];
     
-    GetNotifications(^(NSArray *results, NSError *error) {
+    GetWalletItems(^(NSArray *results, NSError *error) {
         allWalletItems = [NSMutableArray arrayWithArray:results];
         [self.walletTable reloadData];
     });
@@ -59,6 +61,26 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
+    
+    NSDictionary *item = (NSDictionary *)[allWalletItems objectAtIndex:indexPath.row];
+
+    PFObject* photopon = [item objectForKey:@"photopon"];
+    
+    cell.textLabel.text = [photopon objectForKey:@"title"];
+    
+    
+    NSDate *created = [photopon createdAt];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEE, MMM d, h:mm a"];
+    
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [[photopon objectForKey:@"creator"] username], [dateFormat stringFromDate:created]];
+    
+    PFObject* company = [photopon objectForKey:@"company"];
+    PFFile* logo = [company objectForKey:@"pic"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:logo.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    
+
     
     
     return cell;

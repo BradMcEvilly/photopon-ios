@@ -20,3 +20,5 @@ UIImageView* CreateFAImage(NSString* type, CGFloat size) {
     [imageView setDefaultIconIdentifier:type];
     return imageView;
 }
+
+

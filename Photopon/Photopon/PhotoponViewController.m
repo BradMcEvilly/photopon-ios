@@ -8,7 +8,7 @@
 
 #import "PhotoponViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "Helper.h"
 
 @implementation PhotoponViewController
 {
@@ -19,6 +19,16 @@
     photopon = obj;
 }
 
+-(void)savePhotopon {
+    PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
+    [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
+    [newWalletObject setObject:photopon forKey:@"photopon"];
+    [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+        [self dismissViewControllerAnimated:true completion:^{
+            
+        }];
+    }];
+}
 
 -(void)viewDidLoad {
     
@@ -36,7 +46,12 @@
     [self.couponTitle setText:[coupon objectForKey:@"title"]];
     [self.couponDescription setText:[coupon objectForKey:@"description"]];
     
-    
+    UIImageView* icon = CreateFAImage(@"fa-suitcase", 34);
+    [self.saveButtonIcon addSubview:icon];
+
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(savePhotopon)];
+    [self.view addGestureRecognizer:singleFingerTap];
+  
 }
 
 

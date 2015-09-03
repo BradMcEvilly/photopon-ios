@@ -18,5 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *couponTitle;
 @property (weak, nonatomic) IBOutlet UILabel *couponDescription;
+@property (weak, nonatomic) IBOutlet UIImageView *saveButtonIcon;
+@property (weak, nonatomic) IBOutlet UIView *saveButton;
 
 @end

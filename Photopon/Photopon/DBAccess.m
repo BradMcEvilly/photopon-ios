@@ -182,6 +182,23 @@ void GetNotifications(ResultBlock block) {
     }];
 }
 
+void GetWalletItems(ResultBlock block) {
+    PFUser* user = [PFUser currentUser];
+    NSLog([user objectId]);
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Wallet"];
+    //[query includeKey:@"photopon"];
+    //[query includeKey:@"photopon.coupon"];
+    //[query includeKey:@"photopon.creator"];
+    //[query includeKey:@"photopon.coupon.company"];
+    
+    [query whereKey:@"user" equalTo:user];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+        block(results, error);
+    }];
+}
+
 void CreateFriendRequestNotification(PFUser* toUser) {
     PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
     

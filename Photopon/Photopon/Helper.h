@@ -12,4 +12,5 @@
 @import UIKit;
 
 UIImageView* CreateFAImage(NSString* type, CGFloat size);
+
 #endif

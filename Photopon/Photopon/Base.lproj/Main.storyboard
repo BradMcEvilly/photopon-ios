@@ -372,6 +372,35 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p19-Ma-frV">
+                                <rect key="frame" x="220" y="540" width="160" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vam-eH-Yrf">
+                                        <rect key="frame" x="3" y="3" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="YlI-J0-3fU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-bC-vd2">
+                                        <rect key="frame" x="59" y="9" width="72" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.69000000000000006" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PR5-nY-Btd"/>
+                                    <constraint firstAttribute="width" constant="160" id="hFe-gp-cEI"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vam-eH-Yrf" secondAttribute="bottom" constant="3" id="jsT-yi-E6m"/>
+                                    <constraint firstItem="Vam-eH-Yrf" firstAttribute="leading" secondItem="p19-Ma-frV" secondAttribute="leading" constant="3" id="kSs-Xb-l8B"/>
+                                    <constraint firstItem="Vam-eH-Yrf" firstAttribute="top" secondItem="p19-Ma-frV" secondAttribute="top" constant="3" id="vdx-tc-iZk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -388,9 +417,11 @@
                             <constraint firstItem="JDg-Of-h7X" firstAttribute="top" secondItem="vrV-4b-rUs" secondAttribute="bottom" constant="-140" id="aD5-fm-xQM"/>
                             <constraint firstItem="k4M-Xb-caQ" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" id="aqi-hn-9eR"/>
                             <constraint firstItem="rWv-no-FYW" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" id="cNe-uB-WcR"/>
+                            <constraint firstItem="iG6-hr-gE6" firstAttribute="top" secondItem="p19-Ma-frV" secondAttribute="bottom" constant="20" id="cqr-Ly-iyB"/>
                             <constraint firstAttribute="bottom" secondItem="k4M-Xb-caQ" secondAttribute="bottom" id="dIL-7j-lkw"/>
                             <constraint firstAttribute="trailing" secondItem="vrV-4b-rUs" secondAttribute="trailing" constant="20" id="hcg-cI-Z8O"/>
                             <constraint firstItem="243-ni-gMo" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" constant="20" id="jrc-ii-2O0"/>
+                            <constraint firstAttribute="centerX" secondItem="p19-Ma-frV" secondAttribute="centerX" id="jyv-vE-NhF"/>
                             <constraint firstItem="iPL-jC-P8i" firstAttribute="top" secondItem="MU8-dK-52a" secondAttribute="bottom" constant="20" id="ngX-9o-q8a"/>
                             <constraint firstItem="JDg-Of-h7X" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" id="oWX-2g-nEW"/>
                             <constraint firstAttribute="trailing" secondItem="k4M-Xb-caQ" secondAttribute="trailing" id="s27-0D-dYA"/>
@@ -410,6 +441,8 @@
                         <outlet property="couponTitle" destination="iPL-jC-P8i" id="Fez-Yq-vNt"/>
                         <outlet property="drawingImage" destination="rWv-no-FYW" id="8aI-ej-yZp"/>
                         <outlet property="photoImage" destination="k4M-Xb-caQ" id="foD-io-oNF"/>
+                        <outlet property="saveButton" destination="p19-Ma-frV" id="bNF-H6-tEG"/>
+                        <outlet property="saveButtonIcon" destination="Vam-eH-Yrf" id="D2i-3I-Hbi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meS-NG-JfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
