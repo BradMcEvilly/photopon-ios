@@ -31,6 +31,7 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon);
 
 
 void GetCoupons(ResultBlock block);
+void GetCouponsByLocation(float latitude, float longitude, ResultBlock block);
 
 void SaveImage(NSString* fileName, UIImage* image, FileResultBlock block);
 

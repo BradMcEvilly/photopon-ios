@@ -19,6 +19,7 @@
 @implementation WalletController
 {
     NSMutableArray *allWalletItems;
+    int selectedItemIndex;
 }
 
 
@@ -76,14 +77,70 @@
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [[photopon objectForKey:@"creator"] username], [dateFormat stringFromDate:created]];
     
-    PFObject* company = [photopon objectForKey:@"company"];
-    PFFile* logo = [company objectForKey:@"pic"];
+    PFObject* coupon = [photopon objectForKey:@"coupon"];
+    PFObject* company = [coupon objectForKey:@"company"];
+    PFFile* logo = [company objectForKey:@"image"];
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:logo.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
     
 
     
     
     return cell;
+}
+
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedItemIndex = (int)indexPath.row;
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose action"
+                                                                   message:@"Do you want to Redeem this photopon now?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        PFObject* walletItem = [allWalletItems objectAtIndex:selectedItemIndex];
+        PFObject* photopon = [walletItem objectForKey:@"photopon"];
+        PFObject* coupon = [photopon objectForKey:@"coupon"];
+        
+        [photopon incrementKey:@"numRedeemed"];
+        [photopon saveInBackground];
+        
+        [coupon incrementKey:@"numRedeemed"];
+        [coupon saveInBackground];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
+                                                        message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Awesome!"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+    
+    
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+    }];
+    
+    [alert addAction:getAction];
+    [alert addAction:cancelAction];
+    
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+    
+    
+    /*
+     PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
+     
+     [camView setCoupons:allCoupons withObjects:allPFCoupons];
+     [camView setCurrentCouponIndex:indexPath.row];
+     [self showViewController:camView sender:nil];
+     */
 }
 
 

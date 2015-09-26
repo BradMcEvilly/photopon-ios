@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreLocation;
 
 @interface MainController : UIPageViewController<UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 

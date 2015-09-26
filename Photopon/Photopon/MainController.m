@@ -25,6 +25,8 @@
     UIViewController *friendsView;
     UIViewController *couponsView;
     UIViewController *walletView;
+    
+    CLLocationManager *locationManager;
 }
 
 
@@ -202,6 +204,10 @@
 
 
 
+
+
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -250,6 +256,17 @@
     self.navigationItem.rightBarButtonItem = rightButton;
     self.navigationItem.leftBarButtonItem = leftButton;
 
+    
+    if (![CLLocationManager locationServicesEnabled]) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
+                                                        message:@"Location services must be enabled in order to use Photopon."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+    }
 }
 
 -(UIViewController *)viewControllerAtIndex:(NSUInteger)index

@@ -190,7 +190,6 @@
         //[assocUser fetchIfNeeded];
         
         ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
-//        [self presentViewController:notificationCtrl animated:true completion:nil];
         [messageCtrl setUser:assocUser];
          
         [self.navigationController pushViewController:messageCtrl animated:true];

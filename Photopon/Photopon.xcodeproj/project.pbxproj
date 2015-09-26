@@ -11,6 +11,7 @@
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
 		623F95581B939AC200506B16 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F95571B939AC200506B16 /* WalletController.m */; };
 		623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F955A1B93AC0B00506B16 /* PhotoponViewController.m */; };
+		625817241BA9685200506E0E /* camplaceholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 625817231BA9685200506E0E /* camplaceholder.jpg */; };
 		6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */; };
 		626266201B8A5E89006D730E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6262661F1B8A5E89006D730E /* AVFoundation.framework */; };
 		626266221B8A6CA1006D730E /* takephoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266211B8A6CA1006D730E /* takephoto.png */; };
@@ -41,6 +42,7 @@
 		62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DC1B79732100E8D4A1 /* Images.xcassets */; };
 		62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */; };
 		62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148EB1B79732100E8D4A1 /* PhotoponTests.m */; };
+		62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */; };
 		62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DD661B1B8E87B100B1A972 /* SettingsController.m */; };
 		62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,7 @@
 		623F95571B939AC200506B16 /* WalletController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
 		623F95591B93AC0B00506B16 /* PhotoponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponViewController.h; sourceTree = "<group>"; };
 		623F955A1B93AC0B00506B16 /* PhotoponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponViewController.m; sourceTree = "<group>"; };
+		625817231BA9685200506E0E /* camplaceholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camplaceholder.jpg; sourceTree = "<group>"; };
 		6262661C1B8A5BA1006D730E /* PhotoponCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponCameraView.h; sourceTree = "<group>"; };
 		6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponCameraView.m; sourceTree = "<group>"; };
 		6262661F1B8A5E89006D730E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,7 @@
 		62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoponTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D148EA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D148EB1B79732100E8D4A1 /* PhotoponTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoponTests.m; sourceTree = "<group>"; };
+		62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackdot.png; sourceTree = "<group>"; };
 		62DD661A1B8E87B100B1A972 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		62DD661B1B8E87B100B1A972 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileplaceholder.png; sourceTree = "<group>"; };
@@ -179,8 +183,6 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
-				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
-				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
 				62D148CD1B79732100E8D4A1 /* AppDelegate.h */,
 				62D148CE1B79732100E8D4A1 /* AppDelegate.m */,
 				62A302C91B829B0800D61F34 /* ChatMessagesController.h */,
@@ -191,16 +193,8 @@
 				62D086041B86A27D0063C8B8 /* CouponViewController.m */,
 				62D148D61B79732100E8D4A1 /* DetailViewController.h */,
 				62D148D71B79732100E8D4A1 /* DetailViewController.m */,
-				62D148D91B79732100E8D4A1 /* Main.storyboard */,
-				62A302B01B7D5EDA00D61F34 /* NotificationController.h */,
-				62A302B11B7D5EDA00D61F34 /* NotificationController.m */,
-				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
-				62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */,
-				62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */,
 				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
 				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
-				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
-				62CA90F41B7BC718009C3B4C /* FriendsViewController.m */,
 				62A302B31B7E78C100D61F34 /* FriendRequestControl.h */,
 				62A302B41B7E78C100D61F34 /* FriendRequestControl.m */,
 				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
@@ -236,6 +230,8 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */,
+				625817231BA9685200506E0E /* camplaceholder.jpg */,
 				62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */,
 				626266231B8A7710006D730E /* check.png */,
 				626266211B8A6CA1006D730E /* takephoto.png */,
@@ -370,8 +366,10 @@
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
+				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
 				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
+				62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
@@ -577,6 +575,7 @@
 			baseConfigurationReference = 756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Photopon, Inc. (F43DL7PZMZ)";
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -589,6 +588,7 @@
 			baseConfigurationReference = DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Photopon, Inc. (F43DL7PZMZ)";
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

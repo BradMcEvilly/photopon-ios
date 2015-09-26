@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreLocation;
 
-@interface CouponViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface CouponViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *couponTable;
 

@@ -139,6 +139,48 @@ void GetCoupons(ResultBlock block) {
 }
 
 
+void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
+    PFQuery *query = [PFQuery queryWithClassName:@"Location"];
+
+    [query whereKey:@"location" nearGeoPoint:point withinKilometers:1];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
+        NSMutableSet *ids = [[NSMutableSet alloc] init];
+        
+        for(PFObject *oneItem in locations) {
+            [ids addObject:oneItem.objectId ];
+        }
+        
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Coupon"];
+        [query includeKey:@"company"];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+            
+            NSMutableArray *c = [[NSMutableArray alloc] init];
+            for (PFObject* coupon in results) {
+                
+                NSArray* locs = [coupon objectForKey:@"locations"];
+                
+                for (NSString* locid in locs) {
+                    if ([ids containsObject:locid]) {
+                        [c addObject:coupon];
+                    }
+                }
+                
+                if ([locs count] == 0 && [ids count] != 0) {
+                    [c addObject:coupon];
+                }
+                
+            }
+            block(c, error);
+        }];
+        
+    }];
+
+}
+
+
 
 void SaveImage(NSString* fileName, UIImage* image, FileResultBlock block) {
     
@@ -192,7 +234,7 @@ void GetWalletItems(ResultBlock block) {
     //[query includeKey:@"photopon.creator"];
     //[query includeKey:@"photopon.coupon.company"];
     
-    [query whereKey:@"user" equalTo:user];
+    //[query whereKey:@"user" equalTo:user];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         block(results, error);

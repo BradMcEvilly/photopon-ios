@@ -23,6 +23,9 @@
     
     PFFile* photoFile;
     PFFile* drawingFile;
+    
+    UIColor* selectedColor;
+    int selectedWidth;
 }
 
 -(void) setCoupon:(PFObject*)coupon {
@@ -93,8 +96,13 @@
     CGContextAddLineToPoint(context, to.x, to.y);
     
     CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineWidth(context, 3);
-    CGContextSetRGBStrokeColor(context, 1, 0.5, 0.2, 1.0);
+    CGContextSetLineWidth(context, selectedWidth);
+    
+    CGFloat redColor, greenColor, blueColor, colorAlpha;
+    
+    [selectedColor getRed:&redColor green:&greenColor blue:&blueColor alpha:&colorAlpha];
+    
+    CGContextSetRGBStrokeColor(context, redColor, greenColor, blueColor, colorAlpha);
     CGContextSetBlendMode(context, kCGBlendModeNormal);
     
     CGContextStrokePath(context);
@@ -116,6 +124,8 @@
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
     [newPhotoponObject setObject:currentCoupon forKey:@"coupon"];
+    [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
+
     [newPhotoponObject setObject:users forKey:@"users"];
 
 
@@ -139,6 +149,9 @@
                 PFUser* user = [PFQuery getUserObjectWithId:users[i] ];
                 CreatePhotoponNotification(user, newPhotoponObject);
             }
+            [currentCoupon incrementKey:@"numShared" byAmount:[NSNumber numberWithUnsignedLong:[users count] ] ];
+            [currentCoupon saveInBackground];
+
 
             
         } else {
@@ -180,6 +193,17 @@
     
 }
 
+-(void)onColorChange: (id)sender {
+    UIButton* btn = (UIButton*)sender;
+    selectedColor = btn.backgroundColor;
+}
+
+
+-(void)onWidthChange: (id)sender {
+    UIButton* btn = (UIButton*)sender;
+    selectedWidth = (int)btn.tag;
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -195,8 +219,24 @@
     singleTap.numberOfTapsRequired = 1;
     [self.saveButton setUserInteractionEnabled:YES];
     [self.saveButton addGestureRecognizer:singleTap];
-
     
+    [self.color1 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    [self.color2 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    [self.color3 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    [self.color4 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    [self.color5 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    [self.color6 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    
+ 
+    
+    [self.width1 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
+    [self.width2 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
+    [self.width3 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
+    [self.width4 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
+    
+    
+    selectedColor = self.color1.backgroundColor;
+    selectedWidth = (int)self.width3.tag;
     
     //PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     //[self showViewController:camView sender:nil];
