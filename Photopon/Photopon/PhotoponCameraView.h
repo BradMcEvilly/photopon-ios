@@ -10,7 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface PhotoponCameraView : UIViewController
+@interface PhotoponCameraView : UIViewController<UIGestureRecognizerDelegate>
+
+
 @property (weak, nonatomic) IBOutlet UIView *imageView;
 @property(nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
@@ -20,7 +22,6 @@
 
 
 
--(void) setCoupons:(NSMutableArray*)coupons withObjects:(NSMutableArray*)objects;
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex;
 
 @end

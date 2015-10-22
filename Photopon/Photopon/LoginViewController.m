@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "ParseUI/ParseUI.h"
+#import "PhotoponLoginViewController.h"
+#import "PhotoponSignupViewController.h"
 
 @interface LoginViewController ()
 
@@ -25,19 +27,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    if (![PFUser currentUser]) { // No user logged in
-        // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+    if (![PFUser currentUser]) {
+        PhotoponLoginViewController *logInViewController = [[PhotoponLoginViewController alloc] init];
+        [logInViewController setDelegate:self];
+    
         
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
-        // Assign our sign up controller to be displayed from the login controller
+        PhotoponSignupViewController *signUpViewController = [[PhotoponSignupViewController alloc] init];
+        [signUpViewController setDelegate:self];
+        
+        
+        
         [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
     } else {
         UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];

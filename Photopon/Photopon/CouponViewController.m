@@ -13,79 +13,25 @@
 #import "DBAccess.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PhotoponCameraView.h"
+#import "Helper.h"
 
 
 @implementation CouponViewController
 {
-    NSMutableArray* allCoupons;
-    NSMutableArray* allPFCoupons;
+    NSArray* allCoupons;
+    NSArray* allPFCoupons;
     int selectedCouponIndex;
     CLLocationManager* locationManager;
 }
 
 
 
-- (void)getCouponsForLocation:(CLLocation*)location {
-    
-    NSLog(@"%f, %f", location.coordinate.latitude, location.coordinate.longitude);
-    
-    GetCouponsByLocation(location.coordinate.latitude, location.coordinate.longitude, ^(NSArray *results, NSError *error) {
-        [allCoupons removeAllObjects];
-        [allPFCoupons removeAllObjects];
-        
-        for (PFObject* object in results) {
-            
-            NSString* title = [object objectForKey:@"title"];
-            NSString* desc = [object objectForKey:@"description"];
-            PFObject* company = [object objectForKey:@"company"];
-            //[company fetchIfNeeded];
-            PFFile* pic = [company objectForKey:@"image"];
-            
-            [allCoupons addObject:@{
-                                    @"title": title,
-                                    @"desc": desc,
-                                    @"pic": pic.url
-                                    }];
-            
-            
-            [allPFCoupons addObject:object];
-        }
-        [self.couponTable reloadData];
-    });
-    
-    /*
-    GetCoupons(^(NSArray *results, NSError *error) {
-        [allCoupons removeAllObjects];
-        [allPFCoupons removeAllObjects];
-        
-        for (PFObject* object in results) {
-            
-            NSString* title = [object objectForKey:@"title"];
-            NSString* desc = [object objectForKey:@"description"];
-            PFObject* company = [object objectForKey:@"company"];
-            //[company fetchIfNeeded];
-            PFFile* pic = [company objectForKey:@"image"];
-            
-            [allCoupons addObject:@{
-                                    @"title": title,
-                                    @"desc": desc,
-                                    @"pic": pic.url
-                                    }];
-            
-            
-            [allPFCoupons addObject:object];
-        }
-        [self.couponTable reloadData];
-    });
-     */
-    
+
+- (void) couponsUpdated {
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    [self.couponTable reloadData];
 }
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [self getCouponsForLocation:[locations lastObject]];
-}
-
-
 
 
 
@@ -95,51 +41,17 @@
     
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
-    allCoupons = [NSMutableArray array];
-    allPFCoupons = [NSMutableArray array];
     
-    
-    
-    if ([CLLocationManager locationServicesEnabled]) {
-       
-        if (locationManager == nil) {
-            locationManager = [[CLLocationManager alloc] init];
-            locationManager.delegate = self;
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-            
-            // Set a movement threshold for new events.
-            locationManager.distanceFilter = 100; // meters
-            
-            CLAuthorizationStatus st = [CLLocationManager authorizationStatus];
-            
-            if (st == kCLAuthorizationStatusRestricted || st == kCLAuthorizationStatusDenied) {
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
-                                                                message:@"Location services must be enabled in order to use Photopon."
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                
-                [alert show];
-                
-                return;
-            }
-            
-            if (st == kCLAuthorizationStatusNotDetermined) {
-                [locationManager requestAlwaysAuthorization];
-            } else {
-                [self getCouponsForLocation: locationManager.location];
-            }
-            
-            
-            [locationManager startUpdatingLocation];
-            
-        }
-    }
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    [self.couponTable reloadData];
 
-
+    AddCouponUpdateListener(self);
 }
 
+-(void) dealloc {
+    RemoveCouponUpdateListener(self);
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -181,7 +93,6 @@
     UIAlertAction* giveAction = [UIAlertAction actionWithTitle:@"Give" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         
         PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-        [camView setCoupons:allCoupons withObjects:allPFCoupons];
         [camView setCurrentCouponIndex:selectedCouponIndex];
         [self showViewController:camView sender:nil];
     }];

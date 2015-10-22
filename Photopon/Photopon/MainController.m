@@ -22,6 +22,7 @@
     
     
     UIViewController *notificationsView;
+    UIViewController *photoponView;
     UIViewController *friendsView;
     UIViewController *couponsView;
     UIViewController *walletView;
@@ -220,12 +221,13 @@
     
     
     
+    photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendsMan"];
     couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
     
-    myViewControllers = @[notificationsView,friendsView,couponsView,walletView];
+    myViewControllers = @[photoponView, notificationsView,friendsView,couponsView,walletView];
     
     navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
     
@@ -266,18 +268,25 @@
                                               otherButtonTitles:nil];
         
         [alert show];
+    } else {
+        UpdateNearbyCoupons();
     }
+    
 }
+
+
+
 
 -(UIViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     return myViewControllers[index];
 }
 
+
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
      viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger currentIndex = [myViewControllers indexOfObject:viewController];
+    NSUInteger currentIndex = [myViewControllers indexOfObject:viewController] + myViewControllers.count;
     
     --currentIndex;
     
@@ -285,7 +294,7 @@
     
     return [myViewControllers objectAtIndex:currentIndex];
 }
-
+ 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerAfterViewController:(UIViewController *)viewController
 {
@@ -296,6 +305,7 @@
     currentIndex = currentIndex % (myViewControllers.count);
     return [myViewControllers objectAtIndex:currentIndex];
 }
+ 
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
@@ -305,17 +315,6 @@
 }
 
 
-/*
--(NSInteger)presentationCountForPageViewController:
-(UIPageViewController *)pageViewController
-{
-    return myViewControllers.count;
-}
 
--(NSInteger)presentationIndexForPageViewController:
-(UIPageViewController *)pageViewController
-{
-    return 0;
-}
-*/
+
 @end

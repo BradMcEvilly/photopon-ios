@@ -10,22 +10,18 @@
 #import "PhotoponDrawController.h"
 #import <ImageIO/CGImageProperties.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "Helper.h"
 
 
 @implementation PhotoponCameraView
 {
-    NSMutableArray* allCoupons;
-    NSMutableArray* allPFCoupons;
+    NSArray* allCoupons;
+    NSArray* allPFCoupons;
     NSInteger currentCouponIndex;
     BOOL hasCamera;
 }
 
 
-
--(void) setCoupons:(NSMutableArray*)coupons withObjects:(NSMutableArray*)objects {
-    allCoupons = coupons;
-    allPFCoupons = objects;
-}
 
 
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex {
@@ -75,7 +71,26 @@
     [self.miniCouponView addGestureRecognizer:swipeRecRight];
     
     
+    swipeRecLeft.delegate = self;
+    swipeRecRight.delegate = self;
+    
+    
 }
+
+
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        CGPoint touchPoint = [touch locationInView:self.view];
+        if (touchPoint.y > 400) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+
 
 
 -(IBAction)captureNow {
@@ -183,6 +198,11 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    
+    
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetMedium;
     

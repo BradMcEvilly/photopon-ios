@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Helper.h"
 @import CoreLocation;
 
-@interface CouponViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface CouponViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CouponUpdateDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *couponTable;
 

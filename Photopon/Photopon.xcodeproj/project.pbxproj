@@ -45,6 +45,9 @@
 		62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */; };
 		62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DD661B1B8E87B100B1A972 /* SettingsController.m */; };
 		62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */; };
+		62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 62ED02F11BD4419D00534A98 /* photopon-logo.png */; settings = {ASSET_TAGS = (); }; };
+		62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,11 @@
 		62DD661A1B8E87B100B1A972 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		62DD661B1B8E87B100B1A972 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileplaceholder.png; sourceTree = "<group>"; };
+		62ED02F11BD4419D00534A98 /* photopon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photopon-logo.png"; sourceTree = "<group>"; };
+		62ED02F31BD4429000534A98 /* PhotoponLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponLoginViewController.h; sourceTree = "<group>"; };
+		62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponLoginViewController.m; sourceTree = "<group>"; };
+		62ED02F61BD4467400534A98 /* PhotoponSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponSignupViewController.h; sourceTree = "<group>"; };
+		62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponSignupViewController.m; sourceTree = "<group>"; };
 		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
 		DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.release.xcconfig"; sourceTree = "<group>"; };
 		DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +231,10 @@
 				623F95571B939AC200506B16 /* WalletController.m */,
 				623F95591B93AC0B00506B16 /* PhotoponViewController.h */,
 				623F955A1B93AC0B00506B16 /* PhotoponViewController.m */,
+				62ED02F31BD4429000534A98 /* PhotoponLoginViewController.h */,
+				62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */,
+				62ED02F61BD4467400534A98 /* PhotoponSignupViewController.h */,
+				62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -230,6 +242,7 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62ED02F11BD4419D00534A98 /* photopon-logo.png */,
 				62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */,
 				625817231BA9685200506E0E /* camplaceholder.jpg */,
 				62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */,
@@ -366,6 +379,7 @@
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
+				62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
 				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
@@ -432,6 +446,7 @@
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
 				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
+				62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
 				62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */,
@@ -439,6 +454,7 @@
 				62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
+				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
