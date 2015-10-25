@@ -45,6 +45,7 @@
 		62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */; };
 		62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DD661B1B8E87B100B1A972 /* SettingsController.m */; };
 		62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */; };
+		62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E747281BDD50EB0003A8F1 /* MiniCouponView.m */; settings = {ASSET_TAGS = (); }; };
 		62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 62ED02F11BD4419D00534A98 /* photopon-logo.png */; settings = {ASSET_TAGS = (); }; };
 		62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -123,6 +124,8 @@
 		62DD661A1B8E87B100B1A972 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		62DD661B1B8E87B100B1A972 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileplaceholder.png; sourceTree = "<group>"; };
+		62E747271BDD50EB0003A8F1 /* MiniCouponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniCouponView.h; sourceTree = "<group>"; };
+		62E747281BDD50EB0003A8F1 /* MiniCouponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniCouponView.m; sourceTree = "<group>"; };
 		62ED02F11BD4419D00534A98 /* photopon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photopon-logo.png"; sourceTree = "<group>"; };
 		62ED02F31BD4429000534A98 /* PhotoponLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponLoginViewController.h; sourceTree = "<group>"; };
 		62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponLoginViewController.m; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */,
 				62ED02F61BD4467400534A98 /* PhotoponSignupViewController.h */,
 				62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */,
+				62E747271BDD50EB0003A8F1 /* MiniCouponView.h */,
+				62E747281BDD50EB0003A8F1 /* MiniCouponView.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */,
 				62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
+				62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,

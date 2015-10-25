@@ -763,7 +763,7 @@
                                     <constraint firstAttribute="height" constant="64" id="d06-NN-eCI"/>
                                 </constraints>
                             </imageView>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-yA-Goo">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-yA-Goo" customClass="MiniCouponView">
                                 <rect key="frame" x="0.0" y="200" width="600" height="200"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>

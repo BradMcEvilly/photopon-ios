@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "MiniCouponView.h"
 
-
-@interface PhotoponCameraView : UIViewController<UIGestureRecognizerDelegate>
+@interface PhotoponCameraView : UIViewController
 
 
 @property (weak, nonatomic) IBOutlet UIView *imageView;
@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *shutterButton;
 
-@property (weak, nonatomic) IBOutlet UIView *miniCouponView;
+@property (weak, nonatomic) IBOutlet MiniCouponView *miniCouponView;
 
 
 

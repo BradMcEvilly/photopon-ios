@@ -36,22 +36,11 @@
 }
 
 
--(void)onSwipeLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
-    NSLog(@"Swiped left");
-    currentCouponIndex = (currentCouponIndex + 1) % [allCoupons count];
-    [self createMiniCoupon];
-}
-
-
--(void)onSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer {
-    NSLog(@"Swiped right");
-    currentCouponIndex = (currentCouponIndex - 1 + [allCoupons count]) % [allCoupons count];
-    [self createMiniCoupon];
-}
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.miniCouponView initView];
     
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onShutterTouch)];
@@ -60,37 +49,7 @@
     [self.shutterButton addGestureRecognizer:singleTap];
     
     
-    [self.miniCouponView setUserInteractionEnabled:YES];
-    
-    UISwipeGestureRecognizer *swipeRecLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)];
-    swipeRecLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.miniCouponView addGestureRecognizer:swipeRecLeft];
-    
-    UISwipeGestureRecognizer *swipeRecRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)];
-    swipeRecRight.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.miniCouponView addGestureRecognizer:swipeRecRight];
-    
-    
-    swipeRecLeft.delegate = self;
-    swipeRecRight.delegate = self;
-    
-    
 }
-
-
-
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    
-    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        CGPoint touchPoint = [touch locationInView:self.view];
-        if (touchPoint.y > 400) {
-            return NO;
-        }
-    }
-    return YES;
-}
-
-
 
 
 -(IBAction)captureNow {
@@ -151,49 +110,7 @@
     }
 }
 
--(void)createMiniCoupon {
-    NSArray *viewsToRemove = [self.miniCouponView subviews];
-    for (UIView *v in viewsToRemove) {
-        [v removeFromSuperview];
-    }
-    
-    
-    NSDictionary* coupon = [allCoupons objectAtIndex:currentCouponIndex];
-        
-    NSString* title = [coupon objectForKey:@"title"];
-    NSString* desc = [coupon objectForKey:@"desc"];
-    NSString* pic = [coupon objectForKey:@"pic"];
-    
-    int width = self.view.bounds.size.width;
-    
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 10, width - 120, 80)];
-    titleLabel.text = title;
-    titleLabel.numberOfLines = 1;
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
 
-    
-    UILabel *descLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 100, width - 120, 80)];
-    descLabel.text = desc;
-    descLabel.numberOfLines = 1;
-    descLabel.adjustsFontSizeToFitWidth = YES;
-    descLabel.backgroundColor = [UIColor clearColor];
-    descLabel.textColor = [UIColor whiteColor];
-    descLabel.textAlignment = NSTextAlignmentCenter;
-    
-    
-    
-    
-    UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 100)];
-    [image sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
-    
-    
-
-    [self.miniCouponView addSubview:titleLabel];
-    [self.miniCouponView addSubview:image];
-}
 
 
 -(void)viewDidAppear:(BOOL)animated
@@ -236,8 +153,6 @@
         [session startRunning];
         hasCamera = YES;
     }
-    
-    [self createMiniCoupon];
     
     
 }
