@@ -29,7 +29,7 @@
     [super viewDidLayoutSubviews];
     
     float x = (self.signUpView.bounds.size.width - 300.0f) / 2;
-    [self.signUpView.logo setFrame:CGRectMake(x, 100, 300.0f, 100.0f)];
+    [self.signUpView.logo setFrame:CGRectMake(x, 30, 300.0f, 100.0f)];
 }
 
 

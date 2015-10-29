@@ -25,7 +25,7 @@
     [super viewDidLayoutSubviews];
     
     float x = (self.logInView.bounds.size.width - 300.0f) / 2;
-    [self.logInView.logo setFrame:CGRectMake(x, 100, 300.0f, 100.0f)];
+    [self.logInView.logo setFrame:CGRectMake(x, 30, 300.0f, 100.0f)];
 }
 
 @end

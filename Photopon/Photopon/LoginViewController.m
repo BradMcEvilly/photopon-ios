@@ -17,6 +17,20 @@
 
 @implementation LoginViewController
 
+
+- (void) gotoMainView {
+    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    [self presentViewController:mainCtrl animated:true completion:nil];
+    
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    PFUser* currentUser = [PFUser currentUser];
+    
+    NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
+    [currentInstallation addUniqueObject:channel forKey:@"channels"];
+    [currentInstallation saveInBackground];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,8 +55,7 @@
         [logInViewController setSignUpController:signUpViewController];
         [self presentViewController:logInViewController animated:YES completion:NULL];
     } else {
-        UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-        [self presentViewController:mainCtrl animated:true completion:nil];
+        [self gotoMainView];
     }
 }
 
@@ -62,10 +75,7 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
-
-    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-    [self presentViewController:mainCtrl animated:true completion:nil];
-  
+    [self gotoMainView];
     LogDebug(@"User is logged in");
     
 }
@@ -73,10 +83,7 @@
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
-    
-    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-    [self presentViewController:mainCtrl animated:true completion:nil];
-    
+    [self gotoMainView];
     LogDebug(@"User is signed up");
 }
 
