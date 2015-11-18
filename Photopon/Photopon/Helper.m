@@ -116,7 +116,11 @@ NSArray* GetNearbyCouponsPF() {
 
 
 void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
+    if (couponDelegates == nil) {
+        couponDelegates = [[NSHashTable alloc] init];
+    }
     [couponDelegates addObject: delegate];
+    NSLog(@"Currently %i coupon update listeners", [couponDelegates count]);
 }
 
 void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
@@ -133,11 +137,13 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 
 
 - (void)getCouponsForLocation:(CLLocation*)location {
-    NSLog(@"%f, %f", location.coordinate.latitude, location.coordinate.longitude);
+    NSLog(@"Getting coupons for loaction %f, %f", location.coordinate.latitude, location.coordinate.longitude);
     
     GetCouponsByLocation(location.coordinate.latitude, location.coordinate.longitude, ^(NSArray *results, NSError *error) {
         [couponsNearby removeAllObjects];
         [couponsNearbyPF removeAllObjects];
+        
+        NSLog(@"Got %i coupons!", [results count]);
         
         for (PFObject* object in results) {
             
@@ -156,11 +162,12 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
             [couponsNearbyPF addObject:object];
         }
         
+        NSLog(@"Broadcasting to %i delegates", [couponDelegates count]);
+        
         for (id<CouponUpdateDelegate> obj in couponDelegates) {
             [obj couponsUpdated];
         }
         
-        NSLog(@"Got locations!!!");
     });
 
 }

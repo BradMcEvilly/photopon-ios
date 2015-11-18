@@ -132,7 +132,7 @@
     NSInteger viewId = ((UIButton*)sender).tag;
     
     if (viewId < 4) {
-        [self setViewControllers:@[myViewControllers[viewId]]
+        [self setViewControllers:@[myViewControllers[viewId+1]]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO completion:nil];
     } else if (viewId == 4){ // Settings page

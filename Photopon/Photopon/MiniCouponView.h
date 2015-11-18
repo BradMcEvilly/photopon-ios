@@ -11,5 +11,7 @@
 @interface MiniCouponView : UIView<UIGestureRecognizerDelegate>
 
 -(void)initView;
+-( UIGestureRecognizer* _Nonnull )getRightSwipe;
+-( UIGestureRecognizer* _Nonnull )getLeftSwipe;
 
 @end

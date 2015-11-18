@@ -90,7 +90,16 @@
 
 
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    LogError(@"Failed to log in...");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error"
+                                                    message:@"Invalid username or password."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    
+    logInController.logInView.usernameField.text = @"";
+    logInController.logInView.passwordField.text = @"";
+    
+    [alert show];
 }
 
 // Sent to the delegate when the log in screen is dismissed.

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "MiniCouponView.h"
+#import "Helper.h"
 
-@interface PhotoponCameraView : UIViewController
+@interface PhotoponCameraView : UIViewController<CouponUpdateDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIView *imageView;
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shutterButton;
 
 @property (weak, nonatomic) IBOutlet MiniCouponView *miniCouponView;
+@property (weak, nonatomic) IBOutlet UIView *noCouponView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *noCouponIndicator;
 
 
 

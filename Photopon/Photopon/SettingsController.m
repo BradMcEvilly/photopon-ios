@@ -25,7 +25,7 @@
         [user setValue:file forKey:@"image"];
         [user save];
         
-
+        
         [self.photoView sd_setImageWithURL:[NSURL URLWithString:file.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]];
     });
 }
@@ -42,18 +42,11 @@
 
 
 -(void)requestMerchantCallback {
-    PFObject *merchantRequest = [PFObject objectWithClassName:@"MerchantRequests"];
-    merchantRequest[@"user"] = [PFUser currentUser];
-    [merchantRequest saveInBackground];
     
+    UIViewController* merchantInfo = (UIViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMerchantInfo"];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Merchant Request"
-                                                    message:@"Your request has been sent."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-
+    [self.navigationController pushViewController:merchantInfo animated:true];
+    
 }
 
 

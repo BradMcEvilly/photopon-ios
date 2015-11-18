@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[PhotoponDrawController viewDidAppear:]:PhotoponDrawController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.color4.backgroundColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponLoginViewController viewDidLayoutSubviews]:PhotoponLoginViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView initCamera]:PhotoponCameraView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__74-[SettingsController imagePickerController:didFinishPickingMediaWithInfo:]_block_invoke:SettingsController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "file.url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke14:UIImageView+WebCache.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

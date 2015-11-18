@@ -46,6 +46,7 @@
     allPFCoupons = GetNearbyCouponsPF();
     [self.couponTable reloadData];
 
+    NSLog(@"Registering listener for coupon update");
     AddCouponUpdateListener(self);
 }
 
@@ -99,23 +100,38 @@
     
     
     UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Get" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        PFObject* coupon = [allPFCoupons objectAtIndex:selectedCouponIndex];
-        [coupon incrementKey:@"numRedeemed"];
-        [coupon saveInBackground];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
-                                                        message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Awesome!"
-                                              otherButtonTitles:nil];
-        [alert show];
+        
+        UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
+                                                                       message:@"You can redeem coupon once. Are you sure you want to redeem it now?"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            PFObject* coupon = [allPFCoupons objectAtIndex:selectedCouponIndex];
+            [coupon incrementKey:@"numRedeemed"];
+            [coupon saveInBackground];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
+                                                            message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Awesome!"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }];
+        
+        
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        
+        [confirmationAlert addAction:getAction];
+        [confirmationAlert addAction:cancelAction];
+        [self presentViewController:confirmationAlert animated:YES completion:nil];
+        
     }];
     
     
     
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-    }];
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
     
     [alert addAction:giveAction];
     [alert addAction:getAction];

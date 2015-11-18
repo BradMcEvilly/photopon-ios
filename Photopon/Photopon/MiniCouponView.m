@@ -39,13 +39,20 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    CGPoint loc = [gestureRecognizer locationInView:self];
-    NSLog(@"%f, %f", loc.x, loc.y);
-    
-    [otherGestureRecognizer requireGestureRecognizerToFail:swipeRecLeft];
-    [otherGestureRecognizer requireGestureRecognizerToFail:swipeRecRight];
+    //NSLog(@"%@", otherGestureRecognizer);
+    //[otherGestureRecognizer requireGestureRecognizerToFail:swipeRecLeft];
+    //[otherGestureRecognizer requireGestureRecognizerToFail:swipeRecRight];
     return YES;
 }
+
+-(UIGestureRecognizer* _Nonnull)getRightSwipe {
+    return swipeRecRight;
+}
+
+-(UIGestureRecognizer* _Nonnull)getLeftSwipe {
+    return swipeRecLeft;
+}
+
 
 -(void)initView
 {

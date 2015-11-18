@@ -19,6 +19,7 @@
     NSArray* allPFCoupons;
     NSInteger currentCouponIndex;
     BOOL hasCamera;
+    BOOL isInitialized;
 }
 
 
@@ -36,18 +37,51 @@
 }
 
 
+
+- (void) couponsUpdated {
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    [self initCamera];
+}
+
+
+
+-(void)dealloc {
+    RemoveCouponUpdateListener(self);
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.miniCouponView initView];
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
     
+    AddCouponUpdateListener(self);
+
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onShutterTouch)];
     singleTap.numberOfTapsRequired = 1;
     [self.shutterButton setUserInteractionEnabled:YES];
     [self.shutterButton addGestureRecognizer:singleTap];
+
     
+    if ([allCoupons count] != 0) {
+        self.shutterButton.alpha = 1;
+        self.miniCouponView.alpha = 1;
+        self.noCouponView.alpha = 0;
+        [self.noCouponIndicator stopAnimating];
+    } else {
+        
+        self.shutterButton.alpha = 0;
+        self.miniCouponView.alpha = 0;
+        self.noCouponView.alpha = 1;
+        [self.noCouponIndicator startAnimating];
+        
+    }
+    
+    self.noCouponView.layer.cornerRadius = 10;
+    self.noCouponView.layer.masksToBounds = YES;
     
 }
 
@@ -110,20 +144,51 @@
     }
 }
 
-
-
-
--(void)viewDidAppear:(BOOL)animated
-{
+-(void) initCamera {
     
-    allCoupons = GetNearbyCoupons();
-    allPFCoupons = GetNearbyCouponsPF();
+    if ([allCoupons count] == 0) {
+        
+        self.shutterButton.alpha = 0;
+        self.miniCouponView.alpha = 0;
+        self.noCouponView.alpha = 1;
+        [self.noCouponIndicator startAnimating];
+        
+        isInitialized = NO;
+        return;
+    }
+
+    if (isInitialized) {
+        return;
+    }
+    
+    isInitialized = YES;
+    
+    self.shutterButton.alpha = 1;
+    self.miniCouponView.alpha = 1;
+    self.noCouponView.alpha = 0;
+    [self.noCouponIndicator stopAnimating];
+
+    
+    [self.miniCouponView initView];
+    
+    if ([self.parentViewController isKindOfClass:[UIPageViewController class]]) {
+        UIPageViewController* pageView = (UIPageViewController*)self.parentViewController;
+        
+        NSLog(@"%@", pageView.gestureRecognizers);
+        for (int i = 0; i < [pageView.gestureRecognizers count]; ++i) {
+            if ([[pageView.gestureRecognizers objectAtIndex:i] isKindOfClass:[UIPanGestureRecognizer class]]) {
+                UIPanGestureRecognizer* p = [pageView.gestureRecognizers objectAtIndex:i];
+                [p requireGestureRecognizerToFail:[self.miniCouponView getRightSwipe]];
+                [p requireGestureRecognizerToFail:[self.miniCouponView getLeftSwipe]];
+                
+            }
+        }
+
+    }
     
     
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetMedium;
-    
-    CALayer *viewLayer = self.imageView.layer;
     
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     
@@ -153,7 +218,13 @@
         [session startRunning];
         hasCamera = YES;
     }
-    
+
+}
+
+
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self initCamera];
     
 }
 

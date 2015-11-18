@@ -19,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tempView;
 @property (weak, nonatomic) IBOutlet UIImageView *mainView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
-@property (weak, nonatomic) IBOutlet UIImageView *saveButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *color1;

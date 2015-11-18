@@ -215,12 +215,10 @@
     drawingFile = [NSNull null];
     
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSaveTouch)];
-    singleTap.numberOfTapsRequired = 1;
-    [self.saveButton setUserInteractionEnabled:YES];
-    [self.saveButton addGestureRecognizer:singleTap];
     
-    [self.color1 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    [self.saveButton addTarget:self action:@selector(onSaveTouch) forControlEvents:UIControlEventTouchDown];
+    
+
     [self.color2 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
     [self.color3 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
     [self.color4 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
@@ -235,13 +233,14 @@
     [self.width4 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
     
     
-    selectedColor = self.color1.backgroundColor;
-    selectedWidth = (int)self.width3.tag;
-    
     //PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     //[self showViewController:camView sender:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
     
-    
+    selectedColor = self.color2.backgroundColor;
+    selectedWidth = (int)self.width3.tag;
     
 }
 

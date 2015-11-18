@@ -564,11 +564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponCameraView.m"
-            timestampString = "466986343.167938"
+            timestampString = "467912415.544616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-onShutterTouch"
             landmarkType = "5">
          </BreakpointContent>
@@ -580,11 +580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponCameraView.m"
-            timestampString = "467490261.768567"
+            timestampString = "467912503.706071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-captureNow"
             landmarkType = "5">
          </BreakpointContent>
@@ -814,11 +814,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/SettingsController.m"
-            timestampString = "462407852.706769"
+            timestampString = "469493562.106925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,7 +826,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/SettingsController.m"
@@ -842,7 +842,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/SettingsController.m"
@@ -1130,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/DBAccess.m"
-            timestampString = "464919037.037119"
+            timestampString = "467911469.135798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "GetWalletItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1322,27 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/Helper.m"
-            timestampString = "466990081.385374"
+            timestampString = "467911986.912901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-getCouponsForLocation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photopon/Helper.m"
-            timestampString = "466990081.385374"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-getCouponsForLocation:"
             landmarkType = "5">
             <Locations>
@@ -1354,12 +1338,12 @@
                   moduleName = "Photopon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Hayk/photopon-ios/Photopon/Photopon/Helper.m"
-                  timestampString = "466986539.038098"
+                  timestampString = "467911706.117097"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "134">
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "216">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -1369,12 +1353,12 @@
                   moduleName = "Photopon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Hayk/photopon-ios/Photopon/Photopon/Helper.m"
-                  timestampString = "466986539.038254"
+                  timestampString = "467911706.117987"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "108">
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "94">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1434,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/Helper.m"
-            timestampString = "466990081.385374"
+            timestampString = "467911986.912901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-getCouponsForLocation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1478,7 +1462,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
@@ -1498,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/MiniCouponView.m"
-            timestampString = "467491500.0633"
+            timestampString = "467916794.017579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-initView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1514,11 +1498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/MiniCouponView.m"
-            timestampString = "467491500.0633"
+            timestampString = "467912673.862182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1546,11 +1530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/MiniCouponView.m"
-            timestampString = "467491500.0633"
+            timestampString = "467912673.862182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1584,6 +1568,431 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "-application:didRegisterUserNotificationSettings:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/SettingsController.m"
+            timestampString = "467911029.772405"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/SettingsController.m"
+            timestampString = "469493562.106925"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+            timestampString = "467903562.51607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-sd_setImageWithURL:placeholderImage:options:progress:completed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke14"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.530467"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "254">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke_2"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.530774"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_17"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.531004"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_18"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.531219"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke20"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.531444"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_21"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.531671"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_22"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903562.531879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+            timestampString = "467903575.12276"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-sd_setImageWithURL:placeholderImage:options:progress:completed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke14"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903575.131434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "816">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_24"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903575.131731"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_25"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903575.13195"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+            timestampString = "467903583.853472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-sd_setImageWithURL:placeholderImage:options:progress:completed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke14"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903583.855976"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "816">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_24"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903583.85625"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_25"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+                  timestampString = "467903583.856478"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SDWebImage/SDWebImage/UIImageView+WebCache.m"
+            timestampString = "467903663.824762"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-sd_setImageWithURL:placeholderImage:options:progress:completed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/CouponViewController.m"
+            timestampString = "467911791.492797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Helper.m"
+            timestampString = "467911986.912901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "-getCouponsForLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Helper.m"
+            timestampString = "467911986.912901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "AddCouponUpdateListener()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/PhotoponCameraView.m"
+            timestampString = "467912410.869113"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-couponsUpdated"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/PhotoponCameraView.m"
+            timestampString = "467915635.549188"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "-initCamera"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/MiniCouponView.h"
+            timestampString = "467916753.898053"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-getLeftSwipe"
+            landmarkType = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/PhotoponLoginViewController.m"
+            timestampString = "469482201.84768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-_loginDidFailWithError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/PhotoponDrawController.m"
+            timestampString = "469504153.306056"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
