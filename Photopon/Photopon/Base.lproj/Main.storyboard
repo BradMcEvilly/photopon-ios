@@ -368,7 +368,7 @@
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDg-Of-h7X">
                                 <rect key="frame" x="0.0" y="20" width="600" height="160"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Epl-Fn-BTY"/>
                                 </constraints>
@@ -415,7 +415,7 @@
                                         <rect key="frame" x="59" y="9" width="72" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -545,6 +545,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r07-0G-ROK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="729" y="1025"/>
+        </scene>
+        <!--Coupon Details-->
+        <scene sceneID="dhn-yj-I2D">
+            <objects>
+                <viewController storyboardIdentifier="SBCouponDetails" title="Coupon Details" id="BYb-0a-beO" userLabel="Coupon Details" customClass="CouponDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kT9-c7-thI"/>
+                        <viewControllerLayoutGuide type="bottom" id="lmt-Gc-NmR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uE2-7N-T9q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0gh-na-uYw">
+                                <rect key="frame" x="20" y="30" width="96" height="96"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="NG8-Ge-feY"/>
+                                    <constraint firstAttribute="height" constant="96" id="bxh-P6-xZi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwC-Pe-Hfr">
+                                <rect key="frame" x="136" y="30" width="444" height="96"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="1Pe-29-fpZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVq-YG-QnF">
+                                <rect key="frame" x="20" y="520" width="560" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXp-iU-VOd">
+                                        <rect key="frame" x="20" y="21" width="42" height="38"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Give"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQc-to-rIi">
+                                        <rect key="frame" x="506" y="21" width="34" height="38"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Get"/>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YQc-to-rIi" secondAttribute="trailing" constant="20" id="2LJ-SF-Ztp"/>
+                                    <constraint firstItem="YQc-to-rIi" firstAttribute="centerY" secondItem="uVq-YG-QnF" secondAttribute="centerY" id="Ae8-yy-7jj"/>
+                                    <constraint firstItem="CXp-iU-VOd" firstAttribute="leading" secondItem="uVq-YG-QnF" secondAttribute="leading" constant="20" id="Vox-O8-1IX"/>
+                                    <constraint firstAttribute="height" constant="80" id="Z8i-Lr-u9L"/>
+                                    <constraint firstItem="CXp-iU-VOd" firstAttribute="centerY" secondItem="uVq-YG-QnF" secondAttribute="centerY" id="rvc-52-OFa"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-TZ-ZB0">
+                                <rect key="frame" x="20" y="146" width="560" height="33.5"/>
+                                <animations/>
+                                <string key="text">Long description of coupon that has a short description of coupon terms. Can be up to 3 lines and shold fit here.. lets see if it does</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0gh-na-uYw" firstAttribute="leading" secondItem="uE2-7N-T9q" secondAttribute="leadingMargin" id="0fD-3v-4Xd"/>
+                            <constraint firstItem="cSJ-TZ-ZB0" firstAttribute="leading" secondItem="uE2-7N-T9q" secondAttribute="leadingMargin" id="Alk-Dw-aBv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zwC-Pe-Hfr" secondAttribute="trailing" id="E7y-l7-Hse"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uVq-YG-QnF" secondAttribute="trailing" id="U6S-qJ-SM3"/>
+                            <constraint firstItem="cSJ-TZ-ZB0" firstAttribute="trailing" secondItem="uE2-7N-T9q" secondAttribute="trailingMargin" id="UYV-iB-7t7"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="uVq-YG-QnF" secondAttribute="bottom" id="VyS-AH-xOr"/>
+                            <constraint firstItem="uVq-YG-QnF" firstAttribute="leading" secondItem="uE2-7N-T9q" secondAttribute="leadingMargin" id="bhq-2w-22s"/>
+                            <constraint firstItem="cSJ-TZ-ZB0" firstAttribute="top" secondItem="zwC-Pe-Hfr" secondAttribute="bottom" constant="20" id="fBf-sV-8bS"/>
+                            <constraint firstItem="uVq-YG-QnF" firstAttribute="centerX" secondItem="uE2-7N-T9q" secondAttribute="centerX" id="iG9-zS-l3C"/>
+                            <constraint firstItem="0gh-na-uYw" firstAttribute="top" secondItem="kT9-c7-thI" secondAttribute="bottom" constant="10" id="oe2-W1-MRi"/>
+                            <constraint firstItem="zwC-Pe-Hfr" firstAttribute="leading" secondItem="0gh-na-uYw" secondAttribute="trailing" constant="20" id="otq-ib-xoR"/>
+                            <constraint firstItem="zwC-Pe-Hfr" firstAttribute="top" secondItem="kT9-c7-thI" secondAttribute="bottom" constant="10" id="x8E-RU-rzb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="couponDescription" destination="cSJ-TZ-ZB0" id="vkE-h0-9N6"/>
+                        <outlet property="couponImage" destination="0gh-na-uYw" id="mt3-9Y-jtY"/>
+                        <outlet property="couponTitle" destination="zwC-Pe-Hfr" id="TVk-X1-lot"/>
+                        <outlet property="getButton" destination="YQc-to-rIi" id="F5G-jF-kjs"/>
+                        <outlet property="giveButton" destination="CXp-iU-VOd" id="7dp-na-WCu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4qh-x1-KwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="1738"/>
         </scene>
         <!--Photopon-->
         <scene sceneID="xpr-mf-O0h">
@@ -786,7 +880,7 @@
                                             <constraint firstAttribute="height" constant="40" id="NSP-UI-B9J"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="URa-lS-b94">
@@ -801,7 +895,7 @@
                                         <rect key="frame" x="236" y="121" width="77" height="17"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -951,7 +1045,7 @@
                                 <animations/>
                                 <string key="text">Please fill the form below to request merchant status. Your request will be reviewed and notification e-mail will be sent to you.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Business Name" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="1bO-1w-Hrb">

@@ -120,7 +120,7 @@ void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
         couponDelegates = [[NSHashTable alloc] init];
     }
     [couponDelegates addObject: delegate];
-    NSLog(@"Currently %i coupon update listeners", [couponDelegates count]);
+    NSLog(@"Currently %lu coupon update listeners", [couponDelegates count]);
 }
 
 void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
@@ -143,7 +143,7 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
         [couponsNearby removeAllObjects];
         [couponsNearbyPF removeAllObjects];
         
-        NSLog(@"Got %i coupons!", [results count]);
+        NSLog(@"Got %lu coupons!", [results count]);
         
         for (PFObject* object in results) {
             
@@ -162,7 +162,7 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
             [couponsNearbyPF addObject:object];
         }
         
-        NSLog(@"Broadcasting to %i delegates", [couponDelegates count]);
+        NSLog(@"Broadcasting to %lu delegates", [couponDelegates count]);
         
         for (id<CouponUpdateDelegate> obj in couponDelegates) {
             [obj couponsUpdated];

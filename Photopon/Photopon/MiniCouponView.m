@@ -54,14 +54,13 @@
 }
 
 
--(void)initView
+-(void)initView: (NSInteger)couponIndex
 {
+    currentCouponIndex = couponIndex;
     
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
 
-    currentCouponIndex = 0;
-    
     
     
     [self setUserInteractionEnabled:YES];

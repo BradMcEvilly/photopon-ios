@@ -7,6 +7,7 @@ pod 'ParseUI'
 pod 'FontAwesome'
 pod 'PubNub'
 pod 'SDWebImage'
+pod 'IQKeyboardManager'
 end
 
 target 'PhotoponTests' do

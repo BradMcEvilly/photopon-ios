@@ -10,6 +10,7 @@
 
 @implementation CouponTableViewCell
 
+
 - (void)awakeFromNib {
     // Initialization code
 }

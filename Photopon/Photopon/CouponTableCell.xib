@@ -1,10 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponTableCell" rowHeight="110" id="Xqz-FA-biG" customClass="CouponTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xqz-FA-biG" id="eDt-Z2-JOT">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vVd-K5-fOI">
+                        <rect key="frame" x="8" y="8" width="94" height="93.5"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="94" id="vqU-Nn-E1g"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoW-BZ-VPm">
+                        <rect key="frame" x="108.5" y="8" width="283.5" height="24"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="Obs-M3-e5j"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of current coupon can be 2 lines blah blah blah bah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNw-wh-wN7">
+                        <rect key="frame" x="108" y="30" width="283.5" height="36"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="X8L-34-6xx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiM-5a-CG7">
+                        <rect key="frame" x="342" y="71" width="50" height="30"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Ozn-Zk-ZKa"/>
+                        </constraints>
+                        <state key="normal" title="Give"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13L-hm-9jv">
+                        <rect key="frame" x="282" y="71" width="50" height="30"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="vpi-II-Hyh"/>
+                        </constraints>
+                        <state key="normal" title="Get"/>
+                    </button>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="jiM-5a-CG7" firstAttribute="leading" secondItem="13L-hm-9jv" secondAttribute="trailing" constant="10" id="2br-OM-PwJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="vVd-K5-fOI" secondAttribute="bottom" id="Bxb-hf-aOd"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="jiM-5a-CG7" secondAttribute="bottom" id="LmM-LZ-L0k"/>
+                    <constraint firstItem="vVd-K5-fOI" firstAttribute="leading" secondItem="eDt-Z2-JOT" secondAttribute="leadingMargin" id="aUM-In-xjR"/>
+                    <constraint firstItem="ZoW-BZ-VPm" firstAttribute="top" secondItem="eDt-Z2-JOT" secondAttribute="topMargin" id="cQj-kG-cHO"/>
+                    <constraint firstItem="ZoW-BZ-VPm" firstAttribute="trailing" secondItem="eDt-Z2-JOT" secondAttribute="trailingMargin" id="gCW-mn-3tm"/>
+                    <constraint firstItem="SNw-wh-wN7" firstAttribute="top" secondItem="eDt-Z2-JOT" secondAttribute="topMargin" constant="22" id="mh4-Zi-FjE"/>
+                    <constraint firstItem="jiM-5a-CG7" firstAttribute="trailing" secondItem="eDt-Z2-JOT" secondAttribute="trailingMargin" id="ogm-mD-LOs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="13L-hm-9jv" secondAttribute="bottom" id="tkd-wZ-4o2"/>
+                    <constraint firstItem="ZoW-BZ-VPm" firstAttribute="leading" secondItem="vVd-K5-fOI" secondAttribute="trailing" constant="6" id="vF2-Pp-f51"/>
+                    <constraint firstItem="SNw-wh-wN7" firstAttribute="leading" secondItem="vVd-K5-fOI" secondAttribute="trailing" constant="6" id="vu1-Lo-FU6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="SNw-wh-wN7" secondAttribute="trailing" id="yaS-vs-8Um"/>
+                    <constraint firstItem="vVd-K5-fOI" firstAttribute="top" secondItem="eDt-Z2-JOT" secondAttribute="topMargin" id="z6u-RE-PBc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="getButton" destination="13L-hm-9jv" id="H13-Gd-RmS"/>
+                <outlet property="giveButton" destination="jiM-5a-CG7" id="db1-ZV-LT6"/>
+                <outlet property="longDescription" destination="SNw-wh-wN7" id="9sl-Pq-LpV"/>
+                <outlet property="thumbImage" destination="vVd-K5-fOI" id="g0R-By-U5Q"/>
+                <outlet property="title" destination="ZoW-BZ-VPm" id="PEo-P0-dKx"/>
+            </connections>
+            <point key="canvasLocation" x="626" y="317"/>
+        </tableViewCell>
     </objects>
 </document>

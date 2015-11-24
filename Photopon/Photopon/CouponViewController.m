@@ -14,6 +14,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PhotoponCameraView.h"
 #import "Helper.h"
+#import "CouponTableViewCell.h"
+#import "CouponDetailViewController.h"
 
 
 @implementation CouponViewController
@@ -33,6 +35,47 @@
     [self.couponTable reloadData];
 }
 
+
+
+-(void) getCoupon:(id)sender {
+    UIButton* btn = (UIButton*)sender;
+    NSInteger thisCouponIndex = btn.tag;
+    
+    UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
+                                                                               message:@"You can redeem coupon once. Are you sure you want to redeem it now?"
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
+        [coupon incrementKey:@"numRedeemed"];
+        [coupon saveInBackground];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
+                                                        message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Awesome!"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+    
+    
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    
+    [confirmationAlert addAction:getAction];
+    [confirmationAlert addAction:cancelAction];
+    [self presentViewController:confirmationAlert animated:YES completion:nil];
+}
+
+-(void) giveCoupon: (id)sender {
+    UIButton* btn = (UIButton*)sender;
+    NSInteger thisCouponIndex = btn.tag;
+    
+    PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
+    [camView setCurrentCouponIndex:thisCouponIndex];
+    [self showViewController:camView sender:nil];
+
+}
 
 
 -(void)viewDidLoad
@@ -67,79 +110,44 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+    CouponTableViewCell *cell = (CouponTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"CouponTableCell"];
+    
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CouponTableCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
     
     NSDictionary *item = (NSDictionary *)[allCoupons objectAtIndex:indexPath.row];
-    cell.textLabel.text = [item objectForKey:@"title"];
-    cell.detailTextLabel.text = [item objectForKey:@"desc"];
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[item objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    cell.title.text = [item objectForKey:@"title"];
+    cell.longDescription.text = [item objectForKey:@"desc"];
+    [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:[item objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    
+    cell.getButton.tag = indexPath.row;
+    [cell.getButton addTarget:self action:@selector(getCoupon:) forControlEvents:UIControlEventTouchDown];
+    
+    cell.giveButton.tag = indexPath.row;
+    [cell.giveButton addTarget:self action:@selector(giveCoupon:) forControlEvents:UIControlEventTouchDown];
 
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 110;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedCouponIndex = (int)indexPath.row;
-    
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose action"
-                                                                   message:@"Do you want to Give or Get coupon?"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* giveAction = [UIAlertAction actionWithTitle:@"Give" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-        [camView setCurrentCouponIndex:selectedCouponIndex];
-        [self showViewController:camView sender:nil];
-    }];
-    
-    
-    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Get" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        
-        UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
-                                                                       message:@"You can redeem coupon once. Are you sure you want to redeem it now?"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-            PFObject* coupon = [allPFCoupons objectAtIndex:selectedCouponIndex];
-            [coupon incrementKey:@"numRedeemed"];
-            [coupon saveInBackground];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
-                                                            message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Awesome!"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }];
-        
-        
-        
-        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-        
-        [confirmationAlert addAction:getAction];
-        [confirmationAlert addAction:cancelAction];
-        [self presentViewController:confirmationAlert animated:YES completion:nil];
-        
-    }];
+    NSInteger thisCouponIndex = (int)indexPath.row;
     
     
     
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
+    [detailView setCouponIndex:thisCouponIndex];
+    [self showViewController:detailView sender:nil];
     
-    [alert addAction:giveAction];
-    [alert addAction:getAction];
-    [alert addAction:cancelAction];
-    
-    
-    
-    [self presentViewController:alert animated:YES completion:nil];
     
     
     

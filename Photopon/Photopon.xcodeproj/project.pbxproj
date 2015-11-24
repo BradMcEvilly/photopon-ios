@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
+		622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */; };
 		623F95581B939AC200506B16 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F95571B939AC200506B16 /* WalletController.m */; };
 		623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F955A1B93AC0B00506B16 /* PhotoponViewController.m */; };
 		625817241BA9685200506E0E /* camplaceholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 625817231BA9685200506E0E /* camplaceholder.jpg */; };
@@ -44,6 +45,8 @@
 		62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148EB1B79732100E8D4A1 /* PhotoponTests.m */; };
 		62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */; };
 		62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D9C8001BFBE64A00B81FDB /* MerchantInfoPage.m */; };
+		62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D9C8021BFD44DD00B81FDB /* CouponTableCell.xib */; };
+		62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D9C8051BFD48D700B81FDB /* CouponTableViewCell.m */; };
 		62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DD661B1B8E87B100B1A972 /* SettingsController.m */; };
 		62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */; };
 		62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E747281BDD50EB0003A8F1 /* MiniCouponView.m */; };
@@ -66,6 +69,8 @@
 		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		622C82531BFF429A00D7BCE2 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
+		622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		623F95561B939AC200506B16 /* WalletController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
 		623F95571B939AC200506B16 /* WalletController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
 		623F95591B93AC0B00506B16 /* PhotoponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponViewController.h; sourceTree = "<group>"; };
@@ -124,6 +129,9 @@
 		62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackdot.png; sourceTree = "<group>"; };
 		62D9C7FF1BFBE64A00B81FDB /* MerchantInfoPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInfoPage.h; sourceTree = "<group>"; };
 		62D9C8001BFBE64A00B81FDB /* MerchantInfoPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInfoPage.m; sourceTree = "<group>"; };
+		62D9C8021BFD44DD00B81FDB /* CouponTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponTableCell.xib; sourceTree = "<group>"; };
+		62D9C8041BFD48D700B81FDB /* CouponTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponTableViewCell.h; sourceTree = "<group>"; };
+		62D9C8051BFD48D700B81FDB /* CouponTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponTableViewCell.m; sourceTree = "<group>"; };
 		62DD661A1B8E87B100B1A972 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		62DD661B1B8E87B100B1A972 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileplaceholder.png; sourceTree = "<group>"; };
@@ -245,6 +253,11 @@
 				62E747281BDD50EB0003A8F1 /* MiniCouponView.m */,
 				62D9C7FF1BFBE64A00B81FDB /* MerchantInfoPage.h */,
 				62D9C8001BFBE64A00B81FDB /* MerchantInfoPage.m */,
+				62D9C8021BFD44DD00B81FDB /* CouponTableCell.xib */,
+				62D9C8041BFD48D700B81FDB /* CouponTableViewCell.h */,
+				62D9C8051BFD48D700B81FDB /* CouponTableViewCell.m */,
+				622C82531BFF429A00D7BCE2 /* CouponDetailViewController.h */,
+				622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -315,6 +328,7 @@
 				62D148C31B79732100E8D4A1 /* Frameworks */,
 				62D148C41B79732100E8D4A1 /* Resources */,
 				3E8CE73B4011A27C5225B4FC /* Copy Pods Resources */,
+				084E085495C76B1B661D997B /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -387,6 +401,7 @@
 			files = (
 				626266241B8A7710006D730E /* check.png in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
+				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
 				62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */,
@@ -411,6 +426,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		084E085495C76B1B661D997B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photopon/Pods-Photopon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3E8CE73B4011A27C5225B4FC /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,6 +494,7 @@
 				62A302B51B7E78C100D61F34 /* FriendRequestControl.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */,
+				622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
@@ -471,6 +502,7 @@
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
+				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,
