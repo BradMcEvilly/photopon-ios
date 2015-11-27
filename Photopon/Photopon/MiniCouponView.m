@@ -39,6 +39,11 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    if ([otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        [otherGestureRecognizer requireGestureRecognizerToFail: swipeRecLeft];
+        [otherGestureRecognizer requireGestureRecognizerToFail: swipeRecRight];
+        
+    }
     //NSLog(@"%@", otherGestureRecognizer);
     //[otherGestureRecognizer requireGestureRecognizerToFail:swipeRecLeft];
     //[otherGestureRecognizer requireGestureRecognizerToFail:swipeRecRight];

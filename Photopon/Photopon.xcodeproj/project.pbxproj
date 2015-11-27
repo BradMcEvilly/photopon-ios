@@ -34,6 +34,8 @@
 		62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D086041B86A27D0063C8B8 /* CouponViewController.m */; };
 		62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D086061B86B3B50063C8B8 /* couponplaceholder.png */; };
 		62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D086091B87E7E20063C8B8 /* PhotoponDrawController.m */; };
+		62D0C2F91C08B4A60069B0B5 /* contact-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D0C2F71C08B4A60069B0B5 /* contact-user.png */; };
+		62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D0C2F81C08B4A60069B0B5 /* photopon-user.png */; };
 		62D148CC1B79732100E8D4A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CB1B79732100E8D4A1 /* main.m */; };
 		62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148CE1B79732100E8D4A1 /* AppDelegate.m */; };
 		62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62D148D01B79732100E8D4A1 /* Photopon.xcdatamodeld */; };
@@ -110,6 +112,8 @@
 		62D086061B86B3B50063C8B8 /* couponplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponplaceholder.png; sourceTree = "<group>"; };
 		62D086081B87E7E20063C8B8 /* PhotoponDrawController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponDrawController.h; sourceTree = "<group>"; };
 		62D086091B87E7E20063C8B8 /* PhotoponDrawController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponDrawController.m; sourceTree = "<group>"; };
+		62D0C2F71C08B4A60069B0B5 /* contact-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact-user.png"; sourceTree = "<group>"; };
+		62D0C2F81C08B4A60069B0B5 /* photopon-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photopon-user.png"; sourceTree = "<group>"; };
 		62D148C61B79732100E8D4A1 /* Photopon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photopon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D148CA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D148CB1B79732100E8D4A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62D0C2F71C08B4A60069B0B5 /* contact-user.png */,
+				62D0C2F81C08B4A60069B0B5 /* photopon-user.png */,
 				62ED02F11BD4419D00534A98 /* photopon-logo.png */,
 				62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */,
 				625817231BA9685200506E0E /* camplaceholder.jpg */,
@@ -399,12 +405,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D0C2F91C08B4A60069B0B5 /* contact-user.png in Resources */,
 				626266241B8A7710006D730E /* check.png in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
 				62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */,
+				62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
 				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
@@ -565,7 +573,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -584,9 +593,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b907357b-51da-4610-b86c-553c2fd49d63";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -609,7 +619,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -622,8 +633,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "b907357b-51da-4610-b86c-553c2fd49d63";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -673,6 +685,7 @@
 				INFOPLIST_FILE = PhotoponTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6ba3318e-7f58-4427-841a-433b343366ae";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photopon.app/Photopon";
 			};
 			name = Debug;
@@ -688,6 +701,7 @@
 				INFOPLIST_FILE = PhotoponTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6ba3318e-7f58-4427-841a-433b343366ae";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photopon.app/Photopon";
 			};
 			name = Release;

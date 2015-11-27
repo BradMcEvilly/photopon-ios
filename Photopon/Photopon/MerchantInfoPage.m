@@ -8,6 +8,7 @@
 
 #import "MerchantInfoPage.h"
 #import <Parse/Parse.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @implementation MerchantInfoPage
 
@@ -68,8 +69,15 @@
 
 -(void)viewDidLoad {
     
+    [super viewDidLoad];
     
-    
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    // optional
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+    [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:NO];
+    [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:NO];
+    [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarByPosition];
+
 
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
 

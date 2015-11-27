@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Photopon. All rights reserved.
 //
 
+@import Contacts;
 #import "AddFriendController.h"
 #import "Parse/Parse.h"
 #import "LogHelper.h"
@@ -14,6 +15,7 @@
 @implementation AddFriendController 
 {
     NSMutableArray *friendSuggestions;
+    NSMutableArray *myContacts;
     NSTimer *timer;
 }
 
@@ -35,11 +37,31 @@
             NSString* email = [object valueForKey:@"email"];
             
             [friendSuggestions addObject:@{
-                                           @"name": username,
-                                           @"email": email,
-                                           @"user": object
-                                        }];
+               @"name": username,
+               @"email": email,
+               @"user": object,
+               @"fromServer": @YES
+            }];
         }
+        
+        
+        for (NSDictionary* contact in myContacts) {
+            NSString* name = [contact valueForKey:@"name"];
+            NSString* email = [contact valueForKey:@"email"];
+            NSString* phone = [contact valueForKey:@"phone"];
+
+            if ( ([name rangeOfString:searchText].location != NSNotFound) || ([email rangeOfString:searchText].location != NSNotFound) ) {
+                
+                [friendSuggestions addObject:@{
+                   @"name": [NSString stringWithFormat:@"%@ %@", name, phone],
+                   @"email": email,
+                   @"user": phone,
+                   @"fromServer": @NO
+                }];
+            }
+        }
+        
+        
         [self.searchResultTable reloadData];
         
     });
@@ -69,7 +91,62 @@
     [self.userSearchBar setDelegate:self];
     [self.searchResultTable setDelegate:self];
     [self.searchResultTable setDataSource:self];
+    
     friendSuggestions = [NSMutableArray array];
+    myContacts = [NSMutableArray array];
+    
+    
+    CNContactStore *store = [[CNContactStore alloc] init];
+    [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (!granted) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No permission"
+                                                                message:@"I need your permission to be able to add friends from your contact list"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Cancel"
+                                                      otherButtonTitles:nil];
+                [alert show];
+
+            });
+            return;
+        }
+        
+        NSMutableArray *contacts = [NSMutableArray array];
+        
+        NSError *fetchError;
+        CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactIdentifierKey, CNContactEmailAddressesKey, CNContactPhoneNumbersKey, [CNContactFormatter descriptorForRequiredKeysForStyle:CNContactFormatterStyleFullName]]];
+        
+        BOOL success = [store enumerateContactsWithFetchRequest:request error:&fetchError usingBlock:^(CNContact *contact, BOOL *stop) {
+            [contacts addObject:contact];
+        }];
+        if (!success) {
+            NSLog(@"error = %@", fetchError);
+        }
+        
+        CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
+        
+        for (CNContact *contact in contacts) {
+            NSString* name = [formatter stringFromContact:contact];
+            NSArray* emails = [contact emailAddresses];
+            
+            for (CNLabeledValue<NSString*>* email in emails) {
+                
+                
+                for (CNLabeledValue<CNPhoneNumber*>* phone in contact.phoneNumbers) {
+                    
+                    
+                    [myContacts addObject:@{
+                        @"name": name,
+                        @"email": email.value,
+                        @"phone": phone.value.stringValue
+                    }];
+                }
+
+            }
+        }
+    }];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -103,10 +180,14 @@
     NSDictionary *item = (NSDictionary *)[friendSuggestions objectAtIndex:indexPath.row];
     cell.textLabel.text = [item objectForKey:@"name"];
     cell.detailTextLabel.text = [item objectForKey:@"email"];
-    // NSString *path = [[NSBundle mainBundle] pathForResource:[item objectForKey:@"imageKey"] ofType:@"png"];
-    // UIImage *theImage = [UIImage imageWithContentsOfFile:path];
-    // cell.imageView.image = theImage;
     
+    if ([item objectForKey:@"fromServer"] == @YES) {
+        UIImage *theImage = [UIImage imageNamed:@"photopon-user.png"];
+        cell.imageView.image = theImage;
+    } else {
+        UIImage *theImage = [UIImage imageNamed:@"contact-user.png"];
+        cell.imageView.image = theImage;
+    }
     return cell;
 }
 

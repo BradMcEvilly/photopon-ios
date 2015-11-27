@@ -169,8 +169,10 @@
     [self.noCouponIndicator stopAnimating];
 
     
-    [self.miniCouponView initView];
+    [self.miniCouponView initView: currentCouponIndex];
     
+    
+    /*
     if ([self.parentViewController isKindOfClass:[UIPageViewController class]]) {
         UIPageViewController* pageView = (UIPageViewController*)self.parentViewController;
         
@@ -183,8 +185,8 @@
                 
             }
         }
-
     }
+     */
     
     
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
