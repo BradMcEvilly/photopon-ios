@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface FriendsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *friendsTable;
 
 -(void)friendSelectedCallBack:(SEL)action target:(id)target;
-
 
 @end

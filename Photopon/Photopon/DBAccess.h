@@ -14,19 +14,25 @@
 #import "Parse/Parse.h"
 
 typedef void (^ResultBlock)(NSArray *results, NSError *error);
+
+typedef void (^FriendSuggestionResultBlock)(PFUser *user, NSArray* myFriends);
+
 typedef void (^FileResultBlock)(PFFile* file, NSError *error);
 
 
 void GetMyFriends(ResultBlock block);
-void GetMyFriendRequests(ResultBlock block);
+void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block);
 
-void GetSearchSuggestions(NSString* searchText, ResultBlock block);
+
+void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block);
 
 void GetNotifications(ResultBlock block);
 void GetWalletItems(ResultBlock block);
 
 void CreateFriendRequestNotification(PFUser* toUser);
 void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon);
+void CreateMessageNotification(PFUser* toUser, NSString* content);
+
 
 
 

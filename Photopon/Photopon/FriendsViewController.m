@@ -5,8 +5,11 @@
 //  Created by Hayk Hayotsyan on 12/8/15.
 //  Copyright (c) 2015 Photopon. All rights reserved.
 //
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #import "FriendsViewController.h"
+#import "FriendPopupViewController.h"
+#import "ChatMessagesController.h"
 #import "Parse/Parse.h"
 #import "LogHelper.h"
 #import "DBAccess.h"
@@ -28,27 +31,58 @@
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
     
-    GetMyFriends(^(NSArray *results, NSError *error) {
-        for (PFUser* object in results) {
-            
-            NSString* username = [object username];
-            NSString* email = [object email];
-
-            [myFriends addObject:@{
-                                   @"name": username,
-                                   @"email": email,
-                                   @"id": [object objectId],
-                                   @"isSelected": @false
-                                   }];
-        }
-        [self.friendsTable reloadData];
-    });
-    
     if (isSelectMode) {
         UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
         self.navigationItem.rightBarButtonItem = anotherButton;
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
+    [self.friendsTable addGestureRecognizer:tap];
 
+
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    GetMyFriends(^(NSArray *results, NSError *error) {
+        [myFriends removeAllObjects];
+        for (PFObject* obj in results) {
+            PFUser* object = (PFUser*)obj[@"user2"];
+            
+            if (object) {
+                NSString* username = [object username];
+                NSString* email = [object email];
+                PFFile* img = [object valueForKey:@"image"];
+                
+                NSMutableDictionary* item = [@{
+                   @"name": username,
+                   @"email": email,
+                   @"id": [object objectId],
+                   @"isSelected": @false,
+                   @"object": object
+                } mutableCopy];
+                
+                if (img) {
+                    item[@"image"] = img.url;
+                }
+                
+                [myFriends addObject:item];
+            } else {
+                [myFriends addObject:@{
+                   @"name": [obj valueForKey:@"name"],
+                   @"email": [obj valueForKey:@"phone"],
+                   @"id": [obj valueForKey:@"phoneId"],
+                   @"isSelected": @false,
+                   @"isPlaceholder": @true
+               }];
+            }
+        }
+        [self.friendsTable reloadData];
+    });
+    
+ 
 }
 
 -(void)friendsSelected {
@@ -71,6 +105,7 @@
         [onFriendSelectedTarget performSelector:onFriendSelected withObject:selectedUsers];
     }
 }
+
 
 -(void)friendSelectedCallBack:(SEL)action target:(id)target {
     onFriendSelected = action;
@@ -95,7 +130,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendsCellIdentifier"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+
     }
+
     
     NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
     cell.textLabel.text = [item objectForKey:@"name"];
@@ -106,34 +144,85 @@
     if (isSelected && isSelectMode) {
         [cell.imageView setImage:[UIImage imageNamed:@"check.png"]];
     } else {
-        [cell.imageView setImage:nil];
+        NSString* img = [item objectForKey:@"image"];
+        if (img) {
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]  options:SDWebImageAvoidAutoSetImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    [cell.imageView setImage:image];
+                    
+                    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                    
+                });
+                
+            }];
+        } else {
+            [cell.imageView setImage:[UIImage imageNamed:@"profileplaceholder.png"]];
+
+        }
+
+        
+
     }
-   // NSString *path = [[NSBundle mainBundle] pathForResource:[item objectForKey:@"imageKey"] ofType:@"png"];
-   // UIImage *theImage = [UIImage imageWithContentsOfFile:path];
-   // cell.imageView.image = theImage;
     
     return cell;
 }
 
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%ld", (long)indexPath.row);
+
+-(void) didTapOnTableView:(UIGestureRecognizer*) recognizer {
+    CGPoint tapLocation = [recognizer locationInView:self.friendsTable];
+    NSIndexPath *indexPath = [self.friendsTable indexPathForRowAtPoint:tapLocation];
+    
+    if (!indexPath) {
+        return;
+    }
+    
     NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
     
+    NSLog(@"%ld", (long)indexPath.row);
     
-    bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+    if (isSelectMode) {
+        
+        bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+        
+        NSMutableDictionary* mutableDict = [item mutableCopy];
+        [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];
+        [myFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
+        
+        [self.friendsTable reloadData];
+    } else {
+        //[self startChatWithFriend:item[@"object"]];
+        //return;
+        FriendPopupViewController* friendPopup = (FriendPopupViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendPopup"];
+        [friendPopup setFriend:item];
+        [friendPopup setFriendViewController:self];
+        
+        friendPopup.providesPresentationContextTransitionStyle = YES;
+        friendPopup.definesPresentationContext = YES;
+        
+        [friendPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+        [self presentViewController:friendPopup animated:YES completion:nil];
+    }
 
-    
-    NSMutableDictionary* mutableDict = [item mutableCopy];
-    [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];
-    [myFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
-    
-    [self.friendsTable reloadData];
 }
 
 
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+

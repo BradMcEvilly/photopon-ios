@@ -223,7 +223,7 @@
     
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
-    friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendsMan"];
+    friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
     

@@ -14,117 +14,64 @@
 void GetMyFriends(ResultBlock block) {
     PFUser* userId = [PFUser currentUser];
     
-    PFQuery *query1 = [PFQuery queryWithClassName:@"Friends"];
-    [query1 whereKey:@"user1" equalTo:userId];
-    
-    PFQuery *query2 = [PFQuery queryWithClassName:@"Friends"];
-    [query2 whereKey:@"user2" equalTo:userId];
-    
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
-    [query includeKey:@"user1"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query includeKey:@"user2"];
+    [query whereKey:@"user1" equalTo:userId];
+    
     
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        NSMutableArray* resolved = [NSMutableArray array];
-        for (PFObject* object in results) {
-
-            PFUser* user1 = [object valueForKey:@"user1"];
-            PFUser* user2 = [object valueForKey:@"user2"];
-            
-            PFUser* otherUser = [PFUser currentUser] == user1 ? user2 : user1;
-            //[otherUser fetchIfNeeded];
-            [resolved addObject:otherUser];
-        };
-        
-        
-        block(resolved, error);
+        block(results, error);
     }];
 }
 
 
 
-void GetMyFriendRequests(ResultBlock block) {
-    PFUser* userId = [PFUser currentUser];
+void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block) {
+    PFQuery *query = [PFUser query];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"FriendRequests"];
-    [query includeKey:@"to"];
-    [query whereKey:@"from" equalTo:userId];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        NSMutableArray* resolved = [NSMutableArray array];
-        for (PFObject* object in results) {
-            
-            PFUser* to = [object valueForKey:@"to"];
-            [resolved addObject:to];
-        };
-        
-        
-        block(resolved, error);
+    [query whereKey:@"phone" equalTo:phone];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        block((PFUser*)object, NULL);
     }];
 }
 
 
-void GetSearchSuggestions(NSString* searchText, ResultBlock block) {
+
+void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block) {
     
-    
-    PFQuery *query1 = [PFUser query];
-    PFQuery *query2 = [PFUser query];
-    
-    
-    [query1 whereKey:@"username" containsString:searchText];
-    [query2 whereKey:@"email" containsString:searchText];
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1,query2]];
-    
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        
-        NSMutableArray* filtered = [NSMutableArray array];
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:searchText];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         
         GetMyFriends(^(NSArray *friends, NSError *error) {
-            GetMyFriendRequests(^(NSArray* requests, NSError *error) {
-               
-                
-                for (PFObject* user in results) {
-                    
-                    bool isMyFriend = false;
-                    bool isRequest = false;
-                    
-                    NSString* userId = [user objectId];
 
-                    for (PFObject* myFriend in friends) {
-                        NSString* myFriendId = [myFriend objectId];
-                        if ([myFriendId isEqualToString:userId]) {
-                            isMyFriend = true;
-                            break;
-                        }
-                    }
-                    
-                    for (PFObject* myRequests in requests) {
-                        NSString* myRequestId = [myRequests objectId];
-
-                        if ([myRequestId isEqualToString:userId]) {
-                            isRequest = true;
-                            break;
-                        }
-                    }
-                    
-                    
-                    if (!isMyFriend && !isRequest && ![userId isEqualToString:[[PFUser currentUser] objectId]]) {
-                        [filtered addObject:user];
-                    }
-                    
-                }
-                
-                block(filtered, error);
-
-                
-            });
+            if (!object) {
+                block(nil, friends);
+                return;
+            }
+            /*
+            PFUser* userId = [PFUser currentUser];
             
+            for (int i = 0; i < [friends count]; ++i) {
+                PFObject* friendship = [friends objectAtIndex:i];
+                PFUser* myFriend = [friendship valueForKey:@"user2"];
+                if (myFriend) {
+                    if ([[myFriend objectId] isEqualToString:[userId objectId]]) {
+                        block(nil, friends);
+                        return;
+                    }
+                }
+            }
+             */
+            
+            
+            block((PFUser*)object, friends);
         });
         
     }];
 }
+
 
 
 
@@ -246,6 +193,18 @@ void CreateFriendRequestNotification(PFUser* toUser) {
     notification[@"to"] = toUser;
     notification[@"assocUser"] = [PFUser currentUser];
     notification[@"type"] = @"FRIEND";
+    
+    [notification saveInBackground];
+}
+
+void CreateMessageNotification(PFUser* toUser, NSString* content) {
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+    
+    notification[@"to"] = toUser;
+    notification[@"type"] = @"MESSAGE";
+    notification[@"content"] = content;
+    notification[@"assocUser"] = [PFUser currentUser];
+
     
     [notification saveInBackground];
 }

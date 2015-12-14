@@ -29,7 +29,7 @@ UIImageView* CreateFAImage(NSString* type, CGFloat size);
 
 void UpdateNearbyCoupons();
 
-
+NSString* NumbersFromFormattedPhone(NSString* formatted);
 
 NSArray* GetNearbyCoupons();
 NSArray* GetNearbyCouponsPF();

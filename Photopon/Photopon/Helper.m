@@ -97,7 +97,12 @@ void UpdateNearbyCoupons() {
 }
 
 
-
+NSString* NumbersFromFormattedPhone(NSString* formatted) {
+    
+    return [[formatted componentsSeparatedByCharactersInSet:
+                            [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                           componentsJoinedByString:@""];
+}
 
 
 

@@ -10,15 +10,16 @@
 #import <Parse/Parse.h>
 #import <PubNub/PNObjectEventListener.h>
 
-@interface ChatMessagesController : UIViewController<PNObjectEventListener>
+
+@interface ChatMessagesController : UIViewController<PNObjectEventListener, UITableViewDataSource, UITableViewDelegate>
 
 -(void) setUser:(PFUser*)user;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITableView *chatMessages;
 
-@property (strong, nonatomic) UIView *contentView;
+
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 
 @end
