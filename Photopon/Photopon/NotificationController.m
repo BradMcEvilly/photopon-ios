@@ -19,6 +19,12 @@
     NSMutableArray *allNotifications;
 }
 
+-(void)updateNotifications {
+    GetNotifications(^(NSArray *results, NSError *error) {
+        allNotifications = [NSMutableArray arrayWithArray:results];
+        [self.notificationsTable reloadData];
+    });
+}
 
 -(void)viewDidLoad
 {
@@ -27,12 +33,30 @@
     [self.notificationsTable setDataSource:self];
     allNotifications = [NSMutableArray array];
     
-    GetNotifications(^(NSArray *results, NSError *error) {
-        allNotifications = [NSMutableArray arrayWithArray:results];
-        [self.notificationsTable reloadData];
-    });
     
+    
+    [self updateNotifications];
+    [RealTimeNotificationHandler addListener:@"NOTIFICATION.NOTIFICATIONVIEW" withBlock:^(NSString *notificationType) {
+        [self updateNotifications];
+    }];
 }
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"NotificationsScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+
+
+-(void)dealloc {
+    [RealTimeNotificationHandler removeListener:@"NOTIFICATION.NOTIFICATIONVIEW"];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -61,8 +85,8 @@
         cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
         [cell.imageView addSubview:CreateFAImage(@"fa-user-plus", 24)];
         
-        cell.textLabel.text = @"New Friend Request";
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"User %@ have sent you friend request", [assocUser username]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ added you!", [assocUser username]];
+        cell.detailTextLabel.text = @"You can add him back";
         
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];

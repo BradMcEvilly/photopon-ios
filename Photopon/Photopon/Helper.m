@@ -9,7 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Helper.h"
 #import "DBAccess.h"
+#import "PubNubWrapper.h"
 #import "FontAwesome/FAImageView.h"
+#import <PubNub/PubNub+Subscribe.h>
+#import <PubNub/PNSubscriberResults.h>
+#import <PubNub/PubNub+Core.h>
+#import <PubNub/PNConfiguration.h>
+#import <PubNub/PubNub+Publish.h>
+#import <Parse/Parse.h>
 
 
 
@@ -23,6 +30,11 @@ CLLocationManager* locationManager;
 LocationHandler* locationHandler;
 
 NSHashTable *couponDelegates;
+
+NSMutableDictionary* notificationListeners;
+
+RealTimeNotificationHandler* rtUpdateInstance;
+
 
 
 BOOL isLocationInitialized = NO;
@@ -136,8 +148,6 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 
 
 
-
-
 @implementation LocationHandler
 
 
@@ -185,6 +195,99 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 }
 
 @end
+
+
+
+@implementation RealTimeNotificationHandler
+
+
+- (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult*)msg {
+    
+    NSDictionary* data = msg.data.message;
+    
+    
+    if (![data[@"type"] isEqualToString:@"NOTIFICATION"]) {
+        return;
+    }
+    
+    
+    NSString* message = [data valueForKey:@"notification"];
+    NSString* notType = [NSString stringWithFormat:@"%@.", message];
+    
+    NSArray* keys = [notificationListeners allKeys];
+    for (NSString* key in keys) {
+        if ([key hasPrefix:notType]) {
+            NotificationBlock block = notificationListeners[key];
+            block(message);
+        }
+    }
+    
+}
+
+
+
++ (void)setupManager {
+    
+    if (rtUpdateInstance) {
+        return;
+    }
+    
+    PubNub* pubnub = GetPubNub();
+    PFUser* current = [PFUser currentUser];
+    
+    NSString* channel = [NSString stringWithFormat:@"%@_NOTIFICATIONS", [current objectId]];
+    
+    [pubnub subscribeToChannels:@[channel] withPresence:false];
+    
+    notificationListeners = [[NSMutableDictionary alloc] init];
+    
+    rtUpdateInstance = [RealTimeNotificationHandler alloc];
+    [pubnub addListener:rtUpdateInstance];
+}
+
+
++ (void)sendUpdate:(NSString*)update forUser:(PFUser*)user {
+    PubNub* pubnub = GetPubNub();
+    
+    NSString* channel = [NSString stringWithFormat:@"%@_NOTIFICATIONS", [user objectId]];
+
+    
+    [pubnub publish:@{
+        @"type" : @"NOTIFICATION",
+        @"notification": update
+    } toChannel:channel withCompletion:^(PNPublishStatus *status) {
+              
+              
+    }];
+}
+
+
+
++ (void)addListener:(NSString*)type withBlock:(NotificationBlock)block {
+    [RealTimeNotificationHandler setupManager];
+    [notificationListeners setObject:block forKey:type];
+}
+
++ (void)removeListener:(NSString*)type {
+    [RealTimeNotificationHandler setupManager];
+    [notificationListeners removeObjectForKey:type];
+}
+
+
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

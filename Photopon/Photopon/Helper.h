@@ -8,7 +8,12 @@
 
 #ifndef Photopon_Helper_h
 #define Photopon_Helper_h
+
+
 #import <Foundation/Foundation.h>
+#import <PubNub/PNObjectEventListener.h>
+#import <Parse/Parse.h>
+
 @import UIKit;
 @import CoreLocation;
 
@@ -21,24 +26,26 @@
 @end
 
 
+
+typedef void (^NotificationBlock)(NSString* notificationType);
+
+
+
 extern NSMutableArray* couponsNearby;
 
 UIImageView* CreateFAImage(NSString* type, CGFloat size);
-
-
-
-void UpdateNearbyCoupons();
-
 NSString* NumbersFromFormattedPhone(NSString* formatted);
+
+
 
 NSArray* GetNearbyCoupons();
 NSArray* GetNearbyCouponsPF();
+void UpdateNearbyCoupons();
+
+
 
 void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate);
-
-
-
 
 
 @interface LocationHandler : NSObject<CLLocationManagerDelegate>
@@ -49,6 +56,17 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 @end
 
 
+@interface RealTimeNotificationHandler : NSObject<PNObjectEventListener>
+
++ (void)setupManager;
++ (void)sendUpdate:(NSString*)update forUser:(PFUser*)user;
+
++ (void)addListener:(NSString*)type withBlock:(NotificationBlock)block;
++ (void)removeListener:(NSString*)type;
+
+
+
+@end
 
 
 

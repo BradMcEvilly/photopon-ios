@@ -11,14 +11,13 @@
 #import <FontAwesome/NSString+FontAwesome.h>
 #import "Parse/Parse.h"
 #import "Helper.h"
+#import "LeftMenuViewController.h"
 
 @implementation MainController
 {
     NSArray *myViewControllers;
     UINavigationController* navController;
     
-    UIView* popupMenu;
-    UIView* leftPopupMenu;
     
     
     UIViewController *notificationsView;
@@ -38,167 +37,96 @@
 }
 
 
--(void)hideRightMenu {
-    if (popupMenu != NULL) {
-        [popupMenu removeFromSuperview];
-        popupMenu = NULL;
-    }
-}
-
-
-
--(void)hideLeftMenu {
-    if (leftPopupMenu != NULL) {
-        [leftPopupMenu removeFromSuperview];
-        leftPopupMenu = NULL;
-    }
-}
 
 
 
 
-
--(void)showSettings {
-    [self hideRightMenu];
-    UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
-    [self.navigationController pushViewController:settings animated:true];
-}
-
-
--(void)logoutUser {
-    [self hideRightMenu];
-    
-    [PFUser logOut];
-    UIViewController* loginCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
-    [self presentViewController:loginCtrl animated:true completion:nil];
-}
-
-
--(IBAction)onRightMenuClick:(id)sender
-{
-    if (popupMenu) {
-        [self hideRightMenu];
-        return;
-    }
-
-    int width = self.view.bounds.size.width;
-    int height = self.view.bounds.size.height;
-    
-    int menuWidth = 160;
-    int menuHeight = 80;
-    
-    popupMenu = [[UIView alloc] initWithFrame:CGRectMake(width - menuWidth - 3, 0, menuWidth, menuHeight)];
-    popupMenu.backgroundColor = [UIColor whiteColor];
-
-    popupMenu.layer.masksToBounds = NO;
-    popupMenu.layer.shadowOffset = CGSizeMake(0, 0);
-    popupMenu.layer.shadowRadius = 3;
-    popupMenu.layer.shadowOpacity = 0.5;
-    
-    [self.view addSubview:popupMenu];
-    
-    // create Image View with image back (your blue cloud)
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, height)];
-//    UIImage *image =  [UIImage imageNamed:[NSString stringWithFormat:@"myImage.png"]];
-//    [imageView setImage:image];
-//    [viewPopup addSubview:imageView];
-    
-    UIButton *buttonSettings = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, menuWidth, menuHeight / 2)];
-    [buttonSettings setTitle:@"Settings" forState:UIControlStateNormal];
-    [buttonSettings setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [buttonSettings addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchDown];
-    [popupMenu addSubview:buttonSettings];
-    
-    
-    
-    UIButton *buttonLogout = [[UIButton alloc] initWithFrame:CGRectMake(0, menuHeight / 2, menuWidth, menuHeight / 2)];
-    [buttonLogout setTitle:@"Logout" forState:UIControlStateNormal];
-    [buttonLogout setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [buttonLogout addTarget:self action:@selector(logoutUser) forControlEvents:UIControlEventTouchDown];
-    [popupMenu addSubview:buttonLogout];
-    
-    
-    
-}
-
-
-
-
-
-
-
--(void) showScrollPage:(id)sender {
-    [self hideLeftMenu];
-    NSInteger viewId = ((UIButton*)sender).tag;
-    
-    if (viewId < 4) {
-        [self setViewControllers:@[myViewControllers[viewId+1]]
-                       direction:UIPageViewControllerNavigationDirectionForward
-                        animated:NO completion:nil];
-    } else if (viewId == 4){ // Settings page
-        UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
-        [self.navigationController pushViewController:settings animated:true];
-    }
-    
-    [self updatePageTitle];
-}
-
--(UIButton*)createLeftMenuButton:(NSString*)pageName withId:(NSInteger)viewId withFrame:(CGRect)rect withIcon:(NSString*)icon{
-    
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:rect];
-    [button setTitle:pageName forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(showScrollPage:) forControlEvents:UIControlEventTouchDown];
-    [leftPopupMenu addSubview:button];
-    
-    
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    button.contentEdgeInsets = UIEdgeInsetsMake(0, rect.size.height, 0, 0);
-    [button setTag:viewId];
-    
-    
-    int shrinkFactor = 20;
-    
-    
-    UIImageView* iconView = CreateFAImage(icon, rect.size.height - shrinkFactor);
-    UIView* iconHolder = [[UIView alloc] initWithFrame:CGRectMake(rect.origin.x + shrinkFactor/2, rect.origin.y + shrinkFactor/2, rect.size.height - shrinkFactor, rect.size.height - shrinkFactor)];
-    [iconHolder addSubview:iconView];
-    [leftPopupMenu addSubview:iconHolder];
-    return button;
-}
 
 -(IBAction)onLeftMenuClick:(id)sender
 {
-    if (leftPopupMenu) {
-        [self hideLeftMenu];
-        return;
-    }
+    LeftMenuViewController* leftMenu = (LeftMenuViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBLeftMenu"];
+
+    leftMenu.providesPresentationContextTransitionStyle = YES;
+    leftMenu.definesPresentationContext = YES;
     
-    int width = self.view.bounds.size.width;
-    int height = self.view.bounds.size.height;
+    [leftMenu onClickHook:^(NSString *menuItem) {
+        __weak typeof(self) weakSelf = self;
+
+        
+        if ([menuItem isEqualToString:@"notifications"]) {
+            
+            [self setViewControllers:@[notificationsView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:^(BOOL finished) {
+                                __strong typeof(self) strongSelf = weakSelf;
+                                [strongSelf updatePageTitle];
+                            }];
+
+        }
+        
+        if ([menuItem isEqualToString:@"friends"]) {
+            
+            [self setViewControllers:@[friendsView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:^(BOOL finished) {
+                                __strong typeof(self) strongSelf = weakSelf;
+                                [strongSelf updatePageTitle];
+                            }];
+        }
+        
+        if ([menuItem isEqualToString:@"coupons"]) {
+            
+            [self setViewControllers:@[couponsView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:^(BOOL finished) {
+                                __strong typeof(self) strongSelf = weakSelf;
+                                [strongSelf updatePageTitle];
+                            }];
+        }
+        
+        if ([menuItem isEqualToString:@"wallet"]) {
+            
+            [self setViewControllers:@[walletView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:^(BOOL finished) {
+                                __strong typeof(self) strongSelf = weakSelf;
+                                [strongSelf updatePageTitle];
+                            }];
+        }
+        
+        
+        if ([menuItem isEqualToString:@"addphotopon"]) {
+            
+            [self setViewControllers:@[photoponView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:^(BOOL finished) {
+                                __strong typeof(self) strongSelf = weakSelf;
+                                [strongSelf updatePageTitle];
+                            }];
+        }
+        
+        
+        
+        
+        if ([menuItem isEqualToString:@"settings"]) {
+            UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
+            [self.navigationController pushViewController:settings animated:true];
+        }
+        
+        if ([menuItem isEqualToString:@"signout"]) {
+            [PFUser logOut];
+            UIViewController* loginCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
+            [self presentViewController:loginCtrl animated:true completion:nil];
+        }
+        
+        
+        
+    }];
     
-    int menuWidth = width * 0.8;
-    int menuHeight = height;
-    int menuItemHeight = 40;
-    
-    leftPopupMenu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, menuWidth, menuHeight)];
-    leftPopupMenu.backgroundColor = [UIColor whiteColor];
-    
-    leftPopupMenu.layer.masksToBounds = NO;
-    leftPopupMenu.layer.shadowOffset = CGSizeMake(0, 0);
-    leftPopupMenu.layer.shadowRadius = 3;
-    leftPopupMenu.layer.shadowOpacity = 0.5;
-    
-    [self.view addSubview:leftPopupMenu];
     
     
-    
-    [self createLeftMenuButton:@"Notifications" withId:0 withFrame:CGRectMake(0, 0, menuWidth, menuItemHeight) withIcon:@"fa-info"];
-    [self createLeftMenuButton:@"Friends" withId:1 withFrame:CGRectMake(0, menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-users"];
-    [self createLeftMenuButton:@"Coupons" withId:2 withFrame:CGRectMake(0, 2 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-gift"];
-    [self createLeftMenuButton:@"Wallet" withId:3 withFrame:CGRectMake(0, 3 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-money"];
-    [self createLeftMenuButton:@"Settings" withId:4 withFrame:CGRectMake(0, 4 * menuItemHeight, menuWidth, menuItemHeight) withIcon:@"fa-cog"];
+    [leftMenu setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    [self presentViewController:leftMenu animated:NO completion:nil];
 
 }
 
@@ -213,7 +141,6 @@
 {
     [super viewDidLoad];
     
-    leftPopupMenu = NULL;
     
     self.delegate = self;
     self.dataSource = self;
@@ -238,7 +165,6 @@
     [self updatePageTitle];
     
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FAEllipsisV] style:UIBarButtonItemStylePlain target:self action:@selector(onRightMenuClick:)];
     
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FABars] style:UIBarButtonItemStylePlain target:self action:@selector(onLeftMenuClick:)];
@@ -246,16 +172,11 @@
     
     UIFont* font = [UIFont fontWithName:kFontAwesomeFamilyName size:22.0];
     
-    [rightButton setTitleTextAttributes:@{
-         NSFontAttributeName: font
-    } forState:UIControlStateNormal];
-    
     
     [leftButton setTitleTextAttributes:@{
          NSFontAttributeName: font
     } forState:UIControlStateNormal];
     
-    self.navigationItem.rightBarButtonItem = rightButton;
     self.navigationItem.leftBarButtonItem = leftButton;
 
     
@@ -271,6 +192,12 @@
     } else {
         UpdateNearbyCoupons();
     }
+    
+    [RealTimeNotificationHandler setupManager];
+    
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIUserId value:[[PFUser currentUser] objectId]];
     
 }
 

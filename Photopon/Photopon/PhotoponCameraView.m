@@ -86,6 +86,17 @@
 }
 
 
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"PhotoponCameraScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+
+
+
 -(IBAction)captureNow {
     
     if (hasCamera) {
@@ -172,21 +183,6 @@
     [self.miniCouponView initView: currentCouponIndex];
     
     
-    /*
-    if ([self.parentViewController isKindOfClass:[UIPageViewController class]]) {
-        UIPageViewController* pageView = (UIPageViewController*)self.parentViewController;
-        
-        NSLog(@"%@", pageView.gestureRecognizers);
-        for (int i = 0; i < [pageView.gestureRecognizers count]; ++i) {
-            if ([[pageView.gestureRecognizers objectAtIndex:i] isKindOfClass:[UIPanGestureRecognizer class]]) {
-                UIPanGestureRecognizer* p = [pageView.gestureRecognizers objectAtIndex:i];
-                [p requireGestureRecognizerToFail:[self.miniCouponView getRightSwipe]];
-                [p requireGestureRecognizerToFail:[self.miniCouponView getLeftSwipe]];
-                
-            }
-        }
-    }
-     */
     
     
     AVCaptureSession *session = [[AVCaptureSession alloc] init];

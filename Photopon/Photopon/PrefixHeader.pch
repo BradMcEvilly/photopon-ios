@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  Photopon
+//
+//  Created by Hayk Hayotsyan on 16/12/15.
+//  Copyright © 2015 Photopon. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <Google/Analytics.h>
+
+
+#endif /* PrefixHeader_pch */

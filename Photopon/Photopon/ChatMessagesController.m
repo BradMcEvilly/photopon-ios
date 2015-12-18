@@ -53,6 +53,11 @@
 - (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult*)msg {
     
     NSDictionary* data = msg.data.message;
+    
+    if (![data[@"type"] isEqualToString:@"MESSAGE"]) {
+        return;
+    }
+    
     [self addMessage:data];
     
     [self.chatMessages reloadData];
@@ -102,6 +107,15 @@
         
     }
 }
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"ChatMessagesScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+
 
 
 - (void)viewDidLoad {

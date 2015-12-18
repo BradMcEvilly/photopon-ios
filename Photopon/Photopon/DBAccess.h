@@ -29,7 +29,9 @@ void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block
 void GetNotifications(ResultBlock block);
 void GetWalletItems(ResultBlock block);
 
-void CreateFriendRequestNotification(PFUser* toUser);
+void CreateAddFriendNotification(PFUser* toUser);
+void RemoveAddFriendNotification(PFUser* userToRemove);
+
 void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon);
 void CreateMessageNotification(PFUser* toUser, NSString* content);
 

@@ -57,6 +57,7 @@ void PubNubSendMessage(NSString* userId, NSString* message) {
     NSString* channel = PubNubChannelName(userId, myId);
     
     [pubnub publish:@{
+            @"type": @"MESSAGE",
             @"message": message,
             @"from": myId,
             @"to": userId
@@ -65,3 +66,8 @@ void PubNubSendMessage(NSString* userId, NSString* message) {
         
     }];
 }
+
+
+
+
+

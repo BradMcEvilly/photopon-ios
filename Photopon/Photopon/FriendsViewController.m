@@ -24,6 +24,8 @@
 
 
 
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,8 +45,7 @@
 }
 
 
-
--(void)viewWillAppear:(BOOL)animated {
+-(void)updateFriends {
     
     GetMyFriends(^(NSArray *results, NSError *error) {
         [myFriends removeAllObjects];
@@ -57,12 +58,13 @@
                 PFFile* img = [object valueForKey:@"image"];
                 
                 NSMutableDictionary* item = [@{
-                   @"name": username,
-                   @"email": email,
-                   @"id": [object objectId],
-                   @"isSelected": @false,
-                   @"object": object
-                } mutableCopy];
+                                               @"friendshipId": [obj objectId],
+                                               @"name": username,
+                                               @"email": email,
+                                               @"id": [object objectId],
+                                               @"isSelected": @false,
+                                               @"object": object
+                                               } mutableCopy];
                 
                 if (img) {
                     item[@"image"] = img.url;
@@ -71,17 +73,30 @@
                 [myFriends addObject:item];
             } else {
                 [myFriends addObject:@{
-                   @"name": [obj valueForKey:@"name"],
-                   @"email": [obj valueForKey:@"phone"],
-                   @"id": [obj valueForKey:@"phoneId"],
-                   @"isSelected": @false,
-                   @"isPlaceholder": @true
-               }];
+                                       @"friendshipId": [obj objectId],
+                                       @"name": [obj valueForKey:@"name"],
+                                       @"email": [obj valueForKey:@"phone"],
+                                       @"id": [obj valueForKey:@"phoneId"],
+                                       @"isSelected": @false,
+                                       @"isPlaceholder": @true
+                                       }];
             }
         }
         [self.friendsTable reloadData];
     });
     
+    
+
+}
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self updateFriends];
+    
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"CouponsScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
  
 }
 
@@ -194,8 +209,6 @@
         
         [self.friendsTable reloadData];
     } else {
-        //[self startChatWithFriend:item[@"object"]];
-        //return;
         FriendPopupViewController* friendPopup = (FriendPopupViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendPopup"];
         [friendPopup setFriend:item];
         [friendPopup setFriendViewController:self];

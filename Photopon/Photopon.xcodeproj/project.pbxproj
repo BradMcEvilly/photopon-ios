@@ -21,6 +21,13 @@
 		626266221B8A6CA1006D730E /* takephoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266211B8A6CA1006D730E /* takephoto.png */; };
 		626266241B8A7710006D730E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266231B8A7710006D730E /* check.png */; };
 		626CAE941C12580000189D6E /* add-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 626CAE931C12580000189D6E /* add-button.png */; };
+		62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B421C20A167007704D1 /* LeftMenuViewController.m */; };
+		62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
+		62821B461C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
+		62821B4E1C238B76007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B4C1C238B76007704D1 /* MiniCouponViewController.m */; };
+		62821B4F1C238B76007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B4C1C238B76007704D1 /* MiniCouponViewController.m */; };
+		62821B501C238B76007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */; };
+		62821B511C238B76007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */; };
 		6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */; };
 		62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B11B7D5EDA00D61F34 /* NotificationController.m */; };
 		62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BA1B7E9AB300D61F34 /* AddFriendController.m */; };
@@ -91,6 +98,13 @@
 		626266211B8A6CA1006D730E /* takephoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takephoto.png; sourceTree = "<group>"; };
 		626266231B8A7710006D730E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		626CAE931C12580000189D6E /* add-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-button.png"; sourceTree = "<group>"; };
+		62821B411C20A167007704D1 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		62821B421C20A167007704D1 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		62821B441C20D69F007704D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		62821B471C21695F007704D1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		62821B4B1C238B76007704D1 /* MiniCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniCouponViewController.h; sourceTree = "<group>"; };
+		62821B4C1C238B76007704D1 /* MiniCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniCouponViewController.m; sourceTree = "<group>"; };
+		62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiniCouponViewController.xib; sourceTree = "<group>"; };
 		6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNubWrapper.h; sourceTree = "<group>"; };
 		6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubNubWrapper.m; sourceTree = "<group>"; };
 		62A302B01B7D5EDA00D61F34 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
@@ -193,6 +207,7 @@
 		62D148BD1B79732100E8D4A1 = {
 			isa = PBXGroup;
 			children = (
+				62821B441C20D69F007704D1 /* GoogleService-Info.plist */,
 				62D148C81B79732100E8D4A1 /* Photopon */,
 				62D148E81B79732100E8D4A1 /* PhotoponTests */,
 				62D148C71B79732100E8D4A1 /* Products */,
@@ -267,6 +282,12 @@
 				6255D59F1C1783050088227A /* ChatMessageTableViewCell.h */,
 				6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */,
 				6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */,
+				62821B411C20A167007704D1 /* LeftMenuViewController.h */,
+				62821B421C20A167007704D1 /* LeftMenuViewController.m */,
+				62821B471C21695F007704D1 /* PrefixHeader.pch */,
+				62821B4B1C238B76007704D1 /* MiniCouponViewController.h */,
+				62821B4C1C238B76007704D1 /* MiniCouponViewController.m */,
+				62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -340,7 +361,6 @@
 				62D148C31B79732100E8D4A1 /* Frameworks */,
 				62D148C41B79732100E8D4A1 /* Resources */,
 				3E8CE73B4011A27C5225B4FC /* Copy Pods Resources */,
-				084E085495C76B1B661D997B /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -416,12 +436,14 @@
 				626266241B8A7710006D730E /* check.png in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
+				62821B501C238B76007704D1 /* MiniCouponViewController.xib in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
 				62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */,
 				62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
+				62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
 				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
 				62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */,
@@ -436,27 +458,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62821B461C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
+				62821B511C238B76007704D1 /* MiniCouponViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		084E085495C76B1B661D997B /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photopon/Pods-Photopon-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3E8CE73B4011A27C5225B4FC /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -502,6 +511,7 @@
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
 				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
 				62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */,
+				62821B4E1C238B76007704D1 /* MiniCouponViewController.m in Sources */,
 				620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
@@ -522,6 +532,7 @@
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,
+				62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */,
+				62821B4F1C238B76007704D1 /* MiniCouponViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,11 +597,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Photopon/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -631,10 +646,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Photopon/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

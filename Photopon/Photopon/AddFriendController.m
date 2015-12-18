@@ -7,6 +7,7 @@
 //
 
 @import Contacts;
+
 #import "AddFriendController.h"
 #import "Parse/Parse.h"
 #import "LogHelper.h"
@@ -127,7 +128,11 @@
 
 
 
-
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"AddFriendScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 
 -(void)viewDidLoad
@@ -394,7 +399,7 @@
     [friendObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             [self.searchResultTable reloadData];
-            CreateFriendRequestNotification(userToAdd);
+            CreateAddFriendNotification(userToAdd);
         } else {
             //TODO: There was a problem, check error.description
         }
@@ -412,6 +417,8 @@
     
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
         [result deleteInBackground];
+        RemoveAddFriendNotification(userToRemove);
+
         [self.searchResultTable reloadData];
     }];
 }

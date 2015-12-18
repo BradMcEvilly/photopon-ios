@@ -22,6 +22,16 @@
 }
 
 
+
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"FriendPopupScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -171,9 +181,60 @@
     NSLog(@"Send Photopon");
 }
 
--(void)showSettings:(UITapGestureRecognizer *)recognizer {
+
+
+-(void) removeFriendShip {
+    NSString* objId = [selectedFriend objectForKey:@"friendshipId"];
     
-    NSLog(@"Show Settings");
+    
+    // This is workaround for Prase bug when object is not removed when it is gone from memory before block function finishes
+    __block PFObject* dummyFriendshipRef = nil;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query getObjectInBackgroundWithId:objId block:^(PFObject *friendship, NSError *error) {
+        if (friendship) {
+            [friendship deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                dummyFriendshipRef = friendship;
+                [friendViewCtrl updateFriends];
+                [self dismissViewControllerAnimated:YES completion:nil];
+
+            }];
+        }
+    }];
+    
+}
+
+
+-(void)showSettings:(UITapGestureRecognizer *)recognizer {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *blockAction = [UIAlertAction actionWithTitle:@"Block" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // this block runs when the driving option is selected
+    }];
+    
+    UIAlertAction *unfriendAction = [UIAlertAction actionWithTitle:@"Unfriend" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self removeFriendShip];
+    }];
+    
+    UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // this block runs when the walking option is selected
+    }];
+    
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:blockAction];
+    [alert addAction:unfriendAction];
+    [alert addAction:ignoreAction];
+    [alert addAction:defaultAction];
+    
+    alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    alert.popoverPresentationController.sourceView = self.settingButton;
+    alert.popoverPresentationController.sourceRect = CGRectMake(20, 40, 10, 10);
+    
+
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 

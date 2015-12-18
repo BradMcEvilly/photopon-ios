@@ -60,6 +60,30 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 This project uses the FontAwesome fix made by Pit Garbe that you can find at https://github.com/leberwurstsaft/FontAwesome-for-iOS Version 2.0 of the Font Awesome font, CSS, and LESS files are licensed under CC BY 3.0: http://creativecommons.org/licenses/by/3.0/ A mention of 'Font Awesome - http://fortawesome.github.com/Font-Awesome' in human-readable source code is considered acceptable attribution (most common on the web). If human readable source code is not available to the end user, a mention in an 'About' or 'Credits' screen is considered acceptable (most common in desktop or mobile software)
 
 
+## Google
+
+Copyright 2015 Google Inc.
+
+## GoogleAnalytics
+
+Copyright 2015 Google Inc.
+
+## GoogleInterchangeUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleNetworkingUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleSymbolUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleUtilities
+
+Copyright 2015 Google Inc.
+
 ## IQKeyboardManager
 
 IQKeyboardManager license

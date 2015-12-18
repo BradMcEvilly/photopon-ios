@@ -57,7 +57,20 @@
     } else {
         [self gotoMainView];
     }
+    
+    
 }
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"LoginScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

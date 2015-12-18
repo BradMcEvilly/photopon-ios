@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "DBAccess.h"
+#import "Helper.h"
 
 
 void GetMyFriends(ResultBlock block) {
@@ -187,26 +188,80 @@ void GetWalletItems(ResultBlock block) {
     }];
 }
 
-void CreateFriendRequestNotification(PFUser* toUser) {
-    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+
+
+
+void CreateAddFriendNotification(PFUser* toUser) {
     
-    notification[@"to"] = toUser;
-    notification[@"assocUser"] = [PFUser currentUser];
-    notification[@"type"] = @"FRIEND";
     
-    [notification saveInBackground];
+    PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
+    
+    [query whereKey:@"to" equalTo:toUser];
+    [query whereKey:@"assocUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"type" equalTo:@"FRIEND"];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
+        
+        if (!result) {
+            PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+            
+            notification[@"to"] = toUser;
+            notification[@"assocUser"] = [PFUser currentUser];
+            notification[@"type"] = @"FRIEND";
+            
+            [notification saveInBackground];
+            [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+        }
+    }];
 }
 
-void CreateMessageNotification(PFUser* toUser, NSString* content) {
-    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+void RemoveAddFriendNotification(PFUser* userToRemove) {
+    PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
     
-    notification[@"to"] = toUser;
-    notification[@"type"] = @"MESSAGE";
-    notification[@"content"] = content;
-    notification[@"assocUser"] = [PFUser currentUser];
+    [query whereKey:@"to" equalTo:userToRemove];
+    [query whereKey:@"assocUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"type" equalTo:@"FRIEND"];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
+        
+        if (result) {
+            [result delete];
+            
+            [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:userToRemove];
+        }
+    }];
+}
 
+
+void CreateMessageNotification(PFUser* toUser, NSString* content) {
     
-    [notification saveInBackground];
+    PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
+    
+    [query whereKey:@"to" equalTo:toUser];
+    [query whereKey:@"assocUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"type" equalTo:@"MESSAGE"];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
+        
+        if (result) {
+            [result setValue:content forKey:@"content"];
+            [result saveInBackground];
+            
+        } else {
+            
+            PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+            
+            notification[@"to"] = toUser;
+            notification[@"type"] = @"MESSAGE";
+            notification[@"content"] = content;
+            notification[@"assocUser"] = [PFUser currentUser];
+            
+            [notification saveInBackground];
+        }
+        
+        [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+    }];
+
 }
 
 
@@ -220,7 +275,7 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
     notification[@"type"] = @"PHOTOPON";
     
     [notification saveInBackground];
-    
+    [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
     
 }
 

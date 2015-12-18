@@ -78,6 +78,16 @@
 }
 
 
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"CouponsScreen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
