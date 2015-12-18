@@ -18,8 +18,6 @@
 @property(nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
 @property (weak, nonatomic) IBOutlet UIImageView *shutterButton;
-
-@property (weak, nonatomic) IBOutlet MiniCouponView *miniCouponView;
 @property (weak, nonatomic) IBOutlet UIView *noCouponView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *noCouponIndicator;
 

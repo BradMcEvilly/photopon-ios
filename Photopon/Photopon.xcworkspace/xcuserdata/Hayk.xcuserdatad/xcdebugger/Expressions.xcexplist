@@ -6,6 +6,9 @@
          contextName = "-[RealTimeNotificationHandler client:didReceiveMessage:]:Helper.m">
       </ContextState>
       <ContextState
+         contextName = "-[UIView(Internal) _addSubview:positioned:relativeTo:]:(null)">
+      </ContextState>
+      <ContextState
          contextName = "-[ChatMessageTableViewCell awakeFromNib]:ChatMessageTableViewCell.m">
          <PersistentStrings>
             <PersistentString
@@ -141,6 +144,17 @@
       </ContextState>
       <ContextState
          contextName = "-[FriendsViewController startChatWithFriend:]:FriendsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView createMiniCouponView]:PhotoponCameraView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view">
+            </PersistentString>
+            <PersistentString
+               value = "couponView">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ChatMessagesController client:didReceiveMessage:]:ChatMessagesController.m">

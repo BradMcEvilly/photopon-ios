@@ -11,6 +11,7 @@
 #import <ImageIO/CGImageProperties.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Helper.h"
+#import "MiniCouponViewController.h"
 
 
 @implementation PhotoponCameraView
@@ -20,6 +21,7 @@
     NSInteger currentCouponIndex;
     BOOL hasCamera;
     BOOL isInitialized;
+    MiniCouponViewController *nonSystemsController;
 }
 
 
@@ -68,13 +70,11 @@
     
     if ([allCoupons count] != 0) {
         self.shutterButton.alpha = 1;
-        self.miniCouponView.alpha = 1;
         self.noCouponView.alpha = 0;
         [self.noCouponIndicator stopAnimating];
     } else {
         
         self.shutterButton.alpha = 0;
-        self.miniCouponView.alpha = 0;
         self.noCouponView.alpha = 1;
         [self.noCouponIndicator startAnimating];
         
@@ -86,6 +86,12 @@
 }
 
 
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:NO];
+    [self initCamera];
+    
+}
 
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -147,7 +153,7 @@
         
         
         PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
-        [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex:currentCouponIndex]];
+        [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex: [nonSystemsController getCouponIndex] ]];
         [photoponDrawCtrl setPhoto:image];
         
         [self.navigationController pushViewController:photoponDrawCtrl animated:true];
@@ -155,12 +161,40 @@
     }
 }
 
+
+-(void)createMiniCouponView {
+    /*
+    MiniCouponViewController* ctrl = [[MiniCouponViewController alloc] init];
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MiniCouponViewController" owner:ctrl options:nil];
+    UIView *couponView = [subviewArray objectAtIndex:0];
+    
+    [self.view addSubview:couponView];
+    [couponView setFrame:CGRectMake(0, 0, 300, 200)];
+     
+     */
+    
+    nonSystemsController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
+    [nonSystemsController setCouponIndex:currentCouponIndex];
+
+    
+    
+    nonSystemsController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 100, 200);
+    nonSystemsController.view.center = self.view.center;
+    [self.view addSubview:nonSystemsController.view];
+    [self addChildViewController:nonSystemsController];
+    [nonSystemsController didMoveToParentViewController:self];
+    
+}
+
+
+
+
+
 -(void) initCamera {
     
     if ([allCoupons count] == 0) {
         
         self.shutterButton.alpha = 0;
-        self.miniCouponView.alpha = 0;
         self.noCouponView.alpha = 1;
         [self.noCouponIndicator startAnimating];
         
@@ -175,13 +209,10 @@
     isInitialized = YES;
     
     self.shutterButton.alpha = 1;
-    self.miniCouponView.alpha = 1;
     self.noCouponView.alpha = 0;
     [self.noCouponIndicator stopAnimating];
 
-    
-    [self.miniCouponView initView: currentCouponIndex];
-    
+    [self createMiniCouponView];
     
     
     
@@ -217,13 +248,6 @@
         hasCamera = YES;
     }
 
-}
-
-
-
--(void)viewDidAppear:(BOOL)animated {
-    [self initCamera];
-    
 }
 
 

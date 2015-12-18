@@ -24,10 +24,10 @@
 		62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B421C20A167007704D1 /* LeftMenuViewController.m */; };
 		62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
 		62821B461C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
-		62821B4E1C238B76007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B4C1C238B76007704D1 /* MiniCouponViewController.m */; };
-		62821B4F1C238B76007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B4C1C238B76007704D1 /* MiniCouponViewController.m */; };
-		62821B501C238B76007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */; };
-		62821B511C238B76007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */; };
+		62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B531C239842007704D1 /* MiniCouponViewController.m */; };
+		62821B561C239842007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B531C239842007704D1 /* MiniCouponViewController.m */; };
+		62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B541C239842007704D1 /* MiniCouponViewController.xib */; };
+		62821B581C239842007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B541C239842007704D1 /* MiniCouponViewController.xib */; };
 		6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */; };
 		62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B11B7D5EDA00D61F34 /* NotificationController.m */; };
 		62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BA1B7E9AB300D61F34 /* AddFriendController.m */; };
@@ -102,9 +102,9 @@
 		62821B421C20A167007704D1 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		62821B441C20D69F007704D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62821B471C21695F007704D1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		62821B4B1C238B76007704D1 /* MiniCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniCouponViewController.h; sourceTree = "<group>"; };
-		62821B4C1C238B76007704D1 /* MiniCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniCouponViewController.m; sourceTree = "<group>"; };
-		62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiniCouponViewController.xib; sourceTree = "<group>"; };
+		62821B521C239842007704D1 /* MiniCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniCouponViewController.h; sourceTree = "<group>"; };
+		62821B531C239842007704D1 /* MiniCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniCouponViewController.m; sourceTree = "<group>"; };
+		62821B541C239842007704D1 /* MiniCouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiniCouponViewController.xib; sourceTree = "<group>"; };
 		6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNubWrapper.h; sourceTree = "<group>"; };
 		6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubNubWrapper.m; sourceTree = "<group>"; };
 		62A302B01B7D5EDA00D61F34 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
@@ -285,9 +285,9 @@
 				62821B411C20A167007704D1 /* LeftMenuViewController.h */,
 				62821B421C20A167007704D1 /* LeftMenuViewController.m */,
 				62821B471C21695F007704D1 /* PrefixHeader.pch */,
-				62821B4B1C238B76007704D1 /* MiniCouponViewController.h */,
-				62821B4C1C238B76007704D1 /* MiniCouponViewController.m */,
-				62821B4D1C238B76007704D1 /* MiniCouponViewController.xib */,
+				62821B521C239842007704D1 /* MiniCouponViewController.h */,
+				62821B531C239842007704D1 /* MiniCouponViewController.m */,
+				62821B541C239842007704D1 /* MiniCouponViewController.xib */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -436,7 +436,7 @@
 				626266241B8A7710006D730E /* check.png in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
-				62821B501C238B76007704D1 /* MiniCouponViewController.xib in Resources */,
+				62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
@@ -459,7 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62821B461C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
-				62821B511C238B76007704D1 /* MiniCouponViewController.xib in Resources */,
+				62821B581C239842007704D1 /* MiniCouponViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +511,7 @@
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
 				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
 				62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */,
-				62821B4E1C238B76007704D1 /* MiniCouponViewController.m in Sources */,
+				62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */,
 				620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
@@ -542,7 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */,
-				62821B4F1C238B76007704D1 /* MiniCouponViewController.m in Sources */,
+				62821B561C239842007704D1 /* MiniCouponViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

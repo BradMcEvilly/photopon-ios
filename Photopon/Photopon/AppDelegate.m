@@ -48,7 +48,7 @@
     // Optional: configure GAI options.
     GAI *gai = [GAI sharedInstance];
     gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+  //  gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
 
     
     return YES;

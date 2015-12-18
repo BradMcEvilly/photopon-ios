@@ -7,6 +7,8 @@
 //
 
 #import "MiniCouponViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
 
 @interface MiniCouponViewController ()
 
@@ -14,9 +16,95 @@
 
 @implementation MiniCouponViewController
 
+
+
+{
+    NSArray* allCoupons;
+    NSArray* allPFCoupons;
+    NSInteger currentCouponIndex;
+    
+    UISwipeGestureRecognizer *swipeRecLeft;
+    UISwipeGestureRecognizer *swipeRecRight;
+}
+
+
+-(void)setCouponIndex: (NSInteger)couponIndex {
+    currentCouponIndex = couponIndex;
+}
+
+-(NSInteger)getCouponIndex {
+    return currentCouponIndex;
+}
+
+-(void)updateCoupon {
+    
+    NSDictionary* coupon = [allCoupons objectAtIndex:currentCouponIndex];
+    
+    NSString* title = [coupon objectForKey:@"title"];
+    NSString* desc = [coupon objectForKey:@"desc"];
+    NSString* pic = [coupon objectForKey:@"pic"];
+    
+    [self.couponImage sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    
+    self.couponTitle.text = title;
+    self.couponDescription.text = desc;
+     
+}
+
+
+-(void)onSwipeLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
+    currentCouponIndex = (currentCouponIndex + 1) % [allCoupons count];
+    [self updateCoupon];
+}
+
+
+-(void)onSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer {
+    currentCouponIndex = (currentCouponIndex - 1 + [allCoupons count]) % [allCoupons count];
+    [self updateCoupon];
+}
+
+
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if ([otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        [otherGestureRecognizer requireGestureRecognizerToFail: swipeRecLeft];
+        [otherGestureRecognizer requireGestureRecognizerToFail: swipeRecRight];
+        
+    }
+
+    return YES;
+}
+
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    
+    [self updateCoupon];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+ 
+    
+    
+    [self.view setUserInteractionEnabled:YES];
+    
+    swipeRecLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)];
+    swipeRecLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeRecLeft];
+    
+    swipeRecRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)];
+    swipeRecRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRecRight];
+    
+    
+    
+    swipeRecLeft.delegate = self;
+    swipeRecRight.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {

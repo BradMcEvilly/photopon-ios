@@ -38,10 +38,10 @@
     PFObject* coupon = [photopon objectForKey:@"coupon"];
     PFFile* companyLogoFile = [[coupon objectForKey:@"company"] objectForKey:@"image"];
     
-    [self.photoImage sd_setImageWithURL:[NSURL URLWithString:photoFile.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
-    [self.drawingImage sd_setImageWithURL:[NSURL URLWithString:drawingFile.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    [self.photoImage sd_setImageWithURL:[NSURL URLWithString:photoFile.url]];
+    [self.drawingImage sd_setImageWithURL:[NSURL URLWithString:drawingFile.url]];
     
-    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:companyLogoFile.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:companyLogoFile.url]];
     
     [self.couponTitle setText:[coupon objectForKey:@"title"]];
     [self.couponDescription setText:[coupon objectForKey:@"description"]];

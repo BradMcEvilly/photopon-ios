@@ -844,14 +844,6 @@
                                     <constraint firstAttribute="height" constant="64" id="d06-NN-eCI"/>
                                 </constraints>
                             </imageView>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-yA-Goo" customClass="MiniCouponView">
-                                <rect key="frame" x="0.0" y="200" width="600" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="3md-6u-HdF"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEr-du-hLS">
                                 <rect key="frame" x="30" y="200" width="540" height="200"/>
                                 <subviews>
@@ -897,23 +889,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sRx-yA-Goo" firstAttribute="centerY" secondItem="V4w-s1-M7m" secondAttribute="centerY" id="5j3-TI-Odk"/>
                             <constraint firstItem="EeI-ku-oCg" firstAttribute="top" secondItem="V4w-s1-M7m" secondAttribute="top" id="5uY-3N-0Wh"/>
-                            <constraint firstItem="sRx-yA-Goo" firstAttribute="leading" secondItem="V4w-s1-M7m" secondAttribute="leading" id="7JD-F4-fYC"/>
                             <constraint firstItem="bEr-du-hLS" firstAttribute="leading" secondItem="V4w-s1-M7m" secondAttribute="leading" constant="30" id="B9g-jm-UQR"/>
                             <constraint firstItem="QCu-Vi-Rm8" firstAttribute="top" secondItem="EeI-ku-oCg" secondAttribute="bottom" id="Cyh-XN-Kb8"/>
                             <constraint firstItem="hQ6-gG-ear" firstAttribute="centerX" secondItem="V4w-s1-M7m" secondAttribute="centerX" id="H2Q-BZ-afD"/>
                             <constraint firstAttribute="trailing" secondItem="EeI-ku-oCg" secondAttribute="trailing" id="ZMR-AG-Wfj"/>
                             <constraint firstItem="bEr-du-hLS" firstAttribute="centerY" secondItem="V4w-s1-M7m" secondAttribute="centerY" id="a3L-UQ-4qm"/>
                             <constraint firstAttribute="trailing" secondItem="bEr-du-hLS" secondAttribute="trailing" constant="30" id="ixN-AD-vu1"/>
-                            <constraint firstAttribute="trailing" secondItem="sRx-yA-Goo" secondAttribute="trailing" id="lbf-gQ-Ijh"/>
                             <constraint firstItem="QCu-Vi-Rm8" firstAttribute="top" secondItem="hQ6-gG-ear" secondAttribute="bottom" constant="40" id="xzF-DQ-rvP"/>
                             <constraint firstItem="EeI-ku-oCg" firstAttribute="leading" secondItem="V4w-s1-M7m" secondAttribute="leading" id="zxg-Mk-JEz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="EeI-ku-oCg" id="zdF-ih-3lZ"/>
-                        <outlet property="miniCouponView" destination="sRx-yA-Goo" id="hc1-BO-ghW"/>
                         <outlet property="noCouponIndicator" destination="URa-lS-b94" id="QZX-Qd-mmD"/>
                         <outlet property="noCouponView" destination="bEr-du-hLS" id="41J-UA-USN"/>
                         <outlet property="shutterButton" destination="hQ6-gG-ear" id="yBL-f3-Ihn"/>
