@@ -10,17 +10,22 @@
 #import "ParseUI/ParseUI.h"
 #import "PhotoponLoginViewController.h"
 #import "PhotoponSignupViewController.h"
+#import "NumberVerificationViewController.h"
 
 @interface LoginViewController ()
 
 @end
 
-@implementation LoginViewController
 
+
+@implementation LoginViewController
+{
+    LoginViewController* thisPointer;
+}
 
 - (void) gotoMainView {
     UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-    [self presentViewController:mainCtrl animated:true completion:nil];
+    [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
     
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     PFUser* currentUser = [PFUser currentUser];
@@ -36,11 +41,64 @@
     
 }
 
+- (UIViewController*) topMostController {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    return topController;
+}
+
+-(void)accountVerified {
+    [self gotoMainView];
+}
+
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController
+           shouldBeginSignUp:(NSDictionary *)info {
+    
+    
+    PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
+    NSNumber* code = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
+    
+    verification[@"userName"] = info[@"username"];
+    verification[@"code"] = [NSString stringWithFormat:@"%d", [code intValue]];
+    
+    verification[@"phoneNumber"] = NumbersFromFormattedPhone(info[@"additional"]);
+    verification[@"numTried"] = [NSNumber numberWithInt:0];
+    
+    [verification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NumberVerificationViewController* verifyPopup = (NumberVerificationViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+            
+            [verifyPopup initWithCode:code userInfo:info];
+            [verifyPopup setTarget:self withAction:@selector(accountVerified)];
+            [[self topMostController] presentViewController:verifyPopup animated:YES completion:nil];
+            
+            
+
+        });
+
+        //        [verifyPopup setFriend:item];
+        //        [verifyPopup setFriendViewController:self];
+        
+//        verifyPopup.providesPresentationContextTransitionStyle = YES;
+//        verifyPopup.definesPresentationContext = YES;
+        
+//        [verifyPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+        
+    }];
+    
+    return NO;
+};
+
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    thisPointer = self;
+    
     if (![PFUser currentUser]) {
         PhotoponLoginViewController *logInViewController = [[PhotoponLoginViewController alloc] init];
         [logInViewController setDelegate:self];

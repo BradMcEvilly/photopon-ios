@@ -1294,6 +1294,116 @@
             </objects>
             <point key="canvasLocation" x="1001" y="-1650"/>
         </scene>
+        <!--Number Verification View Controller-->
+        <scene sceneID="ZAe-se-nVR">
+            <objects>
+                <viewController storyboardIdentifier="SBNumberVerification" id="YfW-YG-u35" customClass="NumberVerificationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EEI-i4-woF"/>
+                        <viewControllerLayoutGuide type="bottom" id="SqA-rF-HEm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rcg-Bg-hH5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZi-HL-7Y1">
+                                <rect key="frame" x="120" y="110" width="360" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Verify Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-37-5Ey">
+                                        <rect key="frame" x="20" y="20" width="320" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Text message with verification code was sent to your phone number. Please enter number below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QA-RB-McS">
+                                        <rect key="frame" x="20" y="50" width="320" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkm-n3-V7K">
+                                        <rect key="frame" x="60" y="101" width="240" height="58.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X2x-16-i3o">
+                                                <rect key="frame" x="10" y="4" width="160" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="UoZ-6n-Zm1"/>
+                                                    <constraint firstAttribute="width" constant="160" id="gPD-KJ-gW5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrD-pd-xH3">
+                                                <rect key="frame" x="180" y="4" width="50" height="30"/>
+                                                <state key="normal" title="Verify"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong verification code!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qN4-Pk-yPB">
+                                                <rect key="frame" x="10" y="38" width="220" height="16.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qN4-Pk-yPB" secondAttribute="trailing" constant="10" id="1U1-vX-anP"/>
+                                            <constraint firstAttribute="width" constant="240" id="2f4-1G-D4V"/>
+                                            <constraint firstItem="NrD-pd-xH3" firstAttribute="centerY" secondItem="gkm-n3-V7K" secondAttribute="centerY" constant="-10" id="6RJ-sK-Bd8"/>
+                                            <constraint firstItem="qN4-Pk-yPB" firstAttribute="top" secondItem="X2x-16-i3o" secondAttribute="bottom" constant="4" id="9lM-lX-QtE"/>
+                                            <constraint firstItem="NrD-pd-xH3" firstAttribute="leading" secondItem="X2x-16-i3o" secondAttribute="trailing" constant="10" id="BLa-Tu-tpk"/>
+                                            <constraint firstItem="X2x-16-i3o" firstAttribute="centerY" secondItem="gkm-n3-V7K" secondAttribute="centerY" constant="-10" id="Bgc-gC-YdO"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="ESO-9j-uHB"/>
+                                            <constraint firstItem="qN4-Pk-yPB" firstAttribute="leading" secondItem="gkm-n3-V7K" secondAttribute="leading" constant="10" id="Zqu-w8-c5i"/>
+                                            <constraint firstAttribute="trailing" secondItem="NrD-pd-xH3" secondAttribute="trailing" constant="10" id="peK-cg-Yf0"/>
+                                            <constraint firstItem="X2x-16-i3o" firstAttribute="leading" secondItem="gkm-n3-V7K" secondAttribute="leading" constant="10" id="qj6-jx-2Q0"/>
+                                            <constraint firstAttribute="bottom" secondItem="qN4-Pk-yPB" secondAttribute="bottom" constant="4" id="se0-0G-ZXy"/>
+                                            <constraint firstItem="NrD-pd-xH3" firstAttribute="centerY" secondItem="gkm-n3-V7K" secondAttribute="centerY" id="tJh-Gv-vMA"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="tJh-Gv-vMA"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" id="0cO-4W-Lqk"/>
+                                    <constraint firstItem="gkm-n3-V7K" firstAttribute="centerX" secondItem="NZi-HL-7Y1" secondAttribute="centerX" id="1YX-Fa-vwi"/>
+                                    <constraint firstAttribute="height" constant="180" id="6Q3-Ar-gHh"/>
+                                    <constraint firstAttribute="trailing" secondItem="9ik-37-5Ey" secondAttribute="trailing" constant="20" id="KrX-gc-raN"/>
+                                    <constraint firstItem="9ik-37-5Ey" firstAttribute="leading" secondItem="NZi-HL-7Y1" secondAttribute="leading" constant="20" id="ctj-Xt-NSk"/>
+                                    <constraint firstItem="9ik-37-5Ey" firstAttribute="top" secondItem="NZi-HL-7Y1" secondAttribute="top" constant="20" id="iUW-uB-Eav"/>
+                                    <constraint firstItem="5QA-RB-McS" firstAttribute="leading" secondItem="NZi-HL-7Y1" secondAttribute="leading" constant="20" id="kCL-3t-Lxq"/>
+                                    <constraint firstItem="gkm-n3-V7K" firstAttribute="top" secondItem="5QA-RB-McS" secondAttribute="bottom" constant="20" id="nDl-qv-iaf"/>
+                                    <constraint firstItem="5QA-RB-McS" firstAttribute="top" secondItem="9ik-37-5Ey" secondAttribute="bottom" constant="10" id="nmt-00-uU5"/>
+                                    <constraint firstAttribute="bottom" secondItem="gkm-n3-V7K" secondAttribute="bottom" constant="20" id="wFb-Ig-viN"/>
+                                    <constraint firstAttribute="trailing" secondItem="5QA-RB-McS" secondAttribute="trailing" constant="20" id="zFD-qS-Bi9"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NZi-HL-7Y1" firstAttribute="centerY" secondItem="rcg-Bg-hH5" secondAttribute="centerY" constant="-100" id="atd-qF-ebk"/>
+                            <constraint firstItem="NZi-HL-7Y1" firstAttribute="centerX" secondItem="rcg-Bg-hH5" secondAttribute="centerX" id="t7h-g2-BRr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="verificationCode" destination="X2x-16-i3o" id="Pac-5a-Xk2"/>
+                        <outlet property="verifyButton" destination="NrD-pd-xH3" id="qTU-wM-JRm"/>
+                        <outlet property="wrongCode" destination="qN4-Pk-yPB" id="qM1-Ia-6bd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kap-zb-Dmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1731" y="-1648"/>
+        </scene>
         <!--Main Controller Inside-->
         <scene sceneID="Dh3-pc-FTq">
             <objects>

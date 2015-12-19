@@ -64,6 +64,8 @@
 		62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 62ED02F11BD4419D00534A98 /* photopon-logo.png */; };
 		62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */; };
 		62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */; };
+		62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */; };
+		62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +166,10 @@
 		62ED02F41BD4429000534A98 /* PhotoponLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponLoginViewController.m; sourceTree = "<group>"; };
 		62ED02F61BD4467400534A98 /* PhotoponSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponSignupViewController.h; sourceTree = "<group>"; };
 		62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponSignupViewController.m; sourceTree = "<group>"; };
+		62FFA95C1C24A89E0086FEA7 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneNumberFormatter.h; path = ../PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneNumberFormatter.m; path = ../PhoneNumberFormatter.m; sourceTree = "<group>"; };
+		62FFA9621C24C29F0086FEA7 /* NumberVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberVerificationViewController.h; sourceTree = "<group>"; };
+		62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberVerificationViewController.m; sourceTree = "<group>"; };
 		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
 		DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.release.xcconfig"; sourceTree = "<group>"; };
 		DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +234,8 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				62FFA95C1C24A89E0086FEA7 /* PhoneNumberFormatter.h */,
+				62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */,
 				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
 				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
 				62D148CD1B79732100E8D4A1 /* AppDelegate.h */,
@@ -288,6 +296,8 @@
 				62821B521C239842007704D1 /* MiniCouponViewController.h */,
 				62821B531C239842007704D1 /* MiniCouponViewController.m */,
 				62821B541C239842007704D1 /* MiniCouponViewController.xib */,
+				62FFA9621C24C29F0086FEA7 /* NumberVerificationViewController.h */,
+				62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -511,6 +521,7 @@
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
 				62D148D81B79732100E8D4A1 /* DetailViewController.m in Sources */,
 				62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */,
+				62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */,
 				62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */,
 				620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
@@ -524,6 +535,7 @@
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,

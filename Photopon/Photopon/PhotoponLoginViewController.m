@@ -7,8 +7,16 @@
 //
 
 #import "PhotoponLoginViewController.h"
+#import "PhoneNumberFormatter.h"
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 @implementation PhotoponLoginViewController
+
+{
+    PhoneNumberFormatter *myPhoneNumberFormatter;
+
+}
 
 - (void)viewDidLoad
 {
@@ -18,7 +26,26 @@
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photopon-logo.png"]]];
     
     self.logInView.dismissButton.alpha = 0;
+    
+    
+    
+    self.signUpController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsEmail | PFSignUpFieldsAdditional | PFSignUpFieldsSignUpButton;
 
+    self.signUpController.signUpView.additionalField.keyboardType = UIKeyboardTypePhonePad;
+    self.signUpController.signUpView.additionalField.attributedPlaceholder =    [[NSAttributedString alloc] initWithString:@"Phone Number"];
+
+    myPhoneNumberFormatter = [[PhoneNumberFormatter alloc] init];
+    
+    [self.signUpController.signUpView.additionalField addTarget:self
+                                                         action:@selector(autoFormatTextField:)
+                                               forControlEvents:UIControlEventEditingChanged];
+    
+}
+
+- (void)autoFormatTextField:(id)sender {
+    
+    self.signUpController.signUpView.additionalField.text = [myPhoneNumberFormatter format:self.signUpController.signUpView.additionalField.text withLocale:@"us"];
+    
 }
 
 
