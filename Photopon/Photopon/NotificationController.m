@@ -83,6 +83,7 @@
         
         
         cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
+        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [cell.imageView addSubview:CreateFAImage(@"fa-user-plus", 24)];
         
         cell.textLabel.text = [NSString stringWithFormat:@"%@ added you!", [assocUser username]];
@@ -104,6 +105,7 @@
         NSString* message = [item objectForKey:@"content"];
         
         cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
+        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [cell.imageView addSubview:CreateFAImage(@"fa-comments", 24)];
         
         cell.textLabel.text = message;
@@ -131,6 +133,7 @@
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
         
         cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
+        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
         
         
@@ -180,15 +183,11 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    LogDebug([NSString stringWithFormat:@"%ld", indexPath.row ]);
-    
     PFObject *item = [allNotifications objectAtIndex:indexPath.row];
-
     NSString* type = [item objectForKey:@"type"];
     
     if ([type isEqualToString:@"FRIEND"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        //[assocUser fetchIfNeeded];
         
         PFObject *friendship = [PFObject objectWithClassName:@"Friends"];
         
@@ -199,12 +198,14 @@
             if (succeeded) {
                 [allNotifications removeObjectAtIndex:indexPath.row];
                 [self.notificationsTable reloadData];
-                [item delete];
-                
-                
             } else {
                 //TODO: There was a problem, check error.description
             }
+        }];
+        
+        
+        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [self updateNotifications];
         }];
         
         
@@ -215,18 +216,22 @@
         
         ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
         [messageCtrl setUser:assocUser];
-         
+        
+        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [self updateNotifications];
+        }];
+        
         [self.navigationController pushViewController:messageCtrl animated:true];
-
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
-        PFUser* assocUser = [item objectForKey:@"assocUser"];
-        PFUser* assocPhotopon = [item objectForKey:@"assocPhotopon"];
-        
-        
+        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
         
         PhotoponViewController* photoponView = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponView"];
         [photoponView setPhotopon:assocPhotopon];
+        
+        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [self updateNotifications];
+        }];
         
         [self.navigationController pushViewController:photoponView animated:true];
     }

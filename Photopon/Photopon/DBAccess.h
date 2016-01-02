@@ -42,6 +42,6 @@ void GetCoupons(ResultBlock block);
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block);
 
 void SaveImage(NSString* fileName, UIImage* image, FileResultBlock block);
-
+BOOL HasPhoneNumber(NSString* message);
 
 #endif

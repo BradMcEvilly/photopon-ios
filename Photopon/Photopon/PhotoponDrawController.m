@@ -25,7 +25,10 @@
     PFFile* drawingFile;
     
     UIColor* selectedColor;
-    int selectedWidth;
+    NSInteger selectedWidth;
+    
+    
+    NSArray* widthSizes;
 }
 
 -(void) setCoupon:(PFObject*)coupon {
@@ -96,7 +99,7 @@
     CGContextAddLineToPoint(context, to.x, to.y);
     
     CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineWidth(context, selectedWidth);
+    CGContextSetLineWidth(context, selectedWidth + 1);
     
     CGFloat redColor, greenColor, blueColor, colorAlpha;
     
@@ -193,15 +196,55 @@
     
 }
 
+
+-(void)selectColor: (UIColor*)color {
+    selectedColor = color;
+    self.chooseColor.backgroundColor = color;
+    self.colorBox.hidden = YES;
+}
+
+-(void)selectWidth: (NSInteger)width {
+    selectedWidth = width;
+    NSInteger w = [widthSizes[width] integerValue];
+    
+    CGRect oldFrame = self.widthDisplay.frame;
+    
+    oldFrame.size = CGSizeMake(w, w);
+    [self.widthDisplay setFrame:oldFrame];
+    
+    self.widthDisplay.layer.cornerRadius = w / 2;
+    self.widthDisplay.center = self.chooseWidth.center;
+    self.widthBox.hidden = YES;
+}
+
+
+
+
+
+
 -(void)onColorChange: (id)sender {
     UIButton* btn = (UIButton*)sender;
-    selectedColor = btn.backgroundColor;
+    [self selectColor: btn.backgroundColor];
 }
 
 
 -(void)onWidthChange: (id)sender {
     UIButton* btn = (UIButton*)sender;
-    selectedWidth = (int)btn.tag;
+    [self selectWidth:btn.tag];
+}
+
+
+
+
+
+
+
+-(void)toggleColorBox {
+    self.colorBox.hidden = !self.colorBox.hidden;
+}
+
+-(void)toggleWidthBox {
+    self.widthBox.hidden = !self.widthBox.hidden;
 }
 
 -(void)viewDidLoad
@@ -214,17 +257,22 @@
     photoFile = [NSNull null];
     drawingFile = [NSNull null];
     
-    
+    widthSizes = @[@10, @20, @30, @40];
     
     [self.saveButton addTarget:self action:@selector(onSaveTouch) forControlEvents:UIControlEventTouchDown];
     
-
-    [self.color2 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
-    [self.color3 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
-    [self.color4 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
-    [self.color5 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
-    [self.color6 addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
     
+    [self.chooseColor addTarget:self action:@selector(toggleColorBox) forControlEvents:UIControlEventTouchDown];
+    [self.chooseWidth addTarget:self action:@selector(toggleWidthBox) forControlEvents:UIControlEventTouchDown];
+    
+    for (UIButton* btn in self.colors) {
+        [btn addTarget:self action:@selector(onColorChange:) forControlEvents:UIControlEventTouchDown];
+    }
+    
+    
+    for (UIView* d in self.disableInteraction) {
+        d.userInteractionEnabled = NO;
+    }
  
     
     [self.width1 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
@@ -232,25 +280,18 @@
     [self.width3 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
     [self.width4 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
     
-    
-    //PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-    //[self showViewController:camView sender:nil];
+    [self selectColor:((UIButton*)self.colors[0]).backgroundColor];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    
-    selectedColor = self.color2.backgroundColor;
-    selectedWidth = (int)self.width3.tag;
-    
+    [self selectWidth:1];
 }
-
-
-
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponDrawScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
 }
 
 

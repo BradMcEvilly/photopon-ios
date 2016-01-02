@@ -12,6 +12,7 @@
 @interface FriendsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *friendsTable;
+@property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 
 -(void)friendSelectedCallBack:(SEL)action target:(id)target;
 -(void)updateFriends;

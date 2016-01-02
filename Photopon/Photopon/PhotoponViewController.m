@@ -8,7 +8,7 @@
 
 #import "PhotoponViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "Helper.h"
+#import "DBAccess.h"
 
 @implementation PhotoponViewController
 {
@@ -20,14 +20,17 @@
 }
 
 -(void)savePhotopon {
-    PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
-    [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
-    [newWalletObject setObject:photopon forKey:@"photopon"];
-    [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
-        [self dismissViewControllerAnimated:true completion:^{
-            
+    
+    if (HasPhoneNumber(@"You need to add phone number to be able to save Photopons.")) {
+        PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
+        [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
+        [newWalletObject setObject:photopon forKey:@"photopon"];
+        [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+            [self dismissViewControllerAnimated:true completion:^{
+                
+            }];
         }];
-    }];
+    }
 }
 
 -(void)viewDidLoad {
@@ -38,21 +41,26 @@
     PFObject* coupon = [photopon objectForKey:@"coupon"];
     PFFile* companyLogoFile = [[coupon objectForKey:@"company"] objectForKey:@"image"];
     
-    [self.photoImage sd_setImageWithURL:[NSURL URLWithString:photoFile.url]];
-    [self.drawingImage sd_setImageWithURL:[NSURL URLWithString:drawingFile.url]];
+    if (![photoFile isKindOfClass:[NSNull class]])
+        [self.photoImage sd_setImageWithURL:[NSURL URLWithString:photoFile.url]];
     
-    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:companyLogoFile.url]];
+    if (![drawingFile isKindOfClass:[NSNull class]])
+        [self.drawingImage sd_setImageWithURL:[NSURL URLWithString:drawingFile.url]];
+    
+    if (![companyLogoFile isKindOfClass:[NSNull class]])
+        [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:companyLogoFile.url]];
     
     [self.couponTitle setText:[coupon objectForKey:@"title"]];
     [self.couponDescription setText:[coupon objectForKey:@"description"]];
     
-    UIImageView* icon = CreateFAImage(@"fa-suitcase", 34);
+    UIImageView* icon = CreateFAImage(@"fa-suitcase", 20);
     [self.saveButtonIcon addSubview:icon];
 
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(savePhotopon)];
     [self.view addGestureRecognizer:singleFingerTap];
   
 }
+
 
 
 

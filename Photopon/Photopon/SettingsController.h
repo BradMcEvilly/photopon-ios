@@ -13,5 +13,15 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UIButton *changePhoto;
 @property (weak, nonatomic) IBOutlet UIButton *requestMerchant;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+
+
+@property (weak, nonatomic) IBOutlet UIView *phoneBox;
+@property (weak, nonatomic) IBOutlet UILabel *phoneNumber;
+@property (weak, nonatomic) IBOutlet UIButton *changeNumber;
+@property (weak, nonatomic) IBOutlet UIButton *removeNumberBtn;
+
+@property (weak, nonatomic) IBOutlet UIView *noPhoneBox;
+@property (weak, nonatomic) IBOutlet UIButton *addPhoneNumber;
 
 @end

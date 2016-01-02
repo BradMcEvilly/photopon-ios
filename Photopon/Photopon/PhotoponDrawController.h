@@ -23,18 +23,26 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 
-@property (weak, nonatomic) IBOutlet UIButton *color1;
-@property (weak, nonatomic) IBOutlet UIButton *color2;
-@property (weak, nonatomic) IBOutlet UIButton *color3;
-@property (weak, nonatomic) IBOutlet UIButton *color4;
-@property (weak, nonatomic) IBOutlet UIButton *color5;
-@property (weak, nonatomic) IBOutlet UIButton *color6;
+
+@property (weak, nonatomic) IBOutlet UIView *widthBox;
+@property (weak, nonatomic) IBOutlet UIView *colorBox;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colors;
 
 
+
+@property (weak, nonatomic) IBOutlet UIButton *chooseColor;
+@property (weak, nonatomic) IBOutlet UIButton *chooseWidth;
 
 @property (weak, nonatomic) IBOutlet UIButton *width1;
 @property (weak, nonatomic) IBOutlet UIButton *width2;
 @property (weak, nonatomic) IBOutlet UIButton *width3;
 @property (weak, nonatomic) IBOutlet UIButton *width4;
+
+
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *disableInteraction;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *widthDisplay;
 
 @end

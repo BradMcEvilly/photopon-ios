@@ -14,7 +14,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *wrongCode;
 
 
--(void)initWithCode:(NSNumber*)code userInfo:(NSDictionary*)info;
--(void)setTarget:(id)object withAction:(SEL)action;
+@property (weak, nonatomic) IBOutlet UIButton *sendCodeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *verifyLaterBtn;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *phoneView;
+@property (weak, nonatomic) IBOutlet UIView *verifyView;
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelVerifyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *resendCodeBtn;
 
 @end

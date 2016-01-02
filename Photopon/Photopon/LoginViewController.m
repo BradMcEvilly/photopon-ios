@@ -21,10 +21,11 @@
 @implementation LoginViewController
 {
     LoginViewController* thisPointer;
+    BOOL justSignedUp;
 }
 
-- (void) gotoMainView {
-    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
+- (void) gotoView:(NSString*)viewName {
+    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:viewName];
     [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
     
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
@@ -33,11 +34,16 @@
     NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
     [currentInstallation addUniqueObject:channel forKey:@"channels"];
     [currentInstallation saveInBackground];
+    
+}
 
+- (void) gotoMainView {
+    [self gotoView:@"MainCtrl"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    justSignedUp = NO;
     
 }
 
@@ -50,49 +56,6 @@
     
     return topController;
 }
-
--(void)accountVerified {
-    [self gotoMainView];
-}
-
-- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController
-           shouldBeginSignUp:(NSDictionary *)info {
-    
-    
-    PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
-    NSNumber* code = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
-    
-    verification[@"userName"] = info[@"username"];
-    verification[@"code"] = [NSString stringWithFormat:@"%d", [code intValue]];
-    
-    verification[@"phoneNumber"] = NumbersFromFormattedPhone(info[@"additional"]);
-    verification[@"numTried"] = [NSNumber numberWithInt:0];
-    
-    [verification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NumberVerificationViewController* verifyPopup = (NumberVerificationViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
-            
-            [verifyPopup initWithCode:code userInfo:info];
-            [verifyPopup setTarget:self withAction:@selector(accountVerified)];
-            [[self topMostController] presentViewController:verifyPopup animated:YES completion:nil];
-            
-            
-
-        });
-
-        //        [verifyPopup setFriend:item];
-        //        [verifyPopup setFriendViewController:self];
-        
-//        verifyPopup.providesPresentationContextTransitionStyle = YES;
-//        verifyPopup.definesPresentationContext = YES;
-        
-//        [verifyPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-        
-    }];
-    
-    return NO;
-};
-
 
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -113,7 +76,12 @@
         [logInViewController setSignUpController:signUpViewController];
         [self presentViewController:logInViewController animated:YES completion:NULL];
     } else {
-        [self gotoMainView];
+        if (justSignedUp) {
+            justSignedUp = NO;
+            [self gotoView: @"SBNumberVerification"];
+        } else {
+            [self gotoMainView];
+        }
     }
     
     
@@ -146,7 +114,7 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
-    [self gotoMainView];
+ //   [self gotoMainView];
     LogDebug(@"User is logged in");
     
 }
@@ -154,7 +122,7 @@
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
-    [self gotoMainView];
+    justSignedUp = YES;
     LogDebug(@"User is signed up");
 }
 

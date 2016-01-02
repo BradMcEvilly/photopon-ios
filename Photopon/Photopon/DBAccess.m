@@ -280,5 +280,76 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
 }
 
 
+@interface PhoneNumberCheckDelegate : NSObject<UIAlertViewDelegate>
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
++ (PhoneNumberCheckDelegate *)sharedInstance;
+
+@end
+
+@implementation PhoneNumberCheckDelegate
+
+-(void)showSettings {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    
+    UIViewController* mainCtrl = [st instantiateViewControllerWithIdentifier:@"SBSettings"];
+    [topController showViewController:mainCtrl sender:nil];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self showSettings];
+    }
+}
+
+
+
++ (PhoneNumberCheckDelegate *)sharedInstance
+{
+    static PhoneNumberCheckDelegate *sharedInstance;
+    
+    @synchronized(self)
+    {
+        if (!sharedInstance)
+            sharedInstance = [[PhoneNumberCheckDelegate alloc] init];
+        
+        return sharedInstance;
+    }
+}
+
+
+@end
+
+
+
+BOOL HasPhoneNumber(NSString* message) {
+    
+    PFUser* c = [PFUser currentUser];
+    if (c && c[@"phone"]) {
+        return TRUE;
+    }
+    
+    if (message) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Number required"
+                                                        message:message
+                                                       delegate:[PhoneNumberCheckDelegate sharedInstance]
+                                              cancelButtonTitle:@"Go to Settings"
+                                              otherButtonTitles:@"Later", nil];
+        [alert show];
+    }
+    
+    return FALSE;
+}
+
 
 

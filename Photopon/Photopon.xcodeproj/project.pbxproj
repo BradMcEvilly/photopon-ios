@@ -256,8 +256,8 @@
 				62CA90F31B7BC718009C3B4C /* FriendsViewController.h */,
 				62CA90F41B7BC718009C3B4C /* FriendsViewController.m */,
 				623F95551B93970500506B16 /* Helpers */,
-				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
 				62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */,
+				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
 				621AE3341B797CBB00A9C18C /* LoginViewController.h */,
 				621AE3351B797CBB00A9C18C /* LoginViewController.m */,
 				62D148D91B79732100E8D4A1 /* Main.storyboard */,
@@ -605,8 +605,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -631,8 +631,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a8136604-867f-4dec-800a-a75769653a37";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE = "6a5eed39-af69-40db-80d8-d813716e9a95";
+				SDKROOT = iphoneos9.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -654,8 +654,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -673,8 +673,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "a8136604-867f-4dec-800a-a75769653a37";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE = "6a5eed39-af69-40db-80d8-d813716e9a95";
+				SDKROOT = iphoneos9.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -690,7 +690,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8136604-867f-4dec-800a-a75769653a37";
+				PROVISIONING_PROFILE = "6a5eed39-af69-40db-80d8-d813716e9a95";
 			};
 			name = Debug;
 		};
@@ -704,7 +704,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8136604-867f-4dec-800a-a75769653a37";
+				PROVISIONING_PROFILE = "6a5eed39-af69-40db-80d8-d813716e9a95";
 			};
 			name = Release;
 		};

@@ -24,6 +24,7 @@
     NSArray* allPFCoupons;
     int selectedCouponIndex;
     CLLocationManager* locationManager;
+    UIRefreshControl* refreshControl;
 }
 
 
@@ -33,6 +34,7 @@
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
     [self.couponTable reloadData];
+    [refreshControl endRefreshing];
 }
 
 
@@ -86,7 +88,9 @@
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
-
+-(void)forceUpdateCoupons {
+    UpdateNearbyCoupons();
+}
 
 -(void)viewDidLoad
 {
@@ -101,6 +105,20 @@
 
     NSLog(@"Registering listener for coupon update");
     AddCouponUpdateListener(self);
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.tintColor = [UIColor blackColor];
+    [refreshControl addTarget:self
+                            action:@selector(forceUpdateCoupons)
+                  forControlEvents:UIControlEventValueChanged];
+    
+    
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.couponTable;
+    tableViewController.refreshControl = refreshControl;
+    
+
 }
 
 -(void) dealloc {
@@ -144,31 +162,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 110;
+    return 60;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     NSInteger thisCouponIndex = (int)indexPath.row;
-    
-    
     
     CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
     [detailView setCouponIndex:thisCouponIndex];
     [self showViewController:detailView sender:nil];
     
-    
-    
-    
-    
-    /*
-    PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-
-    [camView setCoupons:allCoupons withObjects:allPFCoupons];
-    [camView setCurrentCouponIndex:indexPath.row];
-    [self showViewController:camView sender:nil];
- */
 }
 
 
