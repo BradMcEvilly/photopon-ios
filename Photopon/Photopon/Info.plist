@@ -33,6 +33,8 @@
 	<string>Get neraby coupons</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Comfortaa-Bold.ttf</string>
+		<string>JosefinSans-Bold.ttf</string>
 		<string>FontAwesome.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

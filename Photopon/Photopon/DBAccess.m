@@ -91,7 +91,7 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
     PFQuery *query = [PFQuery queryWithClassName:@"Location"];
 
-    [query whereKey:@"location" nearGeoPoint:point withinKilometers:100000];
+    [query whereKey:@"location" nearGeoPoint:point withinKilometers:1];
     [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
         NSMutableSet *ids = [[NSMutableSet alloc] init];
         

@@ -9,15 +9,15 @@
          contextName = "-[UIView(Internal) _addSubview:positioned:relativeTo:]:(null)">
       </ContextState>
       <ContextState
+         contextName = "-[PhotoponLoginViewController viewDidLayoutSubviews]:PhotoponLoginViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "-[ChatMessageTableViewCell awakeFromNib]:ChatMessageTableViewCell.m">
          <PersistentStrings>
             <PersistentString
                value = "self.frame">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[PhotoponLoginViewController viewDidLayoutSubviews]:PhotoponLoginViewController.m">
       </ContextState>
       <ContextState
          contextName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke14:UIImageView+WebCache.m">
@@ -53,6 +53,14 @@
          contextName = "-[LeftMenuViewController addTapHandlerFor:withTag:]:LeftMenuViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[PhotoponCameraView viewDidLoad]:PhotoponCameraView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.couponOverlayGraphics">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__74-[SettingsController imagePickerController:didFinishPickingMediaWithInfo:]_block_invoke:SettingsController.m">
          <PersistentStrings>
             <PersistentString
@@ -86,10 +94,10 @@
          contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
          <PersistentStrings>
             <PersistentString
-               value = "msg[@&quot;from&quot;]">
+               value = "dict">
             </PersistentString>
             <PersistentString
-               value = "dict">
+               value = "msg[@&quot;from&quot;]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

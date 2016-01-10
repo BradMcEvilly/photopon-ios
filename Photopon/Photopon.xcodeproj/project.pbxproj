@@ -29,6 +29,11 @@
 		62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B541C239842007704D1 /* MiniCouponViewController.xib */; };
 		62821B581C239842007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B541C239842007704D1 /* MiniCouponViewController.xib */; };
 		6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */; };
+		62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62970B411C3F98A700521815 /* PhotoponOverlayOffer@2x.png */; };
+		62970B441C401A1E00521815 /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 62970B431C401A1E00521815 /* photopon-logo-white.png */; };
+		62970B461C4021E900521815 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 62970B451C4021E900521815 /* camera.png */; };
+		62970B481C40284800521815 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62970B471C40284800521815 /* Comfortaa-Bold.ttf */; };
+		62970B4A1C40286300521815 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62970B491C40286300521815 /* JosefinSans-Bold.ttf */; };
 		62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302B11B7D5EDA00D61F34 /* NotificationController.m */; };
 		62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BA1B7E9AB300D61F34 /* AddFriendController.m */; };
 		62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302BD1B80A38B00D61F34 /* DBAccess.m */; };
@@ -109,6 +114,11 @@
 		62821B541C239842007704D1 /* MiniCouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiniCouponViewController.xib; sourceTree = "<group>"; };
 		6296ADCC1B83C00700DC3CF5 /* PubNubWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNubWrapper.h; sourceTree = "<group>"; };
 		6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubNubWrapper.m; sourceTree = "<group>"; };
+		62970B411C3F98A700521815 /* PhotoponOverlayOffer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PhotoponOverlayOffer@2x.png"; sourceTree = "<group>"; };
+		62970B431C401A1E00521815 /* photopon-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photopon-logo-white.png"; sourceTree = "<group>"; };
+		62970B451C4021E900521815 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		62970B471C40284800521815 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		62970B491C40286300521815 /* JosefinSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Bold.ttf"; sourceTree = "<group>"; };
 		62A302B01B7D5EDA00D61F34 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		62A302B11B7D5EDA00D61F34 /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		62A302B91B7E9AB300D61F34 /* AddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendController.h; sourceTree = "<group>"; };
@@ -305,10 +315,15 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62970B491C40286300521815 /* JosefinSans-Bold.ttf */,
+				62970B471C40284800521815 /* Comfortaa-Bold.ttf */,
+				62970B411C3F98A700521815 /* PhotoponOverlayOffer@2x.png */,
 				626CAE931C12580000189D6E /* add-button.png */,
+				62970B451C4021E900521815 /* camera.png */,
 				62D0C2F71C08B4A60069B0B5 /* contact-user.png */,
 				62D0C2F81C08B4A60069B0B5 /* photopon-user.png */,
 				62ED02F11BD4419D00534A98 /* photopon-logo.png */,
+				62970B431C401A1E00521815 /* photopon-logo-white.png */,
 				62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */,
 				625817231BA9685200506E0E /* camplaceholder.jpg */,
 				62DD661D1B8E8A3500B1A972 /* profileplaceholder.png */,
@@ -444,9 +459,12 @@
 				62D0C2F91C08B4A60069B0B5 /* contact-user.png in Resources */,
 				626CAE941C12580000189D6E /* add-button.png in Resources */,
 				626266241B8A7710006D730E /* check.png in Resources */,
+				62970B441C401A1E00521815 /* photopon-logo-white.png in Resources */,
+				62970B461C4021E900521815 /* camera.png in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
 				62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */,
+				62970B481C40284800521815 /* Comfortaa-Bold.ttf in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
@@ -457,8 +475,10 @@
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
 				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
 				62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */,
+				62970B4A1C40286300521815 /* JosefinSans-Bold.ttf in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
+				62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
 				626266221B8A6CA1006D730E /* takephoto.png in Resources */,
 			);
@@ -685,12 +705,12 @@
 			baseConfigurationReference = 756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a5eed39-af69-40db-80d8-d813716e9a95";
+				PROVISIONING_PROFILE = "91bd2ab4-efcc-4701-bd8c-332d899b08d7";
 			};
 			name = Debug;
 		};
@@ -699,12 +719,12 @@
 			baseConfigurationReference = DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a5eed39-af69-40db-80d8-d813716e9a95";
+				PROVISIONING_PROFILE = "91bd2ab4-efcc-4701-bd8c-332d899b08d7";
 			};
 			name = Release;
 		};

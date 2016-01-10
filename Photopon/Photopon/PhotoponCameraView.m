@@ -21,7 +21,7 @@
     NSInteger currentCouponIndex;
     BOOL hasCamera;
     BOOL isInitialized;
-    MiniCouponViewController *nonSystemsController;
+    MiniCouponViewController *miniCouponViewController;
 }
 
 
@@ -83,21 +83,42 @@
     self.noCouponView.layer.cornerRadius = 10;
     self.noCouponView.layer.masksToBounds = YES;
     
-}
+    
+    UIImage *iconImage = [[UIImage imageNamed:@"PhotoponOverlayOffer@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [self.couponOverlayGraphics setImage: iconImage];
+    
 
+    
 
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:NO];
-    [self initCamera];
     
 }
+
+
+-(void)viewDidLayoutSubviews {
+    CGRect tframe = self.topBand.frame;
+    tframe.size.height = self.couponOverlayGraphics.frame.origin.y;
+    [self.topBand setFrame:tframe];
+    
+    
+    CGRect bframe = self.bottomBand.frame;
+    bframe.size.height = [UIScreen mainScreen].bounds.size.height - (self.couponOverlayGraphics.frame.origin.y + self.couponOverlayGraphics.frame.size.height);
+    bframe.origin.y = (self.couponOverlayGraphics.frame.origin.y + self.couponOverlayGraphics.frame.size.height);
+    [self.bottomBand setFrame:bframe];
+    
+    
+    [self initCamera];
+
+}
+
 
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponCameraScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    
+    
 }
 
 
@@ -153,7 +174,7 @@
         
         
         PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
-        [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex: [nonSystemsController getCouponIndex] ]];
+        [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex: [miniCouponViewController getCouponIndex] ]];
         [photoponDrawCtrl setPhoto:image];
         
         [self.navigationController pushViewController:photoponDrawCtrl animated:true];
@@ -163,26 +184,23 @@
 
 
 -(void)createMiniCouponView {
-    /*
-    MiniCouponViewController* ctrl = [[MiniCouponViewController alloc] init];
-    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MiniCouponViewController" owner:ctrl options:nil];
-    UIView *couponView = [subviewArray objectAtIndex:0];
+ 
     
-    [self.view addSubview:couponView];
-    [couponView setFrame:CGRectMake(0, 0, 300, 200)];
-     
-     */
+    miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
+    [miniCouponViewController setCouponIndex:currentCouponIndex];
     
-    nonSystemsController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
-    [nonSystemsController setCouponIndex:currentCouponIndex];
-
+    const int MiniCouponSize = 92;
+    const int MiniCouponViewAlignment = 45;
     
     
-    nonSystemsController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 100, 200);
-    nonSystemsController.view.center = self.view.center;
-    [self.view addSubview:nonSystemsController.view];
-    [self addChildViewController:nonSystemsController];
-    [nonSystemsController didMoveToParentViewController:self];
+    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 60, MiniCouponSize);
+    CGPoint ct = self.view.center;
+    ct.y = self.couponOverlayGraphics.frame.origin.y + self.couponOverlayGraphics.frame.size.height - MiniCouponSize - MiniCouponViewAlignment;
+    miniCouponViewController.view.center = ct;
+    
+    [self.view addSubview:miniCouponViewController.view];
+    [self addChildViewController:miniCouponViewController];
+    [miniCouponViewController didMoveToParentViewController:self];
     
 }
 
@@ -208,6 +226,9 @@
     
     isInitialized = YES;
     
+    
+    
+    
     self.shutterButton.alpha = 1;
     self.noCouponView.alpha = 0;
     [self.noCouponIndicator stopAnimating];
@@ -220,9 +241,13 @@
     session.sessionPreset = AVCaptureSessionPresetMedium;
     
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-    
-    captureVideoPreviewLayer.frame = self.imageView.bounds;
+    [captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+
+    captureVideoPreviewLayer.frame = [UIScreen mainScreen].bounds;
+    [self.imageView setFrame:[UIScreen mainScreen].bounds];
     [self.imageView.layer addSublayer:captureVideoPreviewLayer];
+    
+    
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     

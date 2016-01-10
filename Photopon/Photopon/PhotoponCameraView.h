@@ -15,6 +15,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *couponOverlayGraphics;
 @property(nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
 @property (weak, nonatomic) IBOutlet UIImageView *shutterButton;
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *noCouponIndicator;
 
 
+@property (weak, nonatomic) IBOutlet UIView *topBand;
+@property (weak, nonatomic) IBOutlet UIView *bottomBand;
 
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex;
 
