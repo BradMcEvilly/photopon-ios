@@ -11,8 +11,3 @@ pod 'IQKeyboardManager'
 pod 'Google/Analytics'
 pod 'TwilioSDK', '~>1.2'
 end
-
-target 'PhotoponTests' do
-
-end
-

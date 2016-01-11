@@ -23,11 +23,8 @@
 		626CAE941C12580000189D6E /* add-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 626CAE931C12580000189D6E /* add-button.png */; };
 		62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B421C20A167007704D1 /* LeftMenuViewController.m */; };
 		62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
-		62821B461C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
 		62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B531C239842007704D1 /* MiniCouponViewController.m */; };
-		62821B561C239842007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B531C239842007704D1 /* MiniCouponViewController.m */; };
 		62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B541C239842007704D1 /* MiniCouponViewController.xib */; };
-		62821B581C239842007704D1 /* MiniCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62821B541C239842007704D1 /* MiniCouponViewController.xib */; };
 		6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296ADCD1B83C01E00DC3CF5 /* PubNubWrapper.m */; };
 		62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62970B411C3F98A700521815 /* PhotoponOverlayOffer@2x.png */; };
 		62970B441C401A1E00521815 /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 62970B431C401A1E00521815 /* photopon-logo-white.png */; };
@@ -58,7 +55,6 @@
 		62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D148D91B79732100E8D4A1 /* Main.storyboard */; };
 		62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DC1B79732100E8D4A1 /* Images.xcassets */; };
 		62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */; };
-		62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D148EB1B79732100E8D4A1 /* PhotoponTests.m */; };
 		62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */; };
 		62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D9C8001BFBE64A00B81FDB /* MerchantInfoPage.m */; };
 		62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D9C8021BFD44DD00B81FDB /* CouponTableCell.xib */; };
@@ -72,16 +68,6 @@
 		62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */; };
 		62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		62D148E61B79732100E8D4A1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62D148BE1B79732100E8D4A1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 62D148C51B79732100E8D4A1;
-			remoteInfo = Photopon;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		620C4C1C1C10F8EF00579CF5 /* FriendPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPopupViewController.h; sourceTree = "<group>"; };
@@ -157,9 +143,6 @@
 		62D148DA1B79732100E8D4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		62D148DC1B79732100E8D4A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		62D148DF1B79732100E8D4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoponTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		62D148EA1B79732100E8D4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62D148EB1B79732100E8D4A1 /* PhotoponTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoponTests.m; sourceTree = "<group>"; };
 		62D9AF6F1BB1E6CB006D3BAF /* blackdot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackdot.png; sourceTree = "<group>"; };
 		62D9C7FF1BFBE64A00B81FDB /* MerchantInfoPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInfoPage.h; sourceTree = "<group>"; };
 		62D9C8001BFBE64A00B81FDB /* MerchantInfoPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInfoPage.m; sourceTree = "<group>"; };
@@ -195,13 +178,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62D148E21B79732100E8D4A1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -225,7 +201,6 @@
 			children = (
 				62821B441C20D69F007704D1 /* GoogleService-Info.plist */,
 				62D148C81B79732100E8D4A1 /* Photopon */,
-				62D148E81B79732100E8D4A1 /* PhotoponTests */,
 				62D148C71B79732100E8D4A1 /* Products */,
 				F9C7B90319FF7ACA494E5A39 /* Pods */,
 				9750ECB74249AEF1072E7FDE /* Frameworks */,
@@ -236,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				62D148C61B79732100E8D4A1 /* Photopon.app */,
-				62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,23 +313,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		62D148E81B79732100E8D4A1 /* PhotoponTests */ = {
-			isa = PBXGroup;
-			children = (
-				62D148EB1B79732100E8D4A1 /* PhotoponTests.m */,
-				62D148E91B79732100E8D4A1 /* Supporting Files */,
-			);
-			path = PhotoponTests;
-			sourceTree = "<group>";
-		};
-		62D148E91B79732100E8D4A1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				62D148EA1B79732100E8D4A1 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		9750ECB74249AEF1072E7FDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,24 +353,6 @@
 			productReference = 62D148C61B79732100E8D4A1 /* Photopon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		62D148E41B79732100E8D4A1 /* PhotoponTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 62D148F21B79732100E8D4A1 /* Build configuration list for PBXNativeTarget "PhotoponTests" */;
-			buildPhases = (
-				62D148E11B79732100E8D4A1 /* Sources */,
-				62D148E21B79732100E8D4A1 /* Frameworks */,
-				62D148E31B79732100E8D4A1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				62D148E71B79732100E8D4A1 /* PBXTargetDependency */,
-			);
-			name = PhotoponTests;
-			productName = PhotoponTests;
-			productReference = 62D148E51B79732100E8D4A1 /* PhotoponTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -425,10 +364,6 @@
 				TargetAttributes = {
 					62D148C51B79732100E8D4A1 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					62D148E41B79732100E8D4A1 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 62D148C51B79732100E8D4A1;
 					};
 				};
 			};
@@ -446,7 +381,6 @@
 			projectRoot = "";
 			targets = (
 				62D148C51B79732100E8D4A1 /* Photopon */,
-				62D148E41B79732100E8D4A1 /* PhotoponTests */,
 			);
 		};
 /* End PBXProject section */
@@ -481,15 +415,6 @@
 				62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
 				626266221B8A6CA1006D730E /* takephoto.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62D148E31B79732100E8D4A1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62821B461C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
-				62821B581C239842007704D1 /* MiniCouponViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,24 +494,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62D148E11B79732100E8D4A1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62D148EC1B79732100E8D4A1 /* PhotoponTests.m in Sources */,
-				62821B561C239842007704D1 /* MiniCouponViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		62D148E71B79732100E8D4A1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 62D148C51B79732100E8D4A1 /* Photopon */;
-			targetProxy = 62D148E61B79732100E8D4A1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		62D148D91B79732100E8D4A1 /* Main.storyboard */ = {
@@ -728,42 +636,6 @@
 			};
 			name = Release;
 		};
-		62D148F31B79732100E8D4A1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PhotoponTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ba3318e-7f58-4427-841a-433b343366ae";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photopon.app/Photopon";
-			};
-			name = Debug;
-		};
-		62D148F41B79732100E8D4A1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PhotoponTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ba3318e-7f58-4427-841a-433b343366ae";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photopon.app/Photopon";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -781,15 +653,6 @@
 			buildConfigurations = (
 				62D148F01B79732100E8D4A1 /* Debug */,
 				62D148F11B79732100E8D4A1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		62D148F21B79732100E8D4A1 /* Build configuration list for PBXNativeTarget "PhotoponTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62D148F31B79732100E8D4A1 /* Debug */,
-				62D148F41B79732100E8D4A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

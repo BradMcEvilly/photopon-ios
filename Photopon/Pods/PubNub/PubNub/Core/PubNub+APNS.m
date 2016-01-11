@@ -7,6 +7,7 @@
 #import "PNRequestParameters.h"
 #import "PubNub+CorePrivate.h"
 #import "PNStatus+Private.h"
+#import "PNLogMacro.h"
 #import "PNHelpers.h"
 
 
@@ -71,7 +72,8 @@
 }
 
 - (void)enablePushNotification:(BOOL)shouldEnabled onChannels:(NSArray *)channels
-           withDevicePushToken:(NSData *)pushToken andCompletion:(PNPushNotificationsStateModificationCompletionBlock)block {
+           withDevicePushToken:(NSData *)pushToken
+                 andCompletion:(PNPushNotificationsStateModificationCompletionBlock)block {
 
     BOOL removeAllChannels = (!shouldEnabled && channels == nil);
     PNOperationType operationType = PNRemoveAllPushNotificationsOperation;
@@ -96,14 +98,14 @@
             [parameters removePathComponentForPlaceholder:@"{token}"];
         }
 
-        DDLogAPICall([[self class] ddLogLevel], @"<PubNub> %@ push notifications for device '%@': %@.",
+        DDLogAPICall([[self class] ddLogLevel], @"<PubNub::API> %@ push notifications for device '%@': %@.",
                 (shouldEnabled ? @"Enable" : @"Disable"),
                 [[PNData HEXFromDevicePushToken:pushToken] lowercaseString],
                 [PNChannel namesForRequest:channels]);
     }
     else {
 
-        DDLogAPICall([[self class] ddLogLevel], @"<PubNub> Disable push notifications for device '%@'.",
+        DDLogAPICall([[self class] ddLogLevel], @"<PubNub::API> Disable push notifications for device '%@'.",
                 [[PNData HEXFromDevicePushToken:pushToken] lowercaseString]);
     }
 
@@ -117,6 +119,14 @@
         // it and probably whole client instance has been deallocated.
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Wreceiver-is-weak"
+        if (status.isError) {
+            
+            status.retryBlock = ^{
+                
+                [weakSelf enablePushNotification:shouldEnabled onChannels:channels
+                             withDevicePushToken:pushToken andCompletion:block];
+            };
+        }
         [weakSelf callBlock:block status:YES withResult:nil andStatus:status];
         #pragma clang diagnostic pop
     }];
@@ -135,7 +145,7 @@
                       forPlaceholder:@"{token}"];
     }
 
-    DDLogAPICall([[self class] ddLogLevel], @"<PubNub> Push notification enabled channels for device '%@'.",
+    DDLogAPICall([[self class] ddLogLevel], @"<PubNub::API> Push notification enabled channels for device '%@'.",
             [[PNData HEXFromDevicePushToken:pushToken] lowercaseString]);
 
     __weak __typeof(self) weakSelf = self;
@@ -148,6 +158,14 @@
                // more need in it and probably whole client instance has been deallocated.
                #pragma clang diagnostic push
                #pragma clang diagnostic ignored "-Wreceiver-is-weak"
+               if (status.isError) {
+                    
+                   status.retryBlock = ^{
+                        
+                       [weakSelf pushNotificationEnabledChannelsForDeviceWithPushToken:pushToken
+                                                                         andCompletion:block];
+                   };
+               }
                [weakSelf callBlock:block status:NO withResult:result andStatus:status];
                #pragma clang diagnostic pop
            }];

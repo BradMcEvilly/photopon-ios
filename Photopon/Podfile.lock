@@ -1,18 +1,18 @@
 PODS:
-  - Bolts/Tasks (1.2.0)
-  - CocoaLumberjack (2.0.0):
-    - CocoaLumberjack/Default (= 2.0.0)
-    - CocoaLumberjack/Extensions (= 2.0.0)
-  - CocoaLumberjack/Core (2.0.0)
-  - CocoaLumberjack/Default (2.0.0):
+  - Bolts/Tasks (1.5.1)
+  - CocoaLumberjack (2.2.0):
+    - CocoaLumberjack/Default (= 2.2.0)
+    - CocoaLumberjack/Extensions (= 2.2.0)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.0.0):
+  - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
   - FontAwesome (4.3.0)
-  - Google/Analytics (1.2.1):
+  - Google/Analytics (1.3.2):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.2.1):
+  - Google/Core (1.3.2):
     - GoogleInterchangeUtilities (~> 1.0)
     - GoogleNetworkingUtilities (~> 1.0)
     - GoogleSymbolUtilities (~> 1.0)
@@ -25,17 +25,20 @@ PODS:
   - GoogleSymbolUtilities (1.0.3)
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
-  - IQKeyboardManager (3.3.4)
-  - Parse (1.8.1):
-    - Bolts/Tasks (>= 1.2.0)
-  - ParseUI (1.1.5):
-    - Bolts/Tasks (~> 1.2)
-    - Parse (~> 1.8)
-  - PubNub (4.0.3):
-    - CocoaLumberjack (= 2.0.0)
-  - SDWebImage (3.7.3):
-    - SDWebImage/Core (= 3.7.3)
-  - SDWebImage/Core (3.7.3)
+  - IQKeyboardManager (3.3.5)
+  - Parse (1.12.0):
+    - Bolts/Tasks (~> 1.5)
+  - ParseUI (1.1.7):
+    - Bolts/Tasks (~> 1.3)
+    - Parse (~> 1.9)
+  - PubNub (4.2.3):
+    - CocoaLumberjack (= 2.2.0)
+    - PubNub/Core (= 4.2.3)
+  - PubNub/Core (4.2.3):
+    - CocoaLumberjack (= 2.2.0)
+  - SDWebImage (3.7.4):
+    - SDWebImage/Core (= 3.7.4)
+  - SDWebImage/Core (3.7.4)
   - TwilioSDK (1.2.7)
 
 DEPENDENCIES:
@@ -49,20 +52,20 @@ DEPENDENCIES:
   - TwilioSDK (~> 1.2)
 
 SPEC CHECKSUMS:
-  Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
+  Bolts: a12663244b1d3351c738882e71902fc74db54f64
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FontAwesome: 341b52261cad8254017da3ddfc01d67c87c0ca88
-  Google: fd33b5fa40fa3aaee5176de49c873a74e3d11dce
+  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
-  IQKeyboardManager: ac803e61e5b50efae6b3aeedd95a02c7c7d3b2b3
-  Parse: 2155953b1565494095d5fa5c83b3c77f2c677c09
-  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
-  PubNub: bdcc6eae1e419fe88ea6ed9013b1f6357914c25b
-  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
+  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
+  PubNub: 461805c30ce11332a6ee5ab2c34be2d4c82c38d7
+  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
   TwilioSDK: d3982acf6880ddf3ce57c4444e021a71c5f35653
 
 COCOAPODS: 0.38.2

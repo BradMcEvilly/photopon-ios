@@ -3,20 +3,29 @@
  @since 4.0
  @copyright © 2009-2015 PubNub, Inc.
  */
-#if __IPHONE_OS_VERSION_MIN_REQUIRED
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#if __IPHONE_OS_VERSION_MIN_REQUIRED && !TARGET_OS_WATCH
+    #import <UIKit/UIKit.h>
 #elif __MAC_OS_X_VERSION_MIN_REQUIRED
-#import <IOKit/IOKitLib.h>
-#include <sys/socket.h>
-#include <sys/sysctl.h>
-#include <net/if.h>
-#include <net/if_dl.h>
+    #import <IOKit/IOKitLib.h>
+    #include <sys/socket.h>
+    #include <sys/sysctl.h>
+    #include <net/if.h>
+    #include <net/if_dl.h>
 #endif // __MAC_OS_X_VERSION_MIN_REQUIRED
 #import "PNConfiguration+Private.h"
 #import "PNConstants.h"
 
 
-#pragma mark Protected interface declaration
+#pragma mark Static
+
+/**
+ @brief  Stores reference on key under which device ID will be stored persistently.
+ */
+static NSString * const kPNConfigurationDeviceIDKey = @"PNConfigurationDeviceID";
+
+
+#pragma mark - Protected interface declaration
 
 @interface PNConfiguration () <NSCopying>
 
@@ -37,19 +46,28 @@
  @since 4.0
  */
 - (instancetype)initWithPublishKey:(NSString *)publishKey
-                      subscribeKey:(NSString *)subscribeKey NS_DESIGNATED_INITIALIZER;
+                      subscribeKey:(NSString *)subscribeKey;
 
 
 #pragma mark - Misc
 
 /**
- @brief  Extract unique identifier for current platform.
+ @brief  Fetch unique device idenrifier from user defaults or generate new one.
  
- @return UIDevice identifierForVendor for Mac's serial number.
+ @return Unique device identifier which depends on platform for which client has been compiled.
  
  @since 4.0.2
  */
 - (NSString *)uniqueDeviceIdentifier;
+
+/**
+ @brief  Extract unique identifier for current platform.
+ 
+ @return Unique device identifier which depends on platform for which client has been compiled.
+ 
+ @since 4.1.1
+ */
+- (NSString *)generateUniqueDeviceIdentifier;
 
 #if __MAC_OS_X_VERSION_MIN_REQUIRED
 /**
@@ -104,7 +122,7 @@
         // device identifier.
         if (NSClassFromString(@"XCTestExpectation")) {
             
-            _deviceID = @"3650F534-FC54-4EE8-884C-EF1B83188BB7";
+            _deviceID = [@"3650F534-FC54-4EE8-884C-EF1B83188BB7" copy];
         }
         _origin = [kPNDefaultOrigin copy];
         _publishKey = [publishKey copy];
@@ -147,11 +165,29 @@
 #pragma mark - Misc
 
 - (NSString *)uniqueDeviceIdentifier {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED
-    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *identifier = [defaults stringForKey:kPNConfigurationDeviceIDKey];
+    if (!identifier) {
+        
+        identifier = [self generateUniqueDeviceIdentifier];
+        [defaults setObject:identifier forKey:kPNConfigurationDeviceIDKey];
+        [defaults synchronize];
+    }
+    
+    return identifier;
+}
+
+- (NSString *)generateUniqueDeviceIdentifier {
+    
+    NSString *identifier = nil;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED && !TARGET_OS_WATCH
+    identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 #elif __MAC_OS_X_VERSION_MIN_REQUIRED
-    return ([self serialNumber]?: [self macAddress]);
+    identifier = ([self serialNumber]?: [self macAddress]);
 #endif
+    
+    return (identifier?: [[[NSUUID UUID] UUIDString] copy]);
 }
 
 #if __MAC_OS_X_VERSION_MIN_REQUIRED
