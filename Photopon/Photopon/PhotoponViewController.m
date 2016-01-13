@@ -25,7 +25,7 @@
         PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
         [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
         [newWalletObject setObject:photopon forKey:@"photopon"];
-        [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+        [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             [self dismissViewControllerAnimated:true completion:^{
                 
             }];

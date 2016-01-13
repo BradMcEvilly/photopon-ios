@@ -7,18 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainController.h"
 
 @interface PhotoponDrawController : UIViewController
 
--(void) setCoupon:(NSObject*)coupon;
+-(void) setCoupon:(NSObject*)coupon withIndex:(NSInteger)index;
 -(void) setPhoto:(UIImage*)image;
 
 -(void) drawLineFrom:(CGPoint)from to:(CGPoint)to;
+-(void) setPageViewController:(MainController*)parent;
+
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *tempView;
 @property (weak, nonatomic) IBOutlet UIImageView *mainView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (weak, nonatomic) IBOutlet UIImageView *closeButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
@@ -44,5 +48,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *widthDisplay;
+
+
 
 @end

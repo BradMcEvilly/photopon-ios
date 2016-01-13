@@ -15,9 +15,6 @@
 @end
 
 @implementation MiniCouponViewController
-
-
-
 {
     NSArray* allCoupons;
     NSArray* allPFCoupons;
@@ -25,6 +22,8 @@
     
     UISwipeGestureRecognizer *swipeRecLeft;
     UISwipeGestureRecognizer *swipeRecRight;
+    
+    BOOL isImmobile;
 }
 
 
@@ -53,12 +52,17 @@
 
 
 -(void)onSwipeLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
+    if (isImmobile) return;
+    
     currentCouponIndex = (currentCouponIndex + 1) % [allCoupons count];
     [self updateCoupon];
 }
 
 
 -(void)onSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer {
+    if (isImmobile) return;
+    
+    
     currentCouponIndex = (currentCouponIndex - 1 + [allCoupons count]) % [allCoupons count];
     [self updateCoupon];
 }
@@ -83,6 +87,10 @@
     allPFCoupons = GetNearbyCouponsPF();
     
     [self updateCoupon];
+}
+
+-(void)setImmobile {
+    isImmobile = TRUE;
 }
 
 - (void)viewDidLoad {

@@ -13,7 +13,6 @@
 #import "Helper.h"
 #import "MiniCouponViewController.h"
 
-
 @implementation PhotoponCameraView
 {
     NSArray* allCoupons;
@@ -22,6 +21,8 @@
     BOOL hasCamera;
     BOOL isInitialized;
     MiniCouponViewController *miniCouponViewController;
+    
+    MainController* parentCtrl;
 }
 
 
@@ -50,6 +51,10 @@
 
 -(void)dealloc {
     RemoveCouponUpdateListener(self);
+}
+
+-(void)setPageViewController:(MainController*)parent {
+    parentCtrl = parent;
 }
 
 -(void)viewDidLoad
@@ -87,12 +92,24 @@
     UIImage *iconImage = [[UIImage imageNamed:@"PhotoponOverlayOffer@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [self.couponOverlayGraphics setImage: iconImage];
     
+    UITapGestureRecognizer *singleClickTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeView)];
+    singleClickTap.numberOfTapsRequired = 1;
+    [self.closeButton setUserInteractionEnabled:YES];
+    [self.closeButton addGestureRecognizer:singleClickTap];
 
     
-
+    
+    [self initCamera];
     
 }
 
+-(void)closeView {
+    if (parentCtrl) {
+        [parentCtrl gotoNotificationView];
+        
+    }
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+}
 
 -(void)viewDidLayoutSubviews {
     CGRect tframe = self.topBand.frame;
@@ -106,7 +123,6 @@
     [self.bottomBand setFrame:bframe];
     
     
-    [self initCamera];
 
 }
 
@@ -125,7 +141,8 @@
 
 
 -(IBAction)captureNow {
-    
+    [self closeView];
+
     if (hasCamera) {
         AVCaptureConnection *videoConnection = nil;
         for (AVCaptureConnection *connection in _stillImageOutput.connections)
@@ -161,11 +178,13 @@
              
              
              PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
-             [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex:currentCouponIndex]];
+             [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex:[miniCouponViewController getCouponIndex]] withIndex:[miniCouponViewController getCouponIndex]];
              [photoponDrawCtrl setPhoto:image];
              
-             [self.navigationController pushViewController:photoponDrawCtrl animated:true];
+             [photoponDrawCtrl setPageViewController:parentCtrl];
              
+             [parentCtrl presentViewController:photoponDrawCtrl animated:true completion:nil];
+
              //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
          }];
     } else {
@@ -174,12 +193,15 @@
         
         
         PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
-        [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex: [miniCouponViewController getCouponIndex] ]];
+        [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex: [miniCouponViewController getCouponIndex] ] withIndex: [miniCouponViewController getCouponIndex] ];
         [photoponDrawCtrl setPhoto:image];
         
-        [self.navigationController pushViewController:photoponDrawCtrl animated:true];
+        [photoponDrawCtrl setPageViewController:parentCtrl];
         
+        [parentCtrl presentViewController:photoponDrawCtrl animated:true completion:nil];
     }
+    
+
 }
 
 
@@ -193,9 +215,9 @@
     const int MiniCouponViewAlignment = 45;
     
     
-    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 60, MiniCouponSize);
+    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.88, MiniCouponSize);
     CGPoint ct = self.view.center;
-    ct.y = self.couponOverlayGraphics.frame.origin.y + self.couponOverlayGraphics.frame.size.height - MiniCouponSize - MiniCouponViewAlignment;
+    ct.y = 80 + [UIScreen mainScreen].bounds.size.width * 0.9 - MiniCouponSize / 2;
     miniCouponViewController.view.center = ct;
     
     [self.view addSubview:miniCouponViewController.view];

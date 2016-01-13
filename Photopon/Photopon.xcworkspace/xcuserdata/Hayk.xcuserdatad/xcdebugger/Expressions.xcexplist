@@ -80,6 +80,14 @@
          contextName = "__36-[FriendsViewController viewDidLoad]_block_invoke:FriendsViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[PhotoponDrawController savePhotopon]:PhotoponDrawController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "parentCtrl.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__39-[FriendPopupViewController startChat:]_block_invoke:FriendPopupViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -94,10 +102,10 @@
          contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
          <PersistentStrings>
             <PersistentString
-               value = "dict">
+               value = "msg[@&quot;from&quot;]">
             </PersistentString>
             <PersistentString
-               value = "msg[@&quot;from&quot;]">
+               value = "dict">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -111,6 +119,17 @@
       </ContextState>
       <ContextState
          contextName = "-[MiniCouponView gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:]:MiniCouponView.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView captureNow]:PhotoponCameraView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView closeView]:PhotoponCameraView.m">
       </ContextState>
       <ContextState
          contextName = "__45-[FriendPopupViewController removeFriendShip]_block_invoke_2:FriendPopupViewController.m">

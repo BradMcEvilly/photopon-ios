@@ -12,5 +12,6 @@
 @interface MainController : UIPageViewController<UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 -(void) showScrollPage:(id)sender;
-
+-(void) updatePageTitle;
+-(void) gotoNotificationView;
 @end

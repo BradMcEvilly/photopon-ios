@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MiniCouponView.h"
 #import "Helper.h"
+#import "MainController.h"
+
 
 @interface PhotoponCameraView : UIViewController<CouponUpdateDelegate>
 
@@ -25,7 +27,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *topBand;
 @property (weak, nonatomic) IBOutlet UIView *bottomBand;
+@property (weak, nonatomic) IBOutlet UIImageView *closeButton;
+
 
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex;
-
+-(void) setPageViewController:(MainController*)parent;
 @end

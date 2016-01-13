@@ -21,6 +21,8 @@
 		626266221B8A6CA1006D730E /* takephoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266211B8A6CA1006D730E /* takephoto.png */; };
 		626266241B8A7710006D730E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266231B8A7710006D730E /* check.png */; };
 		626CAE941C12580000189D6E /* add-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 626CAE931C12580000189D6E /* add-button.png */; };
+		6281444D1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6281444C1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m */; };
+		6281444F1C45A62D0008D9FF /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6281444E1C45A62D0008D9FF /* close-button.png */; };
 		62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B421C20A167007704D1 /* LeftMenuViewController.m */; };
 		62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
 		62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B531C239842007704D1 /* MiniCouponViewController.m */; };
@@ -91,6 +93,9 @@
 		626266211B8A6CA1006D730E /* takephoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takephoto.png; sourceTree = "<group>"; };
 		626266231B8A7710006D730E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		626CAE931C12580000189D6E /* add-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-button.png"; sourceTree = "<group>"; };
+		6281444B1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponCameraPlaceholderViewController.h; sourceTree = "<group>"; };
+		6281444C1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponCameraPlaceholderViewController.m; sourceTree = "<group>"; };
+		6281444E1C45A62D0008D9FF /* close-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close-button.png"; path = "Resources/close-button.png"; sourceTree = "<group>"; };
 		62821B411C20A167007704D1 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		62821B421C20A167007704D1 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		62821B441C20D69F007704D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -282,6 +287,8 @@
 				62821B541C239842007704D1 /* MiniCouponViewController.xib */,
 				62FFA9621C24C29F0086FEA7 /* NumberVerificationViewController.h */,
 				62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */,
+				6281444B1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.h */,
+				6281444C1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -289,6 +296,7 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6281444E1C45A62D0008D9FF /* close-button.png */,
 				62970B491C40286300521815 /* JosefinSans-Bold.ttf */,
 				62970B471C40284800521815 /* Comfortaa-Bold.ttf */,
 				62970B411C3F98A700521815 /* PhotoponOverlayOffer@2x.png */,
@@ -412,6 +420,7 @@
 				62970B4A1C40286300521815 /* JosefinSans-Bold.ttf in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
+				6281444F1C45A62D0008D9FF /* close-button.png in Resources */,
 				62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
 				626266221B8A6CA1006D730E /* takephoto.png in Resources */,
@@ -458,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6281444D1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m in Sources */,
 				623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */,
 				62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,

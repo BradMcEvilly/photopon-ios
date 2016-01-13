@@ -12,6 +12,8 @@
 #import "Parse/Parse.h"
 #import "Helper.h"
 #import "LeftMenuViewController.h"
+#import "PhotoponCameraView.h"
+#import "PhotoponCameraPlaceholderViewController.h"
 
 @implementation MainController
 {
@@ -21,7 +23,7 @@
     
     
     UIViewController *notificationsView;
-    UIViewController *photoponView;
+    PhotoponCameraPlaceholderViewController *photoponView;
     UIViewController *friendsView;
     UIViewController *couponsView;
     UIViewController *walletView;
@@ -54,13 +56,7 @@
 
         
         if ([menuItem isEqualToString:@"notifications"]) {
-            
-            [self setViewControllers:@[notificationsView]
-                           direction:UIPageViewControllerNavigationDirectionForward
-                            animated:NO completion:^(BOOL finished) {
-                                __strong typeof(self) strongSelf = weakSelf;
-                                [strongSelf updatePageTitle];
-                            }];
+            [self gotoNotificationView];
 
         }
         
@@ -96,13 +92,10 @@
         
         
         if ([menuItem isEqualToString:@"addphotopon"]) {
-            
-            [self setViewControllers:@[photoponView]
-                           direction:UIPageViewControllerNavigationDirectionForward
-                            animated:NO completion:^(BOOL finished) {
-                                __strong typeof(self) strongSelf = weakSelf;
-                                [strongSelf updatePageTitle];
-                            }];
+            PhotoponCameraView* camCtrl = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
+            [camCtrl setPageViewController: nil];
+            [self.navigationController presentViewController:camCtrl animated:true completion:nil];
+
         }
         
         
@@ -134,7 +127,16 @@
 
 
 
+-(void) gotoNotificationView {
+    __weak typeof(self) weakSelf = self;
 
+    [self setViewControllers:@[notificationsView]
+                   direction:UIPageViewControllerNavigationDirectionForward
+                    animated:NO completion:^(BOOL finished) {
+                        __strong typeof(self) strongSelf = weakSelf;
+                        [strongSelf updatePageTitle];
+                    }];
+}
 
 
 -(void)viewDidLoad
@@ -148,11 +150,13 @@
     
     
     
-    photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
+    photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCamPlaceHolder"];
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
+    
+    [photoponView setPageViewController:self];
     
     myViewControllers = @[photoponView, notificationsView,friendsView,couponsView,walletView];
     
@@ -218,8 +222,8 @@
     --currentIndex;
     
     currentIndex = currentIndex % (myViewControllers.count);
-    
-    return [myViewControllers objectAtIndex:currentIndex];
+    UIViewController* ctrl = [myViewControllers objectAtIndex:currentIndex];
+    return ctrl;
 }
  
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
@@ -230,7 +234,8 @@
     ++currentIndex;
     
     currentIndex = currentIndex % (myViewControllers.count);
-    return [myViewControllers objectAtIndex:currentIndex];
+    UIViewController* ctrl = [myViewControllers objectAtIndex:currentIndex];
+    return ctrl;
 }
  
 

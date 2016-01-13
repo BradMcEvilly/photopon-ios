@@ -10,12 +10,14 @@
 #import "PhotoponCameraView.h"
 #import "FriendsViewController.h"
 #import "DBAccess.h"
+#import "MiniCouponViewController.h"
 @import Foundation;
 
 
 @implementation PhotoponDrawController
 {
     PFObject* currentCoupon;
+    NSInteger currentCouponIndex;
     CGPoint lastPoint;
     bool swiped;
     UIImage* photo;
@@ -27,12 +29,20 @@
     UIColor* selectedColor;
     NSInteger selectedWidth;
     
-    
+    MainController* parentCtrl;
+
     NSArray* widthSizes;
 }
 
--(void) setCoupon:(PFObject*)coupon {
+
+-(void)setPageViewController:(MainController*)parent {
+    parentCtrl = parent;
+}
+
+
+-(void) setCoupon:(PFObject*)coupon withIndex:(NSInteger)index {
     currentCoupon = coupon;
+    currentCouponIndex = index;
 }
 
 
@@ -115,6 +125,32 @@
 }
 
 
+
+
+-(void)createMiniCouponView {
+    
+    
+    MiniCouponViewController* miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
+    [miniCouponViewController setCouponIndex:currentCouponIndex];
+    [miniCouponViewController setImmobile];
+    const int MiniCouponSize = 92;
+    
+    
+    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, MiniCouponSize);
+    CGPoint ct = self.view.center;
+//    ct.y = 80 + [UIScreen mainScreen].bounds.size.width * 0.9 - MiniCouponSize / 2;
+    miniCouponViewController.view.center = ct;
+    
+    [self.view addSubview:miniCouponViewController.view];
+    [self addChildViewController:miniCouponViewController];
+    [miniCouponViewController didMoveToParentViewController:self];
+    
+}
+
+
+
+
+
 -(void)sendPhotopons:(NSArray*)users {
     
     
@@ -169,7 +205,9 @@
 
     FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
-    [self.navigationController pushViewController:friendsViewController animated:true];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [parentCtrl.navigationController pushViewController:friendsViewController animated:TRUE];
+//    [parentCtrl presentViewController:friendsViewController animated:true completion:nil];
 
 }
 
@@ -281,7 +319,22 @@
     [self.width4 addTarget:self action:@selector(onWidthChange:) forControlEvents:UIControlEventTouchDown];
     
     [self selectColor:((UIButton*)self.colors[0]).backgroundColor];
+    
+    [self createMiniCouponView];
+
+    
+    UITapGestureRecognizer *singleClickTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeView)];
+    singleClickTap.numberOfTapsRequired = 1;
+    [self.closeButton setUserInteractionEnabled:YES];
+    [self.closeButton addGestureRecognizer:singleClickTap];
+    
+
 }
+
+-(void)closeView {
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated {
     [self selectWidth:1];
