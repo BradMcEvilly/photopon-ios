@@ -12,6 +12,7 @@
 #import <ImageIO/CGImageProperties.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DBAccess.h"
+#import "HeaderViewController.h"
 
 @implementation SettingsController
 
@@ -45,7 +46,7 @@
     
     UIViewController* merchantInfo = (UIViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMerchantInfo"];
     
-    [self.navigationController pushViewController:merchantInfo animated:true];
+    [self presentViewController:merchantInfo animated:YES completion:nil];
     
 }
 
@@ -93,6 +94,8 @@
 {
     [super viewDidLoad];
     
+
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Settings"];
    
     [self.changePhoto addTarget:self action:@selector(changePhotoCallback) forControlEvents:UIControlEventTouchDown];
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
@@ -105,7 +108,6 @@
     
     
 }
-
 
 
 

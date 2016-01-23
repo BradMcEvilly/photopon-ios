@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FontAwesome.otf">
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+        </mutableArray>
+        <mutableArray key="JosefinSans-Bold.ttf">
+            <string>JosefinSans-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderViewController">
+            <connections>
+                <outlet property="leftMenuButton" destination="skf-vg-Uzp" id="vt0-ZL-tpI"/>
+                <outlet property="rightMenuButton" destination="Bbo-cR-wPO" id="CfH-U0-USF"/>
+                <outlet property="titleText" destination="2NQ-Yc-Z4r" id="ap4-Fb-Gtw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NQ-Yc-Z4r">
+                    <rect key="frame" x="250" y="302" width="100" height="20"/>
+                    <fontDescription key="fontDescription" name="JosefinSans-Bold" family="Josefin Sans" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skf-vg-Uzp">
+                    <rect key="frame" x="12" y="293" width="30" height="38"/>
+                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
+                    <state key="normal" title="">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-cR-wPO" userLabel="Right Menu Button">
+                    <rect key="frame" x="558" y="293" width="30" height="38"/>
+                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="skf-vg-Uzp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="9fn-jC-khe"/>
+                <constraint firstItem="skf-vg-Uzp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="12" id="Fa9-dZ-hkK"/>
+                <constraint firstItem="2NQ-Yc-Z4r" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cme-pO-nfF"/>
+                <constraint firstAttribute="trailing" secondItem="Bbo-cR-wPO" secondAttribute="trailing" constant="12" id="e6q-ji-bHj"/>
+                <constraint firstItem="Bbo-cR-wPO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="12" id="nQQ-9I-dET"/>
+                <constraint firstItem="2NQ-Yc-Z4r" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="12" id="y3S-JY-spw"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

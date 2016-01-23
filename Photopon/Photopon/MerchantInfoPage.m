@@ -9,6 +9,7 @@
 #import "MerchantInfoPage.h"
 #import <Parse/Parse.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "HeaderViewController.h"
 
 @implementation MerchantInfoPage
 
@@ -81,6 +82,7 @@
 
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
 
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Merchant Info"];
 }
 
 

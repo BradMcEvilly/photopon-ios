@@ -13,6 +13,7 @@
 #import "Parse/Parse.h"
 #import "LogHelper.h"
 #import "DBAccess.h"
+#import "HeaderViewController.h"
 
 @implementation FriendsViewController
 {
@@ -33,14 +34,29 @@
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
     
+    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
+    
     if (isSelectMode) {
-        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
-        self.navigationItem.rightBarButtonItem = anotherButton;
+//        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
+//        self.navigationItem.rightBarButtonItem = anotherButton;
+        [header addRightButtonWithIcon:@"" withTarget:self action:@selector(friendsSelected)];
+
+    } else {
+        [header addRightButtonWithIcon:@"" withTarget:self action:@selector(addFriendClicked)];
+        
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.friendsTable addGestureRecognizer:tap];
 
+
+}
+
+-(void)addFriendClicked {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+    UIViewController *addFriend = [storyBoard instantiateViewControllerWithIdentifier:@"SBAddFriend"];
+    [self presentViewController:addFriend animated:true completion:nil];
 
 }
 
@@ -97,9 +113,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
-    self.addFriendButton.hidden = isSelectMode;
- 
+
 }
 
 -(void)friendsSelected {
@@ -120,6 +134,7 @@
     if ([selectedUsers count] != 0) {
     
         [onFriendSelectedTarget performSelector:onFriendSelected withObject:selectedUsers];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

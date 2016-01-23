@@ -9,6 +9,7 @@
 #import "PhotoponViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DBAccess.h"
+#import "HeaderViewController.h"
 
 @implementation PhotoponViewController
 {
@@ -34,6 +35,9 @@
 }
 
 -(void)viewDidLoad {
+    
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Photopon"];
+
     
     PFFile* drawingFile = [photopon objectForKey:@"drawing"];
     PFFile* photoFile = [photopon objectForKey:@"photo"];

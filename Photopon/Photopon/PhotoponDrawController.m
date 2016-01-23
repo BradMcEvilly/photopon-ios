@@ -174,7 +174,8 @@
             photoFile = NULL;
             drawingFile = NULL;
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            //[self.navigationController popToRootViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
                 message:@"Photopon was saved successfully."
@@ -205,9 +206,9 @@
 
     FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
-    [self dismissViewControllerAnimated:NO completion:nil];
-    [parentCtrl.navigationController pushViewController:friendsViewController animated:TRUE];
-//    [parentCtrl presentViewController:friendsViewController animated:true completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
+//    [parentCtrl.navigationController pushViewController:friendsViewController animated:TRUE];
+    [self presentViewController:friendsViewController animated:true completion:nil];
 
 }
 

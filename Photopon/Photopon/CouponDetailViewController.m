@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PhotoponCameraView.h"
-
+#import "HeaderViewController.h"
 
 @interface CouponDetailViewController ()
 @end
@@ -57,16 +57,18 @@ NSInteger selectedCoupon = 0;
 
 -(void)giveCoupon {
     
-    PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-    [camView setCurrentCouponIndex:selectedCoupon];
-    [self showViewController:camView sender:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
+                                                                                                         @"index": @(selectedCoupon)
+                                                                                                         }];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Coupon Details"];
+
     NSArray* allPFCoupons = GetNearbyCouponsPF();
     
     if ([allPFCoupons count] <= selectedCoupon) {

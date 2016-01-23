@@ -8,7 +8,7 @@
 
 #import "NumberVerificationViewController.h"
 #import "PhoneNumberFormatter.h"
-
+#import "HeaderViewController.h"
 
 @interface NumberVerificationViewController ()
 
@@ -142,6 +142,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Verifiation"];
+
     
     
     [self.phoneView setHidden:NO];

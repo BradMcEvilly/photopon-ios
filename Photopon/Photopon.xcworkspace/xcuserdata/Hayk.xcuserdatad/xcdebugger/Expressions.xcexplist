@@ -9,6 +9,14 @@
          contextName = "-[UIView(Internal) _addSubview:positioned:relativeTo:]:(null)">
       </ContextState>
       <ContextState
+         contextName = "-[HeaderViewController backMenuClicked]:HeaderViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[PhotoponLoginViewController viewDidLayoutSubviews]:PhotoponLoginViewController.m">
       </ContextState>
       <ContextState
@@ -69,10 +77,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[PhotoponDrawController viewDidAppear:]:PhotoponDrawController.m">
+         contextName = "-[PhotoponDrawController savePhotopon]:PhotoponDrawController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.color4.backgroundColor">
+               value = "parentCtrl.navigationController">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -80,10 +88,10 @@
          contextName = "__36-[FriendsViewController viewDidLoad]_block_invoke:FriendsViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[PhotoponDrawController savePhotopon]:PhotoponDrawController.m">
+         contextName = "-[PhotoponDrawController viewDidAppear:]:PhotoponDrawController.m">
          <PersistentStrings>
             <PersistentString
-               value = "parentCtrl.navigationController">
+               value = "self.color4.backgroundColor">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -102,10 +110,10 @@
          contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
          <PersistentStrings>
             <PersistentString
-               value = "msg[@&quot;from&quot;]">
+               value = "dict">
             </PersistentString>
             <PersistentString
-               value = "dict">
+               value = "msg[@&quot;from&quot;]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

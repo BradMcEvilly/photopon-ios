@@ -13,6 +13,8 @@
 #import "DBAccess.h"
 #import "Helper.h"
 #import "LogHelper.h"
+#import "HeaderViewController.h"
+#import "IndicatorViewController.h"
 
 @implementation NotificationController
 {
@@ -26,9 +28,23 @@
     });
 }
 
+-(void)addHeader {
+    HeaderViewController* headerViewController = [[HeaderViewController alloc] initWithNibName:@"HeaderViewController" bundle:nil];
+    
+    headerViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
+    
+    [self.view addSubview:headerViewController.view];
+    [self addChildViewController:headerViewController];
+    [headerViewController didMoveToParentViewController:self];
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [HeaderViewController addHeaderToView:self withTitle:@"Notifications"];
+    //[IndicatorViewController showIndicator:self withText:@"Test loading text" timeout:2];
+    
     [self.notificationsTable setDelegate:self];
     [self.notificationsTable setDataSource:self];
     allNotifications = [NSMutableArray array];
@@ -220,8 +236,8 @@
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [self updateNotifications];
         }];
-        
-        [self.navigationController pushViewController:messageCtrl animated:true];
+        [self presentViewController:messageCtrl animated:YES completion:nil];
+
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
@@ -232,8 +248,7 @@
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [self updateNotifications];
         }];
-        
-        [self.navigationController pushViewController:photoponView animated:true];
+        [self presentViewController:photoponView animated:YES completion:nil];
     }
     
 

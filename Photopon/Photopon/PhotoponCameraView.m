@@ -19,10 +19,11 @@
     NSArray* allPFCoupons;
     NSInteger currentCouponIndex;
     BOOL hasCamera;
-    BOOL isInitialized;
     MiniCouponViewController *miniCouponViewController;
     
     MainController* parentCtrl;
+    
+    AVCaptureDevicePosition activeDevice;
 }
 
 
@@ -30,6 +31,9 @@
 
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex {
     currentCouponIndex = couponIndex;
+    if (miniCouponViewController) {
+        [miniCouponViewController setCouponIndex:currentCouponIndex];
+    }
 }
 
 
@@ -40,13 +44,11 @@
 }
 
 
-
 - (void) couponsUpdated {
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
-    [self initCamera];
+    [miniCouponViewController couponsUpdated];
 }
-
 
 
 -(void)dealloc {
@@ -57,6 +59,17 @@
     parentCtrl = parent;
 }
 
+
+-(void)onSwitchCamera {
+    if (activeDevice == AVCaptureDevicePositionFront) {
+        activeDevice = AVCaptureDevicePositionBack;
+    } else {
+        activeDevice = AVCaptureDevicePositionFront;
+    }
+    [self initCamera];
+    
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,25 +78,20 @@
     allPFCoupons = GetNearbyCouponsPF();
     
     AddCouponUpdateListener(self);
-
+    
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onShutterTouch)];
     singleTap.numberOfTapsRequired = 1;
     [self.shutterButton setUserInteractionEnabled:YES];
     [self.shutterButton addGestureRecognizer:singleTap];
-
     
-    if ([allCoupons count] != 0) {
-        self.shutterButton.alpha = 1;
-        self.noCouponView.alpha = 0;
-        [self.noCouponIndicator stopAnimating];
-    } else {
-        
-        self.shutterButton.alpha = 0;
-        self.noCouponView.alpha = 1;
-        [self.noCouponIndicator startAnimating];
-        
-    }
+    
+    
+    UITapGestureRecognizer *switchButtonTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSwitchCamera)];
+    switchButtonTap.numberOfTapsRequired = 1;
+    [self.switchCameraButton setUserInteractionEnabled:YES];
+    [self.switchCameraButton addGestureRecognizer:switchButtonTap];
+    
     
     self.noCouponView.layer.cornerRadius = 10;
     self.noCouponView.layer.masksToBounds = YES;
@@ -91,15 +99,32 @@
     
     UIImage *iconImage = [[UIImage imageNamed:@"PhotoponOverlayOffer@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [self.couponOverlayGraphics setImage: iconImage];
-    
-    UITapGestureRecognizer *singleClickTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeView)];
-    singleClickTap.numberOfTapsRequired = 1;
-    [self.closeButton setUserInteractionEnabled:YES];
-    [self.closeButton addGestureRecognizer:singleClickTap];
 
+    
+    activeDevice = AVCaptureDevicePositionBack;
+    if ([self getCameraWithType:AVCaptureDevicePositionFront] == nil) {
+        self.switchCameraButton.hidden = YES;
+    }
     
     
     [self initCamera];
+    
+    
+    BOOL hasCoupons = ([allCoupons count] > 0);
+    
+    
+    self.shutterButton.hidden = !hasCoupons;
+    self.noCouponView.hidden = hasCoupons;
+    
+    if (hasCoupons) {
+        [self.noCouponIndicator stopAnimating];
+    } else {
+        [self.noCouponIndicator startAnimating];
+    }
+    
+    
+    [self createMiniCouponView];
+
     
 }
 
@@ -141,7 +166,6 @@
 
 
 -(IBAction)captureNow {
-    [self closeView];
 
     if (hasCamera) {
         AVCaptureConnection *videoConnection = nil;
@@ -183,8 +207,8 @@
              
              [photoponDrawCtrl setPageViewController:parentCtrl];
              
-             [parentCtrl presentViewController:photoponDrawCtrl animated:true completion:nil];
-
+             [self presentViewController:photoponDrawCtrl animated:true completion:nil];
+             
              //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
          }];
     } else {
@@ -198,7 +222,7 @@
         
         [photoponDrawCtrl setPageViewController:parentCtrl];
         
-        [parentCtrl presentViewController:photoponDrawCtrl animated:true completion:nil];
+        [self presentViewController:photoponDrawCtrl animated:true completion:nil];
     }
     
 
@@ -212,7 +236,6 @@
     [miniCouponViewController setCouponIndex:currentCouponIndex];
     
     const int MiniCouponSize = 92;
-    const int MiniCouponViewAlignment = 45;
     
     
     miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.88, MiniCouponSize);
@@ -228,34 +251,22 @@
 
 
 
+-(AVCaptureDevice*)getCameraWithType: (AVCaptureDevicePosition)cameraType
+{
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+
+    for (AVCaptureDevice *device in videoDevices) {
+        if (device.position == cameraType) {
+            return device;
+        }
+    }
+    
+    return nil;
+}
 
 
 -(void) initCamera {
     
-    if ([allCoupons count] == 0) {
-        
-        self.shutterButton.alpha = 0;
-        self.noCouponView.alpha = 1;
-        [self.noCouponIndicator startAnimating];
-        
-        isInitialized = NO;
-        return;
-    }
-
-    if (isInitialized) {
-        return;
-    }
-    
-    isInitialized = YES;
-    
-    
-    
-    
-    self.shutterButton.alpha = 1;
-    self.noCouponView.alpha = 0;
-    [self.noCouponIndicator stopAnimating];
-
-    [self createMiniCouponView];
     
     
     
@@ -271,7 +282,7 @@
     
     
     
-    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *device = [self getCameraWithType: activeDevice];
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];

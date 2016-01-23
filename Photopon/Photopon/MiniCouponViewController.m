@@ -29,6 +29,7 @@
 
 -(void)setCouponIndex: (NSInteger)couponIndex {
     currentCouponIndex = couponIndex;
+    [self updateCoupon];
 }
 
 -(NSInteger)getCouponIndex {
@@ -36,6 +37,9 @@
 }
 
 -(void)updateCoupon {
+    if (currentCouponIndex >= [allCoupons count]) {
+        return;
+    }
     
     NSDictionary* coupon = [allCoupons objectAtIndex:currentCouponIndex];
     
@@ -83,14 +87,18 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    allCoupons = GetNearbyCoupons();
-    allPFCoupons = GetNearbyCouponsPF();
-    
+    [self couponsUpdated];
     [self updateCoupon];
 }
 
 -(void)setImmobile {
     isImmobile = TRUE;
+}
+
+-(void)couponsUpdated {
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    self.view.hidden = ([allCoupons count] == 0);
 }
 
 - (void)viewDidLoad {

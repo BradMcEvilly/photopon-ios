@@ -12,7 +12,7 @@
 #import "Helper.h"
 #import "LogHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "HeaderViewController.h"
 
 
 
@@ -26,6 +26,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [HeaderViewController addHeaderToView:self withTitle:@"Wallet"];
+
     [self.walletTable setDelegate:self];
     [self.walletTable setDataSource:self];
     allWalletItems = [NSMutableArray array];

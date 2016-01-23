@@ -23,7 +23,7 @@
     
     
     UIViewController *notificationsView;
-    PhotoponCameraPlaceholderViewController *photoponView;
+    PhotoponCameraView *photoponView;
     UIViewController *friendsView;
     UIViewController *couponsView;
     UIViewController *walletView;
@@ -44,98 +44,39 @@
 
 
 
--(IBAction)onLeftMenuClick:(id)sender
-{
-    LeftMenuViewController* leftMenu = (LeftMenuViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBLeftMenu"];
-
-    leftMenu.providesPresentationContextTransitionStyle = YES;
-    leftMenu.definesPresentationContext = YES;
-    
-    [leftMenu onClickHook:^(NSString *menuItem) {
-        __weak typeof(self) weakSelf = self;
-
-        
-        if ([menuItem isEqualToString:@"notifications"]) {
-            [self gotoNotificationView];
-
-        }
-        
-        if ([menuItem isEqualToString:@"friends"]) {
-            
-            [self setViewControllers:@[friendsView]
-                           direction:UIPageViewControllerNavigationDirectionForward
-                            animated:NO completion:^(BOOL finished) {
-                                __strong typeof(self) strongSelf = weakSelf;
-                                [strongSelf updatePageTitle];
-                            }];
-        }
-        
-        if ([menuItem isEqualToString:@"coupons"]) {
-            
-            [self setViewControllers:@[couponsView]
-                           direction:UIPageViewControllerNavigationDirectionForward
-                            animated:NO completion:^(BOOL finished) {
-                                __strong typeof(self) strongSelf = weakSelf;
-                                [strongSelf updatePageTitle];
-                            }];
-        }
-        
-        if ([menuItem isEqualToString:@"wallet"]) {
-            
-            [self setViewControllers:@[walletView]
-                           direction:UIPageViewControllerNavigationDirectionForward
-                            animated:NO completion:^(BOOL finished) {
-                                __strong typeof(self) strongSelf = weakSelf;
-                                [strongSelf updatePageTitle];
-                            }];
-        }
-        
-        
-        if ([menuItem isEqualToString:@"addphotopon"]) {
-            PhotoponCameraView* camCtrl = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-            [camCtrl setPageViewController: nil];
-            [self.navigationController presentViewController:camCtrl animated:true completion:nil];
-
-        }
-        
-        
-        
-        
-        if ([menuItem isEqualToString:@"settings"]) {
-            UIViewController *settings = [self.storyboard instantiateViewControllerWithIdentifier:@"SBSettings"];
-            [self.navigationController pushViewController:settings animated:true];
-        }
-        
-        if ([menuItem isEqualToString:@"signout"]) {
-            [PFUser logOut];
-            UIViewController* loginCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
-            [self presentViewController:loginCtrl animated:true completion:nil];
-        }
-        
-        
-        
-    }];
-    
-    
-    
-    [leftMenu setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    [self presentViewController:leftMenu animated:NO completion:nil];
-
-}
-
-
-
-
-
 -(void) gotoNotificationView {
-    __weak typeof(self) weakSelf = self;
-
     [self setViewControllers:@[notificationsView]
                    direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:^(BOOL finished) {
-                        __strong typeof(self) strongSelf = weakSelf;
-                        [strongSelf updatePageTitle];
-                    }];
+                    animated:NO completion:nil];
+}
+
+-(void) gotoFriendsView {
+    [self setViewControllers:@[friendsView]
+                   direction:UIPageViewControllerNavigationDirectionForward
+                    animated:NO completion:nil];
+}
+
+-(void) gotoCouponsView {
+    [self setViewControllers:@[couponsView]
+                   direction:UIPageViewControllerNavigationDirectionForward
+                    animated:NO completion:nil];
+}
+
+-(void) gotoWalletView {
+    [self setViewControllers:@[walletView]
+                   direction:UIPageViewControllerNavigationDirectionForward
+                    animated:NO completion:nil];
+}
+
+-(void) gotoAddPhotoponView: (NSNotification*)notification {
+    if (notification.userInfo) {
+        NSInteger index = [notification.userInfo[@"index"] integerValue];
+        [photoponView setCurrentCouponIndex:index];
+    }
+
+    [self setViewControllers:@[photoponView]
+                   direction:UIPageViewControllerNavigationDirectionForward
+                    animated:NO completion:nil];
 }
 
 
@@ -149,8 +90,42 @@
     
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(gotoNotificationView)
+                                                 name:@"Goto_Notifications"
+                                               object:nil];
     
-    photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCamPlaceHolder"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(gotoFriendsView)
+                                                 name:@"Goto_Friends"
+                                               object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(gotoCouponsView)
+                                                 name:@"Goto_Coupons"
+                                               object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(gotoWalletView)
+                                                 name:@"Goto_Wallet"
+                                               object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(gotoAddPhotoponView:)
+                                                 name:@"Goto_AddPhotopon"
+                                               object:nil];
+    
+    
+
+    
+    
+    
+    
+    photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
@@ -171,17 +146,17 @@
     
     
     
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FABars] style:UIBarButtonItemStylePlain target:self action:@selector(onLeftMenuClick:)];
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FABars] style:UIBarButtonItemStylePlain target:self action:@selector(onLeftMenuClick:)];
     
     
-    UIFont* font = [UIFont fontWithName:kFontAwesomeFamilyName size:22.0];
+//    UIFont* font = [UIFont fontWithName:kFontAwesomeFamilyName size:22.0];
     
     
-    [leftButton setTitleTextAttributes:@{
-         NSFontAttributeName: font
-    } forState:UIControlStateNormal];
+//    [leftButton setTitleTextAttributes:@{
+//         NSFontAttributeName: font
+//    } forState:UIControlStateNormal];
     
-    self.navigationItem.leftBarButtonItem = leftButton;
+//    self.navigationItem.leftBarButtonItem = leftButton;
 
     
     if (![CLLocationManager locationServicesEnabled]) {

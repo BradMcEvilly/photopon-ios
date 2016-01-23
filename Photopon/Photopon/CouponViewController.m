@@ -16,7 +16,7 @@
 #import "Helper.h"
 #import "CouponTableViewCell.h"
 #import "CouponDetailViewController.h"
-
+#import "HeaderViewController.h"
 
 @implementation CouponViewController
 {
@@ -72,10 +72,11 @@
 -(void) giveCoupon: (id)sender {
     UIButton* btn = (UIButton*)sender;
     NSInteger thisCouponIndex = btn.tag;
-    
-    PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-    [camView setCurrentCouponIndex:thisCouponIndex];
-    [self showViewController:camView sender:nil];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
+                                                                                                         @"index": @(thisCouponIndex)
+                                                                                                         }];
+
 
 }
 
@@ -95,6 +96,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
     
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
@@ -172,7 +175,7 @@
     
     CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
     [detailView setCouponIndex:thisCouponIndex];
-    [self showViewController:detailView sender:nil];
+    [self presentViewController:detailView animated:YES completion:nil];
     
 }
 

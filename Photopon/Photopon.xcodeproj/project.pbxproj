@@ -23,6 +23,10 @@
 		626CAE941C12580000189D6E /* add-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 626CAE931C12580000189D6E /* add-button.png */; };
 		6281444D1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6281444C1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m */; };
 		6281444F1C45A62D0008D9FF /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6281444E1C45A62D0008D9FF /* close-button.png */; };
+		628144561C485F5B0008D9FF /* HeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 628144541C485F5B0008D9FF /* HeaderViewController.m */; };
+		628144571C485F5B0008D9FF /* HeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628144551C485F5B0008D9FF /* HeaderViewController.xib */; };
+		6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 628144591C4F000E0008D9FF /* IndicatorViewController.m */; };
+		6281445C1C4F000E0008D9FF /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6281445A1C4F000E0008D9FF /* IndicatorViewController.xib */; };
 		62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B421C20A167007704D1 /* LeftMenuViewController.m */; };
 		62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62821B441C20D69F007704D1 /* GoogleService-Info.plist */; };
 		62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62821B531C239842007704D1 /* MiniCouponViewController.m */; };
@@ -41,6 +45,10 @@
 		62A302C81B80F70800D61F34 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 62A302C71B80F70800D61F34 /* empty.png */; };
 		62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A302CA1B829B0800D61F34 /* ChatMessagesController.m */; };
 		62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A7DDA11B7ABBFD000B74B8 /* MainController.m */; };
+		62C8ADC11C52CA91007021CA /* splash-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C8ADBF1C52CA91007021CA /* splash-bottom.png */; };
+		62C8ADC21C52CA91007021CA /* splash-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C8ADC01C52CA91007021CA /* splash-logo.png */; };
+		62C8ADC41C52CDEE007021CA /* camera-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C8ADC31C52CDEE007021CA /* camera-button.png */; };
+		62C8ADC61C52E568007021CA /* camera-switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C8ADC51C52E568007021CA /* camera-switch.png */; };
 		62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CA90E81B7B3C1E009C3B4C /* LogHelper.m */; };
 		62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 62CA90EB1B7B41F1009C3B4C /* FontAwesome.otf */; };
 		62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CA90F41B7BC718009C3B4C /* FriendsViewController.m */; };
@@ -96,6 +104,12 @@
 		6281444B1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponCameraPlaceholderViewController.h; sourceTree = "<group>"; };
 		6281444C1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponCameraPlaceholderViewController.m; sourceTree = "<group>"; };
 		6281444E1C45A62D0008D9FF /* close-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close-button.png"; path = "Resources/close-button.png"; sourceTree = "<group>"; };
+		628144531C485F5B0008D9FF /* HeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderViewController.h; sourceTree = "<group>"; };
+		628144541C485F5B0008D9FF /* HeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderViewController.m; sourceTree = "<group>"; };
+		628144551C485F5B0008D9FF /* HeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderViewController.xib; sourceTree = "<group>"; };
+		628144581C4F000E0008D9FF /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
+		628144591C4F000E0008D9FF /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
+		6281445A1C4F000E0008D9FF /* IndicatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
 		62821B411C20A167007704D1 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		62821B421C20A167007704D1 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		62821B441C20D69F007704D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -124,6 +138,10 @@
 		62A302CA1B829B0800D61F34 /* ChatMessagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessagesController.m; sourceTree = "<group>"; };
 		62A7DDA01B7ABBFD000B74B8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		62A7DDA11B7ABBFD000B74B8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
+		62C8ADBF1C52CA91007021CA /* splash-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash-bottom.png"; path = "Resources/splash-bottom.png"; sourceTree = "<group>"; };
+		62C8ADC01C52CA91007021CA /* splash-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash-logo.png"; path = "Resources/splash-logo.png"; sourceTree = "<group>"; };
+		62C8ADC31C52CDEE007021CA /* camera-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-button.png"; path = "Resources/camera-button.png"; sourceTree = "<group>"; };
+		62C8ADC51C52E568007021CA /* camera-switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-switch.png"; path = "Resources/camera-switch.png"; sourceTree = "<group>"; };
 		62CA90E81B7B3C1E009C3B4C /* LogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHelper.m; sourceTree = "<group>"; };
 		62CA90EB1B7B41F1009C3B4C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		62CA90F31B7BC718009C3B4C /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
@@ -289,6 +307,12 @@
 				62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */,
 				6281444B1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.h */,
 				6281444C1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m */,
+				628144531C485F5B0008D9FF /* HeaderViewController.h */,
+				628144541C485F5B0008D9FF /* HeaderViewController.m */,
+				628144551C485F5B0008D9FF /* HeaderViewController.xib */,
+				628144581C4F000E0008D9FF /* IndicatorViewController.h */,
+				628144591C4F000E0008D9FF /* IndicatorViewController.m */,
+				6281445A1C4F000E0008D9FF /* IndicatorViewController.xib */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -296,6 +320,10 @@
 		62D148C91B79732100E8D4A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62C8ADC51C52E568007021CA /* camera-switch.png */,
+				62C8ADC31C52CDEE007021CA /* camera-button.png */,
+				62C8ADBF1C52CA91007021CA /* splash-bottom.png */,
+				62C8ADC01C52CA91007021CA /* splash-logo.png */,
 				6281444E1C45A62D0008D9FF /* close-button.png */,
 				62970B491C40286300521815 /* JosefinSans-Bold.ttf */,
 				62970B471C40284800521815 /* Comfortaa-Bold.ttf */,
@@ -402,15 +430,20 @@
 				626CAE941C12580000189D6E /* add-button.png in Resources */,
 				626266241B8A7710006D730E /* check.png in Resources */,
 				62970B441C401A1E00521815 /* photopon-logo-white.png in Resources */,
+				6281445C1C4F000E0008D9FF /* IndicatorViewController.xib in Resources */,
 				62970B461C4021E900521815 /* camera.png in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
 				62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */,
+				62C8ADC11C52CA91007021CA /* splash-bottom.png in Resources */,
 				62970B481C40284800521815 /* Comfortaa-Bold.ttf in Resources */,
+				62C8ADC41C52CDEE007021CA /* camera-button.png in Resources */,
+				62C8ADC61C52E568007021CA /* camera-switch.png in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
 				62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */,
+				62C8ADC21C52CA91007021CA /* splash-logo.png in Resources */,
 				62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
 				62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
@@ -420,6 +453,7 @@
 				62970B4A1C40286300521815 /* JosefinSans-Bold.ttf in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
+				628144571C485F5B0008D9FF /* HeaderViewController.xib in Resources */,
 				6281444F1C45A62D0008D9FF /* close-button.png in Resources */,
 				62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
@@ -471,6 +505,7 @@
 				623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */,
 				62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
+				628144561C485F5B0008D9FF /* HeaderViewController.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
@@ -494,6 +529,7 @@
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
+				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,
 				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
 				6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,

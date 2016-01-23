@@ -23,11 +23,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shutterButton;
 @property (weak, nonatomic) IBOutlet UIView *noCouponView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *noCouponIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *switchCameraButton;
 
 
 @property (weak, nonatomic) IBOutlet UIView *topBand;
 @property (weak, nonatomic) IBOutlet UIView *bottomBand;
-@property (weak, nonatomic) IBOutlet UIImageView *closeButton;
 
 
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex;

@@ -18,5 +18,6 @@
 -(NSInteger)getCouponIndex;
 -(void)setCouponIndex: (NSInteger)couponIndex;
 -(void)setImmobile;
+-(void)couponsUpdated;
     
 @end

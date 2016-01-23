@@ -166,11 +166,11 @@
     }];
     
     
-  ChatMessagesController* messageCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
-  [messageCtrl setUser: selectedFriend[@"object"]];
-  [friendViewCtrl showViewController:messageCtrl sender:nil];
-    
-    NSLog(@"Start Chazt");
+    ChatMessagesController* messageCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
+    [messageCtrl setUser: selectedFriend[@"object"]];
+
+    [friendViewCtrl presentViewController:messageCtrl animated:YES completion:nil];
+    NSLog(@"Start Chat");
 }
 
 -(void)sentPhotopon:(UITapGestureRecognizer *)recognizer {

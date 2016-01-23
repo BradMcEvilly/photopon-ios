@@ -13,6 +13,8 @@
 #import "LogHelper.h"
 #import "DBAccess.h"
 #import "Helper.h"
+#import "HeaderViewController.h"
+
 
 @implementation AddFriendController 
 {
@@ -145,6 +147,8 @@
     myFriends = [NSMutableArray array];
     myContacts = [NSMutableArray array];
     allContacts = [NSMutableArray array];
+    
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Add Friend"];
     
     
     CNContactStore *store = [[CNContactStore alloc] init];

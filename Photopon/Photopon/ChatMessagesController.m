@@ -16,6 +16,7 @@
 #import <Parse/PFUser.h>
 #import "DBAccess.h"
 #import "ChatMessageTableViewCell.h"
+#import "HeaderViewController.h"
 
 @implementation ChatMessagesController
 {
@@ -123,17 +124,19 @@
     
     resolvedUsers = [NSMutableDictionary dictionary];
     
+    
+    [HeaderViewController addBackHeaderToView:self withTitle:[currentUser username]];
+    
     self.chatMessages.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.chatMessages setDelegate:self];
     [self.chatMessages setDataSource:self];
     
-    [self setTitle:[currentUser username]];
-    
+     
     [self.sendButton addTarget:self action:@selector(onSendClick) forControlEvents:UIControlEventTouchUpInside];
     
     
-    
+    /*
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
                                                  name:UIKeyboardDidShowNotification
@@ -141,7 +144,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
-                                               object:nil];
+                                                object:nil];
+     */
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
