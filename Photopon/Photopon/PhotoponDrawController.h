@@ -13,6 +13,7 @@
 
 -(void) setCoupon:(NSObject*)coupon withIndex:(NSInteger)index;
 -(void) setPhoto:(UIImage*)image;
+-(void) setSelectedFriend:(NSString*)friendId;
 
 -(void) drawLineFrom:(CGPoint)from to:(CGPoint)to;
 -(void) setPageViewController:(MainController*)parent;

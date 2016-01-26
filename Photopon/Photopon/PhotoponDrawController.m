@@ -32,6 +32,8 @@
     MainController* parentCtrl;
 
     NSArray* widthSizes;
+    
+    NSString* selectedFriendId;
 }
 
 
@@ -50,6 +52,10 @@
     photo = image;
 }
 
+
+-(void) setSelectedFriend:(NSString*)friendId {
+    selectedFriendId = friendId;
+}
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     swiped = false;
@@ -203,35 +209,44 @@
 
 
 -(void)savePhotopon {
-
-    FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-    [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
-//    [self dismissViewControllerAnimated:NO completion:nil];
-//    [parentCtrl.navigationController pushViewController:friendsViewController animated:TRUE];
-    [self presentViewController:friendsViewController animated:true completion:nil];
-
+    if (selectedFriendId) {
+        [self sendPhotopons:@[selectedFriendId]];
+    } else {
+        FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
+        [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
+        [self presentViewController:friendsViewController animated:true completion:nil];
+    }
 }
 
 -(void)onSaveTouch {
     numSuccess = 0;
     
-    SaveImage(@"photo.jpg", self.photoView.image, ^(PFFile* file, NSError *error) {
+    if (self.photoView.image == nil) {
         numSuccess++;
-        photoFile = file;
-        
-        if (numSuccess == 2) {
-            [self savePhotopon];
-        }
-    });
-    SaveImage(@"drawing.png", self.mainView.image, ^(PFFile* file, NSError *error) {
-        numSuccess++;
-        drawingFile = file;
-        
-        if (numSuccess == 2) {
-            [self savePhotopon];
-        }
-    });
+    } else {
+        SaveImage(@"photo.jpg", self.photoView.image, ^(PFFile* file, NSError *error) {
+            numSuccess++;
+            photoFile = file;
+            
+            if (numSuccess == 2) {
+                [self savePhotopon];
+            }
+        });
+    }
     
+    
+    if (self.mainView.image == nil) {
+        numSuccess++;
+    } else {
+        SaveImage(@"drawing.png", self.mainView.image, ^(PFFile* file, NSError *error) {
+            numSuccess++;
+            drawingFile = file;
+            
+            if (numSuccess == 2) {
+                [self savePhotopon];
+            }
+        });
+    }
     
 }
 
@@ -340,6 +355,12 @@
 -(void)viewDidAppear:(BOOL)animated {
     [self selectWidth:1];
 }
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
+
+
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];

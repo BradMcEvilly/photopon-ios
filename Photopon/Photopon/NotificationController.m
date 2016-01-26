@@ -19,12 +19,15 @@
 @implementation NotificationController
 {
     NSMutableArray *allNotifications;
+    UIRefreshControl* refreshControl;
+
 }
 
 -(void)updateNotifications {
     GetNotifications(^(NSArray *results, NSError *error) {
         allNotifications = [NSMutableArray arrayWithArray:results];
         [self.notificationsTable reloadData];
+        [refreshControl endRefreshing];
     });
 }
 
@@ -55,6 +58,18 @@
     [RealTimeNotificationHandler addListener:@"NOTIFICATION.NOTIFICATIONVIEW" withBlock:^(NSString *notificationType) {
         [self updateNotifications];
     }];
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.tintColor = [UIColor blackColor];
+    [refreshControl addTarget:self
+                       action:@selector(updateNotifications)
+             forControlEvents:UIControlEventValueChanged];
+    
+    
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.notificationsTable;
+    tableViewController.refreshControl = refreshControl;
 }
 
 

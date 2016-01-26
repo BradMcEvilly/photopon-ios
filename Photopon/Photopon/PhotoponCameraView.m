@@ -24,6 +24,8 @@
     MainController* parentCtrl;
     
     AVCaptureDevicePosition activeDevice;
+    
+    NSString* selectedFriendId;
 }
 
 
@@ -36,6 +38,9 @@
     }
 }
 
+-(void) setSelectedFriend:(NSString*)friendId {
+    selectedFriendId = friendId;
+}
 
 
 -(void)onShutterTouch {
@@ -44,10 +49,28 @@
 }
 
 
+-(void)maybeShowNoCoupons {
+    BOOL hasCoupons = ([allCoupons count] > 0);
+    
+    
+    self.shutterButton.hidden = !hasCoupons;
+    self.noCouponView.hidden = hasCoupons;
+    
+    if (hasCoupons) {
+        [self.noCouponIndicator stopAnimating];
+    } else {
+        [self.noCouponIndicator startAnimating];
+    }
+
+}
+
 - (void) couponsUpdated {
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
+    
+    
     [miniCouponViewController couponsUpdated];
+    [self maybeShowNoCoupons];
 }
 
 
@@ -108,21 +131,7 @@
     
     
     [self initCamera];
-    
-    
-    BOOL hasCoupons = ([allCoupons count] > 0);
-    
-    
-    self.shutterButton.hidden = !hasCoupons;
-    self.noCouponView.hidden = hasCoupons;
-    
-    if (hasCoupons) {
-        [self.noCouponIndicator stopAnimating];
-    } else {
-        [self.noCouponIndicator startAnimating];
-    }
-    
-    
+    [self maybeShowNoCoupons];
     [self createMiniCouponView];
 
     
@@ -162,6 +171,14 @@
     
 }
 
+
+-(void)viewDidAppear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
 
 
 
@@ -205,6 +222,8 @@
              [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex:[miniCouponViewController getCouponIndex]] withIndex:[miniCouponViewController getCouponIndex]];
              [photoponDrawCtrl setPhoto:image];
              
+             [photoponDrawCtrl setSelectedFriend:selectedFriendId];
+             
              [photoponDrawCtrl setPageViewController:parentCtrl];
              
              [self presentViewController:photoponDrawCtrl animated:true completion:nil];
@@ -219,6 +238,9 @@
         PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];
         [photoponDrawCtrl setCoupon:[allPFCoupons objectAtIndex: [miniCouponViewController getCouponIndex] ] withIndex: [miniCouponViewController getCouponIndex] ];
         [photoponDrawCtrl setPhoto:image];
+        
+        
+        [photoponDrawCtrl setSelectedFriend:selectedFriendId];
         
         [photoponDrawCtrl setPageViewController:parentCtrl];
         

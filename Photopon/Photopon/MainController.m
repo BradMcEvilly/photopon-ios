@@ -70,8 +70,12 @@
 
 -(void) gotoAddPhotoponView: (NSNotification*)notification {
     if (notification.userInfo) {
-        NSInteger index = [notification.userInfo[@"index"] integerValue];
-        [photoponView setCurrentCouponIndex:index];
+        if (notification.userInfo[@"index"]) {
+            NSInteger index = [notification.userInfo[@"index"] integerValue];
+            [photoponView setCurrentCouponIndex:index];
+        }
+        [photoponView setSelectedFriend: notification.userInfo[@"friendId"]];
+
     }
 
     [self setViewControllers:@[photoponView]
@@ -193,7 +197,8 @@
      viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSUInteger currentIndex = [myViewControllers indexOfObject:viewController] + myViewControllers.count;
-    
+    [photoponView setSelectedFriend: nil];
+
     --currentIndex;
     
     currentIndex = currentIndex % (myViewControllers.count);
@@ -205,7 +210,7 @@
       viewControllerAfterViewController:(UIViewController *)viewController
 {
     NSUInteger currentIndex = [myViewControllers indexOfObject:viewController];
-    
+   [photoponView setSelectedFriend: nil];
     ++currentIndex;
     
     currentIndex = currentIndex % (myViewControllers.count);

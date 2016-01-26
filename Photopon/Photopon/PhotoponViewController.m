@@ -57,11 +57,8 @@
     [self.couponTitle setText:[coupon objectForKey:@"title"]];
     [self.couponDescription setText:[coupon objectForKey:@"description"]];
     
-    UIImageView* icon = CreateFAImage(@"fa-suitcase", 20);
-    [self.saveButtonIcon addSubview:icon];
 
-    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(savePhotopon)];
-    [self.view addGestureRecognizer:singleFingerTap];
+    [self.saveButton addTarget:self action:@selector(savePhotopon) forControlEvents:UIControlEventTouchDown];
   
 }
 

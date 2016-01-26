@@ -32,4 +32,5 @@
 
 -(void) setCurrentCouponIndex:(NSInteger)couponIndex;
 -(void) setPageViewController:(MainController*)parent;
+-(void) setSelectedFriend:(NSString*)friendId;
 @end

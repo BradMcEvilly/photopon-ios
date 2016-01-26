@@ -178,7 +178,12 @@
         return;
     }
     
-    NSLog(@"Send Photopon");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
+          @"friendId": selectedFriend[@"id"]
+                                                                                                        
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

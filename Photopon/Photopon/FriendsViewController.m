@@ -34,14 +34,17 @@
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
     
-    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
     
     if (isSelectMode) {
 //        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
 //        self.navigationItem.rightBarButtonItem = anotherButton;
+        HeaderViewController* header = [HeaderViewController addBackHeaderToView:self withTitle:@"Friends"];
+
         [header addRightButtonWithIcon:@"" withTarget:self action:@selector(friendsSelected)];
 
     } else {
+        HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
+
         [header addRightButtonWithIcon:@"" withTarget:self action:@selector(addFriendClicked)];
         
     }
