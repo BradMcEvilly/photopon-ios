@@ -131,6 +131,29 @@
 }
 
 
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(BOOL)askToInviteIfNeeded {
     if (![selectedFriend valueForKey:@"isPlaceholder"]) {
         return FALSE;
@@ -140,15 +163,29 @@
                                                                                message:[NSString stringWithFormat:@"Your friend %@ is not registered in Photopon. Would you like to invite him?", [selectedFriend valueForKey:@"name"]]
                                                                         preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Invite" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+    UIAlertAction* inviteAction = [UIAlertAction actionWithTitle:@"Invite" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        if(![MFMessageComposeViewController canSendText]) {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            return;
+        }
     
+        NSArray *recipents = @[selectedFriend[@"id"]];
+        NSString *message = @"I have sent you Photopon. To redeem it install Photopon app and click on notification.";
+        
+        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+        messageController.messageComposeDelegate = self;
+        [messageController setRecipients:recipents];
+        [messageController setBody:message];
+        
+        [self presentViewController:messageController animated:YES completion:nil];
     }];
     
     
     
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Not now" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
     
-    [confirmationAlert addAction:getAction];
+    [confirmationAlert addAction:inviteAction];
     [confirmationAlert addAction:cancelAction];
     [self presentViewController:confirmationAlert animated:YES completion:nil];
     return TRUE;

@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <FontAwesome/FAImageView.h>
 #import "FriendsViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface FriendPopupViewController : UIViewController
+
+@interface FriendPopupViewController : UIViewController<MFMessageComposeViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *friendContent;
 @property (weak, nonatomic) IBOutlet UIImageView *friendPicture;
 
