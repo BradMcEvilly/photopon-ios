@@ -15,9 +15,37 @@
 
 @implementation HeaderViewController
 
+{
+    UIStatusBarStyle styleBeforeMe;
+    UIStatusBarStyle styleForMe;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.angledShade.transform = CGAffineTransformRotate(self.angledShade.transform, M_PI / 4);
+    
+    styleForMe = UIStatusBarStyleDefault;
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarStyle:styleBeforeMe];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    styleBeforeMe = [UIApplication sharedApplication].statusBarStyle;
+
+}
+
+
+
+-(void)viewDidAppear:(BOOL)animated {
+ 
+    [[UIApplication sharedApplication] setStatusBarStyle:styleForMe];
+    
+}
+
 
 -(void)backMenuClicked {
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
@@ -79,6 +107,12 @@
 
 }
 
+
+
+
+
+
+
 +(HeaderViewController*)addHeaderToView:(UIViewController*)viewCtrl withTitle:(NSString*)headerText {
     HeaderViewController* headerViewController = [[HeaderViewController alloc] initWithNibName:@"HeaderViewController" bundle:nil];
     
@@ -107,19 +141,41 @@
     [headerViewController didMoveToParentViewController:viewCtrl];
     
     headerViewController.titleText.text = headerText;
-    [headerViewController.leftMenuButton setTitle:@"" forState:UIControlStateNormal];
+    [headerViewController.leftMenuButton setTitle:@"" forState:UIControlStateNormal];
+    
+    
+    [headerViewController.leftMenuButton setBackgroundImage:[UIImage imageNamed:@"Icon-Left-2.png"] forState:UIControlStateNormal];
+    
     [headerViewController.leftMenuButton addTarget:headerViewController action:@selector(backMenuClicked) forControlEvents:UIControlEventTouchDown];
     return headerViewController;
 }
 
 
--(void)addRightButtonWithIcon:(NSString*)icon withTarget:(id)target action:(SEL)action {
+-(void)addRightButtonWithImage:(NSString*)imageName withTarget:(id)target action:(SEL)action {
     
     [self.rightMenuButton setHidden:NO];
-    [self.rightMenuButton setTitle:icon forState:UIControlStateNormal];
+    [self.rightMenuButton setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [self.rightMenuButton addTarget:target action:action forControlEvents:UIControlEventTouchDown];
 }
 
+-(void)setTheme:(UITheme*)theme {
+    [self.view setBackgroundColor:theme.headerColor];
+    
+    [self.leftMenuButton setTitleColor:theme.headerTextColor forState:UIControlStateNormal];
+    [self.rightMenuButton setTitleColor:theme.headerTextColor forState:UIControlStateNormal];
+    [self.titleText setTextColor:theme.headerTextColor];
+    
+    UIImage* i = MaskImageWithColor(self.leftMenuButton.currentBackgroundImage, theme.headerTextColor);
+    [self.leftMenuButton setBackgroundImage:i forState:UIControlStateNormal];
+    
+    if (self.rightMenuButton.currentBackgroundImage) {
+        UIImage* ri = MaskImageWithColor(self.rightMenuButton.currentBackgroundImage, theme.headerTextColor);
+        [self.rightMenuButton setBackgroundImage:ri forState:UIControlStateNormal];
+
+    }
+    styleForMe = UIStatusBarStyleLightContent;
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

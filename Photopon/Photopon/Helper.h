@@ -20,9 +20,7 @@
 
 
 @protocol CouponUpdateDelegate <NSObject>
-
 - (void) couponsUpdated;
-
 @end
 
 
@@ -48,6 +46,13 @@ void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 
 
+
+
+UIImage* MakeImageNegative(UIImage* image);
+UIImage* ImageWithWhiteBackground(UIImage* image);
+UIImage* MaskImageWithColor(UIImage* image, UIColor* color);
+
+
 @interface LocationHandler : NSObject<CLLocationManagerDelegate>
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
@@ -63,8 +68,6 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 
 + (void)addListener:(NSString*)type withBlock:(NotificationBlock)block;
 + (void)removeListener:(NSString*)type;
-
-
 
 @end
 

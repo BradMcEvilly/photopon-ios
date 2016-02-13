@@ -20,5 +20,6 @@
 +(IndicatorViewController*)showIndicator:(UIViewController*)parent withText:(NSString*)text timeout:(NSInteger)timeout;
 
 -(void)hide;
+-(void)remove;
 
 @end

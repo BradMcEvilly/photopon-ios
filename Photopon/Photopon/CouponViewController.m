@@ -97,7 +97,8 @@
 {
     [super viewDidLoad];
     
-    [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
+    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
+    [header setTheme:[UITheme tealTheme]];
     
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];

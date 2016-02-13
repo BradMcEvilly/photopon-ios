@@ -10,6 +10,8 @@
 #import "FriendPopupViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ChatMessagesController.h"
+#import "UITheme.h"
+
 
 @interface FriendPopupViewController ()
 
@@ -45,7 +47,7 @@
     
     NSString* img = [selectedFriend objectForKey:@"image"];
 
-    [self.friendPicture sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]];
+    [self.friendPicture sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"Icon-Administrator.png"]];
     
     self.friendName.text = [selectedFriend objectForKey:@"name"];
     self.friendDescription.text = [selectedFriend objectForKey:@"email"];
@@ -61,23 +63,13 @@
     self.friendPicture.layer.shadowPath = shadowPath.CGPath;
 */
     
-    self.chatButton.image = nil;
-    self.couponButton.image = nil;
-    self.settingButton.image = nil;
-
-    [self.chatButton setDefaultIconIdentifier:@"fa-comments"];
-    [self.couponButton setDefaultIconIdentifier:@"fa-gift"];
-    [self.settingButton setDefaultIconIdentifier:@"fa-cogs"];
+    //[self.chatButton setDefaultIconIdentifier:@"fa-comments"];
+    //[self.couponButton setDefaultIconIdentifier:@"fa-gift"];
+    //[self.settingButton setDefaultIconIdentifier:@"fa-cogs"];
     
-    
-    self.chatButton.defaultView.textColor = [UIColor colorWithRed:1.0/255 green:152.0/255 blue:225.0/255 alpha:1];
-    self.chatButton.defaultView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    
-    self.couponButton.defaultView.textColor = [UIColor colorWithRed:199.0/255 green:97.0/255 blue:20.0/255 alpha:1];
-    self.couponButton.defaultView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    
-    self.settingButton.defaultView.textColor = [UIColor colorWithRed:136.0/255 green:136.0/255 blue:136.0/255 alpha:1];
-    self.settingButton.defaultView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    [self.chatButton setImage:MaskImageWithColor(self.chatButton.image, [UITheme blueTheme].headerColor)];
+    [self.couponButton setImage:MaskImageWithColor(self.couponButton.image, [UITheme orangeTheme].headerColor)];
+    [self.settingButton setImage:MaskImageWithColor(self.settingButton.image, [UITheme blackTheme].headerColor)];
     
 
     

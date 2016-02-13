@@ -283,7 +283,7 @@
         CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
         button.frame = frame;
         
-        UIImage * buttonImage = [UIImage imageNamed:@"check.png"];
+        UIImage * buttonImage = [UIImage imageNamed:@"Icon-Yes.png"];
 
         [button setImage:buttonImage forState:UIControlStateNormal];
         
@@ -301,8 +301,8 @@
     }
     
     
-    UIImage *theUserImage = [UIImage imageNamed:@"photopon-user.png"];
-    UIImage *theContactImage = [UIImage imageNamed:@"contact-user.png"];
+    UIImage *theUserImage = [UIImage imageNamed:@"Icon-Add-UserStar.png"];
+    UIImage *theContactImage = [UIImage imageNamed:@"Icon-Business-Mens.png"];
     PFUser* currentUser = [PFUser currentUser];
 
     if (sectionIndex == 0) {
@@ -330,7 +330,7 @@
         
         cell1.textLabel.text = self.userSearchBar.text;
         cell1.detailTextLabel.text = @"";
-        cell1.imageView.image = theUserImage;
+        cell1.imageView.image = [UIImage imageNamed:@"Icon-Find-User.png"];
         return cell1;
     }
     

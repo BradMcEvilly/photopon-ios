@@ -36,6 +36,10 @@
     return currentCouponIndex;
 }
 
+-(PFObject*)getCoupon {
+    return allPFCoupons[currentCouponIndex];
+}
+
 -(void)updateCoupon {
     if (currentCouponIndex >= [allCoupons count]) {
         return;

@@ -16,6 +16,8 @@
 
 
 -(NSInteger)getCouponIndex;
+-(PFObject*)getCoupon;
+
 -(void)setCouponIndex: (NSInteger)couponIndex;
 -(void)setImmobile;
 -(void)couponsUpdated;

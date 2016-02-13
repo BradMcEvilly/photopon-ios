@@ -34,6 +34,8 @@
     NSArray* widthSizes;
     
     NSString* selectedFriendId;
+    
+    MiniCouponViewController* miniCouponViewController;
 }
 
 
@@ -136,14 +138,15 @@
 -(void)createMiniCouponView {
     
     
-    MiniCouponViewController* miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
+    miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
     [miniCouponViewController setCouponIndex:currentCouponIndex];
-    [miniCouponViewController setImmobile];
+//    [miniCouponViewController setImmobile];
     const int MiniCouponSize = 92;
     
     
     miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, MiniCouponSize);
     CGPoint ct = self.view.center;
+    ct.y = 150;
 //    ct.y = 80 + [UIScreen mainScreen].bounds.size.width * 0.9 - MiniCouponSize / 2;
     miniCouponViewController.view.center = ct;
     
@@ -168,7 +171,7 @@
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
-    [newPhotoponObject setObject:currentCoupon forKey:@"coupon"];
+    [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
 
     [newPhotoponObject setObject:users forKey:@"users"];

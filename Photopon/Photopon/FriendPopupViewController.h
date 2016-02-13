@@ -21,9 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *friendDescription;
 
 
-@property (weak, nonatomic) IBOutlet FAImageView *chatButton;
-@property (weak, nonatomic) IBOutlet FAImageView *couponButton;
-@property (weak, nonatomic) IBOutlet FAImageView *settingButton;
+@property (weak, nonatomic) IBOutlet UIImageView *chatButton;
+@property (weak, nonatomic) IBOutlet UIImageView *couponButton;
+@property (weak, nonatomic) IBOutlet UIImageView *settingButton;
 
 
 

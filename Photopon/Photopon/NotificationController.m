@@ -31,22 +31,14 @@
     });
 }
 
--(void)addHeader {
-    HeaderViewController* headerViewController = [[HeaderViewController alloc] initWithNibName:@"HeaderViewController" bundle:nil];
-    
-    headerViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
-    
-    [self.view addSubview:headerViewController.view];
-    [self addChildViewController:headerViewController];
-    [headerViewController didMoveToParentViewController:self];
-}
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [HeaderViewController addHeaderToView:self withTitle:@"Notifications"];
-    //[IndicatorViewController showIndicator:self withText:@"Test loading text" timeout:2];
+    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Notifications"];
+    [header setTheme:[UITheme greenTheme]];
+
     
     [self.notificationsTable setDelegate:self];
     [self.notificationsTable setDataSource:self];
@@ -113,9 +105,11 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
         
-        cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
-        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.imageView addSubview:CreateFAImage(@"fa-user-plus", 24)];
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Add-User.png"];
+        cell.imageView.transform = CGAffineTransformMakeScale(0.7, 0.7);
+
+//        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+//        [cell.imageView addSubview:CreateFAImage(@"fa-user-plus", 24)];
         
         cell.textLabel.text = [NSString stringWithFormat:@"%@ added you!", [assocUser username]];
         cell.detailTextLabel.text = @"You can add him back";
@@ -135,9 +129,11 @@
         
         NSString* message = [item objectForKey:@"content"];
         
-        cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
-        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.imageView addSubview:CreateFAImage(@"fa-comments", 24)];
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Speach-Bubble.png"];
+        cell.imageView.transform = CGAffineTransformMakeScale(0.7, 0.7);
+
+//        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+//        [cell.imageView addSubview:CreateFAImage(@"fa-comments", 24)];
         
         cell.textLabel.text = message;
         
@@ -163,9 +159,10 @@
         
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
         
-        cell.imageView.image = [UIImage imageNamed:@"empty20x20.png"];
-        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Present.png"];
+        
+//        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+//        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
         
         
         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];

@@ -9,6 +9,7 @@
 #import "NumberVerificationViewController.h"
 #import "PhoneNumberFormatter.h"
 #import "HeaderViewController.h"
+#import "IndicatorViewController.h"
 
 @interface NumberVerificationViewController ()
 
@@ -121,12 +122,12 @@
     verification[@"phoneNumber"] = NumbersFromFormattedPhone(self.phoneNumber.text);
     verification[@"numTried"] = [NSNumber numberWithInt:0];
     
-    self.phoneNumber.enabled = NO;
+    IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Sending verification code..." timeout:60];
+    [self.phoneView setHidden:YES];
+
     [verification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        self.phoneNumber.enabled = YES;
-        
+        [ind remove];
         if (succeeded) {
-            [self.phoneView setHidden:YES];
             [self.verifyView setHidden:NO];
         } else {
 

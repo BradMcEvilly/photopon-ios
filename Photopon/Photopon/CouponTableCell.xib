@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vVd-K5-fOI">
-                        <rect key="frame" x="5" y="5" width="50" height="49.5"/>
+                        <rect key="frame" x="10" y="5" width="50" height="49.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="vqU-Nn-E1g"/>
                         </constraints>
@@ -28,7 +28,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoW-BZ-VPm">
-                        <rect key="frame" x="61" y="5" width="271" height="18"/>
+                        <rect key="frame" x="66" y="5" width="266" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="Obs-M3-e5j"/>
                         </constraints>
@@ -42,7 +42,7 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of current coupon can be 2 lines blah blah blah bah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNw-wh-wN7">
-                        <rect key="frame" x="61" y="23" width="274" height="29"/>
+                        <rect key="frame" x="66" y="23" width="269" height="29"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="X8L-34-6xx"/>
                         </constraints>
@@ -113,7 +113,7 @@
                     <constraint firstAttribute="bottom" secondItem="jiM-5a-CG7" secondAttribute="bottom" id="E9t-ZK-KSv"/>
                     <constraint firstItem="bPJ-gS-KNo" firstAttribute="centerY" secondItem="eDt-Z2-JOT" secondAttribute="centerY" id="HKQ-KV-jsK"/>
                     <constraint firstAttribute="trailing" secondItem="jiM-5a-CG7" secondAttribute="trailing" id="Viv-yq-t7e"/>
-                    <constraint firstItem="vVd-K5-fOI" firstAttribute="leading" secondItem="eDt-Z2-JOT" secondAttribute="leading" constant="5" id="aUM-In-xjR"/>
+                    <constraint firstItem="vVd-K5-fOI" firstAttribute="leading" secondItem="eDt-Z2-JOT" secondAttribute="leading" constant="10" id="aUM-In-xjR"/>
                     <constraint firstItem="ZoW-BZ-VPm" firstAttribute="top" secondItem="eDt-Z2-JOT" secondAttribute="top" constant="5" id="cQj-kG-cHO"/>
                     <constraint firstItem="ZoW-BZ-VPm" firstAttribute="trailing" secondItem="eDt-Z2-JOT" secondAttribute="trailing" constant="50" id="gCW-mn-3tm"/>
                     <constraint firstItem="13L-hm-9jv" firstAttribute="top" secondItem="eDt-Z2-JOT" secondAttribute="top" id="kcc-Td-KJH"/>

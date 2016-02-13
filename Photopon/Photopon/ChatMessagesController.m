@@ -136,16 +136,15 @@
     [self.sendButton addTarget:self action:@selector(onSendClick) forControlEvents:UIControlEventTouchUpInside];
     
     
-    /*
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
-                                                 name:UIKeyboardDidShowNotification
+                                                 name:UIKeyboardWillShowNotification
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                 object:nil];
-     */
+    
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
@@ -153,27 +152,29 @@
     // Get the size of the keyboard.
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    CGRect newTableFrame = self.mainView.frame;
+    self.topConstraint.constant = keyboardSize.height +  [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    newTableFrame.size.height -= keyboardSize.height;
-    newTableFrame.origin.y += keyboardSize.height;
-
-    [self.mainView setFrame: newTableFrame];
-    [self.chatMessages setContentOffset:CGPointMake(0, self.chatMessages.contentOffset.y + keyboardSize.height)];
+    [UIView animateWithDuration:1
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }];
+    
+    CGPoint currentOffset = [self.chatMessages contentOffset];
+    currentOffset.y = currentOffset.y + keyboardSize.height - 80;
+    [self.chatMessages setContentOffset:currentOffset animated:YES];
 
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    CGRect newTableFrame = self.mainView.frame;
+    self.topConstraint.constant = 80;
     
-    newTableFrame.size.height += keyboardSize.height;
-    newTableFrame.origin.y -= keyboardSize.height;
-    
-    [self.mainView setFrame: newTableFrame];
-    [self.chatMessages setContentOffset:CGPointMake(0, self.chatMessages.contentOffset.y - keyboardSize.height)];
+    [UIView animateWithDuration:1
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }];
+    [self.chatMessages setContentInset:UIEdgeInsetsMake(0,0,0,0)];
 
 }
 

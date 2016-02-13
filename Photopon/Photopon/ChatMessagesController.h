@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UITableView *chatMessages;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 
 @property (strong, nonatomic) IBOutlet UIView *mainView;

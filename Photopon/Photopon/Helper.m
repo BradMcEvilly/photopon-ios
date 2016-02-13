@@ -40,6 +40,75 @@ RealTimeNotificationHandler* rtUpdateInstance;
 BOOL isLocationInitialized = NO;
 
 
+
+
+
+UIImage* MakeImageNegative(UIImage* image) {
+    
+    UIGraphicsBeginImageContext(image.size);
+    CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeCopy);
+    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeDifference);
+    //CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(),[UIColor whiteColor].CGColor);
+    //CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, image.size.width, image.size.height));
+    UIImage *negativeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return negativeImage;
+    
+}
+
+
+UIImage* ImageWithWhiteBackground(UIImage* image) {
+    UIImage *negative = MakeImageNegative(image);
+    
+    UIGraphicsBeginImageContext(negative.size);
+    CGContextSetRGBFillColor (UIGraphicsGetCurrentContext(), 1, 1, 1, 1);
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = CGPointZero;
+    thumbnailRect.size.width = negative.size.width;
+    thumbnailRect.size.height = negative.size.height;
+    
+    CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0.0, negative.size.height);
+    CGContextScaleCTM(UIGraphicsGetCurrentContext(), 1.0, -1.0);
+    CGContextFillRect(UIGraphicsGetCurrentContext(), thumbnailRect);
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), thumbnailRect, negative.CGImage);
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+
+UIImage* MaskImageWithColor(UIImage* image, UIColor* color) {
+    
+    UIImage *formattedImage = ImageWithWhiteBackground(image);
+    
+    CGRect rect = {0, 0, formattedImage.size.width, formattedImage.size.height};
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    [color setFill];
+    UIRectFill(rect);
+    UIImage *tempColor = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    CGImageRef maskRef = [formattedImage CGImage];
+    CGImageRef maskcg = CGImageMaskCreate(CGImageGetWidth(maskRef),
+                                          CGImageGetHeight(maskRef),
+                                          CGImageGetBitsPerComponent(maskRef),
+                                          CGImageGetBitsPerPixel(maskRef),
+                                          CGImageGetBytesPerRow(maskRef),
+                                          CGImageGetDataProvider(maskRef), NULL, false);
+    
+    CGImageRef maskedcg = CGImageCreateWithMask([tempColor CGImage], maskcg);
+    CGImageRelease(maskcg);
+    UIImage *result = [UIImage imageWithCGImage:maskedcg];
+    CGImageRelease(maskedcg);
+    
+    return result;
+}
+
+
+
+
 UIImageView* CreateFAImage(NSString* type, CGFloat size) {
     FAImageView *imageView = [[FAImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, size, size)];
     imageView.image = nil;

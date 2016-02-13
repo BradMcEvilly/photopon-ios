@@ -40,13 +40,13 @@
 //        self.navigationItem.rightBarButtonItem = anotherButton;
         HeaderViewController* header = [HeaderViewController addBackHeaderToView:self withTitle:@"Friends"];
 
-        [header addRightButtonWithIcon:@"" withTarget:self action:@selector(friendsSelected)];
-
+        [header addRightButtonWithImage:@"Icon-Checked-User.png" withTarget:self action:@selector(friendsSelected)];
+        [header setTheme:[UITheme blueTheme]];
     } else {
         HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
 
-        [header addRightButtonWithIcon:@"" withTarget:self action:@selector(addFriendClicked)];
-        
+        [header addRightButtonWithImage:@"Icon-Add-User.png" withTarget:self action:@selector(addFriendClicked)];
+        [header setTheme:[UITheme blueTheme]];        
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
@@ -177,11 +177,11 @@
     bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
     
     if (isSelected && isSelectMode) {
-        [cell.imageView setImage:[UIImage imageNamed:@"check.png"]];
+        [cell.imageView setImage:[UIImage imageNamed:@"Icon-Yes.png"]];
     } else {
         NSString* img = [item objectForKey:@"image"];
         if (img) {
-            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]  options:SDWebImageAvoidAutoSetImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"Icon-Administrator.png"]  options:SDWebImageAvoidAutoSetImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -193,7 +193,7 @@
                 
             }];
         } else {
-            [cell.imageView setImage:[UIImage imageNamed:@"profileplaceholder.png"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"Icon-Administrator.png"]];
 
         }
 

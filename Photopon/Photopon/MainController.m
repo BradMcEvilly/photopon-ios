@@ -15,6 +15,9 @@
 #import "PhotoponCameraView.h"
 #import "PhotoponCameraPlaceholderViewController.h"
 
+#import "ChatMessagesController.h"
+#import "PhotoponViewController.h"
+
 @implementation MainController
 {
     NSArray *myViewControllers;
@@ -75,13 +78,60 @@
             [photoponView setCurrentCouponIndex:index];
         }
         [photoponView setSelectedFriend: notification.userInfo[@"friendId"]];
-
+        
     }
-
+    
     [self setViewControllers:@[photoponView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
 }
+
+
+
+
+-(void) handleNotifications: (NSNotification*)notification {
+    if (notification.userInfo) {
+        NSString* notificationId = notification.userInfo[@"notificationId"];
+        NSString* type = notification.userInfo[@"type"];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
+        [query getObjectInBackgroundWithId:notificationId block:^(PFObject *item, NSError *error) {
+            
+            if ([type isEqualToString:@"FRIEND"]) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_Notifications" object:nil userInfo:@{}];
+                
+            } else if ([type isEqualToString:@"MESSAGE"]) {
+                PFUser* assocUser = [item objectForKey:@"assocUser"];
+                //[assocUser fetchIfNeeded];
+                
+                ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
+                [messageCtrl setUser:assocUser];
+                
+                [self presentViewController:messageCtrl animated:YES completion:nil];
+
+                
+            } else if ([type isEqualToString:@"PHOTOPON"]) {
+                PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
+            
+                PhotoponViewController* photoponViewCtrl = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponView"];
+                [photoponViewCtrl setPhotopon:assocPhotopon];
+                
+                [self presentViewController:photoponViewCtrl animated:YES completion:nil];
+                    
+            }
+            
+            [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            }];
+            
+        }];
+
+        
+        
+    }
+}
+
+
 
 
 -(void)viewDidLoad
@@ -123,6 +173,12 @@
                                                  name:@"Goto_AddPhotopon"
                                                object:nil];
     
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotifications:)
+                                                 name:@"Handle_Notification"
+                                               object:nil];
     
 
     

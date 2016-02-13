@@ -12,7 +12,6 @@
 #import "Parse/Parse.h"
 #import <Google/Analytics.h>
 
-
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
 @end
@@ -50,6 +49,17 @@
     gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
   //  gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
 
+
+    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notification) {
+        NSString* type = [(NSDictionary*)notification objectForKey:@"type"];
+        NSString* notificationId = [(NSDictionary*)notification objectForKey:@"notificationId"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Handle_Notification" object:nil userInfo:@{
+                                                                                                                @"type" : type,
+                                                                                                                @"notificationId" : notificationId
+                                                                                                                }];
+    }
     
     return YES;
 }
@@ -73,6 +83,8 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
         currentInstallation.badge = 0;
+        application.applicationIconBadgeNumber = 0;
+
         [currentInstallation saveEventually];
     }
  
@@ -99,6 +111,36 @@
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //[PFPush handlePush:userInfo];
+    if ( application.applicationState == UIApplicationStateActive ) {
+        
+    } else {
+        if (userInfo[@"badge"]) {
+            long badgeNumber = [userInfo[@"badge"] integerValue];
+            application.applicationIconBadgeNumber = badgeNumber;
+        }
+
+        
+        NSString* type = [userInfo objectForKey:@"type"];
+        NSString* notificationId = [userInfo objectForKey:@"notificationId"];
+
+        
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC);
+        
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Handle_Notification" object:nil userInfo:@{
+                                                                                                                    @"type" : type,
+                                                                                                                    @"notificationId" : notificationId
+                                                                                                                    }];
+            
+        });
+ 
+    }
+
 }
 
 
