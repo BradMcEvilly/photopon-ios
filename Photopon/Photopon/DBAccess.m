@@ -271,8 +271,40 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
     notification[@"to"] = toUser;
     notification[@"assocPhotopon"] = photopon;
     notification[@"assocUser"] = [PFUser currentUser];
-
+    
     notification[@"type"] = @"PHOTOPON";
+    
+    [notification saveInBackground];
+    [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+    
+}
+
+
+
+void CreateAddWalletNotification(PFUser* toUser, PFObject* photopon) {
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+    
+    notification[@"to"] = toUser;
+    notification[@"assocPhotopon"] = photopon;
+    notification[@"assocUser"] = [PFUser currentUser];
+    
+    notification[@"type"] = @"ADDWALLET";
+    
+    [notification saveInBackground];
+    [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+    
+}
+
+
+
+void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon) {
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+    
+    notification[@"to"] = toUser;
+    notification[@"assocPhotopon"] = photopon;
+    notification[@"assocUser"] = [PFUser currentUser];
+    
+    notification[@"type"] = @"REDEEMED";
     
     [notification saveInBackground];
     [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];

@@ -35,6 +35,9 @@ void RemoveAddFriendNotification(PFUser* userToRemove);
 void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon);
 void CreateMessageNotification(PFUser* toUser, NSString* content);
 
+void CreateAddWalletNotification(PFUser* toUser, PFObject* photopon);
+void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon);
+
 
 
 

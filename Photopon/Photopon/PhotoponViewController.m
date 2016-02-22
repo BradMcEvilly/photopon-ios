@@ -27,6 +27,8 @@
         [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
         [newWalletObject setObject:photopon forKey:@"photopon"];
         [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            
+            CreateAddWalletNotification([photopon valueForKey:@"creator"], photopon);
             [self dismissViewControllerAnimated:true completion:^{
                 
             }];

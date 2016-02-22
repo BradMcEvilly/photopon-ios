@@ -131,6 +131,9 @@
                                                        delegate:nil
                                               cancelButtonTitle:@"Awesome!"
                                               otherButtonTitles:nil];
+        
+        CreateRedeemedNotification([photopon valueForKey:@"creator"], photopon);
+
         [alert show];
     }];
     

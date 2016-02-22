@@ -62,6 +62,11 @@
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.notificationsTable;
     tableViewController.refreshControl = refreshControl;
+    
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
+    [self.notificationsTable addGestureRecognizer:tap];
 }
 
 
@@ -113,17 +118,7 @@
         
         cell.textLabel.text = [NSString stringWithFormat:@"%@ added you!", [assocUser username]];
         cell.detailTextLabel.text = @"You can add him back";
-        
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-        CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
-        button.frame = frame;
-        
-        [button addTarget:self action:@selector(checkButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
-        button.backgroundColor = [UIColor clearColor];
-        cell.accessoryView = button;
-
-
+       
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
@@ -142,17 +137,6 @@
         [dateFormat setDateFormat:@"EEE, MMM d, h:mm a"];
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
-
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
-        button.frame = frame;
-        
-        [button addTarget:self action:@selector(checkButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
-        button.backgroundColor = [UIColor clearColor];
-        cell.accessoryView = button;
-
-        
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
@@ -161,8 +145,8 @@
         
         cell.imageView.image = [UIImage imageNamed:@"Icon-Present.png"];
         
-//        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
-//        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+        //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        //        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
         
         
         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
@@ -176,14 +160,46 @@
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
         
+    } else if ([type isEqualToString:@"ADDWALLET"]) {
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
-        button.frame = frame;
+        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
         
-        [button addTarget:self action:@selector(checkButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
-        button.backgroundColor = [UIColor clearColor];
-        cell.accessoryView = button;
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Wallet-22.png"];
+        
+        //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        //        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+        
+        
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+        PFObject* company = [coupon objectForKey:@"company"];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ saved your Photopon", [assocUser objectForKey:@"username"]];
+        //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+        
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+        
+    }else if ([type isEqualToString:@"REDEEMED"]) {
+        
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
+        
+        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
+        
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Pricing.png"];
+        
+        //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        //        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+        
+        
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+        PFObject* company = [coupon objectForKey:@"company"];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ redeemed your Photopon", [assocUser objectForKey:@"username"]];
+        //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+        
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         
     }
@@ -195,46 +211,64 @@
 
 
 
-
-
-- (void)checkButtonTapped:(id)sender event:(id)event
-{
-    NSSet *touches = [event allTouches];
-    UITouch *touch = [touches anyObject];
-    CGPoint currentTouchPosition = [touch locationInView:self.notificationsTable];
-    NSIndexPath *indexPath = [self.notificationsTable indexPathForRowAtPoint: currentTouchPosition];
-    if (indexPath != nil)
-    {
-        [self tableView: self.notificationsTable accessoryButtonTappedForRowWithIndexPath: indexPath];
+-(void) didTapOnTableView:(UIGestureRecognizer*) recognizer {
+    CGPoint tapLocation = [recognizer locationInView:self.notificationsTable];
+    NSIndexPath *indexPath = [self.notificationsTable indexPathForRowAtPoint:tapLocation];
+    
+    if (!indexPath) {
+        return;
     }
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
+    
     PFObject *item = [allNotifications objectAtIndex:indexPath.row];
+    
     NSString* type = [item objectForKey:@"type"];
     
     if ([type isEqualToString:@"FRIEND"]) {
+        
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
-        PFObject *friendship = [PFObject objectWithClassName:@"Friends"];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
         
-        friendship[@"user1"] = [PFUser currentUser];
-        friendship[@"user2"] = assocUser;
+        UIAlertAction *addAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Add %@", [assocUser username]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            PFObject *friendship = [PFObject objectWithClassName:@"Friends"];
+            
+            friendship[@"user1"] = [PFUser currentUser];
+            friendship[@"user2"] = assocUser;
+            
+            [friendship saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+            }];
+            
+            
+            [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [self updateNotifications];
+            }];
+            
+        }];
         
-        [friendship saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                [allNotifications removeObjectAtIndex:indexPath.row];
-                [self.notificationsTable reloadData];
-            } else {
-                //TODO: There was a problem, check error.description
-            }
+        UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [self updateNotifications];
+            }];
+            
         }];
         
         
-        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [self updateNotifications];
-        }];
+        [alert addAction:addAction];
+        [alert addAction:ignoreAction];
+        
+        alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        alert.popoverPresentationController.sourceView = self.notificationsTable;
+        alert.popoverPresentationController.sourceRect = CGRectMake(20, 40, 10, 10);
+        
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
         
         
         
@@ -249,7 +283,7 @@
             [self updateNotifications];
         }];
         [self presentViewController:messageCtrl animated:YES completion:nil];
-
+        
         
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
@@ -261,11 +295,26 @@
             [self updateNotifications];
         }];
         [self presentViewController:photoponView animated:YES completion:nil];
+        
+    } else if ([type isEqualToString:@"ADDWALLET"]) {
+        
+        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [self updateNotifications];
+        }];
+        
+        
+    } else if ([type isEqualToString:@"REDEEMED"]) {
+        
+        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [self updateNotifications];
+        }];
+        
     }
     
-
     
 }
+
+
 
 
 
