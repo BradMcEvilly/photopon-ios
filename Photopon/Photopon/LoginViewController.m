@@ -11,7 +11,7 @@
 #import "PhotoponLoginViewController.h"
 #import "PhotoponSignupViewController.h"
 #import "NumberVerificationViewController.h"
-
+#import "AlertBox.h"
 @interface LoginViewController ()
 
 @end
@@ -94,6 +94,9 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"LoginScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    SendGAEvent(@"user_action", @"login_view", @"opened");
+
 }
 
 
@@ -116,6 +119,8 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
  //   [self gotoMainView];
     LogDebug(@"User is logged in");
+    SendGAEvent(@"user_action", @"login_view", @"logged_in");
+
     
 }
 
@@ -129,16 +134,21 @@
 
 
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error"
-                                                    message:@"Invalid username or password."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
+    
+    
+    [AlertBox showAlertFor:self
+                 withTitle:@"Login error"
+               withMessage:@"Invalid username or password"
+                leftButton:nil
+               rightButton:@"OK"
+                leftAction:nil
+               rightAction:nil];
+    
     
     logInController.logInView.usernameField.text = @"";
     logInController.logInView.passwordField.text = @"";
     
-    [alert show];
+    
 }
 
 // Sent to the delegate when the log in screen is dismissed.

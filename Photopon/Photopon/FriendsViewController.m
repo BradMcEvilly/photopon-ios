@@ -56,6 +56,9 @@
 }
 
 -(void)addFriendClicked {
+    SendGAEvent(@"user_action", @"friends_view", @"add_firend_clickede");
+
+    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     UIViewController *addFriend = [storyBoard instantiateViewControllerWithIdentifier:@"SBAddFriend"];
@@ -228,6 +231,8 @@
         [myFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
         
         [self.friendsTable reloadData];
+        
+        SendGAEvent(@"user_action", @"friends_view", @"friend_selected");
     } else {
         FriendPopupViewController* friendPopup = (FriendPopupViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendPopup"];
         [friendPopup setFriend:item];
@@ -238,6 +243,8 @@
         
         [friendPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
         [self presentViewController:friendPopup animated:YES completion:nil];
+        
+        SendGAEvent(@"user_action", @"friends_view", @"friend_tapped");
     }
 
 }

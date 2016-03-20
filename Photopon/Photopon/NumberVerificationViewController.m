@@ -10,6 +10,7 @@
 #import "PhoneNumberFormatter.h"
 #import "HeaderViewController.h"
 #import "IndicatorViewController.h"
+#import "AlertBox.h"
 
 @interface NumberVerificationViewController ()
 
@@ -65,10 +66,13 @@
 
 
 -(void)doVerify {
+    
+    SendGAEvent(@"user_action", @"number_verification", @"verify_clicked");
     if (![[sentCode stringValue] isEqualToString: self.verificationCode.text]) {
         self.wrongCode.text = @"Wrong verification code!";
         self.wrongCode.alpha = 1;
         [self shakeVerification];
+        SendGAEvent(@"user_action", @"number_verification", @"wrong_code");
         return;
     }
     
@@ -87,7 +91,7 @@
             UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
             [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
         
-            
+            SendGAEvent(@"user_action", @"number_verification", @"number_verified");
         } else {
             self.wrongCode.text = @"Server error. Please try again.";
             self.wrongCode.alpha = 1;
@@ -101,12 +105,17 @@
     
     [self sendCode];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verification"
-                                                    message:@"New verification code was sent to your number"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK!"
-                                          otherButtonTitles:nil];
-    [alert show];
+    
+    [AlertBox showAlertFor:self
+                 withTitle:@"Verification"
+               withMessage:@"New verification code was sent to your number"
+                leftButton:nil
+               rightButton:@"OK"
+                leftAction:nil
+               rightAction:nil];
+    
+    SendGAEvent(@"user_action", @"number_verification", @"resend_code_clicked");
+    
 }
 
 
@@ -134,11 +143,15 @@
         }
     }];
     
+    SendGAEvent(@"user_action", @"number_verification", @"send_code_clicked");
+    
 
 }
 
 -(void) verifyLater {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    SendGAEvent(@"user_action", @"number_verification", @"verify_later");
 }
 
 - (void)viewDidLoad {

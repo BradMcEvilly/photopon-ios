@@ -13,7 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DBAccess.h"
 #import "HeaderViewController.h"
-
+#import "AlertBox.h"
 @implementation SettingsController
 
 
@@ -25,6 +25,7 @@
         PFUser* user = [PFUser currentUser];
         [user setValue:file forKey:@"image"];
         [user save];
+        SendGAEvent(@"user_action", @"settings", @"profile_image_uploaded");
         
         
         [self.photoView sd_setImageWithURL:[NSURL URLWithString:file.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]];
@@ -63,25 +64,29 @@
 
 
 -(void)changePhoneNumber {
+    SendGAEvent(@"user_action", @"settings", @"change_number");
     UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
     [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
     
 }
 
 -(void)removeNumber {
+    SendGAEvent(@"user_action", @"settings", @"remove_number");
+    
     PFUser *user = [PFUser currentUser];
     [user removeObjectForKey:@"phone"];
+    
+    
+    self.phoneBox.hidden = YES;
+    self.noPhoneBox.hidden = NO;
+    
     
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
         if (!error) {
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Removed"
-                                                            message:@"Your number has been successfully removed"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+            
+            [AlertBox showAlertFor:self withTitle:@"Removed" withMessage:@"Your number has been successfully removed" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
             
             self.phoneBox.hidden = YES;
             self.noPhoneBox.hidden = NO;

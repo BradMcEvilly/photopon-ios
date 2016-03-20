@@ -14,7 +14,7 @@
 #import "LeftMenuViewController.h"
 #import "PhotoponCameraView.h"
 #import "PhotoponCameraPlaceholderViewController.h"
-
+#import "AlertBox.h"
 #import "ChatMessagesController.h"
 #import "PhotoponViewController.h"
 
@@ -197,7 +197,7 @@
     
     navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
     
-    [self setViewControllers:@[notificationsView]
+    [self setViewControllers:@[photoponView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
     
@@ -218,21 +218,7 @@
     
 //    self.navigationItem.leftBarButtonItem = leftButton;
 
-    
-    if (![CLLocationManager locationServicesEnabled]) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
-                                                        message:@"Location services must be enabled in order to use Photopon."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-    } else {
-        UpdateNearbyCoupons();
-    }
-    
-    [RealTimeNotificationHandler setupManager];
+      [RealTimeNotificationHandler setupManager];
     
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -241,6 +227,24 @@
 }
 
 
+-(void)viewDidAppear:(BOOL)animated {
+    
+    if (![CLLocationManager locationServicesEnabled]) {
+        
+        [AlertBox showAlertFor:self
+                     withTitle:@"No permission"
+                   withMessage:@"Location services must be enabled in order to use Photopon"
+                    leftButton:nil
+                   rightButton:@"OK"
+                    leftAction:nil
+                   rightAction:nil];
+        
+    } else {
+        UpdateNearbyCoupons();
+    }
+    
+
+}
 
 
 -(UIViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -259,6 +263,8 @@
     
     currentIndex = currentIndex % (myViewControllers.count);
     UIViewController* ctrl = [myViewControllers objectAtIndex:currentIndex];
+    SendGAEvent(@"user_action", @"main_slider", @"slide_left");
+
     return ctrl;
 }
  
@@ -271,6 +277,7 @@
     
     currentIndex = currentIndex % (myViewControllers.count);
     UIViewController* ctrl = [myViewControllers objectAtIndex:currentIndex];
+    SendGAEvent(@"user_action", @"main_slider", @"slide_right");
     return ctrl;
 }
  

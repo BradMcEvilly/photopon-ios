@@ -35,6 +35,8 @@ UIImageView* CreateFAImage(NSString* type, CGFloat size);
 NSString* NumbersFromFormattedPhone(NSString* formatted);
 
 
+void SendGAEvent(NSString* category, NSString* action, NSString* label);
+
 
 NSArray* GetNearbyCoupons();
 NSArray* GetNearbyCouponsPF();
@@ -57,6 +59,7 @@ UIImage* MaskImageWithColor(UIImage* image, UIColor* color);
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 - (void)getCouponsForLocation:(CLLocation*)location;
+- (void)showSettings;
 
 @end
 
@@ -70,6 +73,9 @@ UIImage* MaskImageWithColor(UIImage* image, UIColor* color);
 + (void)removeListener:(NSString*)type;
 
 @end
+
+
+
 
 
 

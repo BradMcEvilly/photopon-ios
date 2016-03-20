@@ -64,6 +64,7 @@
     
     currentCouponIndex = (currentCouponIndex + 1) % [allCoupons count];
     [self updateCoupon];
+    SendGAEvent(@"user_action", @"minicouponview", @"swipe_left");
 }
 
 
@@ -73,6 +74,8 @@
     
     currentCouponIndex = (currentCouponIndex - 1 + [allCoupons count]) % [allCoupons count];
     [self updateCoupon];
+    
+    SendGAEvent(@"user_action", @"minicouponview", @"swipe_right");
 }
 
 

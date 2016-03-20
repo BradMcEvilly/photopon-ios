@@ -15,6 +15,7 @@
 #import "LogHelper.h"
 #import "HeaderViewController.h"
 #import "IndicatorViewController.h"
+#import "AlertBox.h"
 
 @implementation NotificationController
 {
@@ -24,6 +25,7 @@
 }
 
 -(void)updateNotifications {
+    SendGAEvent(@"user_action", @"notifications", @"manual_update");
     GetNotifications(^(NSArray *results, NSError *error) {
         allNotifications = [NSMutableArray arrayWithArray:results];
         [self.notificationsTable reloadData];
@@ -68,8 +70,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.notificationsTable addGestureRecognizer:tap];
 }
-
-
 
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -119,6 +119,7 @@
         cell.textLabel.text = [NSString stringWithFormat:@"%@ added you!", [assocUser username]];
         cell.detailTextLabel.text = @"You can add him back";
        
+        SendGAEvent(@"user_action", @"notifications", @"firend_notification_clicked");
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
@@ -137,7 +138,7 @@
         [dateFormat setDateFormat:@"EEE, MMM d, h:mm a"];
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
-        
+        SendGAEvent(@"user_action", @"notifications", @"message_notification_clicked");
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
@@ -159,6 +160,7 @@
         [dateFormat setDateFormat:@"EEE, MMM d, h:mm a"];
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
+        SendGAEvent(@"user_action", @"notifications", @"photopon_notification_clicked");
         
     } else if ([type isEqualToString:@"ADDWALLET"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
@@ -180,6 +182,7 @@
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
+        SendGAEvent(@"user_action", @"notifications", @"walletadd_notification_clicked");
     }else if ([type isEqualToString:@"REDEEMED"]) {
         
         PFUser* assocUser = [item objectForKey:@"assocUser"];
@@ -201,7 +204,7 @@
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
-        
+        SendGAEvent(@"user_action", @"notifications", @"redeemed_notification_clicked");
     }
 
     

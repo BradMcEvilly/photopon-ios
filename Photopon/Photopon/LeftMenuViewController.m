@@ -60,6 +60,8 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"LeftMenu"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    SendGAEvent(@"user_action", @"left_menu", @"opened");
 }
 
 
@@ -100,6 +102,8 @@
         }
         if (clientHook) {
             clientHook(itemTags[tag]);
+            SendGAEvent(@"user_action", @"left_menu", [NSString stringWithFormat:@"%@_clicked", itemTags[tag]]);
+
         }
 
     }];

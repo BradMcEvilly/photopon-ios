@@ -17,6 +17,7 @@
 #import "CouponTableViewCell.h"
 #import "CouponDetailViewController.h"
 #import "HeaderViewController.h"
+#import "AlertBox.h"
 
 @implementation CouponViewController
 {
@@ -25,6 +26,7 @@
     int selectedCouponIndex;
     CLLocationManager* locationManager;
     UIRefreshControl* refreshControl;
+    NSInteger thisCouponIndex;
 }
 
 
@@ -38,35 +40,44 @@
 }
 
 
+-(void)redeemCoupon {
+    PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
+    [coupon incrementKey:@"numRedeemed"];
+    [coupon saveInBackground];
+    
+    [AlertBox showMessageFor:self withTitle:@"Your coupon"
+                 withMessage:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                  leftButton:nil
+                 rightButton:@"Awesome!"
+                  leftAction:nil
+                 rightAction:nil];
+    
+    
+    
+    SendGAEvent(@"user_action", @"coupons_table", @"got_coupon");
+
+    
+}
+
+
 
 -(void) getCoupon:(id)sender {
     UIButton* btn = (UIButton*)sender;
-    NSInteger thisCouponIndex = btn.tag;
-    
-    UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
-                                                                               message:@"You can redeem coupon once. Are you sure you want to redeem it now?"
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
-        [coupon incrementKey:@"numRedeemed"];
-        [coupon saveInBackground];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
-                                                        message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Awesome!"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }];
+    thisCouponIndex = btn.tag;
     
     
     
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
     
-    [confirmationAlert addAction:getAction];
-    [confirmationAlert addAction:cancelAction];
-    [self presentViewController:confirmationAlert animated:YES completion:nil];
+    [AlertBox showMessageFor:self withTitle:@"Are you sure?"
+                 withMessage:@"You can redeem coupon once. Are you sure you want to redeem it now?"
+                  leftButton:@"Cancel"
+                 rightButton:@"Redeem"
+                  leftAction:nil
+                 rightAction:@selector(redeemCoupon)];
+    
+    
+    
+    SendGAEvent(@"user_action", @"coupons_table", @"get_clicked");
 }
 
 -(void) giveCoupon: (id)sender {
@@ -76,6 +87,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
                                                                                                          @"index": @(thisCouponIndex)
                                                                                                          }];
+    SendGAEvent(@"user_action", @"coupons_table", @"give_clicked");
 
 
 }
@@ -90,6 +102,7 @@
 }
 
 -(void)forceUpdateCoupons {
+    SendGAEvent(@"user_action", @"coupons_table", @"manual_update");
     UpdateNearbyCoupons();
 }
 

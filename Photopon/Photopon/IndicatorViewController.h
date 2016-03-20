@@ -18,6 +18,7 @@
 @property (weak, nonatomic) UIViewController* parentController;
 
 +(IndicatorViewController*)showIndicator:(UIViewController*)parent withText:(NSString*)text timeout:(NSInteger)timeout;
++(IndicatorViewController*)showIndicator:(UIViewController*)parent withText:(NSString*)text timeout:(NSInteger)timeout withDelay:(float)delay;
 
 -(void)hide;
 -(void)remove;

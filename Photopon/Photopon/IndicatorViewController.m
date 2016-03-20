@@ -63,4 +63,27 @@
 
 
 
++(IndicatorViewController*)showIndicator:(UIViewController*)parent withText:(NSString*)text timeout:(NSInteger)timeout withDelay:(float)delay {
+    
+    IndicatorViewController* indController = [IndicatorViewController showIndicator:parent withText:text timeout:timeout];
+                                              
+    [indController.view setHidden:TRUE];
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [indController.view setHidden:FALSE];
+    });
+    
+    return indController;
+}
+
 @end
+
+
+
+
+
+
+
+
+

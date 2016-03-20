@@ -11,6 +11,8 @@
 #import "FriendsViewController.h"
 #import "DBAccess.h"
 #import "MiniCouponViewController.h"
+#import "IndicatorViewController.h"
+#import "AlertBox.h"
 @import Foundation;
 
 
@@ -180,19 +182,23 @@
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
+            SendGAEvent(@"user_action", @"photopon_draw", @"photopon_sent");
             photoFile = NULL;
             drawingFile = NULL;
             
             //[self.navigationController popToRootViewControllerAnimated:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
-                message:@"Photopon was saved successfully."
-                delegate:nil
-                cancelButtonTitle:@"OK"
-                otherButtonTitles:nil];
             
-            [alert show];
+            [AlertBox showMessageFor:self
+                         withTitle:@"Photopon"
+                       withMessage:@"Photopon was saved successfully"
+                        leftButton:nil
+                       rightButton:@"OK"
+                        leftAction:nil
+                       rightAction:nil];
+            
+    
             
             for (int i = 0; i < [users count]; ++i) {
                 PFUser* user = [PFQuery getUserObjectWithId:users[i] ];
@@ -223,6 +229,9 @@
 
 -(void)onSaveTouch {
     numSuccess = 0;
+    SendGAEvent(@"user_action", @"photopon_camera", @"upload_pics");
+    IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Uploading Photopon..." timeout:150 withDelay:0.5];
+    
     
     if (self.photoView.image == nil) {
         numSuccess++;
@@ -232,6 +241,7 @@
             photoFile = file;
             
             if (numSuccess == 2) {
+                [ind hide];
                 [self savePhotopon];
             }
         });
@@ -246,6 +256,7 @@
             drawingFile = file;
             
             if (numSuccess == 2) {
+                [ind hide];
                 [self savePhotopon];
             }
         });
@@ -281,12 +292,14 @@
 
 -(void)onColorChange: (id)sender {
     UIButton* btn = (UIButton*)sender;
+    SendGAEvent(@"user_action", @"photopon_camera", @"color_change");
     [self selectColor: btn.backgroundColor];
 }
 
 
 -(void)onWidthChange: (id)sender {
     UIButton* btn = (UIButton*)sender;
+    SendGAEvent(@"user_action", @"photopon_camera", @"width_change");
     [self selectWidth:btn.tag];
 }
 
@@ -351,6 +364,7 @@
 }
 
 -(void)closeView {
+    SendGAEvent(@"user_action", @"photopon_camera", @"close_clicked");
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
@@ -369,6 +383,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponDrawScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SendGAEvent(@"user_action", @"photopon_camera", @"opened");
     
 }
 

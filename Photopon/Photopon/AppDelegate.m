@@ -40,14 +40,15 @@
     
     
     // Configure tracker from GoogleService-Info.plist.
-    NSError *configureError;
-    [[GGLContext sharedInstance] configureWithError:&configureError];
-    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+//    NSError *configureError;
+//    [[GGLContext sharedInstance] configureWithError:&configureError];
+//    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     
     // Optional: configure GAI options.
     GAI *gai = [GAI sharedInstance];
+    [gai trackerWithTrackingId:@"UA-39438121-2"];
     gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-  //  gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
 
 
     UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];

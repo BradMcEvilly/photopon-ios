@@ -10,16 +10,19 @@
 #import <Parse/Parse.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "HeaderViewController.h"
+#import "AlertBox.h"
 
 @implementation MerchantInfoPage
 
 -(void)showAlert: (NSString*)title : (NSString*) error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:error
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+
+    [AlertBox showAlertFor:self
+                 withTitle:title
+               withMessage:error
+                leftButton:nil
+               rightButton:@"OK"
+                leftAction:nil
+               rightAction:nil];
 }
 
 - (BOOL)validatePhone:(NSString *)phoneNumber
@@ -62,7 +65,7 @@
     merchantRequest[@"phoneNumber"] = self.infoBusinessPhone.text;
     
     [merchantRequest saveInBackground];
-    
+    SendGAEvent(@"user_action", @"merchant_info", @"request_sent");
     [self showAlert: @"Congratulations": @"Merchant request have been sent"];
     [self dismissViewControllerAnimated:YES completion:NULL];
    
@@ -92,6 +95,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"MerchantInfoScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SendGAEvent(@"user_action", @"merchant_info", @"opened");
 }
 
 

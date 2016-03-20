@@ -12,6 +12,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PhotoponCameraView.h"
 #import "HeaderViewController.h"
+#import "AlertBox.h"
 
 @interface CouponDetailViewController ()
 @end
@@ -22,37 +23,37 @@
 
 NSInteger selectedCoupon = 0;
 
+-(void)redeemCoupon {
+    NSInteger thisCouponIndex = selectedCoupon;
+
+    NSArray* allPFCoupons = GetNearbyCouponsPF();
+    
+    PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
+    [coupon incrementKey:@"numRedeemed"];
+    [coupon saveInBackground];
+    
+    
+    [AlertBox showMessageFor:self withTitle:@"Your coupon"
+                 withMessage:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                  leftButton:nil
+                 rightButton:@"Awesome!"
+                  leftAction:nil
+                 rightAction:nil];
+    
+    SendGAEvent(@"user_action", @"coupon_details", @"coupon_redeemed");
+
+    
+}
+
 -(void)getCoupon {
 
-    NSInteger thisCouponIndex = selectedCoupon;
+    [AlertBox showMessageFor:self withTitle:@"Are you sure?"
+                 withMessage:@"You can redeem coupon once. Are you sure you want to redeem it now?"
+                  leftButton:@"Cancel"
+                 rightButton:@"Redeem"
+                  leftAction:nil
+                 rightAction:@selector(redeemCoupon)];
     
-    UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
-                                                                               message:@"You can redeem coupon once. Are you sure you want to redeem it now?"
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        NSArray* allPFCoupons = GetNearbyCouponsPF();
-        
-        PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
-        [coupon incrementKey:@"numRedeemed"];
-        [coupon saveInBackground];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
-                                                        message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Awesome!"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }];
-    
-    
-    
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-    
-    [confirmationAlert addAction:getAction];
-    [confirmationAlert addAction:cancelAction];
-    [self presentViewController:confirmationAlert animated:YES completion:nil];
 }
 
 -(void)giveCoupon {
@@ -61,6 +62,9 @@ NSInteger selectedCoupon = 0;
                                                                                                          @"index": @(selectedCoupon)
                                                                                                          }];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    SendGAEvent(@"user_action", @"coupon_details", @"give_pressed");
+
     
 }
 
@@ -99,6 +103,9 @@ NSInteger selectedCoupon = 0;
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponDetailScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    SendGAEvent(@"user_action", @"coupon_details", @"opened");
+
 }
 
 

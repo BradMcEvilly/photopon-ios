@@ -17,7 +17,7 @@
 #import <PubNub/PNConfiguration.h>
 #import <PubNub/PubNub+Publish.h>
 #import <Parse/Parse.h>
-
+#import "AlertBox.h"
 
 
 
@@ -40,7 +40,14 @@ RealTimeNotificationHandler* rtUpdateInstance;
 BOOL isLocationInitialized = NO;
 
 
-
+void SendGAEvent(NSString* category, NSString* action, NSString* label) {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category     // Event category (required)
+                                                          action:action  // Event action (required)
+                                                           label:label          // Event label
+                                                           value:nil] build]];    // Event value
+}
 
 
 UIImage* MakeImageNegative(UIImage* image) {
@@ -150,15 +157,8 @@ void UpdateNearbyCoupons() {
         CLAuthorizationStatus st = [CLLocationManager authorizationStatus];
         
         if (st == kCLAuthorizationStatusRestricted || st == kCLAuthorizationStatusDenied) {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photopon"
-                                                            message:@"Location services must be enabled in order to use Photopon."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            
-            [alert show];
-            
+            [AlertBox showAlertFor:locationHandler withTitle:@"No permission" withMessage:@"Location services must be enabled in order to use Photopon." leftButton:@"Go to settings" rightButton:@"Later" leftAction:@selector(showSettings) rightAction:nil];
+                        
             return;
         }
         
@@ -262,6 +262,11 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
     
     [self getCouponsForLocation:location];
 }
+
+-(void)showSettings {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+}
+
 
 @end
 

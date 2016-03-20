@@ -29,12 +29,14 @@
 -(void)onSwipeLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
     currentCouponIndex = (currentCouponIndex + 1) % [allCoupons count];
     [self createMiniCoupon];
+    SendGAEvent(@"user_action", @"minicouponview", @"swipe_left");
 }
 
 
 -(void)onSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer {
     currentCouponIndex = (currentCouponIndex - 1 + [allCoupons count]) % [allCoupons count];
     [self createMiniCoupon];
+    SendGAEvent(@"user_action", @"minicouponview", @"swipe_right");
 }
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer

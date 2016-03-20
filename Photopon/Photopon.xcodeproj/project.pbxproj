@@ -10,6 +10,8 @@
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
 		620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
+		622563F41C9B257300ED2C46 /* AlertBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 622563F21C9B257300ED2C46 /* AlertBox.m */; };
+		622563F51C9B257300ED2C46 /* AlertBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622563F31C9B257300ED2C46 /* AlertBox.xib */; };
 		622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */; };
 		623F95581B939AC200506B16 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F95571B939AC200506B16 /* WalletController.m */; };
 		623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F955A1B93AC0B00506B16 /* PhotoponViewController.m */; };
@@ -109,6 +111,9 @@
 		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		622563F11C9B257300ED2C46 /* AlertBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBox.h; sourceTree = "<group>"; };
+		622563F21C9B257300ED2C46 /* AlertBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertBox.m; sourceTree = "<group>"; };
+		622563F31C9B257300ED2C46 /* AlertBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertBox.xib; sourceTree = "<group>"; };
 		622C82531BFF429A00D7BCE2 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		623F95561B939AC200506B16 /* WalletController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
@@ -393,6 +398,9 @@
 				62D148C91B79732100E8D4A1 /* Supporting Files */,
 				623F95561B939AC200506B16 /* WalletController.h */,
 				623F95571B939AC200506B16 /* WalletController.m */,
+				622563F11C9B257300ED2C46 /* AlertBox.h */,
+				622563F21C9B257300ED2C46 /* AlertBox.m */,
+				622563F31C9B257300ED2C46 /* AlertBox.xib */,
 			);
 			path = Photopon;
 			sourceTree = "<group>";
@@ -538,6 +546,7 @@
 				62ED02F21BD4419D00534A98 /* photopon-logo.png in Resources */,
 				629E720E1C612A4000DD79C1 /* Icon-Information.png in Resources */,
 				62C8ADC21C52CA91007021CA /* splash-logo.png in Resources */,
+				622563F51C9B257300ED2C46 /* AlertBox.xib in Resources */,
 				62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
 				62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
@@ -626,6 +635,7 @@
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */,
 				622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */,
+				622563F41C9B257300ED2C46 /* AlertBox.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,

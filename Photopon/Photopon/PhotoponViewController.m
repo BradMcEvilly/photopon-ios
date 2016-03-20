@@ -21,6 +21,7 @@
 }
 
 -(void)savePhotopon {
+    SendGAEvent(@"user_action", @"photopon_view", @"save_clicked");
     
     if (HasPhoneNumber(@"You need to add phone number to be able to save Photopons.")) {
         PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
@@ -33,6 +34,9 @@
                 
             }];
         }];
+    } else {
+        SendGAEvent(@"user_action", @"photopon_view", @"no_phone_number_to_save");
+        
     }
 }
 

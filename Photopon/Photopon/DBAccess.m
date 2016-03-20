@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "DBAccess.h"
 #import "Helper.h"
-
+#import "AlertBox.h"
 
 void GetMyFriends(ResultBlock block) {
     PFUser* userId = [PFUser currentUser];
@@ -312,9 +312,8 @@ void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon) {
 }
 
 
-@interface PhoneNumberCheckDelegate : NSObject<UIAlertViewDelegate>
+@interface PhoneNumberCheckDelegate : NSObject 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 + (PhoneNumberCheckDelegate *)sharedInstance;
 
 @end
@@ -332,16 +331,9 @@ void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon) {
     
     UIViewController* mainCtrl = [st instantiateViewControllerWithIdentifier:@"SBSettings"];
     [topController showViewController:mainCtrl sender:nil];
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-}
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [self showSettings];
-    }
+    
+    SendGAEvent(@"user_action", @"phone_number_check", @"go_to_settings");
+    
 }
 
 
@@ -372,12 +364,9 @@ BOOL HasPhoneNumber(NSString* message) {
     }
     
     if (message) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Number required"
-                                                        message:message
-                                                       delegate:[PhoneNumberCheckDelegate sharedInstance]
-                                              cancelButtonTitle:@"Go to Settings"
-                                              otherButtonTitles:@"Later", nil];
-        [alert show];
+        
+        [AlertBox showAlertFor:[PhoneNumberCheckDelegate sharedInstance] withTitle:@"Number required" withMessage:message leftButton:@"Go to settings" rightButton:@"Later" leftAction:@selector(showSettings) rightAction:nil];
+
     }
     
     return FALSE;

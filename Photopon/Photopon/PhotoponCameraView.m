@@ -44,6 +44,7 @@
 
 
 -(void)onShutterTouch {
+    SendGAEvent(@"user_action", @"photopon_camera", @"capture_clicked");
     [self captureNow];
  
 }
@@ -91,6 +92,7 @@
     }
     [self initCamera];
     
+    SendGAEvent(@"user_action", @"photopon_camera", @"switch_clicked");
 }
 
 -(void)viewDidLoad

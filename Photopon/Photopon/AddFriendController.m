@@ -14,7 +14,7 @@
 #import "DBAccess.h"
 #import "Helper.h"
 #import "HeaderViewController.h"
-
+#import "AlertBox.h"
 
 @implementation AddFriendController 
 {
@@ -128,12 +128,78 @@
 }
 
 
+-(void)showSettings {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+}
+
 
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"AddFriendScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    [self getAllContacts];
+
+}
+
+-(void)fetchAllContacts {
+    CNContactStore *store = [[CNContactStore alloc] init];
+
+    NSMutableArray *contacts = [NSMutableArray array];
+    
+    NSError *fetchError;
+    CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactIdentifierKey, CNContactEmailAddressesKey, CNContactPhoneNumbersKey, [CNContactFormatter descriptorForRequiredKeysForStyle:CNContactFormatterStyleFullName]]];
+    
+    BOOL success = [store enumerateContactsWithFetchRequest:request error:&fetchError usingBlock:^(CNContact *contact, BOOL *stop) {
+        [contacts addObject:contact];
+    }];
+    if (!success) {
+        NSLog(@"error = %@", fetchError);
+    }
+    
+    CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
+    
+    for (CNContact *contact in contacts) {
+        NSString* name = [formatter stringFromContact:contact];
+        
+        
+        
+        for (CNLabeledValue<CNPhoneNumber*>* phone in contact.phoneNumbers) {
+            
+            
+            [allContacts addObject:[@{
+                                      @"name": name,
+                                      @"phone": phone.value.stringValue
+                                      } mutableCopy]];
+        }
+        
+        
+    }
+}
+
+-(void)getAllContacts {
+    
+    CNContactStore *store = [[CNContactStore alloc] init];
+    
+    CNAuthorizationStatus st = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    
+    if (st == CNAuthorizationStatusAuthorized) {
+        [self fetchAllContacts];
+    } else {
+        [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (!granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [AlertBox showAlertFor:self withTitle:@"No permission" withMessage:@"Photopon needs your permission to be able to add friends from your contact list" leftButton:@"Go to settings" rightButton:@"Later" leftAction:@selector(showSettings) rightAction:nil];
+                    
+                });
+                return;
+            }
+            
+            
+            [self fetchAllContacts];
+        }];
+    }
 }
 
 
@@ -150,54 +216,6 @@
     
     [HeaderViewController addBackHeaderToView:self withTitle:@"Add Friend"];
     
-    
-    CNContactStore *store = [[CNContactStore alloc] init];
-    [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        if (!granted) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No permission"
-                                                                message:@"I need your permission to be able to add friends from your contact list"
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Cancel"
-                                                      otherButtonTitles:nil];
-                [alert show];
-
-            });
-            return;
-        }
-        
-        NSMutableArray *contacts = [NSMutableArray array];
-        
-        NSError *fetchError;
-        CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactIdentifierKey, CNContactEmailAddressesKey, CNContactPhoneNumbersKey, [CNContactFormatter descriptorForRequiredKeysForStyle:CNContactFormatterStyleFullName]]];
-        
-        BOOL success = [store enumerateContactsWithFetchRequest:request error:&fetchError usingBlock:^(CNContact *contact, BOOL *stop) {
-            [contacts addObject:contact];
-        }];
-        if (!success) {
-            NSLog(@"error = %@", fetchError);
-        }
-        
-        CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
-        
-        for (CNContact *contact in contacts) {
-            NSString* name = [formatter stringFromContact:contact];
-
-            
-            
-            for (CNLabeledValue<CNPhoneNumber*>* phone in contact.phoneNumbers) {
-                
-                
-                [allContacts addObject:[@{
-                    @"name": name,
-                    @"phone": phone.value.stringValue
-                } mutableCopy]];
-            }
-
-        
-        }
-    }];
 
 }
 
@@ -401,12 +419,8 @@
     
     
     [friendObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            [self.searchResultTable reloadData];
-            CreateAddFriendNotification(userToAdd);
-        } else {
-            //TODO: There was a problem, check error.description
-        }
+       [self.searchResultTable reloadData];
+        CreateAddFriendNotification(userToAdd);
     }];
 
 }
@@ -434,11 +448,17 @@
     NSInteger section = indexPath.section;
     
     if (section == 0) {
+        
+        
         if (currentSuggestionAdded) {
             currentSuggestionAdded = FALSE;
+            SendGAEvent(@"user_action", @"add_friend", @"friend_removed_from_search");
+            
             [self removeFriend:currentSuggestion];
         } else {
             currentSuggestionAdded = TRUE;
+            SendGAEvent(@"user_action", @"add_friend", @"friend_added_from_search");
+            
             [self addFriend:currentSuggestion];
         }
     }
@@ -448,9 +468,15 @@
         if ([[item objectForKey:@"removedFromFriend"] boolValue]) {
             [item setObject:@FALSE forKey:@"removedFromFriend"];
             [self addFriend:item[@"object"]];
+            
+            SendGAEvent(@"user_action", @"add_friend", @"friend_readded_from_existing");
+            
         } else {
             [item setObject:@TRUE forKey:@"removedFromFriend"];
             [self removeFriend:item[@"object"]];
+            
+            SendGAEvent(@"user_action", @"add_friend", @"friend_removed_from_search");
+
         }
 
     }
@@ -478,6 +504,9 @@
                         [result deleteInBackground];
                         [self.searchResultTable reloadData];
                     }];
+                    
+                    SendGAEvent(@"user_action", @"add_friend", @"friend_removed_from_contacts");
+
 
                 } else {
                     [item setObject:@TRUE forKey:@"justAddedFriend"];
@@ -497,6 +526,8 @@
                     [friendObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [self.searchResultTable reloadData];
                     }];
+                    
+                    SendGAEvent(@"user_action", @"add_friend", @"friend_added_from_contacts");
                 }
             
             
@@ -505,9 +536,13 @@
                 if ([[item objectForKey:@"justAddedFriend"] boolValue]) {
                     [item setObject:@FALSE forKey:@"justAddedFriend"];
                     [self removeFriend:user];
+                    
+                    SendGAEvent(@"user_action", @"add_friend", @"friend_removed_from_contacts");
                 } else {
                     [item setObject:@TRUE forKey:@"justAddedFriend"];
                     [self addFriend:user];
+                    
+                    SendGAEvent(@"user_action", @"add_friend", @"friend_added_from_contacts");
                 }
             }
         });

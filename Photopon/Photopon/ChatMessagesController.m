@@ -105,7 +105,8 @@
         PubNubSendMessage([currentUser objectId], self.textField.text);
         CreateMessageNotification(currentUser, self.textField.text);
         self.textField.text = @"";
-        
+        SendGAEvent(@"user_action", @"chat", @"message_sent");
+
     }
 }
 
@@ -114,6 +115,9 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"ChatMessagesScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    SendGAEvent(@"user_action", @"chat", @"chat_started");
+
 }
 
 
@@ -144,6 +148,8 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                 object:nil];
+    
+
     
 }
 

@@ -11,7 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ChatMessagesController.h"
 #import "UITheme.h"
-
+#import "AlertBox.h"
 
 @interface FriendPopupViewController ()
 
@@ -127,16 +127,21 @@
 {
     switch (result) {
         case MessageComposeResultCancelled:
+            SendGAEvent(@"user_action", @"friend_popup", @"invite_message_cancelled");
+
             break;
             
         case MessageComposeResultFailed:
         {
-            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [warningAlert show];
+            [AlertBox showAlertFor:self withTitle:@"Error" withMessage:@"Failed to send SMS message" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
+            SendGAEvent(@"user_action", @"friend_popup", @"invite_message_failed");
+
             break;
         }
             
         case MessageComposeResultSent:
+            SendGAEvent(@"user_action", @"friend_popup", @"invite_message_sent");
+
             break;
             
         default:
@@ -146,44 +151,50 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)InviteFriend {
+    SendGAEvent(@"user_action", @"friend_popup", @"invite_clicked");
+    
+    
+    if(![MFMessageComposeViewController canSendText]) {
+        
+        [AlertBox showAlertFor:self withTitle:@"Error" withMessage:@"Your device doesn't support SMS!" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
+        SendGAEvent(@"user_action", @"friend_popup", @"send_text_failed");
+        
+        return;
+    }
+    
+    NSArray *recipents = @[selectedFriend[@"id"]];
+    NSString *message = @"I have sent you Photopon. To redeem it install Photopon app and click on notification. https://goo.gl/emLbil";
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setRecipients:recipents];
+    [messageController setBody:message];
+    
+    [self presentViewController:messageController animated:YES completion:nil];
+}
+
+
+
 -(BOOL)askToInviteIfNeeded {
     if (![selectedFriend valueForKey:@"isPlaceholder"]) {
         return FALSE;
     }
     
-    UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Send Invite"
-                                                                               message:[NSString stringWithFormat:@"Your friend %@ is not registered in Photopon. Would you like to invite him?", [selectedFriend valueForKey:@"name"]]
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
+    SendGAEvent(@"user_action", @"friend_popup", @"ask_to_invite_popup");
+
+    [AlertBox showAlertFor:self
+                 withTitle:@"Send Invite"
+               withMessage:[NSString stringWithFormat:@"Your friend %@ is not registered in Photopon. Would you like to invite him?", [selectedFriend valueForKey:@"name"]]
+                leftButton:@"Invite"
+               rightButton:@"Not now"
+                leftAction:@selector(InviteFriend)
+               rightAction:nil];
     
-    UIAlertAction* inviteAction = [UIAlertAction actionWithTitle:@"Invite" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        if(![MFMessageComposeViewController canSendText]) {
-            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [warningAlert show];
-            return;
-        }
-    
-        NSArray *recipents = @[selectedFriend[@"id"]];
-        NSString *message = @"I have sent you Photopon. To redeem it install Photopon app and click on notification.";
-        
-        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
-        messageController.messageComposeDelegate = self;
-        [messageController setRecipients:recipents];
-        [messageController setBody:message];
-        
-        [self presentViewController:messageController animated:YES completion:nil];
-    }];
-    
-    
-    
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Not now" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-    
-    [confirmationAlert addAction:inviteAction];
-    [confirmationAlert addAction:cancelAction];
-    [self presentViewController:confirmationAlert animated:YES completion:nil];
     return TRUE;
 }
 
-
+ 
 -(void)startChat:(UITapGestureRecognizer *)recognizer {
     if ([self askToInviteIfNeeded]) {
         return;
@@ -199,6 +210,9 @@
     [messageCtrl setUser: selectedFriend[@"object"]];
 
     [friendViewCtrl presentViewController:messageCtrl animated:YES completion:nil];
+
+    SendGAEvent(@"user_action", @"friend_popup", @"chat_started");
+
     NSLog(@"Start Chat");
 }
 
@@ -212,6 +226,8 @@
                                                                                                         
     }];
     
+    SendGAEvent(@"user_action", @"friend_popup", @"send_photopon");
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -243,15 +259,23 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    SendGAEvent(@"user_action", @"friend_popup", @"settings_opened");
+    
     UIAlertAction *blockAction = [UIAlertAction actionWithTitle:@"Block" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // this block runs when the driving option is selected
+       SendGAEvent(@"user_action", @"friend_popup", @"block_action");
     }];
     
     UIAlertAction *unfriendAction = [UIAlertAction actionWithTitle:@"Unfriend" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        SendGAEvent(@"user_action", @"friend_popup", @"unfriend_action");
+
         [self removeFriendShip];
     }];
     
     UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        SendGAEvent(@"user_action", @"friend_popup", @"ignore_action");
+
         // this block runs when the walking option is selected
     }];
     

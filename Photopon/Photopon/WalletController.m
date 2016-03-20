@@ -13,7 +13,7 @@
 #import "LogHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HeaderViewController.h"
-
+#import "AlertBox.h"
 
 
 @implementation WalletController
@@ -105,61 +105,46 @@
 }
 
 
+-(void)redeemCoupon {
+    PFObject* walletItem = [allWalletItems objectAtIndex:selectedItemIndex];
+    PFObject* photopon = [walletItem objectForKey:@"photopon"];
+    PFObject* coupon = [photopon objectForKey:@"coupon"];
+    
+    [photopon incrementKey:@"numRedeemed"];
+    [photopon saveInBackground];
+    
+    [coupon incrementKey:@"numRedeemed"];
+    [coupon saveInBackground];
+    
+    SendGAEvent(@"user_action", @"wallet", @"redeem_clicked");
+    
+    
+    [AlertBox showMessageFor:self withTitle:@"Your coupon"
+                 withMessage:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                  leftButton:nil
+                 rightButton:@"Awesome!"
+                  leftAction:nil
+                 rightAction:nil];
+    
+    
+    
+    CreateRedeemedNotification([photopon valueForKey:@"creator"], photopon);
 
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedItemIndex = (int)indexPath.row;
-    
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose action"
-                                                                   message:@"Do you want to Redeem this photopon now?"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* getAction = [UIAlertAction actionWithTitle:@"Redeem" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        PFObject* walletItem = [allWalletItems objectAtIndex:selectedItemIndex];
-        PFObject* photopon = [walletItem objectForKey:@"photopon"];
-        PFObject* coupon = [photopon objectForKey:@"coupon"];
-        
-        [photopon incrementKey:@"numRedeemed"];
-        [photopon saveInBackground];
-        
-        [coupon incrementKey:@"numRedeemed"];
-        [coupon saveInBackground];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your coupon"
-                                                        message:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Awesome!"
-                                              otherButtonTitles:nil];
-        
-        CreateRedeemedNotification([photopon valueForKey:@"creator"], photopon);
-
-        [alert show];
-    }];
+    SendGAEvent(@"user_action", @"wallet", @"wallet_item_clicked");
     
     
-    
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-    }];
-    
-    [alert addAction:getAction];
-    [alert addAction:cancelAction];
-    
-    
-    
-    [self presentViewController:alert animated:YES completion:nil];
-    
-    
-    
-    
-    /*
-     PhotoponCameraView* camView = (PhotoponCameraView*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-     
-     [camView setCoupons:allCoupons withObjects:allPFCoupons];
-     [camView setCurrentCouponIndex:indexPath.row];
-     [self showViewController:camView sender:nil];
-     */
+    [AlertBox showMessageFor:self
+                   withTitle:@"Choose action"
+                 withMessage:@"Do you want to Redeem this photopon now?"
+                  leftButton:@"Cancel"
+                 rightButton:@"Redeem"
+                  leftAction:nil
+                 rightAction:@selector(redeemCoupon)];
 }
 
 
