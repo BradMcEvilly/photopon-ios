@@ -490,6 +490,7 @@
 				TargetAttributes = {
 					62D148C51B79732100E8D4A1 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = F43DL7PZMZ;
 					};
 				};
 			};
@@ -775,12 +776,13 @@
 			baseConfigurationReference = 756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Photopon, Inc. (F43DL7PZMZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91bd2ab4-efcc-4701-bd8c-332d899b08d7";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -789,12 +791,13 @@
 			baseConfigurationReference = DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Photopon, Inc. (F43DL7PZMZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91bd2ab4-efcc-4701-bd8c-332d899b08d7";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

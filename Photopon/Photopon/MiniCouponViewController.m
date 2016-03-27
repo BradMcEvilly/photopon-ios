@@ -106,6 +106,8 @@
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
     self.view.hidden = ([allCoupons count] == 0);
+    if ([allCoupons count] != 0)
+        [self updateCoupon];
 }
 
 - (void)viewDidLoad {

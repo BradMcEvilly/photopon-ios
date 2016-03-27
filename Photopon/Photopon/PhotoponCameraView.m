@@ -182,8 +182,6 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
-
-
 -(IBAction)captureNow {
 
     if (hasCamera) {
@@ -218,6 +216,10 @@
              
              NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
              UIImage *image = [[UIImage alloc] initWithData:imageData];
+             
+             if (activeDevice == AVCaptureDevicePositionFront) {
+                 image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationLeftMirrored];
+             }
              
              
              PhotoponDrawController* photoponDrawCtrl = (PhotoponDrawController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotopon"];

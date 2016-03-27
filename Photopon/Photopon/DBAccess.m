@@ -89,10 +89,12 @@ void GetCoupons(ResultBlock block) {
 
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
-    PFQuery *query = [PFQuery queryWithClassName:@"Location"];
+    PFQuery *locationQuery = [PFQuery queryWithClassName:@"Location"];
 
-    [query whereKey:@"location" nearGeoPoint:point withinKilometers:1];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
+    [locationQuery whereKey:@"location" nearGeoPoint:point withinKilometers:1];
+    //
+    
+    [locationQuery findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
         NSMutableSet *ids = [[NSMutableSet alloc] init];
         
         for(PFObject *oneItem in locations) {
@@ -100,10 +102,16 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
         }
         
         
-        PFQuery *query = [PFQuery queryWithClassName:@"Coupon"];
-        [query includeKey:@"company"];
+        NSNumber* serverTime = [PFCloud callFunction:@"ServerTime" withParameters:nil];
         
-        [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+        PFQuery *couponQuery = [PFQuery queryWithClassName:@"Coupon"];
+        [couponQuery includeKey:@"company"];
+        [couponQuery whereKey:@"isActive" equalTo:[NSNumber numberWithBool:YES]];
+        [couponQuery whereKey:@"expiration" greaterThanOrEqualTo:[NSDate dateWithTimeIntervalSince1970:[serverTime doubleValue]/1000]];
+        
+        
+    
+        [couponQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
             
             NSMutableArray *c = [[NSMutableArray alloc] init];
             for (PFObject* coupon in results) {
@@ -113,6 +121,7 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
                 for (NSString* locid in locs) {
                     if ([ids containsObject:locid]) {
                         [c addObject:coupon];
+                        break;
                     }
                 }
                 
