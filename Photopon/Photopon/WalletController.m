@@ -22,6 +22,16 @@
     int selectedItemIndex;
 }
 
+-(void)updateWallet {
+    allWalletItems = [NSMutableArray array];
+    
+    GetWalletItems(^(NSArray *results, NSError *error) {
+        allWalletItems = [NSMutableArray arrayWithArray:results];
+        [self.walletTable reloadData];
+    });
+
+}
+
 
 -(void)viewDidLoad
 {
@@ -31,23 +41,16 @@
 
     [self.walletTable setDelegate:self];
     [self.walletTable setDataSource:self];
-    allWalletItems = [NSMutableArray array];
-    
-    GetWalletItems(^(NSArray *results, NSError *error) {
-        allWalletItems = [NSMutableArray arrayWithArray:results];
-        [self.walletTable reloadData];
-    });
-    
+    [self updateWallet];
 }
-
-
-
 
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"WalletScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    [self updateWallet];
 }
 
 
@@ -116,6 +119,11 @@
     [coupon incrementKey:@"numRedeemed"];
     [coupon saveInBackground];
     
+    [walletItem setValue:[NSNumber numberWithBool:YES] forKey:@"isUsed"];
+    [walletItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self updateWallet];
+    }];
+    
     SendGAEvent(@"user_action", @"wallet", @"redeem_clicked");
     
     
@@ -129,6 +137,7 @@
     
     
     CreateRedeemedNotification([photopon valueForKey:@"creator"], photopon);
+    CreateRedeemedLog([photopon valueForKey:@"creator"], coupon);
 
 }
 

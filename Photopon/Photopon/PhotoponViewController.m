@@ -27,6 +27,8 @@
         PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
         [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
         [newWalletObject setObject:photopon forKey:@"photopon"];
+        [newWalletObject setObject:[NSNumber numberWithBool:NO] forKey:@"isUsed"];
+        
         [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             
             CreateAddWalletNotification([photopon valueForKey:@"creator"], photopon);

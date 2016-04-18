@@ -55,7 +55,7 @@
     
     
     SendGAEvent(@"user_action", @"coupons_table", @"got_coupon");
-
+    CreateRedeemedLog(NULL, coupon);
     
 }
 

@@ -41,7 +41,7 @@ NSInteger selectedCoupon = 0;
                  rightAction:nil];
     
     SendGAEvent(@"user_action", @"coupon_details", @"coupon_redeemed");
-
+    CreateRedeemedLog(NULL, coupon);
     
 }
 

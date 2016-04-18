@@ -191,6 +191,8 @@ void GetWalletItems(ResultBlock block) {
     [query includeKey:@"photopon.coupon.company"];
     
     [query whereKey:@"user" equalTo:user];
+    [query whereKey:@"isUsed" equalTo:[NSNumber numberWithBool:NO]];
+
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         block(results, error);
@@ -318,6 +320,24 @@ void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon) {
     [notification saveInBackground];
     [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
     
+}
+
+
+
+
+void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon) {
+
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint * _Nullable geoPoint, NSError * _Nullable error) {
+        PFObject *redeemLog = [PFObject objectWithClassName:@"Redeem"];
+        
+        redeemLog[@"to"] = [PFUser currentUser];
+        if (fromUser) {
+            redeemLog[@"from"] = fromUser;
+        }
+        redeemLog[@"coupon"] = coupon;
+        redeemLog[@"location"] = geoPoint;
+        [redeemLog saveInBackground];
+    }];
 }
 
 

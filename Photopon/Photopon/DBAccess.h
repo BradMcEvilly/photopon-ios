@@ -39,6 +39,7 @@ void CreateAddWalletNotification(PFUser* toUser, PFObject* photopon);
 void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon);
 
 
+void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon);
 
 
 void GetCoupons(ResultBlock block);
