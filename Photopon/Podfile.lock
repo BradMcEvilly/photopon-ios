@@ -26,6 +26,7 @@ PODS:
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
   - IQKeyboardManager (3.3.5)
+  - Optimizely-iOS-SDK (1.4.2)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
   - ParseUI (1.1.7):
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - FontAwesome
   - Google/Analytics
   - IQKeyboardManager
+  - Optimizely-iOS-SDK
   - Parse (~> 1.7)
   - ParseUI
   - PubNub
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
+  Optimizely-iOS-SDK: 6d23c5cde187f894430d134caa15f56874754cca
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
   PubNub: 461805c30ce11332a6ee5ab2c34be2d4c82c38d7

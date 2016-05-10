@@ -112,6 +112,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+## Optimizely-iOS-SDK
+
+See http://developers.optimizely.com/ios/terms
+
 ## Parse
 
 BSD License

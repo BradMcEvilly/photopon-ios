@@ -10,4 +10,5 @@ pod 'SDWebImage'
 pod 'IQKeyboardManager'
 pod 'Google/Analytics'
 pod 'TwilioSDK', '~>1.2'
+pod 'Optimizely-iOS-SDK'
 end

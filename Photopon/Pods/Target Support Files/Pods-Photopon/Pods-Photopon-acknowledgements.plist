@@ -165,6 +165,14 @@ SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>See http://developers.optimizely.com/ios/terms</string>
+			<key>Title</key>
+			<string>Optimizely-iOS-SDK</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>BSD License
 
 For Parse iOS/OSX SDK software

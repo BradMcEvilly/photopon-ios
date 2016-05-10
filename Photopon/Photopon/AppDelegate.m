@@ -11,6 +11,9 @@
 #import "MasterViewController.h"
 #import "Parse/Parse.h"
 #import <Google/Analytics.h>
+#import <Optimizely/Optimizely.h>
+
+
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -62,7 +65,19 @@
                                                                                                                 }];
     }
     
+    [Optimizely enableEditor];
+    [Optimizely startOptimizelyWithAPIToken:@"AANPFuUBC0eid8cHb2NlL4AyneQspBbn~5685431109" launchOptions:launchOptions];
+    
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if([Optimizely handleOpenURL:url]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
