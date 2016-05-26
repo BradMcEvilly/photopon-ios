@@ -48,7 +48,7 @@ void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 
 
-
+int DaysBetween(NSDate* from, NSDate* to);
 
 UIImage* MakeImageNegative(UIImage* image);
 UIImage* ImageWithWhiteBackground(UIImage* image);

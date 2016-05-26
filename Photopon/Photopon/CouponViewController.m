@@ -111,7 +111,7 @@
     [super viewDidLoad];
     
     HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
-    [header setTheme:[UITheme tealTheme]];
+    [header setTheme:[UITheme greenTheme]];
     
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
@@ -166,6 +166,29 @@
     
     cell.title.text = [item objectForKey:@"title"];
     cell.longDescription.text = [item objectForKey:@"desc"];
+    
+    
+    NSDate* exp = [item objectForKey:@"expiration"];
+    NSDate* now = [NSDate date];
+    
+    int numDays = DaysBetween(now, exp);
+    
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"MM/dd/yyyy"];
+    cell.expiration.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
+    if (numDays > 2) {
+        [cell.expiration setTextColor:[UIColor colorWithRed:0 green:0.4 blue:0 alpha:1]];
+    } else if (numDays > 1) {
+        [cell.expiration setTextColor:[UIColor colorWithRed:0.6 green:0.3 blue:0 alpha:1]];
+    } else {
+        [cell.expiration setTextColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]];
+    }
+    
+
+    
+    
+    
     [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:[item objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
     
     cell.getButton.tag = indexPath.row;
@@ -179,7 +202,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 120;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Photopon"];
-    [header setTheme:[UITheme greenTheme]];
+    [header setTheme:[UITheme redTheme]];
 
     
     [self.notificationsTable setDelegate:self];

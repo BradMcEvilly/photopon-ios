@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Wallet"];
-    [header setTheme:[UITheme orangeTheme]];
+    [header setTheme:[UITheme blueTheme]];
 
     [self.walletTable setDelegate:self];
     [self.walletTable setDataSource:self];

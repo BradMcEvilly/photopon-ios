@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     [self.logInView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photopon-logo.png"]]];
+    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photopon-logo-black.png"]]];
     
     self.logInView.dismissButton.alpha = 0;
     
@@ -30,8 +30,12 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    float x = (self.logInView.bounds.size.width - 300.0f) / 2;
-    [self.logInView.logo setFrame:CGRectMake(x, 30, 300.0f, 100.0f)];
+    float logoSize = self.logInView.bounds.size.width - 60;
+    
+    float x = (self.logInView.bounds.size.width - logoSize) / 2;
+    
+    
+    [self.logInView.logo setFrame:CGRectMake(x, 30, logoSize, logoSize / 3)]; // Logo picture is 3:1 proportion
 
 }
 

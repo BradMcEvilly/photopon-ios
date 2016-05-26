@@ -187,7 +187,12 @@ NSString* NumbersFromFormattedPhone(NSString* formatted) {
 
 
 
+int DaysBetween(NSDate* from, NSDate* to) {
 
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:from toDate:to options:0];
+    return [components day] + 1;
+}
 
 
 NSArray* GetNearbyCoupons() {
@@ -239,7 +244,8 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
             [couponsNearby addObject:@{
                                     @"title": title,
                                     @"desc": desc,
-                                    @"pic": pic.url
+                                    @"pic": pic.url,
+                                    @"expiration": [object objectForKey:@"expiration"]
                                     }];
             
             

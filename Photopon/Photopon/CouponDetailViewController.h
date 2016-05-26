@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *couponImage;
 @property (weak, nonatomic) IBOutlet UILabel *couponTitle;
 @property (weak, nonatomic) IBOutlet UILabel *couponDescription;
+@property (weak, nonatomic) IBOutlet UILabel *couponExpiration;
 
 @property (weak, nonatomic) IBOutlet UIButton *giveButton;
 @property (weak, nonatomic) IBOutlet UIButton *getButton;

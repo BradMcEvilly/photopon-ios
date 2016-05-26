@@ -17,8 +17,8 @@
     [super viewDidLoad];
     
     [self.signUpView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photopon-logo.png"]]];
-    //qself.signUpView.dismissButton.alpha = 0;
+    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photopon-logo-black.png"]]];
+    self.signUpView.dismissButton.alpha = 1;
     
 }
 
@@ -26,8 +26,15 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    float x = (self.signUpView.bounds.size.width - 300.0f) / 2;
-    [self.signUpView.logo setFrame:CGRectMake(x, 30, 300.0f, 100.0f)];
+    
+    float logoSize = self.signUpView.bounds.size.width - 60;
+    
+    float x = (self.signUpView.bounds.size.width - logoSize) / 2;
+    
+    
+    [self.signUpView.logo setFrame:CGRectMake(x, 30, logoSize, logoSize / 3)]; // Logo picture is 3:1 proportion
+    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated {

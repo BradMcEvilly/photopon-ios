@@ -28,6 +28,8 @@
 +(UITheme*)blueTheme;
 +(UITheme*)tealTheme;
 
++(UITheme*)redTheme;
++(UITheme*)yellowTheme;
 @end
 
 

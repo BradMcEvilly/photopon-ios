@@ -41,12 +41,12 @@
         HeaderViewController* header = [HeaderViewController addBackHeaderToView:self withTitle:@"Friends"];
 
         [header addRightButtonWithImage:@"Icon-Checked-User.png" withTarget:self action:@selector(friendsSelected)];
-        [header setTheme:[UITheme blueTheme]];
+        [header setTheme:[UITheme yellowTheme]];
     } else {
         HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
 
         [header addRightButtonWithImage:@"Icon-Add-User.png" withTarget:self action:@selector(addFriendClicked)];
-        [header setTheme:[UITheme blueTheme]];        
+        [header setTheme:[UITheme yellowTheme]];
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
