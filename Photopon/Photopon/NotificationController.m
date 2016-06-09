@@ -8,7 +8,6 @@
 
 #import "NotificationController.h"
 #import "ChatMessagesController.h"
-#import "PhotoponViewController.h"
 #import "Parse/Parse.h"
 #import "DBAccess.h"
 #import "Helper.h"
@@ -277,28 +276,13 @@
         
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        //[assocUser fetchIfNeeded];
-        
-        ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
-        [messageCtrl setUser:assocUser];
-        
+        [self showChatWithUser:assocUser];
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [self updateNotifications];
         }];
-        [self presentViewController:messageCtrl animated:YES completion:nil];
-        
-        
     } else if ([type isEqualToString:@"PHOTOPON"]) {
-        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
-        
-        PhotoponViewController* photoponView = (PhotoponViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponView"];
-        [photoponView setPhotopon:assocPhotopon];
-        
-        [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [self updateNotifications];
-        }];
-        [self presentViewController:photoponView animated:YES completion:nil];
-        
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
+        [self showChatWithUser:assocUser];
     } else if ([type isEqualToString:@"ADDWALLET"]) {
         
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -317,7 +301,11 @@
     
 }
 
-
+- (void)showChatWithUser:(PFUser *)user {
+    ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
+    [messageCtrl setUser:user];
+    [self presentViewController:messageCtrl animated:YES completion:nil];
+}
 
 
 

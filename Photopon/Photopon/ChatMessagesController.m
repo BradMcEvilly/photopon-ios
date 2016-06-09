@@ -82,7 +82,6 @@
                 NSDictionary* dict = result.data.messages[i];
                 NSDictionary* msg = dict[@"message"];
                 [self addMessage:msg];
-                //[currentMessages addObject:msg];
             }
             
             [self.chatMessages reloadData];
