@@ -11,7 +11,6 @@
 @interface UITheme : NSObject
 
 +(UITheme*)themeWithHeaderColor: (UIColor*)headerColor headerTextColor:(UIColor*)headerTextColor;
-+(void)initiColors;
 
 
 @property UIColor* headerColor;

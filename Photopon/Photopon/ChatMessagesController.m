@@ -18,41 +18,50 @@
 #import "ChatMessageTableViewCell.h"
 #import "HeaderViewController.h"
 
-@implementation ChatMessagesController
-{
-    PFUser *currentUser;
-    NSMutableArray* currentMessages;
-    NSMutableDictionary* resolvedUsers;
+@interface ChatMessagesController ()
+@property (nonatomic, copy) NSString *channelName;
+@property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) NSMutableArray* currentMessages;
+@property (nonatomic, strong) NSMutableDictionary* resolvedUsers;
+@end
 
+@implementation ChatMessagesController
+
+- (void)dealloc
+{
+    PubNub *pubNub = GetPubNub();
+    [pubNub unsubscribeFromChannels:@[self.channelName] withPresence:YES];
 }
 
-
 - (void)addMessage: (NSDictionary*)msg {
+    if (![msg[@"type"] isEqualToString:@"MESSAGE"]) {
+        return;
+    }
+    
     NSString* message = [msg valueForKey:@"message"];
     NSString* from = [msg valueForKey:@"from"];
     
-    if ([currentMessages count] == 0) {
-        [currentMessages addObject:[@{
+    if ([self.currentMessages count] == 0) {
+        [self.currentMessages addObject:[@{
              @"messages": [@[message] mutableCopy],
              @"from": from
          } mutableCopy]];
     
     } else {
-        NSString* lastFrom = [[currentMessages lastObject] valueForKey:@"from"];
+        NSString* lastFrom = [[self.currentMessages lastObject] valueForKey:@"from"];
         if (![lastFrom isEqualToString:from]) {
-            [currentMessages addObject:[@{
+            [self.currentMessages addObject:[@{
                 @"messages": [@[message] mutableCopy],
                 @"from": from
             } mutableCopy]];
 
         } else {
-            [[[currentMessages lastObject] valueForKey:@"messages"] addObject:message];
+            [[[self.currentMessages lastObject] valueForKey:@"messages"] addObject:message];
         }
     }
 }
 
 - (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult*)msg {
-    
     NSDictionary* data = msg.data.message;
     
     if (![data[@"type"] isEqualToString:@"MESSAGE"]) {
@@ -62,18 +71,18 @@
     [self addMessage:data];
     
     [self.chatMessages reloadData];
-    [self.chatMessages scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:currentMessages.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.chatMessages scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentMessages.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
--(void) setUser:(PFUser*)user {
-    currentUser = user;
+- (void)setUser:(PFUser*)user {
+    self.currentUser = user;
     
-    currentMessages = [[NSMutableArray alloc] init];
+    self.currentMessages = [[NSMutableArray alloc] init];
     
     PubNub* pubnub = GetPubNub();
-    NSString* channel = PubNubChannelName([currentUser objectId], [[PFUser currentUser] objectId]);
+    self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
     
-    [pubnub historyForChannel:channel start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
+    [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
         
         if (!status.isError) {
             
@@ -87,7 +96,7 @@
             [self.chatMessages reloadData];
             
             if (result.data.messages.count != 0) {
-                [self.chatMessages scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:currentMessages.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                [self.chatMessages scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentMessages.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
             }
         } else {
             // Error
@@ -95,20 +104,19 @@
     }];
     
     
-    [pubnub subscribeToChannels:@[channel] withPresence:true];
+    [pubnub subscribeToChannels:@[self.channelName] withPresence:YES];
     [pubnub addListener:self];
 }
 
 - (void) onSendClick {
     if ([self.textField.text length] != 0) {
-        PubNubSendMessage([currentUser objectId], self.textField.text);
-        CreateMessageNotification(currentUser, self.textField.text);
+        PubNubSendMessage([self.currentUser objectId], self.textField.text);
+        CreateMessageNotification(self.currentUser, self.textField.text);
         self.textField.text = @"";
         SendGAEvent(@"user_action", @"chat", @"message_sent");
 
     }
 }
-
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -119,16 +127,13 @@
 
 }
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    resolvedUsers = [NSMutableDictionary dictionary];
+    self.resolvedUsers = [NSMutableDictionary dictionary];
     
     
-    [HeaderViewController addBackHeaderToView:self withTitle:[currentUser username]];
+    [HeaderViewController addBackHeaderToView:self withTitle:[self.currentUser username]];
     
     self.chatMessages.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -183,8 +188,6 @@
 
 }
 
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -193,34 +196,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [currentMessages count];
+    return [self.currentMessages count];
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)setUpCell:(ChatMessageTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
-    NSDictionary *item = (NSDictionary *)[currentMessages objectAtIndex:indexPath.row];
+    NSDictionary *item = (NSDictionary *)[self.currentMessages objectAtIndex:indexPath.row];
     NSArray* messages = [item valueForKey:@"messages"];
     NSString* from = [item valueForKey:@"from"];
     
-    if (![resolvedUsers objectForKey:from]) {
+    if (![self.resolvedUsers objectForKey:from]) {
         PFUser* userFrom = [PFQuery getUserObjectWithId:from];
-        [resolvedUsers setObject:userFrom forKey:from];
+        [self.resolvedUsers setObject:userFrom forKey:from];
     }
     
     
-    PFUser* userFrom = [resolvedUsers objectForKey: from];
+    PFUser* userFrom = [self.resolvedUsers objectForKey: from];
     [cell setupCellWithUser:userFrom withMessages:messages];
 }
 
@@ -249,13 +240,6 @@
     return size.height + 5;
 }
 
-
-
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatMessageTableViewCell *cell = (ChatMessageTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ChatMessageTableViewCell"];
@@ -264,14 +248,11 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ChatMessageTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     }
     
     [self setUpCell:cell atIndexPath:indexPath];
     
     return cell;
 }
-
-
 
 @end

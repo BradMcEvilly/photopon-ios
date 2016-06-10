@@ -326,15 +326,11 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				84B8CB911D0B16C60060BAD5 /* Modules */,
 				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
 				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
 				62D148CD1B79732100E8D4A1 /* AppDelegate.h */,
 				62D148CE1B79732100E8D4A1 /* AppDelegate.m */,
-				62A302C91B829B0800D61F34 /* ChatMessagesController.h */,
-				62A302CA1B829B0800D61F34 /* ChatMessagesController.m */,
-				6255D59F1C1783050088227A /* ChatMessageTableViewCell.h */,
-				6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */,
-				6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */,
 				622C82531BFF429A00D7BCE2 /* CouponDetailViewController.h */,
 				622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */,
 				62D9C8021BFD44DD00B81FDB /* CouponTableCell.xib */,
@@ -437,6 +433,42 @@
 				62D148CB1B79732100E8D4A1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84B8CB911D0B16C60060BAD5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CB921D0B17910060BAD5 /* Chat */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		84B8CB921D0B17910060BAD5 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CB931D0B179E0060BAD5 /* View */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		84B8CB931D0B179E0060BAD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CB941D0B17B10060BAD5 /* Cell */,
+				62A302C91B829B0800D61F34 /* ChatMessagesController.h */,
+				62A302CA1B829B0800D61F34 /* ChatMessagesController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		84B8CB941D0B17B10060BAD5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6255D59F1C1783050088227A /* ChatMessageTableViewCell.h */,
+				6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */,
+				6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		9750ECB74249AEF1072E7FDE /* Frameworks */ = {

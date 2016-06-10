@@ -210,10 +210,7 @@
     return cell;
 }
 
-
-
-
--(void) didTapOnTableView:(UIGestureRecognizer*) recognizer {
+- (void)didTapOnTableView:(UIGestureRecognizer*) recognizer {
     CGPoint tapLocation = [recognizer locationInView:self.notificationsTable];
     NSIndexPath *indexPath = [self.notificationsTable indexPathForRowAtPoint:tapLocation];
     
@@ -226,7 +223,6 @@
     NSString* type = [item objectForKey:@"type"];
     
     if ([type isEqualToString:@"FRIEND"]) {
-        
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
@@ -234,7 +230,6 @@
                                                                 preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction *addAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Add %@", [assocUser username]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
             PFObject *friendship = [PFObject objectWithClassName:@"Friends"];
             
             friendship[@"user1"] = [PFUser currentUser];
@@ -248,15 +243,12 @@
             [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 [self updateNotifications];
             }];
-            
         }];
         
         UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
             [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 [self updateNotifications];
             }];
-            
         }];
         
         
@@ -269,11 +261,6 @@
         
         
         [self presentViewController:alert animated:YES completion:nil];
-        
-        
-        
-        
-        
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         [self showChatWithUser:assocUser];
@@ -284,21 +271,15 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         [self showChatWithUser:assocUser];
     } else if ([type isEqualToString:@"ADDWALLET"]) {
-        
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [self updateNotifications];
         }];
-        
-        
     } else if ([type isEqualToString:@"REDEEMED"]) {
         
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [self updateNotifications];
         }];
-        
     }
-    
-    
 }
 
 - (void)showChatWithUser:(PFUser *)user {
@@ -306,9 +287,5 @@
     [messageCtrl setUser:user];
     [self presentViewController:messageCtrl animated:YES completion:nil];
 }
-
-
-
-
 
 @end

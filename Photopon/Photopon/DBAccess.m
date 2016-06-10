@@ -11,6 +11,7 @@
 #import "DBAccess.h"
 #import "Helper.h"
 #import "AlertBox.h"
+#import "PubNubWrapper.h"
 
 void GetMyFriends(ResultBlock block) {
     PFUser* userId = [PFUser currentUser];
@@ -288,6 +289,12 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
     [notification saveInBackground];
     [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
     
+    PubNubSendObject([toUser objectId], @{
+                                          @"type" : @"NOTIFICATION",
+                                          @"subtype": @"PHOTOPON",
+                                          @"photoponId": photopon.objectId,
+                                          @"from": [[PFUser currentUser] objectId]
+                                          });
 }
 
 

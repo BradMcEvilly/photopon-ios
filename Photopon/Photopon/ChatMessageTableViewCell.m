@@ -14,13 +14,6 @@
     [self.messageText setPreferredMaxLayoutWidth:[UIScreen mainScreen].bounds.size.width - 20];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-
 -(void)setupCellWithUser:(PFUser*)fromUser withMessages:(NSArray*)messages {
     BOOL isMyMessage = [[fromUser objectId] isEqualToString:[[PFUser currentUser] objectId]];
     
@@ -50,6 +43,5 @@
     self.messageText.text = str;
     self.userLabel.text = [fromUser username];
 }
-
 
 @end
