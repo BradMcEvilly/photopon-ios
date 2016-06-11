@@ -562,6 +562,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rvc-c9-JSu">
                                 <rect key="frame" x="0.0" y="80" width="600" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lx5-fU-ASc" id="lIb-xJ-xYk"/>
+                                    <outlet property="delegate" destination="Lx5-fU-ASc" id="0ST-iT-AXX"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -583,7 +587,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="chatMessages" destination="rvc-c9-JSu" id="sYa-DE-P5g"/>
+                        <outlet property="chatTableView" destination="rvc-c9-JSu" id="DkB-XO-thy"/>
                         <outlet property="mainView" destination="gLb-8C-Pqx" id="d9U-BJ-dES"/>
                         <outlet property="sendButton" destination="ocz-ys-K07" id="bOh-MQ-YPi"/>
                         <outlet property="textField" destination="PAf-3T-3nJ" id="jg3-GN-wD2"/>

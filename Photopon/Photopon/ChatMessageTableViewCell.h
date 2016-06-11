@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChatMessagePresentableModel;
+
 @interface ChatMessageTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *userLabel;
-@property (weak, nonatomic) IBOutlet UILabel *messageText;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *leftIndicator;
 @property (weak, nonatomic) IBOutlet UIView *rightIndicator;
 
-
--(void)setupCellWithUser:(PFUser*)fromUser withMessages:(NSArray*)messages;
-
+-(void)updateWithPresentableModel:(ChatMessagePresentableModel *)presentableModel;
 
 @end

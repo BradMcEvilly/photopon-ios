@@ -103,6 +103,11 @@
 		62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */; };
 		62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */; };
 		62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */; };
+		84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */; };
+		84B8CB9C1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */; };
+		84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA31D0B6F740060BAD5 /* ChatBasePresentableModel.m */; };
+		84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA61D0B6FF70060BAD5 /* ChatUserPresentableModel.m */; };
+		84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA91D0B70070060BAD5 /* ChatMessagePresentableModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +246,15 @@
 		62FFA9621C24C29F0086FEA7 /* NumberVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberVerificationViewController.h; sourceTree = "<group>"; };
 		62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberVerificationViewController.m; sourceTree = "<group>"; };
 		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
+		84B8CB981D0B6BEF0060BAD5 /* ChatUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUserTableViewCell.h; sourceTree = "<group>"; };
+		84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUserTableViewCell.m; sourceTree = "<group>"; };
+		84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserTableViewCell.xib; sourceTree = "<group>"; };
+		84B8CBA21D0B6F740060BAD5 /* ChatBasePresentableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBasePresentableModel.h; sourceTree = "<group>"; };
+		84B8CBA31D0B6F740060BAD5 /* ChatBasePresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBasePresentableModel.m; sourceTree = "<group>"; };
+		84B8CBA51D0B6FF70060BAD5 /* ChatUserPresentableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUserPresentableModel.h; sourceTree = "<group>"; };
+		84B8CBA61D0B6FF70060BAD5 /* ChatUserPresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUserPresentableModel.m; sourceTree = "<group>"; };
+		84B8CBA81D0B70070060BAD5 /* ChatMessagePresentableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessagePresentableModel.h; sourceTree = "<group>"; };
+		84B8CBA91D0B70070060BAD5 /* ChatMessagePresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessagePresentableModel.m; sourceTree = "<group>"; };
 		DAE7154478A3CE6EEF04C24E /* Pods-Photopon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.release.xcconfig"; sourceTree = "<group>"; };
 		DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -454,6 +468,7 @@
 		84B8CB931D0B179E0060BAD5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84B8CB9D1D0B6CE00060BAD5 /* Model */,
 				84B8CB941D0B17B10060BAD5 /* Cell */,
 				62A302C91B829B0800D61F34 /* ChatMessagesController.h */,
 				62A302CA1B829B0800D61F34 /* ChatMessagesController.m */,
@@ -464,11 +479,83 @@
 		84B8CB941D0B17B10060BAD5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				84B8CB971D0B66EE0060BAD5 /* Photopon */,
+				84B8CB961D0B66E80060BAD5 /* User */,
+				84B8CB951D0B66310060BAD5 /* Message */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		84B8CB951D0B66310060BAD5 /* Message */ = {
+			isa = PBXGroup;
+			children = (
 				6255D59F1C1783050088227A /* ChatMessageTableViewCell.h */,
 				6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */,
 				6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */,
 			);
-			name = Cell;
+			name = Message;
+			sourceTree = "<group>";
+		};
+		84B8CB961D0B66E80060BAD5 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CB981D0B6BEF0060BAD5 /* ChatUserTableViewCell.h */,
+				84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */,
+				84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		84B8CB971D0B66EE0060BAD5 /* Photopon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Photopon;
+			sourceTree = "<group>";
+		};
+		84B8CB9D1D0B6CE00060BAD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CBA11D0B6F340060BAD5 /* Base */,
+				84B8CBA01D0B6F230060BAD5 /* Photopon */,
+				84B8CB9F1D0B6F1E0060BAD5 /* Message */,
+				84B8CB9E1D0B6F170060BAD5 /* User */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		84B8CB9E1D0B6F170060BAD5 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CBA51D0B6FF70060BAD5 /* ChatUserPresentableModel.h */,
+				84B8CBA61D0B6FF70060BAD5 /* ChatUserPresentableModel.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		84B8CB9F1D0B6F1E0060BAD5 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CBA81D0B70070060BAD5 /* ChatMessagePresentableModel.h */,
+				84B8CBA91D0B70070060BAD5 /* ChatMessagePresentableModel.m */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		84B8CBA01D0B6F230060BAD5 /* Photopon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Photopon;
+			sourceTree = "<group>";
+		};
+		84B8CBA11D0B6F340060BAD5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				84B8CBA21D0B6F740060BAD5 /* ChatBasePresentableModel.h */,
+				84B8CBA31D0B6F740060BAD5 /* ChatBasePresentableModel.m */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		9750ECB74249AEF1072E7FDE /* Frameworks */ = {
@@ -550,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				629E720A1C611ACE00DD79C1 /* Icon-Lock-2.png in Resources */,
+				84B8CB9C1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib in Resources */,
 				62D0C2F91C08B4A60069B0B5 /* contact-user.png in Resources */,
 				626CAE941C12580000189D6E /* add-button.png in Resources */,
 				626266241B8A7710006D730E /* check.png in Resources */,
@@ -670,12 +758,15 @@
 				622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */,
 				622563F41C9B257300ED2C46 /* AlertBox.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
+				84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
 				62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
+				84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */,
+				84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */,
 				629E71EB1C608E2B00DD79C1 /* UITheme.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
 				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,
@@ -686,6 +777,7 @@
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,
 				62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,
+				84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

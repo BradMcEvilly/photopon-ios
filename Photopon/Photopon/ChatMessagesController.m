@@ -1,5 +1,5 @@
 //
-//  ChatMessagesController.m
+//  chatTableViewController.m
 //  Photopon
 //
 //  Created by Hayk Hayotsyan on 18/8/15.
@@ -15,14 +15,18 @@
 #import <Parse/Parse.h>
 #import <Parse/PFUser.h>
 #import "DBAccess.h"
-#import "ChatMessageTableViewCell.h"
 #import "HeaderViewController.h"
+#import "ChatMessageTableViewCell.h"
+#import "ChatUserTableViewCell.h"
+#import "ChatBasePresentableModel.h"
+#import "ChatUserPresentableModel.h"
+#import "ChatMessagePresentableModel.h"
 
 @interface ChatMessagesController ()
 @property (nonatomic, copy) NSString *channelName;
 @property (nonatomic, strong) PFUser *currentUser;
-@property (nonatomic, strong) NSMutableArray* currentMessages;
-@property (nonatomic, strong) NSMutableDictionary* resolvedUsers;
+@property (nonatomic, strong) NSMutableArray *presentableModels;
+@property (nonatomic, strong) NSMutableDictionary *resolvedUsers;
 @end
 
 @implementation ChatMessagesController
@@ -33,94 +37,11 @@
     [pubNub unsubscribeFromChannels:@[self.channelName] withPresence:YES];
 }
 
-- (void)addMessage: (NSDictionary*)msg {
-    if (![msg[@"type"] isEqualToString:@"MESSAGE"]) {
-        return;
-    }
-    
-    NSString* message = [msg valueForKey:@"message"];
-    NSString* from = [msg valueForKey:@"from"];
-    
-    if ([self.currentMessages count] == 0) {
-        [self.currentMessages addObject:[@{
-             @"messages": [@[message] mutableCopy],
-             @"from": from
-         } mutableCopy]];
-    
-    } else {
-        NSString* lastFrom = [[self.currentMessages lastObject] valueForKey:@"from"];
-        if (![lastFrom isEqualToString:from]) {
-            [self.currentMessages addObject:[@{
-                @"messages": [@[message] mutableCopy],
-                @"from": from
-            } mutableCopy]];
-
-        } else {
-            [[[self.currentMessages lastObject] valueForKey:@"messages"] addObject:message];
-        }
-    }
-}
-
-- (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult*)msg {
-    NSDictionary* data = msg.data.message;
-    
-    if (![data[@"type"] isEqualToString:@"MESSAGE"]) {
-        return;
-    }
-    
-    [self addMessage:data];
-    
-    [self.chatMessages reloadData];
-    [self.chatMessages scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentMessages.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-
-- (void)setUser:(PFUser*)user {
-    self.currentUser = user;
-    
-    self.currentMessages = [[NSMutableArray alloc] init];
-    
-    PubNub* pubnub = GetPubNub();
-    self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
-    
-    [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
-        
-        if (!status.isError) {
-            
-            for (int i = 0; i < [result.data.messages count]; ++i) {
-                
-                NSDictionary* dict = result.data.messages[i];
-                NSDictionary* msg = dict[@"message"];
-                [self addMessage:msg];
-            }
-            
-            [self.chatMessages reloadData];
-            
-            if (result.data.messages.count != 0) {
-                [self.chatMessages scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentMessages.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-            }
-        } else {
-            // Error
-        }
-    }];
-    
-    
-    [pubnub subscribeToChannels:@[self.channelName] withPresence:YES];
-    [pubnub addListener:self];
-}
-
-- (void) onSendClick {
-    if ([self.textField.text length] != 0) {
-        PubNubSendMessage([self.currentUser objectId], self.textField.text);
-        CreateMessageNotification(self.currentUser, self.textField.text);
-        self.textField.text = @"";
-        SendGAEvent(@"user_action", @"chat", @"message_sent");
-
-    }
-}
+#pragma mark - View Lifecycle
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"ChatMessagesScreen"];
+    [tracker set:kGAIScreenName value:@"chatTableViewScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     SendGAEvent(@"user_action", @"chat", @"chat_started");
@@ -132,17 +53,11 @@
     
     self.resolvedUsers = [NSMutableDictionary dictionary];
     
-    
     [HeaderViewController addBackHeaderToView:self withTitle:[self.currentUser username]];
     
-    self.chatMessages.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.chatMessages setDelegate:self];
-    [self.chatMessages setDataSource:self];
-    
+    [self configureTableView];
      
     [self.sendButton addTarget:self action:@selector(onSendClick) forControlEvents:UIControlEventTouchUpInside];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
@@ -152,14 +67,24 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                 object:nil];
-    
+}
 
-    
+- (void)configureTableView {
+    self.chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.chatTableView.rowHeight = UITableViewAutomaticDimension;
+    self.chatTableView.estimatedRowHeight = 20.0;
+    [self registerCellWithClass:[ChatMessageTableViewCell class]];
+    [self registerCellWithClass:[ChatUserTableViewCell class]];
+}
+
+- (void)registerCellWithClass:(Class)class
+{
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass(class) bundle:nil];
+    [self.chatTableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(class)];
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    // Get the size of the keyboard.
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     self.topConstraint.constant = keyboardSize.height +  [UIApplication sharedApplication].statusBarFrame.size.height;
@@ -169,88 +94,157 @@
                          [self.view layoutIfNeeded];
                      }];
     
-    CGPoint currentOffset = [self.chatMessages contentOffset];
+    CGPoint currentOffset = [self.chatTableView contentOffset];
     currentOffset.y = currentOffset.y + keyboardSize.height - 80;
-    [self.chatMessages setContentOffset:currentOffset animated:YES];
+    [self.chatTableView setContentOffset:currentOffset animated:YES];
 
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    
     self.topConstraint.constant = 80;
     
     [UIView animateWithDuration:1
                      animations:^{
                          [self.view layoutIfNeeded];
                      }];
-    [self.chatMessages setContentInset:UIEdgeInsetsMake(0,0,0,0)];
+    [self.chatTableView setContentInset:UIEdgeInsetsMake(0,0,0,0)];
 
 }
+
+#pragma mark - Actions
+
+- (void)onSendClick {
+    if ([self.textField.text length] != 0) {
+        PubNubSendMessage([self.currentUser objectId], self.textField.text);
+        CreateMessageNotification(self.currentUser, self.textField.text);
+        self.textField.text = @"";
+        SendGAEvent(@"user_action", @"chat", @"message_sent");
+        
+    }
+}
+
+#pragma mark - Data Management
+
+- (BOOL)canHandleMessage:(NSDictionary *)message {
+    NSString *type = message[@"type"];
+    
+    if ([type isEqualToString:@"MESSAGE"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)addMessage:(NSDictionary*)msg {
+    if (![self canHandleMessage:msg]) {
+        return;
+    }
+    
+    NSString *text = [msg valueForKey:@"message"];
+    NSString *userId = [msg valueForKey:@"from"];
+    BOOL isCurrentUser = [userId isEqualToString:[[PFUser currentUser] objectId]];
+    
+    ChatBasePresentableModel *lastPresentableModel = [self.presentableModels lastObject];
+    
+    if (lastPresentableModel == nil || lastPresentableModel.currentUser != isCurrentUser) {
+        ChatUserPresentableModel *userPresentableModel = [ChatUserPresentableModel new];
+        userPresentableModel.currentUser = isCurrentUser;
+        userPresentableModel.userName = [self getuserById:userId].username;
+        [self.presentableModels addObject:userPresentableModel];
+        
+        ChatMessagePresentableModel *messagePresentableModel = [ChatMessagePresentableModel new];
+        messagePresentableModel.currentUser = isCurrentUser;
+        messagePresentableModel.message = text;
+        [self.presentableModels addObject:messagePresentableModel];
+    }
+    else {
+        if ([lastPresentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
+            ChatMessagePresentableModel *messagePresentableModel = (ChatMessagePresentableModel *)lastPresentableModel;
+            [messagePresentableModel appendMessage:text];
+        }
+    }
+}
+
+- (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult*)msg {
+    NSDictionary* message = msg.data.message;
+    
+    if (![self canHandleMessage:message]) {
+        return;
+    }
+    
+    [self addMessage:message];
+    
+    [self.chatTableView reloadData];
+    [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)setUser:(PFUser*)user {
+    self.currentUser = user;
+    
+    self.presentableModels = [[NSMutableArray alloc] init];
+    
+    PubNub* pubnub = GetPubNub();
+    self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
+    
+    [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
+        
+        if (!status.isError) {
+            for (NSDictionary *message in result.data.messages) {
+                [self addMessage:message[@"message"]];
+            }
+            
+            [self.chatTableView reloadData];
+            
+            if (self.presentableModels.count != 0) {
+                [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            }
+        } else {
+            // Error
+        }
+    }];
+    
+    
+    [pubnub subscribeToChannels:@[self.channelName] withPresence:YES];
+    [pubnub addListener:self];
+}
+
+- (PFUser *)getuserById:(NSString *)userId
+{
+    PFUser *user = self.resolvedUsers[userId];
+    if (!user) {
+        user = [PFQuery getUserObjectWithId:userId];
+        [self.resolvedUsers setObject:user forKey:userId];
+    }
+    
+    return user;
+}
+
+#pragma mark - TableView DataSource/Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.currentMessages count];
-}
-
-- (void)setUpCell:(ChatMessageTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    NSDictionary *item = (NSDictionary *)[self.currentMessages objectAtIndex:indexPath.row];
-    NSArray* messages = [item valueForKey:@"messages"];
-    NSString* from = [item valueForKey:@"from"];
-    
-    if (![self.resolvedUsers objectForKey:from]) {
-        PFUser* userFrom = [PFQuery getUserObjectWithId:from];
-        [self.resolvedUsers setObject:userFrom forKey:from];
-    }
-    
-    
-    PFUser* userFrom = [self.resolvedUsers objectForKey: from];
-    [cell setupCellWithUser:userFrom withMessages:messages];
-}
-
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static ChatMessageTableViewCell *cell = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ChatMessageTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    });
-    
-    [self setUpCell:cell atIndexPath:indexPath];
-    return [self calculateHeightForConfiguredSizingCell:cell];
-}
-
-
-
-- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
-    [sizingCell layoutIfNeeded];
-    
-    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-    return size.height + 5;
+    return [self.presentableModels count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatMessageTableViewCell *cell = (ChatMessageTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ChatMessageTableViewCell"];
+    id cell = nil;
+    id presentableModel = self.presentableModels[indexPath.row];
     
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ChatMessageTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([presentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatMessageTableViewCell class]) forIndexPath:indexPath];
+        [cell updateWithPresentableModel:presentableModel];
     }
-    
-    [self setUpCell:cell atIndexPath:indexPath];
+    else if ([presentableModel isKindOfClass:[ChatUserPresentableModel class]]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatUserTableViewCell class]) forIndexPath:indexPath];
+        [cell updateWithPresentableModel:presentableModel];
+    }
     
     return cell;
 }
