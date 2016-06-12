@@ -12,7 +12,12 @@
 
 - (void)appendMessage:(NSString *)message
 {
-    self.message = [(self.message ?: @"") stringByAppendingFormat:@"\n%@", message];
+    if (self.message) {
+        self.message = [self.message stringByAppendingFormat:@"\n%@", message];
+    }
+    else {
+        self.message = message;
+    }
 }
 
 @end

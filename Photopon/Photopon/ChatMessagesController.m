@@ -45,18 +45,16 @@
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     SendGAEvent(@"user_action", @"chat", @"chat_started");
-
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.resolvedUsers = [NSMutableDictionary dictionary];
-    
     [HeaderViewController addBackHeaderToView:self withTitle:[self.currentUser username]];
     
     [self configureTableView];
-     
+    
     [self.sendButton addTarget:self action:@selector(onSendClick) forControlEvents:UIControlEventTouchUpInside];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -66,7 +64,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
-                                                object:nil];
+                                               object:nil];
 }
 
 - (void)configureTableView {
@@ -97,7 +95,7 @@
     CGPoint currentOffset = [self.chatTableView contentOffset];
     currentOffset.y = currentOffset.y + keyboardSize.height - 80;
     [self.chatTableView setContentOffset:currentOffset animated:YES];
-
+    
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
@@ -109,7 +107,7 @@
                          [self.view layoutIfNeeded];
                      }];
     [self.chatTableView setContentInset:UIEdgeInsetsMake(0,0,0,0)];
-
+    
 }
 
 #pragma mark - Actions
@@ -150,7 +148,7 @@
     if (lastPresentableModel == nil || lastPresentableModel.currentUser != isCurrentUser) {
         ChatUserPresentableModel *userPresentableModel = [ChatUserPresentableModel new];
         userPresentableModel.currentUser = isCurrentUser;
-        userPresentableModel.userName = [self getuserById:userId].username;
+        userPresentableModel.userName = [self getUserById:userId].username;
         [self.presentableModels addObject:userPresentableModel];
         
         ChatMessagePresentableModel *messagePresentableModel = [ChatMessagePresentableModel new];
@@ -181,6 +179,8 @@
 
 - (void)setUser:(PFUser*)user {
     self.currentUser = user;
+    self.resolvedUsers = [@{self.currentUser.objectId: self.currentUser,
+                            [[PFUser currentUser] objectId]: [PFUser currentUser]} mutableCopy];
     
     self.presentableModels = [[NSMutableArray alloc] init];
     
@@ -209,7 +209,7 @@
     [pubnub addListener:self];
 }
 
-- (PFUser *)getuserById:(NSString *)userId
+- (PFUser *)getUserById:(NSString *)userId
 {
     PFUser *user = self.resolvedUsers[userId];
     if (!user) {

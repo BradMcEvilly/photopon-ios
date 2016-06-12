@@ -283,18 +283,18 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
     notification[@"to"] = toUser;
     notification[@"assocPhotopon"] = photopon;
     notification[@"assocUser"] = [PFUser currentUser];
-    
+    notification[@"status"] = @"NEW";
     notification[@"type"] = @"PHOTOPON";
     
-    [notification saveInBackground];
+    [notification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        PubNubSendObject([toUser objectId], @{
+                                              @"type" : @"NOTIFICATION",
+                                              @"subtype": @"PHOTOPON",
+                                              @"notificationId": notification.objectId,
+                                              @"from": [[PFUser currentUser] objectId]
+                                              });
+    }];
     [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
-    
-    PubNubSendObject([toUser objectId], @{
-                                          @"type" : @"NOTIFICATION",
-                                          @"subtype": @"PHOTOPON",
-                                          @"photoponId": photopon.objectId,
-                                          @"from": [[PFUser currentUser] objectId]
-                                          });
 }
 
 
