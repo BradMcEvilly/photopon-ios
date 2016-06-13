@@ -29,16 +29,23 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLA-YF-9Be">
-                        <rect key="frame" x="10" y="0.0" width="582" height="25"/>
+                        <rect key="frame" x="10" y="0.0" width="582" height="34"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fM-UK-bbx">
+                                <rect key="frame" x="0.0" y="0.0" width="582" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="selectionAction:" destination="Qzq-4Z-EwN" eventType="touchUpInside" id="ODi-Q7-Hb5"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Photopon" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hH-NB-VKI" userLabel="Status Label">
-                                <rect key="frame" x="5" y="5" width="87" height="15"/>
+                                <rect key="frame" x="5" y="5" width="87" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Starbucks 20% off" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjp-Rk-SQp" userLabel="Title Label">
-                                <rect key="frame" x="97" y="5" width="480" height="15"/>
+                                <rect key="frame" x="97" y="10" width="480" height="15"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -48,9 +55,13 @@
                         <constraints>
                             <constraint firstItem="Kjp-Rk-SQp" firstAttribute="centerY" secondItem="DLA-YF-9Be" secondAttribute="centerY" id="0St-2z-vlV"/>
                             <constraint firstItem="7hH-NB-VKI" firstAttribute="top" secondItem="DLA-YF-9Be" secondAttribute="top" constant="5" id="68q-Iy-QLi"/>
+                            <constraint firstAttribute="trailing" secondItem="3fM-UK-bbx" secondAttribute="trailing" id="FkC-f7-owR"/>
                             <constraint firstAttribute="trailing" secondItem="Kjp-Rk-SQp" secondAttribute="trailing" constant="5" id="Pii-ie-uId"/>
+                            <constraint firstAttribute="bottom" secondItem="3fM-UK-bbx" secondAttribute="bottom" id="U6w-Ci-bny"/>
+                            <constraint firstItem="3fM-UK-bbx" firstAttribute="top" secondItem="DLA-YF-9Be" secondAttribute="top" id="b1K-u5-DqR"/>
                             <constraint firstItem="7hH-NB-VKI" firstAttribute="leading" secondItem="DLA-YF-9Be" secondAttribute="leading" constant="5" id="dIR-DI-QId"/>
                             <constraint firstItem="Kjp-Rk-SQp" firstAttribute="leading" secondItem="7hH-NB-VKI" secondAttribute="trailing" constant="5" id="hjW-6S-QHQ"/>
+                            <constraint firstItem="3fM-UK-bbx" firstAttribute="leading" secondItem="DLA-YF-9Be" secondAttribute="leading" id="j3c-wN-quZ"/>
                             <constraint firstAttribute="bottom" secondItem="7hH-NB-VKI" secondAttribute="bottom" constant="5" id="lj2-Fe-81p"/>
                         </constraints>
                     </view>

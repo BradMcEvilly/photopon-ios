@@ -9,6 +9,10 @@
 #import "ChatPhotoponTableViewCell.h"
 #import "ChatPhotoponPresentableModel.h"
 
+@interface ChatPhotoponTableViewCell ()
+@property (nonatomic, strong) ChatPhotoponPresentableModel *presentableModel;
+@end
+
 @implementation ChatPhotoponTableViewCell
 
 - (void)awakeFromNib
@@ -21,10 +25,18 @@
 
 - (void)updateWithPresentableModel:(ChatPhotoponPresentableModel *)presentableModel
 {
+    self.presentableModel = presentableModel;
     self.leftIndicator.hidden = presentableModel.isCurrentUser;
     self.rightIndicator.hidden = !presentableModel.isCurrentUser;
     self.statusLabel.text = presentableModel.photoponStatus;
     self.titleLabel.text = presentableModel.couponTitle;
+}
+
+- (IBAction)selectionAction:(id)sender
+{
+    if (self.onSelected) {
+        self.onSelected(self.presentableModel);
+    }
 }
 
 @end

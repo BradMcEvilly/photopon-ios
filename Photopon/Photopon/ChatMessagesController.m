@@ -23,6 +23,7 @@
 #import "ChatUserPresentableModel.h"
 #import "ChatMessagePresentableModel.h"
 #import "ChatPhotoponPresentableModel.h"
+#import "PhotoponViewController.h"
 
 @interface ChatMessagesController ()
 @property (nonatomic, copy) NSString *channelName;
@@ -181,6 +182,7 @@
         else {
             photoponPresentableModel.photoponStatus = @"Redeemed";
         }
+        photoponPresentableModel.photoponId = message[@"photoponId"];
         [self.presentableModels addObject:photoponPresentableModel];
     }
 }
@@ -247,6 +249,20 @@
     return user;
 }
 
+- (void)didSelectPhotopon:(ChatPhotoponPresentableModel *)photoponPresentableModel
+{
+    if (!photoponPresentableModel.isCurrentUser) {
+        __weak typeof(self) weakSelf = self;
+        [[PFQuery queryWithClassName:@"Photopon"] getObjectInBackgroundWithId:photoponPresentableModel.photoponId block:^(PFObject * _Nullable photopon, NSError * _Nullable error) {
+            if (photopon) {
+                PhotoponViewController* photoponView = (PhotoponViewController*)[weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponView"];
+                [photoponView setPhotopon:photopon];
+                [weakSelf presentViewController:photoponView animated:YES completion:nil];
+            }
+        }];
+    }
+}
+
 #pragma mark - TableView DataSource/Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -261,23 +277,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id cell = nil;
     id presentableModel = self.presentableModels[indexPath.row];
     
     if ([presentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatMessageTableViewCell class]) forIndexPath:indexPath];
+        ChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatMessageTableViewCell class]) forIndexPath:indexPath];
         [cell updateWithPresentableModel:presentableModel];
+        return cell;
     }
     else if ([presentableModel isKindOfClass:[ChatUserPresentableModel class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatUserTableViewCell class]) forIndexPath:indexPath];
+        ChatUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatUserTableViewCell class]) forIndexPath:indexPath];
         [cell updateWithPresentableModel:presentableModel];
+        return cell;
     }
     else if ([presentableModel isKindOfClass:[ChatPhotoponPresentableModel class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatPhotoponTableViewCell class]) forIndexPath:indexPath];
+        ChatPhotoponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatPhotoponTableViewCell class]) forIndexPath:indexPath];
         [cell updateWithPresentableModel:presentableModel];
+        __weak typeof(self) weakSelf = self;
+        cell.onSelected = ^(ChatPhotoponPresentableModel *blockPresentableModel) {
+            [weakSelf didSelectPhotopon:blockPresentableModel];
+        };
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
 }
 
 @end

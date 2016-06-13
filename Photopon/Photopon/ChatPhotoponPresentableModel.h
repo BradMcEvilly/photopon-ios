@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString *couponTitle;
 @property (nonatomic, copy) NSString *photoponStatus;
+@property (nonatomic, copy) NSString *photoponId;
 
 @end
