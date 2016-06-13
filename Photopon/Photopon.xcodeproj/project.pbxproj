@@ -103,6 +103,7 @@
 		62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED02F71BD4467400534A98 /* PhotoponSignupViewController.m */; };
 		62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */; };
 		62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */; };
+		848C1CC61D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C1CC51D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m */; };
 		84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */; };
 		84B8CB9C1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */; };
 		84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA31D0B6F740060BAD5 /* ChatBasePresentableModel.m */; };
@@ -246,6 +247,8 @@
 		62FFA9621C24C29F0086FEA7 /* NumberVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberVerificationViewController.h; sourceTree = "<group>"; };
 		62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberVerificationViewController.m; sourceTree = "<group>"; };
 		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
+		848C1CC41D0E343A0034BAA0 /* ChatPhotoponPresentableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatPhotoponPresentableModel.h; sourceTree = "<group>"; };
+		848C1CC51D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatPhotoponPresentableModel.m; sourceTree = "<group>"; };
 		84B8CB981D0B6BEF0060BAD5 /* ChatUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUserTableViewCell.h; sourceTree = "<group>"; };
 		84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUserTableViewCell.m; sourceTree = "<group>"; };
 		84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserTableViewCell.xib; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 		84B8CBA01D0B6F230060BAD5 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				848C1CC41D0E343A0034BAA0 /* ChatPhotoponPresentableModel.h */,
+				848C1CC51D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m */,
 			);
 			name = Photopon;
 			sourceTree = "<group>";
@@ -776,6 +781,7 @@
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,
 				62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */,
+				848C1CC61D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,
 				84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */,
 			);

@@ -21,6 +21,7 @@
 #import "ChatBasePresentableModel.h"
 #import "ChatUserPresentableModel.h"
 #import "ChatMessagePresentableModel.h"
+#import "ChatPhotoponPresentableModel.h"
 
 @interface ChatMessagesController ()
 @property (nonatomic, copy) NSString *channelName;
@@ -130,17 +131,21 @@
     if ([type isEqualToString:@"MESSAGE"]) {
         return YES;
     }
+    else if ([type isEqualToString:@"NOTIFICATION_MESSAGE"]) {
+        return YES;
+    }
     
     return NO;
 }
 
-- (void)addMessage:(NSDictionary*)msg {
-    if (![self canHandleMessage:msg]) {
+- (void)addMessage:(NSDictionary*)message {
+    if (![self canHandleMessage:message]) {
         return;
     }
     
-    NSString *text = [msg valueForKey:@"message"];
-    NSString *userId = [msg valueForKey:@"from"];
+    NSString *text = [message valueForKey:@"message"];
+    NSString *userId = [message valueForKey:@"from"];
+    NSString *type = message[@"type"];
     BOOL isCurrentUser = [userId isEqualToString:[[PFUser currentUser] objectId]];
     
     ChatBasePresentableModel *lastPresentableModel = [self.presentableModels lastObject];
@@ -150,16 +155,29 @@
         userPresentableModel.currentUser = isCurrentUser;
         userPresentableModel.userName = [self getUserById:userId].username;
         [self.presentableModels addObject:userPresentableModel];
-        
-        ChatMessagePresentableModel *messagePresentableModel = [ChatMessagePresentableModel new];
-        messagePresentableModel.currentUser = isCurrentUser;
-        messagePresentableModel.message = text;
-        [self.presentableModels addObject:messagePresentableModel];
     }
-    else {
+    
+    if ([type isEqualToString:@"MESSAGE"]) {
         if ([lastPresentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
             ChatMessagePresentableModel *messagePresentableModel = (ChatMessagePresentableModel *)lastPresentableModel;
             [messagePresentableModel appendMessage:text];
+        }
+        else {
+            ChatMessagePresentableModel *messagePresentableModel = [ChatMessagePresentableModel new];
+            messagePresentableModel.currentUser = isCurrentUser;
+            messagePresentableModel.message = text;
+            [self.presentableModels addObject:messagePresentableModel];
+        }
+    }
+    else if ([type isEqualToString:@"NOTIFICATION_MESSAGE"]) {
+        ChatPhotoponPresentableModel *photoponPresentableModel = [ChatPhotoponPresentableModel new];
+        photoponPresentableModel.currentUser = isCurrentUser;
+        photoponPresentableModel.couponTitle = message[@"couponTitle"];
+        if ([message[@"subtype"] isEqualToString:@"PHOTOPON"]) {
+            photoponPresentableModel.photoponStatus = @"New Photopon";
+        }
+        else {
+            photoponPresentableModel.photoponStatus = @"Redeemed";
         }
     }
 }
@@ -187,18 +205,11 @@
     PubNub* pubnub = GetPubNub();
     self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
     
+    __weak typeof(self) weakSelf = self;
     [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
         
         if (!status.isError) {
-            for (NSDictionary *message in result.data.messages) {
-                [self addMessage:message[@"message"]];
-            }
-            
-            [self.chatTableView reloadData];
-            
-            if (self.presentableModels.count != 0) {
-                [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-            }
+            [weakSelf didLoadMessages:result.data.messages];
         } else {
             // Error
         }
@@ -207,6 +218,19 @@
     
     [pubnub subscribeToChannels:@[self.channelName] withPresence:YES];
     [pubnub addListener:self];
+}
+
+- (void)didLoadMessages:(NSArray<NSDictionary *> *)messages
+{
+    for (NSDictionary *message in messages) {
+        NSDictionary *messagePayload = message[@"message"];
+        [self addMessage:messagePayload];
+    }
+    
+    [self.chatTableView reloadData];
+    if (self.presentableModels.count != 0) {
+        [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 - (PFUser *)getUserById:(NSString *)userId
