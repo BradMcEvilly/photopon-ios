@@ -104,6 +104,8 @@
 		62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA95D1C24A89E0086FEA7 /* PhoneNumberFormatter.m */; };
 		62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFA9631C24C29F0086FEA7 /* NumberVerificationViewController.m */; };
 		848C1CC61D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C1CC51D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m */; };
+		84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6073F1D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m */; };
+		84A607421D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A607401D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib */; };
 		84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */; };
 		84B8CB9C1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */; };
 		84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA31D0B6F740060BAD5 /* ChatBasePresentableModel.m */; };
@@ -249,6 +251,9 @@
 		756D1AFADF26C193846A6B23 /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
 		848C1CC41D0E343A0034BAA0 /* ChatPhotoponPresentableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatPhotoponPresentableModel.h; sourceTree = "<group>"; };
 		848C1CC51D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatPhotoponPresentableModel.m; sourceTree = "<group>"; };
+		84A6073E1D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatPhotoponTableViewCell.h; sourceTree = "<group>"; };
+		84A6073F1D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatPhotoponTableViewCell.m; sourceTree = "<group>"; };
+		84A607401D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatPhotoponTableViewCell.xib; sourceTree = "<group>"; };
 		84B8CB981D0B6BEF0060BAD5 /* ChatUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUserTableViewCell.h; sourceTree = "<group>"; };
 		84B8CB991D0B6BEF0060BAD5 /* ChatUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUserTableViewCell.m; sourceTree = "<group>"; };
 		84B8CB9A1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserTableViewCell.xib; sourceTree = "<group>"; };
@@ -512,6 +517,9 @@
 		84B8CB971D0B66EE0060BAD5 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				84A6073E1D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.h */,
+				84A6073F1D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m */,
+				84A607401D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib */,
 			);
 			name = Photopon;
 			sourceTree = "<group>";
@@ -697,6 +705,7 @@
 				629E72041C6117B100DD79C1 /* Icon-Tag.png in Resources */,
 				626266221B8A6CA1006D730E /* takephoto.png in Resources */,
 				629E72161C6153CF00DD79C1 /* Icon-Yes.png in Resources */,
+				84A607421D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib in Resources */,
 				629E72141C614C1E00DD79C1 /* Icon-Wallet-22.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,6 +786,7 @@
 				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,
 				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
 				6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */,
+				84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,

@@ -18,6 +18,7 @@
 #import "HeaderViewController.h"
 #import "ChatMessageTableViewCell.h"
 #import "ChatUserTableViewCell.h"
+#import "ChatPhotoponTableViewCell.h"
 #import "ChatBasePresentableModel.h"
 #import "ChatUserPresentableModel.h"
 #import "ChatMessagePresentableModel.h"
@@ -74,6 +75,7 @@
     self.chatTableView.estimatedRowHeight = 20.0;
     [self registerCellWithClass:[ChatMessageTableViewCell class]];
     [self registerCellWithClass:[ChatUserTableViewCell class]];
+    [self registerCellWithClass:[ChatPhotoponTableViewCell class]];
 }
 
 - (void)registerCellWithClass:(Class)class
@@ -179,6 +181,7 @@
         else {
             photoponPresentableModel.photoponStatus = @"Redeemed";
         }
+        [self.presentableModels addObject:photoponPresentableModel];
     }
 }
 
@@ -267,6 +270,10 @@
     }
     else if ([presentableModel isKindOfClass:[ChatUserPresentableModel class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatUserTableViewCell class]) forIndexPath:indexPath];
+        [cell updateWithPresentableModel:presentableModel];
+    }
+    else if ([presentableModel isKindOfClass:[ChatPhotoponPresentableModel class]]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatPhotoponTableViewCell class]) forIndexPath:indexPath];
         [cell updateWithPresentableModel:presentableModel];
     }
     
