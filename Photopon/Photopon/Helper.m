@@ -226,7 +226,7 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 
 
 - (void)getCouponsForLocation:(CLLocation*)location {
-    NSLog(@"Getting coupons for loaction %f, %f", location.coordinate.latitude, location.coordinate.longitude);
+    NSLog(@"Getting coupons for location %f, %f", location.coordinate.latitude, location.coordinate.longitude);
     
     GetCouponsByLocation(location.coordinate.latitude, location.coordinate.longitude, ^(NSArray *results, NSError *error) {
         [couponsNearby removeAllObjects];

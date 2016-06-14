@@ -13,11 +13,11 @@
 
 @interface ChatMessagesController : UIViewController<PNObjectEventListener, UITableViewDataSource, UITableViewDelegate>
 
--(void) setUser:(PFUser*)user;
+- (void)setUser:(PFUser*)user;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
-@property (weak, nonatomic) IBOutlet UITableView *chatMessages;
+@property (weak, nonatomic) IBOutlet UITableView *chatTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 

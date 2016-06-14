@@ -11,6 +11,7 @@
 #import "DBAccess.h"
 #import "Helper.h"
 #import "AlertBox.h"
+#import "PubNubWrapper.h"
 
 void GetMyFriends(ResultBlock block) {
     PFUser* userId = [PFUser currentUser];
@@ -90,7 +91,7 @@ void GetCoupons(ResultBlock block) {
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
     PFQuery *locationQuery = [PFQuery queryWithClassName:@"Location"];
-
+    
     [locationQuery whereKey:@"location" nearGeoPoint:point withinKilometers:1];
     //
     
@@ -110,7 +111,7 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
         [couponQuery whereKey:@"expiration" greaterThanOrEqualTo:[NSDate dateWithTimeIntervalSince1970:[serverTime doubleValue]/1000]];
         
         
-    
+        
         [couponQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
             
             NSMutableArray *c = [[NSMutableArray alloc] init];
@@ -134,7 +135,7 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
         }];
         
     }];
-
+    
 }
 
 
@@ -192,7 +193,7 @@ void GetWalletItems(ResultBlock block) {
     
     [query whereKey:@"user" equalTo:user];
     [query whereKey:@"isUsed" equalTo:[NSNumber numberWithBool:NO]];
-
+    
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         block(results, error);
@@ -272,7 +273,7 @@ void CreateMessageNotification(PFUser* toUser, NSString* content) {
         
         [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
     }];
-
+    
 }
 
 
@@ -282,12 +283,17 @@ void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon) {
     notification[@"to"] = toUser;
     notification[@"assocPhotopon"] = photopon;
     notification[@"assocUser"] = [PFUser currentUser];
-    
     notification[@"type"] = @"PHOTOPON";
     
     [notification saveInBackground];
     [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
-    
+    PubNubSendObject([toUser objectId], @{
+                                          @"type" : @"NOTIFICATION_MESSAGE",
+                                          @"subtype": @"PHOTOPON",
+                                          @"photoponId": photopon.objectId,
+                                          @"couponTitle": photopon[@"coupon"][@"title"],
+                                          @"from": [[PFUser currentUser] objectId]
+                                          });
 }
 
 
@@ -319,14 +325,20 @@ void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon) {
     
     [notification saveInBackground];
     [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
-    
+    PubNubSendObject([toUser objectId], @{
+                                          @"type" : @"NOTIFICATION_MESSAGE",
+                                          @"subtype": @"REDEEMED",
+                                          @"photoponId": photopon.objectId,
+                                          @"couponTitle": photopon[@"coupon"][@"title"],
+                                          @"from": [[PFUser currentUser] objectId]
+                                          });
 }
 
 
 
 
 void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon) {
-
+    
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint * _Nullable geoPoint, NSError * _Nullable error) {
         PFObject *redeemLog = [PFObject objectWithClassName:@"Redeem"];
         
@@ -341,7 +353,7 @@ void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon) {
 }
 
 
-@interface PhoneNumberCheckDelegate : NSObject 
+@interface PhoneNumberCheckDelegate : NSObject
 
 + (PhoneNumberCheckDelegate *)sharedInstance;
 
@@ -395,7 +407,7 @@ BOOL HasPhoneNumber(NSString* message) {
     if (message) {
         
         [AlertBox showAlertFor:[PhoneNumberCheckDelegate sharedInstance] withTitle:@"Number required" withMessage:message leftButton:@"Go to settings" rightButton:@"Later" leftAction:@selector(showSettings) rightAction:nil];
-
+        
     }
     
     return FALSE;

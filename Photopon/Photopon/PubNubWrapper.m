@@ -51,23 +51,24 @@ void PubNubGrantAccess(NSString* channel) {
 
 
 void PubNubSendMessage(NSString* userId, NSString* message) {
+    NSString* myId = [[PFUser currentUser] objectId];
+    PubNubSendObject(userId, @{
+                               @"type": @"MESSAGE",
+                               @"message": message,
+                               @"from": myId,
+                               @"to": userId
+                               });
+}
+
+void PubNubSendObject(NSString* userId, NSDictionary<NSString*, id>* object) {
+    
     PubNub* pubnub = GetPubNub();
     NSString* myId = [[PFUser currentUser] objectId];
     
     NSString* channel = PubNubChannelName(userId, myId);
     
-    [pubnub publish:@{
-            @"type": @"MESSAGE",
-            @"message": message,
-            @"from": myId,
-            @"to": userId
-    } toChannel:channel withCompletion:^(PNPublishStatus *status) {
-
-        
-    }];
+    [pubnub publish:object toChannel:channel withCompletion:nil];
 }
-
-
 
 
 

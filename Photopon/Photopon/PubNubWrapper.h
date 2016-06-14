@@ -16,6 +16,7 @@
 PubNub* GetPubNub();
 
 void PubNubSendMessage(NSString* userId, NSString* message);
+void PubNubSendObject(NSString* userId, NSDictionary<NSString*, id>* object);
 
 NSString* PubNubChannelName(NSString* user1Id, NSString* user2Id);
 
