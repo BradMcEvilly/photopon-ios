@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
+		46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EA1D1EB839002122EC /* AvailabilityManager.m */; };
+		46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */; };
+		46CF62F31D1EFED8002122EC /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62F21D1EFED8002122EC /* AppNavigationStackHelper.m */; };
 		620602381CEE162A0054122D /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602361CEE162A0054122D /* photopon-logo-black.png */; };
 		620602391CEE162A0054122D /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602371CEE162A0054122D /* photopon-logo-white.png */; };
 		620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */; };
@@ -114,6 +117,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46CF62E91D1EB839002122EC /* AvailabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailabilityManager.h; sourceTree = "<group>"; };
+		46CF62EA1D1EB839002122EC /* AvailabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityManager.m; sourceTree = "<group>"; };
+		46CF62ED1D1EF1FB002122EC /* AlertControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerFactory.h; sourceTree = "<group>"; };
+		46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertControllerFactory.m; sourceTree = "<group>"; };
+		46CF62F11D1EFED8002122EC /* AppNavigationStackHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNavigationStackHelper.h; sourceTree = "<group>"; };
+		46CF62F21D1EFED8002122EC /* AppNavigationStackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNavigationStackHelper.m; sourceTree = "<group>"; };
 		620602361CEE162A0054122D /* photopon-logo-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-black.png"; path = "Resources/photopon-logo-black.png"; sourceTree = "<group>"; };
 		620602371CEE162A0054122D /* photopon-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-white.png"; path = "Resources/photopon-logo-white.png"; sourceTree = "<group>"; };
 		620C4C1C1C10F8EF00579CF5 /* FriendPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPopupViewController.h; sourceTree = "<group>"; };
@@ -280,6 +289,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46CF62E71D1EB7FC002122EC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				46CF62F11D1EFED8002122EC /* AppNavigationStackHelper.h */,
+				46CF62F21D1EFED8002122EC /* AppNavigationStackHelper.m */,
+				46CF62F01D1EFEC9002122EC /* App */,
+				46CF62EC1D1EF1FB002122EC /* AlertControllers */,
+				46CF62E81D1EB812002122EC /* Managers */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		46CF62E81D1EB812002122EC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				46CF62E91D1EB839002122EC /* AvailabilityManager.h */,
+				46CF62EA1D1EB839002122EC /* AvailabilityManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		46CF62EC1D1EF1FB002122EC /* AlertControllers */ = {
+			isa = PBXGroup;
+			children = (
+				46CF62ED1D1EF1FB002122EC /* AlertControllerFactory.h */,
+				46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */,
+			);
+			path = AlertControllers;
+			sourceTree = "<group>";
+		};
+		46CF62F01D1EFEC9002122EC /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		623F95551B93970500506B16 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +394,7 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				46CF62E71D1EB7FC002122EC /* Common */,
 				84B8CB911D0B16C60060BAD5 /* Modules */,
 				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
 				62A302BA1B7E9AB300D61F34 /* AddFriendController.m */,
@@ -775,11 +822,13 @@
 				84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
+				46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
 				62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */,
+				46CF62F31D1EFED8002122EC /* AppNavigationStackHelper.m in Sources */,
 				84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */,
 				629E71EB1C608E2B00DD79C1 /* UITheme.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
@@ -793,6 +842,7 @@
 				62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */,
 				848C1CC61D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,
+				46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */,
 				84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,6 +41,7 @@ void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon);
 
 void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon);
 
+void GetAppAvailabilityWhitelistedZipcodes(ResultBlock result);
 
 void GetCoupons(ResultBlock block);
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block);

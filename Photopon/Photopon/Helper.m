@@ -18,10 +18,9 @@
 #import <PubNub/PubNub+Publish.h>
 #import <Parse/Parse.h>
 #import "AlertBox.h"
-
-
-
-
+#import "AvailabilityManager.h"
+#import "AlertControllerFactory.h"
+#import "AppNavigationStackHelper.h"
 
 NSMutableArray* couponsNearby;
 NSMutableArray* couponsNearbyPF;
@@ -138,7 +137,8 @@ void UpdateNearbyCoupons() {
         isLocationInitialized = YES;
         locationManager = [[CLLocationManager alloc] init];
         locationHandler = [[LocationHandler alloc] init];
-        
+        locationHandler.authorizationStatus = [CLLocationManager authorizationStatus];
+
         couponsNearby = [NSMutableArray array];
         couponsNearbyPF = [NSMutableArray array];
         
@@ -155,7 +155,7 @@ void UpdateNearbyCoupons() {
         locationManager.distanceFilter = 100; // meters
         
         CLAuthorizationStatus st = [CLLocationManager authorizationStatus];
-        
+
         if (st == kCLAuthorizationStatusRestricted || st == kCLAuthorizationStatusDenied) {
             [AlertBox showAlertFor:locationHandler withTitle:@"No permission" withMessage:@"Location services must be enabled in order to use Photopon." leftButton:@"Go to settings" rightButton:@"Later" leftAction:@selector(showSettings) rightAction:nil];
                         
@@ -165,13 +165,17 @@ void UpdateNearbyCoupons() {
         if (st == kCLAuthorizationStatusNotDetermined) {
             [locationManager requestAlwaysAuthorization];
         } else {
-            [locationHandler getCouponsForLocation: locationManager.location];
+            [AvailabilityManager checkAvailabilityWithLocation:locationManager.location completion:^(BOOL available) {
+                if (available) {
+                    [locationHandler getCouponsForLocation:locationManager.location];
+                } else {
+                    UIAlertController *alertController = [AlertControllerFactory basicAlertWithMessage:@"Photopon is currently not available in your location. Please stay tuned for updates!"];
+                    [[AppNavigationStackHelper topViewController] presentViewController:alertController animated:YES completion:nil];
+                }
+            }];
         }
-        
-        
+
         [locationManager startUpdatingLocation];
-        
-    
     }
 
     
@@ -267,6 +271,14 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
     CLLocation* location = [locations lastObject];
     
     [self getCouponsForLocation:location];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        if (locationHandler.authorizationStatus == kCLAuthorizationStatusNotDetermined || locationHandler.authorizationStatus == kCLAuthorizationStatusDenied) {
+            UpdateNearbyCoupons();
+        }
+    }
 }
 
 -(void)showSettings {

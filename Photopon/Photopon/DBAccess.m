@@ -39,7 +39,6 @@ void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block) {
 }
 
 
-
 void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block) {
     
     PFQuery *query = [PFUser query];
@@ -352,6 +351,14 @@ void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon) {
     }];
 }
 
+
+void GetAppAvailabilityWhitelistedZipcodes(ResultBlock result) {
+    PFQuery *query = [PFQuery queryWithClassName:@"EnabledLocations"];
+    [query whereKeyExists:@"zipcode"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        result(@[@"21260"], nil);
+    }];
+}
 
 @interface PhoneNumberCheckDelegate : NSObject
 

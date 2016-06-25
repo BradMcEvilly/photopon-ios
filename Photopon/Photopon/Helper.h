@@ -61,6 +61,8 @@ UIImage* MaskImageWithColor(UIImage* image, UIColor* color);
 - (void)getCouponsForLocation:(CLLocation*)location;
 - (void)showSettings;
 
+@property (nonatomic, assign) CLAuthorizationStatus authorizationStatus;
+
 @end
 
 

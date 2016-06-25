@@ -13,7 +13,7 @@
 #import <Google/Analytics.h>
 #import <Optimizely/Optimizely.h>
 
-
+#import "AvailabilityManager.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -38,9 +38,6 @@
     [application registerForRemoteNotifications];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    
-    
     
     // Configure tracker from GoogleService-Info.plist.
 //    NSError *configureError;
@@ -143,20 +140,20 @@
         NSString* type = [userInfo objectForKey:@"type"];
         NSString* notificationId = [userInfo objectForKey:@"notificationId"];
 
-        
+
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC);
-        
+
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            
+
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Handle_Notification" object:nil userInfo:@{
                                                                                                                     @"type" : type,
                                                                                                                     @"notificationId" : notificationId
                                                                                                                     }];
-            
-        });
- 
-    }
 
+        });
+
+    }
+    
 }
 
 
