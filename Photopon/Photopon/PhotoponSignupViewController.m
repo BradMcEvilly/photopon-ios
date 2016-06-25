@@ -19,7 +19,6 @@
     [self.signUpView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photopon-logo-black.png"]]];
     self.signUpView.dismissButton.alpha = 1;
-    
 }
 
 

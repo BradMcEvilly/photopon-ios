@@ -22,9 +22,8 @@
     
     self.logInView.dismissButton.alpha = 0;
     
-    self.signUpController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsEmail | PFSignUpFieldsSignUpButton;
-
-   
+    self.signUpController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton;
+    self.signUpController.emailAsUsername = YES;
 }
 
 - (void)viewDidLayoutSubviews {
