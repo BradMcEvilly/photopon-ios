@@ -158,28 +158,26 @@
         userPresentableModel.currentUser = isCurrentUser;
         userPresentableModel.userName = [self getUserById:userId].username;
         [self.presentableModels addObject:userPresentableModel];
+        lastPresentableModel = userPresentableModel;
     }
     
     if ([type isEqualToString:@"MESSAGE"]) {
         if ([lastPresentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
             ChatMessagePresentableModel *messagePresentableModel = (ChatMessagePresentableModel *)lastPresentableModel;
             [messagePresentableModel appendMessage:text];
-        }
-        else {
+        } else {
             ChatMessagePresentableModel *messagePresentableModel = [ChatMessagePresentableModel new];
             messagePresentableModel.currentUser = isCurrentUser;
             messagePresentableModel.message = text;
             [self.presentableModels addObject:messagePresentableModel];
         }
-    }
-    else if ([type isEqualToString:@"NOTIFICATION_MESSAGE"]) {
+    } else if ([type isEqualToString:@"NOTIFICATION_MESSAGE"]) {
         ChatPhotoponPresentableModel *photoponPresentableModel = [ChatPhotoponPresentableModel new];
         photoponPresentableModel.currentUser = isCurrentUser;
         photoponPresentableModel.couponTitle = message[@"couponTitle"];
         if ([message[@"subtype"] isEqualToString:@"PHOTOPON"]) {
             photoponPresentableModel.photoponStatus = @"New Photopon";
-        }
-        else {
+        } else {
             photoponPresentableModel.photoponStatus = @"Redeemed";
         }
         photoponPresentableModel.photoponId = message[@"photoponId"];
@@ -189,13 +187,13 @@
 
 - (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult*)msg {
     NSDictionary* message = msg.data.message;
-    
+
     if (![self canHandleMessage:message]) {
         return;
     }
-    
+
     [self addMessage:message];
-    
+
     [self.chatTableView reloadData];
     [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
