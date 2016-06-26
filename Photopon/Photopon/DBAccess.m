@@ -356,7 +356,21 @@ void GetAppAvailabilityWhitelistedZipcodes(ResultBlock result) {
     PFQuery *query = [PFQuery queryWithClassName:@"EnabledLocations"];
     [query whereKeyExists:@"zipcode"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        result(@[@"21260"], nil);
+        if (!result) {
+            return;
+        }
+
+        NSMutableArray *zipcodesArray = [NSMutableArray new];
+        for (PFObject *object in objects) {
+            NSNumber *zipcodeNumber = [object valueForKey:@"zipcode"];
+            [zipcodesArray addObject:zipcodeNumber.stringValue];
+        }
+
+        if (!error) {
+            result(zipcodesArray, nil);
+        } else {
+            result (nil, error);
+        }
     }];
 }
 

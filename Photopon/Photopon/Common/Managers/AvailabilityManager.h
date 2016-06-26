@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static BOOL photoponAvailable = NO;
+
 @interface AvailabilityManager : NSObject
 
 + (void)checkAvailabilityForZipcode:(NSString *)zipcode completion:(void (^) (BOOL))completion;

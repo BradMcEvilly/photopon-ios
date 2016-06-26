@@ -19,9 +19,12 @@
         for (NSString *zip in results) {
             if ([zip isEqualToString:zipcode]) {
                 if(completion) {completion(YES);}
+                photoponAvailable = YES;
+                return;
             }
         }
         if (completion) {completion(NO);}
+        photoponAvailable = NO;
     });
 }
 

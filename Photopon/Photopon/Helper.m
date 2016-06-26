@@ -269,8 +269,11 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 
     CLLocation* location = [locations lastObject];
-    
-    [self getCouponsForLocation:location];
+    [AvailabilityManager checkAvailabilityWithLocation:manager.location completion:^(BOOL available) {
+        if (available) {
+            [self getCouponsForLocation:location];
+        }
+    }];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
