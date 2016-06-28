@@ -13,6 +13,8 @@
 #import "PhotoponCameraView.h"
 #import "HeaderViewController.h"
 #import "AlertBox.h"
+#import "UIColor+Theme.h"
+#import "NSDateFormatter+Common.h"
 
 @interface CouponDetailViewController ()
 @end
@@ -91,23 +93,12 @@ NSInteger selectedCoupon = 0;
     self.couponDescription.text = [coupon objectForKey:@"description"];
     
     NSDate* exp = [coupon objectForKey:@"expiration"];
-    NSDate* now = [NSDate date];
-    
-    int numDays = DaysBetween(now, exp);
-    
-    
-    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    [dateFormater setDateFormat:@"MM/dd/yyyy"];
+
+    [self.couponExpiration setTextColor:[UIColor labelExpiryColorForDate:exp]];
+
+    NSDateFormatter *dateFormater = [NSDateFormatter defaultDateFormatter];
     self.couponExpiration.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
-    if (numDays > 2) {
-        [self.couponExpiration setTextColor:[UIColor colorWithRed:0 green:0.4 blue:0 alpha:1]];
-    } else if (numDays > 1) {
-        [self.couponExpiration setTextColor:[UIColor colorWithRed:0.6 green:0.3 blue:0 alpha:1]];
-    } else {
-        [self.couponExpiration setTextColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]];
-    }
-    
-    
+
     [self.couponImage sd_setImageWithURL:[NSURL URLWithString:pic.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
     
     [self.getButton addTarget:self action:@selector(getCoupon) forControlEvents:UIControlEventTouchDown];
