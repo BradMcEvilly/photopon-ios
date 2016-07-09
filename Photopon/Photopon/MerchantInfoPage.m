@@ -54,7 +54,12 @@
     }
     
     if (![self validatePhone:self.infoBusinessPhone.text]) {
-        [self showAlert:@"Error": @"Please enter valid phone number"];
+        [self showAlert:@"Error": @"Please enter valid business phone number"];
+        return;
+    }
+
+    if (self.locationsPhoneNumber.text.length > 0 && ![self validatePhone:self.locationsPhoneNumber.text]) {
+        [self showAlert:@"Error": @"Please enter valid location's phone number"];
         return;
     }
     
@@ -63,7 +68,10 @@
     merchantRequest[@"businessName"] = self.infoBusinessName.text;
     merchantRequest[@"taxID"] = self.infoTaxID.text;
     merchantRequest[@"phoneNumber"] = self.infoBusinessPhone.text;
-    
+
+    // TODO check with Hayk about this
+    merchantRequest[@"locationsPhoneNumber"] = self.infoBusinessPhone.text;
+
     [merchantRequest saveInBackground];
     SendGAEvent(@"user_action", @"merchant_info", @"request_sent");
     [self showAlert: @"Congratulations": @"Merchant request have been sent"];

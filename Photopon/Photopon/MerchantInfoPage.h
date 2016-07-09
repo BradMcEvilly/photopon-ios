@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *infoBusinessName;
 @property (weak, nonatomic) IBOutlet UITextField *infoTaxID;
 @property (weak, nonatomic) IBOutlet UITextField *infoBusinessPhone;
+@property (weak, nonatomic) IBOutlet UITextField *locationsPhoneNumber;
 
 @property (weak, nonatomic) IBOutlet UIButton *requestMerchant;
 @end
