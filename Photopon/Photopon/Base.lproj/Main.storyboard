@@ -2263,30 +2263,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-Wu-21n">
-                                <rect key="frame" x="16" y="130" width="288" height="86"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-Wu-21n">
+                                <rect key="frame" x="16" y="130" width="288" height="43"/>
                                 <string key="text">Please fill the form below to request merchant status. Your request will be reviewed and notification e-mail will be sent to you.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Business Name" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="1bO-1w-Hrb">
-                                <rect key="frame" x="16" y="246" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Business Name" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="1bO-1w-Hrb">
+                                <rect key="frame" x="16" y="203" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Tax ID" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZB4-65-mws">
-                                <rect key="frame" x="16" y="296" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Tax ID" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZB4-65-mws">
+                                <rect key="frame" x="16" y="253" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Business Phone" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="pie-c5-YMi">
-                                <rect key="frame" x="16" y="346" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Business Phone" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="pie-c5-YMi">
+                                <rect key="frame" x="16" y="303" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-yf-Xm7">
-                                <rect key="frame" x="35" y="456" width="250" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-yf-Xm7">
+                                <rect key="frame" x="35" y="383" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="55y-t6-jOX"/>
                                     <constraint firstAttribute="height" constant="40" id="O7e-c0-kZp"/>
@@ -2295,27 +2295,19 @@
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                 <state key="normal" title="Request Merchant Account"/>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Locations Phone" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="deR-t1-GPI">
-                                <rect key="frame" x="16" y="396" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pie-c5-YMi" firstAttribute="trailing" secondItem="tsj-nH-hbD" secondAttribute="trailingMargin" id="7r0-sq-ODy"/>
-                            <constraint firstItem="deR-t1-GPI" firstAttribute="leading" secondItem="tsj-nH-hbD" secondAttribute="leading" constant="16" id="Aah-kV-z5o"/>
                             <constraint firstItem="1bO-1w-Hrb" firstAttribute="top" secondItem="wq1-Wu-21n" secondAttribute="bottom" constant="30" id="BFf-Ry-f21"/>
                             <constraint firstItem="ZB4-65-mws" firstAttribute="top" secondItem="1bO-1w-Hrb" secondAttribute="bottom" constant="20" id="Bah-MT-MKF"/>
                             <constraint firstItem="TsO-yf-Xm7" firstAttribute="centerX" secondItem="tsj-nH-hbD" secondAttribute="centerX" id="E8d-HO-9mu"/>
                             <constraint firstItem="wq1-Wu-21n" firstAttribute="leading" secondItem="tsj-nH-hbD" secondAttribute="leadingMargin" id="JxZ-cP-pc0"/>
-                            <constraint firstItem="TsO-yf-Xm7" firstAttribute="top" secondItem="deR-t1-GPI" secondAttribute="bottom" constant="30" id="KBo-dd-Y3K"/>
                             <constraint firstItem="1bO-1w-Hrb" firstAttribute="leading" secondItem="tsj-nH-hbD" secondAttribute="leadingMargin" id="L6f-7d-rh1"/>
                             <constraint firstItem="ZB4-65-mws" firstAttribute="leading" secondItem="tsj-nH-hbD" secondAttribute="leadingMargin" id="N8o-eB-oLs"/>
                             <constraint firstItem="ZB4-65-mws" firstAttribute="trailing" secondItem="tsj-nH-hbD" secondAttribute="trailingMargin" id="NiQ-9O-60t"/>
-                            <constraint firstItem="deR-t1-GPI" firstAttribute="top" secondItem="pie-c5-YMi" secondAttribute="bottom" constant="20" id="O7C-Mm-ERi"/>
                             <constraint firstItem="pie-c5-YMi" firstAttribute="top" secondItem="ZB4-65-mws" secondAttribute="bottom" constant="20" id="b7n-cm-g81"/>
-                            <constraint firstAttribute="trailing" secondItem="deR-t1-GPI" secondAttribute="trailing" constant="16" id="byn-Vm-Q0P"/>
+                            <constraint firstItem="TsO-yf-Xm7" firstAttribute="top" secondItem="pie-c5-YMi" secondAttribute="bottom" constant="50" id="fm7-QI-gKS"/>
                             <constraint firstItem="wq1-Wu-21n" firstAttribute="trailing" secondItem="tsj-nH-hbD" secondAttribute="trailingMargin" id="hN8-qA-0eT"/>
                             <constraint firstItem="wq1-Wu-21n" firstAttribute="top" secondItem="jUn-WI-Pi7" secondAttribute="bottom" constant="110" id="lNq-Y6-IxX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1bO-1w-Hrb" secondAttribute="trailing" id="xrh-34-fjk"/>
@@ -2327,7 +2319,6 @@
                         <outlet property="infoBusinessName" destination="1bO-1w-Hrb" id="UbU-A8-qNx"/>
                         <outlet property="infoBusinessPhone" destination="pie-c5-YMi" id="q35-dk-GoJ"/>
                         <outlet property="infoTaxID" destination="ZB4-65-mws" id="OSf-bx-3wA"/>
-                        <outlet property="locationsPhoneNumber" destination="deR-t1-GPI" id="sO4-vW-vZD"/>
                         <outlet property="requestMerchant" destination="TsO-yf-Xm7" id="qu0-xl-fCq"/>
                     </connections>
                 </viewController>
