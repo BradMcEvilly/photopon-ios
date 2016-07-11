@@ -643,6 +643,9 @@
                                         <rect key="frame" x="96.5" y="21" width="95" height="38"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Directions"/>
+                                        <connections>
+                                            <action selector="directionsButtonHandler:" destination="BYb-0a-beO" eventType="touchUpInside" id="MJT-4F-izH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

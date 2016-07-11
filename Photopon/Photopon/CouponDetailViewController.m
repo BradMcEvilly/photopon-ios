@@ -15,6 +15,10 @@
 #import "AlertBox.h"
 #import "UIColor+Theme.h"
 #import "NSDateFormatter+Common.h"
+#import "URLConstants.h"
+
+static NSString * const GoogleMapsURLFormat = @"//?&daddr=%@&directionsmode=transit";
+static NSString * const GoogleMapsWebURLFormat = @"https://maps.google.com/?daddr=%@";
 
 @interface CouponDetailViewController ()
 
@@ -76,6 +80,10 @@ NSInteger selectedCoupon = 0;
     [super viewDidLoad];
 
     [self setupCouponDetails];
+
+#ifdef DEBUG
+    self.addressTextView.text = @"Portland university";
+#endif
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -131,12 +139,23 @@ NSInteger selectedCoupon = 0;
     }
 }
 
-
-
 -(void)setCouponIndex:(NSInteger)thisCouponIndex {
     selectedCoupon = thisCouponIndex;
 }
 
+#pragma mark - Handlers
+
+- (IBAction)directionsButtonHandler:(id)sender {
+    if ((self.addressTextView.text.length > 0)) {
+        if ([[UIApplication sharedApplication]canOpenURL:[NSURL URLWithString:GoogleMapsURLScheme]]) {
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:GoogleMapsURLFormat, [self.addressTextView.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]]];
+            [[UIApplication sharedApplication]openURL:url];
+        } else {
+            NSURL *webMapsURL = [NSURL URLWithString:[NSString stringWithFormat:GoogleMapsWebURLFormat, [self.addressTextView.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]]];
+            [[UIApplication sharedApplication]openURL:webMapsURL];
+        }
+    }
+}
 
 /*
 #pragma mark - Navigation
