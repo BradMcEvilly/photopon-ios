@@ -17,9 +17,11 @@
 #import "NSDateFormatter+Common.h"
 
 @interface CouponDetailViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextView *addressTextView;
+@property (weak, nonatomic) IBOutlet UITextView *phoneTextView;
+
 @end
-
-
 
 @implementation CouponDetailViewController
 
@@ -73,41 +75,8 @@ NSInteger selectedCoupon = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Coupon Details"];
-
-    NSArray* allPFCoupons = GetNearbyCouponsPF();
-    
-    if ([allPFCoupons count] <= selectedCoupon) {
-        [self dismissViewControllerAnimated:YES completion:NULL];
-
-        return;
-    }
-    
-    PFObject* coupon = [allPFCoupons objectAtIndex:selectedCoupon];
- 
-    
-    PFObject* company = [coupon objectForKey:@"company"];
-    PFFile* pic = [company objectForKey:@"image"];
-    
-    self.couponTitle.text = [coupon objectForKey:@"title"];
-    self.couponDescription.text = [coupon objectForKey:@"description"];
-    
-    NSDate* exp = [coupon objectForKey:@"expiration"];
-
-    [self.couponExpiration setTextColor:[UIColor labelExpiryColorForDate:exp]];
-
-    NSDateFormatter *dateFormater = [NSDateFormatter defaultDateFormatter];
-    self.couponExpiration.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
-
-    [self.couponImage sd_setImageWithURL:[NSURL URLWithString:pic.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
-    
-    [self.getButton addTarget:self action:@selector(getCoupon) forControlEvents:UIControlEventTouchDown];
-    
-    [self.giveButton addTarget:self action:@selector(giveCoupon) forControlEvents:UIControlEventTouchDown];
-
+    [self setupCouponDetails];
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -119,16 +88,55 @@ NSInteger selectedCoupon = 0;
 }
 
 
+#pragma mark - Setup
+
+- (void)setupCouponDetails {
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Coupon Details"];
+
+    NSArray* allPFCoupons = GetNearbyCouponsPF();
+
+    if ([allPFCoupons count] <= selectedCoupon) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+
+        return;
+    }
+
+    PFObject* coupon = [allPFCoupons objectAtIndex:selectedCoupon];
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    PFObject* company = [coupon objectForKey:@"company"];
+    PFFile* pic = [company objectForKey:@"image"];
+
+    self.couponTitle.text = [coupon objectForKey:@"title"];
+    self.couponDescription.text = [coupon objectForKey:@"description"];
+
+    NSDate* exp = [coupon objectForKey:@"expiration"];
+
+    [self.couponExpiration setTextColor:[UIColor labelExpiryColorForDate:exp]];
+
+    NSDateFormatter *dateFormater = [NSDateFormatter defaultDateFormatter];
+    self.couponExpiration.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
+
+    [self.couponImage sd_setImageWithURL:[NSURL URLWithString:pic.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+
+    [self.getButton addTarget:self action:@selector(getCoupon) forControlEvents:UIControlEventTouchDown];
+
+    [self.giveButton addTarget:self action:@selector(giveCoupon) forControlEvents:UIControlEventTouchDown];
+
+    NSArray *locations = [coupon objectForKey:@"locations"];
+    if (locations.count > 0) {
+        PFObject *location = locations.firstObject;
+        self.addressTextView.text = location[@"address"];
+        self.phoneTextView.text = location[@"phoneNumber"];
+    }
 }
+
+
 
 -(void)setCouponIndex:(NSInteger)thisCouponIndex {
     selectedCoupon = thisCouponIndex;
 }
+
 
 /*
 #pragma mark - Navigation

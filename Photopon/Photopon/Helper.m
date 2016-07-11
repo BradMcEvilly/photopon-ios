@@ -182,8 +182,6 @@ void UpdateNearbyCoupons() {
 
         [locationManager startUpdatingLocation];
     }
-
-    
 }
 
 
