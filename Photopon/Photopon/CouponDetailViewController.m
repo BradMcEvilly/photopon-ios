@@ -82,7 +82,7 @@ NSInteger selectedCoupon = 0;
     [self setupCouponDetails];
 
 #ifdef DEBUG
-    self.addressTextView.text = @"Portland university";
+    self.addressTextView.text = @"Portland university"; 
 #endif
 }
 

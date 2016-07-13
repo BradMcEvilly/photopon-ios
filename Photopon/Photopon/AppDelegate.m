@@ -11,7 +11,9 @@
 #import "MasterViewController.h"
 #import "Parse/Parse.h"
 #import <Google/Analytics.h>
-#import <Optimizely/Optimizely.h>
+//#import <Optimizely/Optimizely.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "AvailabilityManager.h"
 
@@ -29,9 +31,12 @@
     // Initialize Parse.
     [Parse setApplicationId:@"qyY21OT36AiP5hIEdrzrBvbOS1HgXzIK52oyzrAN"
                   clientKey:@"CwOKephJcNOFokOWx6X2wgDO2eOKDGL2lXfYgPCC"];
-    
+
+
+    //Crash reporting
+    [Fabric with:@[[Crashlytics class]]];
+
     // [Optional] Track statistics around application opens.
-    
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
     [application registerUserNotificationSettings:settings];
@@ -71,10 +76,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    if([Optimizely handleOpenURL:url]) {
-        return YES;
-    }
-    
+//    if([Optimizely handleOpenURL:url]) {
+//        return YES;
+//    }
+
     return NO;
 }
 

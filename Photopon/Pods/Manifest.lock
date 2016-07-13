@@ -8,6 +8,9 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
+  - Crashlytics (3.7.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.6)
   - FontAwesome (4.3.0)
   - Google/Analytics (1.3.2):
     - Google/Core
@@ -26,7 +29,6 @@ PODS:
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
   - IQKeyboardManager (3.3.5)
-  - Optimizely-iOS-SDK (1.4.2)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
   - ParseUI (1.1.7):
@@ -43,10 +45,11 @@ PODS:
   - TwilioSDK (1.2.7)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - FontAwesome
   - Google/Analytics
   - IQKeyboardManager
-  - Optimizely-iOS-SDK
   - Parse (~> 1.7)
   - ParseUI
   - PubNub
@@ -56,6 +59,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: a12663244b1d3351c738882e71902fc74db54f64
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
   FontAwesome: 341b52261cad8254017da3ddfc01d67c87c0ca88
   Google: 97618e118111b998cce1d8dd1bd98b82301d72db
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
@@ -64,11 +69,10 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
-  Optimizely-iOS-SDK: 6d23c5cde187f894430d134caa15f56874754cca
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
   PubNub: 461805c30ce11332a6ee5ab2c34be2d4c82c38d7
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
   TwilioSDK: d3982acf6880ddf3ce57c4444e021a71c5f35653
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

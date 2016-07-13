@@ -167,7 +167,7 @@ void UpdateNearbyCoupons() {
         } else {
 #ifdef DEBUG
             [locationHandler getCouponsForLocation:locationManager.location];
-#elif
+#else
 
             [AvailabilityManager checkAvailabilityWithLocation:locationManager.location completion:^(BOOL available) {
                 if (available) {
