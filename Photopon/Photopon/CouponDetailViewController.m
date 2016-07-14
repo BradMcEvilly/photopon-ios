@@ -72,8 +72,6 @@ NSInteger selectedCoupon = 0;
     [self dismissViewControllerAnimated:YES completion:nil];
     
     SendGAEvent(@"user_action", @"coupon_details", @"give_pressed");
-
-    
 }
 
 - (void)viewDidLoad {
@@ -82,7 +80,7 @@ NSInteger selectedCoupon = 0;
     [self setupCouponDetails];
 
 #ifdef DEBUG
-    self.addressTextView.text = @"Portland university"; 
+    self.addressTextView.text = @"Portland university";
 #endif
 }
 

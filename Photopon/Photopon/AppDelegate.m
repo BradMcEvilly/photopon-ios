@@ -43,7 +43,6 @@
     [application registerForRemoteNotifications];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    GetAppAvailabilityWhitelistedZipcodes(nil);
     
     // Configure tracker from GoogleService-Info.plist.
 //    NSError *configureError;

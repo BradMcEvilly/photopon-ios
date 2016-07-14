@@ -357,13 +357,16 @@ void GetAppAvailabilityWhitelistedZipcodes(ResultBlock result) {
     [query whereKeyExists:@"zipcode"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!result) {
+            result(nil, [NSError errorWithDomain:@"Photopon.Zipcode" code:-100 userInfo:nil]);
             return;
         }
 
         NSMutableArray *zipcodesArray = [NSMutableArray new];
         for (PFObject *object in objects) {
             NSNumber *zipcodeNumber = [object valueForKey:@"zipcode"];
-            [zipcodesArray addObject:zipcodeNumber.stringValue];
+            if(zipcodeNumber.stringValue) {
+                [zipcodesArray addObject:zipcodeNumber.stringValue];
+            }
         }
 
         if (!error) {
