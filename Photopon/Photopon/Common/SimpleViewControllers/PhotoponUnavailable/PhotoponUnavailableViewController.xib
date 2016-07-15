@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoponUnavailableViewController">
+            <connections>
+                <outlet property="view" destination="W1s-sb-2Pu" id="cJd-aC-THc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="W1s-sb-2Pu" userLabel="NotAvailableView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're working hard to bring Photopon private coupons &amp; gifts to your local area. In the meantime..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sa7-Y7-K1j">
+                    <rect key="frame" x="15" y="10" width="290" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSM-LC-eNj">
+                    <rect key="frame" x="16" y="86" width="288" height="38"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <state key="normal" title="Chat With Friends"/>
+                    <connections>
+                        <action selector="chatWithFriendsHandler:" destination="-1" eventType="touchUpInside" id="W4u-Is-RH1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hSM-LC-eNj" secondAttribute="trailing" constant="16" id="4xE-qb-Cjn"/>
+                <constraint firstItem="Sa7-Y7-K1j" firstAttribute="top" secondItem="W1s-sb-2Pu" secondAttribute="top" constant="10" id="5m7-KB-pxY"/>
+                <constraint firstItem="Sa7-Y7-K1j" firstAttribute="leading" secondItem="W1s-sb-2Pu" secondAttribute="leading" constant="15" id="EO4-zr-jBn"/>
+                <constraint firstAttribute="trailing" secondItem="Sa7-Y7-K1j" secondAttribute="trailing" constant="15" id="UIG-ri-wEl"/>
+                <constraint firstItem="hSM-LC-eNj" firstAttribute="leading" secondItem="W1s-sb-2Pu" secondAttribute="leading" constant="16" id="hMZ-8g-pwk"/>
+                <constraint firstItem="hSM-LC-eNj" firstAttribute="top" secondItem="Sa7-Y7-K1j" secondAttribute="bottom" constant="15" id="vrd-zF-85I"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="172" y="-487"/>
+        </view>
+    </objects>
+</document>

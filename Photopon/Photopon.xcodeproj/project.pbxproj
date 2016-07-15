@@ -11,6 +11,9 @@
 		462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */; };
 		462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69831D230C7300E13783 /* UIColor+Theme.m */; };
 		462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69871D230E6100E13783 /* NSDateFormatter+Common.m */; };
+		466B631D1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B631C1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m */; };
+		466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */; };
+		466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */; };
 		46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EA1D1EB839002122EC /* AvailabilityManager.m */; };
 		46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */; };
 		620602381CEE162A0054122D /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602361CEE162A0054122D /* photopon-logo-black.png */; };
@@ -127,6 +130,11 @@
 		462C69831D230C7300E13783 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
 		462C69861D230E6100E13783 /* NSDateFormatter+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Common.h"; sourceTree = "<group>"; };
 		462C69871D230E6100E13783 /* NSDateFormatter+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Common.m"; sourceTree = "<group>"; };
+		466B631B1D385C2B00FEB0BC /* PhotoponUnavailableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponUnavailableViewController.h; sourceTree = "<group>"; };
+		466B631C1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponUnavailableViewController.m; sourceTree = "<group>"; };
+		466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoponUnavailableViewController.xib; sourceTree = "<group>"; };
+		466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CommonLayout.m"; sourceTree = "<group>"; };
+		466B63221D385D8000FEB0BC /* UIView+CommonLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonLayout.h"; sourceTree = "<group>"; };
 		46CF62E91D1EB839002122EC /* AvailabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailabilityManager.h; sourceTree = "<group>"; };
 		46CF62EA1D1EB839002122EC /* AvailabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityManager.m; sourceTree = "<group>"; };
 		46CF62ED1D1EF1FB002122EC /* AlertControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerFactory.h; sourceTree = "<group>"; };
@@ -325,10 +333,42 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		466B63191D385BC400FEB0BC /* SimpleViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				466B631A1D385BFF00FEB0BC /* PhotoponUnavailable */,
+			);
+			path = SimpleViewControllers;
+			sourceTree = "<group>";
+		};
+		466B631A1D385BFF00FEB0BC /* PhotoponUnavailable */ = {
+			isa = PBXGroup;
+			children = (
+				466B631B1D385C2B00FEB0BC /* PhotoponUnavailableViewController.h */,
+				466B631C1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m */,
+				466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */,
+			);
+			path = PhotoponUnavailable;
+			sourceTree = "<group>";
+		};
+		466B63201D385D7000FEB0BC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */,
+				466B63221D385D8000FEB0BC /* UIView+CommonLayout.h */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				621268161D38455200735FC9 /* Wrappers */,
+=======
+				466B63201D385D7000FEB0BC /* Categories */,
+				466B63191D385BC400FEB0BC /* SimpleViewControllers */,
+>>>>>>> origin/master
 				462187E21D33FF390085579E /* Constants */,
 				462C69851D230E3E00E13783 /* Formatters */,
 				462C69811D230BE700E13783 /* Theme */,
@@ -769,6 +809,7 @@
 				629E71FA1C6117B100DD79C1 /* Icon-Box-Open.png in Resources */,
 				62970B481C40284800521815 /* Comfortaa-Bold.ttf in Resources */,
 				629E72001C6117B100DD79C1 /* Icon-Present.png in Resources */,
+				466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */,
 				629E72021C6117B100DD79C1 /* Icon-Speach-Bubble.png in Resources */,
 				62C8ADC41C52CDEE007021CA /* camera-button.png in Resources */,
 				629E72101C612B2B00DD79C1 /* Icon-Books.png in Resources */,
@@ -899,6 +940,7 @@
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */,
 				622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */,
+				466B631D1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m in Sources */,
 				622563F41C9B257300ED2C46 /* AlertBox.m in Sources */,
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */,
@@ -912,6 +954,7 @@
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */,
 				84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */,
+				466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */,
 				629E71EB1C608E2B00DD79C1 /* UITheme.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
 				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,

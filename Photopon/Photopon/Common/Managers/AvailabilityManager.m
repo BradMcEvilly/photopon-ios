@@ -12,19 +12,18 @@
 #import "DBAccess.h"
 #import <CoreLocation/CoreLocation.h>
 
+static BOOL photoponAvailable = NO;
+
 @implementation AvailabilityManager
 
 + (void)checkAvailabilityForZipcode:(NSString *)zipcode completion:(void (^) (BOOL))completion {
-    GetAppAvailabilityWhitelistedZipcodes(^(NSArray *results, NSError *error) {
-        for (NSString *zip in results) {
-            if ([zip isEqualToString:zipcode]) {
-                if(completion) {completion(YES);}
-                photoponAvailable = YES;
-                return;
-            }
+    CheckAppAvailabilityForZipcode(zipcode, ^(BOOL available, NSError *error) {
+        photoponAvailable = available;
+        if (available) {
+            completion(YES);
+        } else {
+            completion(NO);
         }
-        if (completion) {completion(NO);}
-        photoponAvailable = NO;
     });
 }
 
@@ -41,6 +40,10 @@
             if (completion) {completion(NO);}
         }
     }];
+}
+
++(BOOL)photoponAvailable {
+    return photoponAvailable;
 }
 
 @end

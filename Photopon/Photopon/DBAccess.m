@@ -352,24 +352,29 @@ void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon) {
 }
 
 
-void GetAppAvailabilityWhitelistedZipcodes(ResultBlock result) {
+void CheckAppAvailabilityForZipcode(NSString *zipcode, ZipcodeResult result) {
+    if (!result) {
+        return;
+    }
+
+#ifdef DEBUG
+    result(YES, nil);
+    return;
+#endif
+
     PFQuery *query = [PFQuery queryWithClassName:@"EnabledLocations"];
-    [query whereKeyExists:@"zipcode"];
+    [query whereKey:@"zipcode" equalTo:zipcode];
+
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!result) {
+        if (error) {
+            result(NO, error);
             return;
         }
 
-        NSMutableArray *zipcodesArray = [NSMutableArray new];
-        for (PFObject *object in objects) {
-            NSNumber *zipcodeNumber = [object valueForKey:@"zipcode"];
-            [zipcodesArray addObject:zipcodeNumber.stringValue];
-        }
-
-        if (!error) {
-            result(zipcodesArray, nil);
+        if (objects.count >= 1) {
+            result(YES, nil);
         } else {
-            result (nil, error);
+            result(NO, nil);
         }
     }];
 }
