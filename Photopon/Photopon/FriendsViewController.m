@@ -14,10 +14,12 @@
 #import "LogHelper.h"
 #import "DBAccess.h"
 #import "HeaderViewController.h"
+#import "AlertBox.h"
 
 @implementation FriendsViewController
 {
     NSMutableArray *myFriends;
+    NSMutableArray* excludedFriends;
     BOOL isSelectMode;
     SEL onFriendSelected;
     id onFriendSelectedTarget;
@@ -66,6 +68,19 @@
 
 }
 
+-(void)excludeFriends:(NSArray*)toExclude {
+    excludedFriends = [toExclude mutableCopy];
+}
+
+-(BOOL)isExcluded: (PFUser*)user {
+    for (int i = 0; i < [excludedFriends count]; ++i) {
+        PFObject* obj = excludedFriends[i];
+        if ([obj.objectId isEqualToString:user.objectId]) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 -(void)updateFriends {
     
@@ -75,8 +90,18 @@
             PFUser* object = (PFUser*)obj[@"user2"];
             
             if (object) {
+                
+                
+                if ([self isExcluded: object]) {
+                    continue;
+                }
+                
                 NSString* username = [object username];
                 NSString* email = [object email];
+                if (!email) {
+                    email = @"";
+                }
+                
                 PFFile* img = [object valueForKey:@"image"];
                 
                 NSMutableDictionary* item = [@{
@@ -140,6 +165,7 @@
     if ([selectedUsers count] != 0) {
     
         [onFriendSelectedTarget performSelector:onFriendSelected withObject:selectedUsers];
+        [excludedFriends removeAllObjects];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -225,6 +251,32 @@
     if (isSelectMode) {
         
         bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+        
+        
+        if (selectedValue) {
+            int numSelected = 0;
+            for (int i = 0; i < [myFriends count]; i++) {
+                NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:i];
+                bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
+                
+                if (isSelected) {
+                    numSelected++;
+                }
+            }
+            
+            if (numSelected >= 10) {
+                [AlertBox showMessageFor:self withTitle:@"Share limit reached"
+                             withMessage:@"You can share a single Photopon with no more than 10 friends"
+                              leftButton:nil
+                             rightButton:@"OK"
+                              leftAction:nil
+                             rightAction:nil];
+                
+                return;
+
+            }
+
+        }
         
         NSMutableDictionary* mutableDict = [item mutableCopy];
         [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];

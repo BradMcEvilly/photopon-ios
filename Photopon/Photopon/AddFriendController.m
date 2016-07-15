@@ -50,6 +50,10 @@
                 NSString* name = [friend valueForKey:@"username"];
                 NSString* email = [friend valueForKey:@"email"];
                 
+                if (!email) {
+                    email = @"";
+                }
+                
                 if ([name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
                     [myFriends addObject:[@{
                          @"name": name,

@@ -16,6 +16,7 @@
 #import "UIColor+Theme.h"
 #import "NSDateFormatter+Common.h"
 #import "URLConstants.h"
+#import "CouponWrapper.h"
 
 static NSString * const GoogleMapsURLFormat = @"//?&daddr=%@&directionsmode=transit";
 static NSString * const GoogleMapsWebURLFormat = @"https://maps.google.com/?daddr=%@";
@@ -53,15 +54,19 @@ NSInteger selectedCoupon = 0;
     
 }
 
--(void)getCoupon {
 
-    [AlertBox showMessageFor:self withTitle:@"Are you sure?"
-                 withMessage:@"You can redeem coupon once. Are you sure you want to redeem it now?"
-                  leftButton:@"Cancel"
-                 rightButton:@"Redeem"
-                  leftAction:nil
-                 rightAction:@selector(redeemCoupon)];
+-(void)shareThisCoupon {
     
+}
+
+-(void)getCoupon {
+    
+    NSInteger thisCouponIndex = selectedCoupon;
+    NSArray* allPFCoupons = GetNearbyCouponsPF();
+    PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
+    
+    CouponWrapper* wrapper = [CouponWrapper fromObject:coupon];
+    [wrapper getCoupon];
 }
 
 -(void)giveCoupon {
