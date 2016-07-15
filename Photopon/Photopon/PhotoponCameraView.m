@@ -12,6 +12,17 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Helper.h"
 #import "MiniCouponViewController.h"
+#import "AvailabilityManager.h"
+#import "UIView+CommonLayout.h"
+#import "PhotoponUnavailableViewController.h"
+
+@interface PhotoponCameraView()
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notAvailableViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet UIView *notAvailableView;
+
+
+@end
 
 @implementation PhotoponCameraView
 {
@@ -136,7 +147,10 @@
     [self maybeShowNoCoupons];
     [self createMiniCouponView];
 
-    
+    [PhotoponUnavailableViewController addToViewController:self forView:self.notAvailableView];
+    self.notAvailableView.layer.cornerRadius = 10;
+    self.notAvailableView.layer.masksToBounds = YES;
+    [self.view layoutIfNeeded];
 }
 
 -(void)closeView {
@@ -175,6 +189,8 @@
 
 
 -(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self configureForAvailability];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
@@ -334,5 +350,15 @@
 
 }
 
+#pragma mark - Not available 
+
+- (void)configureForAvailability {
+    if (![AvailabilityManager photoponAvailable]) {
+        self.notAvailableViewBottomConstraint.constant = - self.notAvailableView.frame.size.height + 5;
+        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.view layoutIfNeeded];
+        } completion:nil];
+    }
+}
 
 @end

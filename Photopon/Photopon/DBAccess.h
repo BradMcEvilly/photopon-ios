@@ -14,6 +14,7 @@
 #import "Parse/Parse.h"
 
 typedef void (^ResultBlock)(NSArray *results, NSError *error);
+typedef void (^ZipcodeResult)(BOOL zipcodeWhitelisted, NSError *error);
 
 typedef void (^FriendSuggestionResultBlock)(PFUser *user, NSArray* myFriends);
 
@@ -41,7 +42,7 @@ void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon);
 
 void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon);
 
-void GetAppAvailabilityWhitelistedZipcodes(ResultBlock result);
+void CheckAppAvailabilityForZipcode(NSString *zipcode, ZipcodeResult result);
 
 void GetCoupons(ResultBlock block);
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block);
