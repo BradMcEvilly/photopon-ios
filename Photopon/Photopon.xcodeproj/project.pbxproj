@@ -363,12 +363,9 @@
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				621268161D38455200735FC9 /* Wrappers */,
-=======
 				466B63201D385D7000FEB0BC /* Categories */,
 				466B63191D385BC400FEB0BC /* SimpleViewControllers */,
->>>>>>> origin/master
 				462187E21D33FF390085579E /* Constants */,
 				462C69851D230E3E00E13783 /* Formatters */,
 				462C69811D230BE700E13783 /* Theme */,
