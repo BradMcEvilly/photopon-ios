@@ -43,6 +43,9 @@ static BOOL photoponAvailable = NO;
 }
 
 +(BOOL)photoponAvailable {
+#ifdef DEBUG
+    return  YES;
+#endif
     return photoponAvailable;
 }
 

@@ -131,9 +131,10 @@ NSInteger selectedCoupon = 0;
 
     NSArray *locations = [coupon objectForKey:@"locations"];
     if (locations.count > 0) {
-        PFObject *location = locations.firstObject;
-        self.addressTextView.text = location[@"address"];
-        self.phoneTextView.text = location[@"phoneNumber"];
+#warning TODO
+//        PFObject *location = locations.firstObject;
+//        self.addressTextView.text = location[@"address"];
+//        self.phoneTextView.text = location[@"phoneNumber"];
     }
 }
 

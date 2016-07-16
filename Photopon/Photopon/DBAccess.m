@@ -90,7 +90,7 @@ void GetCoupons(ResultBlock block) {
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
     PFQuery *locationQuery = [PFQuery queryWithClassName:@"Location"];
-    
+
     [locationQuery whereKey:@"location" nearGeoPoint:point withinKilometers:1];
     //
     
