@@ -10,7 +10,7 @@
 
 @interface AlertBox : UIViewController
 
-@property (weak, nonatomic) id parentObject;
+@property (strong, nonatomic) id parentObject;
 @property (weak, nonatomic) UIViewController* topController;
 
 @property SEL rightAction;

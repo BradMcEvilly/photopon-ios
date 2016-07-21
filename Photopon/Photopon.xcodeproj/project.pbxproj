@@ -19,6 +19,7 @@
 		620602381CEE162A0054122D /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602361CEE162A0054122D /* photopon-logo-black.png */; };
 		620602391CEE162A0054122D /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602371CEE162A0054122D /* photopon-logo-white.png */; };
 		620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */; };
+		621268141D38451B00735FC9 /* CouponWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 621268131D38451B00735FC9 /* CouponWrapper.m */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
 		622563F41C9B257300ED2C46 /* AlertBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 622563F21C9B257300ED2C46 /* AlertBox.m */; };
 		622563F51C9B257300ED2C46 /* AlertBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622563F31C9B257300ED2C46 /* AlertBox.xib */; };
@@ -142,6 +143,8 @@
 		620602371CEE162A0054122D /* photopon-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-white.png"; path = "Resources/photopon-logo-white.png"; sourceTree = "<group>"; };
 		620C4C1C1C10F8EF00579CF5 /* FriendPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPopupViewController.h; sourceTree = "<group>"; };
 		620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPopupViewController.m; sourceTree = "<group>"; };
+		621268131D38451B00735FC9 /* CouponWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponWrapper.m; path = Wrappers/CouponWrapper.m; sourceTree = "<group>"; };
+		621268171D38457300735FC9 /* CouponWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CouponWrapper.h; path = Wrappers/CouponWrapper.h; sourceTree = "<group>"; };
 		621AE3341B797CBB00A9C18C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		621AE3351B797CBB00A9C18C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		621AE3371B79868400A9C18C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
@@ -360,6 +363,7 @@
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				621268161D38455200735FC9 /* Wrappers */,
 				466B63201D385D7000FEB0BC /* Categories */,
 				466B63191D385BC400FEB0BC /* SimpleViewControllers */,
 				462187E21D33FF390085579E /* Constants */,
@@ -397,6 +401,15 @@
 				462C697F1D230BDD00E13783 /* AppNavigationStackHelper.h */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		621268161D38455200735FC9 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				621268131D38451B00735FC9 /* CouponWrapper.m */,
+				621268171D38457300735FC9 /* CouponWrapper.h */,
+			);
+			name = Wrappers;
 			sourceTree = "<group>";
 		};
 		623F95551B93970500506B16 /* Helpers */ = {
@@ -916,6 +929,7 @@
 				62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */,
 				62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */,
 				620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */,
+				621268141D38451B00735FC9 /* CouponWrapper.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
 				62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */,

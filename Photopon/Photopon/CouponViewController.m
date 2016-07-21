@@ -17,6 +17,7 @@
 #import "CouponTableViewCell.h"
 #import "CouponDetailViewController.h"
 #import "HeaderViewController.h"
+#import "CouponWrapper.h"
 #import "AlertBox.h"
 #import "AvailabilityManager.h"
 #import "PhotoponUnavailableViewController.h"
@@ -74,18 +75,10 @@
     UIButton* btn = (UIButton*)sender;
     thisCouponIndex = btn.tag;
     
+    PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
     
-    
-    
-    [AlertBox showMessageFor:self withTitle:@"Are you sure?"
-                 withMessage:@"You can redeem coupon once. Are you sure you want to redeem it now?"
-                  leftButton:@"Cancel"
-                 rightButton:@"Redeem"
-                  leftAction:nil
-                 rightAction:@selector(redeemCoupon)];
-    
-    
-    
+    CouponWrapper* wrapper = [CouponWrapper fromObject:coupon];
+    [wrapper getCoupon];
     SendGAEvent(@"user_action", @"coupons_table", @"get_clicked");
 }
 

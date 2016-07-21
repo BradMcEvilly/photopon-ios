@@ -221,9 +221,33 @@
     if (selectedFriendId) {
         [self sendPhotopons:@[selectedFriendId]];
     } else {
-        FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-        [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
-        [self presentViewController:friendsViewController animated:true completion:nil];
+        
+        PFUser* user = [PFUser currentUser];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+        [query includeKey:@"user"];
+        [query includeKey:@"coupon"];
+        [query includeKey:@"friend"];
+        
+        [query whereKey:@"user" equalTo:user];
+        [query whereKey:@"coupon" equalTo:[miniCouponViewController getCoupon]];
+        
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            NSMutableArray* excludeFriends = [NSMutableArray new];
+            
+            for (PFObject* obj in objects) {
+                [excludeFriends addObject:[obj valueForKey:@"friend"]];
+            }
+            
+            FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
+            [friendsViewController excludeFriends:excludeFriends];
+            [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
+            [self presentViewController:friendsViewController animated:true completion:nil];
+            
+        }];
+        
+        
     }
 }
 

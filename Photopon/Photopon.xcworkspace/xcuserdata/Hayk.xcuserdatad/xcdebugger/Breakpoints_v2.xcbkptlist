@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/FriendsViewController.m"
-            timestampString = "474830612.539992"
+            timestampString = "490310135.499539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "474935187.942992"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-searchBar:textDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "474935187.942992"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-getSuggestions"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -420,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponDrawController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490231495.555279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-onSaveTouch"
             landmarkType = "5">
          </BreakpointContent>
@@ -436,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponDrawController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490231495.555279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -452,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/FriendsViewController.m"
-            timestampString = "475545081.50299"
+            timestampString = "490310435.368465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponDrawController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490231495.555279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "-onColorChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponDrawController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490231495.555279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -863,8 +863,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
             endingLineNumber = "224"
-            landmarkName = "@implementation LocationHandler"
-            landmarkType = "3">
+            landmarkName = "RemoveCouponUpdateListener()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -906,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "-couponsUpdated"
             landmarkType = "5">
          </BreakpointContent>
@@ -922,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -938,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -959,8 +959,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
             endingLineNumber = "225"
-            landmarkName = "@implementation LocationHandler"
-            landmarkType = "3">
+            landmarkName = "RemoveCouponUpdateListener()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1002,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "-couponsUpdated"
             landmarkType = "5">
          </BreakpointContent>
@@ -1087,7 +1087,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "-application:didRegisterUserNotificationSettings:"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1379,11 +1379,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1415,7 +1415,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
-            endingLineNumber = "206">
+            endingLineNumber = "206"
+            landmarkName = "GetNearbyCoupons()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1473,11 +1475,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1489,11 +1491,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponViewController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-getCoupon:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1505,11 +1507,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponDetailViewController.m"
-            timestampString = "485309792.04593"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1553,11 +1555,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "474935187.942992"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-getSuggestions"
             landmarkType = "5">
             <Locations>
@@ -1601,11 +1603,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "474935187.942992"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-getSuggestions"
             landmarkType = "5">
          </BreakpointContent>
@@ -1617,11 +1619,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "474935187.942992"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-getSuggestions"
             landmarkType = "5">
             <Locations>
@@ -1680,11 +1682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "-checkButtonTapped:event:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1696,23 +1698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "255"
@@ -1728,11 +1714,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "259"
             endingLineNumber = "259"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/AddFriendController.m"
+            timestampString = "490310399.168755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1760,11 +1762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1776,11 +1778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1792,11 +1794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1808,11 +1810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "-tableView:accessoryButtonTappedForRowWithIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1824,11 +1826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1840,11 +1842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1856,11 +1858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1904,11 +1906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/FriendsViewController.m"
-            timestampString = "475545081.50299"
+            timestampString = "490310435.368465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "@implementation FriendsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1920,11 +1922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/FriendsViewController.m"
-            timestampString = "475545081.50299"
+            timestampString = "490310435.368465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1936,11 +1938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/FriendsViewController.m"
-            timestampString = "475545081.50299"
+            timestampString = "490310435.368465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1952,11 +1954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/FriendsViewController.m"
-            timestampString = "475545081.50299"
+            timestampString = "490310435.368465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2229,7 +2231,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
-            landmarkName = "+setupManager"
+            landmarkName = "-client:didReceiveMessage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2260,7 +2262,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "279"
-            endingLineNumber = "279">
+            endingLineNumber = "279"
+            landmarkName = "-locationManager:didUpdateLocations:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2275,7 +2279,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "323"
             endingLineNumber = "323"
-            landmarkName = "+setupManager"
+            landmarkName = "-client:didReceiveMessage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2291,7 +2295,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "332"
             endingLineNumber = "332"
-            landmarkName = "+sendUpdate:forUser:"
+            landmarkName = "+setupManager"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2307,7 +2311,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "341"
             endingLineNumber = "341"
-            landmarkName = "+sendUpdate:forUser:"
+            landmarkName = "+setupManager"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2323,7 +2327,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "345"
             endingLineNumber = "345"
-            landmarkName = "+addListener:withBlock:"
+            landmarkName = "+setupManager"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2734,11 +2738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponDrawController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490231495.555279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "-selectWidth:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2750,11 +2754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/PhotoponDrawController.m"
-            timestampString = "480155539.447999"
+            timestampString = "490231495.555279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
             <Locations>
@@ -2802,9 +2806,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "354"
-            endingLineNumber = "354"
-            landmarkName = "-showSettings"
-            landmarkType = "5">
+            endingLineNumber = "354">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2818,9 +2820,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "-showSettings"
-            landmarkType = "5">
+            endingLineNumber = "353">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3176,7 +3176,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AppDelegate.m"
@@ -3185,7 +3185,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "-application:didReceiveRemoteNotification:"
+            landmarkName = "-application:didRegisterUserNotificationSettings:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3340,11 +3340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146485.797748"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-showSettings"
             landmarkType = "5">
          </BreakpointContent>
@@ -3355,44 +3355,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Photopon/AlertBox.m"
-            timestampString = "480146508.695297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-leftButtonPlaceholder"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photopon/AlertBox.m"
-            timestampString = "480146509.929402"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-rightButtonPlaceholder"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146983.413888"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-getAllContacts"
             landmarkType = "5">
             <Locations>
@@ -3436,11 +3404,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AddFriendController.m"
-            timestampString = "480146977.316215"
+            timestampString = "490310399.168755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-getAllContacts"
             landmarkType = "5">
          </BreakpointContent>
@@ -3452,11 +3420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/AlertBox.m"
-            timestampString = "480148307.762401"
+            timestampString = "490228922.803001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "+showMessageFor:withTitle:withMessage:leftButton:rightButton:leftAction:rightAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3473,7 +3441,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "273"
             endingLineNumber = "273"
-            landmarkName = "-showSettings"
+            landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3512,16 +3480,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponDetailViewController.m"
-            timestampString = "485309792.04593"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-setupCouponDetails"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3532,11 +3500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponDetailViewController.m"
-            timestampString = "485309642.150331"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-giveCoupon"
             landmarkType = "5">
          </BreakpointContent>
@@ -3548,12 +3516,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponDetailViewController.m"
-            timestampString = "485309646.147486"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-giveCoupon"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3564,12 +3532,380 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photopon/CouponDetailViewController.m"
-            timestampString = "485309647.14957"
+            timestampString = "490228048.04648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-giveCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/NotificationController.m"
+            timestampString = "487177203.27389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-didTapOnTableView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/CouponDetailViewController.m"
+            timestampString = "490228048.04648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "@implementation CouponDetailViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/DBAccess.m"
+            timestampString = "490139592.366395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "GetAppAvailabilityWhitelistedZipcodes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Managers/AvailabilityManager.m"
+            timestampString = "490140200.899938"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "+checkAvailabilityForZipcode:completion:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[AvailabilityManager checkAvailabilityForZipcode:completion:]"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Photopon/Common/Managers/AvailabilityManager.m"
+                  timestampString = "490140231.930639"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__62+[AvailabilityManager checkAvailabilityForZipcode:completion:]_block_invoke"
+                  moduleName = "Photopon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hayk/photopon-ios/Photopon/Photopon/Common/Managers/AvailabilityManager.m"
+                  timestampString = "490140231.930781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/AppDelegate.m"
+            timestampString = "490140225.403265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/DBAccess.m"
+            timestampString = "490140247.059389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "GetAppAvailabilityWhitelistedZipcodes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Wrappers/CouponWrapper.m"
+            timestampString = "490228628.186283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-getCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/CouponDetailViewController.m"
+            timestampString = "490227918.710827"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-getCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/CouponViewController.m"
+            timestampString = "490228034.975202"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-getCoupon:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Wrappers/CouponWrapper.m"
+            timestampString = "490228628.186283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-getCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Wrappers/CouponWrapper.m"
+            timestampString = "490228628.501"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "-giveCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Wrappers/CouponWrapper.m"
+            timestampString = "490228631.899547"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-getCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Wrappers/CouponWrapper.m"
+            timestampString = "490228671.924944"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-giveCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/AlertBox.m"
+            timestampString = "490228922.803001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-rightButtonPlaceholder"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/AlertBox.m"
+            timestampString = "490228922.803001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "+showAlertFor:withTitle:withMessage:leftButton:rightButton:leftAction:rightAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/AlertBox.m"
+            timestampString = "490228922.803001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "+showAlertFor:withTitle:withMessage:leftButton:rightButton:leftAction:rightAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/Common/Wrappers/CouponWrapper.m"
+            timestampString = "490229198.704317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-giveCoupon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/PhotoponDrawController.m"
+            timestampString = "490231495.555279"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-savePhotopon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/PhotoponDrawController.m"
+            timestampString = "490231776.696992"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "-savePhotopon"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/FriendsViewController.m"
+            timestampString = "490310435.368465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-didTapOnTableView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Photopon/AddFriendController.m"
+            timestampString = "490310399.168755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-getSuggestions"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

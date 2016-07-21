@@ -30,18 +30,19 @@
 }
 
 -(void)leftButtonPlaceholder {
-    [self closeBox];
     if (self.leftAction != nil) {
         [self.parentObject performSelector:self.leftAction];
     }
+    [self closeBox];
 }
 
 
 -(void)rightButtonPlaceholder {
-    [self closeBox];
     if (self.rightAction != nil) {
         [self.parentObject performSelector:self.rightAction];
     }
+    [self closeBox];
+
     
 }
 

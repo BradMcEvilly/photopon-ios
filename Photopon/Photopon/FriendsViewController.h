@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 
 -(void)friendSelectedCallBack:(SEL)action target:(id)target;
+-(void)excludeFriends:(NSArray*)toExclude;
 -(void)updateFriends;
 @end
