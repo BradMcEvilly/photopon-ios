@@ -12,13 +12,14 @@
 #import "DBAccess.h"
 #import <CoreLocation/CoreLocation.h>
 
-static BOOL photoponAvailable = NO;
+NSString * const NOTIFICATION_PHOTOPON_AVAILABLE = @"NOTIFICATION_PHOTOPON_AVAILABLE";
+static BOOL photoponAvailable = YES;
 
 @implementation AvailabilityManager
 
 + (void)checkAvailabilityForZipcode:(NSString *)zipcode completion:(void (^) (BOOL))completion {
     CheckAppAvailabilityForZipcode(zipcode, ^(BOOL available, NSError *error) {
-        photoponAvailable = available;
+        [self setPhotoponAvailable:available];
         if (available) {
             completion(YES);
         } else {
@@ -43,10 +44,16 @@ static BOOL photoponAvailable = NO;
 }
 
 +(BOOL)photoponAvailable {
-#ifdef DEBUG
-    return  YES;
-#endif
     return photoponAvailable;
+}
+
++ (void)setPhotoponAvailable:(BOOL)available {
+    if (available != photoponAvailable) {
+        photoponAvailable = available;
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_PHOTOPON_AVAILABLE object:nil];
+    } else {
+        photoponAvailable = available;
+    }
 }
 
 @end

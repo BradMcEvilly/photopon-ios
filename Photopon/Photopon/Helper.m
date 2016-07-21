@@ -144,8 +144,6 @@ void UpdateNearbyCoupons() {
         
     }
     
-    
-    
     if ([CLLocationManager locationServicesEnabled]) {
         
         locationManager.delegate = locationHandler;
@@ -165,10 +163,7 @@ void UpdateNearbyCoupons() {
         if (st == kCLAuthorizationStatusNotDetermined) {
             [locationManager requestAlwaysAuthorization];
         } else {
-#ifdef DEBUG
-            [locationHandler getCouponsForLocation:locationManager.location];
-#else
-
+            NSLog(@"Location: %f, %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
             [AvailabilityManager checkAvailabilityWithLocation:locationManager.location completion:^(BOOL available) {
                 if (available) {
                     [locationHandler getCouponsForLocation:locationManager.location];
@@ -177,7 +172,7 @@ void UpdateNearbyCoupons() {
                     [[AppNavigationStackHelper topViewController] presentViewController:alertController animated:YES completion:nil];
                 }
             }];
-#endif
+
         }
 
         [locationManager startUpdatingLocation];
@@ -272,10 +267,7 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 
     CLLocation* location = [locations lastObject];
-#ifdef DEBUG
-    [self getCouponsForLocation:location];
-    return;
-#endif
+    NSLog(@"Location: %f, %f", location.coordinate.latitude, location.coordinate.longitude);
     [AvailabilityManager checkAvailabilityWithLocation:manager.location completion:^(BOOL available) {
         if (available) {
             [self getCouponsForLocation:location];

@@ -1,4 +1,4 @@
-//
+    //
 //  DBAccess.m
 //  Photopon
 //
@@ -357,9 +357,15 @@ void CheckAppAvailabilityForZipcode(NSString *zipcode, ZipcodeResult result) {
         return;
     }
 
+//#ifdef DEBUG
+//    result(YES, nil);
+//    return;
+//#endif
 #ifdef DEBUG
-    result(YES, nil);
-    return;
+    if ([zipcode isEqualToString:@"95014"]) {
+        result(YES, nil);
+        return;
+    }
 #endif
 
     PFQuery *query = [PFQuery queryWithClassName:@"EnabledLocations"];

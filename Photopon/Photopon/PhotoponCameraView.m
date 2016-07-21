@@ -151,6 +151,8 @@
     self.notAvailableView.layer.cornerRadius = 10;
     self.notAvailableView.layer.masksToBounds = YES;
     [self.view layoutIfNeeded];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoponAvailabilityChanged) name:NOTIFICATION_PHOTOPON_AVAILABLE object:nil];
 }
 
 -(void)closeView {
@@ -350,15 +352,24 @@
 
 }
 
-#pragma mark - Not available 
+#pragma mark - Availability
 
 - (void)configureForAvailability {
     if (![AvailabilityManager photoponAvailable]) {
         self.notAvailableViewBottomConstraint.constant = - self.notAvailableView.frame.size.height + 5;
-        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
-        } completion:nil];
+        self.noCouponView.hidden = YES;
+    } else {
+        self.notAvailableViewBottomConstraint.constant = 0;
+        self.noCouponView.hidden = NO;
     }
+
+    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
+-(void)photoponAvailabilityChanged {
+    [self configureForAvailability];
 }
 
 @end

@@ -167,14 +167,13 @@
         
         for (CNLabeledValue<CNPhoneNumber*>* phone in contact.phoneNumbers) {
             
-            
-            [allContacts addObject:[@{
-                                      @"name": name,
-                                      @"phone": phone.value.stringValue
-                                      } mutableCopy]];
+            if (name.length > 0 && phone.value.stringValue.length > 0) {
+                [allContacts addObject:[@{
+                                          @"name": name,
+                                          @"phone": phone.value.stringValue
+                                          } mutableCopy]];
+            }
         }
-        
-        
     }
 }
 

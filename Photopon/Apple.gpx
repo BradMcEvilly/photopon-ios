@@ -5,7 +5,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"
 version="1.1" 
 creator="gpx-poi.com">
-   <wpt lat="37.331340" lon="-122.030272">
+   <wpt lat="41.594433" lon="-87.336365">
       <time>2016-07-13T18:09:05Z</time>
       <name>Apple</name>
    </wpt>

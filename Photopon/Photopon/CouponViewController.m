@@ -122,34 +122,30 @@
     HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
     [header setTheme:[UITheme greenTheme]];
 
+    [self.couponTable setDelegate:self];
+    [self.couponTable setDataSource:self];
 
-    if ([AvailabilityManager photoponAvailable]) {
-        [self.couponTable setDelegate:self];
-        [self.couponTable setDataSource:self];
+    allCoupons = GetNearbyCoupons();
+    allPFCoupons = GetNearbyCouponsPF();
+    [self.couponTable reloadData];
 
-        allCoupons = GetNearbyCoupons();
-        allPFCoupons = GetNearbyCouponsPF();
-        [self.couponTable reloadData];
+    NSLog(@"Registering listener for coupon update");
+    AddCouponUpdateListener(self);
 
-        NSLog(@"Registering listener for coupon update");
-        AddCouponUpdateListener(self);
-
-        refreshControl = [[UIRefreshControl alloc] init];
-        refreshControl.backgroundColor = [UIColor whiteColor];
-        refreshControl.tintColor = [UIColor blackColor];
-        [refreshControl addTarget:self
-                           action:@selector(forceUpdateCoupons)
-                 forControlEvents:UIControlEventValueChanged];
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.tintColor = [UIColor blackColor];
+    [refreshControl addTarget:self
+                       action:@selector(forceUpdateCoupons)
+             forControlEvents:UIControlEventValueChanged];
 
 
-        UITableViewController *tableViewController = [[UITableViewController alloc] init];
-        tableViewController.tableView = self.couponTable;
-        tableViewController.refreshControl = refreshControl;
-        self.notAvailableView.hidden = YES;
-    } else {
-        self.notAvailableView.hidden = NO;
-        [PhotoponUnavailableViewController addToViewController:self forView:self.notAvailableView];
-    }
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.couponTable;
+    tableViewController.refreshControl = refreshControl;
+
+    [self photoponAvailabilityConfiguration];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoponAvailabilityConfiguration) name:NOTIFICATION_PHOTOPON_AVAILABLE object:nil];
 
 }
 
@@ -233,6 +229,17 @@
 
 - (IBAction)chatWithFriendsButtonHandler:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_Friends" object:nil];
+}
+
+#pragma mark - Availability
+
+- (void)photoponAvailabilityConfiguration {
+    if ([AvailabilityManager photoponAvailable]) {
+        self.notAvailableView.hidden = YES;
+    } else {
+        self.notAvailableView.hidden = NO;
+        [PhotoponUnavailableViewController addToViewController:self forView:self.notAvailableView];
+    }
 }
 
 @end
