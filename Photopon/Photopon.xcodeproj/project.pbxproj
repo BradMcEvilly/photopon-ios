@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0051D68C4BD9FE85AD0AF611 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5AE628DFCFAD35A3656AAA /* libPods-Photopon.a */; };
+		46084ACB1D41569800BE23F0 /* CouponDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */; };
+		46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */; };
+		46084AD21D41646900BE23F0 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084AD11D41646900BE23F0 /* LocationCell.m */; };
 		462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */; };
 		462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69831D230C7300E13783 /* UIColor+Theme.m */; };
 		462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69871D230E6100E13783 /* NSDateFormatter+Common.m */; };
 		466B631D1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B631C1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m */; };
 		466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */; };
 		466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */; };
+		466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C42AA1D43400100F277BA /* GoogleMapsManager.m */; };
 		46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EA1D1EB839002122EC /* AvailabilityManager.m */; };
 		46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */; };
 		620602381CEE162A0054122D /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602361CEE162A0054122D /* photopon-logo-black.png */; };
@@ -123,6 +127,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CouponDetails.storyboard; sourceTree = "<group>"; };
+		46084ACD1D41644F00BE23F0 /* CouponLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponLocationsViewController.h; sourceTree = "<group>"; };
+		46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponLocationsViewController.m; sourceTree = "<group>"; };
+		46084AD01D41646900BE23F0 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		46084AD11D41646900BE23F0 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		462187E31D33FF5B0085579E /* URLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConstants.h; sourceTree = "<group>"; };
 		462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNavigationStackHelper.m; sourceTree = "<group>"; };
 		462C697F1D230BDD00E13783 /* AppNavigationStackHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNavigationStackHelper.h; sourceTree = "<group>"; };
@@ -135,6 +144,8 @@
 		466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoponUnavailableViewController.xib; sourceTree = "<group>"; };
 		466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CommonLayout.m"; sourceTree = "<group>"; };
 		466B63221D385D8000FEB0BC /* UIView+CommonLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonLayout.h"; sourceTree = "<group>"; };
+		466C42A91D43400100F277BA /* GoogleMapsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsManager.h; sourceTree = "<group>"; };
+		466C42AA1D43400100F277BA /* GoogleMapsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsManager.m; sourceTree = "<group>"; };
 		46CF62E91D1EB839002122EC /* AvailabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailabilityManager.h; sourceTree = "<group>"; };
 		46CF62EA1D1EB839002122EC /* AvailabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityManager.m; sourceTree = "<group>"; };
 		46CF62ED1D1EF1FB002122EC /* AlertControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerFactory.h; sourceTree = "<group>"; };
@@ -307,6 +318,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46084AC91D41567300BE23F0 /* Stroyboards */ = {
+			isa = PBXGroup;
+			children = (
+				46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */,
+			);
+			name = Stroyboards;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		46084ACC1D415DD200BE23F0 /* CouponLocations */ = {
+			isa = PBXGroup;
+			children = (
+				46084ACD1D41644F00BE23F0 /* CouponLocationsViewController.h */,
+				46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */,
+				46084AD01D41646900BE23F0 /* LocationCell.h */,
+				46084AD11D41646900BE23F0 /* LocationCell.m */,
+			);
+			path = CouponLocations;
+			sourceTree = "<group>";
+		};
 		462187E21D33FF390085579E /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +394,7 @@
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				46084AC91D41567300BE23F0 /* Stroyboards */,
 				621268161D38455200735FC9 /* Wrappers */,
 				466B63201D385D7000FEB0BC /* Categories */,
 				466B63191D385BC400FEB0BC /* SimpleViewControllers */,
@@ -381,6 +413,8 @@
 			children = (
 				46CF62E91D1EB839002122EC /* AvailabilityManager.h */,
 				46CF62EA1D1EB839002122EC /* AvailabilityManager.m */,
+				466C42A91D43400100F277BA /* GoogleMapsManager.h */,
+				466C42AA1D43400100F277BA /* GoogleMapsManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -593,6 +627,7 @@
 		84B8CB911D0B16C60060BAD5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				46084ACC1D415DD200BE23F0 /* CouponLocations */,
 				84B8CB921D0B17910060BAD5 /* Chat */,
 			);
 			name = Modules;
@@ -841,6 +876,7 @@
 				629E72041C6117B100DD79C1 /* Icon-Tag.png in Resources */,
 				626266221B8A6CA1006D730E /* takephoto.png in Resources */,
 				629E72161C6153CF00DD79C1 /* Icon-Yes.png in Resources */,
+				46084ACB1D41569800BE23F0 /* CouponDetails.storyboard in Resources */,
 				84A607421D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib in Resources */,
 				629E72141C614C1E00DD79C1 /* Icon-Wallet-22.png in Resources */,
 			);
@@ -932,6 +968,7 @@
 				621268141D38451B00735FC9 /* CouponWrapper.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
+				46084AD21D41646900BE23F0 /* LocationCell.m in Sources */,
 				62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */,
 				6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
@@ -957,10 +994,12 @@
 				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,
 				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
 				6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */,
+				46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */,
 				84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,
+				466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */,
 				62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */,
 				848C1CC61D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,

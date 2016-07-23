@@ -48,7 +48,11 @@
 
 
 -(void)backMenuClicked {
-    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    if (self.parentViewController.navigationController) {
+        [self.parentViewController.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 

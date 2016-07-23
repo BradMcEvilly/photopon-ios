@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Bs-8b-Lsl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Bs-8b-Lsl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -662,7 +662,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Get"/>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqi-n1-jhQ">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqi-n1-jhQ">
                                         <rect key="frame" x="96" y="21" width="95" height="38"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Directions"/>
@@ -711,44 +711,68 @@
                                     <constraint firstItem="Hxc-wW-Adq" firstAttribute="top" secondItem="zwC-Pe-Hfr" secondAttribute="bottom" constant="10" id="m6f-9C-S2h"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-IF-rbB">
-                                <rect key="frame" x="16" y="216" width="288" height="153"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-IF-rbB" userLabel="DetailsContainer">
+                                <rect key="frame" x="16" y="216" width="288" height="131.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-TZ-ZB0">
-                                        <rect key="frame" x="4" y="0.0" width="280" height="67"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="50.5"/>
                                         <string key="text">Long description of coupon that has a short description of coupon terms. Can be up to 3 lines and shold fit here.. lets see if it does</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F3C-Yd-XY0" userLabel="Phone">
-                                        <rect key="frame" x="0.0" y="120" width="288" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSP-FO-M8O">
+                                        <rect key="frame" x="0.0" y="65.5" width="288" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="qeJ-jN-AGH"/>
+                                        </constraints>
+                                        <state key="normal" title="Check Locations"/>
+                                        <connections>
+                                            <action selector="locationListButtonHandler:" destination="BYb-0a-beO" eventType="touchUpInside" id="kjI-a0-Sjb"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y35-pc-Kzk" userLabel="LocationContainer">
+                                        <rect key="frame" x="0.0" y="55.5" width="288" height="76"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F3C-Yd-XY0" userLabel="Phone">
+                                                <rect key="frame" x="0.0" y="43" width="288" height="33"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="94l-hV-Pbw" userLabel="Address">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="33"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
+                                            </textView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="94l-hV-Pbw" userLabel="Address">
-                                        <rect key="frame" x="0.0" y="77" width="288" height="33"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
-                                    </textView>
+                                        <constraints>
+                                            <constraint firstItem="94l-hV-Pbw" firstAttribute="leading" secondItem="y35-pc-Kzk" secondAttribute="leading" id="JXo-qa-xDN"/>
+                                            <constraint firstItem="F3C-Yd-XY0" firstAttribute="top" secondItem="94l-hV-Pbw" secondAttribute="bottom" constant="10" id="OU4-Cr-AzA"/>
+                                            <constraint firstItem="F3C-Yd-XY0" firstAttribute="leading" secondItem="y35-pc-Kzk" secondAttribute="leading" id="beX-Gz-Yk1"/>
+                                            <constraint firstAttribute="trailing" secondItem="94l-hV-Pbw" secondAttribute="trailing" id="c1j-JT-SMk"/>
+                                            <constraint firstAttribute="trailing" secondItem="F3C-Yd-XY0" secondAttribute="trailing" id="nR4-hc-tP1"/>
+                                            <constraint firstItem="94l-hV-Pbw" firstAttribute="top" secondItem="y35-pc-Kzk" secondAttribute="top" id="ndi-MZ-aNo"/>
+                                            <constraint firstAttribute="bottom" secondItem="F3C-Yd-XY0" secondAttribute="bottom" id="zjx-xK-SjV"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="94l-hV-Pbw" secondAttribute="trailing" id="22y-BE-bNF"/>
-                                    <constraint firstItem="cSJ-TZ-ZB0" firstAttribute="leading" secondItem="nPw-IF-rbB" secondAttribute="leading" constant="4" id="8o0-d1-aZP"/>
-                                    <constraint firstItem="94l-hV-Pbw" firstAttribute="top" secondItem="cSJ-TZ-ZB0" secondAttribute="bottom" constant="10" id="ION-ld-TOL"/>
-                                    <constraint firstItem="94l-hV-Pbw" firstAttribute="leading" secondItem="nPw-IF-rbB" secondAttribute="leading" id="XqK-5c-2Rp"/>
-                                    <constraint firstItem="F3C-Yd-XY0" firstAttribute="leading" secondItem="nPw-IF-rbB" secondAttribute="leading" id="aEW-Sd-fwK"/>
-                                    <constraint firstAttribute="trailing" secondItem="cSJ-TZ-ZB0" secondAttribute="trailing" constant="4" id="iFI-9l-iXb"/>
+                                    <constraint firstItem="cSJ-TZ-ZB0" firstAttribute="leading" secondItem="nPw-IF-rbB" secondAttribute="leading" id="8o0-d1-aZP"/>
+                                    <constraint firstAttribute="trailing" secondItem="lSP-FO-M8O" secondAttribute="trailing" id="9bP-YF-EgE"/>
+                                    <constraint firstAttribute="bottom" secondItem="y35-pc-Kzk" secondAttribute="bottom" id="G3z-yY-j28"/>
+                                    <constraint firstItem="y35-pc-Kzk" firstAttribute="top" secondItem="cSJ-TZ-ZB0" secondAttribute="bottom" constant="5" id="O1f-Gh-M0Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="y35-pc-Kzk" secondAttribute="trailing" id="VRm-RR-KmJ"/>
+                                    <constraint firstItem="lSP-FO-M8O" firstAttribute="leading" secondItem="nPw-IF-rbB" secondAttribute="leading" id="Vbs-5K-kU2"/>
+                                    <constraint firstItem="lSP-FO-M8O" firstAttribute="top" secondItem="cSJ-TZ-ZB0" secondAttribute="bottom" constant="15" id="e0e-cA-o00"/>
+                                    <constraint firstAttribute="trailing" secondItem="cSJ-TZ-ZB0" secondAttribute="trailing" id="iFI-9l-iXb"/>
                                     <constraint firstItem="cSJ-TZ-ZB0" firstAttribute="top" secondItem="nPw-IF-rbB" secondAttribute="top" id="n2h-6j-OC8"/>
-                                    <constraint firstItem="F3C-Yd-XY0" firstAttribute="top" secondItem="94l-hV-Pbw" secondAttribute="bottom" constant="10" id="tVw-ZC-uqC"/>
-                                    <constraint firstAttribute="trailing" secondItem="F3C-Yd-XY0" secondAttribute="trailing" id="u8i-AM-cgP"/>
-                                    <constraint firstItem="F3C-Yd-XY0" firstAttribute="top" secondItem="94l-hV-Pbw" secondAttribute="bottom" constant="10" id="xgs-IV-o0k"/>
-                                    <constraint firstAttribute="bottom" secondItem="F3C-Yd-XY0" secondAttribute="bottom" id="zwW-b3-CW5"/>
+                                    <constraint firstItem="y35-pc-Kzk" firstAttribute="leading" secondItem="nPw-IF-rbB" secondAttribute="leading" id="pyy-5j-hqN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -775,8 +799,11 @@
                         <outlet property="couponExpiration" destination="Hxc-wW-Adq" id="N8N-un-prY"/>
                         <outlet property="couponImage" destination="0gh-na-uYw" id="mt3-9Y-jtY"/>
                         <outlet property="couponTitle" destination="zwC-Pe-Hfr" id="TVk-X1-lot"/>
+                        <outlet property="directionsButton" destination="Tqi-n1-jhQ" id="Tjf-6j-xh3"/>
                         <outlet property="getButton" destination="YQc-to-rIi" id="F5G-jF-kjs"/>
                         <outlet property="giveButton" destination="CXp-iU-VOd" id="7dp-na-WCu"/>
+                        <outlet property="locationsContainer" destination="y35-pc-Kzk" id="kys-IA-yEZ"/>
+                        <outlet property="locationsListButton" destination="lSP-FO-M8O" id="Th2-MW-dTQ"/>
                         <outlet property="phoneTextView" destination="F3C-Yd-XY0" id="qPP-rJ-TNU"/>
                     </connections>
                 </viewController>

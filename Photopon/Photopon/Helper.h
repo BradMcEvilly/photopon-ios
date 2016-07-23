@@ -55,6 +55,8 @@ UIImage* ImageWithWhiteBackground(UIImage* image);
 UIImage* MaskImageWithColor(UIImage* image, UIColor* color);
 
 
+CLLocation* GetCurrentLocation();
+
 @interface LocationHandler : NSObject<CLLocationManagerDelegate>
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;

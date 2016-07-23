@@ -15,16 +15,19 @@
 #import "AlertBox.h"
 #import "UIColor+Theme.h"
 #import "NSDateFormatter+Common.h"
-#import "URLConstants.h"
 #import "CouponWrapper.h"
-
-static NSString * const GoogleMapsURLFormat = @"//?&daddr=%@&directionsmode=transit";
-static NSString * const GoogleMapsWebURLFormat = @"https://maps.google.com/?daddr=%@";
+#import "CouponLocationsViewController.h"
+#import "GoogleMapsManager.h"
 
 @interface CouponDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *addressTextView;
 @property (weak, nonatomic) IBOutlet UITextView *phoneTextView;
+@property (weak, nonatomic) IBOutlet UIButton *locationsListButton;
+@property (weak, nonatomic) IBOutlet UIView *locationsContainer;
+
+@property (nonatomic, strong) PFObject *coupon;
+@property (weak, nonatomic) IBOutlet UIButton *directionsButton;
 
 @end
 
@@ -114,6 +117,7 @@ NSInteger selectedCoupon = 0;
 
     PFObject* coupon = [allPFCoupons objectAtIndex:selectedCoupon];
 
+    self.coupon = coupon;
 
     PFObject* company = [coupon objectForKey:@"company"];
     PFFile* pic = [company objectForKey:@"image"];
@@ -135,11 +139,26 @@ NSInteger selectedCoupon = 0;
     [self.giveButton addTarget:self action:@selector(giveCoupon) forControlEvents:UIControlEventTouchDown];
 
     NSArray *locations = [coupon objectForKey:@"locations"];
-    if (locations.count > 0) {
-#warning TODO
-//        PFObject *location = locations.firstObject;
-//        self.addressTextView.text = location[@"address"];
-//        self.phoneTextView.text = location[@"phoneNumber"];
+    if (locations.count == 1) {
+        NSNumber *locationID = locations.firstObject;
+
+        PFQuery *query = [PFQuery queryWithClassName:@"Location" predicate:[NSPredicate predicateWithFormat:@"objectId == %@", locationID]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            PFObject *location = objects.firstObject;
+            if (location) {
+                self.addressTextView.text = location[@"address"];
+                self.phoneTextView.text = location[@"phoneNumber"];
+            }
+        }];
+
+        self.locationsListButton.hidden = YES;
+        self.locationsContainer.hidden = NO;
+        self.directionsButton.hidden = NO;
+    } else {
+        
+        self.locationsContainer.hidden = YES;
+        self.locationsListButton.hidden = NO;
+        self.directionsButton.hidden = YES;
     }
 }
 
@@ -150,15 +169,13 @@ NSInteger selectedCoupon = 0;
 #pragma mark - Handlers
 
 - (IBAction)directionsButtonHandler:(id)sender {
-    if ((self.addressTextView.text.length > 0)) {
-        if ([[UIApplication sharedApplication]canOpenURL:[NSURL URLWithString:GoogleMapsURLScheme]]) {
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:GoogleMapsURLFormat, [self.addressTextView.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]]];
-            [[UIApplication sharedApplication]openURL:url];
-        } else {
-            NSURL *webMapsURL = [NSURL URLWithString:[NSString stringWithFormat:GoogleMapsWebURLFormat, [self.addressTextView.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]]];
-            [[UIApplication sharedApplication]openURL:webMapsURL];
-        }
-    }
+    [GoogleMapsManager performNavigateToAddress:self.addressTextView.text];
+}
+
+- (IBAction)locationListButtonHandler:(id)sender {
+    CouponLocationsViewController *vc = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponLocationsViewController"];
+    vc.coupon = self.coupon;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 /*

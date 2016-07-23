@@ -207,6 +207,9 @@ NSArray* GetNearbyCouponsPF() {
 }
 
 
+CLLocation* GetCurrentLocation() {
+    return locationManager.location;
+}
 
 void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
     if (couponDelegates == nil) {

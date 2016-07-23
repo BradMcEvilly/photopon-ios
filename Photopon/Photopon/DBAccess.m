@@ -27,8 +27,6 @@ void GetMyFriends(ResultBlock block) {
     }];
 }
 
-
-
 void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block) {
     PFQuery *query = [PFUser query];
     
@@ -409,8 +407,6 @@ void CheckAppAvailabilityForZipcode(NSString *zipcode, ZipcodeResult result) {
     
 }
 
-
-
 + (PhoneNumberCheckDelegate *)sharedInstance
 {
     static PhoneNumberCheckDelegate *sharedInstance;
@@ -426,8 +422,6 @@ void CheckAppAvailabilityForZipcode(NSString *zipcode, ZipcodeResult result) {
 
 
 @end
-
-
 
 BOOL HasPhoneNumber(NSString* message) {
     
