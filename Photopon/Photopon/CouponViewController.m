@@ -217,9 +217,9 @@
     CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
     [detailView setCouponIndex:thisCouponIndex];
 
-    UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
-    navVC.navigationBarHidden = YES;
-    [self presentViewController:navVC animated:YES completion:nil];
+    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
+    //navVC.navigationBarHidden = YES;
+    [self presentViewController:detailView animated:YES completion:nil];
     
 }
 

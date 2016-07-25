@@ -50,6 +50,7 @@
     [self addTapHandlerFor:self.settingsItem withTag:@"settings"];
     [self addTapHandlerFor:self.signoutItem withTag:@"signout"];
     [self addTapHandlerFor:self.addPhotoponItem withTag:@"addphotopon"];
+    [self addTapHandlerFor:self.sentPhotopons withTag:@"sentphotopons"];
     
 }
 

@@ -26,6 +26,7 @@ typedef void (^MenuHookType)(NSString* menuItem);
 @property (weak, nonatomic) IBOutlet UIView *settingsItem;
 @property (weak, nonatomic) IBOutlet UIView *signoutItem;
 @property (weak, nonatomic) IBOutlet UIView *addPhotoponItem;
+@property (weak, nonatomic) IBOutlet UIView *sentPhotopons;
 
 
 - (void) onClickHook:(MenuHookType)hook;

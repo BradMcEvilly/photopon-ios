@@ -88,6 +88,10 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil];
         }
         
+        if ([menuItem isEqualToString:@"sentphotopons"]) {
+            UIViewController *sentPhotopons = [storyBoard instantiateViewControllerWithIdentifier:@"SBSentPhotopons"];
+            [self presentViewController:sentPhotopons animated:true completion:nil];
+        }
         
         
         if ([menuItem isEqualToString:@"settings"]) {
