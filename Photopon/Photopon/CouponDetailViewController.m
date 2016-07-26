@@ -173,9 +173,14 @@ NSInteger selectedCoupon = 0;
 }
 
 - (IBAction)locationListButtonHandler:(id)sender {
+    
+    
+    
     CouponLocationsViewController *vc = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponLocationsViewController"];
     vc.coupon = self.coupon;
-    [self.navigationController pushViewController:vc animated:true];
+    //[self.navigationController pushViewController:vc animated:true];
+    [self presentViewController:vc animated:true completion:nil];
+    
 }
 
 /*
