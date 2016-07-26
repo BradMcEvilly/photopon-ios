@@ -12,5 +12,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *iconLabel;
 
 @end

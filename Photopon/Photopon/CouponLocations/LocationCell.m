@@ -7,12 +7,13 @@
 //
 
 #import "LocationCell.h"
+#import "NSString+FontAwesome.h"
 
 @implementation LocationCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.iconLabel.text = [NSString fontAwesomeIconStringForEnum:FALocationArrow];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
