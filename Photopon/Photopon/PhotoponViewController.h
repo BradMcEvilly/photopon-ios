@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *couponTitle;
 @property (weak, nonatomic) IBOutlet UILabel *couponDescription;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UILabel *loadingText;
+@property (weak, nonatomic) IBOutlet UILabel *alreadyRedeemedText;
 
 @end

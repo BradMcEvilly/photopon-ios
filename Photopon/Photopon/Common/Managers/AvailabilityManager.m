@@ -23,7 +23,13 @@ static BOOL photoponAvailable = YES;
         if (available) {
             completion(YES);
         } else {
+            
+            
+#ifdef DEBUG
+            completion(YES);
+#else
             completion(NO);
+#endif
         }
     });
 }
@@ -38,7 +44,15 @@ static BOOL photoponAvailable = YES;
         if (zipcode) {
             [self checkAvailabilityForZipcode:zipcode completion:completion];
         } else {
-            if (completion) {completion(NO);}
+            if (completion) {
+                
+#ifdef DEBUG
+                completion(YES);
+#else
+                completion(NO);
+#endif
+      
+            }
         }
     }];
 }

@@ -100,8 +100,48 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
         }
         
         
-        NSNumber* serverTime = [PFCloud callFunction:@"ServerTime" withParameters:nil];
+ //       NSNumber* serverTime = [PFCloud callFunction:@"ServerTime" withParameters:nil];
         
+        [PFCloud callFunctionInBackground:@"MyCoupons"
+                           withParameters:@{
+                                            @"Something": @"somethingelse"
+                                            }
+                                    block:^(id  _Nullable object, NSError * _Nullable error) {
+                                        
+                                        
+                                        NSMutableArray *c = [[NSMutableArray alloc] init];
+                                        NSArray* coupons = [object valueForKey:@"coupons"];
+                                        NSArray* redeems = [object valueForKey:@"redeems"];
+
+                                        int index = 0;
+                                        
+                                        for (PFObject* coupon in coupons) {
+                                            
+                                            NSArray* locs = [coupon objectForKey:@"locations"];
+                                            
+                                            for (NSString* locid in locs) {
+                                                if ([ids containsObject:locid]) {
+                                                    [c addObject:@{
+                                                                   @"coupon": coupon,
+                                                                   @"redeemed": redeems[index]
+                                                                   }];
+                                                    break;
+                                                }
+                                            }
+                                            
+                                            if ([locs count] == 0 && [ids count] != 0) {
+                                                [c addObject:@{
+                                                               @"coupon": coupon,
+                                                               @"redeemed": redeems[index]
+                                                               }];
+                                                
+                                            }
+                                            
+                                            ++index;
+                                        }
+                                        block(c, error);
+                                    }];
+        /*
         PFQuery *couponQuery = [PFQuery queryWithClassName:@"Coupon"];
         [couponQuery includeKey:@"company"];
         [couponQuery whereKey:@"isActive" equalTo:[NSNumber numberWithBool:YES]];
@@ -130,6 +170,7 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
             }
             block(c, error);
         }];
+        */
         
     }];
     
@@ -347,6 +388,12 @@ void CreateRedeemedLog(PFUser* fromUser, PFObject* coupon) {
         redeemLog[@"location"] = geoPoint;
         [redeemLog saveInBackground];
     }];
+    
+    PFObject *redeemInfo = [PFObject objectWithClassName:@"RedeemedCoupons"];
+    
+    redeemInfo[@"coupon"] = coupon;
+    redeemInfo[@"user"] = [PFUser currentUser];
+    [redeemInfo saveInBackground];    
 }
 
 

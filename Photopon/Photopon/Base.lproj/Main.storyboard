@@ -470,7 +470,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dt-Os-pri">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dt-Os-pri">
                                 <rect key="frame" x="70" y="488" width="180" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="wej-u9-IMY"/>
@@ -483,11 +483,24 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Photopon..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg7-p4-Zza">
+                                <rect key="frame" x="83" y="507" width="154" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You already used this coupon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mak-6y-f2y">
+                                <rect key="frame" x="48" y="507" width="225" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vrV-4b-rUs" secondAttribute="trailing" id="1Ux-1N-YiG"/>
                             <constraint firstItem="rWv-no-FYW" firstAttribute="top" secondItem="YwY-Y0-Zzd" secondAttribute="topMargin" constant="80" id="5VU-dS-pwp"/>
+                            <constraint firstItem="Mak-6y-f2y" firstAttribute="centerX" secondItem="YwY-Y0-Zzd" secondAttribute="centerX" id="87J-Wh-gwr"/>
                             <constraint firstAttribute="trailing" secondItem="iPL-jC-P8i" secondAttribute="trailing" constant="20" id="8uP-rb-OIB"/>
                             <constraint firstItem="vrV-4b-rUs" firstAttribute="top" secondItem="iPL-jC-P8i" secondAttribute="bottom" id="9Ed-lh-MZT"/>
                             <constraint firstItem="vrV-4b-rUs" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" id="B9G-sA-DiJ"/>
@@ -507,10 +520,13 @@
                             <constraint firstAttribute="trailing" secondItem="vrV-4b-rUs" secondAttribute="trailing" constant="20" id="hcg-cI-Z8O"/>
                             <constraint firstItem="243-ni-gMo" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" constant="20" id="jrc-ii-2O0"/>
                             <constraint firstItem="1dt-Os-pri" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" constant="70" id="k3b-bc-68R"/>
+                            <constraint firstItem="iG6-hr-gE6" firstAttribute="top" secondItem="kg7-p4-Zza" secondAttribute="bottom" constant="40" id="lwd-09-08W"/>
                             <constraint firstAttribute="trailing" secondItem="1dt-Os-pri" secondAttribute="trailing" constant="70" id="nCa-au-qMO"/>
                             <constraint firstItem="JDg-Of-h7X" firstAttribute="leading" secondItem="YwY-Y0-Zzd" secondAttribute="leading" id="oWX-2g-nEW"/>
                             <constraint firstItem="vrV-4b-rUs" firstAttribute="leading" secondItem="243-ni-gMo" secondAttribute="trailing" constant="10" id="qrx-bt-WWF"/>
                             <constraint firstAttribute="trailing" secondItem="k4M-Xb-caQ" secondAttribute="trailing" id="s27-0D-dYA"/>
+                            <constraint firstItem="iG6-hr-gE6" firstAttribute="top" secondItem="Mak-6y-f2y" secondAttribute="bottom" constant="40" id="ulE-3h-WMd"/>
+                            <constraint firstItem="kg7-p4-Zza" firstAttribute="centerX" secondItem="YwY-Y0-Zzd" secondAttribute="centerX" id="uop-Fl-XAD"/>
                             <constraint firstItem="k4M-Xb-caQ" firstAttribute="top" secondItem="MU8-dK-52a" secondAttribute="bottom" id="yif-fM-z6i"/>
                             <constraint firstItem="rWv-no-FYW" firstAttribute="top" secondItem="MU8-dK-52a" secondAttribute="bottom" id="zKH-RW-HiT"/>
                         </constraints>
@@ -538,10 +554,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="alreadyRedeemedText" destination="Mak-6y-f2y" id="JZr-hu-UmQ"/>
                         <outlet property="companyLogo" destination="243-ni-gMo" id="F2K-xR-nZL"/>
                         <outlet property="couponDescription" destination="vrV-4b-rUs" id="WVh-XP-Ehz"/>
                         <outlet property="couponTitle" destination="iPL-jC-P8i" id="Fez-Yq-vNt"/>
                         <outlet property="drawingImage" destination="rWv-no-FYW" id="8aI-ej-yZp"/>
+                        <outlet property="loadingText" destination="kg7-p4-Zza" id="hPf-Q4-9Rc"/>
                         <outlet property="photoImage" destination="k4M-Xb-caQ" id="foD-io-oNF"/>
                         <outlet property="saveButton" destination="1dt-Os-pri" id="gkN-eI-3Y5"/>
                     </connections>

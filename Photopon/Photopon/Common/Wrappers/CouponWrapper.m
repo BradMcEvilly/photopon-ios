@@ -10,6 +10,8 @@
 #import "CouponWrapper.h"
 #import "AlertBox.h"
 
+
+
 @implementation CouponWrapper
 
 @synthesize obj;
@@ -20,6 +22,24 @@
     newWrapper.obj = object;
     return newWrapper;
 }
+
+
+- (void) isRedeemed:(BooleanCallback)callback {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"RedeemedCoupons"];
+    [query includeKey:@"user"];
+    [query includeKey:@"coupon"];
+    
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"coupon" equalTo:self.obj];
+    
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+        callback(number > 0);
+    }];
+    
+}
+
 
 -(void)giveCoupon {
     NSArray* allPFCoupons = GetNearbyCouponsPF();

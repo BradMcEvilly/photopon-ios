@@ -167,6 +167,7 @@
     }
     
     NSDictionary *item = (NSDictionary *)[allCoupons objectAtIndex:indexPath.row];
+    PFObject *itemObj = [allPFCoupons objectAtIndex:indexPath.row];
     
     cell.title.text = [item objectForKey:@"title"];
     cell.longDescription.text = [item objectForKey:@"desc"];
@@ -200,7 +201,9 @@
     
     cell.giveButton.tag = indexPath.row;
     [cell.giveButton addTarget:self action:@selector(giveCoupon:) forControlEvents:UIControlEventTouchDown];
-
+    
+    cell.getButton.hidden = [item[@"redeemed"] boolValue];
+        
     return cell;
 }
 
@@ -212,10 +215,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSInteger thisCouponIndex = (int)indexPath.row;
+    NSInteger thisCellIndex = (int)indexPath.row;
 
     CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
-    [detailView setCouponIndex:thisCouponIndex];
+    [detailView setCouponIndex:thisCellIndex];
 
     //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
     //navVC.navigationBarHidden = YES;

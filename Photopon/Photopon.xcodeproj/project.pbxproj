@@ -33,6 +33,7 @@
 		6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */; };
 		6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */; };
 		625817241BA9685200506E0E /* camplaceholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 625817231BA9685200506E0E /* camplaceholder.jpg */; };
+		625B600E1D4C121100FB10D2 /* PhotoponWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 625B600D1D4C121100FB10D2 /* PhotoponWrapper.m */; };
 		6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */; };
 		626266201B8A5E89006D730E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6262661F1B8A5E89006D730E /* AVFoundation.framework */; };
 		626266221B8A6CA1006D730E /* takephoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 626266211B8A6CA1006D730E /* takephoto.png */; };
@@ -174,6 +175,8 @@
 		6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageTableViewCell.m; sourceTree = "<group>"; };
 		6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageTableViewCell.xib; sourceTree = "<group>"; };
 		625817231BA9685200506E0E /* camplaceholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camplaceholder.jpg; sourceTree = "<group>"; };
+		625B600C1D4C121100FB10D2 /* PhotoponWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoponWrapper.h; path = Wrappers/PhotoponWrapper.h; sourceTree = "<group>"; };
+		625B600D1D4C121100FB10D2 /* PhotoponWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoponWrapper.m; path = Wrappers/PhotoponWrapper.m; sourceTree = "<group>"; };
 		6262661C1B8A5BA1006D730E /* PhotoponCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponCameraView.h; sourceTree = "<group>"; };
 		6262661D1B8A5BA1006D730E /* PhotoponCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponCameraView.m; sourceTree = "<group>"; };
 		6262661F1B8A5E89006D730E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -447,6 +450,8 @@
 			children = (
 				621268131D38451B00735FC9 /* CouponWrapper.m */,
 				621268171D38457300735FC9 /* CouponWrapper.h */,
+				625B600C1D4C121100FB10D2 /* PhotoponWrapper.h */,
+				625B600D1D4C121100FB10D2 /* PhotoponWrapper.m */,
 			);
 			name = Wrappers;
 			sourceTree = "<group>";
@@ -999,6 +1004,7 @@
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				625B600E1D4C121100FB10D2 /* PhotoponWrapper.m in Sources */,
 				62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */,
 				462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,

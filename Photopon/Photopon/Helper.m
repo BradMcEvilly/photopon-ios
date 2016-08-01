@@ -239,7 +239,9 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
         
         NSLog(@"Got %lu coupons!", [results count]);
         
-        for (PFObject* object in results) {
+        for (PFObject* couponInfo in results) {
+            PFObject* object = [couponInfo valueForKey:@"coupon"];
+            PFObject* redeemed = [couponInfo valueForKey:@"redeemed"];
             
             NSString* title = [object objectForKey:@"title"];
             NSString* desc = [object objectForKey:@"description"];
@@ -250,7 +252,8 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
                                     @"title": title,
                                     @"desc": desc,
                                     @"pic": pic.url,
-                                    @"expiration": [object objectForKey:@"expiration"]
+                                    @"expiration": [object objectForKey:@"expiration"],
+                                    @"redeemed": redeemed
                                     }];
             
             

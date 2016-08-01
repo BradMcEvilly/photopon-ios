@@ -3,40 +3,57 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[RealTimeNotificationHandler client:didReceiveMessage:]:Helper.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[UIView(Internal) _addSubview:positioned:relativeTo:]:(null)">
-      </ContextState>
-      <ContextState
-         contextName = "SaveImage:DBAccess.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[HeaderViewController backMenuClicked]:HeaderViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.parentViewController">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[PhotoponLoginViewController viewDidLayoutSubviews]:PhotoponLoginViewController.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[ChatMessageTableViewCell awakeFromNib]:ChatMessageTableViewCell.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "__88-[UIImageView(WebCache) sd_setImageWithURL:placeholderImage:options:progress:completed:]_block_invoke14:UIImageView+WebCache.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[FriendsViewController startChatWithFriend:]:FriendsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CouponViewController tableView:cellForRowAtIndexPath:]:CouponViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[item[@&quot;redeemed&quot;] integerValue]">
+            </PersistentString>
+            <PersistentString
+               value = "item[@&quot;redeemed&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "cell.getButton.hidden">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__GetCouponsByLocation_block_invoke_2:DBAccess.m">
+      </ContextState>
+      <ContextState
+         contextName = "__37-[AddFriendController getSuggestions]_block_invoke:AddFriendController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "myContacts">
+            </PersistentString>
+            <PersistentString
+               value = "friendSuggestions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView closeView]:PhotoponCameraView.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[HeaderViewController makeImageNegative:]:HeaderViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "image.size.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__74-[SettingsController imagePickerController:didFinishPickingMediaWithInfo:]_block_invoke:SettingsController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "file.url">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[LeftMenuViewController menuItemTapped:]:LeftMenuViewController.m">
@@ -47,15 +64,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__34-[AddFriendController viewDidLoad]_block_invoke:AddFriendController.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[PhotoponCameraView initCamera]:PhotoponCameraView.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.parentViewController">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "__36-[FriendsViewController viewDidLoad]_block_invoke:FriendsViewController.m">
       </ContextState>
       <ContextState
          contextName = "__CreateAddFriendNotification_block_invoke:DBAccess.m">
@@ -66,13 +75,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[LeftMenuViewController addTapHandlerFor:withTag:]:LeftMenuViewController.m">
+         contextName = "-[MiniCouponView gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:]:MiniCouponView.m">
+      </ContextState>
+      <ContextState
+         contextName = "__45-[FriendPopupViewController removeFriendShip]_block_invoke_2:FriendPopupViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "objId">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[PhotoponCameraView viewDidLoad]:PhotoponCameraView.m">
          <PersistentStrings>
             <PersistentString
                value = "self.couponOverlayGraphics">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[FriendPopupViewController startChat:]:FriendPopupViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "root.navigationController">
+            </PersistentString>
+            <PersistentString
+               value = "self.storyboard">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -101,100 +129,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__36-[FriendsViewController viewDidLoad]_block_invoke:FriendsViewController.m">
-      </ContextState>
-      <ContextState
-         contextName = "__74-[SettingsController imagePickerController:didFinishPickingMediaWithInfo:]_block_invoke:SettingsController.m">
+         contextName = "SaveImage:DBAccess.m">
          <PersistentStrings>
             <PersistentString
-               value = "file.url">
+               value = "self">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__39-[FriendPopupViewController startChat:]_block_invoke:FriendPopupViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "friendsCtrl.navigationController">
-            </PersistentString>
-            <PersistentString
-               value = "self.navigationController">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "msg[@&quot;from&quot;]">
-            </PersistentString>
-            <PersistentString
-               value = "dict">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[AddFriendController addFriend:event:]:AddFriendController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[MiniCouponView gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:]:MiniCouponView.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[PhotoponCameraView captureNow]:PhotoponCameraView.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.navigationController">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[PhotoponCameraView closeView]:PhotoponCameraView.m">
-      </ContextState>
-      <ContextState
-         contextName = "__45-[FriendPopupViewController removeFriendShip]_block_invoke_2:FriendPopupViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "objId">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[AddFriendController tableView:cellForRowAtIndexPath:]:AddFriendController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "friendSuggestions">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[FriendPopupViewController startChat:]:FriendPopupViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "root.navigationController">
-            </PersistentString>
-            <PersistentString
-               value = "self.storyboard">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__37-[AddFriendController getSuggestions]_block_invoke:AddFriendController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "myContacts">
-            </PersistentString>
-            <PersistentString
-               value = "friendSuggestions">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[FriendsViewController startChatWithFriend:]:FriendsViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[PhotoponCameraView createMiniCouponView]:PhotoponCameraView.m">
@@ -208,15 +148,92 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[PhotoponLoginViewController viewDidLayoutSubviews]:PhotoponLoginViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__39-[FriendPopupViewController startChat:]_block_invoke:FriendPopupViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "friendsCtrl.navigationController">
+            </PersistentString>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ChatMessagesController client:didReceiveMessage:]:ChatMessagesController.m">
       </ContextState>
       <ContextState
-         contextName = "+[HeaderViewController makeImageNegative:]:HeaderViewController.m">
+         contextName = "-[ChatMessageTableViewCell awakeFromNib]:ChatMessageTableViewCell.m">
          <PersistentStrings>
             <PersistentString
-               value = "image.size.width">
+               value = "self.frame">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView initCamera]:PhotoponCameraView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[PhotoponCameraView captureNow]:PhotoponCameraView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[HeaderViewController backMenuClicked]:HeaderViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[RealTimeNotificationHandler client:didReceiveMessage:]:Helper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[LeftMenuViewController addTapHandlerFor:withTag:]:LeftMenuViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict">
+            </PersistentString>
+            <PersistentString
+               value = "msg[@&quot;from&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddFriendController addFriend:event:]:AddFriendController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddFriendController tableView:cellForRowAtIndexPath:]:AddFriendController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "friendSuggestions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[UIView(Internal) _addSubview:positioned:relativeTo:]:(null)">
+      </ContextState>
+      <ContextState
+         contextName = "__34-[AddFriendController viewDidLoad]_block_invoke:AddFriendController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

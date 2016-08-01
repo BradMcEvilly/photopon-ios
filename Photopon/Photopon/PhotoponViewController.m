@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DBAccess.h"
 #import "HeaderViewController.h"
+#import "CouponWrapper.h"
 
 @implementation PhotoponViewController
 {
@@ -24,6 +25,7 @@
     SendGAEvent(@"user_action", @"photopon_view", @"save_clicked");
     
     if (HasPhoneNumber(@"You need to add phone number to be able to save Photopons.")) {
+        
         PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
         [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
         [newWalletObject setObject:photopon forKey:@"photopon"];
@@ -65,6 +67,17 @@
     [self.couponTitle setText:[coupon objectForKey:@"title"]];
     [self.couponDescription setText:[coupon objectForKey:@"description"]];
     
+    self.saveButton.hidden = YES;
+    self.loadingText.hidden = NO;
+    self.alreadyRedeemedText.hidden = YES;
+    
+    [[CouponWrapper fromObject:coupon] isRedeemed:^(BOOL value) {
+        self.loadingText.hidden = YES;
+        self.saveButton.hidden = value;
+        if (value) {
+            self.alreadyRedeemedText.hidden = NO;
+        }
+    }];
 
     [self.saveButton addTarget:self action:@selector(savePhotopon) forControlEvents:UIControlEventTouchDown];
   
