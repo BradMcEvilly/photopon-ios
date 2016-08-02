@@ -15,6 +15,7 @@
 #import "HeaderViewController.h"
 #import "AlertBox.h"
 #import "PhotoponWrapper.h"
+#import "CouponWrapper.h"
 
 @implementation WalletController
 {
@@ -121,19 +122,47 @@
     }];
 }
 
+-(void)removeWalletItem {
+    PFObject* walletItem = [allWalletItems objectAtIndex:selectedItemIndex];
+
+    [walletItem setValue:[NSNumber numberWithBool:YES] forKey:@"isUsed"];
+    [walletItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self updateWallet];
+    }];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedItemIndex = (int)indexPath.row;
     SendGAEvent(@"user_action", @"wallet", @"wallet_item_clicked");
     
+    PFObject* walletItem = [allWalletItems objectAtIndex:selectedItemIndex];
     
-    [AlertBox showMessageFor:self
-                   withTitle:@"Choose action"
-                 withMessage:@"Do you want to Redeem this photopon now?"
-                  leftButton:@"Cancel"
-                 rightButton:@"Redeem"
-                  leftAction:nil
-                 rightAction:@selector(redeemCoupon)];
+    PFObject* photopon = [walletItem objectForKey:@"photopon"];
+    PFObject* coupon = [photopon objectForKey:@"coupon"];
+    
+    //[[CouponWrapper fromObject:coupon] isRedeemed] redeem];
+    [[CouponWrapper fromObject:coupon] isRedeemed:^(BOOL value) {
+        if (!value) {
+            [AlertBox showMessageFor:self
+                           withTitle:@"Choose action"
+                         withMessage:@"Do you want to Redeem this photopon now?"
+                          leftButton:@"Cancel"
+                         rightButton:@"Redeem"
+                          leftAction:nil
+                         rightAction:@selector(redeemCoupon)];
+        } else {
+            [AlertBox showMessageFor:self
+                           withTitle:@"Redeemed"
+                         withMessage:@"You have already redeemed this coupon."
+                          leftButton:nil
+                         rightButton:@"OK"
+                          leftAction:nil
+                         rightAction:@selector(removeWalletItem)];
+        }
+    }];
+
+   
 }
 
 
