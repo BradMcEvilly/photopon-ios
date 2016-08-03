@@ -56,9 +56,11 @@
     }];
 }
 
-- (void)retrieveAllLocationsForOwnerID:(NSNumber* )ownerID {
-    PFQuery *query = [PFQuery queryWithClassName:@"Location" predicate:[NSPredicate predicateWithFormat:@"owner = %@" argumentArray:@[ownerID]]];
-    [query whereKey:@"location" nearGeoPoint:[PFGeoPoint geoPointWithLocation:GetCurrentLocation()]];
+- (void)retrieveAllLocationsForOwnerID:(PFObject* )owner {
+    PFQuery *query = [PFQuery queryWithClassName:@"Location"];
+    [query whereKey:@"location" nearGeoPoint:[PFGeoPoint geoPointWithLocation:GetCurrentLocation()]withinKilometers:40000];
+    [query includeKey:@"owner"];
+    [query whereKey:@"owner" equalTo:owner];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         self.locationObjects = objects;
