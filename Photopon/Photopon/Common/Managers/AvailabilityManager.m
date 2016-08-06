@@ -21,7 +21,9 @@ static BOOL photoponAvailable = YES;
     CheckAppAvailabilityForZipcode(zipcode, ^(BOOL available, NSError *error) {
         [self setPhotoponAvailable:available];
         if (available) {
+            if (completion) {
             completion(YES);
+            }
         } else {
             
             

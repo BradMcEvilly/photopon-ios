@@ -211,6 +211,13 @@ CLLocation* GetCurrentLocation() {
     return locationManager.location;
 }
 
+CLLocationManager* GetLocationManager() {
+    if (!locationManager) {
+        locationManager = [[CLLocationManager alloc]init];
+    }
+    return locationManager;
+}
+
 void AddCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
     if (couponDelegates == nil) {
         couponDelegates = [[NSHashTable alloc] init];

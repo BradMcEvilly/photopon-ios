@@ -9,6 +9,9 @@
 #import "WelcomeViewController.h"
 #import "UserManager.h"
 #import "LoginViewController.h"
+#import "AvailabilityManager.h"
+#import "Helper.h"
+#import "AlertBox.h"
 
 @interface WelcomeViewController ()
 
@@ -21,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [AvailabilityManager checkAvailabilityWithLocation:GetCurrentLocation() completion:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -65,12 +70,19 @@
 }
 
 - (IBAction)sawPostcardHandler {
-    [self proceedToLogin];
+    if ([AvailabilityManager photoponAvailable]) {
+        [self proceedToLogin];
+        SendGAEvent(@"user_action", @"welcome_screen", @"saw_a_postcard");
+    } else {
+        [AlertBox showAlertFor:self withTitle:@"Photopon" withMessage:@"Photopon is currently not available in this area" leftButton:@"OK" rightButton:nil leftAction:nil rightAction:nil];
+    }
 }
 
 - (IBAction)fromFriendHandler {
     [UserManager sharedManager].isFrendInvited = YES;
+    SendGAEvent(@"user_action", @"welcome_screen", @"received_photopon_from_friend");
     [self proceedToLogin];
+
 }
 
 @end
