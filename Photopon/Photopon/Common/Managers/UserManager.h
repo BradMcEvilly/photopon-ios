@@ -10,6 +10,10 @@
 
 @interface UserManager : NSObject
 
++ (UserManager *)sharedManager;
+
 + (BOOL)isFirstTimeUser;
+
+@property (nonatomic, assign) BOOL isFrendInvited;
 
 @end

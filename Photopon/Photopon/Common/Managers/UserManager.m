@@ -11,6 +11,16 @@
 
 @implementation UserManager
 
+static UserManager *instance;
+
++ (UserManager *)sharedManager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[UserManager alloc]init];
+    });
+    return instance;
+}
+
 + (BOOL)isFirstTimeUser {
     NSNumber *firstTimeUserKey = [[NSUserDefaults standardUserDefaults]objectForKey:PhotoponFirstTimeUserKey];
 

@@ -59,13 +59,18 @@
 
 #pragma mark - Handlers
 
-- (IBAction)sawPostcardHandler {
+- (void)proceedToLogin {
     LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LoginCtrl"];
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
-- (IBAction)fromFriendHandler {
+- (IBAction)sawPostcardHandler {
+    [self proceedToLogin];
+}
 
+- (IBAction)fromFriendHandler {
+    [UserManager sharedManager].isFrendInvited = YES;
+    [self proceedToLogin];
 }
 
 @end

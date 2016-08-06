@@ -157,7 +157,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Verifiation"];
+    [HeaderViewController addBackHeaderToView:self withTitle:@"Verification"];
 
     
     
