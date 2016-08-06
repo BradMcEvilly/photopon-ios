@@ -20,6 +20,9 @@
 		466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C42AA1D43400100F277BA /* GoogleMapsManager.m */; };
 		46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EA1D1EB839002122EC /* AvailabilityManager.m */; };
 		46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */; };
+		46D2FF991D5624780073EBC7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D2FF981D5624780073EBC7 /* Onboarding.storyboard */; };
+		46D2FF9C1D5625CF0073EBC7 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2FF9B1D5625CF0073EBC7 /* WelcomeViewController.m */; };
+		46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2FF9F1D5626AD0073EBC7 /* UserManager.m */; };
 		620602381CEE162A0054122D /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602361CEE162A0054122D /* photopon-logo-black.png */; };
 		620602391CEE162A0054122D /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602371CEE162A0054122D /* photopon-logo-white.png */; };
 		620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */; };
@@ -153,6 +156,12 @@
 		46CF62EA1D1EB839002122EC /* AvailabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityManager.m; sourceTree = "<group>"; };
 		46CF62ED1D1EF1FB002122EC /* AlertControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerFactory.h; sourceTree = "<group>"; };
 		46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertControllerFactory.m; sourceTree = "<group>"; };
+		46D2FF981D5624780073EBC7 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		46D2FF9A1D5625CF0073EBC7 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		46D2FF9B1D5625CF0073EBC7 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		46D2FF9D1D56262E0073EBC7 /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		46D2FF9E1D5626AD0073EBC7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		46D2FF9F1D5626AD0073EBC7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		620602361CEE162A0054122D /* photopon-logo-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-black.png"; path = "Resources/photopon-logo-black.png"; sourceTree = "<group>"; };
 		620602371CEE162A0054122D /* photopon-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-white.png"; path = "Resources/photopon-logo-white.png"; sourceTree = "<group>"; };
 		620C4C1C1C10F8EF00579CF5 /* FriendPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPopupViewController.h; sourceTree = "<group>"; };
@@ -350,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				462187E31D33FF5B0085579E /* URLConstants.h */,
+				46D2FF9D1D56262E0073EBC7 /* AppConstants.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -423,6 +433,8 @@
 				46CF62EA1D1EB839002122EC /* AvailabilityManager.m */,
 				466C42A91D43400100F277BA /* GoogleMapsManager.h */,
 				466C42AA1D43400100F277BA /* GoogleMapsManager.m */,
+				46D2FF9E1D5626AD0073EBC7 /* UserManager.h */,
+				46D2FF9F1D5626AD0073EBC7 /* UserManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -443,6 +455,16 @@
 				462C697F1D230BDD00E13783 /* AppNavigationStackHelper.h */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		46D2FF971D56244D0073EBC7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				46D2FF981D5624780073EBC7 /* Onboarding.storyboard */,
+				46D2FF9A1D5625CF0073EBC7 /* WelcomeViewController.h */,
+				46D2FF9B1D5625CF0073EBC7 /* WelcomeViewController.m */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		621268161D38455200735FC9 /* Wrappers */ = {
@@ -647,6 +669,7 @@
 		84B8CB911D0B16C60060BAD5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				46D2FF971D56244D0073EBC7 /* Onboarding */,
 				6276A9FB1D4608E9000A8BE0 /* SentPhotopons */,
 				46084ACC1D415DD200BE23F0 /* CouponLocations */,
 				84B8CB921D0B17910060BAD5 /* Chat */,
@@ -853,6 +876,7 @@
 				629E71FD1C6117B100DD79C1 /* Icon-Find-User.png in Resources */,
 				6281445C1C4F000E0008D9FF /* IndicatorViewController.xib in Resources */,
 				62970B461C4021E900521815 /* camera.png in Resources */,
+				46D2FF991D5624780073EBC7 /* Onboarding.storyboard in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
 				62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */,
@@ -978,6 +1002,7 @@
 				62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
 				628144561C485F5B0008D9FF /* HeaderViewController.m in Sources */,
+				46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */,
 				462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
@@ -995,6 +1020,7 @@
 				6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
 				62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */,
+				46D2FF9C1D5625CF0073EBC7 /* WelcomeViewController.m in Sources */,
 				622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */,
 				466B631D1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m in Sources */,
 				622563F41C9B257300ED2C46 /* AlertBox.m in Sources */,

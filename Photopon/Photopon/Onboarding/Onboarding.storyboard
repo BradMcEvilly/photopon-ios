@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IDr-54-Yf2">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="3lo-LN-Ke2">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" id="IDr-54-Yf2" customClass="WelcomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G1L-5u-3Bi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dpc-ff-tVT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1o5-Vz-wYJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-TR-GYY" userLabel="BackgroundView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photopon-logo-black.png" translatesAutoresizingMaskIntoConstraints="NO" id="75e-fU-Wel">
+                                        <rect key="frame" x="30" y="84" width="260" height="200"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-ua-fIc">
+                                        <rect key="frame" x="0.0" y="478" width="320" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="cLp-mm-UYn"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1Vd-ua-fIc" secondAttribute="trailing" id="AGE-GL-kG9"/>
+                                    <constraint firstAttribute="trailing" secondItem="75e-fU-Wel" secondAttribute="trailing" constant="30" id="AVN-L4-fBp"/>
+                                    <constraint firstItem="75e-fU-Wel" firstAttribute="top" secondItem="RTZ-TR-GYY" secondAttribute="top" constant="84" id="YzM-4N-glr"/>
+                                    <constraint firstItem="75e-fU-Wel" firstAttribute="leading" secondItem="RTZ-TR-GYY" secondAttribute="leading" constant="30" id="i2X-1G-DIl"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Vd-ua-fIc" secondAttribute="bottom" id="jlu-k6-9lw"/>
+                                    <constraint firstItem="75e-fU-Wel" firstAttribute="centerX" secondItem="RTZ-TR-GYY" secondAttribute="centerX" id="oNg-GD-K16"/>
+                                    <constraint firstItem="1Vd-ua-fIc" firstAttribute="leading" secondItem="RTZ-TR-GYY" secondAttribute="leading" id="uSr-Ti-0LG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-Kg-5xZ" userLabel="WelcomeView">
+                                <rect key="frame" x="0.0" y="184.5" width="320" height="198"/>
+                                <subviews>
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sde-uE-Keb" userLabel="Divider">
+                                        <rect key="frame" x="60" y="0.0" width="200" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="TPY-ZO-t3n"/>
+                                            <constraint firstAttribute="width" constant="200" id="Xfg-hh-R84"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How did you found out about Photopon?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb2-h6-Dh8">
+                                        <rect key="frame" x="10" y="25" width="300" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-ZY-sEg">
+                                        <rect key="frame" x="59" y="91" width="202" height="30"/>
+                                        <state key="normal" title="I saw a postcard for a coupon"/>
+                                        <connections>
+                                            <action selector="sawPostcardHandler" destination="IDr-54-Yf2" eventType="touchUpInside" id="oaa-Po-7cu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-pf-RsS">
+                                        <rect key="frame" x="39" y="139" width="241" height="30"/>
+                                        <state key="normal" title="I received a Photopon from a friend"/>
+                                        <connections>
+                                            <action selector="fromFriendHandler" destination="IDr-54-Yf2" eventType="touchUpInside" id="sDv-Fj-dQC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Nb2-h6-Dh8" secondAttribute="trailing" constant="10" id="4Lm-Ma-gwm"/>
+                                    <constraint firstItem="9Nn-pf-RsS" firstAttribute="centerX" secondItem="hnD-Kg-5xZ" secondAttribute="centerX" id="5fP-ss-z6P"/>
+                                    <constraint firstItem="Nb2-h6-Dh8" firstAttribute="leading" secondItem="hnD-Kg-5xZ" secondAttribute="leading" constant="10" id="AGr-Q3-pOc"/>
+                                    <constraint firstItem="sde-uE-Keb" firstAttribute="top" secondItem="hnD-Kg-5xZ" secondAttribute="top" id="MXg-Cu-U04"/>
+                                    <constraint firstItem="sde-uE-Keb" firstAttribute="centerX" secondItem="hnD-Kg-5xZ" secondAttribute="centerX" id="RWs-YA-1ZA"/>
+                                    <constraint firstItem="Nb2-h6-Dh8" firstAttribute="top" secondItem="hnD-Kg-5xZ" secondAttribute="top" constant="25" id="TPv-RE-LUK"/>
+                                    <constraint firstItem="dq2-ZY-sEg" firstAttribute="top" secondItem="Nb2-h6-Dh8" secondAttribute="bottom" constant="25" id="eTe-uT-E78"/>
+                                    <constraint firstItem="dq2-ZY-sEg" firstAttribute="centerX" secondItem="hnD-Kg-5xZ" secondAttribute="centerX" id="oZf-YT-eab"/>
+                                    <constraint firstItem="9Nn-pf-RsS" firstAttribute="top" secondItem="dq2-ZY-sEg" secondAttribute="bottom" constant="18" id="qfw-ge-5un"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Nn-pf-RsS" secondAttribute="bottom" constant="29" id="xAA-sS-80G"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RTZ-TR-GYY" secondAttribute="trailing" id="7id-E3-G4p"/>
+                            <constraint firstItem="RTZ-TR-GYY" firstAttribute="leading" secondItem="1o5-Vz-wYJ" secondAttribute="leading" id="HwY-nk-udZ"/>
+                            <constraint firstItem="hnD-Kg-5xZ" firstAttribute="leading" secondItem="1o5-Vz-wYJ" secondAttribute="leading" id="Swc-8A-oBK"/>
+                            <constraint firstItem="RTZ-TR-GYY" firstAttribute="top" secondItem="1o5-Vz-wYJ" secondAttribute="top" id="VnQ-2a-zin"/>
+                            <constraint firstItem="hnD-Kg-5xZ" firstAttribute="centerY" secondItem="1o5-Vz-wYJ" secondAttribute="centerY" id="h0o-Jy-Nyc"/>
+                            <constraint firstItem="Dpc-ff-tVT" firstAttribute="top" secondItem="RTZ-TR-GYY" secondAttribute="bottom" id="qeL-oN-d0F"/>
+                            <constraint firstAttribute="trailing" secondItem="hnD-Kg-5xZ" secondAttribute="trailing" id="u9v-qo-U2B"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="logoTopConstraint" destination="YzM-4N-glr" id="CBT-uX-cj2"/>
+                        <outletCollection property="welcomeViewCollection" destination="sde-uE-Keb" id="j4R-uy-fFC"/>
+                        <outletCollection property="welcomeViewCollection" destination="Nb2-h6-Dh8" id="gCU-Pj-hWk"/>
+                        <outletCollection property="welcomeViewCollection" destination="dq2-ZY-sEg" id="8QL-wz-EI8"/>
+                        <outletCollection property="welcomeViewCollection" destination="9Nn-pf-RsS" id="qTH-bb-QdK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85y-d0-kIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="436"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="photopon-logo-black.png" width="600" height="200"/>
+        <image name="splash-bottom.png" width="320" height="60"/>
+    </resources>
+</document>

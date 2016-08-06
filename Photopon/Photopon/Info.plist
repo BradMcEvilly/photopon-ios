@@ -67,7 +67,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Onboarding</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UIStatusBarTintParameters</key>
