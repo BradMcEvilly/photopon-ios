@@ -1879,7 +1879,7 @@
                                             <constraint firstItem="keH-VY-R7Y" firstAttribute="leading" secondItem="ksU-ZY-8bi" secondAttribute="leading" constant="20" id="z3B-rA-xRL"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv7-DE-C37" userLabel="Sent Photopons">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv7-DE-C37" userLabel="Sent Photopons">
                                         <rect key="frame" x="0.0" y="355" width="250" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc4-S2-Tyb" userLabel="Sent">
