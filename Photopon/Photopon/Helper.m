@@ -280,7 +280,6 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 
     CLLocation* location = [locations lastObject];
-    NSLog(@"Location: %f, %f", location.coordinate.latitude, location.coordinate.longitude);
     [AvailabilityManager checkAvailabilityWithLocation:manager.location completion:^(BOOL available) {
         if (available) {
             [self getCouponsForLocation:location];

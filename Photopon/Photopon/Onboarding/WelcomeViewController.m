@@ -15,7 +15,7 @@
 
 @interface WelcomeViewController ()
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *logoTopConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *logoMidConstraint;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *welcomeViewCollection;
 
 @end
@@ -32,18 +32,20 @@
     [super viewDidAppear:animated];
 
     BOOL firstTimeUser = [UserManager isFirstTimeUser];
-    if (firstTimeUser) {
+    if (![[UserManager sharedManager]userLoggedIn]) {
         [self animateLogoMovement:^{
             [self animateWelcomeScreensMovement];
         }];
+    } else {
+        [self proceedToLogin];
     }
 }
 
 #pragma mark - Animations
 
 - (void)animateLogoMovement:(void (^) (void))completion {
-    self.logoTopConstraint.constant = 40;
-    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    self.logoMidConstraint.constant -= 60;
+    [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -53,11 +55,11 @@
 }
 
 - (void)animateWelcomeScreensMovement {
-    CGFloat delayInterval = 0.4;
+    CGFloat delayInterval = 0.3;
     for (UIView *view in self.welcomeViewCollection) {
         CGFloat index = [self.welcomeViewCollection indexOfObject:view];
         [UIView animateWithDuration:1.0 delay:delayInterval * index options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            view.alpha = 1.0;
+            view.alpha = 0.7;
         } completion:nil];
     }
 }

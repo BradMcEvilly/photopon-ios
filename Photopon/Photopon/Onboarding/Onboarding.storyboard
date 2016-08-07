@@ -34,7 +34,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1Vd-ua-fIc" secondAttribute="trailing" id="AGE-GL-kG9"/>
                                     <constraint firstAttribute="trailing" secondItem="75e-fU-Wel" secondAttribute="trailing" constant="30" id="AVN-L4-fBp"/>
-                                    <constraint firstItem="75e-fU-Wel" firstAttribute="top" secondItem="RTZ-TR-GYY" secondAttribute="top" constant="84" id="YzM-4N-glr"/>
+                                    <constraint firstItem="75e-fU-Wel" firstAttribute="centerY" secondItem="RTZ-TR-GYY" secondAttribute="centerY" constant="-100" id="PMG-hq-wIi"/>
                                     <constraint firstItem="75e-fU-Wel" firstAttribute="leading" secondItem="RTZ-TR-GYY" secondAttribute="leading" constant="30" id="i2X-1G-DIl"/>
                                     <constraint firstAttribute="bottom" secondItem="1Vd-ua-fIc" secondAttribute="bottom" id="jlu-k6-9lw"/>
                                     <constraint firstItem="75e-fU-Wel" firstAttribute="centerX" secondItem="RTZ-TR-GYY" secondAttribute="centerX" id="oNg-GD-K16"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-Kg-5xZ" userLabel="WelcomeView">
-                                <rect key="frame" x="0.0" y="184.5" width="320" height="198"/>
+                                <rect key="frame" x="0.0" y="182.5" width="320" height="202"/>
                                 <subviews>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sde-uE-Keb" userLabel="Divider">
                                         <rect key="frame" x="60" y="0.0" width="200" height="1"/>
@@ -58,15 +58,17 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-ZY-sEg">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-ZY-sEg">
                                         <rect key="frame" x="59" y="91" width="202" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="I saw a postcard for a coupon"/>
                                         <connections>
                                             <action selector="sawPostcardHandler" destination="IDr-54-Yf2" eventType="touchUpInside" id="oaa-Po-7cu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-pf-RsS">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-pf-RsS">
                                         <rect key="frame" x="39" y="139" width="241" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="I received a Photopon from a friend"/>
                                         <connections>
                                             <action selector="fromFriendHandler" destination="IDr-54-Yf2" eventType="touchUpInside" id="sDv-Fj-dQC"/>
@@ -101,7 +103,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="logoTopConstraint" destination="YzM-4N-glr" id="CBT-uX-cj2"/>
+                        <outlet property="logoMidConstraint" destination="PMG-hq-wIi" id="OKa-vE-COp"/>
                         <outletCollection property="welcomeViewCollection" destination="sde-uE-Keb" id="j4R-uy-fFC"/>
                         <outletCollection property="welcomeViewCollection" destination="Nb2-h6-Dh8" id="gCU-Pj-hWk"/>
                         <outletCollection property="welcomeViewCollection" destination="dq2-ZY-sEg" id="8QL-wz-EI8"/>

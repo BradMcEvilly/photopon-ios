@@ -66,7 +66,7 @@
     
     
     self.shutterButton.hidden = !hasCoupons;
-    self.noCouponView.hidden = hasCoupons;
+    self.noCouponView.hidden = hasCoupons || ![AvailabilityManager photoponAvailable];
     
     if (hasCoupons) {
         [self.noCouponIndicator stopAnimating];
@@ -360,7 +360,6 @@
         self.noCouponView.hidden = YES;
     } else {
         self.notAvailableViewBottomConstraint.constant = 0;
-        self.noCouponView.hidden = NO;
     }
 
     [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{

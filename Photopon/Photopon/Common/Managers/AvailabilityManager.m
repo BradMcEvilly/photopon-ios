@@ -28,9 +28,13 @@ static BOOL photoponAvailable = YES;
             
             
 #ifdef DEBUG
-            completion(YES);
+            if (completion) {
+                completion(YES);
+            }
 #else
-            completion(NO);
+            if (completion) {
+                completion(NO);
+            }
 #endif
         }
     });
@@ -49,9 +53,13 @@ static BOOL photoponAvailable = YES;
             if (completion) {
                 
 #ifdef DEBUG
-                completion(YES);
+                if (completion) {
+                    completion(YES);
+                }
 #else
-                completion(NO);
+                if (completion) {
+                    completion(NO);
+                }
 #endif
       
             }

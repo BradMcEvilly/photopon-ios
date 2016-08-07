@@ -9,6 +9,12 @@
 #import "UserManager.h"
 #import "AppConstants.h"
 
+@interface UserManager()
+
+@property (nonatomic, assign) BOOL demoUser;
+
+@end
+
 @implementation UserManager
 
 static UserManager *instance;
@@ -19,6 +25,11 @@ static UserManager *instance;
         instance = [[UserManager alloc]init];
     });
     return instance;
+}
+
+
+- (BOOL)userLoggedIn {
+    return [PFUser currentUser] ? YES : NO;
 }
 
 + (BOOL)isFirstTimeUser {

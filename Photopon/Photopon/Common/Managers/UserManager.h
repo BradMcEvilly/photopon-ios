@@ -12,6 +12,8 @@
 
 + (UserManager *)sharedManager;
 
+- (BOOL)userLoggedIn;
+
 + (BOOL)isFirstTimeUser;
 
 @property (nonatomic, assign) BOOL isFrendInvited;

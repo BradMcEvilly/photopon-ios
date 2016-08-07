@@ -24,6 +24,8 @@
     
     self.signUpController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton;
     self.signUpController.emailAsUsername = YES;
+
+//    [self setupSkipButton];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -47,5 +49,16 @@
     
 }
 
+#pragma mark - Skip
+
+- (void)setupSkipButton {
+    UIButton *skipButton = [[UIButton alloc]init];
+    [skipButton setTitle:@"Skip login" forState:UIControlStateNormal];
+    [self.view addSubview:skipButton];
+
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[button]" options:NSLayoutFormatAlignAllTop metrics:nil views:@{@"button": skipButton}]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:skipButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    skipButton.translatesAutoresizingMaskIntoConstraints = NO;
+}
 
 @end
