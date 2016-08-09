@@ -25,6 +25,7 @@
 		46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2FF9F1D5626AD0073EBC7 /* UserManager.m */; };
 		620602381CEE162A0054122D /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602361CEE162A0054122D /* photopon-logo-black.png */; };
 		620602391CEE162A0054122D /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 620602371CEE162A0054122D /* photopon-logo-white.png */; };
+		620B12991D594F9100CA038E /* SentPhotoponDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 620B12981D594F9100CA038E /* SentPhotoponDetail.m */; };
 		620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */; };
 		621268141D38451B00735FC9 /* CouponWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 621268131D38451B00735FC9 /* CouponWrapper.m */; };
 		621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621AE3351B797CBB00A9C18C /* LoginViewController.m */; };
@@ -164,6 +165,8 @@
 		46D2FF9F1D5626AD0073EBC7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		620602361CEE162A0054122D /* photopon-logo-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-black.png"; path = "Resources/photopon-logo-black.png"; sourceTree = "<group>"; };
 		620602371CEE162A0054122D /* photopon-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "photopon-logo-white.png"; path = "Resources/photopon-logo-white.png"; sourceTree = "<group>"; };
+		620B12971D594F9100CA038E /* SentPhotoponDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SentPhotoponDetail.h; path = SentPhotopons/SentPhotoponDetail.h; sourceTree = "<group>"; };
+		620B12981D594F9100CA038E /* SentPhotoponDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SentPhotoponDetail.m; path = SentPhotopons/SentPhotoponDetail.m; sourceTree = "<group>"; };
 		620C4C1C1C10F8EF00579CF5 /* FriendPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPopupViewController.h; sourceTree = "<group>"; };
 		620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPopupViewController.m; sourceTree = "<group>"; };
 		621268131D38451B00735FC9 /* CouponWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponWrapper.m; path = Wrappers/CouponWrapper.m; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 			children = (
 				6276A9FC1D46096B000A8BE0 /* SentPhotopons.h */,
 				6276A9FD1D46096B000A8BE0 /* SentPhotopons.m */,
+				620B12971D594F9100CA038E /* SentPhotoponDetail.h */,
+				620B12981D594F9100CA038E /* SentPhotoponDetail.m */,
 			);
 			name = SentPhotopons;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */,
 				6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
+				620B12991D594F9100CA038E /* SentPhotoponDetail.m in Sources */,
 				62E747291BDD50EB0003A8F1 /* MiniCouponView.m in Sources */,
 				46D2FF9C1D5625CF0073EBC7 /* WelcomeViewController.m in Sources */,
 				622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */,

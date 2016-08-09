@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SentPhotopons : UIViewController
+@interface SentPhotopons : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *sentPhotopons;
 
 @end

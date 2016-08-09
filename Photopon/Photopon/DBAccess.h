@@ -28,6 +28,7 @@ void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block);
 void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block);
 
 void GetNotifications(ResultBlock block);
+void GetSentPhotopons(ResultBlock block);
 void GetWalletItems(ResultBlock block);
 
 void CreateAddFriendNotification(PFUser* toUser);

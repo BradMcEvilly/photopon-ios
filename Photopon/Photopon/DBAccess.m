@@ -220,6 +220,25 @@ void GetNotifications(ResultBlock block) {
     }];
 }
 
+
+void GetSentPhotopons(ResultBlock block) {
+    PFUser* user = [PFUser currentUser];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Photopon"];
+    [query includeKey:@"coupon"];
+    [query includeKey:@"coupon.company"];
+    [query includeKey:@"users"];
+    [query whereKey:@"creator" equalTo:user];
+    
+    [query orderByDescending:@"createdAt"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+        block(results, error);
+    }];
+
+}
+
+
 void GetWalletItems(ResultBlock block) {
     PFUser* user = [PFUser currentUser];
     
