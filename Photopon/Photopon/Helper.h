@@ -49,6 +49,8 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate);
 
 
 int DaysBetween(NSDate* from, NSDate* to);
+NSString* phoneNumberFromString(NSString* number);
+
 
 UIImage* MakeImageNegative(UIImage* image);
 UIImage* ImageWithWhiteBackground(UIImage* image);

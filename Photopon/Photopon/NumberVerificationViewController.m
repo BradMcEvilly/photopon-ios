@@ -79,7 +79,7 @@
     
     PFUser *user = [PFUser currentUser];
   
-    user[@"phone"] = self.phoneNumber.text;
+    user[@"phone"] = NumbersFromFormattedPhone(self.phoneNumber.text);
     
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         

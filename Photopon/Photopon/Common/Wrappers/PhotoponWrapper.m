@@ -9,11 +9,32 @@
 #import "PhotoponWrapper.h"
 #import "AlertBox.h"
 
+
+@implementation PFUserPlaceholder
+
++(PFUserPlaceholder*)create: (NSString*)phoneNumber {
+    PFUserPlaceholder* obj = [PFUserPlaceholder new];
+    obj.phoneNumber = phoneNumber;
+    return obj;
+}
+
+-(NSString*)username {
+    return phoneNumberFromString(_phoneNumber);
+}
+
+-(NSString*)getId {
+    return _phoneNumber;
+}
+
+@end
+
+
+
 @interface UserCache : NSObject
 
 -(BOOL)hasUser: (NSString*) objid;
--(PFUser*)getUser: (NSString*) objid;
--(void)setUser: (NSString*)objid forUser:(PFUser*)user;
+-(id)getUser: (NSString*) objid;
+-(void)setUser: (NSString*)objid forUser:(id)user;
 
 @end
 
@@ -41,12 +62,12 @@ NSMutableDictionary* cachedUsers;
 }
 
 
--(PFUser*)getUser: (NSString*) objid {
+-(id)getUser: (NSString*) objid {
     return cachedUsers[objid];
 }
 
 
--(void)setUser: (NSString*)objid forUser:(PFUser*)user {
+-(void)setUser: (NSString*)objid forUser:(id)user {
     if (!cachedUsers) {
         cachedUsers = [NSMutableDictionary new];
     }
@@ -62,10 +83,45 @@ NSMutableDictionary* cachedUsers;
 
 
 
+@interface ExecutionQueue : NSObject
+
+-(dispatch_queue_t)getQueue;
+
+@property (retain) dispatch_queue_t the_queue;
+
+@end
+
+
+@implementation ExecutionQueue: NSObject
+
+
++ (ExecutionQueue*) instance {
+    static ExecutionQueue *sharedMyQueue = nil;
+    @synchronized(self) {
+        if (sharedMyQueue == nil) {
+            sharedMyQueue = [[ExecutionQueue alloc] init];
+            sharedMyQueue.the_queue = dispatch_queue_create("User resolver", DISPATCH_QUEUE_SERIAL);
+        }
+    }
+    return sharedMyQueue;
+}
+
+-(dispatch_queue_t)getQueue {
+    return _the_queue;
+}
+
+
+
+@end
+
+
+
+
 
 
 @implementation PhotoponWrapper
 {
+    
 }
 
 @synthesize photopon;
@@ -79,35 +135,73 @@ NSMutableDictionary* cachedUsers;
 
 - (void)grabUsers: (PhotoponUsersBlock)block {
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+    NSArray* users = [photopon objectForKey:@"users"];
+    NSMutableArray* mutable = [NSMutableArray new];
+    BOOL foundEverything = YES;
+    
+    for (NSString* objid in users) {
         
+        if ([[UserCache instance] hasUser:objid] ) {
+            [mutable addObject: [[UserCache instance] getUser:objid] ];
+        } else {
+            foundEverything = NO;
+        }
+    }
+    
+
+    if (!foundEverything) {
         
-        NSArray* users = [photopon objectForKey:@"users"];
-        NSMutableArray* mutable = [NSMutableArray new];
-        
-        for (NSString* objid in users) {
-            PFQuery * query = [PFUser query];
+        dispatch_async([[ExecutionQueue instance] getQueue], ^{
             
-            if ([[UserCache instance] hasUser:objid] ) {
-                [mutable addObject: [[UserCache instance] getUser:objid] ];
-            } else {
+            
+            NSArray* users = [photopon objectForKey:@"users"];
+            NSMutableArray* mutable = [NSMutableArray new];
+            
+            for (NSString* objid in users) {
+                PFQuery * query = [PFUser query];
                 
-                [query whereKey:@"objectId" equalTo:objid];
-                
-                PFUser* u = [query getFirstObject];
-                if (u) {
-                    [mutable addObject:u];
-                    [[UserCache instance] setUser:objid forUser:u];
+                if ([[UserCache instance] hasUser:objid] ) {
+                    [mutable addObject: [[UserCache instance] getUser:objid] ];
+                } else {
+                    
+                    [query whereKey:@"objectId" equalTo:objid];
+                    
+                    PFUser* u = [query getFirstObject];
+                    if (u) {
+                        [mutable addObject:u];
+                        [[UserCache instance] setUser:objid forUser:u];
+                    } else {
+                        
+                        
+                        PFQuery* secondQuery = [PFUser query];
+                        [secondQuery whereKey:@"phone" equalTo:objid];
+                        PFUser* u1 = [secondQuery getFirstObject];
+                        
+                        if (u1) {
+                            [mutable addObject:u1];
+                            [[UserCache instance] setUser:objid forUser:u1];
+                        } else {
+                            PFUserPlaceholder* userHolder = [PFUserPlaceholder create:objid];
+                            [mutable addObject:userHolder];
+                            [[UserCache instance] setUser:objid forUser:userHolder];
+                        }
+                    }
                 }
             }
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            block(mutable);
-        });
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(mutable);
+            });
 
+            
+        });
         
-    });
+    } else {
+        block(mutable);
+    }
+    
+    
 }
 
 

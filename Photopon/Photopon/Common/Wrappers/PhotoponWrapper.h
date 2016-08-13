@@ -11,6 +11,14 @@
 typedef void (^PhotoponUsersBlock)(NSArray *results);
 typedef void (^PhotoponStatusBlock)(NSString *status);
 
+@interface PFUserPlaceholder : NSObject
+
++(PFUserPlaceholder*)create: (NSString*)phoneNumber;
+-(NSString*)username;
+-(NSString*)getId;
+
+@property (assign) NSString* phoneNumber;
+@end
 
 @interface PhotoponWrapper : NSObject
 
