@@ -30,6 +30,7 @@
 @property (nonatomic, strong) PFUser *currentUser;
 @property (nonatomic, strong) NSMutableArray *presentableModels;
 @property (nonatomic, strong) NSMutableDictionary *resolvedUsers;
+@property (nonatomic, strong) NSString* preEnteredMessage;
 @end
 
 @implementation ChatMessagesController
@@ -68,6 +69,9 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    self.textField.text = _preEnteredMessage;
+    _preEnteredMessage = @"";
 }
 
 - (void)configureTableView {
@@ -221,6 +225,10 @@
     
     [pubnub subscribeToChannels:@[self.channelName] withPresence:YES];
     [pubnub addListener:self];
+}
+
+- (void)setMessage:(NSString*)message {
+    _preEnteredMessage = message;
 }
 
 - (void)didLoadMessages:(NSArray<NSDictionary *> *)messages

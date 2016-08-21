@@ -23,6 +23,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "__49-[SentPhotopons tableView:cellForRowAtIndexPath:]_block_invoke:SentPhotopons.m">
+      </ContextState>
+      <ContextState
          contextName = "__GetCouponsByLocation_block_invoke_2:DBAccess.m">
       </ContextState>
       <ContextState
@@ -38,6 +41,9 @@
       </ContextState>
       <ContextState
          contextName = "-[PhotoponCameraView closeView]:PhotoponCameraView.m">
+      </ContextState>
+      <ContextState
+         contextName = "__28-[SentPhotopons viewDidLoad]_block_invoke:SentPhotopons.m">
       </ContextState>
       <ContextState
          contextName = "+[HeaderViewController makeImageNegative:]:HeaderViewController.m">
@@ -162,6 +168,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[SentPhotopons tableView:cellForRowAtIndexPath:]:SentPhotopons.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "resolvedData[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ChatMessagesController client:didReceiveMessage:]:ChatMessagesController.m">
       </ContextState>
       <ContextState
@@ -206,10 +220,10 @@
          contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
          <PersistentStrings>
             <PersistentString
-               value = "dict">
+               value = "msg[@&quot;from&quot;]">
             </PersistentString>
             <PersistentString
-               value = "msg[@&quot;from&quot;]">
+               value = "dict">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

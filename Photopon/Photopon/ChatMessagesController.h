@@ -14,6 +14,7 @@
 @interface ChatMessagesController : UIViewController<PNObjectEventListener, UITableViewDataSource, UITableViewDelegate>
 
 - (void)setUser:(PFUser*)user;
+- (void)setMessage:(NSString*)message;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
