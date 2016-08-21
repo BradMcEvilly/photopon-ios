@@ -42,4 +42,10 @@ static UserManager *instance;
     }
 }
 
++ (BOOL)checkIfUserWasAlreadyInvited {
+
+}
+
+
+
 @end

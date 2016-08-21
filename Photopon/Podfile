@@ -12,5 +12,6 @@ pod 'Google/Analytics'
 pod 'TwilioSDK', '~>1.2'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'MBProgressHUD', '~> 1.0.0'
 
 end

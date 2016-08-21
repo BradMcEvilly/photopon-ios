@@ -29,6 +29,7 @@ PODS:
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
   - IQKeyboardManager (3.3.5)
+  - MBProgressHUD (1.0.0)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
   - ParseUI (1.1.7):
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - FontAwesome
   - Google/Analytics
   - IQKeyboardManager
+  - MBProgressHUD (~> 1.0.0)
   - Parse (~> 1.7)
   - ParseUI
   - PubNub
@@ -69,10 +71,13 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
   PubNub: 461805c30ce11332a6ee5ab2c34be2d4c82c38d7
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
   TwilioSDK: d3982acf6880ddf3ce57c4444e021a71c5f35653
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: a4ece2837c916023e62d6ecb4f1bf66aee875d00
+
+COCOAPODS: 1.0.1
