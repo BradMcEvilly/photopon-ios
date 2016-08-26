@@ -1,4 +1,5 @@
 PODS:
+  - AMPopTip (1.2.0)
   - Bolts/Tasks (1.5.1)
   - CocoaLumberjack (2.2.0):
     - CocoaLumberjack/Default (= 2.2.0)
@@ -46,6 +47,7 @@ PODS:
   - TwilioSDK (1.2.7)
 
 DEPENDENCIES:
+  - AMPopTip
   - Crashlytics
   - Fabric
   - FontAwesome
@@ -59,6 +61,7 @@ DEPENDENCIES:
   - TwilioSDK (~> 1.2)
 
 SPEC CHECKSUMS:
+  AMPopTip: 853bcb307ecc6f71742cccdbc5b594bea097f188
   Bolts: a12663244b1d3351c738882e71902fc74db54f64
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
@@ -78,6 +81,6 @@ SPEC CHECKSUMS:
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
   TwilioSDK: d3982acf6880ddf3ce57c4444e021a71c5f35653
 
-PODFILE CHECKSUM: a4ece2837c916023e62d6ecb4f1bf66aee875d00
+PODFILE CHECKSUM: b23ea1f1f06a6404fa191e7e89bd8c0b3e05911c
 
 COCOAPODS: 1.0.1

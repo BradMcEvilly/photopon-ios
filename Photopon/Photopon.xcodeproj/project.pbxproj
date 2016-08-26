@@ -19,6 +19,7 @@
 		466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C42AA1D43400100F277BA /* GoogleMapsManager.m */; };
 		46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EA1D1EB839002122EC /* AvailabilityManager.m */; };
 		46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */; };
+		46D121FF1D70C110005B6CAF /* TooltipFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D121FE1D70C110005B6CAF /* TooltipFactory.m */; };
 		46D2FF991D5624780073EBC7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D2FF981D5624780073EBC7 /* Onboarding.storyboard */; };
 		46D2FF9C1D5625CF0073EBC7 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2FF9B1D5625CF0073EBC7 /* WelcomeViewController.m */; };
 		46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2FF9F1D5626AD0073EBC7 /* UserManager.m */; };
@@ -158,6 +159,8 @@
 		46CF62EA1D1EB839002122EC /* AvailabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityManager.m; sourceTree = "<group>"; };
 		46CF62ED1D1EF1FB002122EC /* AlertControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerFactory.h; sourceTree = "<group>"; };
 		46CF62EE1D1EF1FB002122EC /* AlertControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertControllerFactory.m; sourceTree = "<group>"; };
+		46D121FD1D70C110005B6CAF /* TooltipFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TooltipFactory.h; sourceTree = "<group>"; };
+		46D121FE1D70C110005B6CAF /* TooltipFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TooltipFactory.m; sourceTree = "<group>"; };
 		46D2FF981D5624780073EBC7 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		46D2FF9A1D5625CF0073EBC7 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		46D2FF9B1D5625CF0073EBC7 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
@@ -426,6 +429,7 @@
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				46D121FC1D70C0DF005B6CAF /* Factories */,
 				46084AC91D41567300BE23F0 /* Stroyboards */,
 				621268161D38455200735FC9 /* Wrappers */,
 				466B63201D385D7000FEB0BC /* Categories */,
@@ -469,6 +473,15 @@
 				462C697F1D230BDD00E13783 /* AppNavigationStackHelper.h */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		46D121FC1D70C0DF005B6CAF /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				46D121FD1D70C110005B6CAF /* TooltipFactory.h */,
+				46D121FE1D70C110005B6CAF /* TooltipFactory.m */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		46D2FF971D56244D0073EBC7 /* Onboarding */ = {
@@ -1006,6 +1019,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6281444D1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m in Sources */,
+				46D121FF1D70C110005B6CAF /* TooltipFactory.m in Sources */,
 				462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */,
 				623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */,
 				62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */,
