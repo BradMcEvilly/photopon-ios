@@ -12,5 +12,9 @@
 @interface TooltipFactory : NSObject
 
 + (AMPopTip *)showTakePhotoTooltipForView:(UIView *)view frame:(CGRect)frame;
++ (void)setTakePhotoTooltipChecked;
+
++ (AMPopTip *)showPersonalizeTooltipForView:(UIView *)view frame:(CGRect)frame;
++ (void)setPersonalizeTooltipChecked;
 
 @end

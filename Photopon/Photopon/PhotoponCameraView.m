@@ -60,10 +60,10 @@
 -(void)onShutterTouch {
     SendGAEvent(@"user_action", @"photopon_camera", @"capture_clicked");
     [self.tooltip hide];
+    [TooltipFactory setTakePhotoTooltipChecked];
     [self captureNow];
  
 }
-
 
 -(void)maybeShowNoCoupons {
     BOOL hasCoupons = ([allCoupons count] > 0);

@@ -13,8 +13,15 @@
 #import "MiniCouponViewController.h"
 #import "IndicatorViewController.h"
 #import "AlertBox.h"
+#import "TooltipFactory.h"
+
 @import Foundation;
 
+@interface PhotoponDrawController()
+
+@property (nonatomic, strong) AMPopTip *tooltip;
+
+@end
 
 @implementation PhotoponDrawController
 {
@@ -255,7 +262,9 @@
     numSuccess = 0;
     SendGAEvent(@"user_action", @"photopon_camera", @"upload_pics");
     IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Uploading Photopon..." timeout:150 withDelay:0.5];
-    
+
+    [TooltipFactory setPersonalizeTooltipChecked];
+    [self.tooltip hide];
     
     if (self.photoView.image == nil) {
         numSuccess++;
@@ -394,10 +403,21 @@
 
 
 -(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self selectWidth:1];
+
+    if (!self.tooltip) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (!self.tooltip) {
+                self.tooltip = [TooltipFactory showPersonalizeTooltipForView:self.view frame:[self.saveButton.superview convertRect:self.saveButton.frame toView:self.view]];
+            }
+        });
+    }
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
