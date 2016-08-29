@@ -12,6 +12,7 @@
 #import "AvailabilityManager.h"
 #import "Helper.h"
 #import "AlertBox.h"
+#import "MainController.h"
 
 @interface WelcomeViewController ()
 
@@ -67,8 +68,14 @@
 #pragma mark - Handlers
 
 - (void)proceedToLogin {
+    /*
     LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LoginCtrl"];
     [self presentViewController:loginVC animated:YES completion:nil];
+     */
+    MainController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    [self presentViewController:mainVC animated:YES completion:nil];
+    
+    
 }
 
 - (IBAction)sawPostcardHandler {

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *verifyLaterBtn;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *screenName;
 
 
 

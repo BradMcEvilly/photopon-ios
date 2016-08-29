@@ -33,6 +33,8 @@
 		622C82551BFF429A00D7BCE2 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622C82541BFF429A00D7BCE2 /* CouponDetailViewController.m */; };
 		623F95581B939AC200506B16 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F95571B939AC200506B16 /* WalletController.m */; };
 		623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623F955A1B93AC0B00506B16 /* PhotoponViewController.m */; };
+		62457D371D6B10E400D18DFB /* Icon-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 62457D351D6B10E400D18DFB /* Icon-Phone.png */; };
+		62457D381D6B10E400D18DFB /* Icon-Photopon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62457D361D6B10E400D18DFB /* Icon-Photopon.png */; };
 		6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */; };
 		6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */; };
 		625817241BA9685200506E0E /* camplaceholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 625817231BA9685200506E0E /* camplaceholder.jpg */; };
@@ -184,6 +186,8 @@
 		623F95571B939AC200506B16 /* WalletController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
 		623F95591B93AC0B00506B16 /* PhotoponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponViewController.h; sourceTree = "<group>"; };
 		623F955A1B93AC0B00506B16 /* PhotoponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponViewController.m; sourceTree = "<group>"; };
+		62457D351D6B10E400D18DFB /* Icon-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Phone.png"; sourceTree = "<group>"; };
+		62457D361D6B10E400D18DFB /* Icon-Photopon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Photopon.png"; sourceTree = "<group>"; };
 		6255D59F1C1783050088227A /* ChatMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageTableViewCell.h; sourceTree = "<group>"; };
 		6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageTableViewCell.m; sourceTree = "<group>"; };
 		6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageTableViewCell.xib; sourceTree = "<group>"; };
@@ -523,6 +527,8 @@
 		629E71EC1C61179F00DD79C1 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				62457D351D6B10E400D18DFB /* Icon-Phone.png */,
+				62457D361D6B10E400D18DFB /* Icon-Photopon.png */,
 				62B3D3291D5CB0AD007B6FA5 /* Icon-Phone-2.png */,
 				629E72171C61544100DD79C1 /* Icon-Administrator.png */,
 				629E72151C6153CF00DD79C1 /* Icon-Yes.png */,
@@ -882,6 +888,7 @@
 				620602381CEE162A0054122D /* photopon-logo-black.png in Resources */,
 				62C8ADC81C56E936007021CA /* button-bg.png in Resources */,
 				629E71FD1C6117B100DD79C1 /* Icon-Find-User.png in Resources */,
+				62457D381D6B10E400D18DFB /* Icon-Photopon.png in Resources */,
 				6281445C1C4F000E0008D9FF /* IndicatorViewController.xib in Resources */,
 				62970B461C4021E900521815 /* camera.png in Resources */,
 				46D2FF991D5624780073EBC7 /* Onboarding.storyboard in Resources */,
@@ -920,6 +927,7 @@
 				629E71FE1C6117B100DD79C1 /* Icon-Gear.png in Resources */,
 				629E72181C61544100DD79C1 /* Icon-Administrator.png in Resources */,
 				62970B4A1C40286300521815 /* JosefinSans-Bold.ttf in Resources */,
+				62457D371D6B10E400D18DFB /* Icon-Phone.png in Resources */,
 				629E72011C6117B100DD79C1 /* Icon-Pricing.png in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,

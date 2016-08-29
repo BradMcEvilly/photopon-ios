@@ -24,12 +24,20 @@
 }
 
 -(void)updateNotifications {
-    SendGAEvent(@"user_action", @"notifications", @"manual_update");
-    GetNotifications(^(NSArray *results, NSError *error) {
-        allNotifications = [NSMutableArray arrayWithArray:results];
-        [self.notificationsTable reloadData];
-        [refreshControl endRefreshing];
-    });
+    
+    if ([PFUser currentUser]) {    
+        SendGAEvent(@"user_action", @"notifications", @"manual_update");
+        GetNotifications(^(NSArray *results, NSError *error) {
+            allNotifications = [NSMutableArray arrayWithArray:results];
+            [self.notificationsTable reloadData];
+            [refreshControl endRefreshing];
+        });
+    } else {
+        [allNotifications removeAllObjects];
+        [allNotifications addObject:@{ @"type": @"WELCOME_MESSAGE" }];
+        [allNotifications addObject:@{ @"type": @"VERIFICATION_MESSAGE" }];
+    }
+    
 }
 
 
@@ -46,8 +54,8 @@
     allNotifications = [NSMutableArray array];
     
     
-    
     [self updateNotifications];
+    
     [RealTimeNotificationHandler addListener:@"NOTIFICATION.NOTIFICATIONVIEW" withBlock:^(NSString *notificationType) {
         [self updateNotifications];
     }];
@@ -204,11 +212,39 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         SendGAEvent(@"user_action", @"notifications", @"redeemed_notification_clicked");
+    } else if ([type isEqualToString:@"WELCOME_MESSAGE"]) {
+        
+        
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Photopon.png"];
+        cell.textLabel.text = @"Welcome to Photopon!";
+        cell.detailTextLabel.text = @"Swipe right to see nerby coupons.";
+        SendGAEvent(@"user_action", @"notifications", @"welcome_message_clicked");
+        
+        
+    } else if ([type isEqualToString:@"VERIFICATION_MESSAGE"]) {
+        
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Phone.png"];
+        cell.textLabel.text = @"Verify phone number";
+        cell.detailTextLabel.text = @"Please click here to verify your phone number";
+        SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
     }
 
     
     return cell;
 }
+
+
+
+- (UIViewController*) topMostController {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    return topController;
+}
+
 
 - (void)didTapOnTableView:(UIGestureRecognizer*) recognizer {
     CGPoint tapLocation = [recognizer locationInView:self.notificationsTable];
@@ -279,7 +315,20 @@
         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [self updateNotifications];
         }];
+    } else if ([type isEqualToString:@"WELCOME_MESSAGE"]) {
+        
+        
+        
+    } else if ([type isEqualToString:@"VERIFICATION_MESSAGE"]) {
+        SendGAEvent(@"user_action", @"welcome_message", @"set_number");
+        UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+        [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];    
     }
+
+    
+    
+    
+
 }
 
 - (void)showChatWithUser:(PFUser *)user {

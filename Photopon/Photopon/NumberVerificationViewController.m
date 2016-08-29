@@ -64,6 +64,9 @@
     [self.verifyView.layer addAnimation:animation forKey:@"shake"];
 }
 
+-(NSString*)generateRandomPassword {
+    return [[NSProcessInfo processInfo] globallyUniqueString];
+}
 
 -(void)doVerify {
     
@@ -76,28 +79,30 @@
         return;
     }
     
+    IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Verifying code..." timeout:60];
+
     
-    PFUser *user = [PFUser currentUser];
-  
-    user[@"phone"] = NumbersFromFormattedPhone(self.phoneNumber.text);
+    PFUser *user = [PFUser new];
     
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
+    [user setObject:self.screenName.text forKey:@"username"];
+    [user setObject:[self generateRandomPassword] forKey:@"password"];
+    [user setObject:NumbersFromFormattedPhone(self.phoneNumber.text) forKey:@"phone"];
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
             
             [self dismissViewControllerAnimated:YES completion:nil];
+            [ind remove];
             
-            
-            UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-            [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
-        
             SendGAEvent(@"user_action", @"number_verification", @"number_verified");
         } else {
             self.wrongCode.text = @"Server error. Please try again.";
             self.wrongCode.alpha = 1;
             [self shakeVerification];
         }
+        
     }];
+    
 
 }
 
@@ -121,31 +126,67 @@
 
 
 -(void) sendCode {
+    
+    
+    if ([self.screenName.text isEqualToString:@""]) {
         
-    PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
-    sentCode = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
-    
-    verification[@"userName"] = [[PFUser currentUser] username];
-    verification[@"code"] = [NSString stringWithFormat:@"%d", [sentCode intValue]];
-    
-    verification[@"phoneNumber"] = NumbersFromFormattedPhone(self.phoneNumber.text);
-    verification[@"numTried"] = [NSNumber numberWithInt:0];
+        [AlertBox showAlertFor:self
+                     withTitle:@"Screen Name"
+                   withMessage:@"Please choose screen name to register"
+                    leftButton:nil
+                   rightButton:@"OK"
+                    leftAction:nil
+                   rightAction:nil];
+        
+        return;
+    }
     
     IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Sending verification code..." timeout:60];
-    [self.phoneView setHidden:YES];
 
-    [verification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        [ind remove];
-        if (succeeded) {
-            [self.verifyView setHidden:NO];
-        } else {
-
+    
+    
+    PFQuery* userQuery = [PFUser query];
+    [userQuery whereKey:@"username" equalTo:self.screenName.text];
+    
+    [userQuery countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+       
+        if (number > 0) {
+            [AlertBox showAlertFor:self
+                         withTitle:@"Screen Name"
+                       withMessage:@"Screen name is already in use. Please choose another screen name."
+                        leftButton:nil
+                       rightButton:@"OK"
+                        leftAction:nil
+                       rightAction:nil];
+            
+            [ind remove];
+            return;
         }
-    }];
-    
-    SendGAEvent(@"user_action", @"number_verification", @"send_code_clicked");
-    
+        
+        
+        PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
+        sentCode = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
+        
+        verification[@"userName"] = self.screenName.text;
+        verification[@"code"] = [NSString stringWithFormat:@"%d", [sentCode intValue]];
+        
+        verification[@"phoneNumber"] = NumbersFromFormattedPhone(self.phoneNumber.text);
+        verification[@"numTried"] = [NSNumber numberWithInt:0];
+        
+        [self.phoneView setHidden:YES];
+        
+        [verification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [ind remove];
+            if (succeeded) {
+                [self.verifyView setHidden:NO];
+            } else {
+                
+            }
+        }];
+        
+        SendGAEvent(@"user_action", @"number_verification", @"send_code_clicked");
 
+    }];
 }
 
 -(void) verifyLater {
@@ -157,7 +198,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Verification"];
+    //[HeaderViewController addBackHeaderToView:self withTitle:@"Verification"];
 
     
     

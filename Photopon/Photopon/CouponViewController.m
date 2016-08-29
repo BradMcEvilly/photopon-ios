@@ -72,6 +72,11 @@
 
 
 -(void) getCoupon:(id)sender {
+    
+    if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+        return;
+    }
+    
     UIButton* btn = (UIButton*)sender;
     thisCouponIndex = btn.tag;
     
@@ -83,6 +88,11 @@
 }
 
 -(void) giveCoupon: (id)sender {
+    if (!HasPhoneNumber(@"Please add and verify your mobile phone number to give this coupon.")) {
+        return;
+    }
+    
+    
     UIButton* btn = (UIButton*)sender;
     NSInteger thisCouponIndex = btn.tag;
 
@@ -117,7 +127,9 @@
 
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
-
+    self.couponTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
     [self.couponTable reloadData];
@@ -209,7 +221,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
+    return 180;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
