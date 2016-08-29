@@ -15,11 +15,14 @@
 #import "AvailabilityManager.h"
 #import "UIView+CommonLayout.h"
 #import "PhotoponUnavailableViewController.h"
+#import "TooltipFactory.h"
 
 @interface PhotoponCameraView()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *notAvailableViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UIView *notAvailableView;
+
+@property (nonatomic, strong) AMPopTip *tooltip;
 
 
 @end
@@ -56,10 +59,11 @@
 
 -(void)onShutterTouch {
     SendGAEvent(@"user_action", @"photopon_camera", @"capture_clicked");
+    [self.tooltip hide];
+    [TooltipFactory setTakePhotoTooltipChecked];
     [self captureNow];
  
 }
-
 
 -(void)maybeShowNoCoupons {
     BOOL hasCoupons = ([allCoupons count] > 0);
@@ -70,6 +74,13 @@
     
     if (hasCoupons) {
         [self.noCouponIndicator stopAnimating];
+        if (!self.tooltip) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (!self.tooltip) {
+                    self.tooltip = [TooltipFactory showTakePhotoTooltipForView:self.view frame:[self.shutterButton.superview convertRect:self.shutterButton.frame toView:self.view]];
+                }
+            });
+        }
     } else {
         [self.noCouponIndicator startAnimating];
     }
@@ -164,6 +175,8 @@
 }
 
 -(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
     CGRect tframe = self.topBand.frame;
     tframe.size.height = self.couponOverlayGraphics.frame.origin.y;
     [self.topBand setFrame:tframe];
