@@ -17,4 +17,7 @@
 + (AMPopTip *)showPersonalizeTooltipForView:(UIView *)view frame:(CGRect)frame;
 + (void)setPersonalizeTooltipChecked;
 
++ (AMPopTip *)showSharePhotoponForView:(UIView *)view frame:(CGRect)frame;
++ (void)setSharePhotoponTooltipChecked;
+
 @end

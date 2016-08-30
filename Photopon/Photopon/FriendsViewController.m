@@ -15,6 +15,13 @@
 #import "DBAccess.h"
 #import "HeaderViewController.h"
 #import "AlertBox.h"
+#import "TooltipFactory.h"
+
+@interface FriendsViewController()
+
+@property (nonatomic, strong) AMPopTip *tooltip;
+@property (nonatomic, weak) HeaderViewController *headerVC;
+@end
 
 @implementation FriendsViewController
 {
@@ -44,16 +51,34 @@
 
         [header addRightButtonWithImage:@"Icon-Checked-User.png" withTarget:self action:@selector(friendsSelected)];
         [header setTheme:[UITheme yellowTheme]];
+        self.headerVC = header;
     } else {
         HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
 
         [header addRightButtonWithImage:@"Icon-Add-User.png" withTarget:self action:@selector(addFriendClicked)];
         [header setTheme:[UITheme yellowTheme]];
+        self.headerVC = header;
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.friendsTable addGestureRecognizer:tap];
 
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (!isSelectMode) {
+        return;
+    }
+
+    if (!self.tooltip) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (!self.tooltip) {
+                self.tooltip = [TooltipFactory showSharePhotoponForView:self.view frame:[self.headerVC.rightMenuButton.superview convertRect:self.headerVC.rightMenuButton.frame toView:self.view]];
+            }
+        });
+    }
 
 }
 
@@ -149,7 +174,10 @@
 
 -(void)friendsSelected {
     NSMutableArray *selectedUsers = [NSMutableArray array];
-    
+
+    [self.tooltip hide];
+    [TooltipFactory setSharePhotoponTooltipChecked];
+
     for (int i = 0; i < [myFriends count]; i++) {
         NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:i];
         

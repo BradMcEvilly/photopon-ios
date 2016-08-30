@@ -10,6 +10,7 @@
 
 NSString * const TooltipTakePhotoCheckedKey = @"TooltipTakePhotoCheckedKey";
 NSString * const TooltipPersonalizeCheckedKey = @"TooltipPersonalizeCheckedKey";
+NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedKey";
 
 @implementation TooltipFactory
 
@@ -39,6 +40,20 @@ NSString * const TooltipPersonalizeCheckedKey = @"TooltipPersonalizeCheckedKey";
 
 + (void)setPersonalizeTooltipChecked {
     [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:TooltipPersonalizeCheckedKey];
+}
+
++ (AMPopTip *)showSharePhotoponForView:(UIView *)view frame:(CGRect)frame {
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:TooltipSharePhotoponCheckedKey]) {
+        return nil;
+    }
+
+    AMPopTip *tooltip = [self createDefaultTooltip];
+    [tooltip showText:@"Share your Photopon with friends, select the ones you want to share to from the list and tap on this button when ready. You can add friends from the Friends menu." direction:AMPopTipDirectionDown maxWidth:280 inView:view fromFrame:frame];
+    return tooltip;
+}
+
++ (void)setSharePhotoponTooltipChecked {
+    [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:TooltipSharePhotoponCheckedKey];
 }
 
 + (AMPopTip *)createDefaultTooltip {
