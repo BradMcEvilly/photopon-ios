@@ -59,7 +59,7 @@ NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedK
 + (AMPopTip *)createDefaultTooltip {
     AMPopTip *tooltip = [AMPopTip popTip];
     tooltip.shouldDismissOnTap = true;
-    tooltip.entranceAnimation = AMPopTipEntranceAnimationTransition;
+    tooltip.entranceAnimation = AMPopTipEntranceAnimationFadeIn;
     tooltip.actionAnimation = AMPopTipActionAnimationFloat;
     tooltip.font = [UIFont boldSystemFontOfSize:15];
     tooltip.popoverColor = [UIColor orangeColor];
