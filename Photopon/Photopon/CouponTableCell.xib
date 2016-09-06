@@ -123,10 +123,10 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="Bxb-hf-aOd"/>
-                        <exclude reference="gCW-mn-3tm"/>
                         <exclude reference="kcc-Td-KJH"/>
                         <exclude reference="tkd-wZ-4o2"/>
                         <exclude reference="w6o-zH-d8i"/>
+                        <exclude reference="gCW-mn-3tm"/>
                         <exclude reference="2br-OM-PwJ"/>
                         <exclude reference="Vz7-lm-046"/>
                         <exclude reference="ogm-mD-LOs"/>

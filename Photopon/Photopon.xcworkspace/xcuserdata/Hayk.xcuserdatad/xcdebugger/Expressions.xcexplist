@@ -111,12 +111,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[VerificationPhoneNumberViewController sendCode]:VerificationPhoneNumberViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "-[ChatMessagesController keyboardDidShow:]:ChatMessagesController.m">
          <PersistentStrings>
             <PersistentString
                value = "self.topConstraint.constant">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__42-[VerificationCodeViewController doVerify]_block_invoke:VerificationCodeViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[VerificationCodeViewController doVerify]:VerificationCodeViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[PhotoponDrawController viewDidAppear:]:PhotoponDrawController.m">
@@ -143,13 +152,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[PhotoponCameraView createMiniCouponView]:PhotoponCameraView.m">
+         contextName = "-[SentPhotopons tableView:cellForRowAtIndexPath:]:SentPhotopons.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.view">
-            </PersistentString>
-            <PersistentString
-               value = "couponView">
+               value = "resolvedData[indexPath.row]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -168,10 +174,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[SentPhotopons tableView:cellForRowAtIndexPath:]:SentPhotopons.m">
+         contextName = "-[PhotoponCameraView createMiniCouponView]:PhotoponCameraView.m">
          <PersistentStrings>
             <PersistentString
-               value = "resolvedData[indexPath.row]">
+               value = "self.view">
+            </PersistentString>
+            <PersistentString
+               value = "couponView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -183,6 +192,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__50-[VerificationScreenNameViewController doRegister]_block_invoke:VerificationScreenNameViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_screenName.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -220,10 +237,10 @@
          contextName = "__34-[ChatMessagesController setUser:]_block_invoke:ChatMessagesController.m">
          <PersistentStrings>
             <PersistentString
-               value = "msg[@&quot;from&quot;]">
+               value = "dict">
             </PersistentString>
             <PersistentString
-               value = "dict">
+               value = "msg[@&quot;from&quot;]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
