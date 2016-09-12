@@ -38,10 +38,7 @@
     [Fabric with:@[[Crashlytics class]]];
 
     // [Optional] Track statistics around application opens.
-    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
-    [application registerUserNotificationSettings:settings];
-    [application registerForRemoteNotifications];
+
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
@@ -126,6 +123,7 @@
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation addUniqueObject:@"Global" forKey:@"channels"];
     [currentInstallation saveInBackground];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PushEnabled" object:nil];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
