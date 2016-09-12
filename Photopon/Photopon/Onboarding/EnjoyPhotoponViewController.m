@@ -27,7 +27,7 @@
 }
 
 - (IBAction)registerButtonHandler:(id)sender {
-
+    [self.delegate userShouldRegister];
 }
 
 - (IBAction)skipButtonHandler:(id)sender {

@@ -7,28 +7,26 @@
 //
 
 #import "NumberVerificationViewController.h"
-#import "PhoneNumberFormatter.h"
 #import "HeaderViewController.h"
 #import "IndicatorViewController.h"
 #import "AlertBox.h"
+#import "VerificationPhoneNumberViewController.h"
+#import "VerificationCodeViewController.h"
+#import "VerificationWelcomeViewController.h"
 
 @interface NumberVerificationViewController ()
 
 @end
 
-
-
-
 @implementation NumberVerificationViewController
-
 {
-    NSNumber* sentCode;
     NSDictionary* userInfo;
     id targetObject;
     SEL targetAction;
-    PhoneNumberFormatter *myPhoneNumberFormatter;
 
 }
+@synthesize sentCode;
+
 
 -(void)setTarget:(id)object withAction:(SEL)action {
     targetObject = object;
@@ -48,138 +46,68 @@
     return topController;
 }
 
-- (void)autoFormatTextField:(id)sender {
+
+-(UIViewController*)createSubView:(NSString*)storyBoardName {
+    UIViewController* ctrl = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardName];
+    ctrl.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 60, [UIScreen mainScreen].bounds.size.height - 100);
     
-    self.phoneNumber.text = [myPhoneNumberFormatter format:self.phoneNumber.text withLocale:@"us"];
+    CGPoint ct = self.view.center;
+    ct.y = ct.y + 100;
+    ctrl.view.center = ct;
     
+    
+    [self.view addSubview:ctrl.view];
+    [self addChildViewController:ctrl];
+    [ctrl didMoveToParentViewController:self];
+    return ctrl;
 }
 
 
+-(void)sendingCode {
+    [_phoneNumberCtrl.view setHidden: YES];
+}
 
-- (void) shakeVerification {
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    animation.duration = 0.6;
-    animation.values = @[ @(-20), @(20), @(-20), @(20), @(-10), @(10), @(-5), @(5), @(0) ];
-    [self.verifyView.layer addAnimation:animation forKey:@"shake"];
+-(void)codeSent {
+    [_codeCtrl.view setHidden: NO];
 }
 
 
--(void)doVerify {
-    
-    SendGAEvent(@"user_action", @"number_verification", @"verify_clicked");
-    if (![[sentCode stringValue] isEqualToString: self.verificationCode.text]) {
-        self.wrongCode.text = @"Wrong verification code!";
-        self.wrongCode.alpha = 1;
-        [self shakeVerification];
-        SendGAEvent(@"user_action", @"number_verification", @"wrong_code");
-        return;
-    }
-    
-    
-    PFUser *user = [PFUser currentUser];
-  
-    user[@"phone"] = NumbersFromFormattedPhone(self.phoneNumber.text);
-    
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-        if (!error) {
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-            
-            UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-            [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
-        
-            SendGAEvent(@"user_action", @"number_verification", @"number_verified");
-        } else {
-            self.wrongCode.text = @"Server error. Please try again.";
-            self.wrongCode.alpha = 1;
-            [self shakeVerification];
-        }
-    }];
-
+-(void)newUserName {
+    [_codeCtrl.view setHidden: YES];
+    [_screenCtrl.view setHidden:NO];    
 }
 
--(void) sendCodeAndAlert {
-    
-    [self sendCode];
-    
-    
-    [AlertBox showAlertFor:self
-                 withTitle:@"Verification"
-               withMessage:@"New verification code was sent to your number"
-                leftButton:nil
-               rightButton:@"OK"
-                leftAction:nil
-               rightAction:nil];
-    
-    SendGAEvent(@"user_action", @"number_verification", @"resend_code_clicked");
-    
+-(void)welcomeUser:(PFUser*)user {
+    [_codeCtrl.view setHidden:YES];
+    [_welcomeCtrl.view setHidden:NO];
+    [_welcomeCtrl setUserName:[user username]];
 }
 
-
-
--(void) sendCode {
-        
-    PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
-    sentCode = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
-    
-    verification[@"userName"] = [[PFUser currentUser] username];
-    verification[@"code"] = [NSString stringWithFormat:@"%d", [sentCode intValue]];
-    
-    verification[@"phoneNumber"] = NumbersFromFormattedPhone(self.phoneNumber.text);
-    verification[@"numTried"] = [NSNumber numberWithInt:0];
-    
-    IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Sending verification code..." timeout:60];
-    [self.phoneView setHidden:YES];
-
-    [verification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        [ind remove];
-        if (succeeded) {
-            [self.verifyView setHidden:NO];
-        } else {
-
-        }
-    }];
-    
-    SendGAEvent(@"user_action", @"number_verification", @"send_code_clicked");
-    
-
-}
-
--(void) verifyLater {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    SendGAEvent(@"user_action", @"number_verification", @"verify_later");
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Verification"];
+    _phoneNumberCtrl = (VerificationPhoneNumberViewController*)[self createSubView:@"SBVerificationPhoneNumber"];
+    
+    _codeCtrl = (VerificationCodeViewController*)[self createSubView:@"SBVerificationCode"];
+    _codeCtrl.delegate = self.delegate;
+    _screenCtrl = (VerificationScreenNameViewController*)[self createSubView:@"SBVerificationName"];
+    _welcomeCtrl = (VerificationWelcomeViewController*)[self createSubView:@"SBVerificationWelcome"];
+    
+    [_phoneNumberCtrl setParent:self];
+    [_codeCtrl setParent:self];
+    [_screenCtrl setParent: self];
+    [_welcomeCtrl setParent: self];
+    
+    [_codeCtrl.view setHidden: YES];
+    [_screenCtrl.view setHidden:YES];
+    [_welcomeCtrl.view setHidden:YES];
+  
+}
 
-    
-    
-    [self.phoneView setHidden:NO];
-    [self.verifyView setHidden:YES];
-    
-    myPhoneNumberFormatter = [[PhoneNumberFormatter alloc] init];
-    
-    [self.phoneNumber addTarget:self
-                         action:@selector(autoFormatTextField:)
-               forControlEvents:UIControlEventEditingChanged];
-    
-    
-    
-    [self.verifyButton addTarget:self action:@selector(doVerify) forControlEvents:UIControlEventTouchDown];
-
-    [self.sendCodeBtn addTarget:self action:@selector(sendCode) forControlEvents:UIControlEventTouchDown];
-    [self.resendCodeBtn addTarget:self action:@selector(sendCodeAndAlert) forControlEvents:UIControlEventTouchDown];
-    
-    [self.verifyLaterBtn addTarget:self action:@selector(verifyLater) forControlEvents:UIControlEventTouchDown];
-    [self.cancelVerifyBtn addTarget:self action:@selector(verifyLater) forControlEvents:UIControlEventTouchDown];
-
+-(void)setDelegate:(id<NumberVerificationDelegate>)delegate {
+    _delegate = delegate;
+    self.codeCtrl.delegate = delegate;
 }
 
 #pragma mark - Check user number

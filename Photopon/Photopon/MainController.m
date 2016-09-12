@@ -32,6 +32,8 @@
     UIViewController *walletView;
     
     CLLocationManager *locationManager;
+    
+    BOOL hasUser;
 }
 
 
@@ -135,10 +137,10 @@
 {
     [super viewDidLoad];
     
+    UpdateNearbyCoupons();
     
     self.delegate = self;
     self.dataSource = self;
-    
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -180,7 +182,7 @@
 
     
     
-    
+    PFUser* cUser = [PFUser currentUser];
     
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
@@ -188,34 +190,34 @@
     couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
     
-    [photoponView setPageViewController:self];
+    hasUser = cUser != nil;
     
-    myViewControllers = @[photoponView, notificationsView,friendsView,couponsView,walletView];
+    if (cUser) {
+        [photoponView setPageViewController:self];
     
-    navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-    
-    [self setViewControllers:@[photoponView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
+        myViewControllers = @[photoponView, notificationsView,friendsView,couponsView,walletView];
+        
+        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
+        
+        [self setViewControllers:@[photoponView]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:NO completion:nil];
+    } else {
+        
+        myViewControllers = @[notificationsView,couponsView];
+        
+        navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
+        
+        [self setViewControllers:@[notificationsView]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:NO completion:nil];
+        
+    }
     
     [self updatePageTitle];
     
     
-    
-    
-//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FABars] style:UIBarButtonItemStylePlain target:self action:@selector(onLeftMenuClick:)];
-    
-    
-//    UIFont* font = [UIFont fontWithName:kFontAwesomeFamilyName size:22.0];
-    
-    
-//    [leftButton setTitleTextAttributes:@{
-//         NSFontAttributeName: font
-//    } forState:UIControlStateNormal];
-    
-//    self.navigationItem.leftBarButtonItem = leftButton;
-
-      [RealTimeNotificationHandler setupManager];
+    [RealTimeNotificationHandler setupManager];
     
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -223,9 +225,19 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    PFUser* cUser = [PFUser currentUser];
+    BOOL hasUserNew = cUser != nil;
+    
+    if (hasUserNew != hasUser) {
+        hasUser = hasUserNew;
+        [self viewDidLoad];
+    }
+    
+
+}
 
 -(void)viewDidAppear:(BOOL)animated {
-    
     if (![CLLocationManager locationServicesEnabled]) {
         
         [AlertBox showAlertFor:self

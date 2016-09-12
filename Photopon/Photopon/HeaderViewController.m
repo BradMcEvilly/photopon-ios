@@ -56,6 +56,18 @@
 }
 
 
+
+- (UIViewController*) topMostController {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    return topController;
+}
+
+
 -(void)leftMenuClicked {
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -100,10 +112,31 @@
 
         }
         
+        if ([menuItem isEqualToString:@"register"]) {
+            UIViewController* mainCtrl = [storyBoard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+            [self presentViewController:mainCtrl animated:true completion:nil];
+
+        }
+        
+        
         if ([menuItem isEqualToString:@"signout"]) {
             [PFUser logOut];
-            UIViewController* loginCtrl = [storyBoard instantiateViewControllerWithIdentifier:@"LoginCtrl"];
-            [self presentViewController:loginCtrl animated:true completion:nil];
+            
+            UIViewController* vc = self;
+            
+            while (vc) {
+                UIViewController* temp = vc.presentingViewController;
+                if (!temp.presentedViewController) {
+                    [vc dismissViewControllerAnimated:YES completion:^{}];
+                    break;
+                }
+                vc =  temp;
+            }
+            
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Onboarding" bundle:nil];
+
+            UIViewController* onboarding = [storyBoard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
+            [vc presentViewController:onboarding animated:true completion:nil];
         }
         
     }];

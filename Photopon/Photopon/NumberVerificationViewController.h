@@ -7,23 +7,33 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VerificationPhoneNumberViewController.h"
+#import "VerificationCodeViewController.h"
+#import "VerificationScreenNameViewController.h"
+#import "VerificationWelcomeViewController.h"
+
+@protocol NumberVerificationDelegate <NSObject>
+
+- (void)userVerifiedPhoneNumber;
+- (void)userFailedToVerify;
+
+@end
 
 @interface NumberVerificationViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *verifyButton;
-@property (weak, nonatomic) IBOutlet UITextField *verificationCode;
-@property (weak, nonatomic) IBOutlet UILabel *wrongCode;
 
 
-@property (weak, nonatomic) IBOutlet UIButton *sendCodeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *verifyLaterBtn;
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+@property (weak, nonatomic) VerificationPhoneNumberViewController* phoneNumberCtrl;
+@property (weak, nonatomic) VerificationCodeViewController* codeCtrl;
+@property (weak, nonatomic) VerificationScreenNameViewController* screenCtrl;
+@property (weak, nonatomic) VerificationWelcomeViewController* welcomeCtrl;
+
+@property (nonatomic, weak) id<NumberVerificationDelegate> delegate;
+
+@property (retain, nonatomic) NSNumber* sentCode;
 
 
-
-@property (weak, nonatomic) IBOutlet UIView *phoneView;
-@property (weak, nonatomic) IBOutlet UIView *verifyView;
-
-@property (weak, nonatomic) IBOutlet UIButton *cancelVerifyBtn;
-@property (weak, nonatomic) IBOutlet UIButton *resendCodeBtn;
-
+-(void)sendingCode;
+-(void)codeSent;
+-(void)newUserName;
+-(void)welcomeUser:(PFUser*)user;
 @end

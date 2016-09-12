@@ -9,8 +9,10 @@
 #import "OnboardingViewController.h"
 #import "LocationServicesViewController.h"
 #import "PushNotificationsViewController.h"
+#import "EnjoyPhotoponViewController.h"
+#import "NumberVerificationViewController.h"
 
-@interface OnboardingViewController() <UIScrollViewDelegate, LocationServicesViewControllerDelegate, PushNotificationsDelegate>
+@interface OnboardingViewController() <UIScrollViewDelegate, LocationServicesViewControllerDelegate, PushNotificationsDelegate, EnjoyPhotoponDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backgroundImageLeftConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -34,6 +36,9 @@
     } else if ([segue.identifier isEqualToString:@"PushNotifications"]) {
         PushNotificationsViewController *vc = segue.destinationViewController;
         vc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"EnjoyPhotopon"]) {
+        EnjoyPhotoponViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
     }
 }
 
@@ -49,6 +54,13 @@
 - (void)userDidAllowPushNotifications {
     CGPoint newContentOffset = CGPointMake([UIApplication sharedApplication].keyWindow.bounds.size.width * 2, 0);
     [self.scrollView setContentOffset:newContentOffset animated:YES];
+}
+
+#pragma mark - EnjoyPhotoponDelegate
+
+- (void)userShouldRegister {
+    NumberVerificationViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 @end

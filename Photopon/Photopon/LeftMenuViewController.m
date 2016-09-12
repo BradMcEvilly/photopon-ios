@@ -44,14 +44,29 @@
     
     
     [self addTapHandlerFor:self.notificationItem withTag:@"notifications"];
-    [self addTapHandlerFor:self.friendsItem withTag:@"friends"];
     [self addTapHandlerFor:self.couponsItem withTag:@"coupons"];
-    [self addTapHandlerFor:self.walletItem withTag:@"wallet"];
     [self addTapHandlerFor:self.settingsItem withTag:@"settings"];
-    [self addTapHandlerFor:self.signoutItem withTag:@"signout"];
-    [self addTapHandlerFor:self.addPhotoponItem withTag:@"addphotopon"];
-    [self addTapHandlerFor:self.sentPhotopons withTag:@"sentphotopons"];
     
+    if ([PFUser currentUser]) {
+        [self addTapHandlerFor:self.friendsItem withTag:@"friends"];
+        [self addTapHandlerFor:self.walletItem withTag:@"wallet"];
+        [self addTapHandlerFor:self.signoutItem withTag:@"signout"];
+        [self addTapHandlerFor:self.addPhotoponItem withTag:@"addphotopon"];
+        [self addTapHandlerFor:self.sentPhotopons withTag:@"sentphotopons"];
+        self.registerItem.hidden = YES;
+        self.signoutItem.hidden = NO;
+    } else {
+        [self addTapHandlerFor:self.registerItem withTag:@"register"];
+        
+        self.friendsItem.alpha = 0.3;
+        self.walletItem.alpha = 0.3;
+        self.addPhotoponItem.alpha = 0.3;
+        self.sentPhotopons.alpha = 0.3;
+        self.signoutItem.alpha = 0.3;
+        
+        self.registerItem.hidden = NO;
+        self.signoutItem.hidden = YES;
+    }
 }
 
 

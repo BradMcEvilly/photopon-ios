@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zef-RG-fzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="K9W-O3-vhp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -171,7 +171,7 @@
                                                 <rect key="frame" x="960" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <connections>
-                                                    <segue destination="zi6-oU-9mY" kind="embed" id="JYs-Ut-2A5"/>
+                                                    <segue destination="zi6-oU-9mY" kind="embed" identifier="EnjoyPhotopon" id="JYs-Ut-2A5"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -231,6 +231,7 @@
                             <constraint firstAttribute="trailing" secondItem="KEh-U5-Kui" secondAttribute="trailing" id="zzi-fy-Ak1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mMn-bU-o8b"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundImageLeftConstraint" destination="dVl-Re-sgF" id="BBc-Q4-4cX"/>
@@ -240,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VkC-xC-E4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581" y="476"/>
+            <point key="canvasLocation" x="2393" y="476"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="WCD-m7-X1k">
@@ -302,7 +303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYO-Db-fBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2332" y="506"/>
+            <point key="canvasLocation" x="3144" y="506"/>
         </scene>
         <!--Location Services View Controller-->
         <scene sceneID="Ygc-16-sCS">
@@ -355,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvf-fT-hWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1781" y="1294"/>
+            <point key="canvasLocation" x="1407" y="1294"/>
         </scene>
         <!--Push Notifications View Controller-->
         <scene sceneID="B18-0h-qu1">
@@ -480,6 +481,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edP-pu-nLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2171" y="1294"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="E6D-ED-las">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="K9W-O3-vhp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgF-Gt-2s2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Zef-RG-fzg" kind="relationship" relationship="rootViewController" id="kwb-KW-WWl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GEw-Zn-v6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1581" y="476"/>
         </scene>
     </scenes>
     <resources>

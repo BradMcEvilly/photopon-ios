@@ -464,10 +464,10 @@ void CheckAppAvailabilityForZipcode(NSString *zipcode, ZipcodeResult result) {
         topController = topController.presentedViewController;
     }
     
-    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     
-    UIViewController* mainCtrl = [st instantiateViewControllerWithIdentifier:@"SBSettings"];
-    [topController showViewController:mainCtrl sender:nil];
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBSettings"];
+
+    [topController showViewController:mainVC sender:nil];
     
     SendGAEvent(@"user_action", @"phone_number_check", @"go_to_settings");
     
