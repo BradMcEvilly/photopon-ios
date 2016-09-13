@@ -1,3 +1,5 @@
 Photopon/Photopon.xcodeproj/xcuserdata
 Photopon/Photopon.xcworkspace/xcuserdata
 Photopon/Pods/Pods.xcodeproj/xcuserdata
+
+*.xcbkptlist
