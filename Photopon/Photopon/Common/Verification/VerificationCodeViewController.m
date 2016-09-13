@@ -93,7 +93,17 @@
         [ind remove];
         
         if ([objects count] > 0) {
-            [parentCtrl welcomeUser: [objects firstObject]];
+            
+            [PFCloud callFunctionInBackground: @"getUserSessionToken" withParameters:@{
+                @"phoneNumber": parentCtrl.phoneNumberCtrl.phoneNumber.text
+            } block:^(id  _Nullable object, NSError * _Nullable error) {
+                NSLog(@"%@", object);
+                [PFUser becomeInBackground:object block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+                    [parentCtrl welcomeUser: user];
+                }];
+
+            }];
+            
         } else {
             [parentCtrl newUserName];
         }
