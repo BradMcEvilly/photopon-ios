@@ -18,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *resendCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *cancelVerifyBtn;
 
-@property (nonatomic, weak) id<NumberVerificationDelegate> delegate;
-
 -(void)setParent:(UIViewController*) viewCtrl;
 
 @end

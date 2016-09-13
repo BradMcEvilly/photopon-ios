@@ -75,8 +75,8 @@
             
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (!error) {
-                    
                     [self dismissViewControllerAnimated:YES completion:nil];
+                    [self.delegate userVerifiedPhoneNumber];
                 } else {
                     [AlertBox showAlertFor:self
                                  withTitle:@"Registration Error"

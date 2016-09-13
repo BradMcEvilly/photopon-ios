@@ -12,7 +12,7 @@
 #import "EnjoyPhotoponViewController.h"
 #import "NumberVerificationViewController.h"
 
-@interface OnboardingViewController() <UIScrollViewDelegate, LocationServicesViewControllerDelegate, PushNotificationsDelegate, EnjoyPhotoponDelegate>
+@interface OnboardingViewController() <UIScrollViewDelegate, LocationServicesViewControllerDelegate, PushNotificationsDelegate, EnjoyPhotoponDelegate, NumberVerificationDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backgroundImageLeftConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -60,7 +60,23 @@
 
 - (void)userShouldRegister {
     NumberVerificationViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+    vc.delegate = self;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - Number verification delegate
+
+-(void)userVerifiedPhoneNumber {
+    UIViewController *cameraVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    PFUser* currentUser = [PFUser currentUser];
+
+    NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
+    [currentInstallation addUniqueObject:channel forKey:@"channels"];
+    [currentInstallation saveInBackground];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController presentViewController:cameraVC animated:YES completion:nil];
+    }];
 }
 
 @end

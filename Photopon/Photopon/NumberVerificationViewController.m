@@ -90,8 +90,8 @@
     _phoneNumberCtrl = (VerificationPhoneNumberViewController*)[self createSubView:@"SBVerificationPhoneNumber"];
     
     _codeCtrl = (VerificationCodeViewController*)[self createSubView:@"SBVerificationCode"];
-    _codeCtrl.delegate = self.delegate;
     _screenCtrl = (VerificationScreenNameViewController*)[self createSubView:@"SBVerificationName"];
+    _screenCtrl.delegate = self.delegate;
     _welcomeCtrl = (VerificationWelcomeViewController*)[self createSubView:@"SBVerificationWelcome"];
     
     [_phoneNumberCtrl setParent:self];
@@ -102,12 +102,18 @@
     [_codeCtrl.view setHidden: YES];
     [_screenCtrl.view setHidden:YES];
     [_welcomeCtrl.view setHidden:YES];
-  
+
+#ifdef DEBUG
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.delegate userVerifiedPhoneNumber];
+    });
+#endif
+
 }
 
 -(void)setDelegate:(id<NumberVerificationDelegate>)delegate {
     _delegate = delegate;
-    self.codeCtrl.delegate = delegate;
+    self.screenCtrl.delegate = delegate;
 }
 
 #pragma mark - Check user number
