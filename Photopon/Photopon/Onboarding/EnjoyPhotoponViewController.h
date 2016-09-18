@@ -11,6 +11,7 @@
 @protocol EnjoyPhotoponDelegate <NSObject>
 
 - (void)userShouldRegister;
+- (void)userShouldSkip;
 
 @end
 

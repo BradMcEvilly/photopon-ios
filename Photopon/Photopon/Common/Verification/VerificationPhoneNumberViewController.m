@@ -94,7 +94,7 @@
 
 -(void) verifyLater {
     [parentCtrl dismissViewControllerAnimated:YES completion:nil];
-    
+    [self.delegate userSkippedVerification];
     SendGAEvent(@"user_action", @"number_verification", @"verify_later");
 }
 

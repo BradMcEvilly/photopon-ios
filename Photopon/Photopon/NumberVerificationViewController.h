@@ -16,6 +16,7 @@
 
 - (void)userVerifiedPhoneNumber;
 - (void)userFailedToVerify;
+- (void)userSkippedVerification;
 
 @end
 

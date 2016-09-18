@@ -31,15 +31,15 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    BOOL firstTimeUser = [UserManager isFirstTimeUser];
-    if (![[UserManager sharedManager]userLoggedIn]) {
-        [self animateLogoMovement:^{
-            [self animateWelcomeScreensMovement];
-        }];
-    } else {
-        [self proceedToLogin];
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        BOOL firstTimeUser = [UserManager isFirstTimeUser];
+        if (![[UserManager sharedManager]userLoggedIn]) {
+            [self showOnboarding];
+        } else {
+            [self proceedToLogin];
+        }
+    });
 }
 
 #pragma mark - Animations
@@ -76,6 +76,11 @@
     [self presentViewController:mainVC animated:YES completion:nil];
     
     
+}
+
+- (void)showOnboarding {
+    UINavigationController *onboardingNV = [[UIStoryboard storyboardWithName:@"Onboarding" bundle:nil]instantiateViewControllerWithIdentifier:@"OnboardingNavigationController"];
+    [self presentViewController:onboardingNV animated:YES completion:nil];
 }
 
 - (IBAction)sawPostcardHandler {

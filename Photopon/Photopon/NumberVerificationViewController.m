@@ -103,12 +103,11 @@
     [_screenCtrl.view setHidden:YES];
     [_welcomeCtrl.view setHidden:YES];
 
-#ifdef DEBUG
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.delegate userVerifiedPhoneNumber];
-    });
-#endif
-
+//#ifdef DEBUG
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.delegate userVerifiedPhoneNumber];
+//    });
+//#endif
 }
 
 -(void)setDelegate:(id<NumberVerificationDelegate>)delegate {

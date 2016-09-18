@@ -31,7 +31,8 @@
 }
 
 - (IBAction)skipButtonHandler:(id)sender {
-    
+    [self.delegate userShouldSkip];
+//    [[[UIAlertView alloc]initWithTitle:@"NOT IMPLEMENTED" message:@"-" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
 }
 
 @end

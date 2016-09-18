@@ -64,10 +64,16 @@
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
+- (void)userShouldSkip {
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController presentViewController:mainVC animated:YES completion:nil];
+}
+
 #pragma mark - Number verification delegate
 
 -(void)userVerifiedPhoneNumber {
-    UIViewController *cameraVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     PFUser* currentUser = [PFUser currentUser];
 
@@ -75,8 +81,13 @@
     [currentInstallation addUniqueObject:channel forKey:@"channels"];
     [currentInstallation saveInBackground];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [self.navigationController presentViewController:cameraVC animated:YES completion:nil];
+        mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self.navigationController presentViewController:mainVC animated:YES completion:nil];
     }];
+}
+
+- (void)userSkippedVerification {
+    [self userShouldSkip];
 }
 
 @end

@@ -138,7 +138,9 @@
     [super viewDidLoad];
     
     UpdateNearbyCoupons();
-    
+
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+
     self.delegate = self;
     self.dataSource = self;
     

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NumberVerificationDelegate;
+
 @interface VerificationPhoneNumberViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *sendCodeBtn;
@@ -16,5 +18,7 @@
 
 -(void) sendCode;
 -(void) setParent: (UIViewController*)viewCtrl;
+
+@property (nonatomic, weak) id<NumberVerificationDelegate> delegate;
 
 @end
