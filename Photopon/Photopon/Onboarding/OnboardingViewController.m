@@ -23,6 +23,11 @@
 
 @implementation OnboardingViewController
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat xOffset = scrollView.contentOffset.x;
     self.backgroundImageLeftConstraint.constant = - xOffset / 7;
@@ -61,12 +66,14 @@
 - (void)userShouldRegister {
     NumberVerificationViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
     vc.delegate = self;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)userShouldSkip {
     UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
     mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController presentViewController:mainVC animated:YES completion:nil];
 }
 
@@ -81,6 +88,7 @@
     [currentInstallation addUniqueObject:channel forKey:@"channels"];
     [currentInstallation saveInBackground];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self.navigationController presentViewController:mainVC animated:YES completion:nil];
     }];

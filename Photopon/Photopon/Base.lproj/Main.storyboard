@@ -2174,9 +2174,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8j-dt-NaO">
-                                        <rect key="frame" x="0.0" y="172" width="280" height="75"/>
+                                        <rect key="frame" x="0.0" y="172" width="280" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="OGq-5g-xpx"/>
+                                            <constraint firstAttribute="height" constant="55" id="OGq-5g-xpx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="SEND CODE" backgroundImage="button_blue">
@@ -2184,16 +2184,17 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJq-O0-FbT">
-                                        <rect key="frame" x="0.0" y="252" width="280" height="75"/>
+                                        <rect key="frame" x="0.0" y="232" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="Dee-gl-cUK"/>
+                                            <constraint firstAttribute="height" constant="40" id="Dee-gl-cUK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="LATER" backgroundImage="button_violet">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Later">
+                                            <color key="titleColor" red="0.42745098039215684" green="0.19607843137254902" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MOBILE NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-jc-BfU">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mobile number" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-jc-BfU">
                                         <rect key="frame" x="0.0" y="97" width="280" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="Gfs-Sl-S59"/>
@@ -2498,16 +2499,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OI-fQ-FaE">
-                                        <rect key="frame" x="0.0" y="158" width="280" height="75"/>
+                                        <rect key="frame" x="0.0" y="158" width="280" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="5pG-4j-a5i"/>
+                                            <constraint firstAttribute="height" constant="55" id="5pG-4j-a5i"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="VERIFY" backgroundImage="button_blue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="VERIFICATION CODE" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7xi-Jy-oCg">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="verification code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7xi-Jy-oCg">
                                         <rect key="frame" x="0.0" y="83" width="280" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Cqf-qN-63J"/>
@@ -2521,24 +2522,24 @@
                                             </mask>
                                         </variation>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xph-DT-XLx">
-                                        <rect key="frame" x="0.0" y="318" width="280" height="75"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSM-lS-126">
+                                        <rect key="frame" x="197" y="218" width="68" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="sAZ-Ly-5o0"/>
+                                            <constraint firstAttribute="height" constant="40" id="yI2-8S-vS1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="CANCEL" backgroundImage="button_red">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Resend">
+                                            <color key="titleColor" red="0.42745098040000001" green="0.1960784314" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSM-lS-126">
-                                        <rect key="frame" x="0.0" y="238" width="280" height="75"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xph-DT-XLx">
+                                        <rect key="frame" x="15" y="218" width="63" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="yI2-8S-vS1"/>
+                                            <constraint firstAttribute="height" constant="40" id="sAZ-Ly-5o0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="RESEND CODE" backgroundImage="button_violet">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.89803921568627454" green="0.29019607843137257" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -2548,23 +2549,19 @@
                                     <constraint firstItem="9OI-fQ-FaE" firstAttribute="top" secondItem="7xi-Jy-oCg" secondAttribute="bottom" constant="15" id="AD9-o2-aia"/>
                                     <constraint firstAttribute="width" constant="360" id="B5U-uH-3aU"/>
                                     <constraint firstItem="b4C-0Q-d92" firstAttribute="top" secondItem="ZsZ-BD-jt5" secondAttribute="top" id="BPv-rK-6tY"/>
-                                    <constraint firstItem="xph-DT-XLx" firstAttribute="centerX" secondItem="ZsZ-BD-jt5" secondAttribute="centerX" id="JKB-Ai-aSP"/>
                                     <constraint firstItem="9OI-fQ-FaE" firstAttribute="centerX" secondItem="ZsZ-BD-jt5" secondAttribute="centerX" id="JsY-1I-ifu"/>
-                                    <constraint firstItem="CSM-lS-126" firstAttribute="centerX" secondItem="ZsZ-BD-jt5" secondAttribute="centerX" id="KtZ-ih-Gpd"/>
-                                    <constraint firstAttribute="trailing" secondItem="CSM-lS-126" secondAttribute="trailing" id="LGI-xZ-EFq"/>
+                                    <constraint firstAttribute="trailing" secondItem="CSM-lS-126" secondAttribute="trailing" constant="15" id="LGI-xZ-EFq"/>
                                     <constraint firstAttribute="height" constant="240" id="PTG-Fd-x3k"/>
                                     <constraint firstAttribute="trailing" secondItem="7xi-Jy-oCg" secondAttribute="trailing" id="RbZ-o0-GYc"/>
                                     <constraint firstItem="7xi-Jy-oCg" firstAttribute="leading" secondItem="ZsZ-BD-jt5" secondAttribute="leading" id="SC8-SG-pxZ"/>
-                                    <constraint firstItem="xph-DT-XLx" firstAttribute="leading" secondItem="ZsZ-BD-jt5" secondAttribute="leading" id="aRd-LU-hn2"/>
+                                    <constraint firstItem="xph-DT-XLx" firstAttribute="leading" secondItem="ZsZ-BD-jt5" secondAttribute="leading" constant="15" id="aRd-LU-hn2"/>
+                                    <constraint firstItem="xph-DT-XLx" firstAttribute="top" secondItem="9OI-fQ-FaE" secondAttribute="bottom" constant="5" id="dTy-SP-6wW"/>
                                     <constraint firstAttribute="trailing" secondItem="9OI-fQ-FaE" secondAttribute="trailing" id="fTH-lZ-YcM"/>
                                     <constraint firstItem="9OI-fQ-FaE" firstAttribute="leading" secondItem="ZsZ-BD-jt5" secondAttribute="leading" id="ifC-qG-Jjp"/>
                                     <constraint firstItem="7xi-Jy-oCg" firstAttribute="top" secondItem="de0-q3-14A" secondAttribute="bottom" constant="20" id="kTL-X5-VYW"/>
-                                    <constraint firstItem="CSM-lS-126" firstAttribute="leading" secondItem="ZsZ-BD-jt5" secondAttribute="leading" id="pcC-RD-r11"/>
                                     <constraint firstItem="de0-q3-14A" firstAttribute="top" secondItem="b4C-0Q-d92" secondAttribute="bottom" constant="10" id="r3U-67-8rU"/>
                                     <constraint firstItem="b4C-0Q-d92" firstAttribute="leading" secondItem="ZsZ-BD-jt5" secondAttribute="leading" constant="20" id="ryk-iZ-Zaa"/>
-                                    <constraint firstItem="xph-DT-XLx" firstAttribute="top" secondItem="CSM-lS-126" secondAttribute="bottom" constant="5" id="umJ-X4-dlC"/>
                                     <constraint firstAttribute="trailing" secondItem="b4C-0Q-d92" secondAttribute="trailing" constant="20" id="uvD-hA-q98"/>
-                                    <constraint firstAttribute="trailing" secondItem="xph-DT-XLx" secondAttribute="trailing" id="vAe-ID-rHf"/>
                                     <constraint firstAttribute="trailing" secondItem="de0-q3-14A" secondAttribute="trailing" constant="20" id="wll-pW-7o5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -2929,7 +2926,6 @@
         <image name="button-bg.png" width="564" height="96"/>
         <image name="button_blue" width="180" height="60"/>
         <image name="button_red" width="180" height="6"/>
-        <image name="button_violet" width="180" height="60"/>
         <image name="camera-button.png" width="250" height="100"/>
         <image name="camera-switch.png" width="512" height="512"/>
         <image name="check.png" width="68" height="68"/>
