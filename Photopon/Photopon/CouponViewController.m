@@ -21,11 +21,13 @@
 #import "AlertBox.h"
 #import "AvailabilityManager.h"
 #import "PhotoponUnavailableViewController.h"
+#import "UIViewController+Menu.h"
 
 @interface CouponViewController()
 
 @property (weak, nonatomic) IBOutlet UIView *notAvailableView;
 
+@property (nonatomic, strong) NSArray *mockCoupons;
 
 @end
 
@@ -121,9 +123,27 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
-    [header setTheme:[UITheme greenTheme]];
+
+#ifdef DEBUG
+    self.mockCoupons = @[ @{@"title": @"Test Coupon Buy 1 get 1 Free",
+                            @"desc": @"Get 1 free for 1 bought",
+                            @"expiration": [NSDate dateWithTimeIntervalSinceNow:360000],
+                            @"pic": @"http://graphichive.net/uploaded/fordesigner/1313309042.jpg",
+                            @"redeemed": @0},
+                          @{@"title": @"Test Coupon Buy 1 get 1 Free",
+                            @"desc": @"Get 1 free for 1 bought",
+                            @"expiration": [NSDate dateWithTimeIntervalSinceNow:60000],
+                            @"pic": @"https://aletp.com/images/blog/adidas-logo1.jpg",
+                            @"redeemed": @0},
+                          @{@"title": @"Test Coupon Buy 1 get 1 Free",
+                            @"desc": @"Get 1 free for 1 bought",
+                            @"expiration": [NSDate dateWithTimeIntervalSinceNow:2360000],
+                            @"pic": @"https://aletp.com/images/blog/adidas-logo1.jpg",
+                            @"redeemed": @0}
+                          ];
+#endif
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
+    self.title = @"Gifts";
 
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
@@ -151,7 +171,6 @@
 
     [self photoponAvailabilityConfiguration];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoponAvailabilityConfiguration) name:NOTIFICATION_PHOTOPON_AVAILABLE object:nil];
-
 }
 
 -(void) dealloc {
@@ -166,6 +185,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#ifdef DEBUG
+    return self.mockCoupons.count;
+#endif
     return [allCoupons count];
 }
 
@@ -178,8 +200,13 @@
         cell = [nib objectAtIndex:0];
     }
     
+
+
+#ifdef DEBUG
+    NSDictionary *item = self.mockCoupons[indexPath.row];
+#elif
     NSDictionary *item = (NSDictionary *)[allCoupons objectAtIndex:indexPath.row];
-    PFObject *itemObj = [allPFCoupons objectAtIndex:indexPath.row];
+#endif
     
     cell.title.text = [item objectForKey:@"title"];
     cell.longDescription.text = [item objectForKey:@"desc"];
@@ -221,7 +248,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 189;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

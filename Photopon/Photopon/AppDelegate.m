@@ -69,7 +69,7 @@
     
     //[Optimizely enableEditor];
 //    [Optimizely startOptimizelyWithAPIToken:@"AANPFuUBC0eid8cHb2NlL4AyneQspBbn~5685431109" launchOptions:launchOptions];
-
+    [self setupNavBarAppearance];
 
     return YES;
 }
@@ -245,6 +245,12 @@
             abort();
         }
     }
+}
+
+#pragma mark - Appearance
+
+- (void)setupNavBarAppearance {
+    [[UINavigationBar appearance]setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Montserrat-SemiBold" size:20], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 @end

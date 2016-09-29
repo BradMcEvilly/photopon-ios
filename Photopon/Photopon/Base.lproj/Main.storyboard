@@ -326,7 +326,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HaI-zB-fyG">
-                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E18-lW-1TU">
@@ -340,7 +340,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Im4-8r-M9N" userLabel="NotAvailableView">
-                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -348,12 +348,12 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Im4-8r-M9N" secondAttribute="trailing" id="NDH-Zn-O9G"/>
                             <constraint firstAttribute="trailing" secondItem="HaI-zB-fyG" secondAttribute="trailing" id="Obk-6O-XCR"/>
-                            <constraint firstItem="HaI-zB-fyG" firstAttribute="top" secondItem="BhJ-an-HQx" secondAttribute="topMargin" constant="80" id="RuG-uP-ZNR"/>
+                            <constraint firstItem="HaI-zB-fyG" firstAttribute="top" secondItem="BhJ-an-HQx" secondAttribute="topMargin" constant="70" id="RuG-uP-ZNR"/>
                             <constraint firstItem="Im4-8r-M9N" firstAttribute="leading" secondItem="BhJ-an-HQx" secondAttribute="leading" id="TEa-rP-ar8"/>
                             <constraint firstItem="4rd-TY-n0F" firstAttribute="top" secondItem="Im4-8r-M9N" secondAttribute="bottom" id="U5v-a9-9p4"/>
                             <constraint firstItem="4rd-TY-n0F" firstAttribute="top" secondItem="HaI-zB-fyG" secondAttribute="bottom" id="VkN-6v-Tkh"/>
                             <constraint firstItem="HaI-zB-fyG" firstAttribute="leading" secondItem="BhJ-an-HQx" secondAttribute="leading" id="d1r-97-Q8b"/>
-                            <constraint firstItem="Im4-8r-M9N" firstAttribute="top" secondItem="BhJ-an-HQx" secondAttribute="top" constant="80" id="gBP-7P-LxX"/>
+                            <constraint firstItem="Im4-8r-M9N" firstAttribute="top" secondItem="BhJ-an-HQx" secondAttribute="top" constant="70" id="gBP-7P-LxX"/>
                             <constraint firstItem="HaI-zB-fyG" firstAttribute="top" secondItem="xRZ-Ps-fzg" secondAttribute="bottom" id="z4t-BN-Eww"/>
                         </constraints>
                         <variation key="default">

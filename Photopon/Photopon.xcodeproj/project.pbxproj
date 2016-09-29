@@ -10,6 +10,44 @@
 		46084ACB1D41569800BE23F0 /* CouponDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */; };
 		46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */; };
 		46084AD21D41646900BE23F0 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084AD11D41646900BE23F0 /* LocationCell.m */; };
+		462682D41D9C325600BD3566 /* button-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682AE1D9C325600BD3566 /* button-bg.png */; };
+		462682D51D9C325600BD3566 /* buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462682AF1D9C325600BD3566 /* buttons.xcassets */; };
+		462682D61D9C325600BD3566 /* camera-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B01D9C325600BD3566 /* camera-button.png */; };
+		462682D71D9C325600BD3566 /* camera-switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B11D9C325600BD3566 /* camera-switch.png */; };
+		462682D81D9C325600BD3566 /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B21D9C325600BD3566 /* close-button.png */; };
+		462682D91D9C325600BD3566 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B31D9C325600BD3566 /* empty.png */; };
+		462682DA1D9C325600BD3566 /* empty20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B41D9C325600BD3566 /* empty20x20.png */; };
+		462682DB1D9C325600BD3566 /* Icon-Add-User.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B61D9C325600BD3566 /* Icon-Add-User.png */; };
+		462682DC1D9C325600BD3566 /* Icon-Add-UserStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B71D9C325600BD3566 /* Icon-Add-UserStar.png */; };
+		462682DD1D9C325600BD3566 /* Icon-Administrator.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B81D9C325600BD3566 /* Icon-Administrator.png */; };
+		462682DE1D9C325600BD3566 /* Icon-Books.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682B91D9C325600BD3566 /* Icon-Books.png */; };
+		462682DF1D9C325600BD3566 /* Icon-Box-Open.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682BA1D9C325600BD3566 /* Icon-Box-Open.png */; };
+		462682E01D9C325600BD3566 /* Icon-Business-Mens.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682BB1D9C325600BD3566 /* Icon-Business-Mens.png */; };
+		462682E11D9C325600BD3566 /* Icon-Checked-User.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682BC1D9C325600BD3566 /* Icon-Checked-User.png */; };
+		462682E21D9C325600BD3566 /* Icon-Find-User.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682BD1D9C325600BD3566 /* Icon-Find-User.png */; };
+		462682E31D9C325600BD3566 /* Icon-Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682BE1D9C325600BD3566 /* Icon-Gear.png */; };
+		462682E41D9C325600BD3566 /* Icon-Information.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682BF1D9C325600BD3566 /* Icon-Information.png */; };
+		462682E51D9C325600BD3566 /* Icon-Key.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C01D9C325600BD3566 /* Icon-Key.png */; };
+		462682E61D9C325600BD3566 /* Icon-Left-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C11D9C325600BD3566 /* Icon-Left-2.png */; };
+		462682E71D9C325600BD3566 /* Icon-Lock-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C21D9C325600BD3566 /* Icon-Lock-2.png */; };
+		462682E81D9C325600BD3566 /* Icon-Phone-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C31D9C325600BD3566 /* Icon-Phone-2.png */; };
+		462682E91D9C325600BD3566 /* Icon-Posterous.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C41D9C325600BD3566 /* Icon-Posterous.png */; };
+		462682EA1D9C325600BD3566 /* Icon-Present.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C51D9C325600BD3566 /* Icon-Present.png */; };
+		462682EB1D9C325600BD3566 /* Icon-Pricing.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C61D9C325600BD3566 /* Icon-Pricing.png */; };
+		462682EC1D9C325600BD3566 /* Icon-Share.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C71D9C325600BD3566 /* Icon-Share.png */; };
+		462682ED1D9C325600BD3566 /* Icon-Speach-Bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C81D9C325600BD3566 /* Icon-Speach-Bubble.png */; };
+		462682EE1D9C325600BD3566 /* Icon-Split-Vertical-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682C91D9C325600BD3566 /* Icon-Split-Vertical-2.png */; };
+		462682EF1D9C325600BD3566 /* Icon-Tag-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682CA1D9C325600BD3566 /* Icon-Tag-1.png */; };
+		462682F01D9C325600BD3566 /* Icon-Tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682CB1D9C325600BD3566 /* Icon-Tag.png */; };
+		462682F11D9C325600BD3566 /* Icon-Wallet-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682CC1D9C325600BD3566 /* Icon-Wallet-22.png */; };
+		462682F21D9C325600BD3566 /* Icon-Yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682CD1D9C325600BD3566 /* Icon-Yes.png */; };
+		462682F31D9C325600BD3566 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682CE1D9C325600BD3566 /* iTunesArtwork.png */; };
+		462682F41D9C325600BD3566 /* photopon-logo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682CF1D9C325600BD3566 /* photopon-logo-black.png */; };
+		462682F51D9C325600BD3566 /* photopon-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682D01D9C325600BD3566 /* photopon-logo-white.png */; };
+		462682F61D9C325600BD3566 /* redeembutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682D11D9C325600BD3566 /* redeembutton.png */; };
+		462682F71D9C325600BD3566 /* splash-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682D21D9C325600BD3566 /* splash-bottom.png */; };
+		462682F81D9C325600BD3566 /* splash-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682D31D9C325600BD3566 /* splash-logo.png */; };
+		462682FB1D9C327800BD3566 /* Stripe.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462682FA1D9C327800BD3566 /* Stripe.xcassets */; };
 		462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */; };
 		462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69831D230C7300E13783 /* UIColor+Theme.m */; };
 		462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69871D230E6100E13783 /* NSDateFormatter+Common.m */; };
@@ -17,6 +55,35 @@
 		466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */; };
 		466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */; };
 		466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C42AA1D43400100F277BA /* GoogleMapsManager.m */; };
+		46857AF31D9D8BA9003C1642 /* WorkSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */; };
+		46857AF41D9D8BA9003C1642 /* WorkSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */; };
+		46857AF51D9D8BA9003C1642 /* WorkSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */; };
+		46857AF61D9D8BA9003C1642 /* WorkSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AED1D9D8BA9003C1642 /* WorkSans-Medium.otf */; };
+		46857AF71D9D8BA9003C1642 /* WorkSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEE1D9D8BA9003C1642 /* WorkSans-Light.otf */; };
+		46857AF81D9D8BA9003C1642 /* WorkSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEF1D9D8BA9003C1642 /* WorkSans-ExtraLight.otf */; };
+		46857AF91D9D8BA9003C1642 /* WorkSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AF01D9D8BA9003C1642 /* WorkSans-Black.otf */; };
+		46857AFA1D9D8BA9003C1642 /* WorkSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AF11D9D8BA9003C1642 /* WorkSans-Thin.otf */; };
+		46857AFB1D9D8BA9003C1642 /* WorkSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AF21D9D8BA9003C1642 /* WorkSans-Regular.otf */; };
+		46857B0E1D9D8BEC003C1642 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AFC1D9D8BEC003C1642 /* Montserrat-ExtraBold.otf */; };
+		46857B0F1D9D8BEC003C1642 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AFD1D9D8BEC003C1642 /* Montserrat-Bold.otf */; };
+		46857B101D9D8BEC003C1642 /* Montserrat-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AFE1D9D8BEC003C1642 /* Montserrat-Medium.otf */; };
+		46857B111D9D8BEC003C1642 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AFF1D9D8BEC003C1642 /* Montserrat-SemiBold.otf */; };
+		46857B121D9D8BEC003C1642 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B001D9D8BEC003C1642 /* Montserrat-Regular.otf */; };
+		46857B131D9D8BEC003C1642 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B011D9D8BEC003C1642 /* Montserrat-Light.otf */; };
+		46857B141D9D8BEC003C1642 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B021D9D8BEC003C1642 /* Montserrat-Black.otf */; };
+		46857B151D9D8BEC003C1642 /* Montserrat-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B031D9D8BEC003C1642 /* Montserrat-ExtraLight.otf */; };
+		46857B161D9D8BEC003C1642 /* Montserrat-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B041D9D8BEC003C1642 /* Montserrat-Thin.otf */; };
+		46857B171D9D8BEC003C1642 /* MontserratAlternates-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B051D9D8BEC003C1642 /* MontserratAlternates-ExtraBold.otf */; };
+		46857B181D9D8BEC003C1642 /* MontserratAlternates-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B061D9D8BEC003C1642 /* MontserratAlternates-Bold.otf */; };
+		46857B191D9D8BEC003C1642 /* MontserratAlternates-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B071D9D8BEC003C1642 /* MontserratAlternates-Medium.otf */; };
+		46857B1A1D9D8BEC003C1642 /* MontserratAlternates-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B081D9D8BEC003C1642 /* MontserratAlternates-SemiBold.otf */; };
+		46857B1B1D9D8BEC003C1642 /* MontserratAlternates-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B091D9D8BEC003C1642 /* MontserratAlternates-Regular.otf */; };
+		46857B1C1D9D8BEC003C1642 /* MontserratAlternates-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B0A1D9D8BEC003C1642 /* MontserratAlternates-Black.otf */; };
+		46857B1D1D9D8BEC003C1642 /* MontserratAlternates-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B0B1D9D8BEC003C1642 /* MontserratAlternates-Light.otf */; };
+		46857B1E1D9D8BEC003C1642 /* MontserratAlternates-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B0C1D9D8BEC003C1642 /* MontserratAlternates-ExtraLight.otf */; };
+		46857B1F1D9D8BEC003C1642 /* MontserratAlternates-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857B0D1D9D8BEC003C1642 /* MontserratAlternates-Thin.otf */; };
+		46857B221D9D9995003C1642 /* UIColor+Convinience.m in Sources */ = {isa = PBXBuildFile; fileRef = 46857B211D9D9995003C1642 /* UIColor+Convinience.m */; };
+		46857B251D9DACB1003C1642 /* UIViewController+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46857B241D9DACB1003C1642 /* UIViewController+Menu.m */; };
 		468E81C21D8483EC00A9D4E2 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 468E81C11D8483EC00A9D4E2 /* OnboardingViewController.m */; };
 		46C28B6F1D85CFF4006A3B34 /* LocationServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C28B6E1D85CFF4006A3B34 /* LocationServicesViewController.m */; };
 		46C28B721D85D29B006A3B34 /* EnjoyPhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C28B711D85D29B006A3B34 /* EnjoyPhotoponViewController.m */; };
@@ -153,6 +220,44 @@
 		46084AD01D41646900BE23F0 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		46084AD11D41646900BE23F0 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		462187E31D33FF5B0085579E /* URLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConstants.h; sourceTree = "<group>"; };
+		462682AE1D9C325600BD3566 /* button-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-bg.png"; sourceTree = "<group>"; };
+		462682AF1D9C325600BD3566 /* buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = buttons.xcassets; sourceTree = "<group>"; };
+		462682B01D9C325600BD3566 /* camera-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-button.png"; sourceTree = "<group>"; };
+		462682B11D9C325600BD3566 /* camera-switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-switch.png"; sourceTree = "<group>"; };
+		462682B21D9C325600BD3566 /* close-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-button.png"; sourceTree = "<group>"; };
+		462682B31D9C325600BD3566 /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty.png; sourceTree = "<group>"; };
+		462682B41D9C325600BD3566 /* empty20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty20x20.png; sourceTree = "<group>"; };
+		462682B61D9C325600BD3566 /* Icon-Add-User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Add-User.png"; sourceTree = "<group>"; };
+		462682B71D9C325600BD3566 /* Icon-Add-UserStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Add-UserStar.png"; sourceTree = "<group>"; };
+		462682B81D9C325600BD3566 /* Icon-Administrator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Administrator.png"; sourceTree = "<group>"; };
+		462682B91D9C325600BD3566 /* Icon-Books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Books.png"; sourceTree = "<group>"; };
+		462682BA1D9C325600BD3566 /* Icon-Box-Open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Box-Open.png"; sourceTree = "<group>"; };
+		462682BB1D9C325600BD3566 /* Icon-Business-Mens.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Business-Mens.png"; sourceTree = "<group>"; };
+		462682BC1D9C325600BD3566 /* Icon-Checked-User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Checked-User.png"; sourceTree = "<group>"; };
+		462682BD1D9C325600BD3566 /* Icon-Find-User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Find-User.png"; sourceTree = "<group>"; };
+		462682BE1D9C325600BD3566 /* Icon-Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Gear.png"; sourceTree = "<group>"; };
+		462682BF1D9C325600BD3566 /* Icon-Information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Information.png"; sourceTree = "<group>"; };
+		462682C01D9C325600BD3566 /* Icon-Key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Key.png"; sourceTree = "<group>"; };
+		462682C11D9C325600BD3566 /* Icon-Left-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Left-2.png"; sourceTree = "<group>"; };
+		462682C21D9C325600BD3566 /* Icon-Lock-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Lock-2.png"; sourceTree = "<group>"; };
+		462682C31D9C325600BD3566 /* Icon-Phone-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Phone-2.png"; sourceTree = "<group>"; };
+		462682C41D9C325600BD3566 /* Icon-Posterous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Posterous.png"; sourceTree = "<group>"; };
+		462682C51D9C325600BD3566 /* Icon-Present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Present.png"; sourceTree = "<group>"; };
+		462682C61D9C325600BD3566 /* Icon-Pricing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Pricing.png"; sourceTree = "<group>"; };
+		462682C71D9C325600BD3566 /* Icon-Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Share.png"; sourceTree = "<group>"; };
+		462682C81D9C325600BD3566 /* Icon-Speach-Bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Speach-Bubble.png"; sourceTree = "<group>"; };
+		462682C91D9C325600BD3566 /* Icon-Split-Vertical-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Split-Vertical-2.png"; sourceTree = "<group>"; };
+		462682CA1D9C325600BD3566 /* Icon-Tag-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Tag-1.png"; sourceTree = "<group>"; };
+		462682CB1D9C325600BD3566 /* Icon-Tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Tag.png"; sourceTree = "<group>"; };
+		462682CC1D9C325600BD3566 /* Icon-Wallet-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Wallet-22.png"; sourceTree = "<group>"; };
+		462682CD1D9C325600BD3566 /* Icon-Yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Yes.png"; sourceTree = "<group>"; };
+		462682CE1D9C325600BD3566 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		462682CF1D9C325600BD3566 /* photopon-logo-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photopon-logo-black.png"; sourceTree = "<group>"; };
+		462682D01D9C325600BD3566 /* photopon-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photopon-logo-white.png"; sourceTree = "<group>"; };
+		462682D11D9C325600BD3566 /* redeembutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeembutton.png; sourceTree = "<group>"; };
+		462682D21D9C325600BD3566 /* splash-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-bottom.png"; sourceTree = "<group>"; };
+		462682D31D9C325600BD3566 /* splash-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo.png"; sourceTree = "<group>"; };
+		462682FA1D9C327800BD3566 /* Stripe.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stripe.xcassets; sourceTree = "<group>"; };
 		462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNavigationStackHelper.m; sourceTree = "<group>"; };
 		462C697F1D230BDD00E13783 /* AppNavigationStackHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNavigationStackHelper.h; sourceTree = "<group>"; };
 		462C69821D230C7300E13783 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
@@ -166,6 +271,37 @@
 		466B63221D385D8000FEB0BC /* UIView+CommonLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonLayout.h"; sourceTree = "<group>"; };
 		466C42A91D43400100F277BA /* GoogleMapsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsManager.h; sourceTree = "<group>"; };
 		466C42AA1D43400100F277BA /* GoogleMapsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsManager.m; sourceTree = "<group>"; };
+		46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBold.otf"; sourceTree = "<group>"; };
+		46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.otf"; sourceTree = "<group>"; };
+		46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBold.otf"; sourceTree = "<group>"; };
+		46857AED1D9D8BA9003C1642 /* WorkSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Medium.otf"; sourceTree = "<group>"; };
+		46857AEE1D9D8BA9003C1642 /* WorkSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Light.otf"; sourceTree = "<group>"; };
+		46857AEF1D9D8BA9003C1642 /* WorkSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraLight.otf"; sourceTree = "<group>"; };
+		46857AF01D9D8BA9003C1642 /* WorkSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Black.otf"; sourceTree = "<group>"; };
+		46857AF11D9D8BA9003C1642 /* WorkSans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Thin.otf"; sourceTree = "<group>"; };
+		46857AF21D9D8BA9003C1642 /* WorkSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Regular.otf"; sourceTree = "<group>"; };
+		46857AFC1D9D8BEC003C1642 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		46857AFD1D9D8BEC003C1642 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		46857AFE1D9D8BEC003C1642 /* Montserrat-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.otf"; sourceTree = "<group>"; };
+		46857AFF1D9D8BEC003C1642 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		46857B001D9D8BEC003C1642 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		46857B011D9D8BEC003C1642 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		46857B021D9D8BEC003C1642 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		46857B031D9D8BEC003C1642 /* Montserrat-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.otf"; sourceTree = "<group>"; };
+		46857B041D9D8BEC003C1642 /* Montserrat-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.otf"; sourceTree = "<group>"; };
+		46857B051D9D8BEC003C1642 /* MontserratAlternates-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraBold.otf"; sourceTree = "<group>"; };
+		46857B061D9D8BEC003C1642 /* MontserratAlternates-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Bold.otf"; sourceTree = "<group>"; };
+		46857B071D9D8BEC003C1642 /* MontserratAlternates-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Medium.otf"; sourceTree = "<group>"; };
+		46857B081D9D8BEC003C1642 /* MontserratAlternates-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.otf"; sourceTree = "<group>"; };
+		46857B091D9D8BEC003C1642 /* MontserratAlternates-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Regular.otf"; sourceTree = "<group>"; };
+		46857B0A1D9D8BEC003C1642 /* MontserratAlternates-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Black.otf"; sourceTree = "<group>"; };
+		46857B0B1D9D8BEC003C1642 /* MontserratAlternates-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Light.otf"; sourceTree = "<group>"; };
+		46857B0C1D9D8BEC003C1642 /* MontserratAlternates-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraLight.otf"; sourceTree = "<group>"; };
+		46857B0D1D9D8BEC003C1642 /* MontserratAlternates-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Thin.otf"; sourceTree = "<group>"; };
+		46857B201D9D9995003C1642 /* UIColor+Convinience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Convinience.h"; sourceTree = "<group>"; };
+		46857B211D9D9995003C1642 /* UIColor+Convinience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Convinience.m"; sourceTree = "<group>"; };
+		46857B231D9DACB1003C1642 /* UIViewController+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Menu.h"; sourceTree = "<group>"; };
+		46857B241D9DACB1003C1642 /* UIViewController+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Menu.m"; sourceTree = "<group>"; };
 		468E81C01D8483EC00A9D4E2 /* OnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingViewController.h; sourceTree = "<group>"; };
 		468E81C11D8483EC00A9D4E2 /* OnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewController.m; sourceTree = "<group>"; };
 		46C28B6D1D85CFF4006A3B34 /* LocationServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationServicesViewController.h; sourceTree = "<group>"; };
@@ -411,6 +547,67 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		462682AD1D9C325600BD3566 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				46857AE91D9D8B9C003C1642 /* Fonts */,
+				462682AE1D9C325600BD3566 /* button-bg.png */,
+				462682AF1D9C325600BD3566 /* buttons.xcassets */,
+				462682B01D9C325600BD3566 /* camera-button.png */,
+				462682B11D9C325600BD3566 /* camera-switch.png */,
+				462682B21D9C325600BD3566 /* close-button.png */,
+				462682B31D9C325600BD3566 /* empty.png */,
+				462682B41D9C325600BD3566 /* empty20x20.png */,
+				462682B51D9C325600BD3566 /* icons */,
+				462682CE1D9C325600BD3566 /* iTunesArtwork.png */,
+				462682CF1D9C325600BD3566 /* photopon-logo-black.png */,
+				462682D01D9C325600BD3566 /* photopon-logo-white.png */,
+				462682D11D9C325600BD3566 /* redeembutton.png */,
+				462682D21D9C325600BD3566 /* splash-bottom.png */,
+				462682D31D9C325600BD3566 /* splash-logo.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		462682B51D9C325600BD3566 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				462682B61D9C325600BD3566 /* Icon-Add-User.png */,
+				462682B71D9C325600BD3566 /* Icon-Add-UserStar.png */,
+				462682B81D9C325600BD3566 /* Icon-Administrator.png */,
+				462682B91D9C325600BD3566 /* Icon-Books.png */,
+				462682BA1D9C325600BD3566 /* Icon-Box-Open.png */,
+				462682BB1D9C325600BD3566 /* Icon-Business-Mens.png */,
+				462682BC1D9C325600BD3566 /* Icon-Checked-User.png */,
+				462682BD1D9C325600BD3566 /* Icon-Find-User.png */,
+				462682BE1D9C325600BD3566 /* Icon-Gear.png */,
+				462682BF1D9C325600BD3566 /* Icon-Information.png */,
+				462682C01D9C325600BD3566 /* Icon-Key.png */,
+				462682C11D9C325600BD3566 /* Icon-Left-2.png */,
+				462682C21D9C325600BD3566 /* Icon-Lock-2.png */,
+				462682C31D9C325600BD3566 /* Icon-Phone-2.png */,
+				462682C41D9C325600BD3566 /* Icon-Posterous.png */,
+				462682C51D9C325600BD3566 /* Icon-Present.png */,
+				462682C61D9C325600BD3566 /* Icon-Pricing.png */,
+				462682C71D9C325600BD3566 /* Icon-Share.png */,
+				462682C81D9C325600BD3566 /* Icon-Speach-Bubble.png */,
+				462682C91D9C325600BD3566 /* Icon-Split-Vertical-2.png */,
+				462682CA1D9C325600BD3566 /* Icon-Tag-1.png */,
+				462682CB1D9C325600BD3566 /* Icon-Tag.png */,
+				462682CC1D9C325600BD3566 /* Icon-Wallet-22.png */,
+				462682CD1D9C325600BD3566 /* Icon-Yes.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+		462682F91D9C326700BD3566 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				462682FA1D9C327800BD3566 /* Stripe.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		462C69811D230BE700E13783 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,8 +649,46 @@
 			children = (
 				466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */,
 				466B63221D385D8000FEB0BC /* UIView+CommonLayout.h */,
+				46857B201D9D9995003C1642 /* UIColor+Convinience.h */,
+				46857B211D9D9995003C1642 /* UIColor+Convinience.m */,
+				46857B231D9DACB1003C1642 /* UIViewController+Menu.h */,
+				46857B241D9DACB1003C1642 /* UIViewController+Menu.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		46857AE91D9D8B9C003C1642 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				46857AFC1D9D8BEC003C1642 /* Montserrat-ExtraBold.otf */,
+				46857AFD1D9D8BEC003C1642 /* Montserrat-Bold.otf */,
+				46857AFE1D9D8BEC003C1642 /* Montserrat-Medium.otf */,
+				46857AFF1D9D8BEC003C1642 /* Montserrat-SemiBold.otf */,
+				46857B001D9D8BEC003C1642 /* Montserrat-Regular.otf */,
+				46857B011D9D8BEC003C1642 /* Montserrat-Light.otf */,
+				46857B021D9D8BEC003C1642 /* Montserrat-Black.otf */,
+				46857B031D9D8BEC003C1642 /* Montserrat-ExtraLight.otf */,
+				46857B041D9D8BEC003C1642 /* Montserrat-Thin.otf */,
+				46857B051D9D8BEC003C1642 /* MontserratAlternates-ExtraBold.otf */,
+				46857B061D9D8BEC003C1642 /* MontserratAlternates-Bold.otf */,
+				46857B071D9D8BEC003C1642 /* MontserratAlternates-Medium.otf */,
+				46857B081D9D8BEC003C1642 /* MontserratAlternates-SemiBold.otf */,
+				46857B091D9D8BEC003C1642 /* MontserratAlternates-Regular.otf */,
+				46857B0A1D9D8BEC003C1642 /* MontserratAlternates-Black.otf */,
+				46857B0B1D9D8BEC003C1642 /* MontserratAlternates-Light.otf */,
+				46857B0C1D9D8BEC003C1642 /* MontserratAlternates-ExtraLight.otf */,
+				46857B0D1D9D8BEC003C1642 /* MontserratAlternates-Thin.otf */,
+				46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */,
+				46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */,
+				46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */,
+				46857AED1D9D8BA9003C1642 /* WorkSans-Medium.otf */,
+				46857AEE1D9D8BA9003C1642 /* WorkSans-Light.otf */,
+				46857AEF1D9D8BA9003C1642 /* WorkSans-ExtraLight.otf */,
+				46857AF01D9D8BA9003C1642 /* WorkSans-Black.otf */,
+				46857AF11D9D8BA9003C1642 /* WorkSans-Thin.otf */,
+				46857AF21D9D8BA9003C1642 /* WorkSans-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		46CF62E71D1EB7FC002122EC /* Common */ = {
@@ -644,6 +879,8 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				462682F91D9C326700BD3566 /* Assets */,
+				462682AD1D9C325600BD3566 /* Resources */,
 				46CF62E71D1EB7FC002122EC /* Common */,
 				84B8CB911D0B16C60060BAD5 /* Modules */,
 				62A302B91B7E9AB300D61F34 /* AddFriendController.h */,
@@ -942,25 +1179,49 @@
 			buildActionMask = 2147483647;
 			files = (
 				629E720A1C611ACE00DD79C1 /* Icon-Lock-2.png in Resources */,
+				46857AF51D9D8BA9003C1642 /* WorkSans-SemiBold.otf in Resources */,
+				462682EF1D9C325600BD3566 /* Icon-Tag-1.png in Resources */,
 				84B8CB9C1D0B6BEF0060BAD5 /* ChatUserTableViewCell.xib in Resources */,
 				62D0C2F91C08B4A60069B0B5 /* contact-user.png in Resources */,
+				462682EB1D9C325600BD3566 /* Icon-Pricing.png in Resources */,
 				626CAE941C12580000189D6E /* add-button.png in Resources */,
 				626266241B8A7710006D730E /* check.png in Resources */,
+				462682E61D9C325600BD3566 /* Icon-Left-2.png in Resources */,
 				629E71FC1C6117B100DD79C1 /* Icon-Checked-User.png in Resources */,
 				629E72031C6117B100DD79C1 /* Icon-Tag-1.png in Resources */,
+				46857AF81D9D8BA9003C1642 /* WorkSans-ExtraLight.otf in Resources */,
 				629E720C1C611ACE00DD79C1 /* Icon-Split-Vertical-2.png in Resources */,
 				620602381CEE162A0054122D /* photopon-logo-black.png in Resources */,
+				462682D61D9C325600BD3566 /* camera-button.png in Resources */,
+				462682E41D9C325600BD3566 /* Icon-Information.png in Resources */,
+				46857AFA1D9D8BA9003C1642 /* WorkSans-Thin.otf in Resources */,
+				462682E81D9C325600BD3566 /* Icon-Phone-2.png in Resources */,
+				46857AF91D9D8BA9003C1642 /* WorkSans-Black.otf in Resources */,
+				46857B191D9D8BEC003C1642 /* MontserratAlternates-Medium.otf in Resources */,
+				46857B131D9D8BEC003C1642 /* Montserrat-Light.otf in Resources */,
+				462682F71D9C325600BD3566 /* splash-bottom.png in Resources */,
 				62C8ADC81C56E936007021CA /* button-bg.png in Resources */,
 				629E71FD1C6117B100DD79C1 /* Icon-Find-User.png in Resources */,
+				462682F41D9C325600BD3566 /* photopon-logo-black.png in Resources */,
+				462682EA1D9C325600BD3566 /* Icon-Present.png in Resources */,
 				62457D381D6B10E400D18DFB /* Icon-Photopon.png in Resources */,
 				6281445C1C4F000E0008D9FF /* IndicatorViewController.xib in Resources */,
+				462682D71D9C325600BD3566 /* camera-switch.png in Resources */,
 				62970B461C4021E900521815 /* camera.png in Resources */,
 				46D2FF991D5624780073EBC7 /* Onboarding.storyboard in Resources */,
+				462682E11D9C325600BD3566 /* Icon-Checked-User.png in Resources */,
+				462682D51D9C325600BD3566 /* buttons.xcassets in Resources */,
+				46857AF61D9D8BA9003C1642 /* WorkSans-Medium.otf in Resources */,
 				62DD661E1B8E8A3500B1A972 /* profileplaceholder.png in Resources */,
+				462682D41D9C325600BD3566 /* button-bg.png in Resources */,
+				462682E51D9C325600BD3566 /* Icon-Key.png in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableCell.xib in Resources */,
+				462682D81D9C325600BD3566 /* close-button.png in Resources */,
 				62821B571C239842007704D1 /* MiniCouponViewController.xib in Resources */,
+				46857AF31D9D8BA9003C1642 /* WorkSans-ExtraBold.otf in Resources */,
 				62C8ADC11C52CA91007021CA /* splash-bottom.png in Resources */,
 				620602391CEE162A0054122D /* photopon-logo-white.png in Resources */,
+				46857B121D9D8BEC003C1642 /* Montserrat-Regular.otf in Resources */,
 				629E720B1C611ACE00DD79C1 /* Icon-Posterous.png in Resources */,
 				629E71FA1C6117B100DD79C1 /* Icon-Box-Open.png in Resources */,
 				62B3D32A1D5CB0AD007B6FA5 /* Icon-Phone-2.png in Resources */,
@@ -968,43 +1229,84 @@
 				629E72001C6117B100DD79C1 /* Icon-Present.png in Resources */,
 				466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */,
 				629E72021C6117B100DD79C1 /* Icon-Speach-Bubble.png in Resources */,
+				46857B151D9D8BEC003C1642 /* Montserrat-ExtraLight.otf in Resources */,
 				62C8ADC41C52CDEE007021CA /* camera-button.png in Resources */,
+				462682E21D9C325600BD3566 /* Icon-Find-User.png in Resources */,
+				462682E91D9C325600BD3566 /* Icon-Posterous.png in Resources */,
 				629E72101C612B2B00DD79C1 /* Icon-Books.png in Resources */,
 				62C8ADC61C52E568007021CA /* camera-switch.png in Resources */,
 				6276A9FA1D460373000A8BE0 /* Icon-Share.png in Resources */,
 				6246E29D1D799C4100CE42B7 /* buttons.xcassets in Resources */,
+				46857B0F1D9D8BEC003C1642 /* Montserrat-Bold.otf in Resources */,
 				62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */,
 				6255D5A31C1783050088227A /* ChatMessageTableViewCell.xib in Resources */,
 				62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */,
+				46857B1B1D9D8BEC003C1642 /* MontserratAlternates-Regular.otf in Resources */,
 				629E720E1C612A4000DD79C1 /* Icon-Information.png in Resources */,
+				462682E31D9C325600BD3566 /* Icon-Gear.png in Resources */,
+				462682F31D9C325600BD3566 /* iTunesArtwork.png in Resources */,
 				62C8ADC21C52CA91007021CA /* splash-logo.png in Resources */,
+				46857B1F1D9D8BEC003C1642 /* MontserratAlternates-Thin.otf in Resources */,
 				622563F51C9B257300ED2C46 /* AlertBox.xib in Resources */,
 				62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */,
+				462682FB1D9C327800BD3566 /* Stripe.xcassets in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
 				62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
 				629E72131C614C1E00DD79C1 /* Icon-Add-UserStar.png in Resources */,
 				629E72091C611ACE00DD79C1 /* Icon-Left-2.png in Resources */,
 				62D086071B86B3B50063C8B8 /* couponplaceholder.png in Resources */,
 				629E71F91C6117B100DD79C1 /* Icon-Add-User.png in Resources */,
+				462682ED1D9C325600BD3566 /* Icon-Speach-Bubble.png in Resources */,
 				62A302C61B80F6CC00D61F34 /* empty20x20.png in Resources */,
+				46857B1A1D9D8BEC003C1642 /* MontserratAlternates-SemiBold.otf in Resources */,
+				46857B141D9D8BEC003C1642 /* Montserrat-Black.otf in Resources */,
+				46857AF41D9D8BA9003C1642 /* WorkSans-Bold.otf in Resources */,
 				62D9AF701BB1E6CB006D3BAF /* blackdot.png in Resources */,
+				462682E71D9C325600BD3566 /* Icon-Lock-2.png in Resources */,
 				629E71FB1C6117B100DD79C1 /* Icon-Business-Mens.png in Resources */,
 				629E71FE1C6117B100DD79C1 /* Icon-Gear.png in Resources */,
+				462682EC1D9C325600BD3566 /* Icon-Share.png in Resources */,
+				462682F01D9C325600BD3566 /* Icon-Tag.png in Resources */,
 				629E72181C61544100DD79C1 /* Icon-Administrator.png in Resources */,
 				62970B4A1C40286300521815 /* JosefinSans-Bold.ttf in Resources */,
+				46857B161D9D8BEC003C1642 /* Montserrat-Thin.otf in Resources */,
+				462682F61D9C325600BD3566 /* redeembutton.png in Resources */,
+				46857B111D9D8BEC003C1642 /* Montserrat-SemiBold.otf in Resources */,
+				462682F51D9C325600BD3566 /* photopon-logo-white.png in Resources */,
+				462682DD1D9C325600BD3566 /* Icon-Administrator.png in Resources */,
+				46857B181D9D8BEC003C1642 /* MontserratAlternates-Bold.otf in Resources */,
+				462682DA1D9C325600BD3566 /* empty20x20.png in Resources */,
+				46857B1C1D9D8BEC003C1642 /* MontserratAlternates-Black.otf in Resources */,
 				62457D371D6B10E400D18DFB /* Icon-Phone.png in Resources */,
+				462682F21D9C325600BD3566 /* Icon-Yes.png in Resources */,
+				462682F81D9C325600BD3566 /* splash-logo.png in Resources */,
 				629E72011C6117B100DD79C1 /* Icon-Pricing.png in Resources */,
+				462682EE1D9C325600BD3566 /* Icon-Split-Vertical-2.png in Resources */,
+				462682DF1D9C325600BD3566 /* Icon-Box-Open.png in Resources */,
 				62CA90EC1B7B41F1009C3B4C /* FontAwesome.otf in Resources */,
+				46857B1D1D9D8BEC003C1642 /* MontserratAlternates-Light.otf in Resources */,
+				462682D91D9C325600BD3566 /* empty.png in Resources */,
 				62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */,
 				628144571C485F5B0008D9FF /* HeaderViewController.xib in Resources */,
+				46857AFB1D9D8BA9003C1642 /* WorkSans-Regular.otf in Resources */,
+				462682DE1D9C325600BD3566 /* Icon-Books.png in Resources */,
+				462682DB1D9C325600BD3566 /* Icon-Add-User.png in Resources */,
 				6281444F1C45A62D0008D9FF /* close-button.png in Resources */,
+				462682E01D9C325600BD3566 /* Icon-Business-Mens.png in Resources */,
+				462682F11D9C325600BD3566 /* Icon-Wallet-22.png in Resources */,
+				46857B171D9D8BEC003C1642 /* MontserratAlternates-ExtraBold.otf in Resources */,
+				46857B0E1D9D8BEC003C1642 /* Montserrat-ExtraBold.otf in Resources */,
+				46857B1E1D9D8BEC003C1642 /* MontserratAlternates-ExtraLight.otf in Resources */,
 				62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */,
+				46857B101D9D8BEC003C1642 /* Montserrat-Medium.otf in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
 				629E71FF1C6117B100DD79C1 /* Icon-Key.png in Resources */,
 				629E72041C6117B100DD79C1 /* Icon-Tag.png in Resources */,
 				626266221B8A6CA1006D730E /* takephoto.png in Resources */,
 				629E72161C6153CF00DD79C1 /* Icon-Yes.png in Resources */,
+				46857AF71D9D8BA9003C1642 /* WorkSans-Light.otf in Resources */,
 				46084ACB1D41569800BE23F0 /* CouponDetails.storyboard in Resources */,
+				462682DC1D9C325600BD3566 /* Icon-Add-UserStar.png in Resources */,
 				84A607421D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.xib in Resources */,
 				629E72141C614C1E00DD79C1 /* Icon-Wallet-22.png in Resources */,
 			);
@@ -1089,6 +1391,7 @@
 				628144561C485F5B0008D9FF /* HeaderViewController.m in Sources */,
 				46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */,
 				462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */,
+				46857B221D9D9995003C1642 /* UIColor+Convinience.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
@@ -1115,6 +1418,7 @@
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				468E81C21D8483EC00A9D4E2 /* OnboardingViewController.m in Sources */,
 				84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */,
+				46857B251D9DACB1003C1642 /* UIViewController+Menu.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */,

@@ -17,6 +17,7 @@
 #import "AlertBox.h"
 #import "ChatMessagesController.h"
 #import "PhotoponViewController.h"
+#import "UIColor+Convinience.h"
 
 @implementation MainController
 {
@@ -189,15 +190,16 @@
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
-    
+//    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+    couponsView = [self setupCouponsViewController];
+
     hasUser = cUser != nil;
     
     if (cUser) {
         [photoponView setPageViewController:self];
     
-        myViewControllers = @[photoponView, notificationsView,friendsView,couponsView,walletView];
+        myViewControllers = @[photoponView, notificationsView,friendsView, couponsView, walletView];
         
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
         
@@ -206,7 +208,7 @@
                         animated:NO completion:nil];
     } else {
         
-        myViewControllers = @[notificationsView,couponsView];
+        myViewControllers = @[notificationsView, couponsView];
         
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
         
@@ -300,7 +302,15 @@
     }
 }
 
+#pragma mark - Controllers setup
 
+- (UINavigationController *)setupCouponsViewController {
+    UIViewController *couponVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+    UINavigationController *couponNavigationController = [[UINavigationController alloc]initWithRootViewController:couponVC];
+    couponNavigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
+    couponNavigationController.navigationBar.tintColor = [UIColor whiteColor];
+    return  couponNavigationController;
+}
 
 
 @end

@@ -10,6 +10,7 @@
 
 @interface CouponTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbImage;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *longDescription;
@@ -17,5 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *getButton;
 @property (weak, nonatomic) IBOutlet UIButton *giveButton;
+@property (weak, nonatomic) IBOutlet UIImageView *verticalDividerView;
 
 @end
