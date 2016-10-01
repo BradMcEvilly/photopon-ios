@@ -113,6 +113,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 -(void)forceUpdateCoupons {
@@ -123,10 +124,6 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-
-
-    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
-    [header setTheme:[UITheme pinkTheme]];
 
 #ifdef DEBUG
     self.mockCoupons = @[ @{@"title": @"Test Coupon Buy 1 get 1 Free",
