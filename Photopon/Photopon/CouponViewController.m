@@ -145,6 +145,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
     self.title = @"Gifts";
 
+    
+    
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
     self.couponTable.separatorStyle = UITableViewCellSeparatorStyleNone;

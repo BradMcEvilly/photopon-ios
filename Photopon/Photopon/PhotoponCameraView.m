@@ -323,35 +323,35 @@
 
 
 -(void) initCamera {
-    
-    
-    
-    
+
+    [self.imageView setFrame:[UIScreen mainScreen].bounds];
+
+#if TARGET_OS_SIMULATOR
+    hasCamera = NO;
+
+    UIImageView* placeholder = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camplaceholder.jpg"]];
+    placeholder.contentMode = UIViewContentModeScaleAspectFill;
+    [placeholder setFrame:self.imageView.frame ];
+    [self.imageView addSubview:placeholder];
+#else
+
+    hasCamera = YES;
+
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetMedium;
     
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     [captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-
+    
     captureVideoPreviewLayer.frame = [UIScreen mainScreen].bounds;
-    [self.imageView setFrame:[UIScreen mainScreen].bounds];
     [self.imageView.layer addSublayer:captureVideoPreviewLayer];
     
-    
-    
     AVCaptureDevice *device = [self getCameraWithType: activeDevice];
-    
+
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-    if (!input) {
-        NSLog(@"ERROR: trying to open camera: %@", error);
-        hasCamera = NO;
-        UIImageView* placeholder = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camplaceholder.jpg"]];
-        placeholder.contentMode = UIViewContentModeScaleAspectFill;
-        [placeholder setFrame:self.imageView.frame ];
-        [self.imageView addSubview:placeholder];
-        
-    } else {
+    
+    if (input) {
         [session addInput:input];
         
         _stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
@@ -360,8 +360,9 @@
         [session addOutput:_stillImageOutput];
         
         [session startRunning];
-        hasCamera = YES;
     }
+    
+#endif
 
 }
 
