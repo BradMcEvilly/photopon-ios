@@ -191,8 +191,8 @@
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
-//    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
-    couponsView = [self setupCouponsViewController];
+    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+//    couponsView = [self setupCouponsViewController];
 
     hasUser = cUser != nil;
     
@@ -309,7 +309,7 @@
     UINavigationController *couponNavigationController = [[UINavigationController alloc]initWithRootViewController:couponVC];
     couponNavigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
     couponNavigationController.navigationBar.tintColor = [UIColor whiteColor];
-    return  couponNavigationController;
+    return couponNavigationController;
 }
 
 

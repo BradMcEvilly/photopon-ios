@@ -124,6 +124,10 @@
 {
     [super viewDidLoad];
 
+
+    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
+    [header setTheme:[UITheme pinkTheme]];
+
 #ifdef DEBUG
     self.mockCoupons = @[ @{@"title": @"Test Coupon Buy 1 get 1 Free",
                             @"desc": @"Get 1 free for 1 bought",

@@ -2194,7 +2194,7 @@
                                             <color key="titleColor" red="0.42745098039215684" green="0.19607843137254902" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mobile number" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-jc-BfU">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mobile number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-jc-BfU">
                                         <rect key="frame" x="0.0" y="97" width="280" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="Gfs-Sl-S59"/>
