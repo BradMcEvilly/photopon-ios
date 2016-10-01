@@ -84,10 +84,10 @@
 
     }];
 
-
-
     [leftMenu setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    [self presentViewController:leftMenu animated:NO completion:nil];
+
+    UIViewController *vc = self.navigationController ?: self;
+    [vc presentViewController:leftMenu animated:NO completion:nil];
     
 }
 

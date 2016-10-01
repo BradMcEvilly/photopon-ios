@@ -51,27 +51,37 @@
 
 
 -(void) gotoNotificationView {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[notificationsView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
 
 -(void) gotoFriendsView {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[friendsView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
 
 -(void) gotoCouponsView {
-    [self setViewControllers:@[couponsView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setViewControllers:@[couponsView]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:NO completion:^(BOOL finished) {
+                            NSLog(@"%d", finished);
+                        }];
+    });
 }
 
 -(void) gotoWalletView {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[walletView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
 
 -(void) gotoAddPhotoponView: (NSNotification*)notification {
@@ -83,14 +93,13 @@
         [photoponView setSelectedFriend: notification.userInfo[@"friendId"]];
         
     }
-    
+
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[photoponView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
-
-
-
 
 -(void) handleNotifications: (NSNotification*)notification {
     if (notification.userInfo) {
@@ -191,8 +200,8 @@
     notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
-    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
-//    couponsView = [self setupCouponsViewController];
+//    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+    couponsView = [self setupCouponsViewController];
 
     hasUser = cUser != nil;
     
