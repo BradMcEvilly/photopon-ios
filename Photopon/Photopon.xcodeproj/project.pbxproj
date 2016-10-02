@@ -85,6 +85,7 @@
 		46857B221D9D9995003C1642 /* UIColor+Convinience.m in Sources */ = {isa = PBXBuildFile; fileRef = 46857B211D9D9995003C1642 /* UIColor+Convinience.m */; };
 		46857B251D9DACB1003C1642 /* UIViewController+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46857B241D9DACB1003C1642 /* UIViewController+Menu.m */; };
 		468E81C21D8483EC00A9D4E2 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 468E81C11D8483EC00A9D4E2 /* OnboardingViewController.m */; };
+		4691DF531DA1547C003E52A8 /* Apple.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4691DF521DA1547C003E52A8 /* Apple.gpx */; };
 		46AF4B831DA02E1F003556B0 /* CouponDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF4B821DA02E1F003556B0 /* CouponDetailsViewController.m */; };
 		46AF4B861DA059F0003556B0 /* CouponLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF4B851DA059F0003556B0 /* CouponLocationAnnotation.m */; };
 		46AF4B8B1DA06D69003556B0 /* RoundedBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF4B8A1DA06D69003556B0 /* RoundedBorderedView.m */; };
@@ -307,6 +308,7 @@
 		46857B241D9DACB1003C1642 /* UIViewController+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Menu.m"; sourceTree = "<group>"; };
 		468E81C01D8483EC00A9D4E2 /* OnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingViewController.h; sourceTree = "<group>"; };
 		468E81C11D8483EC00A9D4E2 /* OnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewController.m; sourceTree = "<group>"; };
+		4691DF521DA1547C003E52A8 /* Apple.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Apple.gpx; sourceTree = "<group>"; };
 		46AF4B811DA02E1F003556B0 /* CouponDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailsViewController.h; sourceTree = "<group>"; };
 		46AF4B821DA02E1F003556B0 /* CouponDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailsViewController.m; sourceTree = "<group>"; };
 		46AF4B841DA059F0003556B0 /* CouponLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponLocationAnnotation.h; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 		462682AD1D9C325600BD3566 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4691DF511DA15464003E52A8 /* Locations */,
 				46857AE91D9D8B9C003C1642 /* Fonts */,
 				462682AE1D9C325600BD3566 /* button-bg.png */,
 				462682AF1D9C325600BD3566 /* buttons.xcassets */,
@@ -698,6 +701,14 @@
 				46857AF21D9D8BA9003C1642 /* WorkSans-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4691DF511DA15464003E52A8 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				4691DF521DA1547C003E52A8 /* Apple.gpx */,
+			);
+			path = Locations;
 			sourceTree = "<group>";
 		};
 		46AF4B801DA02DFA003556B0 /* CouponDetails */ = {
@@ -1233,6 +1244,7 @@
 				462682F71D9C325600BD3566 /* splash-bottom.png in Resources */,
 				62C8ADC81C56E936007021CA /* button-bg.png in Resources */,
 				629E71FD1C6117B100DD79C1 /* Icon-Find-User.png in Resources */,
+				4691DF531DA1547C003E52A8 /* Apple.gpx in Resources */,
 				462682F41D9C325600BD3566 /* photopon-logo-black.png in Resources */,
 				462682EA1D9C325600BD3566 /* Icon-Present.png in Resources */,
 				62457D381D6B10E400D18DFB /* Icon-Photopon.png in Resources */,
