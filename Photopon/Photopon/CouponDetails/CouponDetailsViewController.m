@@ -95,7 +95,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
                                                                                                          @"index": @(self.selectedCouponIndex)
                                                                                                          }];
-    [self dismissViewControllerAnimated:YES completion:nil];
 
     SendGAEvent(@"user_action", @"coupon_details", @"give_pressed");
 }
