@@ -87,11 +87,10 @@
     NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
     [currentInstallation addUniqueObject:channel forKey:@"channels"];
     [currentInstallation saveInBackground];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-        mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self.navigationController presentViewController:mainVC animated:YES completion:nil];
-    }];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController presentViewController:mainVC animated:YES completion:nil];
 }
 
 - (void)userSkippedVerification {

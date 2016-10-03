@@ -85,6 +85,10 @@
 		46857B221D9D9995003C1642 /* UIColor+Convinience.m in Sources */ = {isa = PBXBuildFile; fileRef = 46857B211D9D9995003C1642 /* UIColor+Convinience.m */; };
 		46857B251D9DACB1003C1642 /* UIViewController+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46857B241D9DACB1003C1642 /* UIViewController+Menu.m */; };
 		468E81C21D8483EC00A9D4E2 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 468E81C11D8483EC00A9D4E2 /* OnboardingViewController.m */; };
+		4691DF531DA1547C003E52A8 /* Apple.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4691DF521DA1547C003E52A8 /* Apple.gpx */; };
+		46AF4B831DA02E1F003556B0 /* CouponDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF4B821DA02E1F003556B0 /* CouponDetailsViewController.m */; };
+		46AF4B861DA059F0003556B0 /* CouponLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF4B851DA059F0003556B0 /* CouponLocationAnnotation.m */; };
+		46AF4B8B1DA06D69003556B0 /* RoundedBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF4B8A1DA06D69003556B0 /* RoundedBorderedView.m */; };
 		46C28B6F1D85CFF4006A3B34 /* LocationServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C28B6E1D85CFF4006A3B34 /* LocationServicesViewController.m */; };
 		46C28B721D85D29B006A3B34 /* EnjoyPhotoponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C28B711D85D29B006A3B34 /* EnjoyPhotoponViewController.m */; };
 		46C28B751D85E397006A3B34 /* PushNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C28B741D85E397006A3B34 /* PushNotificationsViewController.m */; };
@@ -304,6 +308,13 @@
 		46857B241D9DACB1003C1642 /* UIViewController+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Menu.m"; sourceTree = "<group>"; };
 		468E81C01D8483EC00A9D4E2 /* OnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingViewController.h; sourceTree = "<group>"; };
 		468E81C11D8483EC00A9D4E2 /* OnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewController.m; sourceTree = "<group>"; };
+		4691DF521DA1547C003E52A8 /* Apple.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Apple.gpx; sourceTree = "<group>"; };
+		46AF4B811DA02E1F003556B0 /* CouponDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailsViewController.h; sourceTree = "<group>"; };
+		46AF4B821DA02E1F003556B0 /* CouponDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailsViewController.m; sourceTree = "<group>"; };
+		46AF4B841DA059F0003556B0 /* CouponLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponLocationAnnotation.h; sourceTree = "<group>"; };
+		46AF4B851DA059F0003556B0 /* CouponLocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponLocationAnnotation.m; sourceTree = "<group>"; };
+		46AF4B891DA06D69003556B0 /* RoundedBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedBorderedView.h; sourceTree = "<group>"; };
+		46AF4B8A1DA06D69003556B0 /* RoundedBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedBorderedView.m; sourceTree = "<group>"; };
 		46C28B6D1D85CFF4006A3B34 /* LocationServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationServicesViewController.h; sourceTree = "<group>"; };
 		46C28B6E1D85CFF4006A3B34 /* LocationServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationServicesViewController.m; sourceTree = "<group>"; };
 		46C28B701D85D29B006A3B34 /* EnjoyPhotoponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnjoyPhotoponViewController.h; sourceTree = "<group>"; };
@@ -550,6 +561,7 @@
 		462682AD1D9C325600BD3566 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4691DF511DA15464003E52A8 /* Locations */,
 				46857AE91D9D8B9C003C1642 /* Fonts */,
 				462682AE1D9C325600BD3566 /* button-bg.png */,
 				462682AF1D9C325600BD3566 /* buttons.xcassets */,
@@ -691,9 +703,38 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		4691DF511DA15464003E52A8 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				4691DF521DA1547C003E52A8 /* Apple.gpx */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		46AF4B801DA02DFA003556B0 /* CouponDetails */ = {
+			isa = PBXGroup;
+			children = (
+				46AF4B811DA02E1F003556B0 /* CouponDetailsViewController.h */,
+				46AF4B821DA02E1F003556B0 /* CouponDetailsViewController.m */,
+				46AF4B841DA059F0003556B0 /* CouponLocationAnnotation.h */,
+				46AF4B851DA059F0003556B0 /* CouponLocationAnnotation.m */,
+			);
+			path = CouponDetails;
+			sourceTree = "<group>";
+		};
+		46AF4B881DA06D4F003556B0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				46AF4B891DA06D69003556B0 /* RoundedBorderedView.h */,
+				46AF4B8A1DA06D69003556B0 /* RoundedBorderedView.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				46AF4B881DA06D4F003556B0 /* Components */,
 				6246E2A11D7E166200CE42B7 /* Verifications */,
 				46D121FC1D70C0DF005B6CAF /* Factories */,
 				46084AC91D41567300BE23F0 /* Stroyboards */,
@@ -993,6 +1034,7 @@
 		84B8CB911D0B16C60060BAD5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				46AF4B801DA02DFA003556B0 /* CouponDetails */,
 				46D2FF971D56244D0073EBC7 /* Onboarding */,
 				6276A9FB1D4608E9000A8BE0 /* SentPhotopons */,
 				46084ACC1D415DD200BE23F0 /* CouponLocations */,
@@ -1202,6 +1244,7 @@
 				462682F71D9C325600BD3566 /* splash-bottom.png in Resources */,
 				62C8ADC81C56E936007021CA /* button-bg.png in Resources */,
 				629E71FD1C6117B100DD79C1 /* Icon-Find-User.png in Resources */,
+				4691DF531DA1547C003E52A8 /* Apple.gpx in Resources */,
 				462682F41D9C325600BD3566 /* photopon-logo-black.png in Resources */,
 				462682EA1D9C325600BD3566 /* Icon-Present.png in Resources */,
 				62457D381D6B10E400D18DFB /* Icon-Photopon.png in Resources */,
@@ -1381,6 +1424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6246E2A41D7E168C00CE42B7 /* VerificationCodeViewController.m in Sources */,
+				46AF4B861DA059F0003556B0 /* CouponLocationAnnotation.m in Sources */,
 				6281444D1C45981C0008D9FF /* PhotoponCameraPlaceholderViewController.m in Sources */,
 				46D121FF1D70C110005B6CAF /* TooltipFactory.m in Sources */,
 				462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */,
@@ -1437,12 +1481,14 @@
 				629E71EB1C608E2B00DD79C1 /* UITheme.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
 				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,
+				46AF4B831DA02E1F003556B0 /* CouponDetailsViewController.m in Sources */,
 				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
 				6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */,
 				46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */,
 				84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
+				46AF4B8B1DA06D69003556B0 /* RoundedBorderedView.m in Sources */,
 				6246E2AA1D7ECEC600CE42B7 /* VerificationWelcomeViewController.m in Sources */,
 				62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */,
 				466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */,

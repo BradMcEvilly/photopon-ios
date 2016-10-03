@@ -55,7 +55,6 @@
     [query whereKey:@"username" equalTo: _screenName.text];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        
         if ([objects count] > 0) {
             [ind remove];
      
@@ -75,8 +74,9 @@
             
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (!error) {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    [self.delegate userVerifiedPhoneNumber];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        [self.delegate userVerifiedPhoneNumber];
+                    }];
                 } else {
                     [AlertBox showAlertFor:self
                                  withTitle:@"Registration Error"

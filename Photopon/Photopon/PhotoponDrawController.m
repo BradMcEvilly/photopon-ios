@@ -14,12 +14,14 @@
 #import "IndicatorViewController.h"
 #import "AlertBox.h"
 #import "TooltipFactory.h"
+#import "UIView+CommonLayout.h"
 
 @import Foundation;
 
 @interface PhotoponDrawController()
 
 @property (nonatomic, strong) AMPopTip *tooltip;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *photoponContainerView;
 
 @end
 
@@ -145,38 +147,19 @@
 
 
 -(void)createMiniCouponView {
-    
-    
     miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
     [miniCouponViewController setCouponIndex:currentCouponIndex];
-//    [miniCouponViewController setImmobile];
-    const int MiniCouponSize = 92;
-    
-    
-    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, MiniCouponSize);
-    CGPoint ct = self.view.center;
-    ct.y = 150;
-//    ct.y = 80 + [UIScreen mainScreen].bounds.size.width * 0.9 - MiniCouponSize / 2;
-    miniCouponViewController.view.center = ct;
-    
-    [self.view addSubview:miniCouponViewController.view];
+
+    [self.photoponContainerView.contentView addSubviewAndFill:miniCouponViewController.view];
     [self addChildViewController:miniCouponViewController];
     [miniCouponViewController didMoveToParentViewController:self];
-    
 }
 
-
-
-
-
 -(void)sendPhotopons:(NSArray*)users {
-    
-    
     if (drawingFile == NULL) {
         drawingFile = [NSNull null];
     }
-    
-    
+
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
@@ -356,7 +339,11 @@
     
     [self.photoView setImage:photo];
     
-    
+
+    self.photoponContainerView.layer.cornerRadius = 10;
+    self.photoponContainerView.layer.masksToBounds = YES;
+    self.photoponContainerView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+
     photoFile = [NSNull null];
     drawingFile = [NSNull null];
     

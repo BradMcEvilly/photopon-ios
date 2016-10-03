@@ -16,6 +16,7 @@
 #import "UIView+CommonLayout.h"
 #import "PhotoponUnavailableViewController.h"
 #import "TooltipFactory.h"
+#import "UIView+CommonLayout.h"
 
 @interface PhotoponCameraView()
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *notAvailableView;
 
 @property (nonatomic, strong) AMPopTip *tooltip;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *photoponContainerView;
 
 
 @end
@@ -71,7 +73,7 @@
     
     self.shutterButton.hidden = !hasCoupons;
     self.noCouponView.hidden = hasCoupons || ![AvailabilityManager photoponAvailable];
-    
+    self.photoponContainerView.hidden = [allCoupons count] == 0;
     if (hasCoupons) {
         [self.noCouponIndicator stopAnimating];
         if (!self.tooltip) {
@@ -123,7 +125,11 @@
     
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
-    
+
+    self.photoponContainerView.layer.cornerRadius = 10;
+    self.photoponContainerView.layer.masksToBounds = YES;
+    self.photoponContainerView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+
     AddCouponUpdateListener(self);
     
     
@@ -174,32 +180,10 @@
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
--(void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-
-    CGRect tframe = self.topBand.frame;
-    tframe.size.height = self.couponOverlayGraphics.frame.origin.y;
-    [self.topBand setFrame:tframe];
-    
-    
-    CGRect bframe = self.bottomBand.frame;
-    bframe.size.height = [UIScreen mainScreen].bounds.size.height - (self.couponOverlayGraphics.frame.origin.y + self.couponOverlayGraphics.frame.size.height);
-    bframe.origin.y = (self.couponOverlayGraphics.frame.origin.y + self.couponOverlayGraphics.frame.size.height);
-    [self.bottomBand setFrame:bframe];
-    
-    
-
-}
-
-
-
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponCameraScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
-    
-    
 }
 
 
@@ -291,16 +275,9 @@
     
     miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
     [miniCouponViewController setCouponIndex:currentCouponIndex];
-    
-    const int MiniCouponSize = 92;
-    
-    
-    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * 0.88, MiniCouponSize);
-    CGPoint ct = self.view.center;
-    ct.y = 80 + [UIScreen mainScreen].bounds.size.width * 0.9 - MiniCouponSize / 2;
-    miniCouponViewController.view.center = ct;
-    
-    [self.view addSubview:miniCouponViewController.view];
+
+
+    [self.photoponContainerView.contentView addSubviewAndFill:miniCouponViewController.view];
     [self addChildViewController:miniCouponViewController];
     [miniCouponViewController didMoveToParentViewController:self];
     

@@ -22,6 +22,7 @@
 #import "AvailabilityManager.h"
 #import "PhotoponUnavailableViewController.h"
 #import "UIViewController+Menu.h"
+#import "CouponDetailsViewController.h"
 
 @interface CouponViewController()
 
@@ -113,6 +114,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 -(void)forceUpdateCoupons {
@@ -123,6 +125,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
 #ifdef DEBUG
     self.mockCoupons = @[ @{@"title": @"Test Coupon Buy 1 get 1 Free",
@@ -187,10 +190,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#ifdef DEBUG
-    return self.mockCoupons.count;
-#endif
-    return [allCoupons count];
+//#ifdef DEBUG
+//    return self.mockCoupons.count;
+//#endif
+    return [allPFCoupons count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,12 +207,12 @@
     
 
 
-#ifdef DEBUG
-    NSDictionary *item = self.mockCoupons[indexPath.row];
-#elif
-    NSDictionary *item = (NSDictionary *)[allCoupons objectAtIndex:indexPath.row];
-#endif
-    
+//#ifdef DEBUG
+//    NSDictionary *item = self.mockCoupons[indexPath.row];
+//#elif
+    PFObject *item = [allPFCoupons objectAtIndex:indexPath.row];
+//#endif
+
     cell.title.text = [item objectForKey:@"title"];
     cell.longDescription.text = [item objectForKey:@"desc"];
     
@@ -254,16 +257,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{   [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger thisCellIndex = (int)indexPath.row;
+//    NSInteger thisCellIndex = (int)indexPath.row;
+//
+//    CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
+//    [detailView setCouponIndex:thisCellIndex];
+//
+//    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
+//    //navVC.navigationBarHidden = YES;
+//    [self presentViewController:detailView animated:YES completion:nil];
 
-    CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
-    [detailView setCouponIndex:thisCellIndex];
-
-    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
-    //navVC.navigationBarHidden = YES;
-    [self presentViewController:detailView animated:YES completion:nil];
+    CouponDetailsViewController *detailsVC = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponDetailsViewController"];
+    detailsVC.coupon = allPFCoupons[selectedCouponIndex];
+    detailsVC.selectedCouponIndex = selectedCouponIndex;
+    [self.navigationController pushViewController:detailsVC animated:YES];
     
 }
 

@@ -28,6 +28,7 @@ static BOOL photoponAvailable = YES;
             
             
 #ifdef DEBUG
+            [self setPhotoponAvailable:YES];
             if (completion) {
                 completion(YES);
             }
