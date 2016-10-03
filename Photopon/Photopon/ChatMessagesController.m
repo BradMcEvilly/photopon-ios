@@ -211,7 +211,8 @@
     
     PubNub* pubnub = GetPubNub();
     self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
-    
+
+    /*
     __weak typeof(self) weakSelf = self;
     [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
         
@@ -221,10 +222,41 @@
             // Error
         }
     }];
-    
+    */
     
     [pubnub subscribeToChannels:@[self.channelName] withPresence:YES];
     [pubnub addListener:self];
+    
+    
+    
+    PFQuery *query1 = [PFQuery queryWithClassName:@"Notifications"];
+    [query1 whereKey:@"to" equalTo:self.currentUser];
+    [query1 whereKey:@"assocUser" equalTo:[PFUser currentUser]];
+    [query1 whereKey:@"type" equalTo:@"MESSAGE"];
+    
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Notifications"];
+    [query2 whereKey:@"to" equalTo:[PFUser currentUser]];
+    [query2 whereKey:@"assocUser" equalTo:self.currentUser];
+    [query2 whereKey:@"type" equalTo:@"MESSAGE"];
+    
+    PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1, query2]];
+    [mainQuery addAscendingOrder:@"createdAt"];
+    
+    [mainQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        for (PFObject* obj in objects) {
+            
+            [self addMessage:@{
+                               @"message" : [obj valueForKey:@"content"],
+                               @"from" : [[obj valueForKey:@"assocUser"] objectId],
+                               @"type" : @"MESSAGE"
+                               }];
+        }
+        
+        [self.chatTableView reloadData];
+        [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+
+        
+    }];
 }
 
 - (void)setMessage:(NSString*)message {

@@ -304,32 +304,16 @@ void RemoveAddFriendNotification(PFUser* userToRemove) {
 
 void CreateMessageNotification(PFUser* toUser, NSString* content) {
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
     
-    [query whereKey:@"to" equalTo:toUser];
-    [query whereKey:@"assocUser" equalTo:[PFUser currentUser]];
-    [query whereKey:@"type" equalTo:@"MESSAGE"];
+    notification[@"to"] = toUser;
+    notification[@"type"] = @"MESSAGE";
+    notification[@"content"] = content;
+    notification[@"assocUser"] = [PFUser currentUser];
     
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
-        
-        if (result) {
-            [result setValue:content forKey:@"content"];
-            [result saveInBackground];
-            
-        } else {
-            
-            PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
-            
-            notification[@"to"] = toUser;
-            notification[@"type"] = @"MESSAGE";
-            notification[@"content"] = content;
-            notification[@"assocUser"] = [PFUser currentUser];
-            
-            [notification saveInBackground];
-        }
-        
-        [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
-    }];
+    [notification saveInBackground];
+    
+   [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
     
 }
 

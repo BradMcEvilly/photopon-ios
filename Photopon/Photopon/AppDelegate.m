@@ -67,6 +67,7 @@
 
     [GetLocationManager() startUpdatingLocation];
     
+        
     //[Optimizely enableEditor];
 //    [Optimizely startOptimizelyWithAPIToken:@"AANPFuUBC0eid8cHb2NlL4AyneQspBbn~5685431109" launchOptions:launchOptions];
     [self setupNavBarAppearance];
