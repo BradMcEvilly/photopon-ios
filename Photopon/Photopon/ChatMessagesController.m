@@ -232,24 +232,41 @@
     PFQuery *query1 = [PFQuery queryWithClassName:@"Notifications"];
     [query1 whereKey:@"to" equalTo:self.currentUser];
     [query1 whereKey:@"assocUser" equalTo:[PFUser currentUser]];
-    [query1 whereKey:@"type" equalTo:@"MESSAGE"];
+    [query1 whereKey:@"type" containedIn:@[@"MESSAGE", @"REDEEMED", @"PHOTOPON"]];
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"Notifications"];
     [query2 whereKey:@"to" equalTo:[PFUser currentUser]];
     [query2 whereKey:@"assocUser" equalTo:self.currentUser];
-    [query2 whereKey:@"type" equalTo:@"MESSAGE"];
+    [query1 whereKey:@"type" containedIn:@[@"MESSAGE", @"REDEEMED", @"PHOTOPON"]];
     
     PFQuery *mainQuery = [PFQuery orQueryWithSubqueries:@[query1, query2]];
     [mainQuery addAscendingOrder:@"createdAt"];
+    [mainQuery includeKey:@"assocPhotopon"];
+    [mainQuery includeKey:@"assocPhotopon.coupon"];
     
     [mainQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         for (PFObject* obj in objects) {
+            NSString* t = [obj objectForKey:@"type"];
             
-            [self addMessage:@{
-                               @"message" : [obj valueForKey:@"content"],
-                               @"from" : [[obj valueForKey:@"assocUser"] objectId],
-                               @"type" : @"MESSAGE"
-                               }];
+            if ([t isEqualToString:@"PHOTOPON"] || [t isEqualToString:@"REDEEMED"]) {
+                PFObject* photopon = [obj valueForKey:@"assocPhotopon"];
+                PFObject* coupon = [photopon valueForKey:@"coupon"];
+                
+                [self addMessage:@{
+                                   @"couponTitle" : [coupon objectForKey:@"title"],
+                                   @"photoponId" : [photopon objectId],
+                                   @"from" : [[obj valueForKey:@"assocUser"] objectId],
+                                   @"type" : @"NOTIFICATION_MESSAGE",
+                                   @"subtype" : t
+                                   }];
+
+            } else {
+                [self addMessage:@{
+                                   @"message" : [obj valueForKey:@"content"],
+                                   @"from" : [[obj valueForKey:@"assocUser"] objectId],
+                                   @"type" : @"MESSAGE"
+                                   }];
+            }
         }
         
         [self.chatTableView reloadData];
