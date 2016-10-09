@@ -144,7 +144,7 @@
     switchButtonTap.numberOfTapsRequired = 1;
     [self.switchCameraButton setUserInteractionEnabled:YES];
     [self.switchCameraButton addGestureRecognizer:switchButtonTap];
-    
+
     
     self.noCouponView.layer.cornerRadius = 10;
     self.noCouponView.layer.masksToBounds = YES;

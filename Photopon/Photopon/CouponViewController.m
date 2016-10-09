@@ -23,6 +23,8 @@
 #import "PhotoponUnavailableViewController.h"
 #import "UIViewController+Menu.h"
 #import "CouponDetailsViewController.h"
+#import "MultipleLocationsContainerViewController.h"
+#import "CouponLocationsTableViewController.h"
 
 @interface CouponViewController()
 
@@ -267,12 +269,19 @@
 //    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
 //    //navVC.navigationBarHidden = YES;
 //    [self presentViewController:detailView animated:YES completion:nil];
-
-    CouponDetailsViewController *detailsVC = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponDetailsViewController"];
-    detailsVC.coupon = allPFCoupons[selectedCouponIndex];
-    detailsVC.selectedCouponIndex = selectedCouponIndex;
-    [self.navigationController pushViewController:detailsVC animated:YES];
-    
+    NSArray *couponLocations = [allPFCoupons[selectedCouponIndex] objectForKey:@"locations"];
+    if (couponLocations.count == 1) {
+        CouponDetailsViewController *detailsVC = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponDetailsViewController"];
+        detailsVC.coupon = allPFCoupons[selectedCouponIndex];
+        detailsVC.selectedCouponIndex = selectedCouponIndex;
+        detailsVC.location = couponLocations.firstObject;
+        [self.navigationController pushViewController:detailsVC animated:YES];
+    } else {
+        CouponLocationsTableViewController *vc = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponLocationsTableViewController"];
+        vc.coupon = allPFCoupons[selectedCouponIndex];
+        vc.selectedCouponIndex = selectedCouponIndex;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (IBAction)chatWithFriendsButtonHandler:(id)sender {

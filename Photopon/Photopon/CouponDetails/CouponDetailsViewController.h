@@ -11,6 +11,7 @@
 @interface CouponDetailsViewController : UIViewController
 
 @property (nonatomic, strong) PFObject *coupon;
+@property (nonatomic, strong) PFObject *location;
 @property (nonatomic, assign) NSInteger selectedCouponIndex;
 
 @end

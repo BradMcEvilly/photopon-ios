@@ -51,6 +51,9 @@
 		462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */; };
 		462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69831D230C7300E13783 /* UIColor+Theme.m */; };
 		462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69871D230E6100E13783 /* NSDateFormatter+Common.m */; };
+		4655E67E1DAA62D70043443B /* CouponBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655E67D1DAA62D70043443B /* CouponBasicCell.m */; };
+		4655E6811DAA63A10043443B /* CouponLocationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655E6801DAA63A10043443B /* CouponLocationsTableViewController.m */; };
+		4655E6841DAAC3850043443B /* MultipleLocationsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655E6831DAAC3850043443B /* MultipleLocationsContainerViewController.m */; };
 		466B631D1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B631C1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m */; };
 		466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */; };
 		466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */; };
@@ -268,6 +271,12 @@
 		462C69831D230C7300E13783 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
 		462C69861D230E6100E13783 /* NSDateFormatter+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Common.h"; sourceTree = "<group>"; };
 		462C69871D230E6100E13783 /* NSDateFormatter+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Common.m"; sourceTree = "<group>"; };
+		4655E67C1DAA62D70043443B /* CouponBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponBasicCell.h; sourceTree = "<group>"; };
+		4655E67D1DAA62D70043443B /* CouponBasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponBasicCell.m; sourceTree = "<group>"; };
+		4655E67F1DAA63A10043443B /* CouponLocationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponLocationsTableViewController.h; sourceTree = "<group>"; };
+		4655E6801DAA63A10043443B /* CouponLocationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponLocationsTableViewController.m; sourceTree = "<group>"; };
+		4655E6821DAAC3850043443B /* MultipleLocationsContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleLocationsContainerViewController.h; sourceTree = "<group>"; };
+		4655E6831DAAC3850043443B /* MultipleLocationsContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleLocationsContainerViewController.m; sourceTree = "<group>"; };
 		466B631B1D385C2B00FEB0BC /* PhotoponUnavailableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoponUnavailableViewController.h; sourceTree = "<group>"; };
 		466B631C1D385C2B00FEB0BC /* PhotoponUnavailableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoponUnavailableViewController.m; sourceTree = "<group>"; };
 		466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoponUnavailableViewController.xib; sourceTree = "<group>"; };
@@ -638,6 +647,15 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		4655E67B1DAA628C0043443B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4655E67C1DAA62D70043443B /* CouponBasicCell.h */,
+				4655E67D1DAA62D70043443B /* CouponBasicCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		466B63191D385BC400FEB0BC /* SimpleViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,10 +732,15 @@
 		46AF4B801DA02DFA003556B0 /* CouponDetails */ = {
 			isa = PBXGroup;
 			children = (
+				4655E67B1DAA628C0043443B /* Cells */,
 				46AF4B811DA02E1F003556B0 /* CouponDetailsViewController.h */,
 				46AF4B821DA02E1F003556B0 /* CouponDetailsViewController.m */,
 				46AF4B841DA059F0003556B0 /* CouponLocationAnnotation.h */,
 				46AF4B851DA059F0003556B0 /* CouponLocationAnnotation.m */,
+				4655E67F1DAA63A10043443B /* CouponLocationsTableViewController.h */,
+				4655E6801DAA63A10043443B /* CouponLocationsTableViewController.m */,
+				4655E6821DAAC3850043443B /* MultipleLocationsContainerViewController.h */,
+				4655E6831DAAC3850043443B /* MultipleLocationsContainerViewController.m */,
 			);
 			path = CouponDetails;
 			sourceTree = "<group>";
@@ -1485,6 +1508,7 @@
 				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
 				6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */,
 				46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */,
+				4655E6811DAA63A10043443B /* CouponLocationsTableViewController.m in Sources */,
 				84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
@@ -1494,7 +1518,9 @@
 				466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */,
 				62821B431C20A167007704D1 /* LeftMenuViewController.m in Sources */,
 				848C1CC61D0E343A0034BAA0 /* ChatPhotoponPresentableModel.m in Sources */,
+				4655E67E1DAA62D70043443B /* CouponBasicCell.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,
+				4655E6841DAAC3850043443B /* MultipleLocationsContainerViewController.m in Sources */,
 				46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */,
 				84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */,
 			);

@@ -49,23 +49,15 @@
     self.couponExpirationLabel.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
     [self.couponImageView sd_setImageWithURL:[NSURL URLWithString:[self.coupon objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
 
-    NSArray *locations = [self.coupon objectForKey:@"locations"];
-    NSNumber *locationID = locations.firstObject;
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Location" predicate:[NSPredicate predicateWithFormat:@"objectId == %@", locationID]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        PFObject *location = objects.firstObject;
-        if (location) {
-            self.addressLabel.text = location[@"address"];
-            PFGeoPoint *point = location[@"location"];
-            CouponLocationAnnotation *annotation = [[CouponLocationAnnotation alloc]init];
-            annotation.coordinate = CLLocationCoordinate2DMake(point.latitude, point.longitude);
-            annotation.title = self.coupon[@"title"];
-            [self.mapView addAnnotation:annotation];
-            MKCoordinateRegion region = MKCoordinateRegionMake(annotation.coordinate, MKCoordinateSpanMake(0.002, 0.002));
-            [self.mapView setRegion:region];
-        }
-    }];
+    PFObject *location = self.location;
+    self.addressLabel.text = location[@"address"];
+    PFGeoPoint *point = location[@"location"];
+    CouponLocationAnnotation *annotation = [[CouponLocationAnnotation alloc]init];
+    annotation.coordinate = CLLocationCoordinate2DMake(point.latitude, point.longitude);
+    annotation.title = self.coupon[@"title"];
+    [self.mapView addAnnotation:annotation];
+    MKCoordinateRegion region = MKCoordinateRegionMake(annotation.coordinate, MKCoordinateSpanMake(0.002, 0.002));
+    [self.mapView setRegion:region];
 
     self.mapView.layoutMargins = UIEdgeInsetsMake(0, 0, 20, 0);
     self.detailsContainer.corners = UIRectCornerTopLeft | UIRectCornerTopRight;
