@@ -213,10 +213,12 @@
 //    NSDictionary *item = self.mockCoupons[indexPath.row];
 //#elif
     PFObject *item = [allPFCoupons objectAtIndex:indexPath.row];
+    PFObject *company = [item objectForKey:@"company"];
+    PFFile *image = company[@"image"];
 //#endif
 
     cell.title.text = [item objectForKey:@"title"];
-    cell.longDescription.text = [item objectForKey:@"desc"];
+    cell.longDescription.text = [item objectForKey:@"description"];
     
     
     NSDate* exp = [item objectForKey:@"expiration"];
@@ -236,11 +238,7 @@
         [cell.expiration setTextColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]];
     }
     
-
-    
-    
-    
-    [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:[item objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
     
     cell.getButton.tag = indexPath.row;
     [cell.getButton addTarget:self action:@selector(getCoupon:) forControlEvents:UIControlEventTouchDown];

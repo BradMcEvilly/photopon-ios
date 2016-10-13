@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4607D8A51DABC892006A8F44 /* BasicNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4607D8A31DABC892006A8F44 /* BasicNotificationCell.m */; };
+		4607D8A61DABC892006A8F44 /* BasicNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4607D8A41DABC892006A8F44 /* BasicNotificationCell.xib */; };
+		4607D8AA1DAC2B51006A8F44 /* SentCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4607D8A81DAC2B51006A8F44 /* SentCouponCell.m */; };
+		4607D8AB1DAC2B51006A8F44 /* SentCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4607D8A91DAC2B51006A8F44 /* SentCouponCell.xib */; };
+		4607EE5F1DB02A9A001123C7 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4607EE5E1DB02A9A001123C7 /* NSDate+Pretty.m */; };
 		46084ACB1D41569800BE23F0 /* CouponDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */; };
 		46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */; };
 		46084AD21D41646900BE23F0 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084AD11D41646900BE23F0 /* LocationCell.m */; };
@@ -221,6 +226,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4607D8A21DABC892006A8F44 /* BasicNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicNotificationCell.h; sourceTree = "<group>"; };
+		4607D8A31DABC892006A8F44 /* BasicNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicNotificationCell.m; sourceTree = "<group>"; };
+		4607D8A41DABC892006A8F44 /* BasicNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicNotificationCell.xib; sourceTree = "<group>"; };
+		4607D8A71DAC2B51006A8F44 /* SentCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentCouponCell.h; sourceTree = "<group>"; };
+		4607D8A81DAC2B51006A8F44 /* SentCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentCouponCell.m; sourceTree = "<group>"; };
+		4607D8A91DAC2B51006A8F44 /* SentCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentCouponCell.xib; sourceTree = "<group>"; };
+		4607EE5D1DB02A9A001123C7 /* NSDate+Pretty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Pretty.h"; sourceTree = "<group>"; };
+		4607EE5E1DB02A9A001123C7 /* NSDate+Pretty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Pretty.m"; sourceTree = "<group>"; };
 		46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CouponDetails.storyboard; sourceTree = "<group>"; };
 		46084ACD1D41644F00BE23F0 /* CouponLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponLocationsViewController.h; sourceTree = "<group>"; };
 		46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponLocationsViewController.m; sourceTree = "<group>"; };
@@ -538,6 +551,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4607D8A01DABC5BB006A8F44 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4607D8A11DABC61D006A8F44 /* Cells */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		4607D8A11DABC61D006A8F44 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4607D8A21DABC892006A8F44 /* BasicNotificationCell.h */,
+				4607D8A31DABC892006A8F44 /* BasicNotificationCell.m */,
+				4607D8A41DABC892006A8F44 /* BasicNotificationCell.xib */,
+				4607D8A71DAC2B51006A8F44 /* SentCouponCell.h */,
+				4607D8A81DAC2B51006A8F44 /* SentCouponCell.m */,
+				4607D8A91DAC2B51006A8F44 /* SentCouponCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		46084AC91D41567300BE23F0 /* Stroyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +717,8 @@
 				46857B211D9D9995003C1642 /* UIColor+Convinience.m */,
 				46857B231D9DACB1003C1642 /* UIViewController+Menu.h */,
 				46857B241D9DACB1003C1642 /* UIViewController+Menu.m */,
+				4607EE5D1DB02A9A001123C7 /* NSDate+Pretty.h */,
+				4607EE5E1DB02A9A001123C7 /* NSDate+Pretty.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1057,6 +1093,7 @@
 		84B8CB911D0B16C60060BAD5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4607D8A01DABC5BB006A8F44 /* Notifications */,
 				46AF4B801DA02DFA003556B0 /* CouponDetails */,
 				46D2FF971D56244D0073EBC7 /* Onboarding */,
 				6276A9FB1D4608E9000A8BE0 /* SentPhotopons */,
@@ -1288,6 +1325,7 @@
 				62C8ADC11C52CA91007021CA /* splash-bottom.png in Resources */,
 				620602391CEE162A0054122D /* photopon-logo-white.png in Resources */,
 				46857B121D9D8BEC003C1642 /* Montserrat-Regular.otf in Resources */,
+				4607D8A61DABC892006A8F44 /* BasicNotificationCell.xib in Resources */,
 				629E720B1C611ACE00DD79C1 /* Icon-Posterous.png in Resources */,
 				629E71FA1C6117B100DD79C1 /* Icon-Box-Open.png in Resources */,
 				62B3D32A1D5CB0AD007B6FA5 /* Icon-Phone-2.png in Resources */,
@@ -1317,6 +1355,7 @@
 				62D0C2FA1C08B4A60069B0B5 /* photopon-user.png in Resources */,
 				462682FB1D9C327800BD3566 /* Stripe.xcassets in Resources */,
 				625817241BA9685200506E0E /* camplaceholder.jpg in Resources */,
+				4607D8AB1DAC2B51006A8F44 /* SentCouponCell.xib in Resources */,
 				62821B451C20D69F007704D1 /* GoogleService-Info.plist in Resources */,
 				629E72131C614C1E00DD79C1 /* Icon-Add-UserStar.png in Resources */,
 				629E72091C611ACE00DD79C1 /* Icon-Left-2.png in Resources */,
@@ -1458,6 +1497,7 @@
 				628144561C485F5B0008D9FF /* HeaderViewController.m in Sources */,
 				46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */,
 				462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */,
+				4607D8AA1DAC2B51006A8F44 /* SentCouponCell.m in Sources */,
 				46857B221D9D9995003C1642 /* UIColor+Convinience.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
@@ -1473,6 +1513,7 @@
 				46C28B721D85D29B006A3B34 /* EnjoyPhotoponViewController.m in Sources */,
 				62CA90F51B7BC718009C3B4C /* FriendsViewController.m in Sources */,
 				46084AD21D41646900BE23F0 /* LocationCell.m in Sources */,
+				4607EE5F1DB02A9A001123C7 /* NSDate+Pretty.m in Sources */,
 				62DD661C1B8E87B100B1A972 /* SettingsController.m in Sources */,
 				6296ADCE1B83C01E00DC3CF5 /* PubNubWrapper.m in Sources */,
 				621AE3361B797CBB00A9C18C /* LoginViewController.m in Sources */,
@@ -1509,6 +1550,7 @@
 				6255D5A21C1783050088227A /* ChatMessageTableViewCell.m in Sources */,
 				46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */,
 				4655E6811DAA63A10043443B /* CouponLocationsTableViewController.m in Sources */,
+				4607D8A51DABC892006A8F44 /* BasicNotificationCell.m in Sources */,
 				84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,

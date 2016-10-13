@@ -197,7 +197,7 @@
     PFUser* cUser = [PFUser currentUser];
     
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-    notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
+    notificationsView = [self setupNotificationsViewController];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
     walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
 //    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
@@ -321,5 +321,12 @@
     return couponNavigationController;
 }
 
+- (UINavigationController *)setupNotificationsViewController {
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#F26161" alpha:1.0];
+    nc.navigationBar.tintColor = [UIColor whiteColor];
+    return nc;
+}
 
 @end
