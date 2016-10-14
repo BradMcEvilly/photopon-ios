@@ -16,6 +16,9 @@
 #import "AlertBox.h"
 #import "PhotoponWrapper.h"
 #import "CouponWrapper.h"
+#import "CouponDefaultCell.h"
+#import "NSDate+Pretty.h"
+#import "UIViewController+Menu.h"
 
 @implementation WalletController
 {
@@ -37,9 +40,11 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Wallet"];
-    [header setTheme:[UITheme blueTheme]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
+    
+    [self.walletTable registerNib:[UINib nibWithNibName:@"CouponDefaultCell" bundle:nil] forCellReuseIdentifier:@"CouponDefaultCell"];
 
+    self.walletTable.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     [self.walletTable setDelegate:self];
     [self.walletTable setDataSource:self];
     [self updateWallet];
@@ -72,22 +77,19 @@
 
 
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 130;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    
+    CouponDefaultCell *couponCell = [tableView dequeueReusableCellWithIdentifier:@"CouponDefaultCell"];
+
     NSDictionary *item = (NSDictionary *)[allWalletItems objectAtIndex:indexPath.row];
 
     PFObject* photopon = [item objectForKey:@"photopon"];
     PFObject* coupon = [photopon objectForKey:@"coupon"];
-    cell.textLabel.text = [coupon objectForKey:@"title"];
+    couponCell.titleLabel = [coupon objectForKey:@"title"];
     
     
     NSDate *created = [photopon createdAt];
@@ -95,17 +97,18 @@
     [dateFormat setDateFormat:@"EEE, MMM d, h:mm a"];
     
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [[photopon objectForKey:@"creator"] username], [dateFormat stringFromDate:created]];
-    
+    couponCell.subtitleLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [[photopon objectForKey:@"creator"] username], [dateFormat stringFromDate:created]];
+
+    NSDate *expiration = coupon[@"expiration"];
+    couponCell.expirationLabel.text = [expiration prettyString];
+
     
     PFObject* company = [coupon objectForKey:@"company"];
     PFFile* logo = [company objectForKey:@"image"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:logo.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
+    [couponCell.brandImageView sd_setImageWithURL:[NSURL URLWithString:logo.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
     
 
-    
-    
-    return cell;
+    return couponCell;
 }
 
 

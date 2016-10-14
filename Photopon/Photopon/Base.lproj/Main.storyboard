@@ -369,7 +369,7 @@
         <!--Wallet-->
         <scene sceneID="TKo-2i-k9y">
             <objects>
-                <viewController storyboardIdentifier="SBWallet" title="Wallet" id="3Sd-jC-dNS" customClass="WalletController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalletController" title="Wallet" id="3Sd-jC-dNS" customClass="WalletController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GUp-yN-dne"/>
                         <viewControllerLayoutGuide type="bottom" id="yvV-iO-JdV"/>
@@ -378,8 +378,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cdm-bk-XxS">
-                                <frame key="frameInset" minY="80" width="320" height="488"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cdm-bk-XxS">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -389,7 +388,7 @@
                             <constraint firstAttribute="bottom" secondItem="cdm-bk-XxS" secondAttribute="bottom" id="iPC-39-eCc"/>
                             <constraint firstItem="cdm-bk-XxS" firstAttribute="top" secondItem="GUp-yN-dne" secondAttribute="bottom" id="m0F-e0-0zx"/>
                             <constraint firstAttribute="trailing" secondItem="cdm-bk-XxS" secondAttribute="trailing" id="rZ0-Lz-8vY"/>
-                            <constraint firstItem="cdm-bk-XxS" firstAttribute="top" secondItem="3av-jp-zud" secondAttribute="topMargin" constant="80" id="rjw-ln-d0G"/>
+                            <constraint firstItem="cdm-bk-XxS" firstAttribute="top" secondItem="3av-jp-zud" secondAttribute="topMargin" id="rjw-ln-d0G"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

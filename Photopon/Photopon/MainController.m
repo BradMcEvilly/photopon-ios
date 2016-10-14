@@ -199,8 +199,7 @@
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self setupNotificationsViewController];
     friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-    walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
-//    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+    walletView = [self setupWalletViewController];
     couponsView = [self setupCouponsViewController];
 
     hasUser = cUser != nil;
@@ -325,6 +324,14 @@
     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
     UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
     nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#F26161" alpha:1.0];
+    nc.navigationBar.tintColor = [UIColor whiteColor];
+    return nc;
+}
+
+- (UINavigationController *)setupWalletViewController {
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WalletController"];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#926EEC" alpha:1.0];
     nc.navigationBar.tintColor = [UIColor whiteColor];
     return nc;
 }
