@@ -63,6 +63,8 @@
 		466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466B631E1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib */; };
 		466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 466B63211D385D8000FEB0BC /* UIView+CommonLayout.m */; };
 		466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C42AA1D43400100F277BA /* GoogleMapsManager.m */; };
+		46751E271DB2C01E00263777 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46751E251DB2C01E00263777 /* FriendTableViewCell.m */; };
+		46751E281DB2C01E00263777 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46751E261DB2C01E00263777 /* FriendTableViewCell.xib */; };
 		46857AF31D9D8BA9003C1642 /* WorkSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */; };
 		46857AF41D9D8BA9003C1642 /* WorkSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */; };
 		46857AF51D9D8BA9003C1642 /* WorkSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */; };
@@ -299,6 +301,9 @@
 		466B63221D385D8000FEB0BC /* UIView+CommonLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonLayout.h"; sourceTree = "<group>"; };
 		466C42A91D43400100F277BA /* GoogleMapsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsManager.h; sourceTree = "<group>"; };
 		466C42AA1D43400100F277BA /* GoogleMapsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsManager.m; sourceTree = "<group>"; };
+		46751E241DB2C01E00263777 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
+		46751E251DB2C01E00263777 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
+		46751E261DB2C01E00263777 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBold.otf"; sourceTree = "<group>"; };
 		46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.otf"; sourceTree = "<group>"; };
 		46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBold.otf"; sourceTree = "<group>"; };
@@ -728,6 +733,16 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		46751E231DB2BFF000263777 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				46751E241DB2C01E00263777 /* FriendTableViewCell.h */,
+				46751E251DB2C01E00263777 /* FriendTableViewCell.m */,
+				46751E261DB2C01E00263777 /* FriendTableViewCell.xib */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		46857AE91D9D8B9C003C1642 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1123,7 @@
 		84B8CB911D0B16C60060BAD5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				46751E231DB2BFF000263777 /* Friends */,
 				46CA1BCC1DB14663007D528A /* Wallet */,
 				4607D8A01DABC5BB006A8F44 /* Notifications */,
 				46AF4B801DA02DFA003556B0 /* CouponDetails */,
@@ -1419,6 +1435,7 @@
 				46857B171D9D8BEC003C1642 /* MontserratAlternates-ExtraBold.otf in Resources */,
 				46857B0E1D9D8BEC003C1642 /* Montserrat-ExtraBold.otf in Resources */,
 				46857B1E1D9D8BEC003C1642 /* MontserratAlternates-ExtraLight.otf in Resources */,
+				46751E281DB2C01E00263777 /* FriendTableViewCell.xib in Resources */,
 				62970B421C3F98A700521815 /* PhotoponOverlayOffer@2x.png in Resources */,
 				46857B101D9D8BEC003C1642 /* Montserrat-Medium.otf in Resources */,
 				62A302C81B80F70800D61F34 /* empty.png in Resources */,
@@ -1525,6 +1542,7 @@
 				62ED02F81BD4467400534A98 /* PhotoponSignupViewController.m in Sources */,
 				62FFA95E1C24A89E0086FEA7 /* PhoneNumberFormatter.m in Sources */,
 				62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */,
+				46751E271DB2C01E00263777 /* FriendTableViewCell.m in Sources */,
 				620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */,
 				621268141D38451B00735FC9 /* CouponWrapper.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,

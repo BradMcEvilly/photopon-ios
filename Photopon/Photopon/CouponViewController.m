@@ -128,6 +128,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.couponTable.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
 
 #ifdef DEBUG
     self.mockCoupons = @[ @{@"title": @"Test Coupon Buy 1 get 1 Free",

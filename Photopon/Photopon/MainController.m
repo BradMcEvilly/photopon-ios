@@ -85,6 +85,7 @@
 }
 
 -(void) gotoAddPhotoponView: (NSNotification*)notification {
+
     if (notification.userInfo) {
         if (notification.userInfo[@"index"]) {
             NSInteger index = [notification.userInfo[@"index"] integerValue];
@@ -93,11 +94,12 @@
         [photoponView setSelectedFriend: notification.userInfo[@"friendId"]];
         
     }
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-    [self setViewControllers:@[photoponView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setViewControllers:@[photoponView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:nil];
+        });
     });
 }
 
@@ -198,7 +200,7 @@
     
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
     notificationsView = [self setupNotificationsViewController];
-    friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
+    friendsView = [self setupFriends];
     walletView = [self setupWalletViewController];
     couponsView = [self setupCouponsViewController];
 
@@ -335,5 +337,15 @@
     nc.navigationBar.tintColor = [UIColor whiteColor];
     return nc;
 }
+
+- (UINavigationController *)setupFriends {
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FriendsViewController"];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#66B9F1" alpha:1.0];
+    nc.navigationBar.tintColor = [UIColor whiteColor];
+    return nc;
+}
+
+
 
 @end
