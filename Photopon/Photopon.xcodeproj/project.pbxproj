@@ -65,6 +65,13 @@
 		466C42AB1D43400100F277BA /* GoogleMapsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C42AA1D43400100F277BA /* GoogleMapsManager.m */; };
 		46751E271DB2C01E00263777 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46751E251DB2C01E00263777 /* FriendTableViewCell.m */; };
 		46751E281DB2C01E00263777 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46751E261DB2C01E00263777 /* FriendTableViewCell.xib */; };
+		4675AA791DBBC197005C49D4 /* ChatMessageFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA771DBBC197005C49D4 /* ChatMessageFriendCell.m */; };
+		4675AA7A1DBBC197005C49D4 /* ChatMessageFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4675AA781DBBC197005C49D4 /* ChatMessageFriendCell.xib */; };
+		4675AA7D1DBBC49D005C49D4 /* RoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA7C1DBBC49D005C49D4 /* RoundedLabel.m */; };
+		4675AA801DBBC52D005C49D4 /* RoundedBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA7F1DBBC52D005C49D4 /* RoundedBorderedLabel.m */; };
+		4675AA841DBBDB5B005C49D4 /* ChatMessageUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA821DBBDB5B005C49D4 /* ChatMessageUserCell.m */; };
+		4675AA851DBBDB5B005C49D4 /* ChatMessageUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4675AA831DBBDB5B005C49D4 /* ChatMessageUserCell.xib */; };
+		4675AA881DBBDC8A005C49D4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA871DBBDC8A005C49D4 /* MessageCell.m */; };
 		46857AF31D9D8BA9003C1642 /* WorkSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */; };
 		46857AF41D9D8BA9003C1642 /* WorkSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */; };
 		46857AF51D9D8BA9003C1642 /* WorkSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */; };
@@ -304,6 +311,18 @@
 		46751E241DB2C01E00263777 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
 		46751E251DB2C01E00263777 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		46751E261DB2C01E00263777 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		4675AA761DBBC197005C49D4 /* ChatMessageFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageFriendCell.h; sourceTree = "<group>"; };
+		4675AA771DBBC197005C49D4 /* ChatMessageFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageFriendCell.m; sourceTree = "<group>"; };
+		4675AA781DBBC197005C49D4 /* ChatMessageFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageFriendCell.xib; sourceTree = "<group>"; };
+		4675AA7B1DBBC49D005C49D4 /* RoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabel.h; sourceTree = "<group>"; };
+		4675AA7C1DBBC49D005C49D4 /* RoundedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedLabel.m; sourceTree = "<group>"; };
+		4675AA7E1DBBC52D005C49D4 /* RoundedBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedBorderedLabel.h; sourceTree = "<group>"; };
+		4675AA7F1DBBC52D005C49D4 /* RoundedBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedBorderedLabel.m; sourceTree = "<group>"; };
+		4675AA811DBBDB5B005C49D4 /* ChatMessageUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageUserCell.h; sourceTree = "<group>"; };
+		4675AA821DBBDB5B005C49D4 /* ChatMessageUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageUserCell.m; sourceTree = "<group>"; };
+		4675AA831DBBDB5B005C49D4 /* ChatMessageUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageUserCell.xib; sourceTree = "<group>"; };
+		4675AA861DBBDC8A005C49D4 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		4675AA871DBBDC8A005C49D4 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBold.otf"; sourceTree = "<group>"; };
 		46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.otf"; sourceTree = "<group>"; };
 		46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBold.otf"; sourceTree = "<group>"; };
@@ -806,6 +825,10 @@
 			children = (
 				46AF4B891DA06D69003556B0 /* RoundedBorderedView.h */,
 				46AF4B8A1DA06D69003556B0 /* RoundedBorderedView.m */,
+				4675AA7B1DBBC49D005C49D4 /* RoundedLabel.h */,
+				4675AA7C1DBBC49D005C49D4 /* RoundedLabel.m */,
+				4675AA7E1DBBC52D005C49D4 /* RoundedBorderedLabel.h */,
+				4675AA7F1DBBC52D005C49D4 /* RoundedBorderedLabel.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1170,6 +1193,14 @@
 				6255D59F1C1783050088227A /* ChatMessageTableViewCell.h */,
 				6255D5A01C1783050088227A /* ChatMessageTableViewCell.m */,
 				6255D5A11C1783050088227A /* ChatMessageTableViewCell.xib */,
+				4675AA761DBBC197005C49D4 /* ChatMessageFriendCell.h */,
+				4675AA771DBBC197005C49D4 /* ChatMessageFriendCell.m */,
+				4675AA781DBBC197005C49D4 /* ChatMessageFriendCell.xib */,
+				4675AA811DBBDB5B005C49D4 /* ChatMessageUserCell.h */,
+				4675AA821DBBDB5B005C49D4 /* ChatMessageUserCell.m */,
+				4675AA831DBBDB5B005C49D4 /* ChatMessageUserCell.xib */,
+				4675AA861DBBDC8A005C49D4 /* MessageCell.h */,
+				4675AA871DBBDC8A005C49D4 /* MessageCell.m */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -1286,6 +1317,7 @@
 					62D148C51B79732100E8D4A1 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = F43DL7PZMZ;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1330,6 +1362,7 @@
 				462682D61D9C325600BD3566 /* camera-button.png in Resources */,
 				462682E41D9C325600BD3566 /* Icon-Information.png in Resources */,
 				46857AFA1D9D8BA9003C1642 /* WorkSans-Thin.otf in Resources */,
+				4675AA851DBBDB5B005C49D4 /* ChatMessageUserCell.xib in Resources */,
 				462682E81D9C325600BD3566 /* Icon-Phone-2.png in Resources */,
 				46857AF91D9D8BA9003C1642 /* WorkSans-Black.otf in Resources */,
 				46857B191D9D8BEC003C1642 /* MontserratAlternates-Medium.otf in Resources */,
@@ -1364,6 +1397,7 @@
 				62B3D32A1D5CB0AD007B6FA5 /* Icon-Phone-2.png in Resources */,
 				62970B481C40284800521815 /* Comfortaa-Bold.ttf in Resources */,
 				629E72001C6117B100DD79C1 /* Icon-Present.png in Resources */,
+				4675AA7A1DBBC197005C49D4 /* ChatMessageFriendCell.xib in Resources */,
 				466B631F1D385C3600FEB0BC /* PhotoponUnavailableViewController.xib in Resources */,
 				629E72021C6117B100DD79C1 /* Icon-Speach-Bubble.png in Resources */,
 				46857B151D9D8BEC003C1642 /* Montserrat-ExtraLight.otf in Resources */,
@@ -1525,6 +1559,7 @@
 				46D121FF1D70C110005B6CAF /* TooltipFactory.m in Sources */,
 				462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */,
 				6246E2A71D7E368E00CE42B7 /* VerificationScreenNameViewController.m in Sources */,
+				4675AA7D1DBBC49D005C49D4 /* RoundedLabel.m in Sources */,
 				623F955B1B93AC0B00506B16 /* PhotoponViewController.m in Sources */,
 				62D0860A1B87E7E20063C8B8 /* PhotoponDrawController.m in Sources */,
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
@@ -1562,17 +1597,20 @@
 				62D148CF1B79732100E8D4A1 /* AppDelegate.m in Sources */,
 				468E81C21D8483EC00A9D4E2 /* OnboardingViewController.m in Sources */,
 				84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */,
+				4675AA791DBBC197005C49D4 /* ChatMessageFriendCell.m in Sources */,
 				46857B251D9DACB1003C1642 /* UIViewController+Menu.m in Sources */,
 				62ED02F51BD4429000534A98 /* PhotoponLoginViewController.m in Sources */,
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				4675AA801DBBC52D005C49D4 /* RoundedBorderedLabel.m in Sources */,
 				625B600E1D4C121100FB10D2 /* PhotoponWrapper.m in Sources */,
 				62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */,
 				462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				46C28B6F1D85CFF4006A3B34 /* LocationServicesViewController.m in Sources */,
+				4675AA881DBBDC8A005C49D4 /* MessageCell.m in Sources */,
 				6246E2A01D7E164000CE42B7 /* VerificationPhoneNumberViewController.m in Sources */,
 				84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */,
 				84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */,
@@ -1580,6 +1618,7 @@
 				466B63231D385D8000FEB0BC /* UIView+CommonLayout.m in Sources */,
 				629E71EB1C608E2B00DD79C1 /* UITheme.m in Sources */,
 				62A7DDA21B7ABBFD000B74B8 /* MainController.m in Sources */,
+				4675AA841DBBDB5B005C49D4 /* ChatMessageUserCell.m in Sources */,
 				6281445B1C4F000E0008D9FF /* IndicatorViewController.m in Sources */,
 				46AF4B831DA02E1F003556B0 /* CouponDetailsViewController.m in Sources */,
 				62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */,
@@ -1725,6 +1764,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F43DL7PZMZ;
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1739,13 +1779,15 @@
 			baseConfigurationReference = 95CA157C41A702E2B785BD78 /* Pods-Photopon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F43DL7PZMZ;
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

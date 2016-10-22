@@ -25,6 +25,9 @@
 #import "ChatPhotoponPresentableModel.h"
 #import "PhotoponViewController.h"
 
+#import "ChatMessageUserCell.h"
+#import "ChatMessageFriendCell.h"
+
 @interface ChatMessagesController ()
 @property (nonatomic, copy) NSString *channelName;
 @property (nonatomic, strong) PFUser *currentUser;
@@ -54,8 +57,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [HeaderViewController addBackHeaderToView:self withTitle:[self.currentUser username]];
+
+    self.title = self.currentUser.username;
     
     [self configureTableView];
     
@@ -69,6 +72,12 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+
+    [self registerCellWithClass:[ChatMessageFriendCell class]];
+    [self registerCellWithClass:[ChatMessageUserCell class]];
+
+    self.chatTableView.rowHeight = UITableViewAutomaticDimension;
+    self.chatTableView.estimatedRowHeight = 100;
     
     self.textField.text = _preEnteredMessage;
     _preEnteredMessage = @"";
@@ -161,10 +170,10 @@
         ChatUserPresentableModel *userPresentableModel = [ChatUserPresentableModel new];
         userPresentableModel.currentUser = isCurrentUser;
         userPresentableModel.userName = [self getUserById:userId].username;
-        [self.presentableModels addObject:userPresentableModel];
+//        [self.presentableModels addObject:userPresentableModel];
         lastPresentableModel = userPresentableModel;
     }
-    
+
     if ([type isEqualToString:@"MESSAGE"]) {
         if ([lastPresentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
             ChatMessagePresentableModel *messagePresentableModel = (ChatMessagePresentableModel *)lastPresentableModel;
@@ -286,9 +295,15 @@
     id presentableModel = self.presentableModels[indexPath.row];
     
     if ([presentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
-        ChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatMessageTableViewCell class]) forIndexPath:indexPath];
-        [cell updateWithPresentableModel:presentableModel];
-        return cell;
+        if (((ChatMessagePresentableModel*)presentableModel).isCurrentUser) {
+            ChatMessageUserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageUserCell"];
+            [cell updateWithPresentableModel:presentableModel];
+            return cell;
+        } else {
+            ChatMessageFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageFriendCell"];
+            [cell updateWithPresentableModel:presentableModel];
+            return cell;
+        }
     }
     else if ([presentableModel isKindOfClass:[ChatUserPresentableModel class]]) {
         ChatUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatUserTableViewCell class]) forIndexPath:indexPath];

@@ -208,8 +208,7 @@
     ChatMessagesController* messageCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
     [messageCtrl setUser: selectedFriend];
 
-    [friendViewCtrl presentViewController:messageCtrl animated:YES completion:nil];
-
+    [friendViewCtrl.navigationController pushViewController:messageCtrl animated:YES];
     SendGAEvent(@"user_action", @"friend_popup", @"chat_started");
 
     NSLog(@"Start Chat");

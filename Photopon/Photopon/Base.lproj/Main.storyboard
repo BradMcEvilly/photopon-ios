@@ -15,6 +15,9 @@
         <array key="Montserrat-Bold.otf">
             <string>Montserrat-Bold</string>
         </array>
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
         <array key="Montserrat-Regular.otf">
             <string>Montserrat-Regular</string>
         </array>
@@ -568,17 +571,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2p-dp-jTQ">
-                                <frame key="frameInset" minY="528" width="320" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2p-dp-jTQ">
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAf-3T-3nJ">
-                                        <frame key="frameInset" minX="5" minY="5" width="255" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAf-3T-3nJ">
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocz-ys-K07">
-                                        <frame key="frameInset" minX="260" minY="5" width="60" height="30"/>
-                                        <state key="normal" title="Send"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocz-ys-K07">
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <state key="normal" title="SEND">
+                                            <color key="titleColor" red="0.85098039219999999" green="0.29803921570000003" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -589,12 +592,12 @@
                                     <constraint firstItem="ocz-ys-K07" firstAttribute="top" secondItem="S2p-dp-jTQ" secondAttribute="top" constant="5" id="JC3-wz-sir"/>
                                     <constraint firstItem="PAf-3T-3nJ" firstAttribute="top" secondItem="S2p-dp-jTQ" secondAttribute="top" constant="5" id="QBs-No-QeQ"/>
                                     <constraint firstAttribute="trailing" secondItem="ocz-ys-K07" secondAttribute="trailing" id="RbM-za-SdE"/>
-                                    <constraint firstItem="PAf-3T-3nJ" firstAttribute="leading" secondItem="S2p-dp-jTQ" secondAttribute="leading" constant="5" id="TR3-mf-KwL"/>
+                                    <constraint firstItem="PAf-3T-3nJ" firstAttribute="leading" secondItem="S2p-dp-jTQ" secondAttribute="leading" constant="10" id="TR3-mf-KwL"/>
                                     <constraint firstAttribute="bottom" secondItem="ocz-ys-K07" secondAttribute="bottom" constant="5" id="qNs-T9-cxv"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rvc-c9-JSu">
-                                <frame key="frameInset" minY="80" width="320" height="448"/>
+                                <frame key="frameInset" width="375" height="627"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Lx5-fU-ASc" id="lIb-xJ-xYk"/>
@@ -604,28 +607,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rvc-c9-JSu" firstAttribute="top" secondItem="hqT-rH-L9h" secondAttribute="bottom" id="0Qx-gx-deY"/>
                             <constraint firstAttribute="trailing" secondItem="rvc-c9-JSu" secondAttribute="trailing" id="87Y-hP-dn8"/>
                             <constraint firstAttribute="bottom" secondItem="S2p-dp-jTQ" secondAttribute="bottom" id="Nyf-F0-wLm"/>
                             <constraint firstAttribute="trailing" secondItem="S2p-dp-jTQ" secondAttribute="trailing" id="XVt-cy-7Cb"/>
+                            <constraint firstItem="rvc-c9-JSu" firstAttribute="top" secondItem="hqT-rH-L9h" secondAttribute="bottom" id="d9W-6B-U8p"/>
                             <constraint firstItem="S2p-dp-jTQ" firstAttribute="leading" secondItem="gLb-8C-Pqx" secondAttribute="leading" id="eHy-Ul-LGU"/>
                             <constraint firstItem="rvc-c9-JSu" firstAttribute="leading" secondItem="gLb-8C-Pqx" secondAttribute="leading" id="hyL-d9-Jre"/>
                             <constraint firstItem="S2p-dp-jTQ" firstAttribute="top" secondItem="rvc-c9-JSu" secondAttribute="bottom" id="i98-zs-qV0"/>
-                            <constraint firstItem="rvc-c9-JSu" firstAttribute="top" secondItem="gLb-8C-Pqx" secondAttribute="topMargin" constant="80" id="uvk-vp-4Ai"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="0Qx-gx-deY"/>
-                                <include reference="uvk-vp-4Ai"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="chatTableView" destination="rvc-c9-JSu" id="DkB-XO-thy"/>
                         <outlet property="mainView" destination="gLb-8C-Pqx" id="d9U-BJ-dES"/>
                         <outlet property="sendButton" destination="ocz-ys-K07" id="bOh-MQ-YPi"/>
                         <outlet property="textField" destination="PAf-3T-3nJ" id="jg3-GN-wD2"/>
-                        <outlet property="topConstraint" destination="uvk-vp-4Ai" id="5DK-K1-YqJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r07-0G-ROK" userLabel="First Responder" sceneMemberID="firstResponder"/>

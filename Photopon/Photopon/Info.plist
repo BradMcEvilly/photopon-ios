@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>6</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -62,6 +62,8 @@
 	<string>Get nearby coupons</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Get neraby coupons</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows you to use one of your photo library photos as profile photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Comfortaa-Bold.ttf</string>
