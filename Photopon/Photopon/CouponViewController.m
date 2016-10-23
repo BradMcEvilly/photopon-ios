@@ -201,10 +201,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CouponTableViewCell *cell = (CouponTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"CouponTableCell"];
+    CouponTableViewCell *cell = (CouponTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"CouponTableViewCell"];
     
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CouponTableCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CouponTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
@@ -217,7 +217,7 @@
     PFObject *company = [item objectForKey:@"company"];
     PFFile *image = company[@"image"];
 //#endif
-
+    cell.coupon = item;
     cell.title.text = [item objectForKey:@"title"];
     cell.longDescription.text = [item objectForKey:@"description"];
     
@@ -240,12 +240,6 @@
     }
     
     [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
-    
-    cell.getButton.tag = indexPath.row;
-    [cell.getButton addTarget:self action:@selector(getCoupon:) forControlEvents:UIControlEventTouchDown];
-    
-    cell.giveButton.tag = indexPath.row;
-    [cell.giveButton addTarget:self action:@selector(giveCoupon:) forControlEvents:UIControlEventTouchDown];
     
     cell.getButton.hidden = [item[@"redeemed"] boolValue];
         

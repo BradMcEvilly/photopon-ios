@@ -27,13 +27,21 @@
 
 #import "ChatMessageUserCell.h"
 #import "ChatMessageFriendCell.h"
+#import "CouponTableViewCell.h"
+
+#import <UIImageView+WebCache.h>
+#import "UIColor+Convinience.h"
 
 @interface ChatMessagesController ()
+
 @property (nonatomic, copy) NSString *channelName;
 @property (nonatomic, strong) PFUser *currentUser;
 @property (nonatomic, strong) NSMutableArray *presentableModels;
 @property (nonatomic, strong) NSMutableDictionary *resolvedUsers;
 @property (nonatomic, strong) NSString* preEnteredMessage;
+
+@property (nonatomic, strong) NSArray *allCoupons;
+
 @end
 
 @implementation ChatMessagesController
@@ -58,6 +66,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.allCoupons = GetNearbyCouponsPF();
+
     self.title = self.currentUser.username;
     
     [self configureTableView];
@@ -75,12 +85,18 @@
 
     [self registerCellWithClass:[ChatMessageFriendCell class]];
     [self registerCellWithClass:[ChatMessageUserCell class]];
+    [self registerCellWithClass:[CouponTableViewCell class]];
 
     self.chatTableView.rowHeight = UITableViewAutomaticDimension;
     self.chatTableView.estimatedRowHeight = 100;
     
     self.textField.text = _preEnteredMessage;
     _preEnteredMessage = @"";
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
 }
 
 - (void)configureTableView {
@@ -311,17 +327,46 @@
         return cell;
     }
     else if ([presentableModel isKindOfClass:[ChatPhotoponPresentableModel class]]) {
-        ChatPhotoponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatPhotoponTableViewCell class]) forIndexPath:indexPath];
-        [cell updateWithPresentableModel:presentableModel];
-        __weak typeof(self) weakSelf = self;
-        cell.onSelected = ^(ChatPhotoponPresentableModel *blockPresentableModel) {
-            [weakSelf didSelectPhotopon:blockPresentableModel];
-        };
+        presentableModel = (ChatPhotoponPresentableModel *)presentableModel;
+
+        CouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CouponTableViewCell class])];
+        //    NSDictionary *item = self.mockCoupons[indexPath.row];
+        //#elif
+        PFQuery *query = [PFQuery queryWithClassName:@"Photopon"];
+        PFObject *photopon = [query getObjectWithId:((ChatPhotoponPresentableModel *)presentableModel).photoponId];
+
+        PFObject *coupon = [photopon objectForKey:@"coupon"];
+        PFObject *company = [coupon objectForKey:@"company"];
+        PFFile *image = company[@"image"];
+        cell.coupon = coupon;
+        //#endif
+
+        cell.title.text = [coupon objectForKey:@"title"];
+        cell.longDescription.text = [coupon objectForKey:@"description"];
+
+        NSDate* exp = [coupon objectForKey:@"expiration"];
+        NSDate* now = [NSDate date];
+
+        int numDays = DaysBetween(now, exp);
+
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        [dateFormater setDateFormat:@"MM/dd/yyyy"];
+        cell.expiration.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
+        if (numDays > 2) {
+            [cell.expiration setTextColor:[UIColor colorWithRed:0 green:0.4 blue:0 alpha:1]];
+        } else if (numDays > 1) {
+            [cell.expiration setTextColor:[UIColor colorWithRed:0.6 green:0.3 blue:0 alpha:1]];
+        } else {
+            [cell.expiration setTextColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]];
+        }
+
+        [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
         
         return cell;
     }
     
     return nil;
 }
+
 
 @end

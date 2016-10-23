@@ -37,6 +37,7 @@
         if (![[UserManager sharedManager]userLoggedIn]) {
             [self showOnboarding];
         } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
             [self proceedToLogin];
         }
     });

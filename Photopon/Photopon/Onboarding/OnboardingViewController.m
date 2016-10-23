@@ -73,7 +73,7 @@
 - (void)userShouldSkip {
     UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
     mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController presentViewController:mainVC animated:YES completion:nil];
 }
 

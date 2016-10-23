@@ -20,6 +20,7 @@
 #import "SentCouponCell.h"
 #import <UIImageView+WebCache.h>
 #import "NSDate+Pretty.h"
+#import "UIColor+Convinience.h"
 
 @implementation NotificationController
 {
@@ -85,6 +86,10 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#F26161" alpha:1.0];
+}
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -389,7 +394,7 @@
 - (void)showChatWithUser:(PFUser *)user {
     ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
     [messageCtrl setUser:user];
-    [self presentViewController:messageCtrl animated:YES completion:nil];
+    [self.navigationController pushViewController:messageCtrl animated:YES];
 }
 
 @end

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IDr-54-Yf2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IDr-54-Yf2">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Welcome View Controller-->
@@ -16,23 +17,23 @@
                         <viewControllerLayoutGuide type="bottom" id="Dpc-ff-tVT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1o5-Vz-wYJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-TR-GYY" userLabel="BackgroundView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-TR-GYY" userLabel="BackgroundView">
+                                <frame key="frameInset" width="320" height="568"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photopon-logo-black.png" translatesAutoresizingMaskIntoConstraints="NO" id="75e-fU-Wel">
-                                        <rect key="frame" x="30" y="84" width="260" height="200"/>
+                                        <frame key="frameInset" minX="30" minY="84" width="260" height="200"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-ua-fIc">
-                                        <rect key="frame" x="0.0" y="478" width="320" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splash-bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-ua-fIc">
+                                        <frame key="frameInset" minY="478" width="320" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="cLp-mm-UYn"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1Vd-ua-fIc" secondAttribute="trailing" id="AGE-GL-kG9"/>
                                     <constraint firstAttribute="trailing" secondItem="75e-fU-Wel" secondAttribute="trailing" constant="30" id="AVN-L4-fBp"/>
@@ -43,25 +44,25 @@
                                     <constraint firstItem="1Vd-ua-fIc" firstAttribute="leading" secondItem="RTZ-TR-GYY" secondAttribute="leading" id="uSr-Ti-0LG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-Kg-5xZ" userLabel="WelcomeView">
-                                <rect key="frame" x="0.0" y="182.5" width="320" height="202"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-Kg-5xZ" userLabel="WelcomeView">
+                                <frame key="frameInset" minY="182.5" width="320" height="202"/>
                                 <subviews>
-                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sde-uE-Keb" userLabel="Divider">
-                                        <rect key="frame" x="60" y="0.0" width="200" height="1"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sde-uE-Keb" userLabel="Divider">
+                                        <frame key="frameInset" minX="60" width="200" height="1"/>
+                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="TPY-ZO-t3n"/>
                                             <constraint firstAttribute="width" constant="200" id="Xfg-hh-R84"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How did you found out about Photopon?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb2-h6-Dh8">
-                                        <rect key="frame" x="10" y="25" width="300" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How did you found out about Photopon?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb2-h6-Dh8">
+                                        <frame key="frameInset" minX="10" minY="25" width="300" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-ZY-sEg">
-                                        <rect key="frame" x="59" y="91" width="202" height="30"/>
+                                        <frame key="frameInset" minX="59" minY="91" width="202" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="I saw a postcard for a coupon"/>
                                         <connections>
@@ -69,7 +70,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-pf-RsS">
-                                        <rect key="frame" x="39" y="139" width="241" height="30"/>
+                                        <frame key="frameInset" minX="39" minY="139" width="241" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="I received a Photopon from a friend"/>
                                         <connections>
@@ -77,7 +78,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Nb2-h6-Dh8" secondAttribute="trailing" constant="10" id="4Lm-Ma-gwm"/>
                                     <constraint firstItem="9Nn-pf-RsS" firstAttribute="centerX" secondItem="hnD-Kg-5xZ" secondAttribute="centerX" id="5fP-ss-z6P"/>
@@ -92,7 +93,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="RTZ-TR-GYY" secondAttribute="trailing" id="7id-E3-G4p"/>
                             <constraint firstItem="RTZ-TR-GYY" firstAttribute="leading" secondItem="1o5-Vz-wYJ" secondAttribute="leading" id="HwY-nk-udZ"/>
@@ -103,7 +104,6 @@
                             <constraint firstAttribute="trailing" secondItem="hnD-Kg-5xZ" secondAttribute="trailing" id="u9v-qo-U2B"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="logoMidConstraint" destination="PMG-hq-wIi" id="OKa-vE-COp"/>
                         <outletCollection property="welcomeViewCollection" destination="sde-uE-Keb" id="j4R-uy-fFC"/>
@@ -125,57 +125,57 @@
                         <viewControllerLayoutGuide type="bottom" id="Dkl-wq-YfP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dFT-tb-SxV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OnboardingBackground-Blur-7" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-2R-PKM">
-                                <rect key="frame" x="0.0" y="-2" width="544" height="572"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="OnboardingBackground-Blur-7" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-2R-PKM">
+                                <frame key="frameInset" minY="-2" width="544" height="572"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Hom-2R-PKM" secondAttribute="height" multiplier="700:736" id="YBw-2i-9Qh"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photopon-logo-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="PLT-eC-dNt">
-                                <rect key="frame" x="30" y="50" width="260" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photopon-logo-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="PLT-eC-dNt">
+                                <frame key="frameInset" minX="30" minY="50" width="260" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="VrI-ay-UlG"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-U5-Kui">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-U5-Kui">
+                                <frame key="frameInset" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3j-sL-koL" userLabel="Container">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3j-sL-koL" userLabel="Container">
                                         <rect key="frame" x="0.0" y="0.0" width="1280" height="568"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQQ-Mz-QCl">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQQ-Mz-QCl">
+                                                <frame key="frameInset" width="320" height="568"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="o1o-yr-d4D" kind="embed" id="4Sf-NG-m1K"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0W-pU-TYV">
-                                                <rect key="frame" x="320" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0W-pU-TYV">
+                                                <frame key="frameInset" minX="320" width="320" height="568"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="T7k-Gg-DzW" kind="embed" identifier="PushNotifications" id="XLD-V4-86J"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-ad-04E">
-                                                <rect key="frame" x="640" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-ad-04E">
+                                                <frame key="frameInset" minX="640" width="320" height="568"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="8lL-3p-pAu" kind="embed" identifier="LocationServices" id="pS9-m7-xe9"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-dY-W2b">
-                                                <rect key="frame" x="960" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-dY-W2b">
+                                                <frame key="frameInset" minX="960" width="320" height="568"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="zi6-oU-9mY" kind="embed" identifier="EnjoyPhotopon" id="JYs-Ut-2A5"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="6EA-dY-W2b" firstAttribute="width" secondItem="XQQ-Mz-QCl" secondAttribute="width" id="DKZ-V3-Ypl"/>
                                             <constraint firstItem="Q0W-pU-TYV" firstAttribute="top" secondItem="Y3j-sL-koL" secondAttribute="top" id="Lmb-qZ-28Q"/>
@@ -196,7 +196,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Y3j-sL-koL" firstAttribute="top" secondItem="KEh-U5-Kui" secondAttribute="top" id="Leq-VG-kZE"/>
                                     <constraint firstAttribute="trailing" secondItem="Y3j-sL-koL" secondAttribute="trailing" id="hGq-sF-9Xy"/>
@@ -207,11 +207,11 @@
                                     <outlet property="delegate" destination="Zef-RG-fzg" id="avY-iv-1QU"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="xR7-sK-DiU">
-                                <rect key="frame" x="132" y="523" width="55" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="xR7-sK-DiU">
+                                <frame key="frameInset" minX="132" minY="523" width="55" height="37"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PLT-eC-dNt" firstAttribute="leading" secondItem="dFT-tb-SxV" secondAttribute="leading" constant="30" id="4TD-TC-mW7"/>
                             <constraint firstItem="Hom-2R-PKM" firstAttribute="width" secondItem="dFT-tb-SxV" secondAttribute="width" multiplier="1.7" id="9rW-XI-vwO"/>
@@ -232,7 +232,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mMn-bU-o8b"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundImageLeftConstraint" destination="dVl-Re-sgF" id="BBc-Q4-4cX"/>
                         <outlet property="pageControl" destination="xR7-sK-DiU" id="Cxu-nS-8zI"/>
@@ -256,26 +255,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-I7-fZG">
-                                <rect key="frame" x="30" y="150" width="260" height="49"/>
+                                <frame key="frameInset" minX="30" minY="150" width="260" height="49"/>
                                 <string key="text">Turn your photos into gifts for friends
 
 Access private, members-only coupons</string>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUD-i0-PI9">
-                                <rect key="frame" x="30" y="268.5" width="260" height="31"/>
+                                <frame key="frameInset" minX="30" minY="268.5" width="260" height="31"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YUD-i0-PI9" firstAttribute="centerX" secondItem="Uhf-gk-RVe" secondAttribute="centerX" id="0Y4-74-6Vy"/>
                             <constraint firstItem="DgI-I7-fZG" firstAttribute="top" secondItem="ohd-Yg-HWp" secondAttribute="bottom" constant="127" id="3ao-nk-a3U"/>
@@ -286,7 +285,6 @@ Access private, members-only coupons</string>
                             <constraint firstItem="YUD-i0-PI9" firstAttribute="leading" secondItem="Uhf-gk-RVe" secondAttribute="leading" constant="30" id="egE-aS-cwr"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6K-sl-MJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -301,9 +299,9 @@ Access private, members-only coupons</string>
                         <viewControllerLayoutGuide type="bottom" id="tTk-L9-6a5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f0Y-2J-zbD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYO-Db-fBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,29 +321,27 @@ Access private, members-only coupons</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon would like to access locations services to display nearby gifts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-wY-5Gu">
-                                <rect key="frame" x="30" y="271" width="260" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P3-u6-eQG">
-                                <rect key="frame" x="30" y="478" width="260" height="50"/>
-                                <color key="backgroundColor" red="0.18254509228187921" green="0.61480180369127513" blue="0.27975566275167785" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.18254509228187921" green="0.61480180369127513" blue="0.27975566275167785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QA3-MW-zpe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Enable locations services">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="locationServicesButtonHandler:" destination="8lL-3p-pAu" eventType="touchUpInside" id="HKt-X7-B0Q"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xfU-wY-5Gu" firstAttribute="centerY" secondItem="jd3-mQ-4cU" secondAttribute="centerY" id="QAt-Xe-vhT"/>
                             <constraint firstItem="7P3-u6-eQG" firstAttribute="leading" secondItem="jd3-mQ-4cU" secondAttribute="leading" constant="30" id="VWD-8g-Cw2"/>
@@ -355,7 +351,6 @@ Access private, members-only coupons</string>
                             <constraint firstItem="xfU-wY-5Gu" firstAttribute="leading" secondItem="jd3-mQ-4cU" secondAttribute="leading" constant="30" id="zqm-8f-zEC"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="locationButton" destination="7P3-u6-eQG" id="Go1-q0-QHM"/>
                     </connections>
@@ -377,29 +372,27 @@ Access private, members-only coupons</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon would like to access push notifications services so we can notify you about your friends activity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-Fz-HKu">
-                                <rect key="frame" x="30" y="271" width="260" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-CP-bdp">
-                                <rect key="frame" x="30" y="478" width="260" height="50"/>
-                                <color key="backgroundColor" red="0.18254509229999999" green="0.61480180370000004" blue="0.27975566280000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.18254509229999999" green="0.61480180370000004" blue="0.27975566280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fXM-Dz-9Jw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Enable push notifications">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="pushNotificationsButtonHandler:" destination="T7k-Gg-DzW" eventType="touchUpInside" id="01o-sx-1T7"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Pk0-CP-bdp" firstAttribute="leading" secondItem="apa-C6-G17" secondAttribute="leading" constant="30" id="9Wf-h4-MVc"/>
                             <constraint firstItem="F4g-Fz-HKu" firstAttribute="leading" secondItem="apa-C6-G17" secondAttribute="leading" constant="30" id="Hhi-EG-xFt"/>
@@ -409,7 +402,6 @@ Access private, members-only coupons</string>
                             <constraint firstAttribute="trailing" secondItem="Pk0-CP-bdp" secondAttribute="trailing" constant="30" id="lWc-el-mVU"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="pushNotificationButton" destination="Pk0-CP-bdp" id="3cc-Xn-gKN"/>
                     </connections>
@@ -431,43 +423,40 @@ Access private, members-only coupons</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enjoy Photopon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPM-KL-vji">
-                                <rect key="frame" x="30" y="266" width="260" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aew-d8-yOf">
-                                <rect key="frame" x="20" y="478" width="280" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cS2-Kn-G2x"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Or try it out!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="skipButtonHandler:" destination="zi6-oU-9mY" eventType="touchUpInside" id="BdX-tV-qe8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-BA-x0B">
-                                <rect key="frame" x="20" y="408" width="280" height="50"/>
-                                <color key="backgroundColor" red="0.1333333333" green="0.41176470590000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.41176470590000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="r5h-eZ-s2p"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Register">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="registerButtonHandler:" destination="zi6-oU-9mY" eventType="touchUpInside" id="Ks6-Hs-hRQ"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aew-d8-yOf" firstAttribute="leading" secondItem="ecB-Qp-ouC" secondAttribute="leading" constant="20" id="0wa-6U-oR1"/>
                             <constraint firstItem="tPc-Vr-Qr8" firstAttribute="top" secondItem="aew-d8-yOf" secondAttribute="bottom" constant="40" id="9zN-90-4IW"/>
@@ -480,7 +469,6 @@ Access private, members-only coupons</string>
                             <constraint firstItem="aew-d8-yOf" firstAttribute="top" secondItem="bPA-BA-x0B" secondAttribute="bottom" constant="20" id="cGN-GQ-kW5"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="registerButton" destination="bPA-BA-x0B" id="zNi-Kp-22B"/>
                         <outlet property="tryItOutButton" destination="aew-d8-yOf" id="RM4-r7-rrN"/>
@@ -495,7 +483,6 @@ Access private, members-only coupons</string>
             <objects>
                 <navigationController storyboardIdentifier="OnboardingNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="K9W-O3-vhp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgF-Gt-2s2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

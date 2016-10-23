@@ -15,10 +15,11 @@
 #import "AlertBox.h"
 #import "TooltipFactory.h"
 #import "UIView+CommonLayout.h"
+#import "FriendsPickerTableViewController.h"
 
 @import Foundation;
 
-@interface PhotoponDrawController()
+@interface PhotoponDrawController() <FriendsPickerDelegate>
 
 @property (nonatomic, strong) AMPopTip *tooltip;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *photoponContainerView;
@@ -229,12 +230,17 @@
             for (PFObject* obj in objects) {
                 [excludeFriends addObject:[obj valueForKey:@"friend"]];
             }
-            
-            FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-            [friendsViewController excludeFriends:excludeFriends];
-            [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
-            [self presentViewController:friendsViewController animated:true completion:nil];
-            
+
+            FriendsPickerTableViewController *pickerVC = [[UIStoryboard storyboardWithName:@"Friends" bundle:nil] instantiateViewControllerWithIdentifier:@"FriendsPickerTableViewController"];
+            pickerVC.excludedFriends = [excludeFriends mutableCopy];
+            pickerVC.delegate = self;
+            [self presentViewController:[pickerVC setupDefaultNavController] animated:YES completion:nil];
+//
+//            FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
+//            [friendsViewController excludeFriends:excludeFriends];
+//            [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
+//            [self presentViewController:friendsViewController animated:true completion:nil];
+
         }];
         
         
@@ -418,6 +424,15 @@
     
 }
 
+#pragma mark - Friend picker delegate
+
+-(void)didFinishSelecting:(NSArray *)friends {
+    [self sendPhotopons:friends];
+}
+
+-(void)didCancel {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

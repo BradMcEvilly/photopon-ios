@@ -18,6 +18,7 @@
 #import "TooltipFactory.h"
 #import "FriendTableViewCell.h"
 #import "UIViewController+Menu.h"
+#import "UIColor+Convinience.h"
 
 @interface FriendsViewController()
 
@@ -44,6 +45,7 @@
     myFriends = [NSMutableArray array];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add-friend-image"] style:UIBarButtonItemStylePlain target:self action:@selector(addFriendClicked)];
 
     [self.friendsTable registerNib:[UINib nibWithNibName:@"FriendTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendTableViewCell"];
     
@@ -66,11 +68,12 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.friendsTable addGestureRecognizer:tap];
 
+
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#61B8F2" alpha:1.0];
     if (!isSelectMode) {
         return;
     }
@@ -125,9 +128,6 @@
         }
         [self.friendsTable reloadData];
     });
-    
-    
-
 }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponTableCell" rowHeight="177" id="1vA-8W-RPN" customClass="CouponTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="177" id="1vA-8W-RPN" customClass="CouponTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="400" height="182"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1vA-8W-RPN" id="gdc-49-pfs">
@@ -35,6 +35,9 @@
                                                 <state key="normal" title="Get 💸">
                                                     <color key="titleColor" red="0.85098039215686272" green="0.29803921568627451" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="getButtonHandler:" destination="1vA-8W-RPN" eventType="touchUpInside" id="PPK-Gw-7NZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,6 +55,9 @@
                                                 <state key="normal" title="Give  🙌🏻">
                                                     <color key="titleColor" red="0.85098039215686272" green="0.29803921568627451" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="giveButtonHandler:" destination="1vA-8W-RPN" eventType="touchUpInside" id="piH-QT-YzE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,6 +152,7 @@
                             <constraint firstItem="EBZ-sZ-Xaz" firstAttribute="leading" secondItem="5VO-Cw-QQG" secondAttribute="leading" id="Bw3-Bh-hob"/>
                             <constraint firstItem="huH-2X-uCX" firstAttribute="top" secondItem="EBZ-sZ-Xaz" secondAttribute="bottom" id="LKJ-cu-L3P"/>
                             <constraint firstItem="huH-2X-uCX" firstAttribute="leading" secondItem="5VO-Cw-QQG" secondAttribute="leading" id="XYc-lG-IEY"/>
+                            <constraint firstAttribute="height" constant="170" id="hrG-12-4dq"/>
                             <constraint firstItem="EBZ-sZ-Xaz" firstAttribute="top" secondItem="5VO-Cw-QQG" secondAttribute="top" id="oGu-b6-e3h"/>
                             <constraint firstAttribute="trailing" secondItem="EBZ-sZ-Xaz" secondAttribute="trailing" id="vrU-39-2kO"/>
                         </constraints>
