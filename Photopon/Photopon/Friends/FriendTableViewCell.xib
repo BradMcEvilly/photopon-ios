@@ -45,7 +45,7 @@
                     <constraint firstItem="AxI-Ax-aHK" firstAttribute="top" secondItem="FLE-Vc-f89" secondAttribute="top" id="xUZ-RS-kxK"/>
                     <constraint firstAttribute="trailing" secondItem="AxI-Ax-aHK" secondAttribute="trailing" constant="10" id="yIC-d9-Kpe"/>
                     <constraint firstItem="XHn-mS-oyl" firstAttribute="leading" secondItem="FLE-Vc-f89" secondAttribute="trailing" constant="8" id="zTE-ye-LEh"/>
-                    <constraint firstItem="FLE-Vc-f89" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="zw7-JJ-DZ4"/>
+                    <constraint firstItem="FLE-Vc-f89" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zw7-JJ-DZ4"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
