@@ -196,9 +196,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
 }
-
 
 -(void)savePhotopon {
     if (selectedFriendId) {

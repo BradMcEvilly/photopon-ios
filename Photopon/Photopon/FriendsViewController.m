@@ -40,6 +40,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.friendsTable.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
