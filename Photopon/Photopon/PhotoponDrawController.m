@@ -166,10 +166,7 @@
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
     [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
-
     [newPhotoponObject setObject:users forKey:@"users"];
-
-
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -177,27 +174,22 @@
             photoFile = NULL;
             drawingFile = NULL;
             
-            //[self.navigationController popToRootViewControllerAnimated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-            
-            [AlertBox showMessageFor:self
-                         withTitle:@"Photopon"
-                       withMessage:@"Photopon was saved successfully"
-                        leftButton:nil
-                       rightButton:@"OK"
-                        leftAction:nil
-                       rightAction:nil];
-            
-    
-            
             for (int i = 0; i < [users count]; ++i) {
-                PFUser* user = [PFQuery getUserObjectWithId:users[i] ];
+                PFUser* user = users[i];
                 CreatePhotoponNotification(user, newPhotoponObject);
             }
             [currentCoupon incrementKey:@"numShared" byAmount:[NSNumber numberWithUnsignedLong:[users count] ] ];
             [currentCoupon saveInBackground];
 
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                [AlertBox showMessageFor:self
+                               withTitle:@"Photopon"
+                             withMessage:@"Photopon was saved successfully"
+                              leftButton:nil
+                             rightButton:@"OK"
+                              leftAction:nil
+                             rightAction:nil];
+            }];
 
             
         } else {

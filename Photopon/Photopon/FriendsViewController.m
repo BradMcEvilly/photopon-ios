@@ -164,6 +164,7 @@
     [friendCell setName:item[@"email"] username:item[@"username"]];
 
     PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+
     [query whereKey:@"user" equalTo:user];
     [query whereKey:@"friend" equalTo:item];
     [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
@@ -171,9 +172,8 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Redeemed"];
         [query whereKey:@"from" equalTo:user];
         [query whereKey:@"to" equalTo:item];
-        int used = number;
         [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
-            [friendCell setNumberOfGiftsUsed:used giftsShared:shared];
+            [friendCell setNumberOfGiftsUsed:number giftsShared:shared];
         }];
     }];
 

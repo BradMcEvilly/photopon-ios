@@ -14,7 +14,7 @@
 -(void)awakeFromNib {
     [super awakeFromNib];
     self.layer.borderWidth = 1;
-    self.layer.borderColor = [UIColor colorWithHexString:@"C0C0C0" alpha:0.3].CGColor;
+    self.layer.borderColor = [UIColor colorWithHexString:@"#C0C0C0" alpha:0.3].CGColor;
 }
 
 @end
