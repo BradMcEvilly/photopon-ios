@@ -160,13 +160,18 @@
     if (drawingFile == NULL) {
         drawingFile = [NSNull null];
     }
+    
+    NSMutableArray* userIds = [NSMutableArray new];
+    for (PFObject* user in users) {
+        [userIds addObject:[user objectId]];
+    }
 
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
     [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
-    [newPhotoponObject setObject:users forKey:@"users"];
+    [newPhotoponObject setObject:userIds forKey:@"users"];
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
