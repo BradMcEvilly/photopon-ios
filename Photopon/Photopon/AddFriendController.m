@@ -273,8 +273,6 @@
     NSInteger itemIndex = indexPath.item;
     NSInteger sectionIndex = indexPath.section;
     
-    NSLog(@"%ld", (long)itemIndex);
-    
     //NSDictionary *item = (NSDictionary *)[friendSuggestions objectAtIndex:dataIndex];
     
     
