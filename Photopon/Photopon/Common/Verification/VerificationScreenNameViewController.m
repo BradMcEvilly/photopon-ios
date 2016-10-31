@@ -98,6 +98,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.getStarted.layer.cornerRadius = 8;
+    self.getStarted.layer.masksToBounds = YES;
+
     [self.getStarted addTarget:self action:@selector(doRegister) forControlEvents:UIControlEventTouchDown];
     [self.cancelButton addTarget:self action:@selector(cancelCallback) forControlEvents:UIControlEventTouchDown];
 }

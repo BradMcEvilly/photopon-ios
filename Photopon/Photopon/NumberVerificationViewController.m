@@ -49,7 +49,7 @@
 
 -(UIViewController*)createSubView:(NSString*)storyBoardName {
     UIViewController* ctrl = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardName];
-    ctrl.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 60, [UIScreen mainScreen].bounds.size.height - 100);
+    ctrl.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height - 100);
     
     CGPoint ct = self.view.center;
     ct.y = ct.y + 100;
