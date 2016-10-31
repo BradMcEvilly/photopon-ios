@@ -14,6 +14,8 @@
 #import "DBAccess.h"
 #import "HeaderViewController.h"
 #import "AlertBox.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+
 @implementation SettingsController
 
 
@@ -21,6 +23,7 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     SaveImage(@"profile.jpg", chosenImage, ^(PFFile *file, NSError *error) {
         PFUser* user = [PFUser currentUser];
         [user setValue:file forKey:@"image"];
@@ -28,7 +31,11 @@
         SendGAEvent(@"user_action", @"settings", @"profile_image_uploaded");
         
         
-        [self.photoView sd_setImageWithURL:[NSURL URLWithString:file.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]];
+        [self.photoView sd_setImageWithURL:[NSURL URLWithString:file.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            self.photoView.layer.cornerRadius = 64;
+            self.photoView.layer.masksToBounds = YES;
+        }];
     });
 }
 
@@ -98,10 +105,10 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
 
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Settings"];
-   
+    self.changeNumber.layer.cornerRadius = 8;
+    self.changeNumber.layer.masksToBounds = YES;
+
     [self.changePhoto addTarget:self action:@selector(changePhotoCallback) forControlEvents:UIControlEventTouchDown];
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
     
@@ -129,7 +136,10 @@
     PFFile* file = [user objectForKey:@"image"];
     
     if (file != nil) {
-        [self.photoView sd_setImageWithURL:[NSURL URLWithString:file.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"]];
+        [self.photoView sd_setImageWithURL:[NSURL URLWithString:file.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            self.photoView.layer.cornerRadius = 64;
+            self.photoView.layer.masksToBounds = YES;
+        }];
     }
     
     NSString* phoneNum = [user objectForKey:@"phone"];
@@ -146,6 +156,9 @@
 }
 
 
+- (IBAction)closeButtonHandler:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
