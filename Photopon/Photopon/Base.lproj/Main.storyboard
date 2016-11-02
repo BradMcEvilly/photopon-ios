@@ -6,6 +6,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1548,7 +1549,7 @@
                 <navigationController storyboardIdentifier="MainCtrl" title="Main Controller" navigationBarHidden="YES" id="7fO-PT-t8o" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YLg-pL-a2w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YLg-pL-a2w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1572,8 +1573,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81n-VK-i1v">
-                                <frame key="frameInset" width="250" height="568"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81n-VK-i1v">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photopon-logo-black.png" translatesAutoresizingMaskIntoConstraints="NO" id="OO7-oy-Ddr">
                                         <constraints>
@@ -1914,7 +1914,6 @@
                                     <constraint firstItem="Kv7-DE-C37" firstAttribute="top" secondItem="ksU-ZY-8bi" secondAttribute="bottom" constant="5" id="YDF-0a-30A"/>
                                     <constraint firstItem="Kv7-DE-C37" firstAttribute="leading" secondItem="ksU-ZY-8bi" secondAttribute="leading" id="bqo-Qd-fDs"/>
                                     <constraint firstItem="wT3-97-7T6" firstAttribute="leading" secondItem="81n-VK-i1v" secondAttribute="leading" id="ek5-0Y-FAq"/>
-                                    <constraint firstAttribute="width" constant="250" id="fad-Ik-a4X"/>
                                     <constraint firstItem="kJg-Gh-wT8" firstAttribute="leading" secondItem="81n-VK-i1v" secondAttribute="leading" id="gqw-nK-py1"/>
                                     <constraint firstItem="kJg-Gh-wT8" firstAttribute="top" secondItem="D1Z-Gj-k4p" secondAttribute="bottom" id="n1J-Mb-zOJ"/>
                                     <constraint firstAttribute="trailing" secondItem="wT3-97-7T6" secondAttribute="trailing" id="ng9-Dm-rwj"/>
@@ -1931,10 +1930,10 @@
                             <constraint firstItem="81n-VK-i1v" firstAttribute="top" secondItem="JF2-Dj-SlT" secondAttribute="bottom" id="BNy-bg-y0m"/>
                             <constraint firstItem="Irs-gp-02M" firstAttribute="top" secondItem="81n-VK-i1v" secondAttribute="bottom" constant="8" symbolic="YES" id="D0p-fo-fh8"/>
                             <constraint firstItem="81n-VK-i1v" firstAttribute="leading" secondItem="oIH-6X-yNl" secondAttribute="leading" constant="147" id="Sve-cn-oYW"/>
-                            <constraint firstItem="Irs-gp-02M" firstAttribute="top" secondItem="81n-VK-i1v" secondAttribute="bottom" id="Xgj-87-IWB"/>
                             <constraint firstItem="81n-VK-i1v" firstAttribute="top" secondItem="oIH-6X-yNl" secondAttribute="top" id="c6T-8O-Hhl"/>
+                            <constraint firstItem="81n-VK-i1v" firstAttribute="height" secondItem="oIH-6X-yNl" secondAttribute="height" multiplier="0.7" id="fQA-DX-Bib"/>
                             <constraint firstItem="81n-VK-i1v" firstAttribute="leading" secondItem="oIH-6X-yNl" secondAttribute="leading" id="hoI-rJ-7C3"/>
-                            <constraint firstItem="Irs-gp-02M" firstAttribute="top" secondItem="81n-VK-i1v" secondAttribute="bottom" id="jID-K5-XVy"/>
+                            <constraint firstAttribute="trailing" secondItem="81n-VK-i1v" secondAttribute="trailing" id="o7B-ck-fVs"/>
                             <constraint firstItem="81n-VK-i1v" firstAttribute="leading" secondItem="oIH-6X-yNl" secondAttribute="leading" id="sE6-Fx-1Ta"/>
                         </constraints>
                         <variation key="default">
@@ -1958,6 +1957,7 @@
                         <outlet property="sentPhotopons" destination="Kv7-DE-C37" id="bBY-MY-2f1"/>
                         <outlet property="settingsItem" destination="D1Z-Gj-k4p" id="gdM-GT-o4J"/>
                         <outlet property="signoutItem" destination="l60-Ml-OwA" id="lV4-3G-72o"/>
+                        <outlet property="topConstraint" destination="c6T-8O-Hhl" id="pjw-e8-0sO"/>
                         <outlet property="walletItem" destination="Q0m-Es-yuB" id="rMX-ke-umT"/>
                     </connections>
                 </viewController>

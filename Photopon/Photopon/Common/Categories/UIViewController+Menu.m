@@ -87,6 +87,9 @@
     [leftMenu setModalPresentationStyle:UIModalPresentationOverCurrentContext];
 
     UIViewController *vc = self.navigationController ?: self;
+    CGSize windowSize = [UIScreen mainScreen].bounds.size;
+    leftMenu.view.frame = CGRectMake(0, -windowSize.height * 0.7, windowSize.width, windowSize.height * 0.7);
+    leftMenu.view.layer.masksToBounds = YES;
     [vc presentViewController:leftMenu animated:NO completion:nil];
     
 }
