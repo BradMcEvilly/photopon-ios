@@ -53,9 +53,7 @@
 -(void)requestMerchantCallback {
     
     UIViewController* merchantInfo = (UIViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMerchantInfo"];
-    
-    [self presentViewController:merchantInfo animated:YES completion:nil];
-    
+    [self.navigationController pushViewController:merchantInfo animated:YES];
 }
 
 
@@ -118,7 +116,7 @@
     
     [self.removeNumberBtn addTarget:self action:@selector(removeNumber) forControlEvents:UIControlEventTouchDown];
     
-    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 

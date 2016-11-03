@@ -53,6 +53,7 @@
 		462682F71D9C325600BD3566 /* splash-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682D21D9C325600BD3566 /* splash-bottom.png */; };
 		462682F81D9C325600BD3566 /* splash-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 462682D31D9C325600BD3566 /* splash-logo.png */; };
 		462682FB1D9C327800BD3566 /* Stripe.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462682FA1D9C327800BD3566 /* Stripe.xcassets */; };
+		46269AFD1DCBE56200542C56 /* KeyboardAvoidanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46269AFC1DCBE56200542C56 /* KeyboardAvoidanceManager.m */; };
 		462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */; };
 		462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69831D230C7300E13783 /* UIColor+Theme.m */; };
 		462C69881D230E6100E13783 /* NSDateFormatter+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C69871D230E6100E13783 /* NSDateFormatter+Common.m */; };
@@ -292,6 +293,8 @@
 		462682D21D9C325600BD3566 /* splash-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-bottom.png"; sourceTree = "<group>"; };
 		462682D31D9C325600BD3566 /* splash-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo.png"; sourceTree = "<group>"; };
 		462682FA1D9C327800BD3566 /* Stripe.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stripe.xcassets; sourceTree = "<group>"; };
+		46269AFB1DCBE56200542C56 /* KeyboardAvoidanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAvoidanceManager.h; sourceTree = "<group>"; };
+		46269AFC1DCBE56200542C56 /* KeyboardAvoidanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAvoidanceManager.m; sourceTree = "<group>"; };
 		462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNavigationStackHelper.m; sourceTree = "<group>"; };
 		462C697F1D230BDD00E13783 /* AppNavigationStackHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNavigationStackHelper.h; sourceTree = "<group>"; };
 		462C69821D230C7300E13783 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
@@ -883,6 +886,8 @@
 				466C42AA1D43400100F277BA /* GoogleMapsManager.m */,
 				46D2FF9E1D5626AD0073EBC7 /* UserManager.h */,
 				46D2FF9F1D5626AD0073EBC7 /* UserManager.m */,
+				46269AFB1DCBE56200542C56 /* KeyboardAvoidanceManager.h */,
+				46269AFC1DCBE56200542C56 /* KeyboardAvoidanceManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1670,6 +1675,7 @@
 				4655E67E1DAA62D70043443B /* CouponBasicCell.m in Sources */,
 				62A302CB1B829B0800D61F34 /* ChatMessagesController.m in Sources */,
 				4655E6841DAAC3850043443B /* MultipleLocationsContainerViewController.m in Sources */,
+				46269AFD1DCBE56200542C56 /* KeyboardAvoidanceManager.m in Sources */,
 				46CF62EB1D1EB839002122EC /* AvailabilityManager.m in Sources */,
 				84B8CB9B1D0B6BEF0060BAD5 /* ChatUserTableViewCell.m in Sources */,
 			);

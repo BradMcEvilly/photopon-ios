@@ -125,7 +125,15 @@
             int c = MIN(3, (int)[results count]);
             
             for (int i = 0; i < c; ++i) {
-                usersText = [usersText stringByAppendingString:[results[i] username]];
+                if ([results[i] isKindOfClass:[PFUser class]]) {
+                    if (results[i][@"phone"]) {
+                        usersText = [usersText stringByAppendingString:results[i][@"phone"]];
+                    }
+                } else {
+                    if ([results[i] username]) {
+                        usersText = [usersText stringByAppendingString:[results[i] username]];
+                    }
+                }
                 if (i != c - 1) {
                     usersText = [usersText stringByAppendingString:@", "];
                 }

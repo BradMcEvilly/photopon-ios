@@ -72,7 +72,7 @@
     [self setupNavBarAppearance];
 
 #ifdef DEBUG
-//    [PFUser logInWithUsername:@"hayk1" password:@"norisk"];
+    [PFUser logInWithUsername:@"hayk1" password:@"norisk"];
 
     return YES;
 #else

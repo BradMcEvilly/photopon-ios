@@ -11,6 +11,18 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "HeaderViewController.h"
 #import "AlertBox.h"
+#import "RoundedBorderedView.h"
+#import "UIColor+Convinience.h"
+#import "KeyboardAvoidanceManager.h"
+
+@interface MerchantInfoPage()
+
+@property (weak, nonatomic) IBOutlet RoundedBorderedView *merchantContainer;
+@property (nonatomic, strong) KeyboardAvoidanceManager *keyboardManager;
+
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+
+@end
 
 @implementation MerchantInfoPage
 
@@ -35,7 +47,9 @@
 
 
 -(void)requestMerchantCallback {
-    
+
+    [self.view endEditing:YES];
+
     if ([self.infoBusinessName.text length] == 0) {
         [self showAlert:@"Error": @"Business Name can not be empty"];
         return;
@@ -82,10 +96,12 @@
     [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:NO];
     [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarByPosition];
 
-
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
 
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Merchant Info"];
+    self.merchantContainer.corners = UIRectCornerAllCorners;
+    self.merchantContainer.borderColor = [UIColor colorWithHexString:@"#D9D8D4" alpha:1.0];
+
+    self.keyboardManager = [[KeyboardAvoidanceManager alloc]initWithScrollView:self.scrollView view:self.view];
 }
 
 

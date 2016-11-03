@@ -13,6 +13,12 @@
 @implementation PFUserPlaceholder
 
 +(PFUserPlaceholder*)create: (NSString*)phoneNumber {
+
+    if ([phoneNumber isKindOfClass:[PFUser class]]) {
+        PFUser *user = phoneNumber;
+        phoneNumber = user[@"phone"];
+    }
+
     PFUserPlaceholder* obj = [PFUserPlaceholder new];
     obj.phoneNumber = phoneNumber;
     return obj;
@@ -71,7 +77,13 @@ NSMutableDictionary* cachedUsers;
     if (!cachedUsers) {
         cachedUsers = [NSMutableDictionary new];
     }
-    [cachedUsers setObject:user forKey:objid];
+
+    if ([objid isKindOfClass:[PFUser class]]) {
+        PFUser *userOBJ = objid;
+        [cachedUsers setObject:user forKey:userOBJ.objectId];
+    } else {
+        [cachedUsers setObject:user forKey:objid];
+    }
 }
 
 

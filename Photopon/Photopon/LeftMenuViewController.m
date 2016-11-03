@@ -8,6 +8,8 @@
 
 #import "LeftMenuViewController.h"
 
+#define MENU_VIEW_HEIGHT 460
+
 @interface LeftMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
@@ -32,7 +34,7 @@
     
     self.windowHeight = [UIScreen mainScreen].bounds.size.height;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    self.topConstraint.constant = -self.windowHeight * 0.7;
+    self.topConstraint.constant = - MENU_VIEW_HEIGHT;
     
     
     
@@ -98,7 +100,7 @@
 
 
 - (void)closeLeftMenu {
-    self.topConstraint.constant = - _windowHeight *  0.7;
+    self.topConstraint.constant = - MENU_VIEW_HEIGHT;
     [UIView animateWithDuration:0.25 animations:^{
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -113,7 +115,7 @@
 - (void)menuItemTapped:(UITapGestureRecognizer *)recognizer {
     NSInteger tag = recognizer.view.tag;
 
-    self.topConstraint.constant = - _windowHeight *  0.7;
+    self.topConstraint.constant = - MENU_VIEW_HEIGHT;
     [UIView animateWithDuration:0.25 animations:^{
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
