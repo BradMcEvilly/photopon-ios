@@ -73,6 +73,7 @@
 		4675AA841DBBDB5B005C49D4 /* ChatMessageUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA821DBBDB5B005C49D4 /* ChatMessageUserCell.m */; };
 		4675AA851DBBDB5B005C49D4 /* ChatMessageUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4675AA831DBBDB5B005C49D4 /* ChatMessageUserCell.xib */; };
 		4675AA881DBBDC8A005C49D4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675AA871DBBDC8A005C49D4 /* MessageCell.m */; };
+		467DDFA61DCFDA56003F992E /* SentPhotoponDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 467DDFA51DCFDA56003F992E /* SentPhotoponDetailsCell.m */; };
 		46857AF31D9D8BA9003C1642 /* WorkSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */; };
 		46857AF41D9D8BA9003C1642 /* WorkSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */; };
 		46857AF51D9D8BA9003C1642 /* WorkSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */; };
@@ -329,6 +330,8 @@
 		4675AA831DBBDB5B005C49D4 /* ChatMessageUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageUserCell.xib; sourceTree = "<group>"; };
 		4675AA861DBBDC8A005C49D4 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		4675AA871DBBDC8A005C49D4 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		467DDFA41DCFDA56003F992E /* SentPhotoponDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentPhotoponDetailsCell.h; sourceTree = "<group>"; };
+		467DDFA51DCFDA56003F992E /* SentPhotoponDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentPhotoponDetailsCell.m; sourceTree = "<group>"; };
 		46857AEA1D9D8BA9003C1642 /* WorkSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBold.otf"; sourceTree = "<group>"; };
 		46857AEB1D9D8BA9003C1642 /* WorkSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.otf"; sourceTree = "<group>"; };
 		46857AEC1D9D8BA9003C1642 /* WorkSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBold.otf"; sourceTree = "<group>"; };
@@ -1007,6 +1010,8 @@
 				6276A9FD1D46096B000A8BE0 /* SentPhotopons.m */,
 				620B12971D594F9100CA038E /* SentPhotoponDetail.h */,
 				620B12981D594F9100CA038E /* SentPhotoponDetail.m */,
+				467DDFA41DCFDA56003F992E /* SentPhotoponDetailsCell.h */,
+				467DDFA51DCFDA56003F992E /* SentPhotoponDetailsCell.m */,
 			);
 			name = SentPhotopons;
 			sourceTree = "<group>";
@@ -1600,6 +1605,7 @@
 				62A302BE1B80A38B00D61F34 /* DBAccess.m in Sources */,
 				628144561C485F5B0008D9FF /* HeaderViewController.m in Sources */,
 				46FD45201DBCE2C5001FBC75 /* FriendPickerCell.m in Sources */,
+				467DDFA61DCFDA56003F992E /* SentPhotoponDetailsCell.m in Sources */,
 				46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */,
 				46CA1BD01DB1468E007D528A /* CouponDefaultCell.m in Sources */,
 				462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */,
