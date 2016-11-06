@@ -237,8 +237,7 @@
                                 <frame key="frameInset" minY="124" width="320" height="444"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Enter Username or Email" translatesAutoresizingMaskIntoConstraints="NO" id="tgF-AY-Ikk">
-                                <frame key="frameInset" minY="80" width="320" height="44"/>
+                            <searchBar contentMode="redraw" placeholder="Enter Username or Email" translatesAutoresizingMaskIntoConstraints="NO" id="tgF-AY-Ikk">
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -250,7 +249,7 @@
                         <constraints>
                             <constraint firstItem="tgF-AY-Ikk" firstAttribute="top" secondItem="0hJ-cV-7CG" secondAttribute="bottom" id="4Ty-WC-7qe"/>
                             <constraint firstAttribute="trailing" secondItem="tgF-AY-Ikk" secondAttribute="trailing" id="7QG-Ki-Kdm"/>
-                            <constraint firstItem="tgF-AY-Ikk" firstAttribute="top" secondItem="vPa-Vy-wut" secondAttribute="top" constant="80" id="Op1-fb-F5x"/>
+                            <constraint firstItem="tgF-AY-Ikk" firstAttribute="top" secondItem="vPa-Vy-wut" secondAttribute="top" id="Op1-fb-F5x"/>
                             <constraint firstItem="tgF-AY-Ikk" firstAttribute="leading" secondItem="vPa-Vy-wut" secondAttribute="leading" id="Zz7-EW-rDP"/>
                             <constraint firstItem="AYt-BF-qU3" firstAttribute="top" secondItem="vPa-Vy-wut" secondAttribute="top" id="fml-5S-S5R"/>
                             <constraint firstItem="tgF-AY-Ikk" firstAttribute="leading" secondItem="vPa-Vy-wut" secondAttribute="leading" id="h18-wX-sVg"/>
@@ -1545,7 +1544,7 @@
                 <navigationController storyboardIdentifier="MainCtrl" title="Main Controller" navigationBarHidden="YES" id="7fO-PT-t8o" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YLg-pL-a2w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YLg-pL-a2w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2326,7 +2325,7 @@
         <scene sceneID="Sch-Bv-zI7">
             <objects>
                 <navigationController storyboardIdentifier="SBSettings" id="hTS-X9-HU1" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="yyX-Ts-lmk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yyX-Ts-lmk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

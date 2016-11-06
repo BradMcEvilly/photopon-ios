@@ -94,7 +94,7 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     UIViewController *addFriend = [storyBoard instantiateViewControllerWithIdentifier:@"SBAddFriend"];
-    [self presentViewController:addFriend animated:true completion:nil];
+    [self.navigationController pushViewController:addFriend animated:true];
 
 }
 
