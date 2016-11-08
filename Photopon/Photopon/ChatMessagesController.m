@@ -31,6 +31,7 @@
 
 #import <UIImageView+WebCache.h>
 #import "UIColor+Convinience.h"
+#import <MBProgressHUD.h>
 
 @interface ChatMessagesController ()
 
@@ -83,10 +84,6 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 
-    [self registerCellWithClass:[ChatMessageFriendCell class]];
-    [self registerCellWithClass:[ChatMessageUserCell class]];
-    [self registerCellWithClass:[CouponTableViewCell class]];
-
     self.chatTableView.rowHeight = UITableViewAutomaticDimension;
     self.chatTableView.estimatedRowHeight = 100;
     
@@ -103,6 +100,11 @@
     self.chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.chatTableView.rowHeight = UITableViewAutomaticDimension;
     self.chatTableView.estimatedRowHeight = 20.0;
+
+    [self registerCellWithClass:[ChatMessageFriendCell class]];
+    [self registerCellWithClass:[ChatMessageUserCell class]];
+    [self registerCellWithClass:[CouponTableViewCell class]];
+
     [self registerCellWithClass:[ChatMessageTableViewCell class]];
     [self registerCellWithClass:[ChatUserTableViewCell class]];
     [self registerCellWithClass:[ChatPhotoponTableViewCell class]];
@@ -238,8 +240,9 @@
     self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
     
     __weak typeof(self) weakSelf = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (!status.isError) {
             [weakSelf didLoadMessages:result.data.messages];
         } else {

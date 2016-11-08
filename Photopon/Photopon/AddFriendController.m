@@ -467,7 +467,7 @@
         }
 
         if (initial2) {
-            label.text = [[label.text stringByAppendingString:initial2]substringToIndex:1];
+            label.text = [label.text stringByAppendingString:[initial2 substringToIndex:1]];
         }
 
         return cell;

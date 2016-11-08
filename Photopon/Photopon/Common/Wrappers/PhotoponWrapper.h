@@ -17,7 +17,7 @@ typedef void (^PhotoponStatusBlock)(NSString *status);
 -(NSString*)username;
 -(NSString*)getId;
 
-@property (assign) NSString* phoneNumber;
+@property (nonatomic, weak) NSString* phoneNumber;
 @end
 
 @interface PhotoponWrapper : NSObject

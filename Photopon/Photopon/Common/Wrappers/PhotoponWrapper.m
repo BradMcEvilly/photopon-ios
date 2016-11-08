@@ -9,7 +9,6 @@
 #import "PhotoponWrapper.h"
 #import "AlertBox.h"
 
-
 @implementation PFUserPlaceholder
 
 +(PFUserPlaceholder*)create: (NSString*)phoneNumber {
@@ -17,6 +16,9 @@
     if ([phoneNumber isKindOfClass:[PFUser class]]) {
         PFUser *user = phoneNumber;
         phoneNumber = user[@"phone"];
+    } else if ([phoneNumber isKindOfClass:NSClassFromString(@"PFACLState")]) {
+        int a = 2;
+        NSArray *array = [NSArray new];
     }
 
     PFUserPlaceholder* obj = [PFUserPlaceholder new];
