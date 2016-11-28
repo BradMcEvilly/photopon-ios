@@ -18,6 +18,7 @@
 #import "ChatMessagesController.h"
 #import "PhotoponViewController.h"
 #import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @implementation MainController
 {
@@ -317,7 +318,7 @@
 - (UINavigationController *)setupCouponsViewController {
     UIViewController *couponVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
     UINavigationController *couponNavigationController = [[UINavigationController alloc]initWithRootViewController:couponVC];
-    couponNavigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
+    couponNavigationController.navigationBar.barTintColor = [UIColor giftsThemeColor];
     couponNavigationController.navigationBar.tintColor = [UIColor whiteColor];
     couponNavigationController.navigationBar.translucent = NO;
     return couponNavigationController;
@@ -326,7 +327,7 @@
 - (UINavigationController *)setupNotificationsViewController {
     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
     UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
-    nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#F26161" alpha:1.0];
+    nc.navigationBar.barTintColor = [UIColor notificationThemeColor];
     nc.navigationBar.tintColor = [UIColor whiteColor];
     nc.navigationBar.translucent = NO;
     return nc;
@@ -335,7 +336,7 @@
 - (UINavigationController *)setupWalletViewController {
     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WalletController"];
     UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
-    nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#926EEC" alpha:1.0];
+    nc.navigationBar.barTintColor = [UIColor walletThemeColor];
     nc.navigationBar.tintColor = [UIColor whiteColor];
     nc.navigationBar.translucent = NO;
     return nc;
@@ -344,12 +345,10 @@
 - (UINavigationController *)setupFriends {
     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FriendsViewController"];
     UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
-    nc.navigationBar.barTintColor = [UIColor colorWithHexString:@"#66B9F1" alpha:1.0];
+    nc.navigationBar.barTintColor = [UIColor friendsThemeColor];
     nc.navigationBar.tintColor = [UIColor whiteColor];
     nc.navigationBar.translucent = NO;
     return nc;
 }
-
-
 
 @end

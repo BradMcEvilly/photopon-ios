@@ -7,6 +7,7 @@
 //
 
 #import "TooltipFactory.h"
+#import "UIColor+Theme.h"
 
 NSString * const TooltipTakePhotoCheckedKey = @"TooltipTakePhotoCheckedKey";
 NSString * const TooltipPersonalizeCheckedKey = @"TooltipPersonalizeCheckedKey";
@@ -61,8 +62,8 @@ NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedK
     tooltip.shouldDismissOnTap = true;
     tooltip.entranceAnimation = AMPopTipEntranceAnimationFadeIn;
     tooltip.actionAnimation = AMPopTipActionAnimationFloat;
-    tooltip.font = [UIFont boldSystemFontOfSize:15];
-    tooltip.popoverColor = [UIColor orangeColor];
+    tooltip.font = [UIFont fontWithName:@"Montserrat" size:19];
+    tooltip.popoverColor = [UIColor giftsThemeColor];
     return tooltip;
 }
 

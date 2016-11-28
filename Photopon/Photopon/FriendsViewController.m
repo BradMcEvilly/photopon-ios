@@ -19,6 +19,7 @@
 #import "FriendTableViewCell.h"
 #import "UIViewController+Menu.h"
 #import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @interface FriendsViewController()
 
@@ -74,7 +75,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#61B8F2" alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor friendsThemeColor];
     if (!isSelectMode) {
         return;
     }

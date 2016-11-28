@@ -31,6 +31,7 @@
 
 #import <UIImageView+WebCache.h>
 #import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 #import <MBProgressHUD.h>
 
 @interface ChatMessagesController ()
@@ -93,7 +94,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor friendsThemeColor];
 }
 
 - (void)configureTableView {

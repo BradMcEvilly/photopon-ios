@@ -8,6 +8,7 @@
 //
 
 #import "LocationServicesViewController.h"
+#import "AlertControllerFactory.h"
 
 @interface LocationServicesViewController() <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
@@ -23,6 +24,17 @@
 }
 
 - (IBAction)locationServicesButtonHandler:(id)sender {
+    if ([CLLocationManager locationServicesEnabled]) {
+        UIAlertController *alert = [AlertControllerFactory basicAlertWithMessage:@"Location services already enabled, thank you!" completion:^{
+            [self.delegate didAllowLocationServices];
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self askForLocationServices];
+    }
+}
+
+- (void)askForLocationServices {
     CLLocationManager *manager = [CLLocationManager new];
     manager.delegate = self;
     [manager requestWhenInUseAuthorization];

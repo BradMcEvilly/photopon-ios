@@ -16,6 +16,7 @@
 #import "HeaderViewController.h"
 #import "AlertBox.h"
 #import "UIColor+Convinience.h"
+#import <UIImageView+WebCache.h>
 
 @implementation AddFriendController 
 {
@@ -343,6 +344,7 @@
 
         cell.imageView.layer.cornerRadius = 22;
         cell.imageView.layer.masksToBounds = YES;
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.backgroundColor = [UIColor colorWithHexString:@"#F2EA01" alpha:1.0];
     }
     
@@ -388,9 +390,10 @@
     }
     
     
-    UIImage *theUserImage = [self scaledImage:[UIImage imageNamed:@"Icon-Add-UserStar.png"]];
-    UIImage *theContactImage = [self scaledImage:[UIImage imageNamed:@"Icon-Business-Mens.png"]];
+    UIImage *theUserImage = [self scaledImage:[UIImage imageNamed:@"user-profile-image"]];
     PFUser* currentUser = [PFUser currentUser];
+    PFFile *userImageFile = currentUser[@"image"];
+    NSURL *userImageUrl = [NSURL URLWithString:userImageFile.url];
 
     if (sectionIndex == 0) {
         if (currentSuggestion) {
@@ -411,13 +414,25 @@
             
             cell.textLabel.text = [currentSuggestion objectForKey:@"username"];
             cell.detailTextLabel.text = @"";
-            cell.imageView.image = theUserImage;
+
+
+            if (userImageFile) {
+                [cell.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+            } else {
+                cell.imageView.image = theUserImage;
+            }
             return cell;
         }
         
         cell1.textLabel.text = self.userSearchBar.text;
         cell1.detailTextLabel.text = @"";
-        cell1.imageView.image = [self scaledImage:[UIImage imageNamed:@"Icon-Find-User.png"]];
+
+        if (userImageFile) {
+            [cell1.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+        } else {
+            cell1.imageView.image = theUserImage;
+        }
+
         return cell1;
     }
     
@@ -429,9 +444,22 @@
             cell.textLabel.text = [item objectForKey:@"name"];
             cell.detailTextLabel.text = @"removed from friend list";
             cell.imageView.image = theUserImage;
+
+            if (userImageFile) {
+                [cell.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+            } else {
+                cell.imageView.image = theUserImage;
+            }
+
             return cell;
         }
-        
+
+        if (userImageFile) {
+            [cellAdded.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+        } else {
+            cellAdded.imageView.image = theUserImage;
+        }
+
         cellAdded.textLabel.text = [item objectForKey:@"name"];
         cellAdded.detailTextLabel.text = [item objectForKey:@"email"];
         cellAdded.imageView.image = theUserImage;
@@ -445,30 +473,14 @@
         if ([[item objectForKey:@"justAddedFriend"] boolValue]) {
             cellAdded.textLabel.text = [item objectForKey:@"name"];
             cellAdded.detailTextLabel.text = @"is your friend!";
-            cellAdded.imageView.image = theContactImage;
+            cellAdded.imageView.image = [UIImage imageNamed:@"user-profile-image"];
             return cellAdded;
         }
         
         cell.textLabel.text = [item objectForKey:@"name"];
         cell.detailTextLabel.text = [item objectForKey:@"phone"];
-        cell.imageView.image = [UIImage imageNamed:@"yellow-cricle"];
+        cell.imageView.image = [UIImage imageNamed:@"user-profile-image"];
         cell.imageView.layer.cornerRadius = 22;
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(15, 7, 44, 44)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithHexString:@"#595747" alpha:1.0];
-        label.font = [UIFont fontWithName:@"Montserrat" size:16];
-        [cell.contentView addSubview:label];
-
-        NSString *initial1 = [cell.textLabel.text componentsSeparatedByString:@" "].firstObject;
-        NSString *initial2 = [cell.textLabel.text componentsSeparatedByString:@" "].lastObject;
-        if (initial1) {
-            label.text = [initial1 substringToIndex:1];
-        }
-
-        if (initial2) {
-            label.text = [label.text stringByAppendingString:[initial2 substringToIndex:1]];
-        }
 
         return cell;
     }

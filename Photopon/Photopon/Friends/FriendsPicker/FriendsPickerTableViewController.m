@@ -10,6 +10,7 @@
 #import "FriendPickerCell.h"
 #import <UIImageView+WebCache.h>
 #import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @interface FriendsPickerTableViewController ()
 
@@ -163,7 +164,7 @@
 
 - (UINavigationController *)setupDefaultNavController {
     UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:self];
-    navVC.navigationBar.barTintColor = [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
+    navVC.navigationBar.barTintColor = [UIColor giftsThemeColor];
     navVC.navigationBar.tintColor = [UIColor whiteColor];
     self.title = @"Share gift";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(confirmedFriendsSelection)];

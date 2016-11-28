@@ -21,6 +21,7 @@
 #import <UIImageView+WebCache.h>
 #import "NSDate+Pretty.h"
 #import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @implementation NotificationController
 {
@@ -90,7 +91,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#F26161" alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor notificationThemeColor];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -98,8 +99,6 @@
     [tracker set:kGAIScreenName value:@"NotificationsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
-
-
 
 -(void)dealloc {
     [RealTimeNotificationHandler removeListener:@"NOTIFICATION.NOTIFICATIONVIEW"];

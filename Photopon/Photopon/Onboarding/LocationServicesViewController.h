@@ -17,5 +17,6 @@
 @interface LocationServicesViewController : UIViewController
 
 @property (nonatomic, weak) id<LocationServicesViewControllerDelegate> delegate;
+- (void)askForLocationServices;
 
 @end

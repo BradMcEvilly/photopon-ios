@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property (nonatomic, weak) LocationServicesViewController *locationServicesVC;
+@property (nonatomic, weak) PushNotificationsViewController *pushServicesVC;
 
 @end
 
@@ -32,15 +34,23 @@
     CGFloat xOffset = scrollView.contentOffset.x;
     self.backgroundImageLeftConstraint.constant = - xOffset / 7;
     [self.pageControl setCurrentPage:xOffset / [UIApplication sharedApplication].keyWindow.bounds.size.width];
+
+    if (self.pageControl.currentPage == 2) {
+        [self.pushServicesVC enablePushNotification];
+    } else if (self.pageControl.currentPage == 3) {
+        [self.locationServicesVC askForLocationServices];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LocationServices"]) {
         LocationServicesViewController *vc = segue.destinationViewController;
         vc.delegate = self;
+        self.locationServicesVC = vc;
     } else if ([segue.identifier isEqualToString:@"PushNotifications"]) {
         PushNotificationsViewController *vc = segue.destinationViewController;
         vc.delegate = self;
+        self.pushServicesVC = vc;
     } else if ([segue.identifier isEqualToString:@"EnjoyPhotopon"]) {
         EnjoyPhotoponViewController *vc = segue.destinationViewController;
         vc.delegate = self;

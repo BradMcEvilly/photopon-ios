@@ -73,7 +73,7 @@
                     [vc dismissViewControllerAnimated:YES completion:^{}];
                     break;
                 }
-                vc =  temp;
+                    vc =  temp;
             }
 
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Onboarding" bundle:nil];

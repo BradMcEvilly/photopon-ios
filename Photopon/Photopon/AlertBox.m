@@ -76,8 +76,9 @@
     
     alertBox.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     alertBox.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
-    
-    
+    alertBox.containerView.layer.masksToBounds = YES;
+    alertBox.containerView.layer.cornerRadius = 8;
+
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
     while (topController.presentedViewController) {

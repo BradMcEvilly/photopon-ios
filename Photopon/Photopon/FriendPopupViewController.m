@@ -133,7 +133,7 @@
             
         case MessageComposeResultFailed:
         {
-            [AlertBox showAlertFor:self withTitle:@"Error" withMessage:@"Failed to send SMS message" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
+            [AlertBox showAlertFor:self withTitle:@"Ups something went wrong..." withMessage:@"Failed to send SMS message" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
             SendGAEvent(@"user_action", @"friend_popup", @"invite_message_failed");
 
             break;
@@ -157,7 +157,7 @@
     
     if(![MFMessageComposeViewController canSendText]) {
         
-        [AlertBox showAlertFor:self withTitle:@"Error" withMessage:@"Your device doesn't support SMS!" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
+        [AlertBox showAlertFor:self withTitle:@"Ups something went wrong..." withMessage:@"Your device doesn't support SMS!" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
         SendGAEvent(@"user_action", @"friend_popup", @"send_text_failed");
         
         return;
