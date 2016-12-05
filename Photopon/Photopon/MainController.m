@@ -71,9 +71,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self setViewControllers:@[couponsView]
                        direction:UIPageViewControllerNavigationDirectionForward
-                        animated:NO completion:^(BOOL finished) {
-                            NSLog(@"%d", finished);
-                        }];
+                        animated:NO completion:nil];
     });
 }
 

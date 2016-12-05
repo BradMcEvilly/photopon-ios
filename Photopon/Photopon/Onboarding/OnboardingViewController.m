@@ -21,6 +21,8 @@
 @property (nonatomic, weak) LocationServicesViewController *locationServicesVC;
 @property (nonatomic, weak) PushNotificationsViewController *pushServicesVC;
 
+@property (nonatomic, assign) BOOL didViewAlreadyAppear;
+
 @end
 
 @implementation OnboardingViewController
@@ -28,6 +30,15 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+
+    if (!self.didViewAlreadyAppear) {
+        self.didViewAlreadyAppear = YES;
+        if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications] && [CLLocationManager locationServicesEnabled]) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.scrollView setContentOffset:CGPointMake([UIApplication sharedApplication].keyWindow.bounds.size.width * 3, 0) animated:YES];
+            });
+        }
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {

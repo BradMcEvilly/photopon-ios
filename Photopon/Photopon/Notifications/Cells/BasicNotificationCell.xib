@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="336" height="158"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="336" height="157"/>
+                <frame key="frameInset" width="336" height="157.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Ss-R7-nlT">
@@ -44,7 +44,7 @@
                     <constraint firstItem="EAv-Cc-90S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="DMy-Ov-OO6"/>
                     <constraint firstAttribute="trailing" secondItem="Mmw-ts-p87" secondAttribute="trailing" constant="10" id="Hmt-8A-d9K"/>
                     <constraint firstAttribute="trailing" secondItem="EAv-Cc-90S" secondAttribute="trailing" constant="10" id="Ht0-CO-ZzL"/>
-                    <constraint firstItem="Mmw-ts-p87" firstAttribute="leading" secondItem="9Ss-R7-nlT" secondAttribute="trailing" constant="20" id="TXM-f6-tk0"/>
+                    <constraint firstItem="Mmw-ts-p87" firstAttribute="leading" secondItem="9Ss-R7-nlT" secondAttribute="trailing" constant="10" id="TXM-f6-tk0"/>
                     <constraint firstAttribute="bottom" secondItem="Mmw-ts-p87" secondAttribute="bottom" constant="10" id="aPy-1m-c2Z"/>
                     <constraint firstItem="Mmw-ts-p87" firstAttribute="top" secondItem="EAv-Cc-90S" secondAttribute="bottom" constant="5" id="fyz-c1-eKG"/>
                     <constraint firstItem="9Ss-R7-nlT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gfU-ss-v78"/>

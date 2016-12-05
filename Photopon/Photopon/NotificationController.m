@@ -43,8 +43,12 @@
         [allNotifications removeAllObjects];
         [allNotifications addObject:@{ @"type": @"WELCOME_MESSAGE" }];
         [allNotifications addObject:@{ @"type": @"VERIFICATION_MESSAGE" }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.notificationsTable reloadData];
+            [refreshControl endRefreshing];
+        });
     }
-    
+
 }
 
 
