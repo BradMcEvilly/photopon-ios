@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -59,9 +59,11 @@
 	<key>NSContactsUsageDescription</key>
 	<string>Photopon needs access to contacts so you can share and receive photopons from your friends.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Get nearby coupons</string>
+	<string>Location services are needed so the app can present you nearby coupons</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Get neraby coupons</string>
+	<string>Location services are needed so the app can present you nearby coupons</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location services are needed so the app can present you nearby coupons</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to use one of your photo library photos as profile photo</string>
 	<key>UIAppFonts</key>

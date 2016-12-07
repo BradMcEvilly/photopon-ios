@@ -12,6 +12,7 @@
 
 @interface LocationServicesViewController() <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -35,9 +36,9 @@
 }
 
 - (void)askForLocationServices {
-    CLLocationManager *manager = [CLLocationManager new];
-    manager.delegate = self;
-    [manager requestWhenInUseAuthorization];
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
 }
 
 #pragma mark - CLLocationManagerDelegate
