@@ -82,6 +82,11 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    
+    // Opening uri scheme
+    // URL = photopon://asldjksld/asdsadj
+
+    
 //    if([Optimizely handleOpenURL:url]) {
 //        return YES;
 //    }
