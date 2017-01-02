@@ -45,42 +45,30 @@
     self.title = currentView.title;
 }
 
-
-
-
-
-
-
 -(void) gotoNotificationView {
-    dispatch_async(dispatch_get_main_queue(), ^{
-    [self setViewControllers:@[notificationsView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
-    });
+    [self setNewViewControllerForPager:notificationsView];
 }
 
 -(void) gotoFriendsView {
-    dispatch_async(dispatch_get_main_queue(), ^{
-    [self setViewControllers:@[friendsView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
-    });
+    [self setNewViewControllerForPager:friendsView];
 }
 
 -(void) gotoCouponsView {
+    [self setNewViewControllerForPager:couponsView];
+}
+
+- (void)setNewViewControllerForPager:(UIViewController *)controller {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self setViewControllers:@[couponsView]
+        [self setViewControllers:@[controller]
                        direction:UIPageViewControllerNavigationDirectionForward
-                        animated:NO completion:nil];
+                        animated:NO completion:^(BOOL finished) {
+
+                        }];
     });
 }
 
 -(void) gotoWalletView {
-    dispatch_async(dispatch_get_main_queue(), ^{
-    [self setViewControllers:@[walletView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
-    });
+    [self setNewViewControllerForPager:walletView];
 }
 
 -(void) gotoAddPhotoponView: (NSNotification*)notification {
@@ -95,9 +83,7 @@
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self setViewControllers:@[photoponView]
-                           direction:UIPageViewControllerNavigationDirectionForward
-                            animated:NO completion:nil];
+            [self setNewViewControllerForPager:photoponView];
         });
     });
 }
@@ -211,20 +197,17 @@
         myViewControllers = @[photoponView, notificationsView,friendsView, couponsView, walletView];
         
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-        
+
         [self setViewControllers:@[photoponView]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO completion:nil];
     } else {
-        
         myViewControllers = @[notificationsView, couponsView];
-        
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
-        
+
         [self setViewControllers:@[notificationsView]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO completion:nil];
-        
     }
     
     [self updatePageTitle];
@@ -239,6 +222,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     PFUser* cUser = [PFUser currentUser];
     BOOL hasUserNew = cUser != nil;
     
@@ -251,6 +235,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (![CLLocationManager locationServicesEnabled]) {
         
         [AlertBox showAlertFor:self

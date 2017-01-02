@@ -28,10 +28,12 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:styleBeforeMe];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     styleBeforeMe = [UIApplication sharedApplication].statusBarStyle;
 
 }
@@ -39,7 +41,7 @@
 
 
 -(void)viewDidAppear:(BOOL)animated {
- 
+    [super viewDidAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:styleForMe];
     
 }

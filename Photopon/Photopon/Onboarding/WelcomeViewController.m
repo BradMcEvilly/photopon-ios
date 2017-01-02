@@ -77,8 +77,9 @@
     [self presentViewController:loginVC animated:YES completion:nil];
      */
     MainController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
-    [self presentViewController:mainVC animated:YES completion:nil];
-    
+    self.view.window.rootViewController = mainVC;
+//    [self presentViewController:mainVC animated:YES completion:nil];
+
     
 }
 

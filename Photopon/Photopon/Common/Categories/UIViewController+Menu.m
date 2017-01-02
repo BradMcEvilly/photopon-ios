@@ -84,7 +84,7 @@
 
     }];
 
-    [leftMenu setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    [leftMenu setModalPresentationStyle:UIModalPresentationOverFullScreen];
 
     UIViewController *vc = self.navigationController ?: self;
     CGSize windowSize = [UIScreen mainScreen].bounds.size;

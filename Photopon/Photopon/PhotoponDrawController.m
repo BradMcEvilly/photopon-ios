@@ -412,6 +412,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponDrawScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];

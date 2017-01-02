@@ -181,6 +181,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponCameraScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
@@ -194,6 +195,7 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
