@@ -31,7 +31,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.sendCodeBtn.layer.cornerRadius = 8;
+    self.sendCodeBtn.layer.masksToBounds = YES;
+
     myPhoneNumberFormatter = [[PhoneNumberFormatter alloc] init];
     
     [self.phoneNumber addTarget:self

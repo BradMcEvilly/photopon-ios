@@ -19,13 +19,9 @@
 
 @implementation FriendPopupViewController
 {
-    NSDictionary* selectedFriend;
+    PFUser* selectedFriend;
     FriendsViewController* friendViewCtrl;
 }
-
-
-
-
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -45,11 +41,15 @@
     [self.friendContent addGestureRecognizer:friendPopupTap];
     
     
-    NSString* img = [selectedFriend objectForKey:@"image"];
-
-    [self.friendPicture sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"Icon-Administrator.png"]];
+    PFFile* img = [selectedFriend objectForKey:@"image"];
+    if (img) {
+        [self.friendPicture sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"Icon-Administrator.png"]];
+    }
     
     self.friendName.text = [selectedFriend objectForKey:@"name"];
+    if (!self.friendName.text) {
+        self.friendName.text = selectedFriend[@"username"];
+    }
     self.friendDescription.text = [selectedFriend objectForKey:@"email"];
     
     
@@ -67,10 +67,10 @@
     //[self.couponButton setDefaultIconIdentifier:@"fa-gift"];
     //[self.settingButton setDefaultIconIdentifier:@"fa-cogs"];
     
-    [self.chatButton setImage:MaskImageWithColor(self.chatButton.image, [UITheme blueTheme].headerColor)];
-    [self.couponButton setImage:MaskImageWithColor(self.couponButton.image, [UITheme orangeTheme].headerColor)];
-    [self.settingButton setImage:MaskImageWithColor(self.settingButton.image, [UITheme blackTheme].headerColor)];
-    
+//    [self.chatButton setImage:MaskImageWithColor(self.chatButton.image, [UITheme blueTheme].headerColor)];
+//    [self.couponButton setImage:MaskImageWithColor(self.couponButton.image, [UITheme orangeTheme].headerColor)];
+//    [self.settingButton setImage:MaskImageWithColor(self.settingButton.image, [UITheme blackTheme].headerColor)];
+//    
 
     
     
@@ -133,7 +133,7 @@
             
         case MessageComposeResultFailed:
         {
-            [AlertBox showAlertFor:self withTitle:@"Error" withMessage:@"Failed to send SMS message" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
+            [AlertBox showAlertFor:self withTitle:@"Ups something went wrong..." withMessage:@"Failed to send SMS message" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
             SendGAEvent(@"user_action", @"friend_popup", @"invite_message_failed");
 
             break;
@@ -157,7 +157,7 @@
     
     if(![MFMessageComposeViewController canSendText]) {
         
-        [AlertBox showAlertFor:self withTitle:@"Error" withMessage:@"Your device doesn't support SMS!" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
+        [AlertBox showAlertFor:self withTitle:@"Ups something went wrong..." withMessage:@"Your device doesn't support SMS!" leftButton:nil rightButton:@"OK" leftAction:nil rightAction:nil];
         SendGAEvent(@"user_action", @"friend_popup", @"send_text_failed");
         
         return;
@@ -202,15 +202,13 @@
     
     [self dismissViewControllerAnimated:NO completion:^{
         
-        
     }];
     
     
     ChatMessagesController* messageCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
-    [messageCtrl setUser: selectedFriend[@"object"]];
+    [messageCtrl setUser: selectedFriend];
 
-    [friendViewCtrl presentViewController:messageCtrl animated:YES completion:nil];
-
+    [friendViewCtrl.navigationController pushViewController:messageCtrl animated:YES];
     SendGAEvent(@"user_action", @"friend_popup", @"chat_started");
 
     NSLog(@"Start Chat");
@@ -220,15 +218,12 @@
     if ([self askToInviteIfNeeded]) {
         return;
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
-          @"friendId": selectedFriend[@"id"]
-                                                                                                        
-    }];
-    
-    SendGAEvent(@"user_action", @"friend_popup", @"send_photopon");
 
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
+          @"friendId": selectedFriend.objectId}];
+    
+    SendGAEvent(@"user_action", @"friend_popup", @"send_photopon");
 }
 
 

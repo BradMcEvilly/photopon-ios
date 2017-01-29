@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property (nonatomic, weak) LocationServicesViewController *locationServicesVC;
+@property (nonatomic, weak) PushNotificationsViewController *pushServicesVC;
+
+@property (nonatomic, assign) BOOL didViewAlreadyAppear;
 
 @end
 
@@ -26,21 +30,38 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+
+    if (!self.didViewAlreadyAppear) {
+        self.didViewAlreadyAppear = YES;
+        if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications] && [CLLocationManager locationServicesEnabled]) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.scrollView setContentOffset:CGPointMake([UIApplication sharedApplication].keyWindow.bounds.size.width * 3, 0) animated:YES];
+            });
+        }
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat xOffset = scrollView.contentOffset.x;
     self.backgroundImageLeftConstraint.constant = - xOffset / 7;
     [self.pageControl setCurrentPage:xOffset / [UIApplication sharedApplication].keyWindow.bounds.size.width];
+
+    if (self.pageControl.currentPage == 2) {
+        [self.pushServicesVC enablePushNotification];
+    } else if (self.pageControl.currentPage == 3) {
+        [self.locationServicesVC askForLocationServices];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LocationServices"]) {
         LocationServicesViewController *vc = segue.destinationViewController;
         vc.delegate = self;
+        self.locationServicesVC = vc;
     } else if ([segue.identifier isEqualToString:@"PushNotifications"]) {
         PushNotificationsViewController *vc = segue.destinationViewController;
         vc.delegate = self;
+        self.pushServicesVC = vc;
     } else if ([segue.identifier isEqualToString:@"EnjoyPhotopon"]) {
         EnjoyPhotoponViewController *vc = segue.destinationViewController;
         vc.delegate = self;
@@ -73,7 +94,7 @@
 - (void)userShouldSkip {
     UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
     mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController presentViewController:mainVC animated:YES completion:nil];
 }
 
@@ -87,11 +108,10 @@
     NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
     [currentInstallation addUniqueObject:channel forKey:@"channels"];
     [currentInstallation saveInBackground];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-        mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self.navigationController presentViewController:mainVC animated:YES completion:nil];
-    }];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController presentViewController:mainVC animated:YES completion:nil];
 }
 
 - (void)userSkippedVerification {

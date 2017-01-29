@@ -161,7 +161,7 @@ void UpdateNearbyCoupons() {
         }
         
         if (st == kCLAuthorizationStatusNotDetermined) {
-            [locationManager requestAlwaysAuthorization];
+            [locationManager requestWhenInUseAuthorization];
         } else {
             NSLog(@"Location: %f, %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
             [AvailabilityManager checkAvailabilityWithLocation:locationManager.location completion:^(BOOL available) {

@@ -15,6 +15,13 @@
 #import "HeaderViewController.h"
 #import "IndicatorViewController.h"
 #import "AlertBox.h"
+#import "BasicNotificationCell.h"
+#import "UIViewController+Menu.h"
+#import "SentCouponCell.h"
+#import <UIImageView+WebCache.h>
+#import "NSDate+Pretty.h"
+#import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @implementation NotificationController
 {
@@ -36,8 +43,12 @@
         [allNotifications removeAllObjects];
         [allNotifications addObject:@{ @"type": @"WELCOME_MESSAGE" }];
         [allNotifications addObject:@{ @"type": @"VERIFICATION_MESSAGE" }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.notificationsTable reloadData];
+            [refreshControl endRefreshing];
+        });
     }
-    
+
 }
 
 
@@ -45,9 +56,6 @@
 {
     [super viewDidLoad];
     
-    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Photopon"];
-    [header setTheme:[UITheme redTheme]];
-
     
     [self.notificationsTable setDelegate:self];
     [self.notificationsTable setDataSource:self];
@@ -55,7 +63,9 @@
     
     
     [self updateNotifications];
-    
+
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
     [RealTimeNotificationHandler addListener:@"NOTIFICATION.NOTIFICATIONVIEW" withBlock:^(NSString *notificationType) {
         [self updateNotifications];
     }];
@@ -71,21 +81,28 @@
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.notificationsTable;
     tableViewController.refreshControl = refreshControl;
-    
-    
-    
+    self.notificationsTable.rowHeight = UITableViewAutomaticDimension;
+    self.notificationsTable.estimatedRowHeight = 120;
+
+    [self.notificationsTable registerNib:[UINib nibWithNibName:@"BasicNotificationCell" bundle:nil] forCellReuseIdentifier:@"BasicNotificationCell"];
+    [self.notificationsTable registerNib:[UINib nibWithNibName:@"SentCouponCell" bundle:nil] forCellReuseIdentifier:@"SentCouponCell"];
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.notificationsTable addGestureRecognizer:tap];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor notificationThemeColor];
+}
 
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"NotificationsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
-
-
 
 -(void)dealloc {
     [RealTimeNotificationHandler removeListener:@"NOTIFICATION.NOTIFICATIONVIEW"];
@@ -115,30 +132,38 @@
     
     if ([type isEqualToString:@"FRIEND"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        
-        
-        cell.imageView.image = [UIImage imageNamed:@"Icon-Add-User.png"];
-        cell.imageView.transform = CGAffineTransformMakeScale(0.7, 0.7);
+        PFFile *image = assocUser[@"image"];
 
-//        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
-//        [cell.imageView addSubview:CreateFAImage(@"fa-user-plus", 24)];
-        
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ added you!", [assocUser username]];
-        cell.detailTextLabel.text = @"You can add him back";
-       
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+
+        if (image) {
+            [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        notifCell.user = assocUser[@"username"];
+        notifCell.subtitleLabel.text = @"You can add him back";
+        [notifCell setupCell];
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
         SendGAEvent(@"user_action", @"notifications", @"firend_notification_clicked");
     } else if ([type isEqualToString:@"MESSAGE"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        
-        NSString* message = [item objectForKey:@"content"];
-        
+        PFFile *image = assocUser[@"image"];
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+
+        if (image) {
+            [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        notifCell.user = assocUser[@"username"];
+        notifCell.templateType = BasicNotificationCellTemplateMessagedYou;
+        [notifCell setupCell];
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
+
         cell.imageView.image = [UIImage imageNamed:@"Icon-Speach-Bubble.png"];
         cell.imageView.transform = CGAffineTransformMakeScale(0.7, 0.7);
 
 //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
 //        [cell.imageView addSubview:CreateFAImage(@"fa-comments", 24)];
-        
-        cell.textLabel.text = message;
         
         NSDate *updated = [item updatedAt];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -147,11 +172,10 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
         SendGAEvent(@"user_action", @"notifications", @"message_notification_clicked");
     } else if ([type isEqualToString:@"PHOTOPON"]) {
+        SentCouponCell *couponCell = [tableView dequeueReusableCellWithIdentifier:@"SentCouponCell"];
+
         PFUser* assocUser = [item objectForKey:@"assocUser"];
-        
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
-        
-        cell.imageView.image = [UIImage imageNamed:@"Icon-Present.png"];
         
         //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
         //        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
@@ -159,7 +183,21 @@
         
         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
         PFObject* company = [coupon objectForKey:@"company"];
-        
+        PFFile *couponImage = [company objectForKey:@"image"];
+        PFFile *avatarImage = assocUser[@"image"];
+
+        [couponCell.couponImageView sd_setImageWithURL:[NSURL URLWithString:couponImage.url] placeholderImage:[UIImage imageNamed:@"Icon-Present.png"]];
+
+        if (avatarImage) {
+            [couponCell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarImage.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        NSDate *expiration = coupon[@"expiration"];
+        couponCell.couponExpiryLabel.text = [expiration prettyString];
+        couponCell.couponTitleLabel.text = coupon[@"title"];
+        couponCell.couponSubtitleLabel.text = coupon[@"description"];
+        couponCell.titleLabel.text = assocUser[@"username"];
+        return couponCell;
+
         cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         NSDate *updated = [item updatedAt];
@@ -173,7 +211,19 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
-        
+        PFFile *image = assocUser[@"image"];
+
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+
+        if (image) {
+            [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        notifCell.user = assocUser[@"username"];
+        notifCell.templateType = BasicNotificationCellTemplateSavedYourPhotopon;
+        [notifCell setupCell];
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
+
         cell.imageView.image = [UIImage imageNamed:@"Icon-Wallet-22.png"];
         
         //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
@@ -195,7 +245,8 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
-        
+        PFFile *image = assocUser[@"image"];
+
         cell.imageView.image = [UIImage imageNamed:@"Icon-Pricing.png"];
         
         //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
@@ -204,7 +255,18 @@
         
         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
         PFObject* company = [coupon objectForKey:@"company"];
-        
+
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+
+        if (image) {
+            [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        notifCell.user = assocUser[@"username"];
+        notifCell.templateType = BasicNotificationCellTemplateRedeemed;
+        [notifCell setupCell];
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
+
         cell.textLabel.text = [NSString stringWithFormat:@"%@ redeemed your Photopon", [assocUser objectForKey:@"username"]];
         //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
@@ -213,20 +275,23 @@
         
         SendGAEvent(@"user_action", @"notifications", @"redeemed_notification_clicked");
     } else if ([type isEqualToString:@"WELCOME_MESSAGE"]) {
-        
-        
-        cell.imageView.image = [UIImage imageNamed:@"Icon-Photopon.png"];
-        cell.textLabel.text = @"Welcome to Photopon!";
-        cell.detailTextLabel.text = @"Swipe right to see nerby coupons.";
-        SendGAEvent(@"user_action", @"notifications", @"welcome_message_clicked");
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+
+        notifCell.notificationImageView.image = [UIImage imageNamed:@"Icon-Photopon.png"];
+        notifCell.titleLabel.text = @"Welcome to Photopon!";
+        notifCell.subtitleLabel.text = @"Swipe right to see nerby coupons.";
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
         
         
     } else if ([type isEqualToString:@"VERIFICATION_MESSAGE"]) {
-        
-        cell.imageView.image = [UIImage imageNamed:@"Icon-Phone.png"];
-        cell.textLabel.text = @"Verify phone number";
-        cell.detailTextLabel.text = @"Please click here to verify your phone number";
-        SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+
+        notifCell.notificationImageView.image = [UIImage imageNamed:@"Icon-Phone.png"];
+        notifCell.titleLabel.text = @"Verify phone number";
+        notifCell.subtitleLabel.text = @"Please click here to verify your phone number";
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
     }
 
     
@@ -334,7 +399,7 @@
 - (void)showChatWithUser:(PFUser *)user {
     ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];
     [messageCtrl setUser:user];
-    [self presentViewController:messageCtrl animated:YES completion:nil];
+    [self.navigationController pushViewController:messageCtrl animated:YES];
 }
 
 @end

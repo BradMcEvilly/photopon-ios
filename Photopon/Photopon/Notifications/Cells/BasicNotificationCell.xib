@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="158" id="KGk-i7-Jjw" customClass="BasicNotificationCell">
+            <rect key="frame" x="0.0" y="0.0" width="336" height="158"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="336" height="157.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Ss-R7-nlT">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="9Ss-R7-nlT" secondAttribute="height" multiplier="1:1" id="XGm-kC-2DA"/>
+                            <constraint firstAttribute="width" constant="44" id="mbG-Eu-j8w"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAv-Cc-90S">
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmw-ts-p87">
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.74901960784313726" green="0.74509803921568629" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9Ss-R7-nlT" secondAttribute="bottom" constant="5" id="9ib-Op-7OB"/>
+                    <constraint firstItem="9Ss-R7-nlT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BYj-y7-AkH"/>
+                    <constraint firstItem="EAv-Cc-90S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="DMy-Ov-OO6"/>
+                    <constraint firstAttribute="trailing" secondItem="Mmw-ts-p87" secondAttribute="trailing" constant="10" id="Hmt-8A-d9K"/>
+                    <constraint firstAttribute="trailing" secondItem="EAv-Cc-90S" secondAttribute="trailing" constant="10" id="Ht0-CO-ZzL"/>
+                    <constraint firstItem="Mmw-ts-p87" firstAttribute="leading" secondItem="9Ss-R7-nlT" secondAttribute="trailing" constant="10" id="TXM-f6-tk0"/>
+                    <constraint firstAttribute="bottom" secondItem="Mmw-ts-p87" secondAttribute="bottom" constant="10" id="aPy-1m-c2Z"/>
+                    <constraint firstItem="Mmw-ts-p87" firstAttribute="top" secondItem="EAv-Cc-90S" secondAttribute="bottom" constant="5" id="fyz-c1-eKG"/>
+                    <constraint firstItem="9Ss-R7-nlT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gfU-ss-v78"/>
+                    <constraint firstItem="9Ss-R7-nlT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="k8p-h2-n0a"/>
+                    <constraint firstItem="EAv-Cc-90S" firstAttribute="leading" secondItem="9Ss-R7-nlT" secondAttribute="trailing" constant="10" id="veY-Pk-Cma"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="interLabelSpacingConstraint" destination="fyz-c1-eKG" id="rgA-cM-k0R"/>
+                <outlet property="notificationImageView" destination="9Ss-R7-nlT" id="wa3-Ob-LOG"/>
+                <outlet property="subtitleLabel" destination="Mmw-ts-p87" id="H3y-92-EBJ"/>
+                <outlet property="titleLabel" destination="EAv-Cc-90S" id="cQq-TT-peE"/>
+            </connections>
+            <point key="canvasLocation" x="95" y="-3"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="profileplaceholder.png" width="360" height="360"/>
+    </resources>
+</document>

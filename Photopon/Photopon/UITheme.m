@@ -7,6 +7,7 @@
 //
 
 #import "UITheme.h"
+#import "UIColor+Convinience.h"
 
 @implementation UITheme
 
@@ -30,7 +31,7 @@
 }
 
 +(UITheme*)pinkTheme {
-    return [UITheme themeWithHeaderColor:[UIColor colorWithRed:1 green:0.28 blue:0.55 alpha:1]
+    return [UITheme themeWithHeaderColor:[UIColor colorWithHexString:@"#D94CCB" alpha:1.0]
                          headerTextColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
 }
 
@@ -64,7 +65,5 @@
     return [UITheme themeWithHeaderColor:[UIColor colorWithRed:0.95 green:0.73 blue:0 alpha:1]
                          headerTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
 }
-
-
 
 @end

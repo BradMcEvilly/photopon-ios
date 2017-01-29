@@ -24,8 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.angledShade.transform = CGAffineTransformRotate(self.angledShade.transform, M_PI / 4);
-    
     styleForMe = UIStatusBarStyleDefault;
 }
 
@@ -165,7 +163,7 @@
     
     headerViewController.titleText.text = headerText;
 
-    [headerViewController.leftMenuButton setTitle:@"" forState:UIControlStateNormal];
+    [headerViewController.leftMenuButton setImage:[UIImage imageNamed:@"menu-icon.png"] forState:UIControlStateNormal];
 
     [headerViewController.leftMenuButton addTarget:headerViewController action:@selector(leftMenuClicked) forControlEvents:UIControlEventTouchDown];
     return headerViewController;
@@ -182,10 +180,8 @@
     [headerViewController didMoveToParentViewController:viewCtrl];
     
     headerViewController.titleText.text = headerText;
-    [headerViewController.leftMenuButton setTitle:@"" forState:UIControlStateNormal];
     
-    
-    [headerViewController.leftMenuButton setBackgroundImage:[UIImage imageNamed:@"Icon-Left-2.png"] forState:UIControlStateNormal];
+    [headerViewController.leftMenuButton setImage:[UIImage imageNamed:@"Icon-Left-2.png"] forState:UIControlStateNormal];
     
     [headerViewController.leftMenuButton addTarget:headerViewController action:@selector(backMenuClicked) forControlEvents:UIControlEventTouchDown];
     return headerViewController;
@@ -206,9 +202,7 @@
     [self.rightMenuButton setTitleColor:theme.headerTextColor forState:UIControlStateNormal];
     [self.titleText setTextColor:theme.headerTextColor];
     
-    UIImage* i = MaskImageWithColor(self.leftMenuButton.currentBackgroundImage, theme.headerTextColor);
-    [self.leftMenuButton setBackgroundImage:i forState:UIControlStateNormal];
-    
+    self.leftMenuButton.tintColor = theme.headerTextColor;
     if (self.rightMenuButton.currentBackgroundImage) {
         UIImage* ri = MaskImageWithColor(self.rightMenuButton.currentBackgroundImage, theme.headerTextColor);
         [self.rightMenuButton setBackgroundImage:ri forState:UIControlStateNormal];

@@ -15,6 +15,8 @@
 #import "Helper.h"
 #import "HeaderViewController.h"
 #import "AlertBox.h"
+#import "UIColor+Convinience.h"
+#import <UIImageView+WebCache.h>
 
 @implementation AddFriendController 
 {
@@ -216,10 +218,6 @@
     myFriends = [NSMutableArray array];
     myContacts = [NSMutableArray array];
     allContacts = [NSMutableArray array];
-    
-    [HeaderViewController addBackHeaderToView:self withTitle:@"Add Friend"];
-    
-
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -227,23 +225,63 @@
     return 3;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-   
-    if ((section == 0) && ([self.userSearchBar.text length] != 0) && (!currentSuggestionIsAlreadyFriend)) {
-        return @"Photopon users";
-    }
-    
-    if ((section == 1) && ([myFriends count] != 0)) {
-        return @"My Friends";
-    }
-    
-    if ((section == 2) && ([myContacts count] != 0)) {
-        return @"Users from Address Book";
-    }
-    return NULL;
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//   
+//    if ((section == 0) && ([self.userSearchBar.text length] != 0) && (!currentSuggestionIsAlreadyFriend)) {
+//        return @"Photopon users";
+//    }
+//    
+//    if ((section == 1) && ([myFriends count] != 0)) {
+//        return @"My Friends";
+//    }
+//    
+//    if ((section == 2) && ([myContacts count] != 0)) {
+//        return @"Users from Address Book";
+//    }
+//    return NULL;
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 48;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 48)];
+    UIView *topBorder = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 1 / [UIScreen mainScreen].scale)];
+    UIView *botBorder = [[UIView alloc]initWithFrame:CGRectMake(0, 47, [UIScreen mainScreen].bounds.size.width, 1 / [UIScreen mainScreen].scale)];
+
+    topBorder.backgroundColor = [UIColor colorWithHexString:@"#E5E5E5" alpha:1.0];
+    botBorder.backgroundColor = topBorder.backgroundColor;
+
+    [view addSubview:topBorder];
+    [view addSubview:botBorder];
+
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(16, 1, 280, 46)];
+    label.backgroundColor = [UIColor whiteColor];
+    label.textColor = [UIColor colorWithHexString:@"#595747" alpha:1.0];
+    label.font = [UIFont fontWithName:@"Montserrat" size:16];
+    [view addSubview:label];
+
+    if ((section == 0) && ([self.userSearchBar.text length] != 0) && (!currentSuggestionIsAlreadyFriend)) {
+        label.text = @"Photopon users";
+    }
+
+    if ((section == 1) && ([myFriends count] != 0)) {
+        label.text =  @"My Friends";
+    }
+
+    if ((section == 2) && ([myContacts count] != 0)) {
+        label.text = @"Users from Address Book";
+    }
+
+    return view;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -264,16 +302,21 @@
     return 0;
 }
 
-
-
+- (UIImage *)scaledImage:(UIImage *)fromImage {
+    CGSize itemSize = CGSizeMake(44, 44);
+    UIGraphicsBeginImageContext(itemSize);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [fromImage drawInRect:imageRect];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     NSInteger itemIndex = indexPath.item;
     NSInteger sectionIndex = indexPath.section;
-    
-    NSLog(@"%ld", (long)itemIndex);
     
     //NSDictionary *item = (NSDictionary *)[friendSuggestions objectAtIndex:dataIndex];
     
@@ -284,34 +327,50 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-        CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage * buttonImage = [UIImage imageNamed:@"plus-button-image"];
+        [button setImage:buttonImage forState:UIControlStateNormal];
+        CGRect frame = CGRectMake(0.0, 0.0, 30, 30);
         button.frame = frame;
         
         [button addTarget:self action:@selector(checkButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
         button.backgroundColor = [UIColor clearColor];
         cell.accessoryView = button;
-        
+
+        cell.textLabel.font = [UIFont fontWithName:@"MontSerrat" size:16];
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"#595747" alpha:1.0];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"MontSerrat" size:14];
+        cell.detailTextLabel.textColor = [UIColor colorWithHexString:@"#999893" alpha:1.0];
+
+        cell.imageView.layer.cornerRadius = 22;
+        cell.imageView.layer.masksToBounds = YES;
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell.imageView.backgroundColor = [UIColor colorWithHexString:@"#F2EA01" alpha:1.0];
     }
     
     UITableViewCell *cellAdded = [tableView dequeueReusableCellWithIdentifier:@"FriendSuggestionsCellIdentifierAdded"];
     if (cellAdded == nil) {
         cellAdded = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifierAdded"];
         cellAdded.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-        CGRect frame = CGRectMake(0.0, 0.0, 20, 20);
+
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect frame = CGRectMake(0.0, 0.0, 30, 30);
         button.frame = frame;
         
-        UIImage * buttonImage = [UIImage imageNamed:@"Icon-Yes.png"];
+        UIImage * buttonImage = [UIImage imageNamed:@"add-button-image"];
 
         [button setImage:buttonImage forState:UIControlStateNormal];
         
         [button addTarget:self action:@selector(checkButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
         button.backgroundColor = [UIColor clearColor];
         cellAdded.accessoryView = button;
-        
+
+        cellAdded.textLabel.font = [UIFont fontWithName:@"MontSerrat" size:16];
+        cellAdded.textLabel.textColor = [UIColor colorWithHexString:@"#595747" alpha:1.0];
+        cellAdded.detailTextLabel.font = [UIFont fontWithName:@"MontSerrat" size:14];
+        cellAdded.detailTextLabel.textColor = [UIColor colorWithHexString:@"#999893" alpha:1.0];
+        cellAdded.imageView.layer.cornerRadius = 22;
+        cellAdded.imageView.layer.masksToBounds = YES;
     }
 
     
@@ -319,12 +378,22 @@
     if (cell1 == nil) {
         cell1 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifier1"];
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell1.textLabel.font = [UIFont fontWithName:@"MontSerrat" size:16];
+        cell1.textLabel.textColor = [UIColor colorWithHexString:@"#595747" alpha:1.0];
+        cell1.imageView.layer.cornerRadius = 22;
+
+#ifdef DEBUG
+        cell1.imageView.backgroundColor = [UIColor redColor];
+#endif
+
+        cell1.imageView.layer.masksToBounds = YES;
     }
     
     
-    UIImage *theUserImage = [UIImage imageNamed:@"Icon-Add-UserStar.png"];
-    UIImage *theContactImage = [UIImage imageNamed:@"Icon-Business-Mens.png"];
+    UIImage *theUserImage = [self scaledImage:[UIImage imageNamed:@"user-profile-image"]];
     PFUser* currentUser = [PFUser currentUser];
+    PFFile *userImageFile = currentUser[@"image"];
+    NSURL *userImageUrl = [NSURL URLWithString:userImageFile.url];
 
     if (sectionIndex == 0) {
         if (currentSuggestion) {
@@ -345,13 +414,25 @@
             
             cell.textLabel.text = [currentSuggestion objectForKey:@"username"];
             cell.detailTextLabel.text = @"";
-            cell.imageView.image = theUserImage;
+
+
+            if (userImageFile) {
+                [cell.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+            } else {
+                cell.imageView.image = theUserImage;
+            }
             return cell;
         }
         
         cell1.textLabel.text = self.userSearchBar.text;
         cell1.detailTextLabel.text = @"";
-        cell1.imageView.image = [UIImage imageNamed:@"Icon-Find-User.png"];
+
+        if (userImageFile) {
+            [cell1.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+        } else {
+            cell1.imageView.image = theUserImage;
+        }
+
         return cell1;
     }
     
@@ -363,9 +444,22 @@
             cell.textLabel.text = [item objectForKey:@"name"];
             cell.detailTextLabel.text = @"removed from friend list";
             cell.imageView.image = theUserImage;
+
+            if (userImageFile) {
+                [cell.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+            } else {
+                cell.imageView.image = theUserImage;
+            }
+
             return cell;
         }
-        
+
+        if (userImageFile) {
+            [cellAdded.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+        } else {
+            cellAdded.imageView.image = theUserImage;
+        }
+
         cellAdded.textLabel.text = [item objectForKey:@"name"];
         cellAdded.detailTextLabel.text = [item objectForKey:@"email"];
         cellAdded.imageView.image = theUserImage;
@@ -379,13 +473,15 @@
         if ([[item objectForKey:@"justAddedFriend"] boolValue]) {
             cellAdded.textLabel.text = [item objectForKey:@"name"];
             cellAdded.detailTextLabel.text = @"is your friend!";
-            cellAdded.imageView.image = theContactImage;
+            cellAdded.imageView.image = [UIImage imageNamed:@"user-profile-image"];
             return cellAdded;
         }
         
         cell.textLabel.text = [item objectForKey:@"name"];
         cell.detailTextLabel.text = [item objectForKey:@"phone"];
-        cell.imageView.image = theContactImage;
+        cell.imageView.image = [UIImage imageNamed:@"user-profile-image"];
+        cell.imageView.layer.cornerRadius = 22;
+
         return cell;
     }
     
@@ -552,6 +648,5 @@
     }
 
 }
-
 
 @end

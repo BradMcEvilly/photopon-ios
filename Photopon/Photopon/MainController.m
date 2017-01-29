@@ -17,6 +17,8 @@
 #import "AlertBox.h"
 #import "ChatMessagesController.h"
 #import "PhotoponViewController.h"
+#import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @implementation MainController
 {
@@ -50,30 +52,39 @@
 
 
 -(void) gotoNotificationView {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[notificationsView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
 
 -(void) gotoFriendsView {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[friendsView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
 
 -(void) gotoCouponsView {
-    [self setViewControllers:@[couponsView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setViewControllers:@[couponsView]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:NO completion:nil];
+    });
 }
 
 -(void) gotoWalletView {
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self setViewControllers:@[walletView]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    });
 }
 
 -(void) gotoAddPhotoponView: (NSNotification*)notification {
+
     if (notification.userInfo) {
         if (notification.userInfo[@"index"]) {
             NSInteger index = [notification.userInfo[@"index"] integerValue];
@@ -82,14 +93,14 @@
         [photoponView setSelectedFriend: notification.userInfo[@"friendId"]];
         
     }
-    
-    [self setViewControllers:@[photoponView]
-                   direction:UIPageViewControllerNavigationDirectionForward
-                    animated:NO completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setViewControllers:@[photoponView]
+                           direction:UIPageViewControllerNavigationDirectionForward
+                            animated:NO completion:nil];
+        });
+    });
 }
-
-
-
 
 -(void) handleNotifications: (NSNotification*)notification {
     if (notification.userInfo) {
@@ -187,17 +198,17 @@
     PFUser* cUser = [PFUser currentUser];
     
     photoponView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBPhotoponCam"];
-    notificationsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNotifications"];
-    friendsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-    couponsView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
-    walletView = [self.storyboard instantiateViewControllerWithIdentifier:@"SBWallet"];
-    
+    notificationsView = [self setupNotificationsViewController];
+    friendsView = [self setupFriends];
+    walletView = [self setupWalletViewController];
+    couponsView = [self setupCouponsViewController];
+
     hasUser = cUser != nil;
     
     if (cUser) {
         [photoponView setPageViewController:self];
     
-        myViewControllers = @[photoponView, notificationsView,friendsView,couponsView,walletView];
+        myViewControllers = @[photoponView, notificationsView,friendsView, couponsView, walletView];
         
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
         
@@ -206,7 +217,7 @@
                         animated:NO completion:nil];
     } else {
         
-        myViewControllers = @[notificationsView,couponsView];
+        myViewControllers = @[notificationsView, couponsView];
         
         navController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainCtrl"];
         
@@ -300,7 +311,42 @@
     }
 }
 
+#pragma mark - Controllers setup
 
+- (UINavigationController *)setupCouponsViewController {
+    UIViewController *couponVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SBCoupons"];
+    UINavigationController *couponNavigationController = [[UINavigationController alloc]initWithRootViewController:couponVC];
+    couponNavigationController.navigationBar.barTintColor = [UIColor giftsThemeColor];
+    couponNavigationController.navigationBar.tintColor = [UIColor whiteColor];
+    couponNavigationController.navigationBar.translucent = NO;
+    return couponNavigationController;
+}
 
+- (UINavigationController *)setupNotificationsViewController {
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    nc.navigationBar.barTintColor = [UIColor notificationThemeColor];
+    nc.navigationBar.tintColor = [UIColor whiteColor];
+    nc.navigationBar.translucent = NO;
+    return nc;
+}
+
+- (UINavigationController *)setupWalletViewController {
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WalletController"];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    nc.navigationBar.barTintColor = [UIColor walletThemeColor];
+    nc.navigationBar.tintColor = [UIColor whiteColor];
+    nc.navigationBar.translucent = NO;
+    return nc;
+}
+
+- (UINavigationController *)setupFriends {
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FriendsViewController"];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    nc.navigationBar.barTintColor = [UIColor friendsThemeColor];
+    nc.navigationBar.tintColor = [UIColor whiteColor];
+    nc.navigationBar.translucent = NO;
+    return nc;
+}
 
 @end

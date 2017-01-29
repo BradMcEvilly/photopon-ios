@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="FriendTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="65"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="FLE-Vc-f89">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="HnL-x6-PxW"/>
+                            <constraint firstAttribute="width" constant="44" id="hcB-XQ-vIc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxI-Ax-aHK">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHn-mS-oyl">
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59607843137254901" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FLE-Vc-f89" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0I0-M7-bxt"/>
+                    <constraint firstAttribute="trailing" secondItem="XHn-mS-oyl" secondAttribute="trailing" constant="10" id="4zl-gs-yE7"/>
+                    <constraint firstItem="AxI-Ax-aHK" firstAttribute="leading" secondItem="FLE-Vc-f89" secondAttribute="trailing" constant="8" id="TcZ-Fb-jV7"/>
+                    <constraint firstItem="XHn-mS-oyl" firstAttribute="bottom" secondItem="FLE-Vc-f89" secondAttribute="bottom" id="qVd-cz-nqK"/>
+                    <constraint firstItem="AxI-Ax-aHK" firstAttribute="top" secondItem="FLE-Vc-f89" secondAttribute="top" id="xUZ-RS-kxK"/>
+                    <constraint firstAttribute="trailing" secondItem="AxI-Ax-aHK" secondAttribute="trailing" constant="10" id="yIC-d9-Kpe"/>
+                    <constraint firstItem="XHn-mS-oyl" firstAttribute="leading" secondItem="FLE-Vc-f89" secondAttribute="trailing" constant="8" id="zTE-ye-LEh"/>
+                    <constraint firstItem="FLE-Vc-f89" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zw7-JJ-DZ4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="friendImageView" destination="FLE-Vc-f89" id="yKz-d5-Hso"/>
+                <outlet property="friendShareInfoLabel" destination="XHn-mS-oyl" id="cOc-Ex-Dam"/>
+                <outlet property="friendUsernameLabel" destination="AxI-Ax-aHK" id="oIz-3G-V6O"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="63"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="profileplaceholder.png" width="360" height="360"/>
+    </resources>
+</document>

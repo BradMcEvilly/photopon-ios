@@ -17,5 +17,6 @@
 @interface PushNotificationsViewController : UIViewController
 
 @property (nonatomic, strong)  id<PushNotificationsDelegate> delegate;
+- (void)enablePushNotification;
 
 @end

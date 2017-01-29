@@ -14,12 +14,15 @@
 #import "IndicatorViewController.h"
 #import "AlertBox.h"
 #import "TooltipFactory.h"
+#import "UIView+CommonLayout.h"
+#import "FriendsPickerTableViewController.h"
 
 @import Foundation;
 
-@interface PhotoponDrawController()
+@interface PhotoponDrawController() <FriendsPickerDelegate>
 
 @property (nonatomic, strong) AMPopTip *tooltip;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *photoponContainerView;
 
 @end
 
@@ -145,47 +148,30 @@
 
 
 -(void)createMiniCouponView {
-    
-    
     miniCouponViewController = [[MiniCouponViewController alloc] initWithNibName:@"MiniCouponViewController" bundle:nil];
     [miniCouponViewController setCouponIndex:currentCouponIndex];
-//    [miniCouponViewController setImmobile];
-    const int MiniCouponSize = 92;
-    
-    
-    miniCouponViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, MiniCouponSize);
-    CGPoint ct = self.view.center;
-    ct.y = 150;
-//    ct.y = 80 + [UIScreen mainScreen].bounds.size.width * 0.9 - MiniCouponSize / 2;
-    miniCouponViewController.view.center = ct;
-    
-    [self.view addSubview:miniCouponViewController.view];
+
+    [self.photoponContainerView.contentView addSubviewAndFill:miniCouponViewController.view];
     [self addChildViewController:miniCouponViewController];
     [miniCouponViewController didMoveToParentViewController:self];
-    
 }
 
-
-
-
-
 -(void)sendPhotopons:(NSArray*)users {
-    
-    
     if (drawingFile == NULL) {
         drawingFile = [NSNull null];
     }
     
-    
+    NSMutableArray* userIds = [NSMutableArray new];
+    for (PFObject* user in users) {
+        [userIds addObject:[user objectId]];
+    }
+
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
     [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
-
-    [newPhotoponObject setObject:users forKey:@"users"];
-
-
+    [newPhotoponObject setObject:userIds forKey:@"users"];
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -193,36 +179,29 @@
             photoFile = NULL;
             drawingFile = NULL;
             
-            //[self.navigationController popToRootViewControllerAnimated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-            
-            [AlertBox showMessageFor:self
-                         withTitle:@"Photopon"
-                       withMessage:@"Photopon was saved successfully"
-                        leftButton:nil
-                       rightButton:@"OK"
-                        leftAction:nil
-                       rightAction:nil];
-            
-    
-            
             for (int i = 0; i < [users count]; ++i) {
-                PFUser* user = [PFQuery getUserObjectWithId:users[i] ];
+                PFUser* user = users[i];
                 CreatePhotoponNotification(user, newPhotoponObject);
             }
             [currentCoupon incrementKey:@"numShared" byAmount:[NSNumber numberWithUnsignedLong:[users count] ] ];
             [currentCoupon saveInBackground];
 
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                [AlertBox showMessageFor:self
+                               withTitle:@"Photopon"
+                             withMessage:@"Photopon was saved successfully"
+                              leftButton:nil
+                             rightButton:@"OK"
+                              leftAction:nil
+                             rightAction:nil];
+            }];
 
             
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
 }
-
 
 -(void)savePhotopon {
     if (selectedFriendId) {
@@ -246,12 +225,17 @@
             for (PFObject* obj in objects) {
                 [excludeFriends addObject:[obj valueForKey:@"friend"]];
             }
-            
-            FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
-            [friendsViewController excludeFriends:excludeFriends];
-            [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
-            [self presentViewController:friendsViewController animated:true completion:nil];
-            
+
+            FriendsPickerTableViewController *pickerVC = [[UIStoryboard storyboardWithName:@"Friends" bundle:nil] instantiateViewControllerWithIdentifier:@"FriendsPickerTableViewController"];
+            pickerVC.excludedFriends = [excludeFriends mutableCopy];
+            pickerVC.delegate = self;
+            [self presentViewController:[pickerVC setupDefaultNavController] animated:YES completion:nil];
+//
+//            FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
+//            [friendsViewController excludeFriends:excludeFriends];
+//            [friendsViewController friendSelectedCallBack:@selector(sendPhotopons:) target:self];
+//            [self presentViewController:friendsViewController animated:true completion:nil];
+
         }];
         
         
@@ -356,7 +340,11 @@
     
     [self.photoView setImage:photo];
     
-    
+
+    self.photoponContainerView.layer.cornerRadius = 10;
+    self.photoponContainerView.layer.masksToBounds = YES;
+    self.photoponContainerView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+
     photoFile = [NSNull null];
     drawingFile = [NSNull null];
     
@@ -431,6 +419,15 @@
     
 }
 
+#pragma mark - Friend picker delegate
+
+-(void)didFinishSelecting:(NSArray *)friends {
+    [self sendPhotopons:friends];
+}
+
+-(void)didCancel {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

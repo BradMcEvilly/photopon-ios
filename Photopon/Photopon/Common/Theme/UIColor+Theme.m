@@ -7,6 +7,7 @@
 //
 
 #import "UIColor+Theme.h"
+#import "UIColor+Convinience.h"
 
 @implementation UIColor (Theme)
 
@@ -23,5 +24,24 @@
     }
 }
 
++ (UIColor *)friendsThemeColor {
+    return [UIColor colorWithHexString:@"#5180E7" alpha:1.0];
+}
+
++ (UIColor *)sentPhotoponsThemeColor {
+    return [UIColor colorWithHexString:@"#49C352" alpha:1.0];
+}
+
++ (UIColor *)notificationThemeColor {
+    return [UIColor colorWithHexString:@"#E84323" alpha:1.0];
+}
+
++ (UIColor *)walletThemeColor {
+    return [UIColor colorWithHexString:@"#916AEF" alpha:1.0];
+}
+
++ (UIColor *)giftsThemeColor {
+    return [UIColor colorWithHexString:@"#D94CCB" alpha:1.0];
+}
 
 @end

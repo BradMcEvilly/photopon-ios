@@ -12,4 +12,10 @@
 
 + (UIColor*)labelExpiryColorForDate:(NSDate *)date;
 
++ (UIColor *)friendsThemeColor;
++ (UIColor *)sentPhotoponsThemeColor;
++ (UIColor *)notificationThemeColor;
++ (UIColor *)giftsThemeColor;
++ (UIColor *)walletThemeColor;
+
 @end

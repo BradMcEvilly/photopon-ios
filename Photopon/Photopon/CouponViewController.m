@@ -21,11 +21,16 @@
 #import "AlertBox.h"
 #import "AvailabilityManager.h"
 #import "PhotoponUnavailableViewController.h"
+#import "UIViewController+Menu.h"
+#import "CouponDetailsViewController.h"
+#import "MultipleLocationsContainerViewController.h"
+#import "CouponLocationsTableViewController.h"
 
 @interface CouponViewController()
 
 @property (weak, nonatomic) IBOutlet UIView *notAvailableView;
 
+@property (nonatomic, strong) NSArray *mockCoupons;
 
 @end
 
@@ -111,6 +116,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 -(void)forceUpdateCoupons {
@@ -121,10 +127,32 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Coupons"];
-    [header setTheme:[UITheme greenTheme]];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.couponTable.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
 
+#ifdef DEBUG
+    self.mockCoupons = @[ @{@"title": @"Test Coupon Buy 1 get 1 Free",
+                            @"desc": @"Get 1 free for 1 bought",
+                            @"expiration": [NSDate dateWithTimeIntervalSinceNow:360000],
+                            @"pic": @"http://graphichive.net/uploaded/fordesigner/1313309042.jpg",
+                            @"redeemed": @0},
+                          @{@"title": @"Test Coupon Buy 1 get 1 Free",
+                            @"desc": @"Get 1 free for 1 bought",
+                            @"expiration": [NSDate dateWithTimeIntervalSinceNow:60000],
+                            @"pic": @"https://aletp.com/images/blog/adidas-logo1.jpg",
+                            @"redeemed": @0},
+                          @{@"title": @"Test Coupon Buy 1 get 1 Free",
+                            @"desc": @"Get 1 free for 1 bought",
+                            @"expiration": [NSDate dateWithTimeIntervalSinceNow:2360000],
+                            @"pic": @"https://aletp.com/images/blog/adidas-logo1.jpg",
+                            @"redeemed": @0}
+                          ];
+#endif
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
+    self.title = @"Gifts";
+
+    
+    
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
     self.couponTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -151,7 +179,6 @@
 
     [self photoponAvailabilityConfiguration];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoponAvailabilityConfiguration) name:NOTIFICATION_PHOTOPON_AVAILABLE object:nil];
-
 }
 
 -(void) dealloc {
@@ -166,23 +193,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [allCoupons count];
+//#ifdef DEBUG
+//    return self.mockCoupons.count;
+//#endif
+    return [allPFCoupons count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CouponTableViewCell *cell = (CouponTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"CouponTableCell"];
+    CouponTableViewCell *cell = (CouponTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"CouponTableViewCell"];
     
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CouponTableCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CouponTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-    NSDictionary *item = (NSDictionary *)[allCoupons objectAtIndex:indexPath.row];
-    PFObject *itemObj = [allPFCoupons objectAtIndex:indexPath.row];
-    
+
+
+//#ifdef DEBUG
+//    NSDictionary *item = self.mockCoupons[indexPath.row];
+//#elif
+    PFObject *item = [allPFCoupons objectAtIndex:indexPath.row];
+    PFObject *company = [item objectForKey:@"company"];
+    PFFile *image = company[@"image"];
+//#endif
+    cell.coupon = item;
     cell.title.text = [item objectForKey:@"title"];
-    cell.longDescription.text = [item objectForKey:@"desc"];
+    cell.longDescription.text = [item objectForKey:@"description"];
     
     
     NSDate* exp = [item objectForKey:@"expiration"];
@@ -202,17 +239,7 @@
         [cell.expiration setTextColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]];
     }
     
-
-    
-    
-    
-    [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:[item objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
-    
-    cell.getButton.tag = indexPath.row;
-    [cell.getButton addTarget:self action:@selector(getCoupon:) forControlEvents:UIControlEventTouchDown];
-    
-    cell.giveButton.tag = indexPath.row;
-    [cell.giveButton addTarget:self action:@selector(giveCoupon:) forControlEvents:UIControlEventTouchDown];
+    [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
     
     cell.getButton.hidden = [item[@"redeemed"] boolValue];
         
@@ -221,21 +248,33 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 189;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{   [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger thisCellIndex = (int)indexPath.row;
-
-    CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
-    [detailView setCouponIndex:thisCellIndex];
-
-    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
-    //navVC.navigationBarHidden = YES;
-    [self presentViewController:detailView animated:YES completion:nil];
-    
+//    NSInteger thisCellIndex = (int)indexPath.row;
+//
+//    CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
+//    [detailView setCouponIndex:thisCellIndex];
+//
+//    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
+//    //navVC.navigationBarHidden = YES;
+//    [self presentViewController:detailView animated:YES completion:nil];
+    NSArray *couponLocations = [allPFCoupons[selectedCouponIndex] objectForKey:@"locations"];
+    if (couponLocations.count == 1) {
+        CouponDetailsViewController *detailsVC = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponDetailsViewController"];
+        detailsVC.coupon = allPFCoupons[selectedCouponIndex];
+        detailsVC.selectedCouponIndex = selectedCouponIndex;
+        detailsVC.location = couponLocations.firstObject;
+        [self.navigationController pushViewController:detailsVC animated:YES];
+    } else {
+        CouponLocationsTableViewController *vc = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponLocationsTableViewController"];
+        vc.coupon = allPFCoupons[selectedCouponIndex];
+        vc.selectedCouponIndex = selectedCouponIndex;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (IBAction)chatWithFriendsButtonHandler:(id)sender {

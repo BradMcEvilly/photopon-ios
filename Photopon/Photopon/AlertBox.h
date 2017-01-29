@@ -15,6 +15,7 @@
 
 @property SEL rightAction;
 @property SEL leftAction;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *alertTitle;

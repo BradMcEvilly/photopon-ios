@@ -7,6 +7,7 @@
 //
 
 #import "PushNotificationsViewController.h"
+#import "AlertControllerFactory.h"
 
 @interface  PushNotificationsViewController()
 
@@ -25,7 +26,14 @@
 }
 
 - (IBAction)pushNotificationsButtonHandler:(id)sender {
-    [self enablePushNotification];
+    if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
+        UIAlertController *alert = [AlertControllerFactory basicAlertWithMessage:@"Push notifications services already enabled, thank you!" completion:^{
+            [self.delegate userDidAllowPushNotifications];
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self enablePushNotification];
+    }
 }
 
 - (void)enablePushNotification {

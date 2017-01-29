@@ -8,7 +8,12 @@
 
 #import "LeftMenuViewController.h"
 
+#define MENU_VIEW_HEIGHT 460
+
 @interface LeftMenuViewController ()
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (nonatomic, assign) CGFloat windowHeight;
 
 @end
 
@@ -27,10 +32,9 @@
     
     itemTags = [[NSMutableArray alloc] init];
     
-    
-    originalFrame = CGRectMake(0, 0, 250, [UIScreen mainScreen].bounds.size.height);
-    hiddenFrame = CGRectMake(-250, 0, 250, [UIScreen mainScreen].bounds.size.height);
-    self.menuView.frame = hiddenFrame;
+    self.windowHeight = [UIScreen mainScreen].bounds.size.height;
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    self.topConstraint.constant = - MENU_VIEW_HEIGHT;
     
     
     
@@ -73,10 +77,11 @@
 
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"LeftMenu"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
+
     SendGAEvent(@"user_action", @"left_menu", @"opened");
 }
 
@@ -95,9 +100,9 @@
 
 
 - (void)closeLeftMenu {
-    
+    self.topConstraint.constant = - MENU_VIEW_HEIGHT;
     [UIView animateWithDuration:0.25 animations:^{
-        self.menuView.frame = hiddenFrame;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (finished) {
             [self dismissViewControllerAnimated:NO completion:nil];
@@ -109,9 +114,10 @@
 
 - (void)menuItemTapped:(UITapGestureRecognizer *)recognizer {
     NSInteger tag = recognizer.view.tag;
-    
+
+    self.topConstraint.constant = - MENU_VIEW_HEIGHT;
     [UIView animateWithDuration:0.25 animations:^{
-        self.menuView.frame = hiddenFrame;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (finished) {
             [self dismissViewControllerAnimated:NO completion:nil];
@@ -141,9 +147,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
+    self.topConstraint.constant = 0;
     [UIView animateWithDuration:0.25 animations:^{
-         self.menuView.frame = originalFrame;
+        [self.view layoutIfNeeded];
      }];
 }
 

@@ -16,11 +16,17 @@
 #import "HeaderViewController.h"
 #import "AlertBox.h"
 #import "TooltipFactory.h"
+#import "FriendTableViewCell.h"
+#import "UIViewController+Menu.h"
+#import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
 
 @interface FriendsViewController()
 
 @property (nonatomic, strong) AMPopTip *tooltip;
 @property (nonatomic, weak) HeaderViewController *headerVC;
+@property (nonatomic, strong) NSMutableArray *myFriendsPF;
+
 @end
 
 @implementation FriendsViewController
@@ -32,42 +38,44 @@
     id onFriendSelectedTarget;
 }
 
-
-
-
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.friendsTable.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
-    
-    
-    if (isSelectMode) {
-//        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
-//        self.navigationItem.rightBarButtonItem = anotherButton;
-        HeaderViewController* header = [HeaderViewController addBackHeaderToView:self withTitle:@"Friends"];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add-friend-image"] style:UIBarButtonItemStylePlain target:self action:@selector(addFriendClicked)];
 
-        [header addRightButtonWithImage:@"Icon-Checked-User.png" withTarget:self action:@selector(friendsSelected)];
-        [header setTheme:[UITheme yellowTheme]];
-        self.headerVC = header;
-    } else {
-        HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
-
-        [header addRightButtonWithImage:@"Icon-Add-User.png" withTarget:self action:@selector(addFriendClicked)];
-        [header setTheme:[UITheme yellowTheme]];
-        self.headerVC = header;
-    }
+    [self.friendsTable registerNib:[UINib nibWithNibName:@"FriendTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendTableViewCell"];
     
+//    if (isSelectMode) {
+////        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
+////        self.navigationItem.rightBarButtonItem = anotherButton;
+//        HeaderViewController* header = [HeaderViewController addBackHeaderToView:self withTitle:@"Friends"];
+//
+//        [header addRightButtonWithImage:@"Icon-Checked-User.png" withTarget:self action:@selector(friendsSelected)];
+//        [header setTheme:[UITheme yellowTheme]];
+//        self.headerVC = header;
+//    } else {
+//        HeaderViewController* header = [HeaderViewController addHeaderToView:self withTitle:@"Friends"];
+//
+//        [header addRightButtonWithImage:@"Icon-Add-User.png" withTarget:self action:@selector(addFriendClicked)];
+//        [header setTheme:[UITheme yellowTheme]];
+//        self.headerVC = header;
+//    }
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
     [self.friendsTable addGestureRecognizer:tap];
+
 
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    self.navigationController.navigationBar.barTintColor = [UIColor friendsThemeColor];
     if (!isSelectMode) {
         return;
     }
@@ -84,12 +92,10 @@
 
 -(void)addFriendClicked {
     SendGAEvent(@"user_action", @"friends_view", @"add_firend_clickede");
-
-    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     UIViewController *addFriend = [storyBoard instantiateViewControllerWithIdentifier:@"SBAddFriend"];
-    [self presentViewController:addFriend animated:true completion:nil];
+    [self.navigationController pushViewController:addFriend animated:true];
 
 }
 
@@ -115,50 +121,15 @@
             PFUser* object = (PFUser*)obj[@"user2"];
             
             if (object) {
-                
-                
                 if ([self isExcluded: object]) {
                     continue;
                 }
-                
-                NSString* username = [object username];
-                NSString* email = [object email];
-                if (!email) {
-                    email = @"";
-                }
-                
-                PFFile* img = [object valueForKey:@"image"];
-                
-                NSMutableDictionary* item = [@{
-                                               @"friendshipId": [obj objectId],
-                                               @"name": username,
-                                               @"email": email,
-                                               @"id": [object objectId],
-                                               @"isSelected": @false,
-                                               @"object": object
-                                               } mutableCopy];
-                
-                if (img) {
-                    item[@"image"] = img.url;
-                }
-                
-                [myFriends addObject:item];
-            } else {
-                [myFriends addObject:@{
-                                       @"friendshipId": [obj objectId],
-                                       @"name": [obj valueForKey:@"name"],
-                                       @"email": [obj valueForKey:@"phone"],
-                                       @"id": [obj valueForKey:@"phoneId"],
-                                       @"isSelected": @false,
-                                       @"isPlaceholder": @true
-                                       }];
+
+                [myFriends addObject:object];
             }
         }
         [self.friendsTable reloadData];
     });
-    
-    
-
 }
 
 
@@ -172,38 +143,6 @@
 
 }
 
--(void)friendsSelected {
-    NSMutableArray *selectedUsers = [NSMutableArray array];
-
-    [self.tooltip hide];
-    [TooltipFactory setSharePhotoponTooltipChecked];
-
-    for (int i = 0; i < [myFriends count]; i++) {
-        NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:i];
-        
-        NSString* userId = [item objectForKey:@"id"];
-        bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
-        
-        if (isSelected) {
-            [selectedUsers addObject:userId];
-        }
-        
-    }
-    
-    if ([selectedUsers count] != 0) {
-    
-        [onFriendSelectedTarget performSelector:onFriendSelected withObject:selectedUsers];
-        [excludedFriends removeAllObjects];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-
-
--(void)friendSelectedCallBack:(SEL)action target:(id)target {
-    onFriendSelected = action;
-    onFriendSelectedTarget = target;
-    isSelectMode = true;
-}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -218,47 +157,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCellIdentifier"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendsCellIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    PFObject *item = [myFriends objectAtIndex:indexPath.row];
+    PFObject *user = [PFUser currentUser];
+    NSString *friendID = item[@"objectId"];
+    NSString *userID = user[@"objectId"];
 
+    FriendTableViewCell *friendCell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCell"];
+    [friendCell setName:item[@"email"] username:item[@"username"]];
+
+    PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+
+    [query whereKey:@"user" equalTo:user];
+    [query whereKey:@"friend" equalTo:item];
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+        int shared = number;
+        PFQuery *query = [PFQuery queryWithClassName:@"Redeemed"];
+        [query whereKey:@"from" equalTo:user];
+        [query whereKey:@"to" equalTo:item];
+        [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+            [friendCell setNumberOfGiftsUsed:number giftsShared:shared];
+        }];
+    }];
+
+
+    PFFile* img = [item objectForKey:@"image"];
+    if (img) {
+        [friendCell.friendImageView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
     }
-
-    
-    NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
-    cell.textLabel.text = [item objectForKey:@"name"];
-    cell.detailTextLabel.text = [item objectForKey:@"email"];
-    
-    bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
-    
-    if (isSelected && isSelectMode) {
-        [cell.imageView setImage:[UIImage imageNamed:@"Icon-Yes.png"]];
-    } else {
-        NSString* img = [item objectForKey:@"image"];
-        if (img) {
-            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:@"Icon-Administrator.png"]  options:SDWebImageAvoidAutoSetImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-
-                    [cell.imageView setImage:image];
-                    
-                    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-                    
-                });
-                
-            }];
-        } else {
-            [cell.imageView setImage:[UIImage imageNamed:@"Icon-Administrator.png"]];
-
-        }
-
-        
-
-    }
-    
-    return cell;
+    return friendCell;
 }
 
 

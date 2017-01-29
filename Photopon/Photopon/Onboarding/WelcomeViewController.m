@@ -19,27 +19,31 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *logoMidConstraint;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *welcomeViewCollection;
 
+@property (nonatomic, assign) BOOL shouldCheckUser;
+
 @end
 
 @implementation WelcomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.shouldCheckUser = YES;
     [AvailabilityManager checkAvailabilityWithLocation:GetCurrentLocation() completion:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+
+    if (self.shouldCheckUser) {
+        self.shouldCheckUser = NO;
         BOOL firstTimeUser = [UserManager isFirstTimeUser];
         if (![[UserManager sharedManager]userLoggedIn]) {
             [self showOnboarding];
         } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
             [self proceedToLogin];
         }
-    });
+    }
 }
 
 #pragma mark - Animations

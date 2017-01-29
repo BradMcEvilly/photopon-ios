@@ -69,12 +69,24 @@
     
     //[Optimizely enableEditor];
 //    [Optimizely startOptimizelyWithAPIToken:@"AANPFuUBC0eid8cHb2NlL4AyneQspBbn~5685431109" launchOptions:launchOptions];
+    [self setupNavBarAppearance];
 
+#ifdef DEBUG
+//    [PFUser logInWithUsername:@"hayk1" password:@"norisk"];
 
     return YES;
+#else
+     return YES;
+#endif
+
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    
+    // Opening uri scheme
+    // URL = photopon://asldjksld/asdsadj
+
+    
 //    if([Optimizely handleOpenURL:url]) {
 //        return YES;
 //    }
@@ -245,6 +257,12 @@
             abort();
         }
     }
+}
+
+#pragma mark - Appearance
+
+- (void)setupNavBarAppearance {
+    [[UINavigationBar appearance]setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Montserrat-SemiBold" size:20], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 @end

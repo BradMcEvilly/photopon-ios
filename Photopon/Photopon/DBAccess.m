@@ -20,8 +20,6 @@ void GetMyFriends(ResultBlock block) {
     [query includeKey:@"user2"];
     [query whereKey:@"user1" equalTo:userId];
     
-    
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         block(results, error);
     }];

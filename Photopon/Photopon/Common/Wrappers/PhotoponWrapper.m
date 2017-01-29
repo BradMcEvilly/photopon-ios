@@ -9,10 +9,18 @@
 #import "PhotoponWrapper.h"
 #import "AlertBox.h"
 
-
 @implementation PFUserPlaceholder
 
 +(PFUserPlaceholder*)create: (NSString*)phoneNumber {
+
+    if ([phoneNumber isKindOfClass:[PFUser class]]) {
+        PFUser *user = phoneNumber;
+        phoneNumber = user[@"phone"];
+    } else if ([phoneNumber isKindOfClass:NSClassFromString(@"PFACLState")]) {
+        int a = 2;
+        NSArray *array = [NSArray new];
+    }
+
     PFUserPlaceholder* obj = [PFUserPlaceholder new];
     obj.phoneNumber = phoneNumber;
     return obj;
@@ -71,7 +79,13 @@ NSMutableDictionary* cachedUsers;
     if (!cachedUsers) {
         cachedUsers = [NSMutableDictionary new];
     }
-    [cachedUsers setObject:user forKey:objid];
+
+    if ([objid isKindOfClass:[PFUser class]]) {
+        PFUser *userOBJ = objid;
+        [cachedUsers setObject:user forKey:userOBJ.objectId];
+    } else {
+        [cachedUsers setObject:user forKey:objid];
+    }
 }
 
 

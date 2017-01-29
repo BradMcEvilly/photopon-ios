@@ -13,9 +13,13 @@
 #import "VerificationPhoneNumberViewController.h"
 #import "VerificationCodeViewController.h"
 #import "VerificationWelcomeViewController.h"
-
+#import "KeyboardAvoidanceManager.h"
+#import "UIView+CommonLayout.h"
 @interface NumberVerificationViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, strong) KeyboardAvoidanceManager *keyboardManager;
 @end
 
 @implementation NumberVerificationViewController
@@ -49,14 +53,7 @@
 
 -(UIViewController*)createSubView:(NSString*)storyBoardName {
     UIViewController* ctrl = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardName];
-    ctrl.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 60, [UIScreen mainScreen].bounds.size.height - 100);
-    
-    CGPoint ct = self.view.center;
-    ct.y = ct.y + 100;
-    ctrl.view.center = ct;
-    
-    
-    [self.view addSubview:ctrl.view];
+    [self.containerView addSubviewAndFill:ctrl.view];
     [self addChildViewController:ctrl];
     [ctrl didMoveToParentViewController:self];
     return ctrl;
@@ -69,11 +66,13 @@
 
 -(void)codeSent {
     [_codeCtrl.view setHidden: NO];
+    [_codeCtrl.verificationCode becomeFirstResponder];
 }
 
 
 -(void)newUserName {
     [_codeCtrl.view setHidden: YES];
+    [_screenCtrl.screenName becomeFirstResponder];
     [_screenCtrl.view setHidden:NO];    
 }
 
@@ -93,7 +92,9 @@
     _screenCtrl = (VerificationScreenNameViewController*)[self createSubView:@"SBVerificationName"];
     _screenCtrl.delegate = self.delegate;
     _welcomeCtrl = (VerificationWelcomeViewController*)[self createSubView:@"SBVerificationWelcome"];
-    
+
+    self.keyboardManager = [[KeyboardAvoidanceManager alloc]initWithScrollView:self.scrollView view:self.view];
+
     [_phoneNumberCtrl setParent:self];
     [_codeCtrl setParent:self];
     [_screenCtrl setParent: self];
@@ -102,12 +103,6 @@
     [_codeCtrl.view setHidden: YES];
     [_screenCtrl.view setHidden:YES];
     [_welcomeCtrl.view setHidden:YES];
-
-//#ifdef DEBUG
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.delegate userVerifiedPhoneNumber];
-//    });
-//#endif
 }
 
 -(void)setDelegate:(id<NumberVerificationDelegate>)delegate {

@@ -25,12 +25,25 @@
 #import "ChatPhotoponPresentableModel.h"
 #import "PhotoponViewController.h"
 
+#import "ChatMessageUserCell.h"
+#import "ChatMessageFriendCell.h"
+#import "CouponTableViewCell.h"
+
+#import <UIImageView+WebCache.h>
+#import "UIColor+Convinience.h"
+#import "UIColor+Theme.h"
+#import <MBProgressHUD.h>
+
 @interface ChatMessagesController ()
+
 @property (nonatomic, copy) NSString *channelName;
 @property (nonatomic, strong) PFUser *currentUser;
 @property (nonatomic, strong) NSMutableArray *presentableModels;
 @property (nonatomic, strong) NSMutableDictionary *resolvedUsers;
 @property (nonatomic, strong) NSString* preEnteredMessage;
+
+@property (nonatomic, strong) NSArray *allCoupons;
+
 @end
 
 @implementation ChatMessagesController
@@ -54,8 +67,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [HeaderViewController addBackHeaderToView:self withTitle:[self.currentUser username]];
+
+    self.allCoupons = GetNearbyCouponsPF();
+
+    self.title = self.currentUser.username;
     
     [self configureTableView];
     
@@ -69,15 +84,28 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+
+    self.chatTableView.rowHeight = UITableViewAutomaticDimension;
+    self.chatTableView.estimatedRowHeight = 100;
     
     self.textField.text = _preEnteredMessage;
     _preEnteredMessage = @"";
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor friendsThemeColor];
 }
 
 - (void)configureTableView {
     self.chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.chatTableView.rowHeight = UITableViewAutomaticDimension;
     self.chatTableView.estimatedRowHeight = 20.0;
+
+    [self registerCellWithClass:[ChatMessageFriendCell class]];
+    [self registerCellWithClass:[ChatMessageUserCell class]];
+    [self registerCellWithClass:[CouponTableViewCell class]];
+
     [self registerCellWithClass:[ChatMessageTableViewCell class]];
     [self registerCellWithClass:[ChatUserTableViewCell class]];
     [self registerCellWithClass:[ChatPhotoponTableViewCell class]];
@@ -161,10 +189,10 @@
         ChatUserPresentableModel *userPresentableModel = [ChatUserPresentableModel new];
         userPresentableModel.currentUser = isCurrentUser;
         userPresentableModel.userName = [self getUserById:userId].username;
-        [self.presentableModels addObject:userPresentableModel];
+//        [self.presentableModels addObject:userPresentableModel];
         lastPresentableModel = userPresentableModel;
     }
-    
+
     if ([type isEqualToString:@"MESSAGE"]) {
         if ([lastPresentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
             ChatMessagePresentableModel *messagePresentableModel = (ChatMessagePresentableModel *)lastPresentableModel;
@@ -213,8 +241,9 @@
     self.channelName = PubNubChannelName([self.currentUser objectId], [[PFUser currentUser] objectId]);
     
     __weak typeof(self) weakSelf = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [pubnub historyForChannel:self.channelName start:nil end:nil limit:100 includeTimeToken:YES withCompletion:^(PNHistoryResult *result, PNErrorStatus *status) {
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (!status.isError) {
             [weakSelf didLoadMessages:result.data.messages];
         } else {
@@ -286,9 +315,15 @@
     id presentableModel = self.presentableModels[indexPath.row];
     
     if ([presentableModel isKindOfClass:[ChatMessagePresentableModel class]]) {
-        ChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatMessageTableViewCell class]) forIndexPath:indexPath];
-        [cell updateWithPresentableModel:presentableModel];
-        return cell;
+        if (((ChatMessagePresentableModel*)presentableModel).isCurrentUser) {
+            ChatMessageUserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageUserCell"];
+            [cell updateWithPresentableModel:presentableModel];
+            return cell;
+        } else {
+            ChatMessageFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageFriendCell"];
+            [cell updateWithPresentableModel:presentableModel];
+            return cell;
+        }
     }
     else if ([presentableModel isKindOfClass:[ChatUserPresentableModel class]]) {
         ChatUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatUserTableViewCell class]) forIndexPath:indexPath];
@@ -296,17 +331,46 @@
         return cell;
     }
     else if ([presentableModel isKindOfClass:[ChatPhotoponPresentableModel class]]) {
-        ChatPhotoponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ChatPhotoponTableViewCell class]) forIndexPath:indexPath];
-        [cell updateWithPresentableModel:presentableModel];
-        __weak typeof(self) weakSelf = self;
-        cell.onSelected = ^(ChatPhotoponPresentableModel *blockPresentableModel) {
-            [weakSelf didSelectPhotopon:blockPresentableModel];
-        };
+        presentableModel = (ChatPhotoponPresentableModel *)presentableModel;
+
+        CouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CouponTableViewCell class])];
+        //    NSDictionary *item = self.mockCoupons[indexPath.row];
+        //#elif
+        PFQuery *query = [PFQuery queryWithClassName:@"Photopon"];
+        PFObject *photopon = [query getObjectWithId:((ChatPhotoponPresentableModel *)presentableModel).photoponId];
+
+        PFObject *coupon = [photopon objectForKey:@"coupon"];
+        PFObject *company = [coupon objectForKey:@"company"];
+        PFFile *image = company[@"image"];
+        cell.coupon = coupon;
+        //#endif
+
+        cell.title.text = [coupon objectForKey:@"title"];
+        cell.longDescription.text = [coupon objectForKey:@"description"];
+
+        NSDate* exp = [coupon objectForKey:@"expiration"];
+        NSDate* now = [NSDate date];
+
+        int numDays = DaysBetween(now, exp);
+
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        [dateFormater setDateFormat:@"MM/dd/yyyy"];
+        cell.expiration.text = [NSString stringWithFormat:@"Expires %@", [dateFormater stringFromDate:exp]];
+        if (numDays > 2) {
+            [cell.expiration setTextColor:[UIColor colorWithRed:0 green:0.4 blue:0 alpha:1]];
+        } else if (numDays > 1) {
+            [cell.expiration setTextColor:[UIColor colorWithRed:0.6 green:0.3 blue:0 alpha:1]];
+        } else {
+            [cell.expiration setTextColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]];
+        }
+
+        [cell.thumbImage sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"couponplaceholder.png"]];
         
         return cell;
     }
     
     return nil;
 }
+
 
 @end
