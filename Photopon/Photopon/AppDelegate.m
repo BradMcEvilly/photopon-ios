@@ -30,9 +30,11 @@
     [Parse enableLocalDatastore];
     
     // Initialize Parse.
-    [Parse setApplicationId:@"qyY21OT36AiP5hIEdrzrBvbOS1HgXzIK52oyzrAN"
-                  clientKey:@"CwOKephJcNOFokOWx6X2wgDO2eOKDGL2lXfYgPCC"];
-
+    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        configuration.applicationId = @"qyY21OT36AiP5hIEdrzrBvbOS1HgXzIK52oyzrAN";
+        configuration.clientKey = @"";
+        configuration.server = @"https://photopon.herokuapp.com/parse";
+    }]];
 
     //Crash reporting
     [Fabric with:@[[Crashlytics class]]];

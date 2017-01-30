@@ -3,3 +3,7 @@ Photopon/Photopon.xcworkspace/xcuserdata
 Photopon/Pods/Pods.xcodeproj/xcuserdata
 
 *.xcbkptlist
+
+.DS_Store
+
+Photopon/.DS_Store
