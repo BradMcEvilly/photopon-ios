@@ -74,6 +74,11 @@
     [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
     
 }
+- (IBAction)addPhoneNumber:(UIButton *)sender {
+    SendGAEvent(@"user_action", @"settings", @"verify_number");
+    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+    [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
+}
 
 -(void)removeNumber {
     SendGAEvent(@"user_action", @"settings", @"remove_number");
