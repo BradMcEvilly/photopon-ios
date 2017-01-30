@@ -15,6 +15,11 @@
 #import "HeaderViewController.h"
 #import "AlertBox.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "NumberVerificationViewController.h"
+
+@interface SettingsController() <NumberVerificationDelegate>
+
+@end
 
 @implementation SettingsController
 
@@ -76,6 +81,11 @@
 }
 - (IBAction)addPhoneNumber:(UIButton *)sender {
     SendGAEvent(@"user_action", @"settings", @"verify_number");
+    NumberVerificationViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+    vc.delegate = self;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
+
     UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
     [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
 }
@@ -163,6 +173,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Number verification delegate
+
+-(void)userVerifiedPhoneNumber {
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    PFUser* currentUser = [PFUser currentUser];
+
+    NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
+    [currentInstallation addUniqueObject:channel forKey:@"channels"];
+    [currentInstallation saveInBackground];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+
+    UIViewController *presentingVC = self.presentingViewController;
+    [presentingVC dismissViewControllerAnimated:YES completion:^{
+        [presentingVC presentViewController:mainVC animated:YES completion:nil];
+    }];
+}
 
 
 @end

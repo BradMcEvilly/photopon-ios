@@ -22,6 +22,11 @@
 #import "NSDate+Pretty.h"
 #import "UIColor+Convinience.h"
 #import "UIColor+Theme.h"
+#import "NumberVerificationViewController.h"
+
+@interface NotificationController() <NumberVerificationDelegate>
+
+@end
 
 @implementation NotificationController
 {
@@ -387,14 +392,27 @@
         
     } else if ([type isEqualToString:@"VERIFICATION_MESSAGE"]) {
         SendGAEvent(@"user_action", @"welcome_message", @"set_number");
-        UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
-        [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];    
+        NumberVerificationViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
+        vc.delegate = self;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
     }
+}
 
-    
-    
-    
+#pragma mark - Number verification delegate
 
+-(void)userVerifiedPhoneNumber {
+    UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MainCtrl"];
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    PFUser* currentUser = [PFUser currentUser];
+
+    NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
+    [currentInstallation addUniqueObject:channel forKey:@"channels"];
+    [currentInstallation saveInBackground];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:mainVC animated:YES completion:nil];
 }
 
 - (void)showChatWithUser:(PFUser *)user {
@@ -404,10 +422,4 @@
 }
 
 @end
-
-
-
-
-
-
 
