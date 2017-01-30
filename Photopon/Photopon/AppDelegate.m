@@ -32,7 +32,7 @@
     // Initialize Parse.
     [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         configuration.applicationId = @"qyY21OT36AiP5hIEdrzrBvbOS1HgXzIK52oyzrAN";
-        configuration.clientKey = @"";
+        configuration.clientKey = @"CwOKephJcNOFokOWx6X2wgDO2eOKDGL2lXfYgPCC";
         configuration.server = @"https://photopon.herokuapp.com/parse";
     }]];
 
