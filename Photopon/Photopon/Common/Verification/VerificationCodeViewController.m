@@ -96,7 +96,7 @@
         if ([objects count] > 0) {
             
             [PFCloud callFunctionInBackground: @"getUserSessionToken" withParameters:@{
-                @"phoneNumber": parentCtrl.phoneNumberCtrl.phoneNumber.text
+                @"phoneNumber": NumbersFromFormattedPhone(parentCtrl.phoneNumberCtrl.phoneNumber.text)
             } block:^(id  _Nullable object, NSError * _Nullable error) {
                 NSLog(@"%@", object);
                 [PFUser becomeInBackground:object block:^(PFUser * _Nullable user, NSError * _Nullable error) {
