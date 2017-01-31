@@ -85,9 +85,6 @@
     vc.delegate = self;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self presentViewController:vc animated:YES completion:nil];
-
-    UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
-    [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
 }
 
 -(void)removeNumber {
