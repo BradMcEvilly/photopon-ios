@@ -74,7 +74,11 @@
     PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
     NSNumber* newCode = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
     parentCtrl.sentCode = newCode;
-    
+
+#ifdef DEBUG
+    NSLog(@"Verification code: %@", newCode.stringValue);
+#endif
+
     verification[@"code"] = [NSString stringWithFormat:@"%d", [parentCtrl.sentCode intValue]];
     verification[@"phoneNumber"] = NumbersFromFormattedPhone(self.phoneNumber.text);
     verification[@"numTried"] = [NSNumber numberWithInt:0];

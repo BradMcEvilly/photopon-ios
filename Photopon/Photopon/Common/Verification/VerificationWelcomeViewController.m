@@ -19,20 +19,19 @@
     NumberVerificationViewController* parentCtrl;
 }
 
-
--(void) cancelCallback {
-    [parentCtrl dismissViewControllerAnimated:YES completion:nil];
+-(void)getStartedHandler {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate userVerifiedPhoneNumber];
+    }];
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.getStarted addTarget:self action:@selector(cancelCallback) forControlEvents:UIControlEventTouchDown];
+    [self.getStarted addTarget:self action:@selector(getStartedHandler) forControlEvents:UIControlEventTouchDown];
 
     self.getStarted.layer.cornerRadius = 8;
     self.getStarted.layer.masksToBounds = YES;
 }
-
 
 -(void)setParent:(UIViewController*) viewCtrl {
     parentCtrl = (NumberVerificationViewController*)viewCtrl;

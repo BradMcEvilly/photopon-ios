@@ -92,7 +92,8 @@
     _screenCtrl = (VerificationScreenNameViewController*)[self createSubView:@"SBVerificationName"];
     _screenCtrl.delegate = self.delegate;
     _welcomeCtrl = (VerificationWelcomeViewController*)[self createSubView:@"SBVerificationWelcome"];
-
+    _welcomeCtrl.delegate = self.delegate;
+    
     self.keyboardManager = [[KeyboardAvoidanceManager alloc]initWithScrollView:self.scrollView view:self.view];
 
     [_phoneNumberCtrl setParent:self];
