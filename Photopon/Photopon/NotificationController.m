@@ -246,7 +246,7 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         SendGAEvent(@"user_action", @"notifications", @"walletadd_notification_clicked");
-    }else if ([type isEqualToString:@"REDEEMED"]) {
+    } else if ([type isEqualToString:@"REDEEMED"]) {
         
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
@@ -293,7 +293,7 @@
     } else if ([type isEqualToString:@"VERIFICATION_MESSAGE"]) {
         BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
 
-        notifCell.notificationImageView.image = [UIImage imageNamed:@"Icon-Phone.png"];
+        notifCell.notificationImageView.image = [UIImage imageNamed:@"Icon-Phone-2.png"];
         notifCell.titleLabel.text = @"Verify phone number";
         notifCell.subtitleLabel.text = @"Please click here to verify your phone number";
         //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");

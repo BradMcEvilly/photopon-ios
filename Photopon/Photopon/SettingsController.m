@@ -19,6 +19,8 @@
 
 @interface SettingsController() <NumberVerificationDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *verifyButton;
+
 @end
 
 @implementation SettingsController
@@ -118,6 +120,8 @@
 
     self.changeNumber.layer.cornerRadius = 8;
     self.changeNumber.layer.masksToBounds = YES;
+    self.verifyButton.layer.cornerRadius = 8;
+    self.verifyButton.layer.masksToBounds = YES;
 
     [self.changePhoto addTarget:self action:@selector(changePhotoCallback) forControlEvents:UIControlEventTouchDown];
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
