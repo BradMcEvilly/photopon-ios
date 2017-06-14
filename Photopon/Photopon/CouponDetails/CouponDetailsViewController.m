@@ -78,11 +78,18 @@
 }
 
 -(void)getCoupon {
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
+
     CouponWrapper* wrapper = [CouponWrapper fromObject:self.coupon];
     [wrapper getCoupon];
 }
 
 -(void)giveCoupon {
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
                                                                                                          @"index": @(self.selectedCouponIndex)

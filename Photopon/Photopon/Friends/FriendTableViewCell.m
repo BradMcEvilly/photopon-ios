@@ -26,6 +26,11 @@
     if (!username) {
         username = @"";
     }
+   
+   if (!name) {
+      name = @"";
+   }
+   
     self.friendUsernameLabel.text = [NSString stringWithFormat:@"%@ %@", name, username];
 }
 

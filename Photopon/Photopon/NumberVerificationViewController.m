@@ -108,6 +108,7 @@
 -(void)setDelegate:(id<NumberVerificationDelegate>)delegate {
     _delegate = delegate;
     self.screenCtrl.delegate = delegate;
+    self.welcomeCtrl.delegate = delegate;
 }
 
 #pragma mark - Check user number

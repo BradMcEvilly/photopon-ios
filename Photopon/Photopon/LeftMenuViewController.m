@@ -49,16 +49,19 @@
     
     [self addTapHandlerFor:self.notificationItem withTag:@"notifications"];
     [self addTapHandlerFor:self.couponsItem withTag:@"coupons"];
-    [self addTapHandlerFor:self.settingsItem withTag:@"settings"];
-    
+   
     if ([PFUser currentUser]) {
         [self addTapHandlerFor:self.friendsItem withTag:@"friends"];
         [self addTapHandlerFor:self.walletItem withTag:@"wallet"];
         [self addTapHandlerFor:self.signoutItem withTag:@"signout"];
         [self addTapHandlerFor:self.addPhotoponItem withTag:@"addphotopon"];
         [self addTapHandlerFor:self.sentPhotopons withTag:@"sentphotopons"];
+        [self addTapHandlerFor:self.settingsItem withTag:@"settings"];
+
         self.registerItem.hidden = YES;
         self.signoutItem.hidden = NO;
+        self.settingsItem.hidden = NO;
+
     } else {
         [self addTapHandlerFor:self.registerItem withTag:@"register"];
         
@@ -70,6 +73,7 @@
         
         self.registerItem.hidden = NO;
         self.signoutItem.hidden = YES;
+        self.settingsItem.hidden = YES;
     }
 }
 

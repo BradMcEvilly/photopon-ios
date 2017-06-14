@@ -36,6 +36,10 @@
 NSInteger selectedCoupon = 0;
 
 -(void)redeemCoupon {
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
+
     NSInteger thisCouponIndex = selectedCoupon;
 
     NSArray* allPFCoupons = GetNearbyCouponsPF();
@@ -63,7 +67,10 @@ NSInteger selectedCoupon = 0;
 }
 
 -(void)getCoupon {
-    
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
+
     NSInteger thisCouponIndex = selectedCoupon;
     NSArray* allPFCoupons = GetNearbyCouponsPF();
     PFObject* coupon = [allPFCoupons objectAtIndex:thisCouponIndex];
@@ -73,7 +80,11 @@ NSInteger selectedCoupon = 0;
 }
 
 -(void)giveCoupon {
-    
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
+
+   
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Goto_AddPhotopon" object:nil userInfo:@{
                                                                                                          @"index": @(selectedCoupon)
                                                                                                          }];

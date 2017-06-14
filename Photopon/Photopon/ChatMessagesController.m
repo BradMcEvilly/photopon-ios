@@ -340,7 +340,9 @@
         PFObject *photopon = [query getObjectWithId:((ChatPhotoponPresentableModel *)presentableModel).photoponId];
 
         PFObject *coupon = [photopon objectForKey:@"coupon"];
+        [coupon fetchIfNeeded];
         PFObject *company = [coupon objectForKey:@"company"];
+        [company fetchIfNeeded];
         PFFile *image = company[@"image"];
         cell.coupon = coupon;
         //#endif

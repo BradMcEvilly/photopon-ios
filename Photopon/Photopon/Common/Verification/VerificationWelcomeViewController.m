@@ -21,7 +21,10 @@
 
 
 -(void) cancelCallback {
-    [parentCtrl dismissViewControllerAnimated:YES completion:nil];
+   [parentCtrl dismissViewControllerAnimated:NO completion:nil];
+   [self dismissViewControllerAnimated:NO completion:nil];
+   [parentCtrl.delegate userVerifiedPhoneNumber];
+   
 }
 
 

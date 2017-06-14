@@ -42,6 +42,10 @@
 
 
 -(void)giveCoupon {
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
+
     NSArray* allPFCoupons = GetNearbyCouponsPF();
     for (int i = 0; i < [allPFCoupons count]; ++i) {
         PFObject* o = allPFCoupons[i];
@@ -59,6 +63,9 @@
 
 
 -(void) getCoupon {
+   if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
+      return;
+   }
 
     NSNumber* giveToGet = [self.obj valueForKey:@"givetoget"];
     

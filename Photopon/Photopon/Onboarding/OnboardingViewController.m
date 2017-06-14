@@ -86,7 +86,8 @@
 
 - (void)userShouldRegister {
     NumberVerificationViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
-    vc.delegate = self;
+   
+    [vc setDelegate: self];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
@@ -111,6 +112,7 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     mainVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+   [self dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController presentViewController:mainVC animated:YES completion:nil];
 }
 
