@@ -57,6 +57,10 @@
       textBox.text = @"";
    }
    
+   if (text.length == 4) {
+      [self doVerify];
+   }
+   
 }
 
 - (void)viewDidLoad {
@@ -128,8 +132,10 @@
 -(void)doVerify {
     
     SendGAEvent(@"user_action", @"number_verification", @"verify_clicked");
-    if (![[parentCtrl.sentCode stringValue] isEqualToString: @"balh"]) {
+    if (![ [parentCtrl.sentCode stringValue] isEqualToString: self.keySnatch.text ]) {
         [self shakeVerification];
+        self.keySnatch.text = @"";
+       [self verificationCodeChanged:nil];
         SendGAEvent(@"user_action", @"number_verification", @"wrong_code");
         return;
     }
