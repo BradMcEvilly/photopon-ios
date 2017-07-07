@@ -72,7 +72,7 @@
     
     
     PFObject *verification = [PFObject objectWithClassName:@"Verifications"];
-    NSNumber* newCode = [NSNumber numberWithInt:arc4random_uniform(900000) + 100000];
+    NSNumber* newCode = [NSNumber numberWithInt:arc4random_uniform(9000) + 1000];
     parentCtrl.sentCode = newCode;
     
     verification[@"code"] = [NSString stringWithFormat:@"%d", [parentCtrl.sentCode intValue]];

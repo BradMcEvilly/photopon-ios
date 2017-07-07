@@ -61,7 +61,11 @@
         self.registerItem.hidden = YES;
         self.signoutItem.hidden = NO;
         self.settingsItem.hidden = NO;
-
+       self.friendsItem.alpha = 1;
+       self.walletItem.alpha = 1;
+       self.addPhotoponItem.alpha = 1;
+       self.sentPhotopons.alpha = 1;
+       self.signoutItem.alpha = 1;
     } else {
         [self addTapHandlerFor:self.registerItem withTag:@"register"];
         

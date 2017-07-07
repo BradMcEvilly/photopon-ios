@@ -10,11 +10,15 @@
 
 @protocol NumberVerificationDelegate;
 
-@interface VerificationCodeViewController : UIViewController
+@interface VerificationCodeViewController : UIViewController<UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *verificationCode;
 
-@property (weak, nonatomic) IBOutlet UIButton *verifyButton;
+@property (weak, nonatomic) IBOutlet UITextField *digit1;
+@property (weak, nonatomic) IBOutlet UITextField *digit2;
+@property (weak, nonatomic) IBOutlet UITextField *digit3;
+@property (weak, nonatomic) IBOutlet UITextField *digit4;
+@property (weak, nonatomic) IBOutlet UITextField *keySnatch;
+
 @property (weak, nonatomic) IBOutlet UIButton *resendCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *cancelVerifyBtn;
 

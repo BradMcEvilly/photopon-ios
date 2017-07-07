@@ -66,7 +66,8 @@
 
 -(void)codeSent {
     [_codeCtrl.view setHidden: NO];
-    [_codeCtrl.verificationCode becomeFirstResponder];
+   _codeCtrl.keySnatch.keyboardType = UIKeyboardTypeNumberPad;
+    [_codeCtrl.keySnatch becomeFirstResponder];
 }
 
 

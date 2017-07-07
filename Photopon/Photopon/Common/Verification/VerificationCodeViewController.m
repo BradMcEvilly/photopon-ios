@@ -21,15 +21,64 @@
 }
 
 
+#define MAXLENGTH 4
+
+
+- (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+   
+   NSUInteger oldLength = [textField.text length];
+   NSUInteger replacementLength = [string length];
+   NSUInteger rangeLength = range.length;
+   
+   if (textField.keyboardType == UIKeyboardTypeNumberPad)
+   {
+      if ([string rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet].invertedSet].location != NSNotFound)
+      {
+         return NO;
+      }
+   }
+   
+   NSUInteger newLength = oldLength - rangeLength + replacementLength;
+   
+   return newLength <= MAXLENGTH;
+}
+
+-(void) verificationCodeChanged: (UITextView*) field {
+   
+   NSString* text = self.keySnatch.text;
+   
+   for (size_t i = 0; i < text.length; ++i) {
+      UITextField* textBox = [self.view viewWithTag:1000+i];
+      textBox.text = [NSString stringWithFormat: @"%C", [text characterAtIndex:i]];
+   }
+   
+   for (size_t i = text.length; i < 4; ++i) {
+      UITextField* textBox = [self.view viewWithTag:1000+i];
+      textBox.text = @"";
+   }
+   
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.verifyButton.layer.cornerRadius = 8;
-    self.verifyButton.layer.masksToBounds = YES;
+    //self.verifyButton.layer.cornerRadius = 8;
+    //self.verifyButton.layer.masksToBounds = YES;
     
-    [self.verifyButton addTarget:self action:@selector(doVerify) forControlEvents:UIControlEventTouchDown];
+    //[self.verifyButton addTarget:self action:@selector(doVerify) forControlEvents:UIControlEventTouchDown];
     [self.resendCodeBtn addTarget:self action:@selector(sendCodeAndAlert) forControlEvents:UIControlEventTouchDown];
     [self.cancelVerifyBtn addTarget:self action:@selector(verifyLater) forControlEvents:UIControlEventTouchDown];
+   
+   self.digit1.tag = 1000;
+   self.digit2.tag = 1001;
+   self.digit3.tag = 1002;
+   self.digit4.tag = 1003;
+   
+   [self.keySnatch addTarget:self action:@selector(verificationCodeChanged:) forControlEvents:UIControlEventEditingChanged];
+   
+   self.keySnatch.delegate = self;
+   
+   [self verificationCodeChanged:nil];
 }
 
 
@@ -79,7 +128,7 @@
 -(void)doVerify {
     
     SendGAEvent(@"user_action", @"number_verification", @"verify_clicked");
-    if (![[parentCtrl.sentCode stringValue] isEqualToString: self.verificationCode.text]) {
+    if (![[parentCtrl.sentCode stringValue] isEqualToString: @"balh"]) {
         [self shakeVerification];
         SendGAEvent(@"user_action", @"number_verification", @"wrong_code");
         return;
