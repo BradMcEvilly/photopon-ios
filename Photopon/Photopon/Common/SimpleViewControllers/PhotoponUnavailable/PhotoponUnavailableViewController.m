@@ -25,12 +25,18 @@
 
 + (void)addToViewController:(UIViewController *)viewController forView:(UIView *)view {
     PhotoponUnavailableViewController *vc = [[self alloc]init];
-    if (![PFUser currentUser]) {
-        vc.chatButton.hidden = YES;
-        vc.bodyLabel.text = @"We're working hard to bring Photopon private coupons and gifts to your local area.";
-    }
     [view addSubviewAndFill:vc.view];
     [viewController addChildViewController:vc];
+    
+    
+}
+
+- (void) viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    if (![PFUser currentUser]) {
+        self.chatButton.hidden = YES;
+        self.bodyLabel.text = @"We're working hard to bring Photopon private coupons and gifts to your local area.";
+    }
 }
 
 @end

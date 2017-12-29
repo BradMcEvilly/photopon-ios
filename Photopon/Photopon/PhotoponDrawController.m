@@ -167,11 +167,13 @@
     }
 
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
-    [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
-    [newPhotoponObject setObject:photoFile forKey:@"photo"];
-    [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
+    //[newPhotoponObject setObject:drawingFile forKey:@"drawing"];
+    //[newPhotoponObject setObject:photoFile forKey:@"photo"];
+    //[newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
-    [newPhotoponObject setObject:userIds forKey:@"users"];
+    //[newPhotoponObject setObject:userIds forKey:@"users"];
+    //[newPhotoponObject setObject:@"b406885f-0b8f-4e66-ab80-19681074362d" forKey:@"installationId"];
+    
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {

@@ -92,10 +92,10 @@
 - (void) couponsUpdated {
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
-    
-    
-    [miniCouponViewController couponsUpdated];
     [self maybeShowNoCoupons];
+    [self configureForAvailability];
+    [miniCouponViewController couponsUpdated];
+   
 }
 
 
@@ -189,7 +189,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self configureForAvailability];
+    //[self configureForAvailability];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
@@ -346,8 +346,15 @@
 #pragma mark - Availability
 
 - (void)configureForAvailability {
-    if (![AvailabilityManager photoponAvailable]) {
-        self.notAvailableViewBottomConstraint.constant = - self.notAvailableView.frame.size.height + 5;
+    
+    CGFloat offset = 0;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.keyWindow;
+        offset = window.safeAreaInsets.bottom;
+    }
+    
+    if ([allPFCoupons count] == 0) {  //if (![AvailabilityManager photoponAvailable]) {
+        self.notAvailableViewBottomConstraint.constant = - self.notAvailableView.frame.size.height - 5 - offset;
         self.noCouponView.hidden = YES;
     } else {
         self.notAvailableViewBottomConstraint.constant = 0;

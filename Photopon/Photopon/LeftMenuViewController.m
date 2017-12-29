@@ -124,13 +124,16 @@
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (finished) {
-            [self dismissViewControllerAnimated:NO completion:nil];
+            [self dismissViewControllerAnimated:NO completion:^{
+                
+                if (clientHook) {
+                    clientHook(itemTags[tag]);
+                    SendGAEvent(@"user_action", @"left_menu", [NSString stringWithFormat:@"%@_clicked", itemTags[tag]]);
+                    
+                }
+            }];
         }
-        if (clientHook) {
-            clientHook(itemTags[tag]);
-            SendGAEvent(@"user_action", @"left_menu", [NSString stringWithFormat:@"%@_clicked", itemTags[tag]]);
-
-        }
+       
 
     }];
 

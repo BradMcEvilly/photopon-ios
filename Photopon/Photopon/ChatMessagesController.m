@@ -24,6 +24,7 @@
 #import "ChatMessagePresentableModel.h"
 #import "ChatPhotoponPresentableModel.h"
 #import "PhotoponViewController.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 #import "ChatMessageUserCell.h"
 #import "ChatMessageFriendCell.h"
@@ -33,6 +34,7 @@
 #import "UIColor+Convinience.h"
 #import "UIColor+Theme.h"
 #import <MBProgressHUD.h>
+
 
 @interface ChatMessagesController ()
 
@@ -57,11 +59,22 @@
 #pragma mark - View Lifecycle
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"chatTableViewScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     SendGAEvent(@"user_action", @"chat", @"chat_started");
+    
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+    
+    
+
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
     
 }
 
@@ -119,30 +132,38 @@
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+   CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
-    self.topConstraint.constant = keyboardSize.height +  [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat offset = 0;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.keyWindow;
+        offset = window.safeAreaInsets.bottom;
+    }
+
+    
+    self.topConstraint.constant = keyboardSize.height-offset;
     
     [UIView animateWithDuration:1
                      animations:^{
                          [self.view layoutIfNeeded];
                      }];
     
-    CGPoint currentOffset = [self.chatTableView contentOffset];
-    currentOffset.y = currentOffset.y + keyboardSize.height - 80;
-    [self.chatTableView setContentOffset:currentOffset animated:YES];
+    /*CGPoint currentOffset = [self.chatTableView contentOffset];
+    currentOffset.y = currentOffset.y + keyboardSize.height-offset;
+    [self.chatTableView setContentOffset:currentOffset animated:YES];*/
+    
     
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    self.topConstraint.constant = 80;
+  self.topConstraint.constant = 0;
     
     [UIView animateWithDuration:1
                      animations:^{
                          [self.view layoutIfNeeded];
                      }];
-    [self.chatTableView setContentInset:UIEdgeInsetsMake(0,0,0,0)];
+   // [self.chatTableView setContentInset:UIEdgeInsetsMake(0,0,0,0)];
     
 }
 

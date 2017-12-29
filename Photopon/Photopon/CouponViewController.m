@@ -52,6 +52,7 @@
     allPFCoupons = GetNearbyCouponsPF();
     [self.couponTable reloadData];
     [refreshControl endRefreshing];
+    [self photoponAvailabilityConfiguration];
 }
 
 
@@ -284,7 +285,9 @@
 #pragma mark - Availability
 
 - (void)photoponAvailabilityConfiguration {
-    if ([AvailabilityManager photoponAvailable]) {
+    
+    
+    if ([allPFCoupons count] != 0) { //[AvailabilityManager photoponAvailable]) {
         self.notAvailableView.hidden = YES;
     } else {
         self.notAvailableView.hidden = NO;

@@ -265,18 +265,16 @@ void RemoveCouponUpdateListener(id<CouponUpdateDelegate> delegate) {
             PFObject* object = [couponInfo valueForKey:@"coupon"];
             PFObject* redeemed = [couponInfo valueForKey:@"redeemed"];
             
-            NSString* title = [object objectForKey:@"title"];
-            NSString* desc = [object objectForKey:@"description"];
+            NSString* title = [object objectForKey:@"title"]?: @"";
+            NSString* desc = [object objectForKey:@"description"]?: @"";
             PFObject* company = [object objectForKey:@"company"];
             PFFile* pic = [company objectForKey:@"image"];
+            NSDate* expiration = [object objectForKey:@"expiration"]?: [NSDate init];
+            NSString* picurl = pic.url ?: @"";
             
-            [couponsNearby addObject:@{
-                                    @"title": title,
-                                    @"desc": desc,
-                                    @"pic": pic.url,
-                                    @"expiration": [object objectForKey:@"expiration"],
-                                    @"redeemed": redeemed
-                                    }];
+            NSDictionary* obj = @{@"title": title,@"desc": desc,@"pic":picurl,@"expiration": expiration,@"redeemed": redeemed};
+            
+            [couponsNearby addObject:obj];
             
             
             [couponsNearbyPF addObject:object];

@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IDr-54-Yf2">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IDr-54-Yf2">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,22 +14,18 @@
         <scene sceneID="3lo-LN-Ke2">
             <objects>
                 <viewController storyboardIdentifier="WelcomeViewController" id="IDr-54-Yf2" customClass="WelcomeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="G1L-5u-3Bi"/>
-                        <viewControllerLayoutGuide type="bottom" id="Dpc-ff-tVT"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1o5-Vz-wYJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-TR-GYY" userLabel="BackgroundView">
-                                <frame key="frameInset" width="320" height="568"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-TR-GYY" userLabel="BackgroundView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photopon-logo-black.png" translatesAutoresizingMaskIntoConstraints="NO" id="75e-fU-Wel">
-                                        <frame key="frameInset" minX="30" minY="84" width="260" height="200"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photopon-logo-black" translatesAutoresizingMaskIntoConstraints="NO" id="75e-fU-Wel">
+                                        <rect key="frame" x="30" y="239" width="315" height="100"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splash-bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-ua-fIc">
-                                        <frame key="frameInset" minY="478" width="320" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-bottom" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-ua-fIc">
+                                        <rect key="frame" x="0.0" y="688" width="375" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="cLp-mm-UYn"/>
                                         </constraints>
@@ -44,33 +42,33 @@
                                     <constraint firstItem="1Vd-ua-fIc" firstAttribute="leading" secondItem="RTZ-TR-GYY" secondAttribute="leading" id="uSr-Ti-0LG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-Kg-5xZ" userLabel="WelcomeView">
-                                <frame key="frameInset" minY="182.5" width="320" height="202"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-Kg-5xZ" userLabel="WelcomeView">
+                                <rect key="frame" x="0.0" y="315.33333333333331" width="375" height="181.33333333333331"/>
                                 <subviews>
-                                    <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sde-uE-Keb" userLabel="Divider">
-                                        <frame key="frameInset" minX="60" width="200" height="1"/>
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sde-uE-Keb" userLabel="Divider">
+                                        <rect key="frame" x="87.666666666666686" y="0.0" width="200" height="1"/>
                                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="TPY-ZO-t3n"/>
                                             <constraint firstAttribute="width" constant="200" id="Xfg-hh-R84"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How did you found out about Photopon?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb2-h6-Dh8">
-                                        <frame key="frameInset" minX="10" minY="25" width="300" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How did you found out about Photopon?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb2-h6-Dh8">
+                                        <rect key="frame" x="10" y="25" width="355" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-ZY-sEg">
-                                        <frame key="frameInset" minX="59" minY="91" width="202" height="30"/>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-ZY-sEg">
+                                        <rect key="frame" x="78.666666666666686" y="70.333333333333371" width="218" height="32"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="I saw a postcard for a coupon"/>
                                         <connections>
                                             <action selector="sawPostcardHandler" destination="IDr-54-Yf2" eventType="touchUpInside" id="oaa-Po-7cu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-pf-RsS">
-                                        <frame key="frameInset" minX="39" minY="139" width="241" height="30"/>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-pf-RsS">
+                                        <rect key="frame" x="57" y="120.33333333333337" width="261" height="32"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="I received a Photopon from a friend"/>
                                         <connections>
@@ -95,14 +93,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="RTZ-TR-GYY" secondAttribute="trailing" id="7id-E3-G4p"/>
-                            <constraint firstItem="RTZ-TR-GYY" firstAttribute="leading" secondItem="1o5-Vz-wYJ" secondAttribute="leading" id="HwY-nk-udZ"/>
-                            <constraint firstItem="hnD-Kg-5xZ" firstAttribute="leading" secondItem="1o5-Vz-wYJ" secondAttribute="leading" id="Swc-8A-oBK"/>
+                            <constraint firstItem="zdX-C7-eWv" firstAttribute="trailing" secondItem="RTZ-TR-GYY" secondAttribute="trailing" id="7id-E3-G4p"/>
+                            <constraint firstItem="RTZ-TR-GYY" firstAttribute="leading" secondItem="zdX-C7-eWv" secondAttribute="leading" id="HwY-nk-udZ"/>
+                            <constraint firstItem="hnD-Kg-5xZ" firstAttribute="leading" secondItem="zdX-C7-eWv" secondAttribute="leading" id="Swc-8A-oBK"/>
                             <constraint firstItem="RTZ-TR-GYY" firstAttribute="top" secondItem="1o5-Vz-wYJ" secondAttribute="top" id="VnQ-2a-zin"/>
                             <constraint firstItem="hnD-Kg-5xZ" firstAttribute="centerY" secondItem="1o5-Vz-wYJ" secondAttribute="centerY" id="h0o-Jy-Nyc"/>
-                            <constraint firstItem="Dpc-ff-tVT" firstAttribute="top" secondItem="RTZ-TR-GYY" secondAttribute="bottom" id="qeL-oN-d0F"/>
-                            <constraint firstAttribute="trailing" secondItem="hnD-Kg-5xZ" secondAttribute="trailing" id="u9v-qo-U2B"/>
+                            <constraint firstItem="zdX-C7-eWv" firstAttribute="bottom" secondItem="RTZ-TR-GYY" secondAttribute="bottom" id="qeL-oN-d0F"/>
+                            <constraint firstItem="zdX-C7-eWv" firstAttribute="trailing" secondItem="hnD-Kg-5xZ" secondAttribute="trailing" id="u9v-qo-U2B"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="zdX-C7-eWv"/>
                     </view>
                     <connections>
                         <outlet property="logoMidConstraint" destination="PMG-hq-wIi" id="OKa-vE-COp"/>
@@ -120,55 +119,48 @@
         <scene sceneID="tuj-zR-7Qg">
             <objects>
                 <viewController storyboardIdentifier="OnboardingViewController" id="Zef-RG-fzg" customClass="OnboardingViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jbp-Oi-ddD"/>
-                        <viewControllerLayoutGuide type="bottom" id="Dkl-wq-YfP"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dFT-tb-SxV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="OnboardingBackground-Blur-7" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-2R-PKM">
-                                <frame key="frameInset" minY="-2" width="544" height="572"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Hom-2R-PKM" secondAttribute="height" multiplier="700:736" id="YBw-2i-9Qh"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OnboardingBackground-Blur-7" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-2R-PKM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photopon-logo-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="PLT-eC-dNt">
-                                <frame key="frameInset" minX="30" minY="50" width="260" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photopon-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="PLT-eC-dNt">
+                                <rect key="frame" x="30" y="74" width="315" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="VrI-ay-UlG"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-U5-Kui">
-                                <frame key="frameInset" width="320" height="568"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-U5-Kui">
+                                <rect key="frame" x="0.0" y="174" width="375" height="559"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3j-sL-koL" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="1280" height="568"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3j-sL-koL" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="1500" height="559"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQQ-Mz-QCl">
-                                                <frame key="frameInset" width="320" height="568"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQQ-Mz-QCl">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="o1o-yr-d4D" kind="embed" id="4Sf-NG-m1K"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0W-pU-TYV">
-                                                <frame key="frameInset" minX="320" width="320" height="568"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0W-pU-TYV">
+                                                <rect key="frame" x="375" y="0.0" width="375" height="559"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="T7k-Gg-DzW" kind="embed" identifier="PushNotifications" id="XLD-V4-86J"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-ad-04E">
-                                                <frame key="frameInset" minX="640" width="320" height="568"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-ad-04E">
+                                                <rect key="frame" x="750" y="0.0" width="375" height="559"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="8lL-3p-pAu" kind="embed" identifier="LocationServices" id="pS9-m7-xe9"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-dY-W2b">
-                                                <frame key="frameInset" minX="960" width="320" height="568"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-dY-W2b">
+                                                <rect key="frame" x="1125" y="0.0" width="375" height="559"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="zi6-oU-9mY" kind="embed" identifier="EnjoyPhotopon" id="JYs-Ut-2A5"/>
@@ -198,6 +190,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Y3j-sL-koL" firstAttribute="height" secondItem="KEh-U5-Kui" secondAttribute="height" id="Ibl-eF-vSB"/>
                                     <constraint firstItem="Y3j-sL-koL" firstAttribute="top" secondItem="KEh-U5-Kui" secondAttribute="top" id="Leq-VG-kZE"/>
                                     <constraint firstAttribute="trailing" secondItem="Y3j-sL-koL" secondAttribute="trailing" id="hGq-sF-9Xy"/>
                                     <constraint firstItem="Y3j-sL-koL" firstAttribute="leading" secondItem="KEh-U5-Kui" secondAttribute="leading" id="pQz-G3-1Y6"/>
@@ -207,33 +200,33 @@
                                     <outlet property="delegate" destination="Zef-RG-fzg" id="avY-iv-1QU"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="xR7-sK-DiU">
-                                <frame key="frameInset" minX="132" minY="523" width="55" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="xR7-sK-DiU">
+                                <rect key="frame" x="160" y="733" width="55" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PLT-eC-dNt" firstAttribute="leading" secondItem="dFT-tb-SxV" secondAttribute="leading" constant="30" id="4TD-TC-mW7"/>
-                            <constraint firstItem="Hom-2R-PKM" firstAttribute="width" secondItem="dFT-tb-SxV" secondAttribute="width" multiplier="1.7" id="9rW-XI-vwO"/>
-                            <constraint firstItem="xR7-sK-DiU" firstAttribute="centerX" secondItem="dFT-tb-SxV" secondAttribute="centerX" id="CKO-CQ-Tmg"/>
-                            <constraint firstItem="PLT-eC-dNt" firstAttribute="centerX" secondItem="dFT-tb-SxV" secondAttribute="centerX" id="DI4-Hr-ABJ"/>
-                            <constraint firstItem="Y3j-sL-koL" firstAttribute="height" secondItem="dFT-tb-SxV" secondAttribute="height" id="Dl4-xP-eaB"/>
-                            <constraint firstItem="KEh-U5-Kui" firstAttribute="leading" secondItem="dFT-tb-SxV" secondAttribute="leading" id="Rky-Rj-M3w"/>
+                            <constraint firstItem="0J9-sb-JWR" firstAttribute="leading" secondItem="Hom-2R-PKM" secondAttribute="leading" id="0aC-jX-JMH"/>
+                            <constraint firstItem="0J9-sb-JWR" firstAttribute="trailing" secondItem="KEh-U5-Kui" secondAttribute="trailing" id="0qZ-xR-1Ee"/>
+                            <constraint firstItem="PLT-eC-dNt" firstAttribute="leading" secondItem="0J9-sb-JWR" secondAttribute="leading" constant="30" id="4TD-TC-mW7"/>
+                            <constraint firstItem="KEh-U5-Kui" firstAttribute="bottom" secondItem="xR7-sK-DiU" secondAttribute="top" id="8FV-5M-PHp"/>
+                            <constraint firstItem="KEh-U5-Kui" firstAttribute="leading" secondItem="0J9-sb-JWR" secondAttribute="leading" id="9zW-hy-qwT"/>
+                            <constraint firstItem="xR7-sK-DiU" firstAttribute="centerX" secondItem="0J9-sb-JWR" secondAttribute="centerX" id="CKO-CQ-Tmg"/>
+                            <constraint firstItem="PLT-eC-dNt" firstAttribute="centerX" secondItem="0J9-sb-JWR" secondAttribute="centerX" id="DI4-Hr-ABJ"/>
+                            <constraint firstAttribute="top" secondItem="Hom-2R-PKM" secondAttribute="top" id="Fdo-1N-hHC"/>
+                            <constraint firstItem="Hom-2R-PKM" firstAttribute="trailing" secondItem="0J9-sb-JWR" secondAttribute="trailing" id="JpU-hb-wme"/>
+                            <constraint firstItem="KEh-U5-Kui" firstAttribute="top" secondItem="PLT-eC-dNt" secondAttribute="bottom" id="Qac-YE-ot7"/>
+                            <constraint firstAttribute="bottom" secondItem="Hom-2R-PKM" secondAttribute="bottom" id="Qgo-4i-FaR"/>
                             <constraint firstItem="XQQ-Mz-QCl" firstAttribute="width" secondItem="dFT-tb-SxV" secondAttribute="width" id="VqS-Qk-ccP"/>
-                            <constraint firstItem="Hom-2R-PKM" firstAttribute="leading" secondItem="dFT-tb-SxV" secondAttribute="leading" id="dVl-Re-sgF"/>
-                            <constraint firstItem="XQQ-Mz-QCl" firstAttribute="height" secondItem="dFT-tb-SxV" secondAttribute="height" id="ele-aV-0La"/>
-                            <constraint firstItem="KEh-U5-Kui" firstAttribute="top" secondItem="dFT-tb-SxV" secondAttribute="top" id="fSO-fo-eZW"/>
-                            <constraint firstItem="PLT-eC-dNt" firstAttribute="top" secondItem="jbp-Oi-ddD" secondAttribute="bottom" constant="30" id="hwe-zK-4Lc"/>
+                            <constraint firstItem="PLT-eC-dNt" firstAttribute="top" secondItem="0J9-sb-JWR" secondAttribute="top" constant="30" id="hwe-zK-4Lc"/>
                             <constraint firstItem="Hom-2R-PKM" firstAttribute="centerY" secondItem="dFT-tb-SxV" secondAttribute="centerY" id="iUT-SI-f1p"/>
-                            <constraint firstItem="Dkl-wq-YfP" firstAttribute="top" secondItem="xR7-sK-DiU" secondAttribute="bottom" constant="8" id="oOM-VO-wO3"/>
-                            <constraint firstAttribute="trailing" secondItem="PLT-eC-dNt" secondAttribute="trailing" constant="30" id="ssX-t0-Hdp"/>
-                            <constraint firstItem="Dkl-wq-YfP" firstAttribute="top" secondItem="KEh-U5-Kui" secondAttribute="bottom" id="y5t-1e-mF0"/>
-                            <constraint firstAttribute="trailing" secondItem="KEh-U5-Kui" secondAttribute="trailing" id="zzi-fy-Ak1"/>
+                            <constraint firstItem="0J9-sb-JWR" firstAttribute="bottom" secondItem="xR7-sK-DiU" secondAttribute="bottom" constant="8" id="oOM-VO-wO3"/>
+                            <constraint firstItem="0J9-sb-JWR" firstAttribute="trailing" secondItem="PLT-eC-dNt" secondAttribute="trailing" constant="30" id="ssX-t0-Hdp"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="0J9-sb-JWR"/>
                     </view>
                     <navigationItem key="navigationItem" id="mMn-bU-o8b"/>
                     <connections>
-                        <outlet property="backgroundImageLeftConstraint" destination="dVl-Re-sgF" id="BBc-Q4-4cX"/>
                         <outlet property="pageControl" destination="xR7-sK-DiU" id="Cxu-nS-8zI"/>
                         <outlet property="scrollView" destination="KEh-U5-Kui" id="xjL-jL-LPZ"/>
                     </connections>
@@ -246,16 +239,12 @@
         <scene sceneID="WCD-m7-X1k">
             <objects>
                 <viewController id="o1o-yr-d4D" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ohd-Yg-HWp"/>
-                        <viewControllerLayoutGuide type="bottom" id="KGv-Gn-tNf"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Uhf-gk-RVe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-I7-fZG">
-                                <frame key="frameInset" minX="30" minY="150" width="260" height="49"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-I7-fZG">
+                                <rect key="frame" x="30" y="171" width="315" height="54"/>
                                 <string key="text">Turn your photos into gifts for friends
 
 Access private, members-only coupons</string>
@@ -265,8 +254,8 @@ Access private, members-only coupons</string>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUD-i0-PI9">
-                                <frame key="frameInset" minX="30" minY="268.5" width="260" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUD-i0-PI9">
+                                <rect key="frame" x="30" y="261.66666666666669" width="315" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -276,14 +265,15 @@ Access private, members-only coupons</string>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YUD-i0-PI9" firstAttribute="centerX" secondItem="Uhf-gk-RVe" secondAttribute="centerX" id="0Y4-74-6Vy"/>
-                            <constraint firstItem="DgI-I7-fZG" firstAttribute="top" secondItem="ohd-Yg-HWp" secondAttribute="bottom" constant="127" id="3ao-nk-a3U"/>
-                            <constraint firstAttribute="trailing" secondItem="YUD-i0-PI9" secondAttribute="trailing" constant="30" id="4OW-XB-eOb"/>
-                            <constraint firstItem="DgI-I7-fZG" firstAttribute="leading" secondItem="Uhf-gk-RVe" secondAttribute="leading" constant="30" id="FCu-0D-EUw"/>
-                            <constraint firstAttribute="trailing" secondItem="DgI-I7-fZG" secondAttribute="trailing" constant="30" id="QHk-j9-I8n"/>
+                            <constraint firstItem="YUD-i0-PI9" firstAttribute="centerX" secondItem="1sz-ve-YHR" secondAttribute="centerX" id="0Y4-74-6Vy"/>
+                            <constraint firstItem="DgI-I7-fZG" firstAttribute="top" secondItem="1sz-ve-YHR" secondAttribute="top" constant="127" id="3ao-nk-a3U"/>
+                            <constraint firstItem="1sz-ve-YHR" firstAttribute="trailing" secondItem="YUD-i0-PI9" secondAttribute="trailing" constant="30" id="4OW-XB-eOb"/>
+                            <constraint firstItem="DgI-I7-fZG" firstAttribute="leading" secondItem="1sz-ve-YHR" secondAttribute="leading" constant="30" id="FCu-0D-EUw"/>
+                            <constraint firstItem="1sz-ve-YHR" firstAttribute="trailing" secondItem="DgI-I7-fZG" secondAttribute="trailing" constant="30" id="QHk-j9-I8n"/>
                             <constraint firstItem="YUD-i0-PI9" firstAttribute="centerY" secondItem="Uhf-gk-RVe" secondAttribute="centerY" id="XJI-Zz-i6V"/>
-                            <constraint firstItem="YUD-i0-PI9" firstAttribute="leading" secondItem="Uhf-gk-RVe" secondAttribute="leading" constant="30" id="egE-aS-cwr"/>
+                            <constraint firstItem="YUD-i0-PI9" firstAttribute="leading" secondItem="1sz-ve-YHR" secondAttribute="leading" constant="30" id="egE-aS-cwr"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="1sz-ve-YHR"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6K-sl-MJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -294,14 +284,11 @@ Access private, members-only coupons</string>
         <scene sceneID="EKe-Xt-oS4">
             <objects>
                 <viewController id="aId-3i-8H1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CRC-rZ-mRx"/>
-                        <viewControllerLayoutGuide type="bottom" id="tTk-L9-6a5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f0Y-2J-zbD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="VVS-2Z-h8G"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYO-Db-fBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -312,15 +299,12 @@ Access private, members-only coupons</string>
         <scene sceneID="Ygc-16-sCS">
             <objects>
                 <viewController storyboardIdentifier="LocationServicesViewController" id="8lL-3p-pAu" customClass="LocationServicesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eDF-Z9-8iQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="uUv-de-bIB"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jd3-mQ-4cU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon would like to access locations services to display nearby gifts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-wY-5Gu">
+                                <rect key="frame" x="30" y="240" width="315" height="79"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -328,6 +312,7 @@ Access private, members-only coupons</string>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P3-u6-eQG">
+                                <rect key="frame" x="30" y="435" width="315" height="50"/>
                                 <color key="backgroundColor" red="0.18254509228187921" green="0.61480180369127513" blue="0.27975566275167785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QA3-MW-zpe"/>
@@ -344,12 +329,13 @@ Access private, members-only coupons</string>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xfU-wY-5Gu" firstAttribute="centerY" secondItem="jd3-mQ-4cU" secondAttribute="centerY" id="QAt-Xe-vhT"/>
-                            <constraint firstItem="7P3-u6-eQG" firstAttribute="leading" secondItem="jd3-mQ-4cU" secondAttribute="leading" constant="30" id="VWD-8g-Cw2"/>
-                            <constraint firstAttribute="trailing" secondItem="7P3-u6-eQG" secondAttribute="trailing" constant="30" id="Vla-Ca-Q93"/>
-                            <constraint firstAttribute="trailing" secondItem="xfU-wY-5Gu" secondAttribute="trailing" constant="30" id="cup-Z0-T63"/>
-                            <constraint firstItem="uUv-de-bIB" firstAttribute="top" secondItem="7P3-u6-eQG" secondAttribute="bottom" constant="40" id="sIq-sQ-vi1"/>
-                            <constraint firstItem="xfU-wY-5Gu" firstAttribute="leading" secondItem="jd3-mQ-4cU" secondAttribute="leading" constant="30" id="zqm-8f-zEC"/>
+                            <constraint firstItem="7P3-u6-eQG" firstAttribute="leading" secondItem="cgj-HF-ZZ2" secondAttribute="leading" constant="30" id="VWD-8g-Cw2"/>
+                            <constraint firstItem="cgj-HF-ZZ2" firstAttribute="trailing" secondItem="7P3-u6-eQG" secondAttribute="trailing" constant="30" id="Vla-Ca-Q93"/>
+                            <constraint firstItem="cgj-HF-ZZ2" firstAttribute="trailing" secondItem="xfU-wY-5Gu" secondAttribute="trailing" constant="30" id="cup-Z0-T63"/>
+                            <constraint firstItem="cgj-HF-ZZ2" firstAttribute="bottom" secondItem="7P3-u6-eQG" secondAttribute="bottom" constant="40" id="sIq-sQ-vi1"/>
+                            <constraint firstItem="xfU-wY-5Gu" firstAttribute="leading" secondItem="cgj-HF-ZZ2" secondAttribute="leading" constant="30" id="zqm-8f-zEC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="cgj-HF-ZZ2"/>
                     </view>
                     <connections>
                         <outlet property="locationButton" destination="7P3-u6-eQG" id="Go1-q0-QHM"/>
@@ -363,15 +349,12 @@ Access private, members-only coupons</string>
         <scene sceneID="B18-0h-qu1">
             <objects>
                 <viewController storyboardIdentifier="PushNotificationsViewController" id="T7k-Gg-DzW" customClass="PushNotificationsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ali-aK-cki"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ken-Sb-XMp"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="apa-C6-G17">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photopon would like to access push notifications services so we can notify you about your friends activity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-Fz-HKu">
+                                <rect key="frame" x="30" y="227.00000000000003" width="315" height="105.33333333333334"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -379,6 +362,7 @@ Access private, members-only coupons</string>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-CP-bdp">
+                                <rect key="frame" x="30" y="435" width="315" height="50"/>
                                 <color key="backgroundColor" red="0.18254509229999999" green="0.61480180370000004" blue="0.27975566280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fXM-Dz-9Jw"/>
@@ -394,13 +378,14 @@ Access private, members-only coupons</string>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Pk0-CP-bdp" firstAttribute="leading" secondItem="apa-C6-G17" secondAttribute="leading" constant="30" id="9Wf-h4-MVc"/>
-                            <constraint firstItem="F4g-Fz-HKu" firstAttribute="leading" secondItem="apa-C6-G17" secondAttribute="leading" constant="30" id="Hhi-EG-xFt"/>
-                            <constraint firstAttribute="trailing" secondItem="F4g-Fz-HKu" secondAttribute="trailing" constant="30" id="bXK-me-SdK"/>
+                            <constraint firstItem="Pk0-CP-bdp" firstAttribute="leading" secondItem="j2Y-nu-JP2" secondAttribute="leading" constant="30" id="9Wf-h4-MVc"/>
+                            <constraint firstItem="F4g-Fz-HKu" firstAttribute="leading" secondItem="j2Y-nu-JP2" secondAttribute="leading" constant="30" id="Hhi-EG-xFt"/>
+                            <constraint firstItem="j2Y-nu-JP2" firstAttribute="trailing" secondItem="F4g-Fz-HKu" secondAttribute="trailing" constant="30" id="bXK-me-SdK"/>
                             <constraint firstItem="F4g-Fz-HKu" firstAttribute="centerY" secondItem="apa-C6-G17" secondAttribute="centerY" id="g5k-H2-asx"/>
-                            <constraint firstItem="Ken-Sb-XMp" firstAttribute="top" secondItem="Pk0-CP-bdp" secondAttribute="bottom" constant="40" id="hKc-pk-y4E"/>
-                            <constraint firstAttribute="trailing" secondItem="Pk0-CP-bdp" secondAttribute="trailing" constant="30" id="lWc-el-mVU"/>
+                            <constraint firstItem="j2Y-nu-JP2" firstAttribute="bottom" secondItem="Pk0-CP-bdp" secondAttribute="bottom" constant="40" id="hKc-pk-y4E"/>
+                            <constraint firstItem="j2Y-nu-JP2" firstAttribute="trailing" secondItem="Pk0-CP-bdp" secondAttribute="trailing" constant="30" id="lWc-el-mVU"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="j2Y-nu-JP2"/>
                     </view>
                     <connections>
                         <outlet property="pushNotificationButton" destination="Pk0-CP-bdp" id="3cc-Xn-gKN"/>
@@ -414,21 +399,19 @@ Access private, members-only coupons</string>
         <scene sceneID="521-w5-720">
             <objects>
                 <viewController storyboardIdentifier="EnjoyPhotoponViewController" id="zi6-oU-9mY" customClass="EnjoyPhotoponViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="U92-Ov-FsL"/>
-                        <viewControllerLayoutGuide type="bottom" id="tPc-Vr-Qr8"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ecB-Qp-ouC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enjoy Photopon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPM-KL-vji">
+                                <rect key="frame" x="30" y="261.66666666666669" width="315" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aew-d8-yOf">
+                                <rect key="frame" x="20" y="435" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cS2-Kn-G2x"/>
@@ -443,6 +426,7 @@ Access private, members-only coupons</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-BA-x0B">
+                                <rect key="frame" x="20" y="365" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.41176470590000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="r5h-eZ-s2p"/>
@@ -458,16 +442,17 @@ Access private, members-only coupons</string>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aew-d8-yOf" firstAttribute="leading" secondItem="ecB-Qp-ouC" secondAttribute="leading" constant="20" id="0wa-6U-oR1"/>
-                            <constraint firstItem="tPc-Vr-Qr8" firstAttribute="top" secondItem="aew-d8-yOf" secondAttribute="bottom" constant="40" id="9zN-90-4IW"/>
-                            <constraint firstItem="cPM-KL-vji" firstAttribute="leading" secondItem="ecB-Qp-ouC" secondAttribute="leading" constant="30" id="DSi-b3-uFb"/>
-                            <constraint firstAttribute="trailing" secondItem="aew-d8-yOf" secondAttribute="trailing" constant="20" id="Iof-hS-s0F"/>
-                            <constraint firstAttribute="trailing" secondItem="cPM-KL-vji" secondAttribute="trailing" constant="30" id="LVC-E7-pD1"/>
-                            <constraint firstItem="bPA-BA-x0B" firstAttribute="leading" secondItem="ecB-Qp-ouC" secondAttribute="leading" constant="20" id="OgF-8O-vyb"/>
+                            <constraint firstItem="aew-d8-yOf" firstAttribute="leading" secondItem="gBK-oT-Az8" secondAttribute="leading" constant="20" id="0wa-6U-oR1"/>
+                            <constraint firstItem="gBK-oT-Az8" firstAttribute="bottom" secondItem="aew-d8-yOf" secondAttribute="bottom" constant="40" id="9zN-90-4IW"/>
+                            <constraint firstItem="cPM-KL-vji" firstAttribute="leading" secondItem="gBK-oT-Az8" secondAttribute="leading" constant="30" id="DSi-b3-uFb"/>
+                            <constraint firstItem="gBK-oT-Az8" firstAttribute="trailing" secondItem="aew-d8-yOf" secondAttribute="trailing" constant="20" id="Iof-hS-s0F"/>
+                            <constraint firstItem="gBK-oT-Az8" firstAttribute="trailing" secondItem="cPM-KL-vji" secondAttribute="trailing" constant="30" id="LVC-E7-pD1"/>
+                            <constraint firstItem="bPA-BA-x0B" firstAttribute="leading" secondItem="gBK-oT-Az8" secondAttribute="leading" constant="20" id="OgF-8O-vyb"/>
                             <constraint firstItem="cPM-KL-vji" firstAttribute="centerY" secondItem="ecB-Qp-ouC" secondAttribute="centerY" id="YqU-BG-i5h"/>
-                            <constraint firstAttribute="trailing" secondItem="bPA-BA-x0B" secondAttribute="trailing" constant="20" id="bIa-aF-R2f"/>
+                            <constraint firstItem="gBK-oT-Az8" firstAttribute="trailing" secondItem="bPA-BA-x0B" secondAttribute="trailing" constant="20" id="bIa-aF-R2f"/>
                             <constraint firstItem="aew-d8-yOf" firstAttribute="top" secondItem="bPA-BA-x0B" secondAttribute="bottom" constant="20" id="cGN-GQ-kW5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="gBK-oT-Az8"/>
                     </view>
                     <connections>
                         <outlet property="registerButton" destination="bPA-BA-x0B" id="zNi-Kp-22B"/>
@@ -484,7 +469,6 @@ Access private, members-only coupons</string>
                 <navigationController storyboardIdentifier="OnboardingNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="K9W-O3-vhp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgF-Gt-2s2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -499,8 +483,8 @@ Access private, members-only coupons</string>
     </scenes>
     <resources>
         <image name="OnboardingBackground-Blur-7" width="700" height="736"/>
-        <image name="photopon-logo-black.png" width="600" height="200"/>
-        <image name="photopon-logo-white.png" width="600" height="200"/>
-        <image name="splash-bottom.png" width="320" height="60"/>
+        <image name="photopon-logo-black" width="300" height="100"/>
+        <image name="photopon-logo-white" width="300" height="100"/>
+        <image name="splash-bottom" width="160" height="30"/>
     </resources>
 </document>

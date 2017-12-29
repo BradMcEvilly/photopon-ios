@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,14 +24,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="204"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="480" height="203"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="203.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVZ-Rk-SX5" userLabel="TopContainer">
-                        <frame key="frameInset" width="480" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="profileplaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="k15-0a-zxI">
-                                <frame key="frameInset" minX="20" minY="8" width="44" height="44"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="profileplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="k15-0a-zxI">
+                                <rect key="frame" x="20" y="8" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.41960784309999999" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="pIM-NL-CmT"/>
@@ -36,7 +39,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOQ-ju-A7g">
-                                <frame key="frameInset" minX="84" minY="19" width="376" height="22"/>
+                                <rect key="frame" x="84" y="19" width="376" height="22"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,31 +57,31 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-Pe-7hA" userLabel="BotContainer">
-                        <frame key="frameInset" minY="60" width="480" height="125"/>
+                        <rect key="frame" x="0.0" y="60" width="480" height="125"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaz-fV-kNX" userLabel="Container" customClass="RoundedBorderedView">
-                                <frame key="frameInset" minX="8" minY="1" width="464" height="114"/>
+                                <rect key="frame" x="8" y="1" width="464" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESm-cA-utu">
-                                        <frame key="frameInset" minX="121" minY="12" width="318" height="24"/>
+                                        <rect key="frame" x="121" y="12" width="318" height="24"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" red="0.34901960780000002" green="0.3411764706" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHb-Se-xkN">
-                                        <frame key="frameInset" minX="121" minY="86" width="318" height="16"/>
+                                        <rect key="frame" x="121" y="86" width="318" height="16"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59607843140000005" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpJ-3e-3dv">
-                                        <frame key="frameInset" minX="121" minY="41" width="318" height="40"/>
+                                        <rect key="frame" x="121" y="41" width="318" height="40"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59607843140000005" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbS-tm-B1e">
-                                        <frame key="frameInset" minX="15" minY="12" width="90" height="90"/>
+                                        <rect key="frame" x="15" y="12" width="90" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gbS-tm-B1e" secondAttribute="height" multiplier="1:1" id="6kr-ON-R7W"/>
                                             <constraint firstAttribute="width" constant="90" id="epe-FL-qdf"/>
@@ -136,6 +139,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profileplaceholder.png" width="360" height="360"/>
+        <image name="profileplaceholder" width="180" height="180"/>
     </resources>
 </document>
