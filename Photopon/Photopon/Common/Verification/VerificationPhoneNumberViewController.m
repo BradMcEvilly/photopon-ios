@@ -59,7 +59,7 @@
         
         [AlertBox showAlertFor:self
                      withTitle:@"Phone number"
-                   withMessage:@"Please enter phone number"
+                   withMessage:@"Please enter a phone number"
                     leftButton:nil
                    rightButton:@"OK"
                     leftAction:nil

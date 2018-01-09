@@ -62,7 +62,7 @@
     
     PFUser* selectedFriend = [sentPhotoponUserList objectAtIndex:thisButton.tag];
     [messageCtrl setUser: selectedFriend];
-    [messageCtrl setMessage: @"Hurry up. Open my Photopon to receive your gift!"];
+    [messageCtrl setMessage: @"Hurry up! Open my Photopon to receive my gift."];
     
     [self.navigationController pushViewController:messageCtrl animated:YES];
     

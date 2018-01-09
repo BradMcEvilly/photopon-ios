@@ -83,7 +83,7 @@
     [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
         if (number >= [giveToGet integerValue]) {
             [AlertBox showMessageFor:self withTitle:@"Are you sure?"
-                         withMessage:@"You can redeem coupon once. Are you sure you want to redeem it now?"
+                         withMessage:@"You can only redeem a coupon once. Are you sure you want to redeem it now?"
                           leftButton:@"Cancel"
                          rightButton:@"Redeem"
                           leftAction:nil

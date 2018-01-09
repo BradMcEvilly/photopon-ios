@@ -21,7 +21,7 @@ NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedK
     }
 
     AMPopTip *tooltip = [self createDefaultTooltip];
-    [tooltip showText:@"Hello, when you are ready to start creating your first Photopon use the shutter button!" direction:AMPopTipDirectionUp maxWidth:280 inView:view fromFrame:frame];
+    [tooltip showText:@"Hello, when you are ready to start creating your first Photopon, use the shutter button!" direction:AMPopTipDirectionUp maxWidth:280 inView:view fromFrame:frame];
     return tooltip;
 }
 
@@ -49,7 +49,7 @@ NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedK
     }
 
     AMPopTip *tooltip = [self createDefaultTooltip];
-    [tooltip showText:@"Share your Photopon with friends, select the ones you want to share to from the list and tap on this button when ready. You can add friends from the Friends menu." direction:AMPopTipDirectionDown maxWidth:280 inView:view fromFrame:frame];
+    [tooltip showText:@"Share your Photopon with your friends: select them from the list and tap on this button when ready. You can add friends from the Friends menu." direction:AMPopTipDirectionDown maxWidth:280 inView:view fromFrame:frame];
     return tooltip;
 }
 

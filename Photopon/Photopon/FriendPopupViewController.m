@@ -185,7 +185,7 @@
 
     [AlertBox showAlertFor:self
                  withTitle:@"Send Invite"
-               withMessage:[NSString stringWithFormat:@"Your friend %@ is not registered in Photopon. Would you like to invite him?", [selectedFriend valueForKey:@"name"]]
+               withMessage:[NSString stringWithFormat:@"Your friend %@ is not registered to Photopon. Would you like to invite him?", [selectedFriend valueForKey:@"name"]]
                 leftButton:@"Invite"
                rightButton:@"Not now"
                 leftAction:@selector(InviteFriend)

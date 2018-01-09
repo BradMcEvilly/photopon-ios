@@ -38,8 +38,8 @@
     if ([_screenName.text isEqualToString:@""]) {
         
         [AlertBox showAlertFor:self
-                     withTitle:@"Screen name"
-                   withMessage:@"Please enter screen name"
+                     withTitle:@"Username"
+                   withMessage:@"Please enter a username"
                     leftButton:nil
                    rightButton:@"OK"
                     leftAction:nil
@@ -59,8 +59,8 @@
             [ind remove];
      
             [AlertBox showAlertFor:self
-                         withTitle:@"Screen name"
-                       withMessage:@"Screen name is alreay used. Please pick another screen name."
+                         withTitle:@"Username"
+                       withMessage:@"Username is alreay used. Please pick another one."
                         leftButton:nil
                        rightButton:@"OK"
                         leftAction:nil

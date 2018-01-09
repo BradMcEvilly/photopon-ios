@@ -279,7 +279,7 @@
 
         notifCell.notificationImageView.image = [UIImage imageNamed:@"Icon-Photopon.png"];
         notifCell.titleLabel.text = @"Welcome to Photopon!";
-        notifCell.subtitleLabel.text = @"Swipe right to see nerby coupons.";
+        notifCell.subtitleLabel.text = @"Swipe right to see nearby coupons.";
         //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
         return notifCell;
         
