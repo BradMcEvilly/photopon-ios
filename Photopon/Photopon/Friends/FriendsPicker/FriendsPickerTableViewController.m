@@ -11,6 +11,7 @@
 #import <UIImageView+WebCache.h>
 #import "UIColor+Convinience.h"
 #import "UIColor+Theme.h"
+#import "AlertBox.h"
 
 @interface FriendsPickerTableViewController ()
 
@@ -23,7 +24,11 @@
 
 @end
 
-@implementation FriendsPickerTableViewController
+@implementation FriendsPickerTableViewController {
+    
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +53,8 @@
         }
         [self groupFriends];
         [self.tableView reloadData];
+        
+        [self.sendButton setEnabled:[self.selectedFriends count] != 0];
     });
 }
 
@@ -139,6 +146,8 @@
         [self.selectedFriends addObject:friend];
         [cell setSelecteState];
     }
+    
+   [self.sendButton setEnabled:[self.selectedFriends count] != 0];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -167,8 +176,18 @@
     navVC.navigationBar.barTintColor = [UIColor giftsThemeColor];
     navVC.navigationBar.tintColor = [UIColor whiteColor];
     self.title = @"Share gift";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(confirmedFriendsSelection)];
+    
+    UIImage *img = [UIImage imageNamed:@"confirm"];
+    CGRect f = CGRectMake(0, 0, img.size.width, img.size.height);
+    self.sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, img.size.width, img.size.height)];
+    [self.sendButton setImage:img forState:UIControlStateNormal];
+    [self.sendButton addTarget:self action:@selector(confirmedFriendsSelection) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.sendButton];
+    
+   
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"close-icon"] style:UIBarButtonItemStyleDone target:self action:@selector(cancelSelection)];
+    
+  
     return  navVC;
 }
 
@@ -177,7 +196,21 @@
 }
 
 - (void)confirmedFriendsSelection {
-    [self.delegate didFinishSelecting:[self.selectedFriends allObjects]];
+    [self.sendButton setEnabled:NO];
+    [self.delegate didFinishSelecting:[self.selectedFriends allObjects] onComplete:^(NSError* error) {
+        [self.sendButton setEnabled:YES];
+        if(error != nil){
+            
+            
+            [AlertBox showMessageFor:self
+                           withTitle:@"Error"
+                         withMessage: [error localizedDescription]
+                          leftButton:nil
+                         rightButton:@"OK"
+                          leftAction:nil
+                         rightAction:nil];
+        }
+    }];
 }
 
 @end

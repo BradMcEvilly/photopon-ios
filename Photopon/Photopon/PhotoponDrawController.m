@@ -156,7 +156,7 @@
     [miniCouponViewController didMoveToParentViewController:self];
 }
 
--(void)sendPhotopons:(NSArray*)users {
+-(void)sendPhotopons:(NSArray*)users onComplete:(void (^)(NSError *error))completeFunc{
     if (drawingFile == NULL) {
         drawingFile = [NSNull null];
     }
@@ -167,12 +167,12 @@
     }
 
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
-    //[newPhotoponObject setObject:drawingFile forKey:@"drawing"];
-    //[newPhotoponObject setObject:photoFile forKey:@"photo"];
-    //[newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
+    [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
+    [newPhotoponObject setObject:photoFile forKey:@"photo"];
+    [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
-    //[newPhotoponObject setObject:userIds forKey:@"users"];
-    //[newPhotoponObject setObject:@"b406885f-0b8f-4e66-ab80-19681074362d" forKey:@"installationId"];
+    [newPhotoponObject setObject:userIds forKey:@"users"];
+    [newPhotoponObject setObject:@"b406885f-0b8f-4e66-ab80-19681074362d" forKey:@"installationId"];
     
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -200,6 +200,11 @@
 
             
         } else {
+            
+            if(completeFunc != nil){
+                completeFunc(error);
+            }
+            [((FriendsPickerTableViewController *)self.presentingViewController).sendButton setEnabled:YES];
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
@@ -207,7 +212,7 @@
 
 -(void)savePhotopon {
     if (selectedFriendId) {
-        [self sendPhotopons:@[selectedFriendId]];
+        [self sendPhotopons:@[selectedFriendId] onComplete:nil];
     } else {
         
         PFUser* user = [PFUser currentUser];
@@ -423,8 +428,8 @@
 
 #pragma mark - Friend picker delegate
 
--(void)didFinishSelecting:(NSArray *)friends {
-    [self sendPhotopons:friends];
+-(void)didFinishSelecting:(NSArray *)friends onComplete:(void (^)(NSError *))completeFunc{
+    [self sendPhotopons:friends onComplete:completeFunc];
 }
 
 -(void)didCancel {

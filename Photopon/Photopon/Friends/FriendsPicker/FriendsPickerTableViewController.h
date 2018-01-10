@@ -10,7 +10,7 @@
 
 @protocol FriendsPickerDelegate <NSObject>
 
-- (void)didFinishSelecting:(NSArray *)friends;
+- (void)didFinishSelecting:(NSArray *)friends onComplete:(void (^)(NSError *error))completeFunc;
 - (void)didCancel;
 
 @end
@@ -18,6 +18,7 @@
 @interface FriendsPickerTableViewController : UITableViewController
 
 @property (nonatomic, strong)  NSMutableArray* excludedFriends;
+@property (nonatomic, strong)  UIButton* sendButton;
 
 @property (nonatomic, weak) id <FriendsPickerDelegate> delegate;
 
