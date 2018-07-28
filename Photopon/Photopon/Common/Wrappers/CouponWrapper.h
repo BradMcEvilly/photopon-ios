@@ -14,6 +14,7 @@ typedef void (^BooleanCallback)(BOOL value);
 
 + (CouponWrapper*) fromObject:(PFObject*)object;
 - (void) getCoupon;
+- (void) redeemCoupon;
 - (void) isRedeemed:(BooleanCallback)callback;
 
 @property (assign) PFObject* obj;

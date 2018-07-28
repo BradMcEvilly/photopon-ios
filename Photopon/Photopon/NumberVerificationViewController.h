@@ -11,6 +11,9 @@
 #import "VerificationCodeViewController.h"
 #import "VerificationScreenNameViewController.h"
 #import "VerificationWelcomeViewController.h"
+#import "Parse/Parse.h"
+
+@class VerificationPhoneNumberViewController;
 
 @protocol NumberVerificationDelegate <NSObject>
 

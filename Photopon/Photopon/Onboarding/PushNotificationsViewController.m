@@ -23,6 +23,12 @@
 
     self.pushNotificationButton.layer.cornerRadius = 7;
     self.pushNotificationButton.layer.masksToBounds = YES;
+    
+    if([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]){
+        [self.pushNotificationButton setTitle:@"Already Enabled" forState:UIControlStateNormal];
+        [self.pushNotificationButton setEnabled:NO];
+        [self.pushNotificationButton setBackgroundColor:[UIColor lightGrayColor]];
+    }
 }
 
 - (IBAction)pushNotificationsButtonHandler:(id)sender {

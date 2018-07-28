@@ -146,6 +146,7 @@
     [UIView animateWithDuration:1
                      animations:^{
                          [self.view layoutIfNeeded];
+                          [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.presentableModels.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
                      }];
     
     /*CGPoint currentOffset = [self.chatTableView contentOffset];

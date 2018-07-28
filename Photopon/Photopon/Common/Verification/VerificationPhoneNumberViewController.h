@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IndicatorViewController.h"
+#import "PhoneNumberFormatter.h"
+#import "AlertBox.h"
+#import "NumberVerificationViewController.h"
+
 
 @protocol NumberVerificationDelegate;
 

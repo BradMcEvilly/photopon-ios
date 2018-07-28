@@ -7,6 +7,8 @@
 //
 
 #import "EnjoyPhotoponViewController.h"
+#import "PPTools.h"
+#import "AlertControllerFactory.h"
 
 @interface EnjoyPhotoponViewController()
 
@@ -15,7 +17,7 @@
 
 @end
 
-@implementation EnjoyPhotoponViewController
+@implementation EnjoyPhotoponViewController 
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -26,12 +28,33 @@
     }
 }
 
+-(void) checkLocation{
+    
+        UIAlertController *alert = [AlertControllerFactory basicConfirmWithMessage:@"In order to access the app you must enable your location services!" completion:^{
+            [PPTools enableLocation:nil];
+        }];
+        [self presentViewController:alert animated:YES completion:^{
+            
+        }];
+    
+}
+
 - (IBAction)registerButtonHandler:(id)sender {
-    [self.delegate userShouldRegister];
+    
+    if([PPTools isLocationEnabled] != 2){
+        [self checkLocation];
+    }else{
+         [self.delegate userShouldRegister];
+    }
+   
 }
 
 - (IBAction)skipButtonHandler:(id)sender {
-    [self.delegate userShouldSkip];
+    if([PPTools isLocationEnabled] != 2){
+        [self checkLocation];
+    }else{
+        [self.delegate userShouldSkip];
+    }
 //    [[[UIAlertView alloc]initWithTitle:@"NOT IMPLEMENTED" message:@"-" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
 }
 

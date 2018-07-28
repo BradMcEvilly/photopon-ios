@@ -12,5 +12,7 @@
 + (UIAlertController *)singleDismissActionAlertWithAlertTitle:(NSString *)title message:(NSString *)message actionTitle:(NSString *)title;
 + (UIAlertController *)basicAlertWithMessage:(NSString *)message;
 + (UIAlertController *)basicAlertWithMessage:(NSString *)message completion:(void (^)(void))completion;
++ (UIAlertController *)basicConfirmWithMessage:(NSString *)message completion:(void (^)(void))completion;
+
 
 @end

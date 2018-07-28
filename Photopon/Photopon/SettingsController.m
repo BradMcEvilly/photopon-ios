@@ -104,10 +104,13 @@
 {
     [super viewDidLoad];
 
-    self.changeNumber.layer.cornerRadius = 8;
-    self.changeNumber.layer.masksToBounds = YES;
-
-    [self.changePhoto addTarget:self action:@selector(changePhotoCallback) forControlEvents:UIControlEventTouchDown];
+    [self.photoView setUserInteractionEnabled:YES];
+    UITapGestureRecognizer* tap = [UITapGestureRecognizer new];
+    [tap addTarget:self action:@selector(changePhotoCallback)];
+    [self.photoView addGestureRecognizer:tap];
+    
+    
+    
     [self.requestMerchant addTarget:self action:@selector(requestMerchantCallback) forControlEvents:UIControlEventTouchDown];
     
     [self.changeNumber addTarget:self action:@selector(changePhoneNumber) forControlEvents:UIControlEventTouchDown];

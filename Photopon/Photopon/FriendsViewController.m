@@ -32,10 +32,12 @@
 @implementation FriendsViewController
 {
     NSMutableArray *myFriends;
+    NSMutableArray *pendingFriends;
     NSMutableArray* excludedFriends;
     BOOL isSelectMode;
     SEL onFriendSelected;
     id onFriendSelectedTarget;
+     UIRefreshControl* refreshControl;
 }
 
 -(void)viewDidLoad
@@ -45,11 +47,16 @@
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
     myFriends = [NSMutableArray array];
+    pendingFriends = [NSMutableArray array];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add-friend-image"] style:UIBarButtonItemStylePlain target:self action:@selector(addFriendClicked)];
 
     [self.friendsTable registerNib:[UINib nibWithNibName:@"FriendTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendTableViewCell"];
+    
+    [self.btnAddFriend addTarget:self action:@selector(addFriendClicked) forControlEvents:UIControlEventTouchDown];
+    
+    
     
 //    if (isSelectMode) {
 ////        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(friendsSelected)];
@@ -67,9 +74,18 @@
 //        self.headerVC = header;
 //    }
 
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
-    [self.friendsTable addGestureRecognizer:tap];
-
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.tintColor = [UIColor blackColor];
+    [refreshControl addTarget:self
+                       action:@selector(updateFriends)
+             forControlEvents:UIControlEventValueChanged];
+    
+    
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.friendsTable;
+    tableViewController.refreshControl = refreshControl;
 
 }
 
@@ -114,9 +130,11 @@
 }
 
 -(void)updateFriends {
+    [self.emptyView setHidden:YES];
     
     GetMyFriends(^(NSArray *results, NSError *error) {
         [myFriends removeAllObjects];
+        [pendingFriends removeAllObjects];
         for (PFObject* obj in results) {
             PFUser* object = (PFUser*)obj[@"user2"];
             
@@ -126,9 +144,17 @@
                 }
 
                 [myFriends addObject:object];
+            }else{
+                PFUser* object = [PFUser new];
+                [object setUsername:[obj objectForKey:@"name"]];
+                [object setEmail:[obj objectForKey:@"phone"]];
+                [pendingFriends addObject:object];
             }
         }
+        [self.emptyView setHidden:pendingFriends.count + myFriends.count > 0];
+        
         [self.friendsTable reloadData];
+        [refreshControl endRefreshing];
     });
 }
 
@@ -147,115 +173,198 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return (myFriends.count + pendingFriends.count >0) ? 2 : 0;
+  
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [myFriends count];
+    if(section == 0){
+        return [myFriends count];
+    }else{
+        return [pendingFriends count];
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject *item = [myFriends objectAtIndex:indexPath.row];
-    PFObject *user = [PFUser currentUser];
-    NSString *friendID = item[@"objectId"];
-    NSString *userID = user[@"objectId"];
-
-    FriendTableViewCell *friendCell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCell"];
-    [friendCell setName:item[@"email"] username:item[@"username"]];
-
-    PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
-
-    [query whereKey:@"user" equalTo:user];
-    [query whereKey:@"friend" equalTo:item];
-    [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
-        int shared = number;
-        PFQuery *query = [PFQuery queryWithClassName:@"Redeemed"];
-        [query whereKey:@"from" equalTo:user];
-        [query whereKey:@"to" equalTo:item];
+    if(indexPath.section == 0){
+        
+        PFObject *item = [myFriends objectAtIndex:indexPath.row];
+        PFObject *user = [PFUser currentUser];
+        NSString *friendID = item[@"objectId"];
+        NSString *userID = user[@"objectId"];
+        
+        FriendTableViewCell *friendCell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCell"];
+        [friendCell setName:item[@"email"] username:item[@"username"]];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+        
+        [query whereKey:@"user" equalTo:user];
+        [query whereKey:@"friend" equalTo:item];
         [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
-            [friendCell setNumberOfGiftsUsed:number giftsShared:shared];
+            int shared = number;
+            PFQuery *query = [PFQuery queryWithClassName:@"Redeemed"];
+            [query whereKey:@"from" equalTo:user];
+            [query whereKey:@"to" equalTo:item];
+            [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+                [friendCell setNumberOfGiftsUsed:number giftsShared:shared];
+            }];
         }];
-    }];
-
-
-    PFFile* img = [item objectForKey:@"image"];
-    if (img) {
-        [friendCell.friendImageView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        
+        
+        PFFile* img = [item objectForKey:@"image"];
+        if (img) {
+            [friendCell.friendImageView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        return friendCell;
+        
+    }else{
+        
+        PFObject *item =  [pendingFriends objectAtIndex:indexPath.row];
+        PFObject *user = [PFUser currentUser];
+        NSString *friendID = item[@"objectId"];
+        NSString *userID = user[@"objectId"];
+        
+        FriendTableViewCell *friendCell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCell"];
+        [friendCell setName:nil username:item[@"username"]];
+        [friendCell.friendShareInfoLabel setText:item[@"email"]];
+        return friendCell;
+        
     }
-    return friendCell;
+   
 }
 
 
 
 
--(void) didTapOnTableView:(UIGestureRecognizer*) recognizer {
-    CGPoint tapLocation = [recognizer locationInView:self.friendsTable];
-    NSIndexPath *indexPath = [self.friendsTable indexPathForRowAtPoint:tapLocation];
-    
-    if (!indexPath) {
-        return;
-    }
-    
-    NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
-    
-    NSLog(@"%ld", (long)indexPath.row);
-    
-    if (isSelectMode) {
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    if(indexPath.section == 0){
+        NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:indexPath.row];
         
-        bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+        NSLog(@"%ld", (long)indexPath.row);
         
-        
-        if (selectedValue) {
-            int numSelected = 0;
-            for (int i = 0; i < [myFriends count]; i++) {
-                NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:i];
-                bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
-                
-                if (isSelected) {
-                    numSelected++;
+        if (isSelectMode) {
+            
+            bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+            
+            
+            if (selectedValue) {
+                int numSelected = 0;
+                for (int i = 0; i < [myFriends count]; i++) {
+                    NSDictionary *item = (NSDictionary *)[myFriends objectAtIndex:i];
+                    bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
+                    
+                    if (isSelected) {
+                        numSelected++;
+                    }
                 }
+                
+                if (numSelected >= 10) {
+                    [AlertBox showMessageFor:self withTitle:@"Share limit reached"
+                                 withMessage:@"You can share a single Photopon with no more than 10 friends"
+                                  leftButton:nil
+                                 rightButton:@"OK"
+                                  leftAction:nil
+                                 rightAction:nil];
+                    
+                    return;
+                    
+                }
+                
             }
             
-            if (numSelected >= 10) {
-                [AlertBox showMessageFor:self withTitle:@"Share limit reached"
-                             withMessage:@"You can share a single Photopon with no more than 10 friends"
-                              leftButton:nil
-                             rightButton:@"OK"
-                              leftAction:nil
-                             rightAction:nil];
+            NSMutableDictionary* mutableDict = [item mutableCopy];
+            [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];
+            [myFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
+            
+            [self.friendsTable reloadData];
+            
+            SendGAEvent(@"user_action", @"friends_view", @"friend_selected");
+        } else {
+            FriendPopupViewController* friendPopup = (FriendPopupViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendPopup"];
+            [friendPopup setFriend:item];
+            [friendPopup setFriendViewController:self];
+            
+            friendPopup.providesPresentationContextTransitionStyle = YES;
+            friendPopup.definesPresentationContext = YES;
+            
+            [friendPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+            [self presentViewController:friendPopup animated:YES completion:nil];
+            
+            SendGAEvent(@"user_action", @"friends_view", @"friend_tapped");
+        }
+
+    }/*else{
+        
+        NSDictionary *item = (NSDictionary *)[pendingFriends objectAtIndex:indexPath.row];
+        
+        NSLog(@"%ld", (long)indexPath.row);
+        
+        if (isSelectMode) {
+            
+            bool selectedValue = [[item valueForKey:@"isSelected"] boolValue] == false;
+            
+            
+            if (selectedValue) {
+                int numSelected = 0;
+                for (int i = 0; i < [pendingFriends count]; i++) {
+                    NSDictionary *item = (NSDictionary *)[pendingFriends objectAtIndex:i];
+                    bool isSelected = [[item valueForKey:@"isSelected"] boolValue];
+                    
+                    if (isSelected) {
+                        numSelected++;
+                    }
+                }
                 
-                return;
-
+                if (numSelected >= 10) {
+                    [AlertBox showMessageFor:self withTitle:@"Share limit reached"
+                                 withMessage:@"You can share a single Photopon with no more than 10 friends"
+                                  leftButton:nil
+                                 rightButton:@"OK"
+                                  leftAction:nil
+                                 rightAction:nil];
+                    
+                    return;
+                    
+                }
+                
             }
-
+            
+            NSMutableDictionary* mutableDict = [item mutableCopy];
+            [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];
+            [pendingFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
+            
+            [self.friendsTable reloadData];
+            
+            SendGAEvent(@"user_action", @"friends_view", @"friend_selected");
+        } else {
+            FriendPopupViewController* friendPopup = (FriendPopupViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendPopup"];
+            [friendPopup setFriend:item];
+            [friendPopup setFriendViewController:self];
+            
+            friendPopup.providesPresentationContextTransitionStyle = YES;
+            friendPopup.definesPresentationContext = YES;
+            
+            [friendPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+            [self presentViewController:friendPopup animated:YES completion:nil];
+            
+            SendGAEvent(@"user_action", @"friends_view", @"friend_tapped");
         }
         
-        NSMutableDictionary* mutableDict = [item mutableCopy];
-        [mutableDict setValue:[NSNumber numberWithBool:selectedValue] forKey:@"isSelected"];
-        [myFriends setObject:mutableDict atIndexedSubscript:indexPath.row];
-        
-        [self.friendsTable reloadData];
-        
-        SendGAEvent(@"user_action", @"friends_view", @"friend_selected");
-    } else {
-        FriendPopupViewController* friendPopup = (FriendPopupViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriendPopup"];
-        [friendPopup setFriend:item];
-        [friendPopup setFriendViewController:self];
-        
-        friendPopup.providesPresentationContextTransitionStyle = YES;
-        friendPopup.definesPresentationContext = YES;
-        
-        [friendPopup setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-        [self presentViewController:friendPopup animated:YES completion:nil];
-        
-        SendGAEvent(@"user_action", @"friends_view", @"friend_tapped");
-    }
+    }*/
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
 
-
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(section == 0){
+        return @"Friends";
+    }else{
+        return @"Pending Friends";
+    }
+}
 
 
 @end

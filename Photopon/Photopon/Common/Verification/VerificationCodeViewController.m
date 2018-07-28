@@ -24,8 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.verifyButton.layer.cornerRadius = 8;
-    self.verifyButton.layer.masksToBounds = YES;
     
     [self.verifyButton addTarget:self action:@selector(doVerify) forControlEvents:UIControlEventTouchDown];
     [self.resendCodeBtn addTarget:self action:@selector(sendCodeAndAlert) forControlEvents:UIControlEventTouchDown];

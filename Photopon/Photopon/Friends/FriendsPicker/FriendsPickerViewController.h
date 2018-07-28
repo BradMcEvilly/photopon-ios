@@ -15,10 +15,19 @@
 
 @end
 
-@interface FriendsPickerTableViewController : UITableViewController
+@interface FriendsPickerViewController : UIViewController
 
 @property (nonatomic, strong)  NSMutableArray* excludedFriends;
 @property (nonatomic, strong)  UIButton* sendButton;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddFriend;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddMoreFriend;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell* cellAddMore;
+
+
 
 @property (nonatomic, weak) id <FriendsPickerDelegate> delegate;
 

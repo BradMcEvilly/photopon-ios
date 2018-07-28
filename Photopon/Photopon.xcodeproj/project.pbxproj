@@ -15,7 +15,6 @@
 		46084ACB1D41569800BE23F0 /* CouponDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46084ACA1D41569800BE23F0 /* CouponDetails.storyboard */; };
 		46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084ACE1D41644F00BE23F0 /* CouponLocationsViewController.m */; };
 		46084AD21D41646900BE23F0 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46084AD11D41646900BE23F0 /* LocationCell.m */; };
-		462682D51D9C325600BD3566 /* buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462682AF1D9C325600BD3566 /* buttons.xcassets */; };
 		462682FB1D9C327800BD3566 /* Stripe.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462682FA1D9C327800BD3566 /* Stripe.xcassets */; };
 		46269AFD1DCBE56200542C56 /* KeyboardAvoidanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46269AFC1DCBE56200542C56 /* KeyboardAvoidanceManager.m */; };
 		462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C697E1D230BDD00E13783 /* AppNavigationStackHelper.m */; };
@@ -85,7 +84,7 @@
 		46D2FFA01D5626AD0073EBC7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2FF9F1D5626AD0073EBC7 /* UserManager.m */; };
 		46FD45201DBCE2C5001FBC75 /* FriendPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD451F1DBCE2C5001FBC75 /* FriendPickerCell.m */; };
 		46FD45231DBCE3D5001FBC75 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46FD45221DBCE3D5001FBC75 /* Friends.storyboard */; };
-		46FD45261DBCE3FC001FBC75 /* FriendsPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD45251DBCE3FC001FBC75 /* FriendsPickerTableViewController.m */; };
+		57042E351728E53AB6FF9244 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A8A9B32D26A130EB0DA5A7 /* libPods-Photopon.a */; };
 		620B12991D594F9100CA038E /* SentPhotoponDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 620B12981D594F9100CA038E /* SentPhotoponDetail.m */; };
 		620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C4C1D1C10F8EF00579CF5 /* FriendPopupViewController.m */; };
 		621268141D38451B00735FC9 /* CouponWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 621268131D38451B00735FC9 /* CouponWrapper.m */; };
@@ -138,7 +137,6 @@
 		62D148DB1B79732100E8D4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D148D91B79732100E8D4A1 /* Main.storyboard */; };
 		62D148DD1B79732100E8D4A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DC1B79732100E8D4A1 /* Images.xcassets */; };
 		62D148E01B79732100E8D4A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D148DE1B79732100E8D4A1 /* LaunchScreen.xib */; };
-		62D5716D6B235673993E4DB4 /* libPods-Photopon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 858D4EA8EAD7A4988E683476 /* libPods-Photopon.a */; };
 		62D9C8011BFBE64A00B81FDB /* MerchantInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D9C8001BFBE64A00B81FDB /* MerchantInfoPage.m */; };
 		62D9C8031BFD44DD00B81FDB /* CouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D9C8021BFD44DD00B81FDB /* CouponTableViewCell.xib */; };
 		62D9C8061BFD48D700B81FDB /* CouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D9C8051BFD48D700B81FDB /* CouponTableViewCell.m */; };
@@ -156,8 +154,13 @@
 		84B8CBA41D0B6F740060BAD5 /* ChatBasePresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA31D0B6F740060BAD5 /* ChatBasePresentableModel.m */; };
 		84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA61D0B6FF70060BAD5 /* ChatUserPresentableModel.m */; };
 		84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8CBA91D0B70070060BAD5 /* ChatMessagePresentableModel.m */; };
+		9C1CEC64202A115900841A29 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CEC63202A115900841A29 /* OnboardingPageViewController.swift */; };
+		9C1CEC67202A455000841A29 /* PPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CEC66202A455000841A29 /* PPTableViewCell.m */; };
 		9C5F7B561FE1576B00756040 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C5F7B551FE1576B00756040 /* Media.xcassets */; };
 		9C5F7B581FE157DA00756040 /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C5F7B571FE157DA00756040 /* icons.xcassets */; };
+		9CE0CD6420378265006462C1 /* PPTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0CD6320378265006462C1 /* PPTools.m */; };
+		9CE5BEBB2098C28900F87A1B /* PPRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5BEBA2098C28900F87A1B /* PPRoundedButton.swift */; };
+		9CE5BEBF2098F51E00F87A1B /* FriendsPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5BEBE2098F51E00F87A1B /* FriendsPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,7 +178,6 @@
 		46084AD01D41646900BE23F0 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		46084AD11D41646900BE23F0 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		462187E31D33FF5B0085579E /* URLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConstants.h; sourceTree = "<group>"; };
-		462682AF1D9C325600BD3566 /* buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = buttons.xcassets; sourceTree = "<group>"; };
 		462682FA1D9C327800BD3566 /* Stripe.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stripe.xcassets; sourceTree = "<group>"; };
 		46269AFB1DCBE56200542C56 /* KeyboardAvoidanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAvoidanceManager.h; sourceTree = "<group>"; };
 		46269AFC1DCBE56200542C56 /* KeyboardAvoidanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAvoidanceManager.m; sourceTree = "<group>"; };
@@ -279,8 +281,6 @@
 		46FD451E1DBCE2C5001FBC75 /* FriendPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPickerCell.h; sourceTree = "<group>"; };
 		46FD451F1DBCE2C5001FBC75 /* FriendPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPickerCell.m; sourceTree = "<group>"; };
 		46FD45221DBCE3D5001FBC75 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
-		46FD45241DBCE3FC001FBC75 /* FriendsPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsPickerTableViewController.h; sourceTree = "<group>"; };
-		46FD45251DBCE3FC001FBC75 /* FriendsPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsPickerTableViewController.m; sourceTree = "<group>"; };
 		620B12971D594F9100CA038E /* SentPhotoponDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SentPhotoponDetail.h; path = SentPhotopons/SentPhotoponDetail.h; sourceTree = "<group>"; };
 		620B12981D594F9100CA038E /* SentPhotoponDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SentPhotoponDetail.m; path = SentPhotopons/SentPhotoponDetail.m; sourceTree = "<group>"; };
 		620C4C1C1C10F8EF00579CF5 /* FriendPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPopupViewController.h; sourceTree = "<group>"; };
@@ -403,11 +403,21 @@
 		84B8CBA61D0B6FF70060BAD5 /* ChatUserPresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUserPresentableModel.m; sourceTree = "<group>"; };
 		84B8CBA81D0B70070060BAD5 /* ChatMessagePresentableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessagePresentableModel.h; sourceTree = "<group>"; };
 		84B8CBA91D0B70070060BAD5 /* ChatMessagePresentableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessagePresentableModel.m; sourceTree = "<group>"; };
-		858D4EA8EAD7A4988E683476 /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95CA157C41A702E2B785BD78 /* Pods-Photopon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.release.xcconfig"; sourceTree = "<group>"; };
 		97E6F5A41CCBEB1896EC961C /* Pods-Photopon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photopon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photopon/Pods-Photopon.debug.xcconfig"; sourceTree = "<group>"; };
+		9C1CEC62202A115900841A29 /* Photopon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Photopon-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C1CEC63202A115900841A29 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		9C1CEC65202A455000841A29 /* PPTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPTableViewCell.h; sourceTree = "<group>"; };
+		9C1CEC66202A455000841A29 /* PPTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPTableViewCell.m; sourceTree = "<group>"; };
 		9C5F7B551FE1576B00756040 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		9C5F7B571FE157DA00756040 /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
+		9CAAD82A2014FFD300411F18 /* Photopon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photopon.entitlements; sourceTree = "<group>"; };
+		9CE0CD6220378265006462C1 /* PPTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPTools.h; sourceTree = "<group>"; };
+		9CE0CD6320378265006462C1 /* PPTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPTools.m; sourceTree = "<group>"; };
+		9CE5BEBA2098C28900F87A1B /* PPRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPRoundedButton.swift; sourceTree = "<group>"; };
+		9CE5BEBD2098F51E00F87A1B /* FriendsPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsPickerViewController.h; sourceTree = "<group>"; };
+		9CE5BEBE2098F51E00F87A1B /* FriendsPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsPickerViewController.m; sourceTree = "<group>"; };
+		A0A8A9B32D26A130EB0DA5A7 /* libPods-Photopon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photopon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,7 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				626266201B8A5E89006D730E /* AVFoundation.framework in Frameworks */,
-				62D5716D6B235673993E4DB4 /* libPods-Photopon.a in Frameworks */,
+				57042E351728E53AB6FF9244 /* libPods-Photopon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +497,6 @@
 			children = (
 				4691DF511DA15464003E52A8 /* Locations */,
 				46857AE91D9D8B9C003C1642 /* Fonts */,
-				462682AF1D9C325600BD3566 /* buttons.xcassets */,
 				462682FA1D9C327800BD3566 /* Stripe.xcassets */,
 				62D148DC1B79732100E8D4A1 /* Images.xcassets */,
 				9C5F7B551FE1576B00756040 /* Media.xcassets */,
@@ -647,6 +656,9 @@
 				4675AA7C1DBBC49D005C49D4 /* RoundedLabel.m */,
 				4675AA7E1DBBC52D005C49D4 /* RoundedBorderedLabel.h */,
 				4675AA7F1DBBC52D005C49D4 /* RoundedBorderedLabel.m */,
+				9C1CEC65202A455000841A29 /* PPTableViewCell.h */,
+				9C1CEC66202A455000841A29 /* PPTableViewCell.m */,
+				9CE5BEBA2098C28900F87A1B /* PPRoundedButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -664,6 +676,7 @@
 		46CF62E71D1EB7FC002122EC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9CE0CD6120378242006462C1 /* Tools */,
 				46AF4B881DA06D4F003556B0 /* Components */,
 				6246E2A11D7E166200CE42B7 /* Verifications */,
 				46D121FC1D70C0DF005B6CAF /* Factories */,
@@ -737,6 +750,8 @@
 				46C28B711D85D29B006A3B34 /* EnjoyPhotoponViewController.m */,
 				46C28B731D85E397006A3B34 /* PushNotificationsViewController.h */,
 				46C28B741D85E397006A3B34 /* PushNotificationsViewController.m */,
+				9C1CEC63202A115900841A29 /* OnboardingPageViewController.swift */,
+				9C1CEC62202A115900841A29 /* Photopon-Bridging-Header.h */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -744,8 +759,8 @@
 		46FD451A1DBCDDC4001FBC75 /* FriendsPicker */ = {
 			isa = PBXGroup;
 			children = (
-				46FD45241DBCE3FC001FBC75 /* FriendsPickerTableViewController.h */,
-				46FD45251DBCE3FC001FBC75 /* FriendsPickerTableViewController.m */,
+				9CE5BEBD2098F51E00F87A1B /* FriendsPickerViewController.h */,
+				9CE5BEBE2098F51E00F87A1B /* FriendsPickerViewController.m */,
 			);
 			path = FriendsPicker;
 			sourceTree = "<group>";
@@ -839,6 +854,7 @@
 		62D148C81B79732100E8D4A1 /* Photopon */ = {
 			isa = PBXGroup;
 			children = (
+				9CAAD82A2014FFD300411F18 /* Photopon.entitlements */,
 				462682F91D9C326700BD3566 /* Assets */,
 				462682AD1D9C325600BD3566 /* Resources */,
 				46CF62E71D1EB7FC002122EC /* Common */,
@@ -1056,9 +1072,18 @@
 			isa = PBXGroup;
 			children = (
 				6262661F1B8A5E89006D730E /* AVFoundation.framework */,
-				858D4EA8EAD7A4988E683476 /* libPods-Photopon.a */,
+				A0A8A9B32D26A130EB0DA5A7 /* libPods-Photopon.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9CE0CD6120378242006462C1 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9CE0CD6220378265006462C1 /* PPTools.h */,
+				9CE0CD6320378265006462C1 /* PPTools.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1096,8 +1121,14 @@
 				TargetAttributes = {
 					62D148C51B79732100E8D4A1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = W4PG6DJR5P;
+						DevelopmentTeam = F43DL7PZMZ;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1137,7 +1168,6 @@
 				9C5F7B561FE1576B00756040 /* Media.xcassets in Resources */,
 				6281445C1C4F000E0008D9FF /* IndicatorViewController.xib in Resources */,
 				46D2FF991D5624780073EBC7 /* Onboarding.storyboard in Resources */,
-				462682D51D9C325600BD3566 /* buttons.xcassets in Resources */,
 				46FD45231DBCE3D5001FBC75 /* Friends.storyboard in Resources */,
 				46857AF61D9D8BA9003C1642 /* WorkSans-Medium.otf in Resources */,
 				62D9C8031BFD44DD00B81FDB /* CouponTableViewCell.xib in Resources */,
@@ -1243,9 +1273,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Photopon/Pods-Photopon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome/FontAwesome.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/ParseUI/ParseUI.framework",
+				"${BUILT_PRODUCTS_DIR}/PubNub/PubNub.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PubNub.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1295,6 +1348,7 @@
 				462C69841D230C7300E13783 /* UIColor+Theme.m in Sources */,
 				4607D8AA1DAC2B51006A8F44 /* SentCouponCell.m in Sources */,
 				46857B221D9D9995003C1642 /* UIColor+Convinience.m in Sources */,
+				9C1CEC67202A455000841A29 /* PPTableViewCell.m in Sources */,
 				62A302B21B7D5EDA00D61F34 /* NotificationController.m in Sources */,
 				62A302BB1B7E9AB300D61F34 /* AddFriendController.m in Sources */,
 				62CA90E91B7B3C1E009C3B4C /* LogHelper.m in Sources */,
@@ -1305,6 +1359,7 @@
 				62821B551C239842007704D1 /* MiniCouponViewController.m in Sources */,
 				46751E271DB2C01E00263777 /* FriendTableViewCell.m in Sources */,
 				620C4C1E1C10F8EF00579CF5 /* FriendPopupViewController.m in Sources */,
+				9CE0CD6420378265006462C1 /* PPTools.m in Sources */,
 				621268141D38451B00735FC9 /* CouponWrapper.m in Sources */,
 				62D148D51B79732100E8D4A1 /* MasterViewController.m in Sources */,
 				46C28B721D85D29B006A3B34 /* EnjoyPhotoponViewController.m in Sources */,
@@ -1329,14 +1384,17 @@
 				623F95581B939AC200506B16 /* WalletController.m in Sources */,
 				46CF62EF1D1EF1FB002122EC /* AlertControllerFactory.m in Sources */,
 				62D148D21B79732100E8D4A1 /* Photopon.xcdatamodeld in Sources */,
+				9C1CEC64202A115900841A29 /* OnboardingPageViewController.swift in Sources */,
 				4675AA801DBBC52D005C49D4 /* RoundedBorderedLabel.m in Sources */,
 				625B600E1D4C121100FB10D2 /* PhotoponWrapper.m in Sources */,
 				62FFA9641C24C29F0086FEA7 /* NumberVerificationViewController.m in Sources */,
 				462C69801D230BDD00E13783 /* AppNavigationStackHelper.m in Sources */,
 				62A302C21B80C4A800D61F34 /* Helper.m in Sources */,
+				9CE5BEBB2098C28900F87A1B /* PPRoundedButton.swift in Sources */,
 				62D086051B86A27D0063C8B8 /* CouponViewController.m in Sources */,
 				46C28B6F1D85CFF4006A3B34 /* LocationServicesViewController.m in Sources */,
 				4675AA881DBBDC8A005C49D4 /* MessageCell.m in Sources */,
+				9CE5BEBF2098F51E00F87A1B /* FriendsPickerViewController.m in Sources */,
 				6246E2A01D7E164000CE42B7 /* VerificationPhoneNumberViewController.m in Sources */,
 				84B8CBAA1D0B70070060BAD5 /* ChatMessagePresentableModel.m in Sources */,
 				84B8CBA71D0B6FF70060BAD5 /* ChatUserPresentableModel.m in Sources */,
@@ -1352,7 +1410,6 @@
 				46084ACF1D41644F00BE23F0 /* CouponLocationsViewController.m in Sources */,
 				4655E6811DAA63A10043443B /* CouponLocationsTableViewController.m in Sources */,
 				4607D8A51DABC892006A8F44 /* BasicNotificationCell.m in Sources */,
-				46FD45261DBCE3FC001FBC75 /* FriendsPickerTableViewController.m in Sources */,
 				84A607411D0F0C0000E2E9A4 /* ChatPhotoponTableViewCell.m in Sources */,
 				62D148CC1B79732100E8D4A1 /* main.m in Sources */,
 				6262661E1B8A5BA1006D730E /* PhotoponCameraView.m in Sources */,
@@ -1490,15 +1547,20 @@
 			baseConfigurationReference = 97E6F5A41CCBEB1896EC961C /* Pods-Photopon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Photopon/Photopon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = W4PG6DJR5P;
+				DEVELOPMENT_TEAM = F43DL7PZMZ;
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Photopon/Onboarding/Photopon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1508,16 +1570,20 @@
 			baseConfigurationReference = 95CA157C41A702E2B785BD78 /* Pods-Photopon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Photopon/Photopon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = W4PG6DJR5P;
+				DEVELOPMENT_TEAM = F43DL7PZMZ;
 				INFOPLIST_FILE = Photopon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Photopon/Onboarding/Photopon-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

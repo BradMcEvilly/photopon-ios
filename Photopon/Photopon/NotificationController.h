@@ -11,5 +11,6 @@
 @interface NotificationController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *notificationsTable;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end

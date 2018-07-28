@@ -21,6 +21,8 @@
 #import "AvailabilityManager.h"
 #import "AlertControllerFactory.h"
 #import "AppNavigationStackHelper.h"
+#import <libPhoneNumber-iOS/NBPhoneNumberUtil.h>
+
 
 NSMutableArray* couponsNearby;
 NSMutableArray* couponsNearbyPF;
@@ -182,9 +184,16 @@ void UpdateNearbyCoupons() {
 
 NSString* NumbersFromFormattedPhone(NSString* formatted) {
     
-    return [[formatted componentsSeparatedByCharactersInSet:
-                            [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-                           componentsJoinedByString:@""];
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    NSError *anError = nil;
+    
+    NBPhoneNumber *myNumber = [phoneUtil parse:formatted
+                                 defaultRegion:@"US" error:&anError];
+    
+    
+    return [[phoneUtil format:myNumber
+                numberFormat:NBEPhoneNumberFormatE164
+                       error:&anError] stringByReplacingOccurrencesOfString:@"+" withString:@""];
 }
 
 

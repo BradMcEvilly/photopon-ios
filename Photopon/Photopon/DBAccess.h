@@ -18,6 +18,9 @@ typedef void (^ZipcodeResult)(BOOL zipcodeWhitelisted, NSError *error);
 
 typedef void (^FriendSuggestionResultBlock)(PFUser *user, NSArray* myFriends);
 
+typedef void (^FriendsSuggestionResultBlock)(NSArray *users, NSArray* myFriends);
+
+
 typedef void (^FileResultBlock)(PFFile* file, NSError *error);
 
 
@@ -25,7 +28,7 @@ void GetMyFriends(ResultBlock block);
 void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block);
 
 
-void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block);
+void GetSearchSuggestion(NSString* searchText, FriendsSuggestionResultBlock block);
 
 void GetNotifications(ResultBlock block);
 void GetSentPhotopons(ResultBlock block);
@@ -33,6 +36,7 @@ void GetWalletItems(ResultBlock block);
 
 void CreateAddFriendNotification(PFUser* toUser);
 void RemoveAddFriendNotification(PFUser* userToRemove);
+void CreateViewPhotoponNotification(PFUser* toUser, PFObject* photopon);
 
 void CreatePhotoponNotification(PFUser* toUser, PFObject* photopon);
 void CreateMessageNotification(PFUser* toUser, NSString* content);

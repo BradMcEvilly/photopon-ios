@@ -15,7 +15,7 @@
 #import "AlertBox.h"
 #import "TooltipFactory.h"
 #import "UIView+CommonLayout.h"
-#import "FriendsPickerTableViewController.h"
+#import "FriendsPickerViewController.h"
 
 @import Foundation;
 
@@ -204,7 +204,7 @@
             if(completeFunc != nil){
                 completeFunc(error);
             }
-            [((FriendsPickerTableViewController *)self.presentingViewController).sendButton setEnabled:YES];
+            [((FriendsPickerViewController *)self.presentingViewController).sendButton setEnabled:YES];
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
@@ -233,7 +233,7 @@
                 [excludeFriends addObject:[obj valueForKey:@"friend"]];
             }
 
-            FriendsPickerTableViewController *pickerVC = [[UIStoryboard storyboardWithName:@"Friends" bundle:nil] instantiateViewControllerWithIdentifier:@"FriendsPickerTableViewController"];
+            FriendsPickerViewController *pickerVC = [[UIStoryboard storyboardWithName:@"Friends" bundle:nil] instantiateViewControllerWithIdentifier:@"FriendsPickerViewController"];
             pickerVC.excludedFriends = [excludeFriends mutableCopy];
             pickerVC.delegate = self;
             [self presentViewController:[pickerVC setupDefaultNavController] animated:YES completion:nil];

@@ -62,6 +62,43 @@
 }
 
 
+-(void)redeemCoupon {
+    
+    [self isRedeemed:^(BOOL value) {
+         PFObject* coupon = self.obj;
+        if(value == YES){
+            
+            [AlertBox showMessageFor:self withTitle:@"Sorry!"
+                         withMessage:[NSString stringWithFormat:@"You have already redeemed this coupon.\n\nYour coupon code is:  %@",  [coupon objectForKey:@"code"]]
+                          leftButton:nil
+                         rightButton:@"Ok"
+                          leftAction:nil
+                         rightAction:nil];
+            
+        }else{
+           
+            [coupon incrementKey:@"numRedeemed"];
+            [coupon saveInBackground];
+            
+            [AlertBox showMessageFor:self withTitle:@"Your coupon"
+                         withMessage:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+                          leftButton:nil
+                         rightButton:@"Awesome!"
+                          leftAction:nil
+                         rightAction:nil];
+            
+            
+            
+            SendGAEvent(@"user_action", @"coupons_table", @"got_coupon");
+            CreateRedeemedLog(NULL, coupon);
+            
+        }
+    }];
+    
+    
+}
+
+
 -(void) getCoupon {
    if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
       return;

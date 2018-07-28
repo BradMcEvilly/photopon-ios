@@ -11,5 +11,6 @@
 @interface WalletController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *walletTable;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end

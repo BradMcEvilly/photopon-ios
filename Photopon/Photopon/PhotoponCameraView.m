@@ -99,6 +99,10 @@
 }
 
 
+-(void) updateCoupons{
+    UpdateNearbyCoupons();
+}
+
 -(void)dealloc {
     RemoveCouponUpdateListener(self);
 }
@@ -131,6 +135,8 @@
     self.photoponContainerView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
 
     AddCouponUpdateListener(self);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCoupons) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onShutterTouch)];
@@ -184,6 +190,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"PhotoponCameraScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+      [self updateCoupons];
 }
 
 

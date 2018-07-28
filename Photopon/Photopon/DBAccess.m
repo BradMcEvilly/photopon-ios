@@ -18,6 +18,8 @@ void GetMyFriends(ResultBlock block) {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query includeKey:@"user2"];
+    [query includeKey:@"name"];
+    [query includeKey:@"phone"];
     [query whereKey:@"user1" equalTo:userId];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
@@ -35,11 +37,45 @@ void GetUserByPhone(NSString* phone, FriendSuggestionResultBlock block) {
 }
 
 
-void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block) {
+void GetSearchSuggestion(NSString* searchText, FriendsSuggestionResultBlock block) {
     
     PFQuery *query = [PFUser query];
-    [query whereKey:@"username" equalTo:searchText];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    [query whereKey:@"username" matchesRegex:searchText modifiers:@"i"];
+    [query setLimit:10];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+      
+        
+        GetMyFriends(^(NSArray *friends, NSError *error) {
+            
+            if ([results count] == 0) {
+                block(nil, friends);
+                return;
+            }
+            /*
+             PFUser* userId = [PFUser currentUser];
+             
+             for (int i = 0; i < [friends count]; ++i) {
+             PFObject* friendship = [friends objectAtIndex:i];
+             PFUser* myFriend = [friendship valueForKey:@"user2"];
+             if (myFriend) {
+             if ([[myFriend objectId] isEqualToString:[userId objectId]]) {
+             block(nil, friends);
+             return;
+             }
+             }
+             }
+             */
+            
+            
+            block(results, friends);
+        });
+        
+        
+        
+        
+    }];
+  /*  [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         
         GetMyFriends(^(NSArray *friends, NSError *error) {
 
@@ -60,13 +96,13 @@ void GetSearchSuggestion(NSString* searchText, FriendSuggestionResultBlock block
                     }
                 }
             }
-             */
+   
             
             
             block((PFUser*)object, friends);
         });
         
-    }];
+    }]; */
 }
 
 
@@ -86,8 +122,16 @@ void GetCoupons(ResultBlock block) {
 void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
     PFQuery *locationQuery = [PFQuery queryWithClassName:@"Location"];
-
     [locationQuery whereKey:@"location" nearGeoPoint:point withinKilometers:1];
+    
+    PFQuery *locationQuery2 = [PFQuery queryWithClassName:@"Location"];
+    [locationQuery2 whereKey:@"isNational" equalTo:[NSNumber numberWithBool:YES]];
+    [locationQuery2 whereKey:@"countryID" equalTo:@"US"];
+    
+    PFQuery *locationQuery3= [PFQuery orQueryWithSubqueries:@[locationQuery, locationQuery2]];
+    
+    
+    
     //
     
     [locationQuery findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
@@ -98,77 +142,57 @@ void GetCouponsByLocation(float latitude, float longitude, ResultBlock block) {
         }
         
         
- //       NSNumber* serverTime = [PFCloud callFunction:@"ServerTime" withParameters:nil];
         
-        [PFCloud callFunctionInBackground:@"MyCoupons"
-                           withParameters:@{
-                                            @"Something": @"somethingelse"
-                                            }
-                                    block:^(id  _Nullable object, NSError * _Nullable error) {
-                                        
-                                        
-                                        NSMutableArray *c = [[NSMutableArray alloc] init];
-                                        NSArray* coupons = [object valueForKey:@"coupons"];
-                                        NSArray* redeems = [object valueForKey:@"redeems"];
-
-                                        int index = 0;
-                                        
-                                        for (PFObject* coupon in coupons) {
+        [locationQuery2 findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
+            
+            //       NSNumber* serverTime = [PFCloud callFunction:@"ServerTime" withParameters:nil];
+            
+            
+            for(PFObject *oneItem in locations) {
+                [ids addObject:oneItem.objectId ];
+            }
+            
+            [PFCloud callFunctionInBackground:@"MyCoupons"
+                               withParameters:@{
+                                                @"Something": @"somethingelse"
+                                                }
+                                        block:^(id  _Nullable object, NSError * _Nullable error) {
                                             
-                                            NSArray* locs = [coupon objectForKey:@"locations"];
                                             
-                                            for (NSString* locid in locs) {
-                                                if ([ids containsObject:locid]) {
+                                            NSMutableArray *c = [[NSMutableArray alloc] init];
+                                            NSArray* coupons = [object valueForKey:@"coupons"];
+                                            NSArray* redeems = [object valueForKey:@"redeems"];
+                                            
+                                            int index = 0;
+                                            
+                                            for (PFObject* coupon in coupons) {
+                                                
+                                                NSArray* locs = [coupon objectForKey:@"locations"];
+                                                
+                                                for (NSString* locid in locs) {
+                                                    if ([ids containsObject:locid]) {
+                                                        [c addObject:@{
+                                                                       @"coupon": coupon,
+                                                                       @"redeemed": redeems[index]
+                                                                       }];
+                                                        break;
+                                                    }
+                                                }
+                                                
+                                                if ([locs count] == 0 && [ids count] != 0) {
                                                     [c addObject:@{
                                                                    @"coupon": coupon,
                                                                    @"redeemed": redeems[index]
                                                                    }];
-                                                    break;
+                                                    
                                                 }
-                                            }
-                                            
-                                            if ([locs count] == 0 && [ids count] != 0) {
-                                                [c addObject:@{
-                                                               @"coupon": coupon,
-                                                               @"redeemed": redeems[index]
-                                                               }];
                                                 
+                                                ++index;
                                             }
-                                            
-                                            ++index;
-                                        }
-                                        block(c, error);
-                                    }];
-        /*
-        PFQuery *couponQuery = [PFQuery queryWithClassName:@"Coupon"];
-        [couponQuery includeKey:@"company"];
-        [couponQuery whereKey:@"isActive" equalTo:[NSNumber numberWithBool:YES]];
-        [couponQuery whereKey:@"expiration" greaterThanOrEqualTo:[NSDate dateWithTimeIntervalSince1970:[serverTime doubleValue]/1000]];
-        
-        
-        
-        [couponQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                                            block(c, error);
+                                        }];
             
-            NSMutableArray *c = [[NSMutableArray alloc] init];
-            for (PFObject* coupon in results) {
-                
-                NSArray* locs = [coupon objectForKey:@"locations"];
-                
-                for (NSString* locid in locs) {
-                    if ([ids containsObject:locid]) {
-                        [c addObject:coupon];
-                        break;
-                    }
-                }
-                
-                if ([locs count] == 0 && [ids count] != 0) {
-                    [c addObject:coupon];
-                }
-                
-            }
-            block(c, error);
         }];
-        */
         
     }];
     
@@ -321,6 +345,37 @@ void CreateMessageNotification(PFUser* toUser, NSString* content) {
             notification[@"to"] = toUser;
             notification[@"type"] = @"MESSAGE";
             notification[@"content"] = content;
+            notification[@"assocUser"] = [PFUser currentUser];
+            
+            [notification saveInBackground];
+        }
+        
+        [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+    }];
+    
+}
+
+void CreateViewPhotoponNotification(PFUser* toUser, PFObject* photopon) {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Notifications"];
+    
+    [query whereKey:@"to" equalTo:toUser];
+    [query whereKey:@"assocUser" equalTo:[PFUser currentUser]];
+    [query whereKey:@"assocPhotopon" equalTo:photopon];
+    [query whereKey:@"type" equalTo:@"VIEWED"];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
+        
+        if (result) {
+          
+            
+        } else {
+            
+            PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+            
+            notification[@"to"] = toUser;
+            notification[@"type"] = @"VIEWED";
+            notification[@"assocPhotopon"] = photopon;
             notification[@"assocUser"] = [PFUser currentUser];
             
             [notification saveInBackground];

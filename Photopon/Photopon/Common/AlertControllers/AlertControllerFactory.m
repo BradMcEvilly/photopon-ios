@@ -30,4 +30,18 @@
     return alertController;
 }
 
++ (UIAlertController *)basicConfirmWithMessage:(NSString *)message completion:(void (^)(void))completion {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Photopon" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (completion) {
+            completion();
+        }
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+      
+    }]];
+    return alertController;
+}
+
 @end

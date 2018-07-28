@@ -6,14 +6,14 @@
 //  Copyright © 2016 Photopon. All rights reserved.
 //
 
-#import "FriendsPickerTableViewController.h"
+#import "FriendsPickerViewController.h"
 #import "FriendPickerCell.h"
 #import <UIImageView+WebCache.h>
 #import "UIColor+Convinience.h"
 #import "UIColor+Theme.h"
 #import "AlertBox.h"
 
-@interface FriendsPickerTableViewController ()
+@interface FriendsPickerViewController ()
 
 @property (nonatomic, strong) NSMutableArray *myFriends;
 
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation FriendsPickerTableViewController {
+@implementation FriendsPickerViewController {
     
     
     
@@ -34,7 +34,28 @@
     [super viewDidLoad];
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.selectedFriends = [NSMutableSet new];
+    
+    [self.btnAddFriend addTarget:self action:@selector(addFriendClicked) forControlEvents:UIControlEventTouchDown];
+    [self.btnAddMoreFriend addTarget:self action:@selector(addFriendClicked) forControlEvents:UIControlEventTouchDown];
+    
     [self loadFriends];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self loadFriends];
+    
+}
+
+-(void)addFriendClicked {
+    SendGAEvent(@"user_action", @"friends_view", @"add_firend_clickede");
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *addFriend = [storyBoard instantiateViewControllerWithIdentifier:@"SBAddFriend"];
+    [self.navigationController pushViewController:addFriend animated:true];
+    
 }
 
 -(void)loadFriends {
@@ -52,10 +73,18 @@
             }
         }
         [self groupFriends];
-        [self.tableView reloadData];
+        [self reloadData];
         
         [self.sendButton setEnabled:[self.selectedFriends count] != 0];
     });
+}
+
+-(void) reloadData{
+    
+    [self.tableView setHidden:self.myFriendsGrouped.count <= 0];
+    [self.emptyView setHidden:self.myFriendsGrouped.count > 0];
+    
+    [self.tableView reloadData];
 }
 
 -(BOOL)isExcluded:(PFUser*)user {
@@ -103,15 +132,24 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.myFriendsGrouped.count;
+    return (self.myFriendsGrouped.count > 0)? self.myFriendsGrouped.count + 1 : 0;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return ((NSArray*)(self.myFriendsGrouped[section])).count;
+    
+    if(section < self.myFriendsGrouped.count){
+        return ((NSArray*)(self.myFriendsGrouped[section])).count;
+    }else{
+        return 1;
+    }
+    
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(indexPath.section < self.myFriendsGrouped.count){
     PFObject *user = self.myFriendsGrouped[indexPath.section][indexPath.row];
 
     FriendPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendPickerCell"];
@@ -132,9 +170,14 @@
     }
 
     return cell;
+    }else{
+        return self.cellAddMore;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section < self.myFriendsGrouped.count){
+        
     PFObject *friend = self.myFriendsGrouped[indexPath.section][indexPath.row];
 
     FriendPickerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -147,7 +190,10 @@
         [cell setSelecteState];
     }
     
-   [self.sendButton setEnabled:[self.selectedFriends count] != 0];
+        [self.sendButton setEnabled:[self.selectedFriends count] != 0];
+    }else{
+       
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,8 +210,15 @@
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(16, 0, 100, 36)];
     label.backgroundColor = [UIColor whiteColor];
     label.textColor = [UIColor colorWithHexString:@"#111111" alpha:1.0];
+    
+    if(section < self.myFriendsGrouped.count){
+        
+    
     NSString *letter = self.myFriendsKeys[section];
     label.text = [[letter substringToIndex:1]uppercaseString];
+    }else{
+        return nil;
+    }
     [view addSubview:label];
     view.layer.masksToBounds = YES;
     return view;

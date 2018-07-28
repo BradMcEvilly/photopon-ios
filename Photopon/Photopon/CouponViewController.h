@@ -13,5 +13,6 @@
 @interface CouponViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CouponUpdateDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *couponTable;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end

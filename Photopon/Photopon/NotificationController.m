@@ -31,11 +31,12 @@
 }
 
 -(void)updateNotifications {
-    
+    [self.emptyView setHidden:YES];
     if ([PFUser currentUser]) {    
         SendGAEvent(@"user_action", @"notifications", @"manual_update");
         GetNotifications(^(NSArray *results, NSError *error) {
             allNotifications = [NSMutableArray arrayWithArray:results];
+            [self.emptyView setHidden:allNotifications.count >0];
             [self.notificationsTable reloadData];
             [refreshControl endRefreshing];
         });
@@ -44,6 +45,7 @@
         [allNotifications addObject:@{ @"type": @"WELCOME_MESSAGE" }];
         [allNotifications addObject:@{ @"type": @"VERIFICATION_MESSAGE" }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.emptyView setHidden:allNotifications.count >0];
             [self.notificationsTable reloadData];
             [refreshControl endRefreshing];
         });
@@ -56,6 +58,7 @@
 {
     [super viewDidLoad];
     
+    self.notificationsTable.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     
     [self.notificationsTable setDelegate:self];
     [self.notificationsTable setDataSource:self];
@@ -66,6 +69,9 @@
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotifications) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
     [RealTimeNotificationHandler addListener:@"NOTIFICATION.NOTIFICATIONVIEW" withBlock:^(NSString *notificationType) {
         [self updateNotifications];
     }];
@@ -87,9 +93,8 @@
     [self.notificationsTable registerNib:[UINib nibWithNibName:@"BasicNotificationCell" bundle:nil] forCellReuseIdentifier:@"BasicNotificationCell"];
     [self.notificationsTable registerNib:[UINib nibWithNibName:@"SentCouponCell" bundle:nil] forCellReuseIdentifier:@"SentCouponCell"];
 
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
-    [self.notificationsTable addGestureRecognizer:tap];
-
+    
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
 }
 
@@ -102,6 +107,7 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"NotificationsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    [self updateNotifications];
 }
 
 -(void)dealloc {
@@ -311,13 +317,7 @@
 }
 
 
-- (void)didTapOnTableView:(UIGestureRecognizer*) recognizer {
-    CGPoint tapLocation = [recognizer locationInView:self.notificationsTable];
-    NSIndexPath *indexPath = [self.notificationsTable indexPathForRowAtPoint:tapLocation];
-    
-    if (!indexPath) {
-        return;
-    }
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PFObject *item = [allNotifications objectAtIndex:indexPath.row];
     
@@ -387,14 +387,14 @@
     } else if ([type isEqualToString:@"VERIFICATION_MESSAGE"]) {
         SendGAEvent(@"user_action", @"welcome_message", @"set_number");
         UIViewController* mainCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"SBNumberVerification"];
-        [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];    
+        [[self topMostController] presentViewController:mainCtrl animated:true completion:nil];
     }
-
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
-
 }
+
+
 
 - (void)showChatWithUser:(PFUser *)user {
     ChatMessagesController* messageCtrl = (ChatMessagesController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBMessages"];

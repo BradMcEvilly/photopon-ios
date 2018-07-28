@@ -17,6 +17,7 @@
 #import "AlertBox.h"
 #import "UIColor+Convinience.h"
 #import <UIImageView+WebCache.h>
+#import "PPTableViewCell.h"
 
 @implementation AddFriendController 
 {
@@ -25,8 +26,10 @@
     BOOL currentSuggestionIsAlreadyFriend;
     
     NSMutableArray<NSMutableDictionary*> *myFriends;
+    NSMutableArray<PFUser*> *mySuggestions;
     NSMutableArray<NSMutableDictionary*> *myContacts;
     
+    NSMutableSet<NSString *> *currentSuggestionAddeds;
     
     NSMutableArray<NSMutableDictionary*> *allContacts;
     
@@ -39,18 +42,19 @@
 {
     NSString* searchText = self.userSearchBar.text;
     
-    GetSearchSuggestion(searchText, ^(PFUser *suggestion, NSArray* allFriends) {
+    GetSearchSuggestion(searchText, ^(NSArray *suggestions, NSArray* allFriends) {
         [self clearSuggestions];
-        currentSuggestionIsAlreadyFriend = FALSE;
-        currentSuggestion = suggestion;
-       
+        
+        BOOL isFriend = NO;
         
         for (PFObject* friendship in allFriends) {
             PFUser* friend = [friendship valueForKey:@"user2"];
-
+            
             if (friend) {
+                isFriend = YES;
                 NSString* name = [friend valueForKey:@"username"];
                 NSString* email = [friend valueForKey:@"email"];
+                NSString* oid = [friend valueForKey:@"objectId"];
                 
                 if (!email) {
                     email = @"";
@@ -58,18 +62,26 @@
                 
                 if ([name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
                     [myFriends addObject:[@{
-                         @"name": name,
-                         @"email": email,
-                         @"object": friend
-                     } mutableCopy]];
+                                            @"name": name,
+                                            @"email": email,
+                                            @"object": friend
+                                            } mutableCopy]];
                     
                     
-                    if ([friend objectId] == [currentSuggestion objectId]) {
-                        currentSuggestion = nil;
-                        currentSuggestionAdded = FALSE;
-                        currentSuggestionIsAlreadyFriend = TRUE;
-                    }
+                    [currentSuggestionAddeds addObject:[friend objectId]];
                 }
+            }
+        }
+        
+        
+        
+        for( PFUser *suggestion in suggestions){
+        
+          
+            if(![currentSuggestionAddeds containsObject:suggestion.objectId]){
+                
+                [mySuggestions addObject:suggestion];
+                
             }
         }
         
@@ -111,6 +123,8 @@
 -(void) clearSuggestions {
     [myFriends removeAllObjects];
     [myContacts removeAllObjects];
+    [mySuggestions removeAllObjects];
+    [currentSuggestionAddeds removeAllObjects];
     currentSuggestion = nil;
     currentSuggestionAdded = FALSE;
 }
@@ -214,9 +228,13 @@
     [self.userSearchBar setDelegate:self];
     [self.searchResultTable setDelegate:self];
     [self.searchResultTable setDataSource:self];
+    self.searchResultTable.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    
+   currentSuggestionAddeds  = [NSMutableSet set];
     
     myFriends = [NSMutableArray array];
     myContacts = [NSMutableArray array];
+     mySuggestions = [NSMutableArray array];
     allContacts = [NSMutableArray array];
 }
 
@@ -289,7 +307,7 @@
         if (([self.userSearchBar.text length] == 0) || (currentSuggestionIsAlreadyFriend)) {
             return 0;
         }
-        return 1;
+        return [mySuggestions count];
     }
     
     if (section == 1) {
@@ -323,7 +341,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendSuggestionsCellIdentifier"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifier"];
+        cell = [[PPTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifier"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
@@ -343,6 +361,7 @@
         cell.detailTextLabel.textColor = [UIColor colorWithHexString:@"#999893" alpha:1.0];
 
         cell.imageView.layer.cornerRadius = 22;
+        cell.imageView.frame = frame;
         cell.imageView.layer.masksToBounds = YES;
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.backgroundColor = [UIColor colorWithHexString:@"#F2EA01" alpha:1.0];
@@ -350,7 +369,7 @@
     
     UITableViewCell *cellAdded = [tableView dequeueReusableCellWithIdentifier:@"FriendSuggestionsCellIdentifierAdded"];
     if (cellAdded == nil) {
-        cellAdded = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifierAdded"];
+        cellAdded = [[PPTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifierAdded"];
         cellAdded.selectionStyle = UITableViewCellSelectionStyleNone;
 
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -371,22 +390,21 @@
         cellAdded.detailTextLabel.textColor = [UIColor colorWithHexString:@"#999893" alpha:1.0];
         cellAdded.imageView.layer.cornerRadius = 22;
         cellAdded.imageView.layer.masksToBounds = YES;
+        
     }
 
     
     UITableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"FriendSuggestionsCellIdentifier1"];
     if (cell1 == nil) {
-        cell1 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifier1"];
+        cell1 = [[PPTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FriendSuggestionsCellIdentifier1"];
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
         cell1.textLabel.font = [UIFont fontWithName:@"MontSerrat" size:16];
         cell1.textLabel.textColor = [UIColor colorWithHexString:@"#595747" alpha:1.0];
-        cell1.imageView.layer.cornerRadius = 22;
-
-#ifdef DEBUG
-        cell1.imageView.backgroundColor = [UIColor redColor];
-#endif
-
+        cell1.imageView.layer.cornerRadius = 1000;
         cell1.imageView.layer.masksToBounds = YES;
+        cell1.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell1.imageView.backgroundColor = [UIColor colorWithHexString:@"#F2EA01" alpha:1.0];
+        
     }
     
     
@@ -396,28 +414,41 @@
     NSURL *userImageUrl = [NSURL URLWithString:userImageFile.url];
 
     if (sectionIndex == 0) {
+        currentSuggestion = [mySuggestions objectAtIndex:indexPath.row];
         if (currentSuggestion) {
+            
+            PFFile *sImageFile = currentSuggestion[@"image"];
+            NSURL *sImageUrl = [NSURL URLWithString:sImageFile.url];
+
             
             if ([ [currentSuggestion objectId] isEqualToString:[currentUser objectId]]) {
                 cell1.textLabel.text = [NSString stringWithFormat: @"%@ (me)", [currentSuggestion objectForKey:@"username"]];
-                cell1.detailTextLabel.text = @"";
-                cell1.imageView.image = theUserImage;
+            cell1.detailTextLabel.text = @"";
+                if (sImageFile) {
+                    [cell1.imageView sd_setImageWithURL:sImageUrl placeholderImage:theUserImage];
+                } else {
+                    cell1.imageView.image = theUserImage;
+                }
                 return cell1;
             }
             
-            if (currentSuggestionAdded) {
+            if ([currentSuggestionAddeds containsObject:currentSuggestion.objectId]) {
                 cellAdded.textLabel.text = [currentSuggestion objectForKey:@"username"];
                 cellAdded.detailTextLabel.text = @"is your friend now!";
-                cellAdded.imageView.image = theUserImage;
+                if (sImageFile) {
+                    [cellAdded.imageView sd_setImageWithURL:sImageUrl placeholderImage:theUserImage];
+                } else {
+                    cellAdded.imageView.image = theUserImage;
+                }
                 return cellAdded;
             }
             
             cell.textLabel.text = [currentSuggestion objectForKey:@"username"];
             cell.detailTextLabel.text = @"";
 
-
-            if (userImageFile) {
-                [cell.imageView sd_setImageWithURL:userImageUrl placeholderImage:theUserImage];
+           
+            if (sImageFile) {
+                [cell.imageView sd_setImageWithURL:sImageUrl placeholderImage:theUserImage];
             } else {
                 cell.imageView.image = theUserImage;
             }
@@ -548,17 +579,18 @@
     
     if (section == 0) {
         
+        PFUser *u  =  [mySuggestions objectAtIndex:indexPath.row];
         
-        if (currentSuggestionAdded) {
-            currentSuggestionAdded = FALSE;
+        if ([currentSuggestionAddeds containsObject:u.objectId]) {
+            [currentSuggestionAddeds removeObject:u.objectId];
             SendGAEvent(@"user_action", @"add_friend", @"friend_removed_from_search");
             
-            [self removeFriend:currentSuggestion];
+            [self removeFriend:[mySuggestions objectAtIndex:indexPath.row]];
         } else {
-            currentSuggestionAdded = TRUE;
+            [currentSuggestionAddeds addObject:u.objectId];
             SendGAEvent(@"user_action", @"add_friend", @"friend_added_from_search");
             
-            [self addFriend:currentSuggestion];
+            [self addFriend: [mySuggestions objectAtIndex:indexPath.row]];
         }
     }
     
@@ -645,6 +677,8 @@
                 }
             }
         });
+        
+        
     }
 
 }

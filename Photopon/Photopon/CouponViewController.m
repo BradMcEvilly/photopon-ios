@@ -28,7 +28,6 @@
 
 @interface CouponViewController()
 
-@property (weak, nonatomic) IBOutlet UIView *notAvailableView;
 
 @property (nonatomic, strong) NSArray *mockCoupons;
 
@@ -48,11 +47,14 @@
 
 
 - (void) couponsUpdated {
+    
     allCoupons = GetNearbyCoupons();
     allPFCoupons = GetNearbyCouponsPF();
     [self.couponTable reloadData];
     [refreshControl endRefreshing];
-    [self photoponAvailabilityConfiguration];
+   
+    [self.emptyView setHidden:allPFCoupons.count > 0];
+    
 }
 
 
@@ -118,11 +120,13 @@
     [tracker set:kGAIScreenName value:@"CouponsScreen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self updateCoupons];
 }
 
 -(void)forceUpdateCoupons {
     SendGAEvent(@"user_action", @"coupons_table", @"manual_update");
     UpdateNearbyCoupons();
+    [refreshControl endRefreshing];
 }
 
 -(void)viewDidLoad
@@ -159,10 +163,7 @@
     self.couponTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
-    allCoupons = GetNearbyCoupons();
-    allPFCoupons = GetNearbyCouponsPF();
-    [self.couponTable reloadData];
-
+    [self couponsUpdated];
     NSLog(@"Registering listener for coupon update");
     AddCouponUpdateListener(self);
 
@@ -177,9 +178,16 @@
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.couponTable;
     tableViewController.refreshControl = refreshControl;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCoupons) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
 
-    [self photoponAvailabilityConfiguration];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoponAvailabilityConfiguration) name:NOTIFICATION_PHOTOPON_AVAILABLE object:nil];
+}
+
+-(void) updateCoupons{
+    UpdateNearbyCoupons();
 }
 
 -(void) dealloc {
@@ -253,8 +261,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+{   
 //    NSInteger thisCellIndex = (int)indexPath.row;
 //
 //    CouponDetailViewController* detailView = (CouponDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBCouponDetails"];
@@ -263,19 +270,37 @@
 //    //UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:detailView];
 //    //navVC.navigationBarHidden = YES;
 //    [self presentViewController:detailView animated:YES completion:nil];
+    
+    selectedCouponIndex = indexPath.row;
+    
     NSArray *couponLocations = [allPFCoupons[selectedCouponIndex] objectForKey:@"locations"];
     if (couponLocations.count == 1) {
         CouponDetailsViewController *detailsVC = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponDetailsViewController"];
         detailsVC.coupon = allPFCoupons[selectedCouponIndex];
         detailsVC.selectedCouponIndex = selectedCouponIndex;
-        detailsVC.location = couponLocations.firstObject;
-        [self.navigationController pushViewController:detailsVC animated:YES];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Location"];
+        [query getObjectInBackgroundWithId:couponLocations.firstObject block:^(PFObject *location, NSError *error) {
+            // Do something with the returned PFObject in the gameScore variable.
+            detailsVC.location = location;
+            [self.navigationController pushViewController:detailsVC animated:YES];
+        }];
+        
+        
+        
+        
+      
     } else {
         CouponLocationsTableViewController *vc = [[UIStoryboard storyboardWithName:@"CouponDetails" bundle:nil]instantiateViewControllerWithIdentifier:@"CouponLocationsTableViewController"];
         vc.coupon = allPFCoupons[selectedCouponIndex];
         vc.selectedCouponIndex = selectedCouponIndex;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
+    
+    
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (IBAction)chatWithFriendsButtonHandler:(id)sender {
@@ -284,15 +309,6 @@
 
 #pragma mark - Availability
 
-- (void)photoponAvailabilityConfiguration {
-    
-    
-    if ([allPFCoupons count] != 0) { //[AvailabilityManager photoponAvailable]) {
-        self.notAvailableView.hidden = YES;
-    } else {
-        self.notAvailableView.hidden = NO;
-        [PhotoponUnavailableViewController addToViewController:self forView:self.notAvailableView];
-    }
-}
+
 
 @end

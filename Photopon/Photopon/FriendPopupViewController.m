@@ -229,15 +229,22 @@
 
 
 -(void) removeFriendShip {
-    NSString* objId = [selectedFriend objectForKey:@"friendshipId"];
+    NSString* objId = selectedFriend.objectId;
     
     
     // This is workaround for Prase bug when object is not removed when it is gone from memory before block function finishes
     __block PFObject* dummyFriendshipRef = nil;
     
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-    [query getObjectInBackgroundWithId:objId block:^(PFObject *friendship, NSError *error) {
-        if (friendship) {
+    [query whereKey:@"user1" equalTo:[PFUser currentUser]];
+    [query whereKey:@"user2" equalTo:selectedFriend];
+    [query setLimit:1];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        
+        
+         if (objects.count > 0) {
+             PFObject *friendship = objects[0];
             [friendship deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 dummyFriendshipRef = friendship;
                 [friendViewCtrl updateFriends];
@@ -256,11 +263,12 @@
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
     SendGAEvent(@"user_action", @"friend_popup", @"settings_opened");
-    
+    /*
     UIAlertAction *blockAction = [UIAlertAction actionWithTitle:@"Block" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // this block runs when the driving option is selected
        SendGAEvent(@"user_action", @"friend_popup", @"block_action");
     }];
+     */
     
     UIAlertAction *unfriendAction = [UIAlertAction actionWithTitle:@"Unfriend" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         SendGAEvent(@"user_action", @"friend_popup", @"unfriend_action");
@@ -268,17 +276,18 @@
         [self removeFriendShip];
     }];
     
+    /*
     UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         SendGAEvent(@"user_action", @"friend_popup", @"ignore_action");
 
         // this block runs when the walking option is selected
     }];
-    
+    */
     
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:blockAction];
+   // [alert addAction:blockAction];
     [alert addAction:unfriendAction];
-    [alert addAction:ignoreAction];
+    //[alert addAction:ignoreAction];
     [alert addAction:defaultAction];
     
     alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;

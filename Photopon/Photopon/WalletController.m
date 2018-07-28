@@ -24,14 +24,20 @@
 {
     NSMutableArray *allWalletItems;
     int selectedItemIndex;
+     UIRefreshControl* refreshControl;
 }
 
 -(void)updateWallet {
     allWalletItems = [NSMutableArray array];
+    [self.emptyView setHidden:YES];
     
     GetWalletItems(^(NSArray *results, NSError *error) {
         allWalletItems = [NSMutableArray arrayWithArray:results];
+        [self.emptyView setHidden:allWalletItems.count > 0];
+        
         [self.walletTable reloadData];
+        [refreshControl endRefreshing];
+        
     });
 
 }
@@ -48,6 +54,20 @@
     [self.walletTable setDelegate:self];
     [self.walletTable setDataSource:self];
     [self updateWallet];
+    
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.tintColor = [UIColor blackColor];
+    [refreshControl addTarget:self
+                       action:@selector(updateWallet)
+             forControlEvents:UIControlEventValueChanged];
+    
+    
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.walletTable;
+    tableViewController.refreshControl = refreshControl;
+
 }
 
 

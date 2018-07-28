@@ -69,6 +69,9 @@
 
     [GetLocationManager() startUpdatingLocation];
     
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
     //[Optimizely enableEditor];
 //    [Optimizely startOptimizelyWithAPIToken:@"AANPFuUBC0eid8cHb2NlL4AyneQspBbn~5685431109" launchOptions:launchOptions];
     [self setupNavBarAppearance];
@@ -137,6 +140,19 @@
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation addUniqueObject:@"Global" forKey:@"channels"];
     [currentInstallation saveInBackground];
+    
+    PFUser* currentUser = [PFUser currentUser];
+    
+    if(currentUser != nil && currentUser.objectId != nil){
+        
+        NSString* channel = [NSString stringWithFormat:@"User_%@", currentUser.objectId];
+        [currentInstallation addUniqueObject:channel forKey:@"channels"];
+        [currentInstallation saveInBackground];
+
+    }
+    
+    
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PushEnabled" object:nil];
 }
 

@@ -7,10 +7,6 @@
 //
 
 #import "VerificationPhoneNumberViewController.h"
-#import "IndicatorViewController.h"
-#import "PhoneNumberFormatter.h"
-#import "NumberVerificationViewController.h"
-#import "AlertBox.h"
 
 @interface VerificationPhoneNumberViewController ()
 
@@ -32,9 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.sendCodeBtn.layer.cornerRadius = 8;
-    self.sendCodeBtn.layer.masksToBounds = YES;
-
+    
     myPhoneNumberFormatter = [[PhoneNumberFormatter alloc] init];
     
     [self.phoneNumber addTarget:self
@@ -67,7 +61,8 @@
         return;
     }
 
-    
+   
+   
     IndicatorViewController* ind = [IndicatorViewController showIndicator:parentCtrl withText:@"Sending verification code..." timeout:60];
     
     
