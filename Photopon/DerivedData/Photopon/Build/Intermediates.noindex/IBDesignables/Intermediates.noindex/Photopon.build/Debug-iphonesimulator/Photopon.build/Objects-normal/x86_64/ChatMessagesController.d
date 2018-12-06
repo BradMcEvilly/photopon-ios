@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatMessagesController.m \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PrefixHeader.pch \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Google/Headers/module.modulemap \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Helper.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/DBAccess.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatMessagesController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PubNubWrapper.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/HeaderViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/UITheme.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatMessageTableViewCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatUserTableViewCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatPhotoponTableViewCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatBasePresentableModel.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatUserPresentableModel.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatMessagePresentableModel.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatPhotoponPresentableModel.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PhotoponViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatMessageUserCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/MessageCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/ChatMessageFriendCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponTableViewCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/Categories/UIColor+Convinience.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/Theme/UIColor+Theme.h

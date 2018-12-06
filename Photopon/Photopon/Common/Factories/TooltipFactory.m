@@ -12,6 +12,8 @@
 NSString * const TooltipTakePhotoCheckedKey = @"TooltipTakePhotoCheckedKey";
 NSString * const TooltipPersonalizeCheckedKey = @"TooltipPersonalizeCheckedKey";
 NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedKey";
+NSString * const TooltipSwipeCouponsCheckedKey = @"TooltipSwipeCouponsCheckedKey";
+NSString * const TooltipWhyContactsNeededCheckedKey = @"TooltipWhyContactsNeededCheckedKey";
 
 @implementation TooltipFactory
 
@@ -41,6 +43,35 @@ NSString * const TooltipSharePhotoponCheckedKey = @"TooltipSharePhotoponCheckedK
 
 + (void)setPersonalizeTooltipChecked {
     [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:TooltipPersonalizeCheckedKey];
+}
+
++ (AMPopTip *)showSwipeCouponsTooltipForView:(UIView *)view frame:(CGRect)frame {
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:TooltipSwipeCouponsCheckedKey]) {
+        return nil;
+    }
+    
+    AMPopTip *tooltip = [self createDefaultTooltip];
+    [tooltip showText:@"Swipe left or right to change coupon" direction:AMPopTipDirectionDown maxWidth:280 inView:view fromFrame:frame];
+    return tooltip;
+}
+
++ (void)setSwipeCouponsTooltipForView {
+    [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:TooltipSwipeCouponsCheckedKey];
+}
+
++ (AMPopTip *)whyContactsRequiredTooltipForView:(UIView *)view frame:(CGRect)frame {
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:TooltipWhyContactsNeededCheckedKey]) {
+        return nil;
+    }
+    
+    AMPopTip *tooltip = [self createDefaultTooltip];
+    [tooltip showText:@"To give your photopon gift to friends, you'll need to add contacts" direction:AMPopTipDirectionUp maxWidth:280 inView:view fromFrame:frame];
+    //    [tooltip showText:@"To share your photopon, you'll need to add friends / contacts" direction:AMPopTipDirectionDown maxWidth:280 inView:view fromFrame:frame];
+    return tooltip;
+}
+
++ (void)setWhyContactsRequiredTooltipForView {
+    [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:TooltipWhyContactsNeededCheckedKey];
 }
 
 + (AMPopTip *)showSharePhotoponForView:(UIView *)view frame:(CGRect)frame {

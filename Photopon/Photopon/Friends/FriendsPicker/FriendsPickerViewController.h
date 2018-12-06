@@ -17,10 +17,15 @@
 
 @interface FriendsPickerViewController : UIViewController
 
-@property (nonatomic, strong)  NSMutableArray* excludedFriends;
-@property (nonatomic, strong)  UIButton* sendButton;
+@property (nonatomic, strong) NSMutableArray* excludedFriends;
+@property (nonatomic, strong) UIButton* sendButton;
+@property (assign) PFObject* currentCoupon;
+@property (nonatomic, strong) NSNumber* numSharesNeeded;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
+@property (weak, nonatomic) IBOutlet UITextView *giveToGetTextView;
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddFriend;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddMoreFriend;
@@ -32,5 +37,5 @@
 @property (nonatomic, weak) id <FriendsPickerDelegate> delegate;
 
 - (UINavigationController *)setupDefaultNavController;
-
+-(void)updateHeaderView;
 @end

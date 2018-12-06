@@ -53,6 +53,14 @@
     PFFile* photoFile = [photopon objectForKey:@"photo"];
     
     PFObject* coupon = [photopon objectForKey:@"coupon"];
+    NSLog(@"------");
+    NSLog(@"-----------");
+    NSLog(@"------");
+    NSLog(@"coupon:");
+    NSLog(@"%@", coupon);
+    NSLog(@"------");
+    NSLog(@"-----------");
+    NSLog(@"------");
     PFFile* companyLogoFile = [[coupon objectForKey:@"company"] objectForKey:@"image"];
     
     if (![photoFile isKindOfClass:[NSNull class]])

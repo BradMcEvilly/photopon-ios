@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>9</integer>
+	<key>logs</key>
+	<dict>
+		<key>16422C41-8E20-40A0-BD5D-F253B5F36BD7</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>16422C41-8E20-40A0-BD5D-F253B5F36BD7.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565751974.62490106</real>
+			<key>timeStoppedRecording</key>
+			<real>565752298.54482305</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>16422C41-8E20-40A0-BD5D-F253B5F36BD7</string>
+		</dict>
+		<key>235F3CCA-F4B2-4665-BC18-0BB89FF68081</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>235F3CCA-F4B2-4665-BC18-0BB89FF68081.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565750513.22846794</real>
+			<key>timeStoppedRecording</key>
+			<real>565751967.11089301</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>235F3CCA-F4B2-4665-BC18-0BB89FF68081</string>
+		</dict>
+		<key>48CDA4D1-338B-4D81-A8D5-C611C0F00DE0</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>48CDA4D1-338B-4D81-A8D5-C611C0F00DE0.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565754487.19231498</real>
+			<key>timeStoppedRecording</key>
+			<real>565754625.43791103</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>48CDA4D1-338B-4D81-A8D5-C611C0F00DE0</string>
+		</dict>
+		<key>52EFAD83-0C2C-4DF5-8230-D9DC54D79808</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>52EFAD83-0C2C-4DF5-8230-D9DC54D79808.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565738709.08206606</real>
+			<key>timeStoppedRecording</key>
+			<real>565739160.67025602</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>52EFAD83-0C2C-4DF5-8230-D9DC54D79808</string>
+		</dict>
+		<key>671E45C0-7A46-44F9-B5FE-E0855FDBE010</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>671E45C0-7A46-44F9-B5FE-E0855FDBE010.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565748216.97027504</real>
+			<key>timeStoppedRecording</key>
+			<real>565748246.63821805</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>671E45C0-7A46-44F9-B5FE-E0855FDBE010</string>
+		</dict>
+		<key>7114352A-EF58-414B-8D3C-30D00D7142B0</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>7114352A-EF58-414B-8D3C-30D00D7142B0.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565742863.90691197</real>
+			<key>timeStoppedRecording</key>
+			<real>565743124.05843306</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>7114352A-EF58-414B-8D3C-30D00D7142B0</string>
+		</dict>
+		<key>71A2B877-5CDC-4673-9694-FE5614ADED33</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>71A2B877-5CDC-4673-9694-FE5614ADED33.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565744350.24145401</real>
+			<key>timeStoppedRecording</key>
+			<real>565744466.82160795</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>71A2B877-5CDC-4673-9694-FE5614ADED33</string>
+		</dict>
+		<key>7460C88D-B497-478D-A22B-87E1FDC006D0</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>7460C88D-B497-478D-A22B-87E1FDC006D0.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565752304.69011295</real>
+			<key>timeStoppedRecording</key>
+			<real>565753683.09652495</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>7460C88D-B497-478D-A22B-87E1FDC006D0</string>
+		</dict>
+		<key>83972CEC-8638-4129-8137-261CB8CE1178</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>83972CEC-8638-4129-8137-261CB8CE1178.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565741045.73987103</real>
+			<key>timeStoppedRecording</key>
+			<real>565741900.84222305</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>83972CEC-8638-4129-8137-261CB8CE1178</string>
+		</dict>
+		<key>8DF2CF8B-A7E1-42AA-A2F8-F97BE02B7555</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>8DF2CF8B-A7E1-42AA-A2F8-F97BE02B7555.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565740619.13076794</real>
+			<key>timeStoppedRecording</key>
+			<real>565741043.54844999</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>8DF2CF8B-A7E1-42AA-A2F8-F97BE02B7555</string>
+		</dict>
+		<key>AADD931D-C983-4D28-AA11-468A544C8EBC</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>AADD931D-C983-4D28-AA11-468A544C8EBC.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565756779.65830398</real>
+			<key>timeStoppedRecording</key>
+			<real>565756881.98331904</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>AADD931D-C983-4D28-AA11-468A544C8EBC</string>
+		</dict>
+		<key>C8F88CA5-DD12-4A54-A3B4-3C423681688D</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>C8F88CA5-DD12-4A54-A3B4-3C423681688D.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565754378.89067304</real>
+			<key>timeStoppedRecording</key>
+			<real>565754481.39576697</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>C8F88CA5-DD12-4A54-A3B4-3C423681688D</string>
+		</dict>
+		<key>D4F5A3D4-6020-44D8-A103-026DFEC36227</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>D4F5A3D4-6020-44D8-A103-026DFEC36227.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565744472.899979</real>
+			<key>timeStoppedRecording</key>
+			<real>565744702.73520803</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>D4F5A3D4-6020-44D8-A103-026DFEC36227</string>
+		</dict>
+		<key>D8B7ACDC-D121-49C3-A3EE-CC1AAFC1CE4A</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>D8B7ACDC-D121-49C3-A3EE-CC1AAFC1CE4A.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565753693.32186496</real>
+			<key>timeStoppedRecording</key>
+			<real>565753881.38431096</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>D8B7ACDC-D121-49C3-A3EE-CC1AAFC1CE4A</string>
+		</dict>
+		<key>DC7AE040-3905-48F2-B307-900CC18A73E1</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>DC7AE040-3905-48F2-B307-900CC18A73E1.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565741907.929268</real>
+			<key>timeStoppedRecording</key>
+			<real>565742088.57173002</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>DC7AE040-3905-48F2-B307-900CC18A73E1</string>
+		</dict>
+		<key>DFAD3F35-069D-45CF-A031-77BAA75B6B93</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>DFAD3F35-069D-45CF-A031-77BAA75B6B93.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565742094.45038497</real>
+			<key>timeStoppedRecording</key>
+			<real>565742856.33497</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>DFAD3F35-069D-45CF-A031-77BAA75B6B93</string>
+		</dict>
+		<key>F844900F-8A82-4D76-AC86-CD135059F5D0</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>F844900F-8A82-4D76-AC86-CD135059F5D0.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Photopon project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Photopon</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Photopon</string>
+			<key>timeStartedRecording</key>
+			<real>565743129.80451</real>
+			<key>timeStoppedRecording</key>
+			<real>565744341.68767297</real>
+			<key>title</key>
+			<string>Debug Photopon</string>
+			<key>uniqueIdentifier</key>
+			<string>F844900F-8A82-4D76-AC86-CD135059F5D0</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

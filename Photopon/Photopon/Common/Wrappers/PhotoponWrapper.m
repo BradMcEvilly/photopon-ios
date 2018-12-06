@@ -273,6 +273,8 @@ NSMutableDictionary* cachedUsers;
 
 -(void) redeem {
     PFObject* coupon = [photopon objectForKey:@"coupon"];
+    PFUser* assocUser = [photopon valueForKey:@"creator"];
+    
     
     [photopon incrementKey:@"numRedeemed"];
     [photopon saveInBackground];
@@ -283,16 +285,18 @@ NSMutableDictionary* cachedUsers;
     SendGAEvent(@"user_action", @"wallet", @"redeem_clicked");
     
     
-    [AlertBox showMessageFor:self withTitle:@"Your coupon"
-                 withMessage:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+    [AlertBox showMessageFor:self withTitle:@"SHOW CASHIER"
+                 withMessage:[NSString stringWithFormat:@"%@ %@ %@", @"Coupon code: ", [coupon objectForKey:@"title"], [coupon objectForKey:@"code"]]
                   leftButton:nil
-                 rightButton:@"Awesome!"
+                 rightButton:@"Done!"
                   leftAction:nil
                  rightAction:nil];
-    
-    
-    
-    CreateRedeemedNotification([photopon valueForKey:@"creator"], photopon);
+    if(assocUser==[PFUser currentUser]){
+    //if([assocUser objectForKey:@"objectId"]==[[PFUser currentUser] objectForKey:@"objectId"]){
+        CreateRedeemedUnlockedCouponNotification([photopon valueForKey:@"creator"], photopon);
+    }else{
+        CreateRedeemedNotification([photopon valueForKey:@"creator"], photopon);
+    }
     CreateRedeemedLog([photopon valueForKey:@"creator"], coupon);
     
 

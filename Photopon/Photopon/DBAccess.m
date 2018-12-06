@@ -20,6 +20,7 @@ void GetMyFriends(ResultBlock block) {
     [query includeKey:@"user2"];
     [query includeKey:@"name"];
     [query includeKey:@"phone"];
+    [query includeKey:@"phoneId"];
     [query whereKey:@"user1" equalTo:userId];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
@@ -422,6 +423,33 @@ void CreateAddWalletNotification(PFUser* toUser, PFObject* photopon) {
     
 }
 
+void CreateUnlockedCouponNotification(PFUser* toUser, PFObject* photopon) {
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+    
+    notification[@"to"] = toUser;
+    notification[@"assocPhotopon"] = photopon;
+    notification[@"assocUser"] = [PFUser currentUser];
+    
+    notification[@"type"] = @"UNLOCKEDCOUPON";
+    
+    [notification saveInBackground];
+    [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+    
+}
+
+void CreateRedeemedUnlockedCouponNotification(PFUser* toUser, PFObject* photopon) {
+    PFObject *notification = [PFObject objectWithClassName:@"Notifications"];
+    
+    notification[@"to"] = toUser;
+    notification[@"assocPhotopon"] = photopon;
+    notification[@"assocUser"] = [PFUser currentUser];
+    
+    notification[@"type"] = @"REDEEMEDUNLOCKED";
+    
+    [notification saveInBackground];
+    [RealTimeNotificationHandler sendUpdate:@"NOTIFICATION" forUser:toUser];
+    
+}
 
 
 void CreateRedeemedNotification(PFUser* toUser, PFObject* photopon) {

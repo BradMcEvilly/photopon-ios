@@ -13,6 +13,8 @@ typedef enum : NSUInteger {
     BasicNotificationCellTemplateRedeemed,
     BasicNotificationCellTemplateMessagedYou,
     BasicNotificationCellTemplateSavedYourPhotopon,
+    BasicNotificationCellTemplateUnlockedCoupon,
+    BasicNotificationCellTemplateRedeemedUnlockedCoupon
 } BasicNotificationCellTemplate;
 
 @interface BasicNotificationCell : UITableViewCell

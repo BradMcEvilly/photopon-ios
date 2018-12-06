@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponViewController.m \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PrefixHeader.pch \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Google/Headers/module.modulemap \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Helper.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/DBAccess.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PhotoponDrawController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/MainController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/LogHelper.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PhotoponCameraView.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/MiniCouponView.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponTableViewCell.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponDetailViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/HeaderViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/UITheme.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/Wrappers/CouponWrapper.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/AlertBox.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/Managers/AvailabilityManager.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/SimpleViewControllers/PhotoponUnavailable/PhotoponUnavailableViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/Categories/UIViewController+Menu.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponDetails/CouponDetailsViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponDetails/MultipleLocationsContainerViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/CouponDetails/CouponLocationsTableViewController.h

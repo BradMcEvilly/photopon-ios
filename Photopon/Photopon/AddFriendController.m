@@ -114,7 +114,6 @@
             }
         }
         
-        
         [self.searchResultTable reloadData];
         
     });
@@ -215,7 +214,6 @@
                 return;
             }
             
-            
             [self fetchAllContacts];
         }];
     }
@@ -234,7 +232,7 @@
     
     myFriends = [NSMutableArray array];
     myContacts = [NSMutableArray array];
-     mySuggestions = [NSMutableArray array];
+    mySuggestions = [NSMutableArray array];
     allContacts = [NSMutableArray array];
 }
 

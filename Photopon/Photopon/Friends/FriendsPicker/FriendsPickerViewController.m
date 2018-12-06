@@ -12,15 +12,18 @@
 #import "UIColor+Convinience.h"
 #import "UIColor+Theme.h"
 #import "AlertBox.h"
+#import "TooltipFactory.h"
 
 @interface FriendsPickerViewController ()
 
 @property (nonatomic, strong) NSMutableArray *myFriends;
-
+@property (nonatomic, strong) NSNumber *giveToGet;
 @property (nonatomic, strong) NSArray *myFriendsSorted;
 @property (nonatomic, strong) NSMutableArray *myFriendsGrouped;
 @property (nonatomic, strong) NSMutableArray *myFriendsKeys;
 @property (nonatomic, strong) NSMutableSet *selectedFriends;
+@property (nonatomic, strong) NSMutableString *giveToGetText;
+@property (nonatomic, strong) AMPopTip *tooltip;
 
 @end
 
@@ -31,22 +34,82 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    [self initHeader];
+    
+    self.numSharesNeeded=NULL;
+    
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.selectedFriends = [NSMutableSet new];
     
     [self.btnAddFriend addTarget:self action:@selector(addFriendClicked) forControlEvents:UIControlEventTouchDown];
     [self.btnAddMoreFriend addTarget:self action:@selector(addFriendClicked) forControlEvents:UIControlEventTouchDown];
     
+    if (!self.tooltip) {
+        if(!self.btnAddFriend.hidden){
+            self.tooltip = [TooltipFactory whyContactsRequiredTooltipForView:self.view frame:[self.btnAddFriend convertRect:self.btnAddFriend.frame toView:self.view]];
+        }else{
+            self.tooltip = [TooltipFactory whyContactsRequiredTooltipForView:self.view frame:[self.btnAddMoreFriend convertRect:self.btnAddMoreFriend.frame toView:self.view]];
+        }
+    }
+    [self updateHeaderView];
+    [self loadFriends];
+    
+}
+
+-(void)initHeader{
+    self.tableView.tableHeaderView = self.tableHeaderView;
+    if(self.currentCoupon){
+        self.giveToGet = [self.currentCoupon valueForKey:@"givetoget"];
+        self.giveToGetText = [NSMutableString stringWithFormat: @"Give to Get (%ld).", [self.giveToGet integerValue]];
+        self.giveToGetTextView.text = self.giveToGetText;
+    }
+}
+
+-(void)updateHeaderView{
+    
+    if(self.currentCoupon){
+        NSNumber* giveToGet = [self.currentCoupon valueForKey:@"givetoget"];
+        
+        PFUser* user = [PFUser currentUser];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+        [query includeKey:@"user"];
+        [query includeKey:@"coupon"];
+        [query includeKey:@"friend"];
+        
+        [query whereKey:@"user" equalTo:user];
+        [query whereKey:@"coupon" equalTo:self.currentCoupon];
+        
+        [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+            
+            int numNeeded=0;
+            if (number >= [giveToGet integerValue]) {
+                self.giveToGetText = [NSMutableString stringWithString: @"You can give this gift to as many friends as you'd like!"];
+            } else {
+                numNeeded = [giveToGet integerValue] - number;
+                if (number == 0) {
+                    self.giveToGetText = [NSMutableString stringWithFormat: @"Give this gift to %ld friends to unlock it.", numNeeded];
+                } else {
+                    self.giveToGetText = [NSMutableString stringWithFormat:@"You need to share this coupon with %i more friend%s before you can get it.", numNeeded, ((numNeeded > 1) ? "s" : "")];
+                }
+            }
+            self.numSharesNeeded=[NSNumber numberWithInteger:numNeeded];
+            self.giveToGetTextView.text = self.giveToGetText;
+        }];
+    }
+}
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self loadFriends];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    
-    [self loadFriends];
-    
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [TooltipFactory setWhyContactsRequiredTooltipForView];
 }
 
 -(void)addFriendClicked {
@@ -61,7 +124,10 @@
 -(void)loadFriends {
     GetMyFriends(^(NSArray *results, NSError *error) {
         self.myFriends = [NSMutableArray new];
+        NSLog(@"friends raw:");
         for (PFObject* obj in results) {
+            
+            NSLog(@"%@", obj);
             PFUser* object = (PFUser*)obj[@"user2"];
 
             if (object) {
@@ -98,6 +164,17 @@
 }
 
 - (void)groupFriends {
+    
+    NSLog(@"FriendsPickerViewController :: groupFriends :: myFriends.count");
+    
+    NSLog(@"Number of items in self.myFriends is: %d", [self.myFriends count]);
+    
+    for (int i = 0; i < [self.myFriends count]; ++i) {
+        PFObject* obj = self.myFriends[i];
+        NSLog(@"for loop %d", i);
+        NSLog(@"%@", obj);
+    }
+    
     self.myFriendsSorted = [self.myFriends sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         PFObject *user1 = obj1;
         PFObject *user2 = obj2;
@@ -212,10 +289,9 @@
     label.textColor = [UIColor colorWithHexString:@"#111111" alpha:1.0];
     
     if(section < self.myFriendsGrouped.count){
-        
     
-    NSString *letter = self.myFriendsKeys[section];
-    label.text = [[letter substringToIndex:1]uppercaseString];
+        NSString *letter = self.myFriendsKeys[section];
+        label.text = [[letter substringToIndex:1]uppercaseString];
     }else{
         return nil;
     }

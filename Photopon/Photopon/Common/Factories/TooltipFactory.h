@@ -17,6 +17,12 @@
 + (AMPopTip *)showPersonalizeTooltipForView:(UIView *)view frame:(CGRect)frame;
 + (void)setPersonalizeTooltipChecked;
 
++ (AMPopTip *)showSwipeCouponsTooltipForView:(UIView *)view frame:(CGRect)frame;
++ (void)setSwipeCouponsTooltipForView;
+
++ (AMPopTip *)whyContactsRequiredTooltipForView:(UIView *)view frame:(CGRect)frame;
++ (void)setWhyContactsRequiredTooltipForView;
+
 + (AMPopTip *)showSharePhotoponForView:(UIView *)view frame:(CGRect)frame;
 + (void)setSharePhotoponTooltipChecked;
 

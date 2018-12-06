@@ -112,9 +112,6 @@
 
 }
 
-
-
-
 -(void)viewWillAppear:(BOOL)animated {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponsScreen"];
@@ -154,14 +151,11 @@
                           ];
 #endif
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuClicked)];
-    self.title = @"Gifts";
-
-    
+    self.title = @"Coupons";
     
     [self.couponTable setDelegate:self];
     [self.couponTable setDataSource:self];
     self.couponTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     
     [self couponsUpdated];
     NSLog(@"Registering listener for coupon update");

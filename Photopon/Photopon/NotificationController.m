@@ -146,7 +146,7 @@
             [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
         }
         notifCell.user = assocUser[@"username"];
-        notifCell.subtitleLabel.text = @"You can add him back";
+        notifCell.subtitleLabel.text = @"You can add him/her back";
         [notifCell setupCell];
         //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
         return notifCell;
@@ -155,7 +155,7 @@
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         PFFile *image = assocUser[@"image"];
         BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
-
+        notifCell.subtitleLabel.text = @"You can reply";
         if (image) {
             [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
         }
@@ -165,6 +165,7 @@
         //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
         return notifCell;
 
+        /*
         cell.imageView.image = [UIImage imageNamed:@"Icon-Speach-Bubble.png"];
         cell.imageView.transform = CGAffineTransformMakeScale(0.7, 0.7);
 
@@ -177,6 +178,7 @@
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
         SendGAEvent(@"user_action", @"notifications", @"message_notification_clicked");
+         */
     } else if ([type isEqualToString:@"PHOTOPON"]) {
         SentCouponCell *couponCell = [tableView dequeueReusableCellWithIdentifier:@"SentCouponCell"];
 
@@ -202,8 +204,10 @@
         couponCell.couponTitleLabel.text = coupon[@"title"];
         couponCell.couponSubtitleLabel.text = coupon[@"description"];
         couponCell.titleLabel.text = assocUser[@"username"];
+        //SendGAEvent(@"user_action", @"notifications", @"photopon_notification_clicked");
         return couponCell;
 
+        /*
         cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         NSDate *updated = [item updatedAt];
@@ -212,15 +216,94 @@
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Sent by %@ at %@", [assocUser username], [dateFormat stringFromDate:updated]];
         SendGAEvent(@"user_action", @"notifications", @"photopon_notification_clicked");
+        */
         
-    } else if ([type isEqualToString:@"ADDWALLET"]) {
+    }else if ([type isEqualToString:@"REDEEMEDUNLOCKED"]) {
         PFUser* assocUser = [item objectForKey:@"assocUser"];
         
         PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+        PFFile *image = assocUser[@"image"];
+        
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+        notifCell.subtitleLabel.text = [coupon objectForKey:@"title"];
+        if (image) {
+            [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        notifCell.user = assocUser[@"username"];
+        notifCell.templateType = BasicNotificationCellTemplateRedeemedUnlockedCoupon;
+        [notifCell setupCell];
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
+        /*
+        cell.imageView.image = [UIImage imageNamed:@"Icon-Wallet-22.png"];
+        
+        //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        //        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+        
+        
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+        PFObject* company = [coupon objectForKey:@"company"];
+        
+        
+        
+        cell.textLabel.text = [NSString stringWithString:@"You unlocked a coupon! Check your wallet to redeem!"];
+        
+        //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+        
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+        
+        //SendGAEvent(@"user_action", @"notifications", @"walletadd_notification_clicked");
+         */
+    }else if ([type isEqualToString:@"UNLOCKEDCOUPON"]) {
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
+        
+        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+        PFFile *image = assocUser[@"image"];
+        
+        BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
+        notifCell.subtitleLabel.text = [coupon objectForKey:@"title"];
+        
+        if (image) {
+            [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
+        }
+        notifCell.user = assocUser[@"username"];
+        notifCell.templateType = BasicNotificationCellTemplateUnlockedCoupon;
+        [notifCell setupCell];
+        //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
+        return notifCell;
+        /*
+         cell.imageView.image = [UIImage imageNamed:@"Icon-Wallet-22.png"];
+         
+         //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+         //        [cell.imageView addSubview:CreateFAImage(@"fa-gift", 24)];
+         
+         
+         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
+         PFObject* company = [coupon objectForKey:@"company"];
+         
+         
+         
+         cell.textLabel.text = [NSString stringWithString:@"You unlocked a coupon! Check your wallet to redeem!"];
+         
+         //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+         
+         
+         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
+         
+         //SendGAEvent(@"user_action", @"notifications", @"walletadd_notification_clicked");
+         */
+    }else if ([type isEqualToString:@"ADDWALLET"]) {
+        PFUser* assocUser = [item objectForKey:@"assocUser"];
+        
+        PFObject* assocPhotopon = [item objectForKey:@"assocPhotopon"];
+        PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
         PFFile *image = assocUser[@"image"];
 
         BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
-
+        notifCell.subtitleLabel.text = [coupon objectForKey:@"title"];
         if (image) {
             [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
         }
@@ -230,6 +313,7 @@
         //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
         return notifCell;
 
+        /*
         cell.imageView.image = [UIImage imageNamed:@"Icon-Wallet-22.png"];
         
         //        [[cell.imageView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
@@ -240,12 +324,14 @@
         PFObject* company = [coupon objectForKey:@"company"];
         
         cell.textLabel.text = [NSString stringWithFormat:@"%@ saved your Photopon", [assocUser objectForKey:@"username"]];
+        
         //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         SendGAEvent(@"user_action", @"notifications", @"walletadd_notification_clicked");
+         */
     }else if ([type isEqualToString:@"REDEEMED"]) {
         
         PFUser* assocUser = [item objectForKey:@"assocUser"];
@@ -262,8 +348,10 @@
         PFObject* coupon = [assocPhotopon objectForKey:@"coupon"];
         PFObject* company = [coupon objectForKey:@"company"];
 
+        
         BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
-
+        notifCell.subtitleLabel.text = [coupon objectForKey:@"title"];
+        
         if (image) {
             [notifCell.notificationImageView sd_setImageWithURL:[NSURL URLWithString:image.url] placeholderImage:[UIImage imageNamed:@"profileplaceholder"]];
         }
@@ -273,13 +361,19 @@
         //SendGAEvent(@"user_action", @"notifications", @"verification_message_clicked");
         return notifCell;
 
+        /*
         cell.textLabel.text = [NSString stringWithFormat:@"%@ redeemed your Photopon", [assocUser objectForKey:@"username"]];
+        
+        if(assocUser==[PFUser currentUser]){
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ you redeemed your unlocked coupon", [assocUser objectForKey:@"username"]];
+        }
         //cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", [company objectForKey:@"name"], [coupon objectForKey:@"title"]];
         
         SendGAEvent(@"user_action", @"notifications", @"redeemed_notification_clicked");
+         */
     } else if ([type isEqualToString:@"WELCOME_MESSAGE"]) {
         BasicNotificationCell *notifCell = [self.notificationsTable dequeueReusableCellWithIdentifier:@"BasicNotificationCell"];
 

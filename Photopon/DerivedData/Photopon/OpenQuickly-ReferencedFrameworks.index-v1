@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>AVFoundation</string>
+	<string>MBProgressHUD</string>
+	<string>CommonCrypto</string>
+	<string>CoreLocation</string>
+	<string>ImageIO</string>
+	<string>AudioToolbox</string>
+	<string>objc</string>
+	<string>IQKeyboardManager</string>
+	<string>Google</string>
+	<string>CoreData</string>
+	<string>Bolts</string>
+	<string>sys</string>
+	<string>MessageUI</string>
+	<string>CoreTelephony</string>
+	<string>FontAwesome</string>
+	<string>CoreServices</string>
+	<string>StoreKit</string>
+	<string>Parse</string>
+	<string>SDWebImage</string>
+	<string>libkern</string>
+	<string>Optimizely</string>
+	<string>Crashlytics</string>
+	<string>MapKit</string>
+	<string>WatchKit</string>
+	<string>Foundation</string>
+	<string>mach</string>
+	<string>os</string>
+	<string>PubNub</string>
+	<string>AppKit</string>
+	<string>Contacts</string>
+	<string>Fabric</string>
+	<string>CocoaLumberjack</string>
+	<string>IOKit</string>
+	<string>SystemConfiguration</string>
+	<string>CoreGraphics</string>
+	<string>ParseUI</string>
+	<string>UIKit</string>
+</array>
+</plist>

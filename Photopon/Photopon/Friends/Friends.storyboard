@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,10 +21,34 @@
         <scene sceneID="w01-ZF-JDW">
             <objects>
                 <viewController storyboardIdentifier="FriendsPickerViewController" id="QYo-ol-IFk" customClass="FriendsPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xxf-vx-gxf"/>
+                        <viewControllerLayoutGuide type="bottom" id="tFg-T6-9yx"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2hY-0a-2a0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xy-co-ygs">
+                                <rect key="frame" x="0.0" y="109" width="375" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Give to Get" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h8q-yk-tt0">
+                                        <rect key="frame" x="19" y="0.0" width="312" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="QYo-ol-IFk" id="gVo-KS-ldF"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="21Q-Gv-dFb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,6 +162,8 @@
                         <outlet property="btnAddMoreFriend" destination="OqO-04-4Do" id="fdo-V8-rYr"/>
                         <outlet property="cellAddMore" destination="66V-Ax-5AD" id="gAz-My-FLJ"/>
                         <outlet property="emptyView" destination="oP3-bb-uXP" id="giw-5M-XWY"/>
+                        <outlet property="giveToGetTextView" destination="h8q-yk-tt0" id="dAr-ES-Slh"/>
+                        <outlet property="tableHeaderView" destination="2Xy-co-ygs" id="cs0-9C-NxN"/>
                         <outlet property="tableView" destination="21Q-Gv-dFb" id="5kc-Fj-h0i"/>
                     </connections>
                 </viewController>
@@ -150,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqO-04-4Do" customClass="PPRoundedButton" customModule="Photopon" customModuleProvider="target">
-                                <rect key="frame" x="38" y="11" width="299" height="36"/>
+                                <rect key="frame" x="38" y="12" width="299" height="36"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.29803921570000003" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Pem-ys-ZDs"/>
@@ -169,7 +195,7 @@
                     </tableViewCellContentView>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="1354" y="-164"/>
+            <point key="canvasLocation" x="1352.8" y="-164.16791604197903"/>
         </scene>
     </scenes>
     <resources>

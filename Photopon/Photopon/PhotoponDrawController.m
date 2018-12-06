@@ -8,6 +8,7 @@
 
 #import "PhotoponDrawController.h"
 #import "PhotoponCameraView.h"
+#import "CouponWrapper.h"
 #import "FriendsViewController.h"
 #import "DBAccess.h"
 #import "MiniCouponViewController.h"
@@ -156,6 +157,110 @@
     [miniCouponViewController didMoveToParentViewController:self];
 }
 
+-(void)redeemNow{
+    [[CouponWrapper fromObject:currentCoupon] getCoupon];
+}
+
+-(void)addToWallet:(PFObject*)photopon{
+    PFObject* newWalletObject = [PFObject objectWithClassName:@"Wallet"];
+    [newWalletObject setObject:[PFUser currentUser] forKey:@"user"];
+    [newWalletObject setObject:photopon forKey:@"photopon"];
+    [newWalletObject setObject:[NSNumber numberWithBool:NO] forKey:@"isUsed"];
+    
+    [newWalletObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+        CreateAddWalletNotification([photopon valueForKey:@"creator"], photopon);
+        
+//        [self dismissViewControllerAnimated:true completion:^{
+//
+//        }];
+    }];
+}
+
+-(void)handleSendPhotoponsSuccess:(NSArray*)users forPhotopon:(PFObject*)photopon{
+    
+    [[CouponWrapper fromObject:currentCoupon] isRedeemed:^(BOOL value) {
+        
+        // we'll want to dismiss the current VC first and foremost, then call other async
+        // methods upon completion
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+            
+            if (value) {
+                
+                    [AlertBox showMessageFor:self
+                                   withTitle:@"Photopon Sent"
+                                 withMessage:[NSString stringWithFormat:@"Your Photopon was successfully sent to %ld friends!", [users count]]
+                                  leftButton:nil
+                                 rightButton:@"OK"
+                                  leftAction:nil
+                                 rightAction:nil];
+                
+            }else {
+                
+                // now, if not already redeemed, we have to check whether this send just
+                // unlocked it and act accordingly
+                
+                NSNumber* giveToGet = [currentCoupon valueForKey:@"givetoget"];
+                
+                PFUser* user = [PFUser currentUser];
+                
+                PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+                [query includeKey:@"user"];
+                [query includeKey:@"coupon"];
+                [query includeKey:@"friend"];
+                
+                [query whereKey:@"user" equalTo:user];
+                [query whereKey:@"coupon" equalTo:currentCoupon];
+                
+                [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+                    
+                    int numNeeded=0;
+                    // if unlocked
+                    if (number >= [giveToGet integerValue]) {
+                        
+                        [self addToWallet:photopon];
+                        [AlertBox showMessageFor:self
+                                       withTitle:@"Coupon Unlocked!"
+                                     withMessage:[NSString stringWithFormat:@"Coupon '%@' has been added to your wallet!", [currentCoupon objectForKey:@"title"]]
+                                      leftButton:@"Redeem Now"
+                                     rightButton:@"Ok"
+                                      leftAction:@selector(redeemNow)
+                                     rightAction:nil];
+                        CreateUnlockedCouponNotification([PFUser currentUser], photopon);
+                        
+                    } else {
+                        // if not unlocked
+                        numNeeded = [giveToGet integerValue] - number;
+                        if (number == 0) {
+                            
+                            [AlertBox showMessageFor:self
+                                           withTitle:@"Photopon Shared"
+                                         withMessage:[NSString stringWithFormat:@"Photopon shared with %ld friends! (num=0)", [users count]]
+                                          leftButton:nil
+                                         rightButton:@"OK"
+                                          leftAction:nil
+                                         rightAction:nil];
+                            
+                        } else {
+                            
+                            [AlertBox showMessageFor:self
+                                           withTitle:@"Photopon Shared"
+                                         withMessage:[NSString stringWithFormat:@"Your Photopon sent to %ld friends! %ld more needed to unlock coupon: '%@'", number, numNeeded, [currentCoupon objectForKey:@"title"]]
+                                          leftButton:nil
+                                         rightButton:@"OK"
+                                          leftAction:nil
+                                         rightAction:nil];
+                            
+                        }
+                    }
+                    
+                }];
+                
+            }
+        }];
+    }];
+    
+}
+
 -(void)sendPhotopons:(NSArray*)users onComplete:(void (^)(NSError *error))completeFunc{
     if (drawingFile == NULL) {
         drawingFile = [NSNull null];
@@ -165,15 +270,14 @@
     for (PFObject* user in users) {
         [userIds addObject:[user objectId]];
     }
-
+    
     PFObject* newPhotoponObject = [PFObject objectWithClassName:@"Photopon"];
     [newPhotoponObject setObject:drawingFile forKey:@"drawing"];
     [newPhotoponObject setObject:photoFile forKey:@"photo"];
     [newPhotoponObject setObject:[miniCouponViewController getCoupon] forKey:@"coupon"];
     [newPhotoponObject setObject:[PFUser currentUser] forKey:@"creator"];
     [newPhotoponObject setObject:userIds forKey:@"users"];
-    [newPhotoponObject setObject:@"b406885f-0b8f-4e66-ab80-19681074362d" forKey:@"installationId"];
-    
+    //[newPhotoponObject setObject:@"b406885f-0b8f-4e66-ab80-19681074362d" forKey:@"installationId"];
     
     [newPhotoponObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -188,15 +292,18 @@
             [currentCoupon incrementKey:@"numShared" byAmount:[NSNumber numberWithUnsignedLong:[users count] ] ];
             [currentCoupon saveInBackground];
 
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                [AlertBox showMessageFor:self
-                               withTitle:@"Photopon"
-                             withMessage:@"Photopon was saved successfully"
-                              leftButton:nil
-                             rightButton:@"OK"
-                              leftAction:nil
-                             rightAction:nil];
-            }];
+            [self handleSendPhotoponsSuccess:users forPhotopon:newPhotoponObject];
+            
+//            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+//                [AlertBox showMessageFor:self
+//                               withTitle:@"Photopon"
+//                             withMessage:@"Your Photopon was shared successfully! Coupon unlocked!"
+//                              leftButton:@"Redeem"
+//                             rightButton:@"Save"
+//                              leftAction:nil
+//                             rightAction:nil];
+//
+            
 
             
         } else {
@@ -225,7 +332,6 @@
         [query whereKey:@"user" equalTo:user];
         [query whereKey:@"coupon" equalTo:[miniCouponViewController getCoupon]];
         
-        
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             NSMutableArray* excludeFriends = [NSMutableArray new];
             
@@ -236,6 +342,8 @@
             FriendsPickerViewController *pickerVC = [[UIStoryboard storyboardWithName:@"Friends" bundle:nil] instantiateViewControllerWithIdentifier:@"FriendsPickerViewController"];
             pickerVC.excludedFriends = [excludeFriends mutableCopy];
             pickerVC.delegate = self;
+            pickerVC.currentCoupon=[miniCouponViewController getCoupon];
+            //pickerVC.currentCoupon =  [currentCoupon mutableCopy];
             [self presentViewController:[pickerVC setupDefaultNavController] animated:YES completion:nil];
 //
 //            FriendsViewController* friendsViewController = (FriendsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"SBFriends"];
@@ -254,7 +362,7 @@
     SendGAEvent(@"user_action", @"photopon_camera", @"upload_pics");
     IndicatorViewController* ind = [IndicatorViewController showIndicator:self withText:@"Uploading Photopon..." timeout:150 withDelay:0.5];
 
-    [TooltipFactory setPersonalizeTooltipChecked];
+    [TooltipFactory setSwipeCouponsTooltipForView];
     [self.tooltip hide];
     
     if (self.photoView.image == nil) {
@@ -404,7 +512,9 @@
     if (!self.tooltip) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (!self.tooltip) {
-                self.tooltip = [TooltipFactory showPersonalizeTooltipForView:self.view frame:[self.saveButton.superview convertRect:self.saveButton.frame toView:self.view]];
+                self.tooltip = [TooltipFactory showSwipeCouponsTooltipForView:self.view frame:[miniCouponViewController.view.superview convertRect:miniCouponViewController.view.frame toView:self.view]];
+//                self.tooltip = [TooltipFactory showSwipeCouponsTooltipForView:self.view frame:[self.saveButton.superview convertRect:self.saveButton.frame toView:self.view]];
+            
             }
         });
     }

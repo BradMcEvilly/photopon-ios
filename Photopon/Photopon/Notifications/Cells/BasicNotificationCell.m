@@ -46,6 +46,12 @@
         case  BasicNotificationCellTemplateSavedYourPhotopon:
             highlightedText = @"saved your Photopon";
             break;
+        case BasicNotificationCellTemplateUnlockedCoupon:
+            highlightedText = @"You unlocked a coupon! Check your wallet!";
+            break;
+        case BasicNotificationCellTemplateRedeemedUnlockedCoupon:
+            highlightedText = @"You redeemed your unlocked coupon!";
+            break;
         default:
             break;
     }

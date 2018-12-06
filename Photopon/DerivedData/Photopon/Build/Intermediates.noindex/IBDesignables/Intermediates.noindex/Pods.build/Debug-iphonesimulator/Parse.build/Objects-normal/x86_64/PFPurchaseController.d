@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/Purchase/Controller/PFPurchaseController.m \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Target\ Support\ Files/Parse/Parse-prefix.pch \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/Purchase/Controller/PFPurchaseController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/PFConstants.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFDataProvider.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Bolts/Bolts/Common/BFTaskCompletionSource.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Bolts/Bolts/Common/BFDefines.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/BFTask+Private.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Bolts/Bolts/Common/BFExecutor.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Bolts/Bolts/Common/BFTask.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Bolts/Bolts/Common/BFCancellationToken.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Bolts/Bolts/Common/BFCancellationTokenRegistration.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFInternalUtils.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFEncoder.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFMacros.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFAssert.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFCommandResult.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/Commands/CommandRunner/PFCommandRunning.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFDecoder.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFFileManager.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/File/PFFile_Private.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/PFFile.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/File/State/PFFileState.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFBaseState.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/HTTPRequest/PFHTTPRequest.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/Purchase/PaymentTransactionObserver/PFPaymentTransactionObserver.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/Product/ProductsRequestHandler/PFProductsRequestHandler.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/Commands/PFRESTCommand.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Parse/Parse/Internal/PFNetworkCommand.h

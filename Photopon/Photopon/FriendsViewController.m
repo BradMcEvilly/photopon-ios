@@ -142,7 +142,6 @@
                 if ([self isExcluded: object]) {
                     continue;
                 }
-
                 [myFriends addObject:object];
             }else{
                 PFUser* object = [PFUser new];
@@ -160,8 +159,8 @@
 
 
 -(void)viewWillAppear:(BOOL)animated {
-    [self updateFriends];
     
+    [self updateFriends];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CouponsScreen"];

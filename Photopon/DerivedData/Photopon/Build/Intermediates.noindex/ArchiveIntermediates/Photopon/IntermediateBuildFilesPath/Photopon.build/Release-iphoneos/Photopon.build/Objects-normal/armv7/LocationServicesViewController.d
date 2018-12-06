@@ -1,0 +1,9 @@
+dependencies: \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Onboarding/LocationServicesViewController.m \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/PrefixHeader.pch \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Pods/Google/Headers/module.modulemap \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Helper.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/DBAccess.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Onboarding/LocationServicesViewController.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/AlertControllers/AlertControllerFactory.h \
+  /Users/bradmcevilly/Development/com/photopon/photopon-ios/Photopon/Photopon/Common/Tools/PPTools.h

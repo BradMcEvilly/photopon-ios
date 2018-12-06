@@ -69,25 +69,23 @@
         if(value == YES){
             
             [AlertBox showMessageFor:self withTitle:@"Sorry!"
-                         withMessage:[NSString stringWithFormat:@"You have already redeemed this coupon.\n\nYour coupon code is:  %@",  [coupon objectForKey:@"code"]]
+                         withMessage:[NSString stringWithFormat:@"You have already redeemed this coupon.\n\nYour coupon code is:  %@ %@ %@",  [coupon objectForKey:@"code"], @"Coupon Title:", [coupon objectForKey:@"title"]]
                           leftButton:nil
                          rightButton:@"Ok"
                           leftAction:nil
                          rightAction:nil];
             
         }else{
-           
+            
             [coupon incrementKey:@"numRedeemed"];
             [coupon saveInBackground];
             
-            [AlertBox showMessageFor:self withTitle:@"Your coupon"
-                         withMessage:[NSString stringWithFormat:@"%@ %@", @"Your coupon code is: ", [coupon objectForKey:@"code"]]
+            [AlertBox showMessageFor:self withTitle:@"SHOW CASHIER:"
+                         withMessage:[NSString stringWithFormat:@"%@ %@ %@ %@", @"Your coupon code: ", [coupon objectForKey:@"code"], @"Coupon Title:", [coupon objectForKey:@"title"]]
                           leftButton:nil
-                         rightButton:@"Awesome!"
+                         rightButton:@"Done!"
                           leftAction:nil
                          rightAction:nil];
-            
-            
             
             SendGAEvent(@"user_action", @"coupons_table", @"got_coupon");
             CreateRedeemedLog(NULL, coupon);
@@ -98,57 +96,69 @@
     
 }
 
-
 -(void) getCoupon {
    if (!HasPhoneNumber(@"Please add and verify your mobile phone number to get this coupon.")) {
       return;
    }
 
-    NSNumber* giveToGet = [self.obj valueForKey:@"givetoget"];
-    
-    PFUser* user = [PFUser currentUser];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
-    [query includeKey:@"user"];
-    [query includeKey:@"coupon"];
-    [query includeKey:@"friend"];
-    
-    [query whereKey:@"user" equalTo:user];
-    [query whereKey:@"coupon" equalTo:self.obj];
-    
-    
-    [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
-        if (number >= [giveToGet integerValue]) {
-            [AlertBox showMessageFor:self withTitle:@"Are you sure?"
-                         withMessage:@"You can only redeem a coupon once. Are you sure you want to redeem it now?"
-                          leftButton:@"Cancel"
-                         rightButton:@"Redeem"
+    [self isRedeemed:^(BOOL value) {
+        PFObject* coupon = self.obj;
+        if(value == YES){
+            
+            [AlertBox showMessageFor:self withTitle:@"Sorry!"
+                         withMessage:@"You have already redeemed this coupon.\n\n"
+                          leftButton:nil
+                         rightButton:@"Ok"
                           leftAction:nil
-                         rightAction:@selector(redeemCoupon)];
+                         rightAction:nil];
             
-        } else {
-            int numNeeded = [giveToGet integerValue] - number;
+        }else{
             
-            if (number == 0) {
-                [AlertBox showMessageFor:self withTitle:@"Share it"
-                             withMessage:[NSString stringWithFormat:@"You need to share this coupon with %i friend%s before you can get it.", numNeeded, ((numNeeded > 1) ? "s" : "")]
-                              leftButton:@"Cancel"
-                             rightButton:@"Share Now!"
-                              leftAction:nil
-                             rightAction:@selector(giveCoupon)];
-            } else {
-                [AlertBox showMessageFor:self withTitle:@"Not enough shares"
-                             withMessage:[NSString stringWithFormat:@"You need to share this coupon with %i more friend%s before you can get it.", numNeeded, ((numNeeded > 1) ? "s" : "")]
-                              leftButton:@"Cancel"
-                             rightButton:@"Share Now!"
-                              leftAction:nil
-                             rightAction:@selector(giveCoupon)];
-            }
+            NSNumber* giveToGet = [self.obj valueForKey:@"givetoget"];
             
+            PFUser* user = [PFUser currentUser];
             
+            PFQuery *query = [PFQuery queryWithClassName:@"PerUserShare"];
+            [query includeKey:@"user"];
+            [query includeKey:@"coupon"];
+            [query includeKey:@"friend"];
             
+            [query whereKey:@"user" equalTo:user];
+            [query whereKey:@"coupon" equalTo:self.obj];
+            
+            [query countObjectsInBackgroundWithBlock:^(int number, NSError * _Nullable error) {
+                if (number >= [giveToGet integerValue]) {
+                    
+                    [AlertBox showMessageFor:self withTitle:@"Are you sure?"
+                                 withMessage:@"You can only redeem a coupon once. Are you sure you want to redeem it now?"
+                                  leftButton:@"Cancel"
+                                 rightButton:@"Redeem"
+                                  leftAction:nil
+                                 rightAction:@selector(redeemCoupon)];
+                    
+                } else {
+                    int numNeeded = [giveToGet integerValue] - number;
+                    
+                    if (number == 0) {
+                        [AlertBox showMessageFor:self withTitle:@"Share it"
+                                     withMessage:[NSString stringWithFormat:@"You need to share this coupon with %i friend%s before you can get it.", numNeeded, ((numNeeded > 1) ? "s" : "")]
+                                      leftButton:@"Cancel"
+                                     rightButton:@"Share Now!"
+                                      leftAction:nil
+                                     rightAction:@selector(giveCoupon)];
+                    } else {
+                        [AlertBox showMessageFor:self withTitle:@"Not enough shares"
+                                     withMessage:[NSString stringWithFormat:@"You need to share this coupon with %i more friend%s before you can get it.", numNeeded, ((numNeeded > 1) ? "s" : "")]
+                                      leftButton:@"Cancel"
+                                     rightButton:@"Share Now!"
+                                      leftAction:nil
+                                     rightAction:@selector(giveCoupon)];
+                    }
+                }
+            }];
         }
     }];
+    
 }
 
 

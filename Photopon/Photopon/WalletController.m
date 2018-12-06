@@ -109,8 +109,7 @@
 
     PFObject* photopon = [item objectForKey:@"photopon"];
     PFObject* coupon = [photopon objectForKey:@"coupon"];
-    couponCell.titleLabel = [coupon objectForKey:@"title"];
-    
+    couponCell.titleLabel.text = [coupon objectForKey:@"title"];
     
     NSDate *created = [photopon createdAt];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -136,6 +135,11 @@
     PFObject* walletItem = [allWalletItems objectAtIndex:selectedItemIndex];
     
     PFObject* photopon = [walletItem objectForKey:@"photopon"];
+    PFUser* assocUser = [photopon valueForKey:@"creator"];
+    
+    if(assocUser==[PFUser currentUser]){
+        CreateRedeemedUnlockedCouponNotification(assocUser, photopon);
+    }
     [[PhotoponWrapper fromObject:photopon] redeem];
     
     

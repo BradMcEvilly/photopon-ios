@@ -167,12 +167,15 @@ void UpdateNearbyCoupons() {
         } else {
             NSLog(@"Location: %f, %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
             [AvailabilityManager checkAvailabilityWithLocation:locationManager.location completion:^(BOOL available) {
-                if (available) {
-                    [locationHandler getCouponsForLocation:locationManager.location];
-                } else {
-                    UIAlertController *alertController = [AlertControllerFactory basicAlertWithMessage:@"Photopon is currently not available in your location. Please stay tuned for updates!"];
-                    [[AppNavigationStackHelper topViewController] presentViewController:alertController animated:YES completion:nil];
-                }
+                  // just make globally available for now
+                [locationHandler getCouponsForLocation:locationManager.location];
+                
+//                if (available) {
+//                    [locationHandler getCouponsForLocation:locationManager.location];
+//                } else {
+//                    UIAlertController *alertController = [AlertControllerFactory basicAlertWithMessage:@"Photopon is currently not available in your location. Please stay tuned for updates!"];
+//                    [[AppNavigationStackHelper topViewController] presentViewController:alertController animated:YES completion:nil];
+//                }
             }];
 
         }
